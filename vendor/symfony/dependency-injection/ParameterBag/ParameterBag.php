@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag;
 
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * Holds parameters.
  *
@@ -81,7 +81,7 @@ class ParameterBag implements ParameterBagInterface
             throw new ParameterNotFoundException($name, null, null, null, $alternatives, $nonNestedAlternative);
         }
         if (isset($this->deprecatedParameters[$name])) {
-            \DEPTRAC_202403\trigger_deprecation(...$this->deprecatedParameters[$name]);
+            \DEPTRAC_202404\trigger_deprecation(...$this->deprecatedParameters[$name]);
         }
         return $this->parameters[$name];
     }
@@ -91,7 +91,7 @@ class ParameterBag implements ParameterBagInterface
     public function set(string $name, array|bool|string|int|float|\UnitEnum|null $value)
     {
         if (\is_numeric($name)) {
-            \DEPTRAC_202403\trigger_deprecation('symfony/dependency-injection', '6.2', \sprintf('Using numeric parameter name "%s" is deprecated and will throw as of 7.0.', $name));
+            \DEPTRAC_202404\trigger_deprecation('symfony/dependency-injection', '6.2', \sprintf('Using numeric parameter name "%s" is deprecated and will throw as of 7.0.', $name));
             // uncomment the following line in 7.0
             // throw new InvalidArgumentException(sprintf('The parameter name "%s" cannot be numeric.', $name));
         }

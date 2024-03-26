@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node\Stmt;
+namespace DEPTRAC_202404\PhpParser\Node\Stmt;
 
-use DEPTRAC_202403\PhpParser\Node\Name;
-use DEPTRAC_202403\PhpParser\Node\Stmt;
+use DEPTRAC_202404\PhpParser\Node\Name;
+use DEPTRAC_202404\PhpParser\Node\Stmt;
 class GroupUse extends Stmt
 {
     /** @var int Type of group use */

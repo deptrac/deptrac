@@ -30,7 +30,7 @@ final class FunctionCallDependencyEmitter implements \Qossmic\Deptrac\Core\Depen
     {
         foreach ($references as $reference) {
             foreach ($reference->dependencies as $dependency) {
-                if (DependencyType::UNRESOLVED_FUNCTION_CALL !== $dependency->type) {
+                if (DependencyType::UNRESOLVED_FUNCTION_CALL !== $dependency->context->dependencyType) {
                     continue;
                 }
                 $token = $dependency->token;
@@ -38,7 +38,7 @@ final class FunctionCallDependencyEmitter implements \Qossmic\Deptrac\Core\Depen
                 if (null === $astMap->getFunctionReferenceForToken($token)) {
                     continue;
                 }
-                $dependencyList->addDependency(new Dependency($reference->getToken(), $dependency->token, $dependency->fileOccurrence, $dependency->type));
+                $dependencyList->addDependency(new Dependency($reference->getToken(), $dependency->token, $dependency->context));
             }
         }
     }

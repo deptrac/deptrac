@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of com_dotnet v.
 /**
@@ -35,7 +35,7 @@ class COM
  * The COM class allows you to instantiate an OLE compatible COM object and call its methods and access its properties.
  * @link https://php.net/manual/en/class.com.php
  */
-\class_alias('DEPTRAC_202403\\COM', 'COM', \false);
+\class_alias('DEPTRAC_202404\\COM', 'COM', \false);
 /**
  * The DOTNET class allows you to instantiate a class from a .Net assembly and call its methods and access its properties.
  * @link https://php.net/manual/en/class.dotnet.php
@@ -66,7 +66,7 @@ class DOTNET
  * The DOTNET class allows you to instantiate a class from a .Net assembly and call its methods and access its properties.
  * @link https://php.net/manual/en/class.dotnet.php
  */
-\class_alias('DEPTRAC_202403\\DOTNET', 'DOTNET', \false);
+\class_alias('DEPTRAC_202404\\DOTNET', 'DOTNET', \false);
 /**
  * The VARIANT is COM's equivalent of the PHP zval; it is a structure that can contain a value with a range of different possible types. The VARIANT class provided by the COM extension allows you to have more control over the way that PHP passes values to and from COM.
  * @link https://php.net/manual/en/class.variant.php
@@ -97,7 +97,7 @@ class VARIANT
  * The VARIANT is COM's equivalent of the PHP zval; it is a structure that can contain a value with a range of different possible types. The VARIANT class provided by the COM extension allows you to have more control over the way that PHP passes values to and from COM.
  * @link https://php.net/manual/en/class.variant.php
  */
-\class_alias('DEPTRAC_202403\\VARIANT', 'VARIANT', \false);
+\class_alias('DEPTRAC_202404\\VARIANT', 'VARIANT', \false);
 /**
  * This extension will throw instances of the class com_exception whenever there is a potentially fatal error reported by COM. All COM exceptions have a well-defined code property that corresponds to the HRESULT return value from the various COM operations. You may use this code to make programmatic decisions on how to handle the exception.
  * @link https://php.net/manual/en/com.error-handling.php
@@ -109,7 +109,7 @@ class com_exception extends \Exception
  * This extension will throw instances of the class com_exception whenever there is a potentially fatal error reported by COM. All COM exceptions have a well-defined code property that corresponds to the HRESULT return value from the various COM operations. You may use this code to make programmatic decisions on how to handle the exception.
  * @link https://php.net/manual/en/com.error-handling.php
  */
-\class_alias('DEPTRAC_202403\\com_exception', 'com_exception', \false);
+\class_alias('DEPTRAC_202404\\com_exception', 'com_exception', \false);
 /**
  * (PHP 5, PHP 7)<br/>
  * Generate a globally unique identifier (GUID)

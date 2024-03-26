@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Supportive\OutputFormatter;
 
-use DEPTRAC_202403\phpDocumentor\GraphViz\Exception;
-use DEPTRAC_202403\phpDocumentor\GraphViz\Graph;
+use DEPTRAC_202404\phpDocumentor\GraphViz\Exception;
+use DEPTRAC_202404\phpDocumentor\GraphViz\Graph;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputException;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
 use SplFileInfo;
-use DEPTRAC_202403\Symfony\Component\Filesystem\Path;
+use DEPTRAC_202404\Symfony\Component\Filesystem\Path;
 /**
  * @internal
  */

@@ -1,11 +1,11 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of pgsql v.
-use DEPTRAC_202403\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 /**
  * Open a PostgreSQL connection
  * @link https://php.net/manual/en/function.pg-connect.php
@@ -101,7 +101,7 @@ function pg_close(#[LanguageLevelTypeAware(['8.1' => 'PgSql\\Connection|null'], 
  * <b>PGSQL_POLLING_OK</b>, or <b>PGSQL_POLLING_ACTIVE</b>.
  * @since 5.6
  */
-function pg_connect_poll(#[PhpStormStubsElementAvailable(from: '5.6', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection) : int
+function pg_connect_poll(#[PhpStormStubsElementAvailable(from: '5.6', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection) : int
 {
 }
 /**
@@ -113,7 +113,7 @@ function pg_connect_poll(#[PhpStormStubsElementAvailable(from: '5.6', to: '7.4')
  * @return int <b>PGSQL_CONNECTION_OK</b> or
  * <b>PGSQL_CONNECTION_BAD</b>.
  */
-function pg_connection_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection) : int
+function pg_connection_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection) : int
 {
 }
 /**
@@ -124,7 +124,7 @@ function pg_connection_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403
  * </p>
  * @return bool <b>TRUE</b> if the connection is busy, <b>FALSE</b> otherwise.
  */
-function pg_connection_busy(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection) : bool
+function pg_connection_busy(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection) : bool
 {
 }
 /**
@@ -135,7 +135,7 @@ function pg_connection_busy(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_connection_reset(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection) : bool
+function pg_connection_reset(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection) : bool
 {
 }
 /**
@@ -147,7 +147,7 @@ function pg_connection_reset(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\
  * @return resource|false A socket resource on success or <b>FALSE</b> on failure.
  * @since 5.6
  */
-function pg_socket(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection)
+function pg_socket(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection)
 {
 }
 /**
@@ -274,7 +274,7 @@ function pg_ping(#[LanguageLevelTypeAware(['8.1' => 'PgSql\\Connection|null'], d
  * @return string|false A string containing the value of the parameter, <b>FALSE</b> on failure or invalid
  * <i>param_name</i>.
  */
-function pg_parameter_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $name) : string|false
+function pg_parameter_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $name) : string|false
 {
 }
 /**
@@ -291,7 +291,7 @@ function pg_parameter_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\
  * <b>PGSQL_TRANSACTION_ACTIVE</b> is reported only when a query
  * has been sent to the server and not yet completed.
  */
-function pg_transaction_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection) : int
+function pg_transaction_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection) : int
 {
 }
 /**
@@ -323,7 +323,7 @@ function pg_transaction_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_20240
  * @return resource|false A query result resource on success or <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\\Result|false'], default: 'resource|false')]
-function pg_query(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $query)
+function pg_query(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $query)
 {
 }
 /**
@@ -361,7 +361,7 @@ function pg_query(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $conn
  * @return resource|false A query result resource on success or <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\\Result|false'], default: 'resource|false')]
-function pg_query_params(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $query = '', #[PhpStormStubsElementAvailable(from: '8.0')] $query, array $params)
+function pg_query_params(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $query = '', #[PhpStormStubsElementAvailable(from: '8.0')] $query, array $params)
 {
 }
 /**
@@ -387,7 +387,7 @@ function pg_query_params(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')
  * @return resource|false A query result resource on success or <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\\Result|false'], default: 'resource|false')]
-function pg_prepare(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] string $statement_name = '', #[PhpStormStubsElementAvailable(from: '8.0')] string $statement_name, string $query)
+function pg_prepare(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] string $statement_name = '', #[PhpStormStubsElementAvailable(from: '8.0')] string $statement_name, string $query)
 {
 }
 /**
@@ -417,7 +417,7 @@ function pg_prepare(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $co
  * @return resource|false A query result resource on success or <b>FALSE</b> on failure.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\\Result|false'], default: 'resource|false')]
-function pg_execute(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] string $statement_name = '', #[PhpStormStubsElementAvailable(from: '8.0')] $statement_name, array $params)
+function pg_execute(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] string $statement_name = '', #[PhpStormStubsElementAvailable(from: '8.0')] $statement_name, array $params)
 {
 }
 /**
@@ -436,7 +436,7 @@ function pg_execute(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $co
  * <p>
  * Use <b>pg_get_result</b> to determine the query result.
  */
-function pg_send_query(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $query) : int|bool
+function pg_send_query(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $query) : int|bool
 {
 }
 /**
@@ -459,7 +459,7 @@ function pg_send_query(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql
  * <p>
  * Use <b>pg_get_result</b> to determine the query result.
  */
-function pg_send_query_params(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $query, array $params) : int|bool
+function pg_send_query_params(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $query, array $params) : int|bool
 {
 }
 /**
@@ -484,7 +484,7 @@ function pg_send_query_params(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403
  * @return int|bool <b>TRUE</b> on success, <b>FALSE</b> on failure. Use <b>pg_get_result</b>
  * to determine the query result.
  */
-function pg_send_prepare(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $statement_name, string $query) : int|bool
+function pg_send_prepare(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $statement_name, string $query) : int|bool
 {
 }
 /**
@@ -511,7 +511,7 @@ function pg_send_prepare(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgS
  * @return int|bool <b>TRUE</b> on success, <b>FALSE</b> on failure. Use <b>pg_get_result</b>
  * to determine the query result.
  */
-function pg_send_execute(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $statement_name, array $params) : int|bool
+function pg_send_execute(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $statement_name, array $params) : int|bool
 {
 }
 /**
@@ -522,7 +522,7 @@ function pg_send_execute(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgS
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_cancel_query(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection) : bool
+function pg_cancel_query(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection) : bool
 {
 }
 /**
@@ -552,7 +552,7 @@ function pg_cancel_query(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgS
  * <b>FALSE</b> is returned if <i>row</i> exceeds the number
  * of rows in the set, or on any other error.
  */
-function pg_fetch_result(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : string|false|null
+function pg_fetch_result(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : string|false|null
 {
 }
 /**
@@ -576,7 +576,7 @@ function pg_fetch_result(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgS
  * <b>FALSE</b> is returned if <i>row</i> exceeds the number
  * of rows in the set, there are no more rows, or on any other error.
  */
-function pg_fetch_row(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, ?int $row = null, int $mode = 2) : array|false
+function pg_fetch_row(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, ?int $row = null, int $mode = 2) : array|false
 {
 }
 /**
@@ -600,7 +600,7 @@ function pg_fetch_row(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * <b>FALSE</b> is returned if <i>row</i> exceeds the number
  * of rows in the set, there are no more rows, or on any other error.
  */
-function pg_fetch_assoc(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, ?int $row = null) : array|false
+function pg_fetch_assoc(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, ?int $row = null) : array|false
 {
 }
 /**
@@ -637,7 +637,7 @@ function pg_fetch_assoc(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * <b>FALSE</b> is returned if <i>row</i> exceeds the number
  * of rows in the set, there are no more rows, or on any other error.
  */
-function pg_fetch_array(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, ?int $row = null, int $mode = \PGSQL_BOTH) : array|false
+function pg_fetch_array(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, ?int $row = null, int $mode = \PGSQL_BOTH) : array|false
 {
 }
 /**
@@ -665,7 +665,7 @@ function pg_fetch_array(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * <b>FALSE</b> is returned if <i>row</i> exceeds the number
  * of rows in the set, there are no more rows, or on any other error.
  */
-function pg_fetch_object(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, ?int $row = null, string $class = 'stdClass', #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $l = null, array $constructor_args = []) : object|false
+function pg_fetch_object(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, ?int $row = null, string $class = 'stdClass', #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $l = null, array $constructor_args = []) : object|false
 {
 }
 /**
@@ -696,7 +696,7 @@ function pg_fetch_object(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgS
  * other error.
  */
 #[LanguageLevelTypeAware(['8.0' => 'array'], default: 'array|false')]
-function pg_fetch_all(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $mode = \PGSQL_ASSOC)
+function pg_fetch_all(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $mode = \PGSQL_ASSOC)
 {
 }
 /**
@@ -717,7 +717,7 @@ function pg_fetch_all(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * of columns in the result, or on any other error.
  * </p>
  */
-function pg_fetch_all_columns(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field = 0) : array
+function pg_fetch_all_columns(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field = 0) : array
 {
 }
 /**
@@ -731,7 +731,7 @@ function pg_fetch_all_columns(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403
  * @return int The number of rows affected by the query. If no tuple is
  * affected, it will return 0.
  */
-function pg_affected_rows(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : int
+function pg_affected_rows(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : int
 {
 }
 /**
@@ -743,7 +743,7 @@ function pg_affected_rows(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\Pg
  * @return resource|false The result resource, or <b>FALSE</b> if no more results are available.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\\Result|false'], default: 'resource|false')]
-function pg_get_result(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection)
+function pg_get_result(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection)
 {
 }
 /**
@@ -760,7 +760,7 @@ function pg_get_result(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_result_seek(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $row) : bool
+function pg_result_seek(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $row) : bool
 {
 }
 /**
@@ -783,7 +783,7 @@ function pg_result_seek(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * <b>PGSQL_FATAL_ERROR</b> if <b>PGSQL_STATUS_LONG</b> is
  * specified. Otherwise, a string containing the PostgreSQL command tag is returned.
  */
-function pg_result_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $mode = \PGSQL_STATUS_LONG) : string|int
+function pg_result_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $mode = \PGSQL_STATUS_LONG) : string|int
 {
 }
 /**
@@ -796,7 +796,7 @@ function pg_result_status(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\Pg
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_free_result(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : bool
+function pg_free_result(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : bool
 {
 }
 /**
@@ -811,7 +811,7 @@ function pg_free_result(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * row in the specified <i>connection</i>, or <b>FALSE</b> on error or
  * no available OID.
  */
-function pg_last_oid(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : string|int|false
+function pg_last_oid(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : string|int|false
 {
 }
 /**
@@ -824,7 +824,7 @@ function pg_last_oid(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\
  * </p>
  * @return int The number of rows in the result. On error, -1 is returned.
  */
-function pg_num_rows(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : int
+function pg_num_rows(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : int
 {
 }
 /**
@@ -837,7 +837,7 @@ function pg_num_rows(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\
  * </p>
  * @return int The number of fields (columns) in the result. On error, -1 is returned.
  */
-function pg_num_fields(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : int
+function pg_num_fields(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : int
 {
 }
 /**
@@ -853,7 +853,7 @@ function pg_num_fields(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql
  * </p>
  * @return string|false The field name, or <b>FALSE</b> on error.
  */
-function pg_field_name(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field) : string
+function pg_field_name(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field) : string
 {
 }
 /**
@@ -869,7 +869,7 @@ function pg_field_name(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql
  * </p>
  * @return int The field number (numbered from 0), or -1 on error.
  */
-function pg_field_num(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, string $field) : int
+function pg_field_num(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, string $field) : int
 {
 }
 /**
@@ -886,7 +886,7 @@ function pg_field_num(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * @return int The internal field storage size (in bytes). -1 indicates a variable
  * length field. <b>FALSE</b> is returned on error.
  */
-function pg_field_size(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field) : int
+function pg_field_size(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field) : int
 {
 }
 /**
@@ -903,7 +903,7 @@ function pg_field_size(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql
  * @return string|false A string containing the base name of the field's type, or <b>FALSE</b>
  * on error.
  */
-function pg_field_type(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field) : string
+function pg_field_type(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field) : string
 {
 }
 /**
@@ -919,7 +919,7 @@ function pg_field_type(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql
  * </p>
  * @return string|int The OID of the field's base type. <b>FALSE</b> is returned on error.
  */
-function pg_field_type_oid(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field) : string|int
+function pg_field_type_oid(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field) : string|int
 {
 }
 /**
@@ -934,7 +934,7 @@ function pg_field_type_oid(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\P
  * @param mixed $field [optional]
  * @return int|false The field printed length, or <b>FALSE</b> on error.
  */
-function pg_field_prtlen(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : int|false
+function pg_field_prtlen(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : int|false
 {
 }
 /**
@@ -956,7 +956,7 @@ function pg_field_prtlen(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgS
  * @return int|false 1 if the field in the given row is SQL NULL, 0
  * if not. <b>FALSE</b> is returned if the row is out of range, or upon any other error.
  */
-function pg_field_is_null(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : int|false
+function pg_field_is_null(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : int|false
 {
 }
 /**
@@ -977,7 +977,7 @@ function pg_field_is_null(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\Pg
  * </p>
  * @return string|int|false On success either the fields table name or oid. Or, <b>FALSE</b> on failure.
  */
-function pg_field_table(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field, bool $oid_only = \false) : string|int|false
+function pg_field_table(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field, bool $oid_only = \false) : string|int|false
 {
 }
 /**
@@ -1002,7 +1002,7 @@ function pg_field_table(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * Otherwise if no NOTIFY is waiting, then <b>FALSE</b> is returned.
  */
 #[ArrayShape(["message" => "string", "pid" => "int", "payload" => "string"])]
-function pg_get_notify(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, int $mode = 1) : array|false
+function pg_get_notify(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, int $mode = 1) : array|false
 {
 }
 /**
@@ -1013,7 +1013,7 @@ function pg_get_notify(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] 
  * </p>
  * @return int The backend database process ID.
  */
-function pg_get_pid(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection) : int
+function pg_get_pid(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection) : int
 {
 }
 /**
@@ -1027,7 +1027,7 @@ function pg_get_pid(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $co
  * @return string|false a string if there is an error associated with the
  * <i>result</i> parameter, <b>FALSE</b> otherwise.
  */
-function pg_result_error(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : string|false
+function pg_result_error(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : string|false
 {
 }
 /**
@@ -1051,7 +1051,7 @@ function pg_result_error(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgS
  * @return string|null|false A string containing the contents of the error field, <b>NULL</b> if the field does not exist or <b>FALSE</b>
  * on failure.
  */
-function pg_result_error_field(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field_code) : string|false|null
+function pg_result_error_field(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field_code) : string|false|null
 {
 }
 /**
@@ -1086,7 +1086,7 @@ function pg_last_error(#[LanguageLevelTypeAware(['8.1' => 'PgSql\\Connection|nul
  * a bool with <b>PGSQL_NOTICE_CLEAR</b>, or
  * <b>FALSE</b> on error.
  */
-function pg_last_notice(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, int $mode = \PGSQL_NOTICE_LAST) : array|string|bool
+function pg_last_notice(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, int $mode = \PGSQL_NOTICE_LAST) : array|string|bool
 {
 }
 /**
@@ -1104,7 +1104,7 @@ function pg_last_notice(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_put_line(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $query) : bool
+function pg_put_line(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $query) : bool
 {
 }
 /**
@@ -1141,7 +1141,7 @@ function pg_end_copy(#[LanguageLevelTypeAware(['8.1' => 'PgSql\\Connection|null'
  * @return array|false An array with one element for each line of COPY data.
  * It returns <b>FALSE</b> on failure.
  */
-function pg_copy_to(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, string $separator = '	', string $null_as = '\\\\N') : array|false
+function pg_copy_to(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, string $separator = '	', string $null_as = '\\\\N') : array|false
 {
 }
 /**
@@ -1169,7 +1169,7 @@ function pg_copy_to(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\C
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_copy_from(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $rows, string $separator = '	', string $null_as = '\\\\N') : bool
+function pg_copy_from(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $rows, string $separator = '	', string $null_as = '\\\\N') : bool
 {
 }
 /**
@@ -1226,7 +1226,7 @@ function pg_untrace(#[LanguageLevelTypeAware(['8.1' => 'PgSql\\Connection|null']
  * </p>
  * @return string|int|false A large object OID or <b>FALSE</b> on error.
  */
-function pg_lo_create(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, $oid) : string|int|false
+function pg_lo_create(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, $oid) : string|int|false
 {
 }
 /**
@@ -1243,7 +1243,7 @@ function pg_lo_create(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_lo_unlink(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, $oid) : bool
+function pg_lo_unlink(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, $oid) : bool
 {
 }
 /**
@@ -1265,7 +1265,7 @@ function pg_lo_unlink(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $
  * @return resource|false A large object resource or <b>FALSE</b> on error.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\\Lob|false'], default: 'resource|false')]
-function pg_lo_open(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, $oid, string $mode)
+function pg_lo_open(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, $oid, string $mode)
 {
 }
 /**
@@ -1274,7 +1274,7 @@ function pg_lo_open(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $co
  * @param resource $lob
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_lo_close(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob) : bool
+function pg_lo_close(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob) : bool
 {
 }
 /**
@@ -1289,7 +1289,7 @@ function pg_lo_close(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\
  * @return string|false A string containing <i>len</i> bytes from the
  * large object, or <b>FALSE</b> on error.
  */
-function pg_lo_read(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob, int $length = 8192) : string|false
+function pg_lo_read(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob, int $length = 8192) : string|false
 {
 }
 /**
@@ -1310,7 +1310,7 @@ function pg_lo_read(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\L
  * </p>
  * @return int|false The number of bytes written to the large object, or <b>FALSE</b> on error.
  */
-function pg_lo_write(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob, string $data, ?int $length = null) : int|false
+function pg_lo_write(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob, string $data, ?int $length = null) : int|false
 {
 }
 /**
@@ -1321,7 +1321,7 @@ function pg_lo_write(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\
  * </p>
  * @return int|false Number of bytes read or <b>FALSE</b> on error.
  */
-function pg_lo_read_all(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob) : int
+function pg_lo_read_all(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob) : int
 {
 }
 /**
@@ -1347,7 +1347,7 @@ function pg_lo_read_all(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * @return string|int|false The OID of the newly created large object, or
  * <b>FALSE</b> on failure.
  */
-function pg_lo_import(#[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, $pathname, $object_id = null) : string|int|false
+function pg_lo_import(#[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, $pathname, $object_id = null) : string|int|false
 {
 }
 /**
@@ -1368,7 +1368,7 @@ function pg_lo_import(#[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLe
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_lo_export(#[PhpStormStubsElementAvailable('8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, $oid, $pathname) : bool
+function pg_lo_export(#[PhpStormStubsElementAvailable('8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, $oid, $pathname) : bool
 {
 }
 /**
@@ -1387,7 +1387,7 @@ function pg_lo_export(#[PhpStormStubsElementAvailable('8.0')] #[LanguageLevelTyp
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pg_lo_seek(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob, int $offset, int $whence = \PGSQL_SEEK_CUR) : bool
+function pg_lo_seek(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob, int $offset, int $whence = \PGSQL_SEEK_CUR) : bool
 {
 }
 /**
@@ -1399,7 +1399,7 @@ function pg_lo_seek(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\L
  * @return int The current seek offset (in number of bytes) from the beginning of the large
  * object. If there is an error, the return value is negative.
  */
-function pg_lo_tell(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob) : int
+function pg_lo_tell(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob) : int
 {
 }
 /**
@@ -1411,7 +1411,7 @@ function pg_lo_tell(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\L
  * @param int $size The number of bytes to truncate.
  * @return bool Returns true on success or false on failure.
  */
-function pg_lo_truncate(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] int $size = 0, #[PhpStormStubsElementAvailable(from: '8.0')] int $size) : bool
+function pg_lo_truncate(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] int $size = 0, #[PhpStormStubsElementAvailable(from: '8.0')] int $size) : bool
 {
 }
 /**
@@ -1428,7 +1428,7 @@ function pg_lo_truncate(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * </p>
  * @return string A string containing the escaped data.
  */
-function pg_escape_string(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $string) : string
+function pg_escape_string(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $string) : string
 {
 }
 /**
@@ -1446,7 +1446,7 @@ function pg_escape_string(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4'
  * </p>
  * @return string A string containing the escaped data.
  */
-function pg_escape_bytea(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $string) : string
+function pg_escape_bytea(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $string) : string
 {
 }
 /**
@@ -1464,7 +1464,7 @@ function pg_escape_bytea(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')
  * @return string|false A string containing the escaped data.
  * @since 5.4.4
  */
-function pg_escape_identifier(#[PhpStormStubsElementAvailable(from: '5.4', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $string) : string|false
+function pg_escape_identifier(#[PhpStormStubsElementAvailable(from: '5.4', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $string) : string|false
 {
 }
 /**
@@ -1482,7 +1482,7 @@ function pg_escape_identifier(#[PhpStormStubsElementAvailable(from: '5.4', to: '
  * @return string|false A string containing the escaped data.
  * @since 5.4.4
  */
-function pg_escape_literal(#[PhpStormStubsElementAvailable(from: '5.4', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $string) : string|false
+function pg_escape_literal(#[PhpStormStubsElementAvailable(from: '5.4', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $string) : string|false
 {
 }
 /**
@@ -1516,7 +1516,7 @@ function pg_unescape_bytea(string $string) : string
  * <b>PGSQL_ERRORS_DEFAULT</b>
  * or <b>PGSQL_ERRORS_VERBOSE</b>.
  */
-function pg_set_error_verbosity(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, int $verbosity) : int|false
+function pg_set_error_verbosity(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, int $verbosity) : int|false
 {
 }
 /**
@@ -1555,7 +1555,7 @@ function pg_client_encoding(#[LanguageLevelTypeAware(['8.1' => 'PgSql\\Connectio
  * </p>
  * @return int 0 on success or -1 on error.
  */
-function pg_set_client_encoding(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $encoding) : int
+function pg_set_client_encoding(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $encoding) : int
 {
 }
 /**
@@ -1569,7 +1569,7 @@ function pg_set_client_encoding(#[PhpStormStubsElementAvailable(from: '5.3', to:
  * </p>
  * @return array|false An array of the table definition, or <b>FALSE</b> on error.
  */
-function pg_meta_data(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, #[PhpStormStubsElementAvailable(from: '8.0')] bool $extended = \false) : array|false
+function pg_meta_data(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, #[PhpStormStubsElementAvailable(from: '8.0')] bool $extended = \false) : array|false
 {
 }
 /**
@@ -1591,7 +1591,7 @@ function pg_meta_data(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * </p>
  * @return array|false An array of converted values, or <b>FALSE</b> on error.
  */
-function pg_convert(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $values, int $flags = 0) : array|false
+function pg_convert(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $values, int $flags = 0) : array|false
 {
 }
 /**
@@ -1620,7 +1620,7 @@ function pg_convert(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\C
  * via <i>options</i>.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\\Result|string|bool'], default: 'resource|string|bool')]
-function pg_insert(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $values, int $flags = \PGSQL_DML_EXEC)
+function pg_insert(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $values, int $flags = \PGSQL_DML_EXEC)
 {
 }
 /**
@@ -1650,7 +1650,7 @@ function pg_insert(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Co
  * @return string|bool <b>TRUE</b> on success or <b>FALSE</b> on failure. Returns string if <b>PGSQL_DML_STRING</b> is passed
  * via <i>options</i>.
  */
-function pg_update(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $values, array $conditions, int $flags = \PGSQL_DML_EXEC) : string|bool
+function pg_update(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $values, array $conditions, int $flags = \PGSQL_DML_EXEC) : string|bool
 {
 }
 /**
@@ -1676,7 +1676,7 @@ function pg_update(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Co
  * @return string|bool <b>TRUE</b> on success or <b>FALSE</b> on failure. Returns string if <b>PGSQL_DML_STRING</b> is passed
  * via <i>options</i>.
  */
-function pg_delete(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $conditions, int $flags = \PGSQL_DML_EXEC) : string|bool
+function pg_delete(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $conditions, int $flags = \PGSQL_DML_EXEC) : string|bool
 {
 }
 /**
@@ -1715,7 +1715,7 @@ function pg_delete(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Co
  * @return array|string|false <b>TRUE</b> on success or <b>FALSE</b> on failure. Returns string if <b>PGSQL_DML_STRING</b> is passed
  * via <i>options</i>.
  */
-function pg_select(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $conditions, int $flags = \PGSQL_DML_EXEC, int $mode = \PGSQL_ASSOC) : array|string|false
+function pg_select(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $table_name, array $conditions, int $flags = \PGSQL_DML_EXEC, int $mode = \PGSQL_ASSOC) : array|string|false
 {
 }
 /**
@@ -1724,7 +1724,7 @@ function pg_select(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Co
  * @return mixed
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\\Result|false'], default: 'resource|false')]
-function pg_exec(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $query)
+function pg_exec(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $query)
 {
 }
 /**
@@ -1732,7 +1732,7 @@ function pg_exec(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $conne
  * @return string|int|false
  * @deprecated
  */
-function pg_getlastoid(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : string|int|false
+function pg_getlastoid(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : string|int|false
 {
 }
 /**
@@ -1740,7 +1740,7 @@ function pg_getlastoid(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql
  * @return int
  * @deprecated
  */
-function pg_cmdtuples(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : int
+function pg_cmdtuples(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : int
 {
 }
 // TODO remove
@@ -1757,7 +1757,7 @@ function pg_errormessage(#[LanguageLevelTypeAware(['8.1' => 'PgSql\\Connection|n
  * @return int
  * @deprecated
  */
-function pg_numrows(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : int
+function pg_numrows(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : int
 {
 }
 /**
@@ -1765,7 +1765,7 @@ function pg_numrows(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\R
  * @return int
  * @deprecated
  */
-function pg_numfields(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : int
+function pg_numfields(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : int
 {
 }
 /**
@@ -1774,7 +1774,7 @@ function pg_numfields(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * @return string
  * @deprecated
  */
-function pg_fieldname(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field) : string
+function pg_fieldname(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field) : string
 {
 }
 /**
@@ -1783,7 +1783,7 @@ function pg_fieldname(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * @return int
  * @deprecated
  */
-function pg_fieldsize(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field) : int
+function pg_fieldsize(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field) : int
 {
 }
 /**
@@ -1792,7 +1792,7 @@ function pg_fieldsize(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * @return string
  * @deprecated
  */
-function pg_fieldtype(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, int $field) : string
+function pg_fieldtype(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, int $field) : string
 {
 }
 /**
@@ -1801,7 +1801,7 @@ function pg_fieldtype(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * @return int
  * @deprecated
  */
-function pg_fieldnum(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, string $field) : int
+function pg_fieldnum(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, string $field) : int
 {
 }
 /**
@@ -1811,7 +1811,7 @@ function pg_fieldnum(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\
  * @return int|false
  * @deprecated
  */
-function pg_fieldprtlen(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : int|false
+function pg_fieldprtlen(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : int|false
 {
 }
 /**
@@ -1821,7 +1821,7 @@ function pg_fieldprtlen(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * @return int|false
  * @deprecated
  */
-function pg_fieldisnull(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : int|false
+function pg_fieldisnull(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $row = 0, #[PhpStormStubsElementAvailable(from: '8.0')] $row, string|int $field) : int|false
 {
 }
 /**
@@ -1829,7 +1829,7 @@ function pg_fieldisnull(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSq
  * @return bool
  * @deprecated
  */
-function pg_freeresult(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result) : bool
+function pg_freeresult(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result) : bool
 {
 }
 /**
@@ -1838,14 +1838,14 @@ function pg_freeresult(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql
  * @param $field [optional]
  * @deprecated
  */
-function pg_result(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '8.0')] $row, #[PhpStormStubsElementAvailable(from: '8.0')] string|int $field) : string|null|false
+function pg_result(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Result'], default: 'resource')] $result, #[PhpStormStubsElementAvailable(from: '8.0')] $row, #[PhpStormStubsElementAvailable(from: '8.0')] string|int $field) : string|null|false
 {
 }
 /**
  * @param $lob
  * @deprecated
  */
-function pg_loreadall(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob) : int
+function pg_loreadall(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob) : int
 {
 }
 // TODO remove
@@ -1855,7 +1855,7 @@ function pg_loreadall(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\
  * @return string|int|false
  * @deprecated
  */
-function pg_locreate(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, $oid) : string|int|false
+function pg_locreate(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, $oid) : string|int|false
 {
 }
 /**
@@ -1864,7 +1864,7 @@ function pg_locreate(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\
  * @return bool
  * @deprecated
  */
-function pg_lounlink(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, $oid) : bool
+function pg_lounlink(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, $oid) : bool
 {
 }
 /**
@@ -1875,7 +1875,7 @@ function pg_lounlink(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $c
  * @deprecated
  */
 #[LanguageLevelTypeAware(['8.1' => 'PgSql\\Lob|false'], default: 'resource|false')]
-function pg_loopen(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, $oid, string $mode)
+function pg_loopen(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, $oid, string $mode)
 {
 }
 /**
@@ -1883,7 +1883,7 @@ function pg_loopen(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $con
  * @return bool
  * @deprecated
  */
-function pg_loclose(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob) : bool
+function pg_loclose(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob) : bool
 {
 }
 /**
@@ -1892,7 +1892,7 @@ function pg_loclose(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\L
  * @return string|false
  * @deprecated
  */
-function pg_loread(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob, int $length = 8192) : string|false
+function pg_loread(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob, int $length = 8192) : string|false
 {
 }
 /**
@@ -1902,7 +1902,7 @@ function pg_loread(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lo
  * @return int|false
  * @deprecated
  */
-function pg_lowrite(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Lob'], default: 'resource')] $lob, string $data, ?int $length) : int|false
+function pg_lowrite(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Lob'], default: 'resource')] $lob, string $data, ?int $length) : int|false
 {
 }
 /**
@@ -1912,7 +1912,7 @@ function pg_lowrite(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\L
  * @return string|int|false
  * @deprecated
  */
-function pg_loimport(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, $filename, $oid) : string|int|false
+function pg_loimport(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, $filename, $oid) : string|int|false
 {
 }
 /**
@@ -1922,7 +1922,7 @@ function pg_loimport(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $c
  * @return bool
  * @deprecated
  */
-function pg_loexport(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, $oid, $filename) : bool
+function pg_loexport(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, $oid, $filename) : bool
 {
 }
 /**
@@ -1939,7 +1939,7 @@ function pg_clientencoding(#[LanguageLevelTypeAware(['8.1' => 'PgSql\\Connection
  * @return int
  * @deprecated
  */
-function pg_setclientencoding(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection, string $encoding) : int
+function pg_setclientencoding(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] $connection = null, #[PhpStormStubsElementAvailable(from: '8.0')] #[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection, string $encoding) : int
 {
 }
 /**
@@ -1949,7 +1949,7 @@ function pg_setclientencoding(#[PhpStormStubsElementAvailable(from: '5.3', to: '
  * @return bool true if no error occurred, or false if there was an error.
  * Note that true does not necessarily indicate that input was waiting to be read.
  */
-function pg_consume_input(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection) : bool
+function pg_consume_input(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection) : bool
 {
 }
 /**
@@ -1959,7 +1959,7 @@ function pg_consume_input(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\Pg
  * @return int|bool Returns true if the flush was successful or no data was waiting to be flushed, 0 if part of the pending
  * data was flushed but more remains or false on failure.
  */
-function pg_flush(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202403\\PgSql\\Connection'], default: 'resource')] $connection) : int|bool
+function pg_flush(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PgSql\\Connection'], default: 'resource')] $connection) : int|bool
 {
 }
 /**

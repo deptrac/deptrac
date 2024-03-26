@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PHPStan\PhpDocParser\Parser;
+namespace DEPTRAC_202404\PHPStan\PhpDocParser\Parser;
 
 use function chr;
 use function hexdec;

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Contract\OutputFormatter;
 
-use DEPTRAC_202403\Symfony\Component\Console\Helper\TableSeparator;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\TableSeparator;
 /**
  * Wrapper around Symfony OutputStyle.
  */

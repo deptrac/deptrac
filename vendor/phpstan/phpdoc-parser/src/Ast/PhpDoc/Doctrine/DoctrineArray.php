@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PHPStan\PhpDocParser\Ast\PhpDoc\Doctrine;
+namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast\PhpDoc\Doctrine;
 
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\Node;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Node;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function implode;
 class DoctrineArray implements Node
 {

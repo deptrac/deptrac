@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Helper;
+namespace DEPTRAC_202404\Symfony\Component\Console\Helper;
 
-use DEPTRAC_202403\Symfony\Component\Console\Cursor;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\MissingInputException;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\RuntimeException;
-use DEPTRAC_202403\Symfony\Component\Console\Formatter\OutputFormatter;
-use DEPTRAC_202403\Symfony\Component\Console\Formatter\OutputFormatterStyle;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Input\StreamableInputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Output\ConsoleSectionOutput;
-use DEPTRAC_202403\Symfony\Component\Console\Output\OutputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Question\ChoiceQuestion;
-use DEPTRAC_202403\Symfony\Component\Console\Question\Question;
-use DEPTRAC_202403\Symfony\Component\Console\Terminal;
-use function DEPTRAC_202403\Symfony\Component\String\s;
+use DEPTRAC_202404\Symfony\Component\Console\Cursor;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\MissingInputException;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\Console\Formatter\OutputFormatter;
+use DEPTRAC_202404\Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Input\StreamableInputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Output\ConsoleSectionOutput;
+use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Question\ChoiceQuestion;
+use DEPTRAC_202404\Symfony\Component\Console\Question\Question;
+use DEPTRAC_202404\Symfony\Component\Console\Terminal;
+use function DEPTRAC_202404\Symfony\Component\String\s;
 /**
  * The QuestionHelper class provides helpers to interact with the user.
  *

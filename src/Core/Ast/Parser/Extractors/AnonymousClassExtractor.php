@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Core\Ast\Parser\Extractors;
 
-use DEPTRAC_202403\PhpParser\Node;
-use DEPTRAC_202403\PhpParser\Node\Name;
-use DEPTRAC_202403\PhpParser\Node\Stmt\Class_;
+use DEPTRAC_202404\PhpParser\Node;
+use DEPTRAC_202404\PhpParser\Node\Name;
+use DEPTRAC_202404\PhpParser\Node\Stmt\Class_;
 use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
 use Qossmic\Deptrac\Core\Ast\Parser\TypeScope;
 class AnonymousClassExtractor implements \Qossmic\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface

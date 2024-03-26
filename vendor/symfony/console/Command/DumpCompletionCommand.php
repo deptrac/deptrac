@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Command;
+namespace DEPTRAC_202404\Symfony\Component\Console\Command;
 
-use DEPTRAC_202403\Symfony\Component\Console\Attribute\AsCommand;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputArgument;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputOption;
-use DEPTRAC_202403\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Output\OutputInterface;
-use DEPTRAC_202403\Symfony\Component\Process\Process;
+use DEPTRAC_202404\Symfony\Component\Console\Attribute\AsCommand;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputArgument;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputOption;
+use DEPTRAC_202404\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_202404\Symfony\Component\Process\Process;
 /**
  * Dumps the completion script for the current shell.
  *

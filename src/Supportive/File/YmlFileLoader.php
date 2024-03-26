@@ -5,8 +5,8 @@ namespace Qossmic\Deptrac\Supportive\File;
 use Qossmic\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
 use Qossmic\Deptrac\Supportive\File\Exception\FileCannotBeParsedAsYamlException;
 use Qossmic\Deptrac\Supportive\File\Exception\ParsedYamlIsNotAnArrayException;
-use DEPTRAC_202403\Symfony\Component\Yaml\Exception\ParseException;
-use DEPTRAC_202403\Symfony\Component\Yaml\Yaml;
+use DEPTRAC_202404\Symfony\Component\Yaml\Exception\ParseException;
+use DEPTRAC_202404\Symfony\Component\Yaml\Yaml;
 /**
  * @internal
  */

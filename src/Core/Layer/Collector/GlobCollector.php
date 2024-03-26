@@ -5,8 +5,8 @@ namespace Qossmic\Deptrac\Core\Layer\Collector;
 
 use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
 use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use DEPTRAC_202403\Symfony\Component\Filesystem\Path;
-use DEPTRAC_202403\Symfony\Component\Finder\Glob;
+use DEPTRAC_202404\Symfony\Component\Filesystem\Path;
+use DEPTRAC_202404\Symfony\Component\Finder\Glob;
 final class GlobCollector extends \Qossmic\Deptrac\Core\Layer\Collector\RegexCollector
 {
     private readonly string $basePath;

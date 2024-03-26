@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\Doctrine\Deprecations\PHPUnit;
+namespace DEPTRAC_202404\Doctrine\Deprecations\PHPUnit;
 
-use DEPTRAC_202403\Doctrine\Deprecations\Deprecation;
+use DEPTRAC_202404\Doctrine\Deprecations\Deprecation;
 use function sprintf;
 trait VerifyDeprecations
 {

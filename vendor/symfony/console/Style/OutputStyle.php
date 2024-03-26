@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Style;
+namespace DEPTRAC_202404\Symfony\Component\Console\Style;
 
-use DEPTRAC_202403\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Helper\ProgressBar;
-use DEPTRAC_202403\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\ProgressBar;
+use DEPTRAC_202404\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Decorates output to add console style guide helpers.
  *

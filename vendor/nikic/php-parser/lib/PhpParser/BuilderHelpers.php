@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser;
+namespace DEPTRAC_202404\PhpParser;
 
-use DEPTRAC_202403\PhpParser\Node\ComplexType;
-use DEPTRAC_202403\PhpParser\Node\Expr;
-use DEPTRAC_202403\PhpParser\Node\Identifier;
-use DEPTRAC_202403\PhpParser\Node\Name;
-use DEPTRAC_202403\PhpParser\Node\NullableType;
-use DEPTRAC_202403\PhpParser\Node\Scalar;
-use DEPTRAC_202403\PhpParser\Node\Stmt;
+use DEPTRAC_202404\PhpParser\Node\ComplexType;
+use DEPTRAC_202404\PhpParser\Node\Expr;
+use DEPTRAC_202404\PhpParser\Node\Identifier;
+use DEPTRAC_202404\PhpParser\Node\Name;
+use DEPTRAC_202404\PhpParser\Node\NullableType;
+use DEPTRAC_202404\PhpParser\Node\Scalar;
+use DEPTRAC_202404\PhpParser\Node\Stmt;
 /**
  * This class defines helpers used in the implementation of builders. Don't use it directly.
  *

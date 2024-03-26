@@ -1,9 +1,9 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 \define('SODIUM_CRYPTO_AEAD_AES256GCM_KEYBYTES', 32);
 \define('SODIUM_CRYPTO_AEAD_AES256GCM_NSECBYTES', 0);
 \define('SODIUM_CRYPTO_AEAD_AES256GCM_NPUBBYTES', 12);
@@ -1251,4 +1251,4 @@ function sodium_base642bin(string $string, int $id, string $ignore = '') : strin
 class SodiumException extends \Exception
 {
 }
-\class_alias('DEPTRAC_202403\\SodiumException', 'SodiumException', \false);
+\class_alias('DEPTRAC_202404\\SodiumException', 'SodiumException', \false);

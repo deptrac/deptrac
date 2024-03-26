@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection;
 
-use DEPTRAC_202403\Psr\Container\ContainerExceptionInterface;
-use DEPTRAC_202403\Psr\Container\NotFoundExceptionInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use DEPTRAC_202403\Symfony\Contracts\Service\ServiceLocatorTrait;
-use DEPTRAC_202403\Symfony\Contracts\Service\ServiceProviderInterface;
-use DEPTRAC_202403\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use DEPTRAC_202404\Psr\Container\ContainerExceptionInterface;
+use DEPTRAC_202404\Psr\Container\NotFoundExceptionInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use DEPTRAC_202404\Symfony\Contracts\Service\ServiceLocatorTrait;
+use DEPTRAC_202404\Symfony\Contracts\Service\ServiceProviderInterface;
+use DEPTRAC_202404\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>

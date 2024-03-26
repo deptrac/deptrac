@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node;
+namespace DEPTRAC_202404\PhpParser\Node;
 
-use DEPTRAC_202403\PhpParser\Node\VariadicPlaceholder;
-use DEPTRAC_202403\PhpParser\NodeAbstract;
+use DEPTRAC_202404\PhpParser\Node\VariadicPlaceholder;
+use DEPTRAC_202404\PhpParser\NodeAbstract;
 class Arg extends NodeAbstract
 {
     /** @var Identifier|null Parameter name (for named parameters) */

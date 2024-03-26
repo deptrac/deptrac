@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Core\Layer\Collector;
 
-use DEPTRAC_202403\Psr\Container\ContainerInterface;
+use DEPTRAC_202404\Psr\Container\ContainerInterface;
 use Qossmic\Deptrac\Contract\Layer\CollectorInterface;
 use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ServiceLocator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ServiceLocator;
 use function array_keys;
 final class CollectorProvider implements ContainerInterface
 {
@@ -21,7 +21,7 @@ final class CollectorProvider implements ContainerInterface
         $collector = $this->collectorLocator->get($id);
         if (!$collector instanceof CollectorInterface) {
             $exception = InvalidCollectorDefinitionException::unsupportedClass($id, $collector);
-            throw new \DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\RuntimeException($exception->getMessage(), 0, $exception);
+            throw new \DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException($exception->getMessage(), 0, $exception);
         }
         return $collector;
     }

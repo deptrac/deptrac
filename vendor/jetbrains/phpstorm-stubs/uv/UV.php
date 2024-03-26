@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 class UV
 {
@@ -203,4 +203,4 @@ class UV
     public const ENOTTY = -25;
     public const EFTYPE = -4028;
 }
-\class_alias('DEPTRAC_202403\\UV', 'UV', \false);
+\class_alias('DEPTRAC_202404\\UV', 'UV', \false);

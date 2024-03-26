@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of Zend Extensions
 class ZendAPI_Queue
@@ -210,7 +210,7 @@ class ZendAPI_Queue
     }
 }
 // Start of Zend Extensions
-\class_alias('DEPTRAC_202403\\ZendAPI_Queue', 'ZendAPI_Queue', \false);
+\class_alias('DEPTRAC_202404\\ZendAPI_Queue', 'ZendAPI_Queue', \false);
 /**
  * Describing a job in a queue
  * In order to add/modify a job in the queue, a Job class must be created/retrieved and than saved in a queue
@@ -493,7 +493,7 @@ class ZendAPI_Job
  *
  * For simplicity, a job can be added directly to a queue and without creating an instant of a Queue object
  */
-\class_alias('DEPTRAC_202403\\ZendAPI_Job', 'ZendAPI_Job', \false);
+\class_alias('DEPTRAC_202404\\ZendAPI_Job', 'ZendAPI_Job', \false);
 /**
  * Disable/enable the Code Acceleration functionality at run time.
  * @param bool $status If false, Acceleration is disabled, if true - enabled
@@ -706,7 +706,7 @@ class java
     {
     }
 }
-\class_alias('DEPTRAC_202403\\java', 'java', \false);
+\class_alias('DEPTRAC_202404\\java', 'java', \false);
 class JavaException
 {
     /**
@@ -718,4 +718,4 @@ class JavaException
     {
     }
 }
-\class_alias('DEPTRAC_202403\\JavaException', 'JavaException', \false);
+\class_alias('DEPTRAC_202404\\JavaException', 'JavaException', \false);

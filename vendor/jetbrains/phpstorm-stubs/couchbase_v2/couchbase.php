@@ -60,36 +60,36 @@
  *
  * @package Couchbase
  */
-namespace DEPTRAC_202403\Couchbase;
+namespace DEPTRAC_202404\Couchbase;
 
 /** If igbinary extension was not found during build phase this constant will store 0 */
-\define("DEPTRAC_202403\\Couchbase\\HAVE_IGBINARY", 1);
+\define("DEPTRAC_202404\\Couchbase\\HAVE_IGBINARY", 1);
 /** If libz headers was not found during build phase this constant will store 0 */
-\define("DEPTRAC_202403\\Couchbase\\HAVE_ZLIB", 1);
+\define("DEPTRAC_202404\\Couchbase\\HAVE_ZLIB", 1);
 /** Encodes documents as JSON objects (see INI section for details)
  * @see \Couchbase\basicEncoderV1
  */
-\define("DEPTRAC_202403\\Couchbase\\ENCODER_FORMAT_JSON", 0);
+\define("DEPTRAC_202404\\Couchbase\\ENCODER_FORMAT_JSON", 0);
 /** Encodes documents using pecl/igbinary encoder (see INI section for details)
  * @see \Couchbase\basicEncoderV1
  */
-\define("DEPTRAC_202403\\Couchbase\\ENCODER_FORMAT_IGBINARY", 1);
+\define("DEPTRAC_202404\\Couchbase\\ENCODER_FORMAT_IGBINARY", 1);
 /** Encodes documents using PHP serialize() (see INI section for details)
  * @see \Couchbase\basicEncoderV1
  */
-\define("DEPTRAC_202403\\Couchbase\\ENCODER_FORMAT_PHP", 2);
+\define("DEPTRAC_202404\\Couchbase\\ENCODER_FORMAT_PHP", 2);
 /** Do not use compression for the documents
  * @see \Couchbase\basicEncoderV1
  */
-\define("DEPTRAC_202403\\Couchbase\\ENCODER_COMPRESSION_NONE", 0);
+\define("DEPTRAC_202404\\Couchbase\\ENCODER_COMPRESSION_NONE", 0);
 /** Use zlib compressor for the documents
  * @see \Couchbase\basicEncoderV1
  */
-\define("DEPTRAC_202403\\Couchbase\\ENCODER_COMPRESSION_ZLIB", 1);
+\define("DEPTRAC_202404\\Couchbase\\ENCODER_COMPRESSION_ZLIB", 1);
 /** Use FastLZ compressor for the documents
  * @see \Couchbase\basicEncoderV1
  */
-\define("DEPTRAC_202403\\Couchbase\\ENCODER_COMPRESSION_FASTLZ", 2);
+\define("DEPTRAC_202404\\Couchbase\\ENCODER_COMPRESSION_FASTLZ", 2);
 /**
  * Compress input using FastLZ algorithm.
  *

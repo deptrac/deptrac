@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Supportive\DependencyInjection\Exception;
 
-use DEPTRAC_202403\Psr\Container\ContainerExceptionInterface;
+use DEPTRAC_202404\Psr\Container\ContainerExceptionInterface;
 use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 use function implode;

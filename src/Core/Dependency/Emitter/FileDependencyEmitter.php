@@ -17,13 +17,13 @@ final class FileDependencyEmitter implements \Qossmic\Deptrac\Core\Dependency\Em
     {
         foreach ($astMap->getFileReferences() as $fileReference) {
             foreach ($fileReference->dependencies as $dependency) {
-                if (DependencyType::USE === $dependency->type) {
+                if (DependencyType::USE === $dependency->context->dependencyType) {
                     continue;
                 }
-                if (DependencyType::UNRESOLVED_FUNCTION_CALL === $dependency->type) {
+                if (DependencyType::UNRESOLVED_FUNCTION_CALL === $dependency->context->dependencyType) {
                     continue;
                 }
-                $dependencyList->addDependency(new Dependency($fileReference->getToken(), $dependency->token, $dependency->fileOccurrence, $dependency->type));
+                $dependencyList->addDependency(new Dependency($fileReference->getToken(), $dependency->token, $dependency->context));
             }
         }
     }

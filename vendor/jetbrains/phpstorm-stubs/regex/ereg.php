@@ -1,9 +1,9 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of ereg v.
-use DEPTRAC_202403\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
 /**
  * Regular expression match
  * @link https://php.net/manual/en/function.ereg.php

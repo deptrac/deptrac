@@ -1,9 +1,9 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of geoip v.1.1.0
-use DEPTRAC_202403\JetBrains\PhpStorm\Pure;
+use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
 /**
  * (PECL geoip &gt;= 0.2.0)<br/>
  * Get GeoIP Database information

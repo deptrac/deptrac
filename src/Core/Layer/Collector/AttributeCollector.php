@@ -20,7 +20,7 @@ class AttributeCollector implements CollectorInterface
         }
         $match = $this->getSearchedSubstring($config);
         foreach ($reference->dependencies as $dependency) {
-            if (DependencyType::ATTRIBUTE !== $dependency->type) {
+            if (DependencyType::ATTRIBUTE !== $dependency->context->dependencyType) {
                 continue;
             }
             $usedAttribute = $dependency->token->toString();

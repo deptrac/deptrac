@@ -3,6 +3,7 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Core\Ast\Parser\Cache;
 
+use Qossmic\Deptrac\Contract\Ast\DependencyContext;
 use Qossmic\Deptrac\Contract\Ast\DependencyType;
 use Qossmic\Deptrac\Contract\Ast\FileOccurrence;
 use Qossmic\Deptrac\Core\Ast\AstMap\AstInherit;
@@ -83,7 +84,7 @@ class AstFileReferenceFileCache implements \Qossmic\Deptrac\Core\Ast\Parser\Cach
         $this->cache = array_map(
             /** @param array{hash: string, reference: string} $data */
             static function (array $data) : array {
-                $reference = unserialize($data['reference'], ['allowed_classes' => [FileReference::class, ClassLikeReference::class, FunctionReference::class, VariableReference::class, AstInherit::class, DependencyToken::class, DependencyType::class, FileToken::class, ClassLikeToken::class, ClassLikeType::class, FunctionToken::class, SuperGlobalToken::class, FileOccurrence::class]]);
+                $reference = unserialize($data['reference'], ['allowed_classes' => [FileReference::class, ClassLikeReference::class, FunctionReference::class, VariableReference::class, AstInherit::class, DependencyToken::class, DependencyType::class, FileToken::class, ClassLikeToken::class, ClassLikeType::class, FunctionToken::class, SuperGlobalToken::class, FileOccurrence::class, DependencyContext::class]]);
                 assert($reference instanceof FileReference);
                 return ['hash' => $data['hash'], 'reference' => $reference];
             },

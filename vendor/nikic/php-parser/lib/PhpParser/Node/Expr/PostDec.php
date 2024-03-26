@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node\Expr;
+namespace DEPTRAC_202404\PhpParser\Node\Expr;
 
-use DEPTRAC_202403\PhpParser\Node\Expr;
+use DEPTRAC_202404\PhpParser\Node\Expr;
 class PostDec extends Expr
 {
     /** @var Expr Variable */

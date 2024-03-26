@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\MongoDB\Driver\Monitoring;
+namespace DEPTRAC_202404\MongoDB\Driver\Monitoring;
 
 /**
  * Classes may implement this interface to register an event subscriber that is notified for each started, successful, and failed command event.

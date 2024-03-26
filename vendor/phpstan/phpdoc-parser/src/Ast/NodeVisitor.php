@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PHPStan\PhpDocParser\Ast;
+namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast;
 
 /**
  * Inspired by https://github.com/nikic/PHP-Parser/tree/36a6dcd04e7b0285e8f0868f44bd4927802f7df1

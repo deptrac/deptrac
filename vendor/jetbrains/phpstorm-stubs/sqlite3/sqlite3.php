@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of sqlite3 v.0.7-dev
-use DEPTRAC_202403\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
 /**
  * @since 8.3
  */
@@ -401,7 +401,7 @@ class SQLite3
  * A class that interfaces SQLite 3 databases.
  * @link https://php.net/manual/en/class.sqlite3.php
  */
-\class_alias('DEPTRAC_202403\\SQLite3', 'SQLite3', \false);
+\class_alias('DEPTRAC_202404\\SQLite3', 'SQLite3', \false);
 /**
  * A class that handles prepared statements for the SQLite 3 extension.
  * @link https://php.net/manual/en/class.sqlite3stmt.php
@@ -532,7 +532,7 @@ class SQLite3Stmt
  * A class that handles prepared statements for the SQLite 3 extension.
  * @link https://php.net/manual/en/class.sqlite3stmt.php
  */
-\class_alias('DEPTRAC_202403\\SQLite3Stmt', 'SQLite3Stmt', \false);
+\class_alias('DEPTRAC_202404\\SQLite3Stmt', 'SQLite3Stmt', \false);
 /**
  * A class that handles result sets for the SQLite 3 extension.
  * @link https://php.net/manual/en/class.sqlite3result.php
@@ -622,7 +622,7 @@ class SQLite3Result
  * A class that handles result sets for the SQLite 3 extension.
  * @link https://php.net/manual/en/class.sqlite3result.php
  */
-\class_alias('DEPTRAC_202403\\SQLite3Result', 'SQLite3Result', \false);
+\class_alias('DEPTRAC_202404\\SQLite3Result', 'SQLite3Result', \false);
 /**
  * Specifies that the <b>Sqlite3Result::fetchArray</b>
  * method shall return an array indexed by column name as returned in the

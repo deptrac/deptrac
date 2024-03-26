@@ -10,11 +10,11 @@
  *
  */
 declare (strict_types=1);
-namespace DEPTRAC_202403\phpDocumentor\Reflection\PseudoTypes;
+namespace DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes;
 
-use DEPTRAC_202403\phpDocumentor\Reflection\PseudoType;
-use DEPTRAC_202403\phpDocumentor\Reflection\Type;
-use DEPTRAC_202403\phpDocumentor\Reflection\Types\Mixed_;
+use DEPTRAC_202404\phpDocumentor\Reflection\PseudoType;
+use DEPTRAC_202404\phpDocumentor\Reflection\Type;
+use DEPTRAC_202404\phpDocumentor\Reflection\Types\Mixed_;
 use function sprintf;
 /** @psalm-immutable */
 final class ConstExpression implements PseudoType

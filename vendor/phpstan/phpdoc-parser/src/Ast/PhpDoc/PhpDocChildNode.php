@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\Node;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Node;
 interface PhpDocChildNode extends Node
 {
 }

@@ -272,7 +272,7 @@ deptrac:
               value: src/Domain/.*
           must_not:
             - type: layer
-              layer: SubDomain
+              value: SubDomain
 ```
 
 ## `method` Collector

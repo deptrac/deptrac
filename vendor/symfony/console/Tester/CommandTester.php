@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Tester;
+namespace DEPTRAC_202404\Symfony\Component\Console\Tester;
 
-use DEPTRAC_202403\Symfony\Component\Console\Command\Command;
-use DEPTRAC_202403\Symfony\Component\Console\Input\ArrayInput;
+use DEPTRAC_202404\Symfony\Component\Console\Command\Command;
+use DEPTRAC_202404\Symfony\Component\Console\Input\ArrayInput;
 /**
  * Eases the testing of console commands.
  *

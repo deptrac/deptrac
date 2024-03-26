@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\MongoDB\Driver\Exception;
+namespace DEPTRAC_202404\MongoDB\Driver\Exception;
 
 /**
  * Thrown when a driver method is given invalid arguments (e.g. invalid option types).

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 \define('YAF\\VERSION', '3.0.8', \true);
 \define('YAF\\ENVIRON', 'product', \true);
@@ -14,9 +14,9 @@ namespace DEPTRAC_202403;
 \define('YAF\\ERR\\CALL\\FAILED', 519, \true);
 \define('YAF\\ERR\\AUTOLOAD\\FAILED', 520, \true);
 \define('YAF\\ERR\\TYPE\\ERROR', 521, \true);
-namespace DEPTRAC_202403\Yaf;
+namespace DEPTRAC_202404\Yaf;
 
-use DEPTRAC_202403\Yaf;
+use DEPTRAC_202404\Yaf;
 /**
  * \Yaf\Application provides a bootstrapping facility for applications which provides reusable resources, common- and module-based bootstrap classes and dependency checking.
  * <br/>
@@ -2049,7 +2049,7 @@ class Route_Static implements \Yaf\Route_Interface
     {
     }
 }
-namespace DEPTRAC_202403\Yaf\Response;
+namespace DEPTRAC_202404\Yaf\Response;
 
 class Http extends \Yaf\Response_Abstract
 {
@@ -2141,7 +2141,7 @@ class Cli extends \Yaf\Response_Abstract
     {
     }
 }
-namespace DEPTRAC_202403\Yaf\Request;
+namespace DEPTRAC_202404\Yaf\Request;
 
 /**
  * @link https://secure.php.net/manual/en/class.yaf-request-http.php
@@ -2372,7 +2372,7 @@ class Simple extends \Yaf\Request_Abstract
     {
     }
 }
-namespace DEPTRAC_202403\Yaf\Config;
+namespace DEPTRAC_202404\Yaf\Config;
 
 /**
  * <p>\Yaf\Config\Ini enables developers to store configuration data in a familiar INI format and read them in the application by using nested object property syntax. The INI format is specialized to provide both the ability to have a hierarchy of configuration data keys and inheritance between configuration data sections. Configuration data hierarchies are supported by separating the keys with the dot or period character ("."). A section may extend or inherit from another section by following the section name with a colon character (":") and the name of the section from which data are to be inherited.</p><br/>
@@ -2617,7 +2617,7 @@ class Simple extends \Yaf\Config_Abstract implements \Iterator, \Traversable, \A
     {
     }
 }
-namespace DEPTRAC_202403\Yaf\View;
+namespace DEPTRAC_202404\Yaf\View;
 
 /**
  * <b>\Yaf\View\Simple</b> is the built-in template engine in Yaf, it is a simple but fast template engine, and only support PHP script template.
@@ -2777,7 +2777,7 @@ class Simple implements \Yaf\View_Interface
     {
     }
 }
-namespace DEPTRAC_202403\Yaf\Route;
+namespace DEPTRAC_202404\Yaf\Route;
 
 /**
  * <p><b>\Yaf\Route\Simple</b> will match the query string, and find the route info.</p>
@@ -3059,7 +3059,7 @@ final class Map implements \Yaf\Route_Interface
     {
     }
 }
-namespace DEPTRAC_202403\Yaf\Exception;
+namespace DEPTRAC_202404\Yaf\Exception;
 
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-typeerror.php
@@ -3091,7 +3091,7 @@ class DispatchFailed extends \Yaf\Exception
 class LoadFailed extends \Yaf\Exception
 {
 }
-namespace DEPTRAC_202403\Yaf\Exception\LoadFailed;
+namespace DEPTRAC_202404\Yaf\Exception\LoadFailed;
 
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-module.php

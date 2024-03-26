@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 /**
  * Gets the current Swoole version. This information is also available in the predefined constant SWOOLE_VERSION.

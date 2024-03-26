@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Helper;
+namespace DEPTRAC_202404\Symfony\Component\Console\Helper;
 
-use DEPTRAC_202403\Symfony\Component\Console\Descriptor\DescriptorInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Descriptor\JsonDescriptor;
-use DEPTRAC_202403\Symfony\Component\Console\Descriptor\MarkdownDescriptor;
-use DEPTRAC_202403\Symfony\Component\Console\Descriptor\ReStructuredTextDescriptor;
-use DEPTRAC_202403\Symfony\Component\Console\Descriptor\TextDescriptor;
-use DEPTRAC_202403\Symfony\Component\Console\Descriptor\XmlDescriptor;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Descriptor\DescriptorInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Descriptor\JsonDescriptor;
+use DEPTRAC_202404\Symfony\Component\Console\Descriptor\MarkdownDescriptor;
+use DEPTRAC_202404\Symfony\Component\Console\Descriptor\ReStructuredTextDescriptor;
+use DEPTRAC_202404\Symfony\Component\Console\Descriptor\TextDescriptor;
+use DEPTRAC_202404\Symfony\Component\Console\Descriptor\XmlDescriptor;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
 /**
  * This class adds helper method to describe objects in various formats.
  *

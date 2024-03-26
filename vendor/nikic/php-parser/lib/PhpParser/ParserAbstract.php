@@ -1,32 +1,32 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser;
+namespace DEPTRAC_202404\PhpParser;
 
 /*
  * This parser is based on a skeleton written by Moriyoshi Koizumi, which in
  * turn is based on work by Masato Bito.
  */
-use DEPTRAC_202403\PhpParser\Node\Expr;
-use DEPTRAC_202403\PhpParser\Node\Expr\Cast\Double;
-use DEPTRAC_202403\PhpParser\Node\Name;
-use DEPTRAC_202403\PhpParser\Node\Param;
-use DEPTRAC_202403\PhpParser\Node\Scalar\Encapsed;
-use DEPTRAC_202403\PhpParser\Node\Scalar\LNumber;
-use DEPTRAC_202403\PhpParser\Node\Scalar\String_;
-use DEPTRAC_202403\PhpParser\Node\Stmt\Class_;
-use DEPTRAC_202403\PhpParser\Node\Stmt\ClassConst;
-use DEPTRAC_202403\PhpParser\Node\Stmt\ClassMethod;
-use DEPTRAC_202403\PhpParser\Node\Stmt\Else_;
-use DEPTRAC_202403\PhpParser\Node\Stmt\ElseIf_;
-use DEPTRAC_202403\PhpParser\Node\Stmt\Enum_;
-use DEPTRAC_202403\PhpParser\Node\Stmt\Interface_;
-use DEPTRAC_202403\PhpParser\Node\Stmt\Namespace_;
-use DEPTRAC_202403\PhpParser\Node\Stmt\Nop;
-use DEPTRAC_202403\PhpParser\Node\Stmt\Property;
-use DEPTRAC_202403\PhpParser\Node\Stmt\TryCatch;
-use DEPTRAC_202403\PhpParser\Node\Stmt\UseUse;
-use DEPTRAC_202403\PhpParser\Node\VarLikeIdentifier;
+use DEPTRAC_202404\PhpParser\Node\Expr;
+use DEPTRAC_202404\PhpParser\Node\Expr\Cast\Double;
+use DEPTRAC_202404\PhpParser\Node\Name;
+use DEPTRAC_202404\PhpParser\Node\Param;
+use DEPTRAC_202404\PhpParser\Node\Scalar\Encapsed;
+use DEPTRAC_202404\PhpParser\Node\Scalar\LNumber;
+use DEPTRAC_202404\PhpParser\Node\Scalar\String_;
+use DEPTRAC_202404\PhpParser\Node\Stmt\Class_;
+use DEPTRAC_202404\PhpParser\Node\Stmt\ClassConst;
+use DEPTRAC_202404\PhpParser\Node\Stmt\ClassMethod;
+use DEPTRAC_202404\PhpParser\Node\Stmt\Else_;
+use DEPTRAC_202404\PhpParser\Node\Stmt\ElseIf_;
+use DEPTRAC_202404\PhpParser\Node\Stmt\Enum_;
+use DEPTRAC_202404\PhpParser\Node\Stmt\Interface_;
+use DEPTRAC_202404\PhpParser\Node\Stmt\Namespace_;
+use DEPTRAC_202404\PhpParser\Node\Stmt\Nop;
+use DEPTRAC_202404\PhpParser\Node\Stmt\Property;
+use DEPTRAC_202404\PhpParser\Node\Stmt\TryCatch;
+use DEPTRAC_202404\PhpParser\Node\Stmt\UseUse;
+use DEPTRAC_202404\PhpParser\Node\VarLikeIdentifier;
 abstract class ParserAbstract implements Parser
 {
     const SYMBOL_NONE = -1;

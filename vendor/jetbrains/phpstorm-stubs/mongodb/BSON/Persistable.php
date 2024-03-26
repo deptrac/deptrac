@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\MongoDB\BSON;
+namespace DEPTRAC_202404\MongoDB\BSON;
 
 /**
  * Classes may implement this interface to take advantage of automatic ODM (object document mapping) behavior in the driver.

@@ -46,7 +46,7 @@ final class ConsoleOutputFormatter implements OutputFormatterInterface
     {
         $dependency = $rule->getDependency();
         $output->writeLineFormatted(\sprintf('%s<info>%s</info> must not depend on <info>%s</info> (%s on %s)', $rule instanceof SkippedViolation ? '[SKIPPED] ' : '', $dependency->getDepender()->toString(), $dependency->getDependent()->toString(), $rule->getDependerLayer(), $rule->getDependentLayer()));
-        $this->printFileOccurrence($output, $dependency->getFileOccurrence());
+        $this->printFileOccurrence($output, $dependency->getContext()->fileOccurrence);
         if (count($dependency->serialize()) > 1) {
             $this->printMultilinePath($output, $dependency);
         }
@@ -83,7 +83,7 @@ final class ConsoleOutputFormatter implements OutputFormatterInterface
         foreach ($uncovered as $u) {
             $dependency = $u->getDependency();
             $output->writeLineFormatted(\sprintf('<info>%s</info> has uncovered dependency on <info>%s</info> (%s)', $dependency->getDepender()->toString(), $dependency->getDependent()->toString(), $u->layer));
-            $this->printFileOccurrence($output, $dependency->getFileOccurrence());
+            $this->printFileOccurrence($output, $dependency->getContext()->fileOccurrence);
             if (count($dependency->serialize()) > 1) {
                 $this->printMultilinePath($output, $dependency);
             }

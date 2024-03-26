@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 \define('RPMVERSION', '4.15.1');
 \define('RPMSENSE_ANY', 0);

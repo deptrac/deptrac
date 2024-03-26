@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node;
+namespace DEPTRAC_202404\PhpParser\Node;
 
 class UnionType extends ComplexType
 {

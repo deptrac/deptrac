@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node\Expr\AssignOp;
+namespace DEPTRAC_202404\PhpParser\Node\Expr\AssignOp;
 
-use DEPTRAC_202403\PhpParser\Node\Expr\AssignOp;
+use DEPTRAC_202404\PhpParser\Node\Expr\AssignOp;
 class BitwiseXor extends AssignOp
 {
     public function getType() : string

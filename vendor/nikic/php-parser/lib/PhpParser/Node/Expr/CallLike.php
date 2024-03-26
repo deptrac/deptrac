@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node\Expr;
+namespace DEPTRAC_202404\PhpParser\Node\Expr;
 
-use DEPTRAC_202403\PhpParser\Node\Arg;
-use DEPTRAC_202403\PhpParser\Node\Expr;
-use DEPTRAC_202403\PhpParser\Node\VariadicPlaceholder;
+use DEPTRAC_202404\PhpParser\Node\Arg;
+use DEPTRAC_202404\PhpParser\Node\Expr;
+use DEPTRAC_202404\PhpParser\Node\VariadicPlaceholder;
 abstract class CallLike extends Expr
 {
     /**

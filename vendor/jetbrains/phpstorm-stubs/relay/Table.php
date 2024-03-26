@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\Relay;
+namespace DEPTRAC_202404\Relay;
 
 /**
  * Relay Table is a persistent per-worker hash table that can store arbitrary data.
@@ -12,7 +12,7 @@ class Table
      *
      * @param  int  $serializer
      */
-    public function __construct(int $serializer = \DEPTRAC_202403\Relay\Relay::SERIALIZER_PHP)
+    public function __construct(int $serializer = \DEPTRAC_202404\Relay\Relay::SERIALIZER_PHP)
     {
     }
     /**

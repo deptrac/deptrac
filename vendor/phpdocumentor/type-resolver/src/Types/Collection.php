@@ -9,10 +9,10 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202403\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
 
-use DEPTRAC_202403\phpDocumentor\Reflection\Fqsen;
-use DEPTRAC_202403\phpDocumentor\Reflection\Type;
+use DEPTRAC_202404\phpDocumentor\Reflection\Fqsen;
+use DEPTRAC_202404\phpDocumentor\Reflection\Type;
 /**
  * Represents a collection type as described in the PSR-5, the PHPDoc Standard.
  *

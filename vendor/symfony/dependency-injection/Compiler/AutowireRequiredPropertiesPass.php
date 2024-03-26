@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\TypedReference;
-use DEPTRAC_202403\Symfony\Contracts\Service\Attribute\Required;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\TypedReference;
+use DEPTRAC_202404\Symfony\Contracts\Service\Attribute\Required;
 /**
  * Looks for definitions with autowiring enabled and registers their corresponding "#[Required]" properties.
  *
@@ -42,7 +42,7 @@ class AutowireRequiredPropertiesPass extends AbstractRecursivePass
                 continue;
             }
             if ($doc) {
-                \DEPTRAC_202403\trigger_deprecation('symfony/dependency-injection', '6.3', 'Using the "@required" annotation on property "%s::$%s" is deprecated, use the "Symfony\\Contracts\\Service\\Attribute\\Required" attribute instead.', $reflectionProperty->class, $reflectionProperty->name);
+                \DEPTRAC_202404\trigger_deprecation('symfony/dependency-injection', '6.3', 'Using the "@required" annotation on property "%s::$%s" is deprecated, use the "Symfony\\Contracts\\Service\\Attribute\\Required" attribute instead.', $reflectionProperty->class, $reflectionProperty->name);
             }
             if (\array_key_exists($name = $reflectionProperty->getName(), $properties)) {
                 continue;

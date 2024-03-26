@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of svn v.1.0.1
 class Svn
@@ -147,7 +147,7 @@ class Svn
     }
 }
 // Start of svn v.1.0.1
-\class_alias('DEPTRAC_202403\\Svn', 'Svn', \false);
+\class_alias('DEPTRAC_202404\\Svn', 'Svn', \false);
 class SvnWc
 {
     public const NONE = 1;
@@ -165,7 +165,7 @@ class SvnWc
     public const EXTERNAL = 13;
     public const INCOMPLETE = 14;
 }
-\class_alias('DEPTRAC_202403\\SvnWc', 'SvnWc', \false);
+\class_alias('DEPTRAC_202404\\SvnWc', 'SvnWc', \false);
 class SvnWcSchedule
 {
     public const NORMAL = 0;
@@ -173,7 +173,7 @@ class SvnWcSchedule
     public const DELETE = 2;
     public const REPLACE = 3;
 }
-\class_alias('DEPTRAC_202403\\SvnWcSchedule', 'SvnWcSchedule', \false);
+\class_alias('DEPTRAC_202404\\SvnWcSchedule', 'SvnWcSchedule', \false);
 class SvnNode
 {
     public const NONE = 0;
@@ -181,7 +181,7 @@ class SvnNode
     public const DIR = 2;
     public const UNKNOWN = 3;
 }
-\class_alias('DEPTRAC_202403\\SvnNode', 'SvnNode', \false);
+\class_alias('DEPTRAC_202404\\SvnNode', 'SvnNode', \false);
 /**
  * (PECL svn &gt;= 0.1.0)<br/>
  * Checks out a working copy from the repository

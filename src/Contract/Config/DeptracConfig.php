@@ -4,9 +4,9 @@ declare (strict_types=1);
 namespace Qossmic\Deptrac\Contract\Config;
 
 use Qossmic\Deptrac\Contract\Config\Formatter\FormatterConfigInterface;
-use DEPTRAC_202403\Symfony\Component\Config\Builder\ConfigBuilderInterface;
-use DEPTRAC_202403\Symfony\Component\Yaml\Exception\ParseException;
-use DEPTRAC_202403\Symfony\Component\Yaml\Yaml;
+use DEPTRAC_202404\Symfony\Component\Config\Builder\ConfigBuilderInterface;
+use DEPTRAC_202404\Symfony\Component\Yaml\Exception\ParseException;
+use DEPTRAC_202404\Symfony\Component\Yaml\Yaml;
 final class DeptracConfig implements ConfigBuilderInterface
 {
     private bool $ignoreUncoveredInternalClasses = \true;
@@ -23,6 +23,7 @@ final class DeptracConfig implements ConfigBuilderInterface
     private array $skipViolations = [];
     /** @var array<string> */
     private array $excludeFiles = [];
+    private ?string $cacheFile = null;
     /**
      * @deprecated use analyser(AnalyserConfig::create()) instead
      */
@@ -84,6 +85,11 @@ final class DeptracConfig implements ConfigBuilderInterface
         }
         return $this;
     }
+    public function cacheFile(string $path) : self
+    {
+        $this->cacheFile = $path;
+        return $this;
+    }
     /** @return array<mixed> */
     public function toArray() : array
     {
@@ -110,6 +116,7 @@ final class DeptracConfig implements ConfigBuilderInterface
             $config['skip_violations'] = $this->skipViolations;
         }
         $config['ignore_uncovered_internal_classes'] = $this->ignoreUncoveredInternalClasses;
+        $config['cache_file'] = $this->cacheFile;
         return $config;
     }
     public function getExtensionAlias() : string

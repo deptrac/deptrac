@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Config\Definition\Builder;
+namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Builder;
 
-use DEPTRAC_202403\Symfony\Component\Config\Definition\ArrayNode;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\NodeInterface;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\ArrayNode;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\NodeInterface;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\PrototypedArrayNode;
 /**
  * This class provides a fluent interface for defining an array node.
  *

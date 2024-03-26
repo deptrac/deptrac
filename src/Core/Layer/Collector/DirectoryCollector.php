@@ -5,7 +5,7 @@ namespace Qossmic\Deptrac\Core\Layer\Collector;
 
 use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
 use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use DEPTRAC_202403\Symfony\Component\Filesystem\Path;
+use DEPTRAC_202404\Symfony\Component\Filesystem\Path;
 final class DirectoryCollector extends \Qossmic\Deptrac\Core\Layer\Collector\RegexCollector
 {
     public function satisfy(array $config, TokenReferenceInterface $reference) : bool

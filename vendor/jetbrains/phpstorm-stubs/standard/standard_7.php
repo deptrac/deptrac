@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
-use DEPTRAC_202403\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202403\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202403\JetBrains\PhpStorm\Pure;
+use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
 /**
  * Open Internet or Unix domain socket connection
  * @link https://php.net/manual/en/function.fsockopen.php

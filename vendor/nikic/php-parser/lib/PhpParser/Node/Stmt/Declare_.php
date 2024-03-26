@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node\Stmt;
+namespace DEPTRAC_202404\PhpParser\Node\Stmt;
 
-use DEPTRAC_202403\PhpParser\Node;
+use DEPTRAC_202404\PhpParser\Node;
 class Declare_ extends Node\Stmt
 {
     /** @var DeclareDeclare[] List of declares */

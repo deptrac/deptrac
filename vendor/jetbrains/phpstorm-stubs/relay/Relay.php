@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\Relay;
+namespace DEPTRAC_202404\Relay;
 
 /**
  * Relay client.
@@ -361,7 +361,7 @@ class Relay
      * @param  float  $command_timeout
      * @param  array  $context
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Server]
+    #[\DEPTRAC_202404\Relay\Attributes\Server]
     public function __construct(string|array|null $host = null, int $port = 6379, float $connect_timeout = 0.0, float $command_timeout = 0.0, #[\SensitiveParameter] array $context = [], int $database = 0)
     {
     }
@@ -379,7 +379,7 @@ class Relay
      * @param  int  $database
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Server]
+    #[\DEPTRAC_202404\Relay\Attributes\Server]
     public function connect(string $host, int $port = 6379, float $timeout = 0.0, ?string $persistent_id = null, int $retry_interval = 0, float $read_timeout = 0.0, #[\SensitiveParameter] array $context = [], int $database = 0) : bool
     {
     }
@@ -396,7 +396,7 @@ class Relay
      * @param  int  $database
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Server]
+    #[\DEPTRAC_202404\Relay\Attributes\Server]
     public function pconnect(string $host, int $port = 6379, float $timeout = 0.0, ?string $persistent_id = null, int $retry_interval = 0, float $read_timeout = 0.0, #[\SensitiveParameter] array $context = [], int $database = 0) : bool
     {
     }
@@ -405,7 +405,7 @@ class Relay
      *
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function close() : bool
     {
     }
@@ -414,7 +414,7 @@ class Relay
      *
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function pclose() : bool
     {
     }
@@ -424,7 +424,7 @@ class Relay
      * @param  callable  $callback
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function listen(?callable $callback) : bool
     {
     }
@@ -434,7 +434,7 @@ class Relay
      * @param  callable  $callback
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function onFlushed(?callable $callback) : bool
     {
     }
@@ -445,7 +445,7 @@ class Relay
      * @param  string|null  $pattern
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function onInvalidated(?callable $callback, ?string $pattern = null) : bool
     {
     }
@@ -454,7 +454,7 @@ class Relay
      *
      * @return int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function dispatchEvents() : int|false
     {
     }
@@ -464,7 +464,7 @@ class Relay
      * @param  int  $option
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getOption(int $option) : mixed
     {
     }
@@ -475,7 +475,7 @@ class Relay
      * @param  mixed  $value
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function option(int $option, mixed $value = null) : mixed
     {
     }
@@ -508,7 +508,7 @@ class Relay
      * @param  mixed  $value
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function setOption(int $option, mixed $value) : bool
     {
     }
@@ -518,7 +518,7 @@ class Relay
      * @param  string  $pattern,...
      * @return int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function addIgnorePatterns(string ...$pattern) : int
     {
     }
@@ -528,7 +528,7 @@ class Relay
      * @param  string  $pattern,...
      * @return int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function addAllowPatterns(string ...$pattern) : int
     {
     }
@@ -537,7 +537,7 @@ class Relay
      *
      * @return float|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getTimeout() : float|false
     {
     }
@@ -546,7 +546,7 @@ class Relay
      *
      * @return float|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function timeout() : float|false
     {
     }
@@ -555,7 +555,7 @@ class Relay
      *
      * @return float|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getReadTimeout() : float|false
     {
     }
@@ -564,7 +564,7 @@ class Relay
      *
      * @return float|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function readTimeout() : float|false
     {
     }
@@ -574,7 +574,7 @@ class Relay
      *
      * @return array{int, int}
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getBytes() : array
     {
     }
@@ -583,7 +583,7 @@ class Relay
      *
      * @return array{int, int}
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function bytes() : array
     {
     }
@@ -592,7 +592,7 @@ class Relay
      *
      * @return string|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getHost() : string|false
     {
     }
@@ -601,7 +601,7 @@ class Relay
      *
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function isConnected() : bool
     {
     }
@@ -610,7 +610,7 @@ class Relay
      *
      * @return int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getPort() : int|false
     {
     }
@@ -620,7 +620,7 @@ class Relay
      *
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getAuth() : mixed
     {
     }
@@ -629,7 +629,7 @@ class Relay
      *
      * @return int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getDbNum() : mixed
     {
     }
@@ -639,7 +639,7 @@ class Relay
      * @param  mixed  $value
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function _serialize(mixed $value) : mixed
     {
     }
@@ -649,7 +649,7 @@ class Relay
      * @param  mixed  $value
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function _unserialize(mixed $value) : mixed
     {
     }
@@ -659,7 +659,7 @@ class Relay
      * @param  string  $value
      * @return string
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function _compress(string $value) : string
     {
     }
@@ -669,7 +669,7 @@ class Relay
      * @param  string  $value
      * @return string
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function _uncompress(string $value) : string
     {
     }
@@ -679,7 +679,7 @@ class Relay
      * @param  mixed  $value
      * @return string
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function _pack(mixed $value) : string
     {
     }
@@ -689,7 +689,7 @@ class Relay
      * @param  mixed  $value
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function _unpack(mixed $value) : mixed
     {
     }
@@ -699,7 +699,7 @@ class Relay
      * @param  mixed  $value
      * @return string
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function _prefix(mixed $value) : string
     {
     }
@@ -708,7 +708,7 @@ class Relay
      *
      * @return string|null
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getLastError() : string|null
     {
     }
@@ -717,7 +717,7 @@ class Relay
      *
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function clearLastError() : bool
     {
     }
@@ -726,7 +726,7 @@ class Relay
      *
      * @return string|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function endpointId() : string|false
     {
     }
@@ -743,7 +743,7 @@ class Relay
      *
      * @return string|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function socketId() : string|false
     {
     }
@@ -752,7 +752,7 @@ class Relay
      *
      * @return array
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public static function license() : array
     {
     }
@@ -789,7 +789,7 @@ class Relay
      *
      * @return array
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public static function stats() : array
     {
     }
@@ -798,7 +798,7 @@ class Relay
      *
      * @return int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public static function maxMemory() : int
     {
     }
@@ -809,7 +809,7 @@ class Relay
      *
      * @return int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public static function memory() : int
     {
     }
@@ -821,7 +821,7 @@ class Relay
      * @param  mixed  $args,...
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function rawCommand(string $cmd, mixed ...$args) : mixed
     {
     }
@@ -831,7 +831,7 @@ class Relay
      * @param  int  $db
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function select(int $db) : Relay|bool
     {
     }
@@ -841,7 +841,7 @@ class Relay
      * @param  mixed  $auth
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function auth(#[\SensitiveParameter] mixed $auth) : bool
     {
     }
@@ -854,7 +854,7 @@ class Relay
      * @param  string  $sections,...
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function info(string ...$sections) : Relay|array|false
     {
     }
@@ -864,7 +864,7 @@ class Relay
      * @param  bool  $async
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function flushdb(bool $async = \false) : Relay|bool
     {
     }
@@ -874,7 +874,7 @@ class Relay
      * @param  bool  $async
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function flushall(bool $async = \false) : Relay|bool
     {
     }
@@ -887,7 +887,7 @@ class Relay
      * @param  callable  $handler
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function fcall(string $name, array $keys = [], array $argv = [], callable $handler = null) : mixed
     {
     }
@@ -900,7 +900,7 @@ class Relay
      * @param  callable  $handler
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function fcall_ro(string $name, array $keys = [], array $argv = [], callable $handler = null) : mixed
     {
     }
@@ -911,7 +911,7 @@ class Relay
      * @param  string  $args,...
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function function(string $op, string ...$args) : mixed
     {
     }
@@ -925,7 +925,7 @@ class Relay
      * @param  int|null  $db
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public static function flushMemory(?string $endpointId = null, int $db = null) : bool
     {
     }
@@ -934,7 +934,7 @@ class Relay
      *
      * @return Relay|int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function dbsize() : Relay|int|false
     {
     }
@@ -944,7 +944,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|string|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function dump(mixed $key) : Relay|string|false
     {
     }
@@ -955,7 +955,7 @@ class Relay
      * @param  int  $port
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function replicaof(?string $host = null, $port = 0) : Relay|bool
     {
     }
@@ -968,7 +968,7 @@ class Relay
      * @param  array  $options
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function restore(mixed $key, int $ttl, string $value, ?array $options = null) : Relay|bool
     {
     }
@@ -985,7 +985,7 @@ class Relay
      * @param  mixed  $credentials
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function migrate(string $host, int $port, string|array $key, int $dstdb, int $timeout, bool $copy = \false, bool $replace = \false, #[\SensitiveParameter] mixed $credentials = null) : Relay|bool
     {
     }
@@ -997,7 +997,7 @@ class Relay
      * @param  array  $options
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function copy(mixed $src, mixed $dst, ?array $options = null) : Relay|int|false
     {
     }
@@ -1007,7 +1007,7 @@ class Relay
      * @param  string  $arg
      * @return Relay|bool|string
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function echo(string $arg) : Relay|bool|string
     {
     }
@@ -1017,7 +1017,7 @@ class Relay
      * @param  string  $arg
      * @return Relay|bool|string
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function ping(string $arg = null) : Relay|bool|string
     {
     }
@@ -1026,7 +1026,7 @@ class Relay
      *
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function idleTime() : Relay|int|false
     {
     }
@@ -1035,7 +1035,7 @@ class Relay
      *
      * @return Relay|string|null|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function randomkey() : Relay|string|null|bool
     {
     }
@@ -1044,7 +1044,7 @@ class Relay
      *
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function time() : Relay|array|false
     {
     }
@@ -1053,7 +1053,7 @@ class Relay
      *
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function bgrewriteaof() : Relay|bool
     {
     }
@@ -1062,7 +1062,7 @@ class Relay
      *
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function lastsave() : Relay|int|false
     {
     }
@@ -1072,7 +1072,7 @@ class Relay
      * @param  bool  $schedule
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function bgsave(bool $schedule = \false) : Relay|bool
     {
     }
@@ -1081,7 +1081,7 @@ class Relay
      *
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function save() : Relay|bool
     {
     }
@@ -1090,7 +1090,7 @@ class Relay
      *
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function role() : Relay|array|false
     {
     }
@@ -1100,7 +1100,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function ttl(mixed $key) : Relay|int|false
     {
     }
@@ -1110,7 +1110,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function pttl(mixed $key) : Relay|int|false
     {
     }
@@ -1120,7 +1120,7 @@ class Relay
      * @param  mixed  $keys,...
      * @return Relay|bool|int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function exists(mixed ...$keys) : Relay|bool|int
     {
     }
@@ -1134,7 +1134,7 @@ class Relay
      * @param  int  $num_keys
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function eval(mixed $script, array $args = [], int $num_keys = 0) : mixed
     {
     }
@@ -1149,7 +1149,7 @@ class Relay
      * @param  int  $num_keys
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function eval_ro(mixed $script, array $args = [], int $num_keys = 0) : mixed
     {
     }
@@ -1162,7 +1162,7 @@ class Relay
      * @param  int  $num_keys
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function evalsha(string $sha, array $args = [], int $num_keys = 0) : mixed
     {
     }
@@ -1175,7 +1175,7 @@ class Relay
      * @param  int  $num_keys
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function evalsha_ro(string $sha, array $args = [], int $num_keys = 0) : mixed
     {
     }
@@ -1186,7 +1186,7 @@ class Relay
      * @param  mixed  $args,...
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function client(string $operation, mixed ...$args) : mixed
     {
     }
@@ -1200,7 +1200,7 @@ class Relay
      * @param  mixed  $other_triples_and_options,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function geoadd(string $key, float $lng, float $lat, string $member, mixed ...$other_triples_and_options) : Relay|int|false
     {
     }
@@ -1213,7 +1213,7 @@ class Relay
      * @param  string|null  $unit
      * @return Relay|float|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function geodist(string $key, string $src, string $dst, ?string $unit = null) : Relay|float|false
     {
     }
@@ -1225,7 +1225,7 @@ class Relay
      * @param  string  $other_members,...
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function geohash(string $key, string $member, string ...$other_members) : Relay|array|false
     {
     }
@@ -1240,7 +1240,7 @@ class Relay
      * @param  array  $options
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function georadius(string $key, float $lng, float $lat, float $radius, string $unit, array $options = []) : mixed
     {
     }
@@ -1254,7 +1254,7 @@ class Relay
      * @param  array  $options
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function georadiusbymember(string $key, string $member, float $radius, string $unit, array $options = []) : mixed
     {
     }
@@ -1268,7 +1268,7 @@ class Relay
      * @param  array  $options
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function georadiusbymember_ro(string $key, string $member, float $radius, string $unit, array $options = []) : mixed
     {
     }
@@ -1283,7 +1283,7 @@ class Relay
      * @param  array  $options
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function georadius_ro(string $key, float $lng, float $lat, float $radius, string $unit, array $options = []) : mixed
     {
     }
@@ -1297,7 +1297,7 @@ class Relay
      * @param  array  $options
      * @return Relay|array
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function geosearch(string $key, array|string $position, array|int|float $shape, string $unit, array $options = []) : Relay|array
     {
     }
@@ -1313,7 +1313,7 @@ class Relay
      * @param  array  $options
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function geosearchstore(string $dst, string $src, array|string $position, array|int|float $shape, string $unit, array $options = []) : Relay|int|false
     {
     }
@@ -1323,7 +1323,7 @@ class Relay
      * @param  mixed  $key
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function get(mixed $key) : mixed
     {
     }
@@ -1334,7 +1334,7 @@ class Relay
      * @param  mixed  $value
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function getset(mixed $key, mixed $value) : mixed
     {
     }
@@ -1347,7 +1347,7 @@ class Relay
      * @param  int  $end
      * @return Relay|string|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function getrange(mixed $key, int $start, int $end) : Relay|string|false
     {
     }
@@ -1360,7 +1360,7 @@ class Relay
      * @param  mixed  $value
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function setrange(mixed $key, int $start, mixed $value) : Relay|int|false
     {
     }
@@ -1371,7 +1371,7 @@ class Relay
      * @param  int  $pos
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function getbit(mixed $key, int $pos) : Relay|int|false
     {
     }
@@ -1384,7 +1384,7 @@ class Relay
      * @param  bool  $by_bit
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function bitcount(mixed $key, int $start = 0, int $end = -1, bool $by_bit = \false) : Relay|int|false
     {
     }
@@ -1396,7 +1396,7 @@ class Relay
      * @param  mixed  $args,...
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function bitfield(mixed $key, mixed ...$args) : Relay|array|false
     {
     }
@@ -1408,7 +1408,7 @@ class Relay
      * @param  string|null  $value
      * @return Relay|array|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function config(string $operation, mixed $key = null, ?string $value = null) : Relay|array|bool
     {
     }
@@ -1418,7 +1418,7 @@ class Relay
      * @param  array  $args,...
      * @return Relay|array|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function command(mixed ...$args) : Relay|array|int|false
     {
     }
@@ -1431,7 +1431,7 @@ class Relay
      * @param  string  $other_keys,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function bitop(string $operation, string $dstkey, string $srckey, string ...$other_keys) : Relay|int|false
     {
     }
@@ -1445,7 +1445,7 @@ class Relay
      * @param  bool  $bybit
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function bitpos(mixed $key, int $bit, int $start = null, int $end = null, bool $bybit = \false) : Relay|int|false
     {
     }
@@ -1457,7 +1457,7 @@ class Relay
      * @param  int  $val
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function setbit(mixed $key, int $pos, int $val) : Relay|int|false
     {
     }
@@ -1468,7 +1468,7 @@ class Relay
      * @param  string  $args,...
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function acl(string $cmd, string ...$args) : mixed
     {
     }
@@ -1482,7 +1482,7 @@ class Relay
      * @param  mixed  $value
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function append(mixed $key, mixed $value) : Relay|int|false
     {
     }
@@ -1495,7 +1495,7 @@ class Relay
      * @param  mixed  $options
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function set(mixed $key, mixed $value, mixed $options = null) : mixed
     {
     }
@@ -1507,7 +1507,7 @@ class Relay
      * @param  array  $options
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function getex(mixed $key, ?array $options = null) : mixed
     {
     }
@@ -1519,7 +1519,7 @@ class Relay
      * @param  mixed  $key
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function getdel(mixed $key) : mixed
     {
     }
@@ -1531,7 +1531,7 @@ class Relay
      * @param  mixed  $value
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function setex(mixed $key, int $seconds, mixed $value) : Relay|bool
     {
     }
@@ -1542,7 +1542,7 @@ class Relay
      * @param  array  $elements
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function pfadd(string $key, array $elements) : Relay|int|false
     {
     }
@@ -1552,7 +1552,7 @@ class Relay
      * @param  string  $key
      * @return Relay|int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function pfcount(string $key) : Relay|int|false
     {
     }
@@ -1575,7 +1575,7 @@ class Relay
      * @param  mixed  $value
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function psetex(mixed $key, int $milliseconds, mixed $value) : Relay|bool
     {
     }
@@ -1586,7 +1586,7 @@ class Relay
      * @param  string  $message
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function publish(string $channel, string $message) : Relay|int|false
     {
     }
@@ -1597,7 +1597,7 @@ class Relay
      * @param  mixed  $args,...
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function pubsub(string $operation, mixed ...$args) : mixed
     {
     }
@@ -1608,7 +1608,7 @@ class Relay
      * @param  string  $message
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function spublish(string $channel, string $message) : Relay|int|false
     {
     }
@@ -1621,7 +1621,7 @@ class Relay
      * @param  mixed  $value
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function setnx(mixed $key, mixed $value) : Relay|bool
     {
     }
@@ -1631,7 +1631,7 @@ class Relay
      * @param  array  $keys
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function mget(array $keys) : Relay|array|false
     {
     }
@@ -1642,7 +1642,7 @@ class Relay
      * @param  int  $db
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function move(mixed $key, int $db) : Relay|int|false
     {
     }
@@ -1653,7 +1653,7 @@ class Relay
      * @param  array  $kvals
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function mset(array $kvals) : Relay|bool
     {
     }
@@ -1664,7 +1664,7 @@ class Relay
      * @param  array  $kvals
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function msetnx(array $kvals) : Relay|bool
     {
     }
@@ -1675,7 +1675,7 @@ class Relay
      * @param  mixed  $newkey
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function rename(mixed $key, mixed $newkey) : Relay|bool
     {
     }
@@ -1686,7 +1686,7 @@ class Relay
      * @param  mixed  $newkey
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function renamenx(mixed $key, mixed $newkey) : Relay|bool
     {
     }
@@ -1696,7 +1696,7 @@ class Relay
      * @param  mixed  $keys,...
      * @return Relay|int|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function del(mixed ...$keys) : Relay|int|bool
     {
     }
@@ -1706,7 +1706,7 @@ class Relay
      * @param  mixed  $keys,...
      * @return Relay|int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function unlink(mixed ...$keys) : Relay|int|false
     {
     }
@@ -1718,7 +1718,7 @@ class Relay
      * @param  string|null  $mode
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function expire(mixed $key, int $seconds, ?string $mode = null) : Relay|bool
     {
     }
@@ -1729,7 +1729,7 @@ class Relay
      * @param  int  $milliseconds
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function pexpire(mixed $key, int $milliseconds) : Relay|bool
     {
     }
@@ -1740,7 +1740,7 @@ class Relay
      * @param  int  $timestamp
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function expireat(mixed $key, int $timestamp) : Relay|bool
     {
     }
@@ -1752,7 +1752,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int|false
      * */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function expiretime(mixed $key) : Relay|int|false
     {
     }
@@ -1763,7 +1763,7 @@ class Relay
      * @param  int  $timestamp_ms
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function pexpireat(mixed $key, int $timestamp_ms) : Relay|bool
     {
     }
@@ -1774,7 +1774,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int|false
      * */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function pexpiretime(mixed $key) : Relay|int|false
     {
     }
@@ -1784,7 +1784,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function persist(mixed $key) : Relay|bool
     {
     }
@@ -1798,7 +1798,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int|string|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function type(mixed $key) : Relay|int|string|bool
     {
     }
@@ -1813,7 +1813,7 @@ class Relay
      * @param  string  $dstpos
      * @return Relay|string|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function lmove(mixed $srckey, mixed $dstkey, string $srcpos, string $dstpos) : Relay|string|null|false
     {
     }
@@ -1829,7 +1829,7 @@ class Relay
      * @param  float  $timeout
      * @return Relay|string|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function blmove(mixed $srckey, mixed $dstkey, string $srcpos, string $dstpos, float $timeout) : Relay|string|null|false
     {
     }
@@ -1841,7 +1841,7 @@ class Relay
      * @param  int  $stop
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function lrange(mixed $key, int $start, int $stop) : Relay|array|false
     {
     }
@@ -1853,7 +1853,7 @@ class Relay
      * @param  mixed  $mems,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function lpush(mixed $key, mixed $mem, mixed ...$mems) : Relay|int|false
     {
     }
@@ -1865,7 +1865,7 @@ class Relay
      * @param  mixed  $mems,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function rpush(mixed $key, mixed $mem, mixed ...$mems) : Relay|int|false
     {
     }
@@ -1878,7 +1878,7 @@ class Relay
      * @param  mixed  $mems,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function lpushx(mixed $key, mixed $mem, mixed ...$mems) : Relay|int|false
     {
     }
@@ -1891,7 +1891,7 @@ class Relay
      * @param  mixed  $mems,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function rpushx(mixed $key, mixed $mem, mixed ...$mems) : Relay|int|false
     {
     }
@@ -1903,7 +1903,7 @@ class Relay
      * @param  mixed  $mem
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function lset(mixed $key, int $index, mixed $mem) : Relay|bool
     {
     }
@@ -1914,7 +1914,7 @@ class Relay
      * @param  int  $count
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function lpop(mixed $key, int $count = 1) : mixed
     {
     }
@@ -1926,7 +1926,7 @@ class Relay
      * @param  array  $options
      * @return Relay|int|array|false|null
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function lpos(mixed $key, mixed $value, ?array $options = null) : Relay|int|array|false|null
     {
     }
@@ -1937,7 +1937,7 @@ class Relay
      * @param  int  $count
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function rpop(mixed $key, int $count = 1) : mixed
     {
     }
@@ -1949,7 +1949,7 @@ class Relay
      * @param  mixed  $dest
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function rpoplpush(mixed $source, mixed $dest) : mixed
     {
     }
@@ -1963,7 +1963,7 @@ class Relay
      * @param  float  $timeout
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function brpoplpush(mixed $source, mixed $dest, float $timeout) : mixed
     {
     }
@@ -1976,7 +1976,7 @@ class Relay
      * @param  array  $extra_args,...
      * @return Relay|array|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function blpop(string|array $key, string|float $timeout_or_key, mixed ...$extra_args) : Relay|array|null|false
     {
     }
@@ -1989,7 +1989,7 @@ class Relay
      * @param  int  $count
      * @return Relay|array|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function blmpop(float $timeout, array $keys, string $from, int $count = 1) : Relay|array|null|false
     {
     }
@@ -2002,7 +2002,7 @@ class Relay
      * @param  int  $count
      * @return Relay|array|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function bzmpop(float $timeout, array $keys, string $from, int $count = 1) : Relay|array|null|false
     {
     }
@@ -2014,7 +2014,7 @@ class Relay
      * @param  int  $count
      * @return Relay|array|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function lmpop(array $keys, string $from, int $count = 1) : Relay|array|null|false
     {
     }
@@ -2027,7 +2027,7 @@ class Relay
      * @param  int  $count
      * @return Relay|array|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zmpop(array $keys, string $from, int $count = 1) : Relay|array|null|false
     {
     }
@@ -2040,7 +2040,7 @@ class Relay
      * @param  array  $extra_args,...
      * @return Relay|array|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function brpop(string|array $key, string|float $timeout_or_key, mixed ...$extra_args) : Relay|array|null|false
     {
     }
@@ -2052,7 +2052,7 @@ class Relay
      * @param  array  $extra_args,...
      * @return Relay|array|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function bzpopmax(string|array $key, string|float $timeout_or_key, mixed ...$extra_args) : Relay|array|null|false
     {
     }
@@ -2064,7 +2064,7 @@ class Relay
      * @param  array  $extra_args,...
      * @return Relay|array|null|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function bzpopmin(string|array $key, string|float $timeout_or_key, mixed ...$extra_args) : Relay|array|null|false
     {
     }
@@ -2075,7 +2075,7 @@ class Relay
      * @param  mixed  $key
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function object(string $op, mixed $key) : mixed
     {
     }
@@ -2087,7 +2087,7 @@ class Relay
      * @param  mixed  $members,...
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function geopos(mixed $key, mixed ...$members) : Relay|array|false
     {
     }
@@ -2099,7 +2099,7 @@ class Relay
      * @param  int  $count
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function lrem(mixed $key, mixed $mem, int $count = 0) : Relay|int|false
     {
     }
@@ -2110,7 +2110,7 @@ class Relay
      * @param  int  $index
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function lindex(mixed $key, int $index) : mixed
     {
     }
@@ -2123,7 +2123,7 @@ class Relay
      * @param  mixed  $element
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function linsert(mixed $key, string $op, mixed $pivot, mixed $element) : Relay|int|false
     {
     }
@@ -2135,7 +2135,7 @@ class Relay
      * @param  int  $end
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function ltrim(mixed $key, int $start, int $end) : Relay|bool
     {
     }
@@ -2146,7 +2146,7 @@ class Relay
      * @param  mixed  $member
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function hget(mixed $hash, mixed $member) : mixed
     {
     }
@@ -2157,7 +2157,7 @@ class Relay
      * @param  mixed  $member
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function hstrlen(mixed $hash, mixed $member) : Relay|int|false
     {
     }
@@ -2167,7 +2167,7 @@ class Relay
      * @param  mixed  $hash
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function hgetall(mixed $hash) : Relay|array|false
     {
     }
@@ -2177,7 +2177,7 @@ class Relay
      * @param  mixed  $hash
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function hkeys(mixed $hash) : Relay|array|false
     {
     }
@@ -2187,7 +2187,7 @@ class Relay
      * @param  mixed  $hash
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function hvals(mixed $hash) : Relay|array|false
     {
     }
@@ -2198,7 +2198,7 @@ class Relay
      * @param  array  $members
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function hmget(mixed $hash, array $members) : Relay|array|false
     {
     }
@@ -2209,7 +2209,7 @@ class Relay
      * @param  array  $options
      * @return Relay|array|string|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function hrandfield(mixed $hash, ?array $options = null) : Relay|array|string|false
     {
     }
@@ -2220,7 +2220,7 @@ class Relay
      * @param  array  $members
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function hmset(mixed $hash, array $members) : Relay|bool
     {
     }
@@ -2231,7 +2231,7 @@ class Relay
      * @param  mixed  $member
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function hexists(mixed $hash, mixed $member) : Relay|bool
     {
     }
@@ -2243,7 +2243,7 @@ class Relay
      * @param  mixed  $value
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function hsetnx(mixed $hash, mixed $member, mixed $value) : Relay|bool
     {
     }
@@ -2256,7 +2256,7 @@ class Relay
      * @param  mixed  $kvals,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function hset(mixed $key, mixed $mem, mixed $val, mixed ...$kvals) : Relay|int|false
     {
     }
@@ -2268,7 +2268,7 @@ class Relay
      * @param  string  $mems,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function hdel(mixed $key, mixed $mem, string ...$mems) : Relay|int|false
     {
     }
@@ -2280,7 +2280,7 @@ class Relay
      * @param  int  $value
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function hincrby(mixed $key, mixed $mem, int $value) : Relay|int|false
     {
     }
@@ -2293,7 +2293,7 @@ class Relay
      * @param  float  $value
      * @return Relay|float|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function hincrbyfloat(mixed $key, mixed $mem, float $value) : Relay|float|bool
     {
     }
@@ -2304,7 +2304,7 @@ class Relay
      * @param  int  $by
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function incr(mixed $key, int $by = 1) : Relay|int|false
     {
     }
@@ -2315,7 +2315,7 @@ class Relay
      * @param  int  $by
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function decr(mixed $key, int $by = 1) : Relay|int|false
     {
     }
@@ -2326,7 +2326,7 @@ class Relay
      * @param  int  $value
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function incrby(mixed $key, int $value) : Relay|int|false
     {
     }
@@ -2337,7 +2337,7 @@ class Relay
      * @param  int  $value
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function decrby(mixed $key, int $value) : Relay|int|false
     {
     }
@@ -2348,7 +2348,7 @@ class Relay
      * @param  float  $value
      * @return Relay|float|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function incrbyfloat(mixed $key, float $value) : Relay|float|false
     {
     }
@@ -2359,7 +2359,7 @@ class Relay
      * @param  mixed  $other_keys,...
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function sdiff(mixed $key, mixed ...$other_keys) : Relay|array|false
     {
     }
@@ -2371,7 +2371,7 @@ class Relay
      * @param  mixed  $other_keys,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function sdiffstore(mixed $key, mixed ...$other_keys) : Relay|int|false
     {
     }
@@ -2382,7 +2382,7 @@ class Relay
      * @param  mixed  $other_keys,...
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function sinter(mixed $key, mixed ...$other_keys) : Relay|array|false
     {
     }
@@ -2393,7 +2393,7 @@ class Relay
      * @param  int  $limit
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function sintercard(array $keys, int $limit = -1) : Relay|int|false
     {
     }
@@ -2405,7 +2405,7 @@ class Relay
      * @param  mixed  $other_keys,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function sinterstore(mixed $key, mixed ...$other_keys) : Relay|int|false
     {
     }
@@ -2416,7 +2416,7 @@ class Relay
      * @param  mixed  $other_keys,...
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function sunion(mixed $key, mixed ...$other_keys) : Relay|array|false
     {
     }
@@ -2428,7 +2428,7 @@ class Relay
      * @param  mixed  $other_keys,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function sunionstore(mixed $key, mixed ...$other_keys) : Relay|int|false
     {
     }
@@ -2439,7 +2439,7 @@ class Relay
      * @param  callable  $callback
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function subscribe(array $channels, callable $callback) : bool
     {
     }
@@ -2449,7 +2449,7 @@ class Relay
      * @param  array  $channels
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function unsubscribe(array $channels = []) : bool
     {
     }
@@ -2460,7 +2460,7 @@ class Relay
      * @param  callable  $callback
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function psubscribe(array $patterns, callable $callback) : bool
     {
     }
@@ -2470,7 +2470,7 @@ class Relay
      * @param  array  $patterns
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function punsubscribe(array $patterns = []) : bool
     {
     }
@@ -2481,7 +2481,7 @@ class Relay
      * @param  callable  $callback
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function ssubscribe(array $channels, callable $callback) : bool
     {
     }
@@ -2491,7 +2491,7 @@ class Relay
      * @param  array  $channels
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function sunsubscribe(array $channels = []) : bool
     {
     }
@@ -2502,7 +2502,7 @@ class Relay
      * @param  mixed  $more_keys,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function touch(array|string $key_or_array, mixed ...$more_keys) : Relay|int|false
     {
     }
@@ -2511,7 +2511,7 @@ class Relay
      *
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function pipeline() : Relay|bool
     {
     }
@@ -2523,7 +2523,7 @@ class Relay
      * @param  int  $mode
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function multi(int $mode = 0) : Relay|bool
     {
     }
@@ -2532,7 +2532,7 @@ class Relay
      *
      * @return Relay|array|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function exec() : Relay|array|bool
     {
     }
@@ -2544,7 +2544,7 @@ class Relay
      * @param  int  $timeout
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function wait(int $replicas, $timeout) : Relay|int|false
     {
     }
@@ -2555,7 +2555,7 @@ class Relay
      * @param  mixed  $other_keys,...
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function watch(mixed $key, mixed ...$other_keys) : Relay|bool
     {
     }
@@ -2565,7 +2565,7 @@ class Relay
      *
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function unwatch() : Relay|bool
     {
     }
@@ -2575,7 +2575,7 @@ class Relay
      *
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function discard() : bool
     {
     }
@@ -2586,7 +2586,7 @@ class Relay
      * @param  bool  $masked
      * @return int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getMode(bool $masked = \false) : int
     {
     }
@@ -2595,7 +2595,7 @@ class Relay
      *
      * @return void
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function clearBytes() : void
     {
     }
@@ -2608,7 +2608,7 @@ class Relay
      * @param  string|null  $type
      * @return array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function scan(mixed &$iterator, mixed $match = null, int $count = 0, ?string $type = null) : array|false
     {
     }
@@ -2621,7 +2621,7 @@ class Relay
      * @param  int  $count
      * @return array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function hscan(mixed $key, mixed &$iterator, mixed $match = null, int $count = 0) : array|false
     {
     }
@@ -2634,7 +2634,7 @@ class Relay
      * @param  int  $count
      * @return array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function sscan(mixed $key, mixed &$iterator, mixed $match = null, int $count = 0) : array|false
     {
     }
@@ -2647,7 +2647,7 @@ class Relay
      * @param  int  $count
      * @return array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zscan(mixed $key, mixed &$iterator, mixed $match = null, int $count = 0) : array|false
     {
     }
@@ -2657,7 +2657,7 @@ class Relay
      * @param  mixed  $pattern
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function keys(mixed $pattern) : Relay|array|false
     {
     }
@@ -2668,7 +2668,7 @@ class Relay
      * @param  string  $extra_args,...
      * @return Relay|array|int|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function slowlog(string $operation, string ...$extra_args) : Relay|array|int|bool
     {
     }
@@ -2678,7 +2678,7 @@ class Relay
      * @param  mixed  $set
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function smembers(mixed $set) : Relay|array|false
     {
     }
@@ -2689,7 +2689,7 @@ class Relay
      * @param  mixed  $member
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function sismember(mixed $set, mixed $member) : Relay|bool
     {
     }
@@ -2700,7 +2700,7 @@ class Relay
      * @param  mixed  $members,...
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function smismember(mixed $set, mixed ...$members) : Relay|array|false
     {
     }
@@ -2712,7 +2712,7 @@ class Relay
      * @param  mixed  $members,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function srem(mixed $set, mixed $member, mixed ...$members) : Relay|int|false
     {
     }
@@ -2724,7 +2724,7 @@ class Relay
      * @param  mixed  $members,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function sadd(mixed $set, mixed $member, mixed ...$members) : Relay|int|false
     {
     }
@@ -2735,7 +2735,7 @@ class Relay
      * @param  array  $options
      * @return Relay|array|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function sort(mixed $key, array $options = []) : Relay|array|int|false
     {
     }
@@ -2746,7 +2746,7 @@ class Relay
      * @param  array  $options
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function sort_ro(mixed $key, array $options = []) : Relay|array|false
     {
     }
@@ -2758,7 +2758,7 @@ class Relay
      * @param  mixed  $member
      * @return Relay|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function smove(mixed $srcset, mixed $dstset, mixed $member) : Relay|bool
     {
     }
@@ -2769,7 +2769,7 @@ class Relay
      * @param  int  $count
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function spop(mixed $set, int $count = 1) : mixed
     {
     }
@@ -2780,7 +2780,7 @@ class Relay
      * @param  int  $count
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function srandmember(mixed $set, int $count = 1) : mixed
     {
     }
@@ -2790,7 +2790,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function scard(mixed $key) : Relay|int|false
     {
     }
@@ -2801,7 +2801,7 @@ class Relay
      * @param  string  $args,...
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function script(string $command, string ...$args) : mixed
     {
     }
@@ -2811,7 +2811,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function strlen(mixed $key) : Relay|int|false
     {
     }
@@ -2821,7 +2821,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function hlen(mixed $key) : Relay|int|false
     {
     }
@@ -2831,7 +2831,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function llen(mixed $key) : Relay|int|false
     {
     }
@@ -2843,7 +2843,7 @@ class Relay
      * @param  array  $ids
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xack(mixed $key, string $group, array $ids) : Relay|int|false
     {
     }
@@ -2871,7 +2871,7 @@ class Relay
      * @param  array  $options
      * @return Relay|array|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xclaim(string $key, string $group, string $consumer, int $min_idle, array $ids, array $options) : Relay|array|bool
     {
     }
@@ -2887,7 +2887,7 @@ class Relay
      * @param  bool  $justid
      * @return Relay|array|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xautoclaim(string $key, string $group, string $consumer, int $min_idle, string $start, int $count = -1, bool $justid = \false) : Relay|bool|array
     {
     }
@@ -2897,7 +2897,7 @@ class Relay
      * @param  string  $key
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xlen(string $key) : Relay|int|false
     {
     }
@@ -2912,7 +2912,7 @@ class Relay
      * @param  int  $entries_read
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xgroup(string $operation, mixed $key = null, string $group = null, string $id_or_consumer = null, bool $mkstream = \false, int $entries_read = -2) : mixed
     {
     }
@@ -2923,7 +2923,7 @@ class Relay
      * @param  array  $ids
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xdel(string $key, array $ids) : Relay|int|false
     {
     }
@@ -2936,7 +2936,7 @@ class Relay
      * @param  int  $count
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xinfo(string $operation, ?string $arg1 = null, ?string $arg2 = null, int $count = -1) : mixed
     {
     }
@@ -2952,7 +2952,7 @@ class Relay
      * @param  int  $idle
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xpending(string $key, string $group, ?string $start = null, ?string $end = null, int $count = -1, ?string $consumer = null, int $idle = 0) : Relay|array|false
     {
     }
@@ -2965,7 +2965,7 @@ class Relay
      * @param  int  $count = -1
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xrange(mixed $key, string $start, string $end, int $count = -1) : Relay|array|false
     {
     }
@@ -2978,7 +2978,7 @@ class Relay
      * @param  int  $count
      * @return Relay|array|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xrevrange(string $key, string $end, string $start, int $count = -1) : Relay|array|bool
     {
     }
@@ -2990,7 +2990,7 @@ class Relay
      * @param  int  $block
      * @return Relay|array|bool|null
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xread(array $streams, int $count = -1, int $block = -1) : Relay|array|bool|null
     {
     }
@@ -3004,7 +3004,7 @@ class Relay
      * @param  int  $block
      * @return Relay|array|bool|null
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xreadgroup(string $group, string $consumer, array $streams, int $count = 1, int $block = 1) : Relay|array|bool|null
     {
     }
@@ -3018,7 +3018,7 @@ class Relay
      * @param  int  $limit
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function xtrim(string $key, string $threshold, bool $approx = \false, bool $minid = \false, int $limit = -1) : Relay|int|false
     {
     }
@@ -3029,7 +3029,7 @@ class Relay
      * @param  mixed  $args,...
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zadd(mixed $key, mixed ...$args) : mixed
     {
     }
@@ -3041,7 +3041,7 @@ class Relay
      * @param  array|null  $options
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrandmember(mixed $key, ?array $options = null) : mixed
     {
     }
@@ -3054,7 +3054,7 @@ class Relay
      * @param  mixed  $options
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrange(mixed $key, string $start, string $end, mixed $options = null) : Relay|array|false
     {
     }
@@ -3067,7 +3067,7 @@ class Relay
      * @param  mixed  $options
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrevrange(mixed $key, int $start, int $end, mixed $options = null) : Relay|array|false
     {
     }
@@ -3081,7 +3081,7 @@ class Relay
      * @param  mixed  $options
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrangebyscore(mixed $key, mixed $start, mixed $end, mixed $options = null) : Relay|array|false
     {
     }
@@ -3095,7 +3095,7 @@ class Relay
      * @param  mixed  $options
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrevrangebyscore(mixed $key, mixed $start, mixed $end, mixed $options = null) : Relay|array|false
     {
     }
@@ -3110,7 +3110,7 @@ class Relay
      * @param  mixed  $options
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrangestore(mixed $dst, mixed $src, mixed $start, mixed $end, mixed $options = null) : Relay|int|false
     {
     }
@@ -3126,7 +3126,7 @@ class Relay
      * @param  int  $count
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrangebylex(mixed $key, mixed $min, mixed $max, int $offset = -1, int $count = -1) : Relay|array|false
     {
     }
@@ -3142,7 +3142,7 @@ class Relay
      * @param  int  $count
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrevrangebylex(mixed $key, mixed $max, mixed $min, int $offset = -1, int $count = -1) : Relay|array|false
     {
     }
@@ -3156,7 +3156,7 @@ class Relay
      * @param  bool  $withscore
      * @return Relay|array|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrank(mixed $key, mixed $rank, bool $withscore = \false) : Relay|array|int|false
     {
     }
@@ -3170,7 +3170,7 @@ class Relay
      * @param  bool  $withscore
      * @return Relay|array|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrevrank(mixed $key, mixed $rank, bool $withscore = \false) : Relay|array|int|false
     {
     }
@@ -3182,7 +3182,7 @@ class Relay
      * @param  mixed  $args,...
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zrem(mixed $key, mixed ...$args) : Relay|int|false
     {
     }
@@ -3197,7 +3197,7 @@ class Relay
      * @param  mixed  $max
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zremrangebylex(mixed $key, mixed $min, mixed $max) : Relay|int|false
     {
     }
@@ -3211,7 +3211,7 @@ class Relay
      * @param  int  $end
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zremrangebyrank(mixed $key, int $start, int $end) : Relay|int|false
     {
     }
@@ -3224,7 +3224,7 @@ class Relay
      * @param  mixed  $max
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zremrangebyscore(mixed $key, mixed $min, mixed $max) : Relay|int|false
     {
     }
@@ -3234,7 +3234,7 @@ class Relay
      * @param  mixed  $key
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand, \DEPTRAC_202403\Relay\Attributes\Cached]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand, \DEPTRAC_202404\Relay\Attributes\Cached]
     public function zcard(mixed $key) : Relay|int|false
     {
     }
@@ -3246,7 +3246,7 @@ class Relay
      * @param  mixed  $max
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zcount(mixed $key, mixed $min, mixed $max) : Relay|int|false
     {
     }
@@ -3258,7 +3258,7 @@ class Relay
      * @param  array  $options
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zdiff(array $keys, ?array $options = null) : Relay|array|false
     {
     }
@@ -3270,7 +3270,7 @@ class Relay
      * @param  array  $keys
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zdiffstore(mixed $dst, array $keys) : Relay|int|false
     {
     }
@@ -3282,7 +3282,7 @@ class Relay
      * @param  mixed  $mem
      * @return Relay|float|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zincrby(mixed $key, float $score, mixed $mem) : Relay|float|false
     {
     }
@@ -3296,7 +3296,7 @@ class Relay
      * @param  mixed  $max
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zlexcount(mixed $key, mixed $min, mixed $max) : Relay|int|false
     {
     }
@@ -3307,7 +3307,7 @@ class Relay
      * @param  mixed  $mems,...
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zmscore(mixed $key, mixed ...$mems) : Relay|array|false
     {
     }
@@ -3318,7 +3318,7 @@ class Relay
      * @param  mixed  $member
      * @return Relay|float|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zscore(mixed $key, mixed $member) : Relay|float|false
     {
     }
@@ -3331,7 +3331,7 @@ class Relay
      * @param  mixed  $options
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zinter(array $keys, ?array $weights = null, mixed $options = null) : Relay|array|false
     {
     }
@@ -3342,7 +3342,7 @@ class Relay
      * @param  int  $limit
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zintercard(array $keys, int $limit = -1) : Relay|int|false
     {
     }
@@ -3356,7 +3356,7 @@ class Relay
      * @param  mixed  $options
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zinterstore(mixed $dst, array $keys, ?array $weights = null, mixed $options = null) : Relay|int|false
     {
     }
@@ -3369,7 +3369,7 @@ class Relay
      * @param  mixed  $options
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zunion(array $keys, ?array $weights = null, mixed $options = null) : Relay|array|false
     {
     }
@@ -3383,7 +3383,7 @@ class Relay
      * @param  mixed  $options
      * @return Relay|int|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zunionstore(mixed $dst, array $keys, ?array $weights = null, mixed $options = null) : Relay|int|false
     {
     }
@@ -3395,7 +3395,7 @@ class Relay
      * @param  int  $count
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zpopmin(mixed $key, int $count = 1) : Relay|array|false
     {
     }
@@ -3407,7 +3407,7 @@ class Relay
      * @param  int  $count
      * @return Relay|array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function zpopmax(mixed $key, int $count = 1) : Relay|array|false
     {
     }
@@ -3417,7 +3417,7 @@ class Relay
      * @internal Temporary debug helper. Do not use.
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function _getKeys()
     {
     }

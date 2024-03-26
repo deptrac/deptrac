@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\Relay;
+namespace DEPTRAC_202404\Relay;
 
 /**
  * Generic Relay exception.

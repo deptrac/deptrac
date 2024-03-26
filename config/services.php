@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
-use DEPTRAC_202403\PhpParser\Lexer;
-use DEPTRAC_202403\PhpParser\Parser;
-use DEPTRAC_202403\PhpParser\ParserFactory;
-use DEPTRAC_202403\Psr\EventDispatcher\EventDispatcherInterface;
+use DEPTRAC_202404\PhpParser\Lexer;
+use DEPTRAC_202404\PhpParser\Parser;
+use DEPTRAC_202404\PhpParser\ParserFactory;
+use DEPTRAC_202404\Psr\EventDispatcher\EventDispatcherInterface;
 use Qossmic\Deptrac\Contract\Analyser\EventHelper;
 use Qossmic\Deptrac\Contract\Config\CollectorType;
 use Qossmic\Deptrac\Contract\Config\EmitterType;
@@ -80,6 +80,8 @@ use Qossmic\Deptrac\Core\Layer\LayerResolver;
 use Qossmic\Deptrac\Core\Layer\LayerResolverInterface;
 use Qossmic\Deptrac\Supportive\Console\Command\AnalyseCommand;
 use Qossmic\Deptrac\Supportive\Console\Command\AnalyseRunner;
+use Qossmic\Deptrac\Supportive\Console\Command\ChangedFilesCommand;
+use Qossmic\Deptrac\Supportive\Console\Command\ChangedFilesRunner;
 use Qossmic\Deptrac\Supportive\Console\Command\DebugDependenciesCommand;
 use Qossmic\Deptrac\Supportive\Console\Command\DebugDependenciesRunner;
 use Qossmic\Deptrac\Supportive\Console\Command\DebugLayerCommand;
@@ -105,14 +107,15 @@ use Qossmic\Deptrac\Supportive\OutputFormatter\GraphVizOutputHtmlFormatter;
 use Qossmic\Deptrac\Supportive\OutputFormatter\GraphVizOutputImageFormatter;
 use Qossmic\Deptrac\Supportive\OutputFormatter\JsonOutputFormatter;
 use Qossmic\Deptrac\Supportive\OutputFormatter\JUnitOutputFormatter;
+use Qossmic\Deptrac\Supportive\OutputFormatter\MermaidJSOutputFormatter;
 use Qossmic\Deptrac\Supportive\OutputFormatter\TableOutputFormatter;
 use Qossmic\Deptrac\Supportive\OutputFormatter\XMLOutputFormatter;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use DEPTRAC_202403\Symfony\Component\EventDispatcher\EventDispatcher;
-use function DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\Configurator\param;
-use function DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\Configurator\service;
-use function DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\Configurator\tagged_iterator;
-use function DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\Configurator\tagged_locator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use DEPTRAC_202404\Symfony\Component\EventDispatcher\EventDispatcher;
+use function DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\param;
+use function DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use function DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\tagged_iterator;
+use function DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\tagged_locator;
 return static function (ContainerConfigurator $container) : void {
     $services = $container->services();
     $services->defaults()->autowire();
@@ -165,7 +168,7 @@ return static function (ContainerConfigurator $container) : void {
     /*
      * Layer
      */
-    $services->set(LayerResolver::class)->args(['$layers' => param('layers')]);
+    $services->set(LayerResolver::class)->args(['$layersConfig' => param('layers')]);
     $services->alias(LayerResolverInterface::class, LayerResolver::class);
     $services->set(CollectorProvider::class)->args(['$collectorLocator' => tagged_locator('collector', 'type')]);
     $services->set(CollectorResolver::class);
@@ -227,12 +230,15 @@ return static function (ContainerConfigurator $container) : void {
     $services->set(GraphVizOutputDotFormatter::class)->tag('output_formatter');
     $services->set(GraphVizOutputHtmlFormatter::class)->tag('output_formatter');
     $services->set(CodeclimateOutputFormatter::class)->tag('output_formatter');
+    $services->set(MermaidJSOutputFormatter::class)->tag('output_formatter');
     /*
      * Console
      */
     $services->set(InitCommand::class)->autowire()->tag('console.command');
     $services->set(AnalyseRunner::class)->autowire();
     $services->set(AnalyseCommand::class)->autowire()->tag('console.command');
+    $services->set(ChangedFilesRunner::class)->autowire();
+    $services->set(ChangedFilesCommand::class)->autowire()->tag('console.command');
     $services->set(DebugLayerRunner::class)->autowire()->args(['$layers' => param('layers')]);
     $services->set(DebugLayerCommand::class)->autowire()->tag('console.command');
     $services->set(DebugTokenRunner::class)->autowire();

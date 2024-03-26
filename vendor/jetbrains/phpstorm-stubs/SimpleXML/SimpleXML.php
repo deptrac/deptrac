@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of SimpleXML v.0.1
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\TentativeType;
-use DEPTRAC_202403\JetBrains\PhpStorm\Pure;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
 /**
  * Represents an element in an XML document.
  * @link https://php.net/manual/en/class.simplexmlelement.php
@@ -361,7 +361,7 @@ class SimpleXMLElement implements \Traversable, \ArrayAccess, \Countable, \Itera
  * Represents an element in an XML document.
  * @link https://php.net/manual/en/class.simplexmlelement.php
  */
-\class_alias('DEPTRAC_202403\\SimpleXMLElement', 'SimpleXMLElement', \false);
+\class_alias('DEPTRAC_202404\\SimpleXMLElement', 'SimpleXMLElement', \false);
 /**
  * The SimpleXMLIterator provides recursive iteration over all nodes of a <b>SimpleXMLElement</b> object.
  * @link https://php.net/manual/en/class.simplexmliterator.php
@@ -452,7 +452,7 @@ class SimpleXMLIterator extends \SimpleXMLElement implements \RecursiveIterator,
  * The SimpleXMLIterator provides recursive iteration over all nodes of a <b>SimpleXMLElement</b> object.
  * @link https://php.net/manual/en/class.simplexmliterator.php
  */
-\class_alias('DEPTRAC_202403\\SimpleXMLIterator', 'SimpleXMLIterator', \false);
+\class_alias('DEPTRAC_202404\\SimpleXMLIterator', 'SimpleXMLIterator', \false);
 /**
  * Interprets an XML file into an object
  * @link https://php.net/manual/en/function.simplexml-load-file.php

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of oci8 v.3
 /**
@@ -301,7 +301,7 @@ class OCILob
  * @link https://php.net/manual/en/class.OCI-Lob.php
  * @since 8.0
  */
-\class_alias('DEPTRAC_202403\\OCILob', 'OCILob', \false);
+\class_alias('DEPTRAC_202404\\OCILob', 'OCILob', \false);
 /**
  * OCI8 Collection functionality.
  * @link https://php.net/manual/en/class.OCICollection.php
@@ -410,7 +410,7 @@ class OCICollection
  * @link https://php.net/manual/en/class.OCICollection.php
  * @since 8.0
  */
-\class_alias('DEPTRAC_202403\\OCICollection', 'OCICollection', \false);
+\class_alias('DEPTRAC_202404\\OCICollection', 'OCICollection', \false);
 /**
  * (PHP 7.2 &gt;= 7.2.14, PHP 8, PHP 7 &gt;= 7.3.1, PHP 8, PECL OCI8 &gt;= 2.2.0)<br/>
  * Sets a millisecond timeout for database calls

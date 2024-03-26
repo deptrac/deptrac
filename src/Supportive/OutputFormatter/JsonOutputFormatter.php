@@ -68,8 +68,8 @@ final class JsonOutputFormatter implements OutputFormatterInterface
      */
     private function addFailure(array &$violationsArray, Violation $violation) : void
     {
-        $className = $violation->getDependency()->getFileOccurrence()->filepath;
-        $violationsArray[$className]['messages'][] = ['message' => $this->getFailureMessage($violation), 'line' => $violation->getDependency()->getFileOccurrence()->line, 'type' => 'error'];
+        $className = $violation->getDependency()->getContext()->fileOccurrence->filepath;
+        $violationsArray[$className]['messages'][] = ['message' => $this->getFailureMessage($violation), 'line' => $violation->getDependency()->getContext()->fileOccurrence->line, 'type' => 'error'];
     }
     private function getFailureMessage(Violation $violation) : string
     {
@@ -81,8 +81,8 @@ final class JsonOutputFormatter implements OutputFormatterInterface
      */
     private function addSkipped(array &$violationsArray, SkippedViolation $violation) : void
     {
-        $className = $violation->getDependency()->getFileOccurrence()->filepath;
-        $violationsArray[$className]['messages'][] = ['message' => $this->getWarningMessage($violation), 'line' => $violation->getDependency()->getFileOccurrence()->line, 'type' => 'warning'];
+        $className = $violation->getDependency()->getContext()->fileOccurrence->filepath;
+        $violationsArray[$className]['messages'][] = ['message' => $this->getWarningMessage($violation), 'line' => $violation->getDependency()->getContext()->fileOccurrence->line, 'type' => 'warning'];
     }
     private function getWarningMessage(SkippedViolation $violation) : string
     {
@@ -94,8 +94,8 @@ final class JsonOutputFormatter implements OutputFormatterInterface
      */
     private function addUncovered(array &$violationsArray, Uncovered $violation) : void
     {
-        $className = $violation->getDependency()->getFileOccurrence()->filepath;
-        $violationsArray[$className]['messages'][] = ['message' => $this->getUncoveredMessage($violation), 'line' => $violation->getDependency()->getFileOccurrence()->line, 'type' => 'warning'];
+        $className = $violation->getDependency()->getContext()->fileOccurrence->filepath;
+        $violationsArray[$className]['messages'][] = ['message' => $this->getUncoveredMessage($violation), 'line' => $violation->getDependency()->getContext()->fileOccurrence->line, 'type' => 'warning'];
     }
     private function getUncoveredMessage(Uncovered $violation) : string
     {

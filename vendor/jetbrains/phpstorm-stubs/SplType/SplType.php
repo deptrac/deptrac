@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 /**
  * Abstract parent class for all SPL types.
@@ -30,7 +30,7 @@ abstract class SplType
  *
  * @link https://php.net/manual/en/class.spltype.php
  */
-\class_alias('DEPTRAC_202403\\SplType', 'SplType', \false);
+\class_alias('DEPTRAC_202404\\SplType', 'SplType', \false);
 /**
  * The SplInt class is used to enforce strong typing of the integer type.
  *
@@ -48,7 +48,7 @@ class SplInt extends \SplType
  *
  * @link https://php.net/manual/en/class.splint.php
  */
-\class_alias('DEPTRAC_202403\\SplInt', 'SplInt', \false);
+\class_alias('DEPTRAC_202404\\SplInt', 'SplInt', \false);
 /**
  * The SplFloat class is used to enforce strong typing of the float type.
  *
@@ -63,7 +63,7 @@ class SplFloat extends \SplType
  *
  * @link https://php.net/manual/en/class.splfloat.php
  */
-\class_alias('DEPTRAC_202403\\SplFloat', 'SplFloat', \false);
+\class_alias('DEPTRAC_202404\\SplFloat', 'SplFloat', \false);
 /**
  * SplEnum gives the ability to emulate and create enumeration objects natively in PHP.
  *
@@ -91,7 +91,7 @@ class SplEnum extends \SplType
  *
  * @link https://php.net/manual/en/class.splenum.php
  */
-\class_alias('DEPTRAC_202403\\SplEnum', 'SplEnum', \false);
+\class_alias('DEPTRAC_202404\\SplEnum', 'SplEnum', \false);
 /**
  * The SplBool class is used to enforce strong typing of the bool type.
  *
@@ -117,7 +117,7 @@ class SplBool extends \SplEnum
  *
  * @link https://php.net/manual/en/class.splbool.php
  */
-\class_alias('DEPTRAC_202403\\SplBool', 'SplBool', \false);
+\class_alias('DEPTRAC_202404\\SplBool', 'SplBool', \false);
 /**
  * The SplString class is used to enforce strong typing of the string type.
  *
@@ -135,4 +135,4 @@ class SplString extends \SplType
  *
  * @link https://php.net/manual/en/class.splstring.php
  */
-\class_alias('DEPTRAC_202403\\SplString', 'SplString', \false);
+\class_alias('DEPTRAC_202404\\SplString', 'SplString', \false);

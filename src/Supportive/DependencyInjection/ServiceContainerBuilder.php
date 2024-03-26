@@ -7,16 +7,16 @@ use Exception;
 use Qossmic\Deptrac\Supportive\DependencyInjection\Exception\CacheFileException;
 use Qossmic\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use SplFileInfo;
-use DEPTRAC_202403\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
-use DEPTRAC_202403\Symfony\Component\Config\FileLocator;
-use DEPTRAC_202403\Symfony\Component\Config\Loader\DelegatingLoader;
-use DEPTRAC_202403\Symfony\Component\Config\Loader\LoaderResolver;
-use DEPTRAC_202403\Symfony\Component\Console\DependencyInjection\AddConsoleCommandPass;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use DEPTRAC_202403\Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
-use DEPTRAC_202403\Symfony\Component\Filesystem\Path;
+use DEPTRAC_202404\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
+use DEPTRAC_202404\Symfony\Component\Config\FileLocator;
+use DEPTRAC_202404\Symfony\Component\Config\Loader\DelegatingLoader;
+use DEPTRAC_202404\Symfony\Component\Config\Loader\LoaderResolver;
+use DEPTRAC_202404\Symfony\Component\Console\DependencyInjection\AddConsoleCommandPass;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use DEPTRAC_202404\Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
+use DEPTRAC_202404\Symfony\Component\Filesystem\Path;
 final class ServiceContainerBuilder
 {
     private ?SplFileInfo $configFile = null;
@@ -37,47 +37,50 @@ final class ServiceContainerBuilder
         $builder->configFile = new SplFileInfo($configFile);
         return $builder;
     }
-    public function withCache(?string $cacheFile) : self
+    private function withCache(string $cacheFile) : void
     {
-        if (null === $cacheFile) {
-            return $this;
-        }
-        $builder = clone $this;
         if (Path::isRelative($cacheFile)) {
             /** @throws void */
             $cacheFile = Path::makeAbsolute($cacheFile, $this->workingDirectory);
         }
-        $builder->cacheFile = new SplFileInfo($cacheFile);
-        return $builder;
+        $this->cacheFile = new SplFileInfo($cacheFile);
     }
-    public function clearCache(?string $cacheFile) : self
+    private function clearCache(string $cacheFile) : void
     {
-        if (null === $cacheFile) {
-            return $this;
-        }
-        $builder = clone $this;
         if (Path::isRelative($cacheFile)) {
             /** @throws void */
             $cacheFile = Path::makeAbsolute($cacheFile, $this->workingDirectory);
         }
         \unlink($cacheFile);
-        return $builder;
     }
     /**
      * @throws CacheFileException
      * @throws CannotLoadConfiguration
      */
-    public function build() : ContainerBuilder
+    public function build(string|false|null $cacheOverride, bool $clearCache) : ContainerBuilder
     {
         $container = new ContainerBuilder();
         $container->setParameter('currentWorkingDirectory', $this->workingDirectory);
         self::registerCompilerPasses($container);
-        self::loadServices($container, $this->cacheFile);
         $container->registerExtension(new \Qossmic\Deptrac\Supportive\DependencyInjection\DeptracExtension());
         $container->setParameter('projectDirectory', $this->workingDirectory);
         if (null !== $this->configFile) {
             self::loadConfiguration($container, $this->configFile);
         }
+        /** @var ?string $cacheFileFromConfig */
+        $cacheFileFromConfig = $container->getExtensionConfig('deptrac')[0]['cache_file'] ?? null;
+        // if there is any
+        $cache = $cacheOverride ?? $cacheFileFromConfig;
+        // override if there is a no-cache or path to file
+        $cache = $cache ?? '.deptrac.cache';
+        // override if there is no file specified and needs one
+        if (\false !== $cache) {
+            if ($clearCache) {
+                $this->clearCache($cache);
+            }
+            $this->withCache($cache);
+        }
+        self::loadServices($container, $this->cacheFile);
         $container->compile(\true);
         return $container;
     }
@@ -110,7 +113,7 @@ final class ServiceContainerBuilder
                 throw CacheFileException::notWritable($cacheFile);
             }
         }
-        $container->setParameter('deptrac.cache_file', $cacheFile->getPathname());
+        $container->setParameter('cache_file', $cacheFile->getPathname());
         try {
             $loader->load('cache.php');
         } catch (Exception $exception) {

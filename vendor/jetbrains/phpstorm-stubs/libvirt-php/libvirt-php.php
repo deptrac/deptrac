@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 \define('VIR_DOMAIN_METADATA_DESCRIPTION', 0);
 \define('VIR_DOMAIN_METADATA_TITLE', 1);

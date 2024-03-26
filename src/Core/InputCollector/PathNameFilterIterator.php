@@ -4,8 +4,8 @@ declare (strict_types=1);
 namespace Qossmic\Deptrac\Core\InputCollector;
 
 use SplFileInfo;
-use DEPTRAC_202403\Symfony\Component\Filesystem\Path;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\PathFilterIterator;
+use DEPTRAC_202404\Symfony\Component\Filesystem\Path;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\PathFilterIterator;
 use const DIRECTORY_SEPARATOR;
 /**
  * @internal

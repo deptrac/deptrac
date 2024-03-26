@@ -29,8 +29,8 @@ final class UsesDependencyEmitter implements \Qossmic\Deptrac\Core\Dependency\Em
         foreach ($astMap->getFileReferences() as $fileReference) {
             foreach ($fileReference->classLikeReferences as $astClassReference) {
                 foreach ($fileReference->dependencies as $emittedDependency) {
-                    if (DependencyType::USE === $emittedDependency->type && $this->isFQDN($emittedDependency, $FQDNIndex)) {
-                        $dependencyList->addDependency(new Dependency($astClassReference->getToken(), $emittedDependency->token, $emittedDependency->fileOccurrence, $emittedDependency->type));
+                    if (DependencyType::USE === $emittedDependency->context->dependencyType && $this->isFQDN($emittedDependency, $FQDNIndex)) {
+                        $dependencyList->addDependency(new Dependency($astClassReference->getToken(), $emittedDependency->token, $emittedDependency->context));
                     }
                 }
             }

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Input;
+namespace DEPTRAC_202404\Symfony\Component\Console\Input;
 
-use DEPTRAC_202403\Symfony\Component\Console\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\RuntimeException;
 /**
  * InputInterface is the interface implemented by all input classes.
  *

@@ -9,7 +9,7 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202403\phpDocumentor\GraphViz;
+namespace DEPTRAC_202404\phpDocumentor\GraphViz;
 
 use function addslashes;
 use function implode;

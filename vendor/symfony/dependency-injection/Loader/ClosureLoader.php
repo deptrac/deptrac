@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader;
 
-use DEPTRAC_202403\Symfony\Component\Config\Loader\Loader;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_202404\Symfony\Component\Config\Loader\Loader;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * ClosureLoader loads service definitions from a PHP closure.
  *

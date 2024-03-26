@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\Swoole\WebSocket;
+namespace DEPTRAC_202404\Swoole\WebSocket;
 
 class CloseFrame extends Frame
 {

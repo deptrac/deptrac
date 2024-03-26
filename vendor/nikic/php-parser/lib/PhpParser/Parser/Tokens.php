@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\PhpParser\Parser;
+namespace DEPTRAC_202404\PhpParser\Parser;
 
 /* GENERATED file based on grammar/tokens.y */
 final class Tokens

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\Psr\Log;
+namespace DEPTRAC_202404\Psr\Log;
 
 /**
  * This Logger can be used to avoid conditional log calls.

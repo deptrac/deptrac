@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\VarExporter;
+namespace DEPTRAC_202404\Symfony\Component\VarExporter;
 
-use DEPTRAC_202403\Symfony\Component\VarExporter\Internal\Hydrator;
-use DEPTRAC_202403\Symfony\Component\VarExporter\Internal\LazyObjectRegistry as Registry;
-use DEPTRAC_202403\Symfony\Component\VarExporter\Internal\LazyObjectState;
-use DEPTRAC_202403\Symfony\Component\VarExporter\Internal\LazyObjectTrait;
+use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\Hydrator;
+use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\LazyObjectRegistry as Registry;
+use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\LazyObjectState;
+use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\LazyObjectTrait;
 trait LazyGhostTrait
 {
     use LazyObjectTrait;
@@ -31,7 +31,7 @@ trait LazyGhostTrait
     public static function createLazyGhost(\Closure|array $initializer, array $skippedProperties = null, object $instance = null) : static
     {
         if (\is_array($initializer)) {
-            \DEPTRAC_202403\trigger_deprecation('symfony/var-exporter', '6.4', 'Per-property lazy-initializers are deprecated and won\'t be supported anymore in 7.0, use an object initializer instead.');
+            \DEPTRAC_202404\trigger_deprecation('symfony/var-exporter', '6.4', 'Per-property lazy-initializers are deprecated and won\'t be supported anymore in 7.0, use an object initializer instead.');
         }
         $onlyProperties = null === $skippedProperties && \is_array($initializer) ? $initializer : null;
         if (self::class !== ($class = $instance ? $instance::class : static::class)) {

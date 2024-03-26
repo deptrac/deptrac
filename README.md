@@ -10,7 +10,7 @@ your project are truly independent of each other to make them easier to reuse.
 
 Deptrac can be used in a CI pipeline to make sure a pull request does not
 violate any of the architectural rules you defined. With the optional Graphviz
-formatter you can visualize your layers, rules and violations.
+or Mermaidjs formatter you can visualize your layers, rules and violations.
 
 ## Documentation
 
@@ -20,20 +20,15 @@ https://qossmic.github.io/deptrac
 ## Getting Started
 
 You can install Deptrac via Composer. We recommend using the
-[deptrac-shim](https://github.com/qossmic/deptrac-shim) package for this:
+[deptrac](https://github.com/qossmic/deptrac) package for this:
 
-```Shell
-composer require --dev qossmic/deptrac-shim
+```console
+composer require --dev qossmic/deptrac
 ```
-
-Alternatively, you can also use [PHIVE](docs/index.md#phive) or download the
-[PHAR](docs/index.md#phar) attached to each release on GitHub.
-We strongly advise against using the deptrac package directly as a composer dependency.
-We update dependencies regularly, which might cause disruptions in your project.
 
 Once you have downloaded/installed deptrac, you will need to create a
 [configuration file](docs/index.md#configuration), where you define your layers and
-communication ruleset. This configuration file is written in YAML and, by default,
+communication ruleset. This configuration file is written in YAML or php and, by default,
 is stored with the name `deptrac.yaml` in your project's root directory.
 
 Deptrac can generate a template for you, using the `init` command.

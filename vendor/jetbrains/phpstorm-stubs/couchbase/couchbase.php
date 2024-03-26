@@ -62,7 +62,7 @@
  *
  * @package Couchbase
  */
-namespace DEPTRAC_202403\Couchbase;
+namespace DEPTRAC_202404\Couchbase;
 
 use JsonSerializable;
 use Exception;

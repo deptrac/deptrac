@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node\Stmt;
+namespace DEPTRAC_202404\PhpParser\Node\Stmt;
 
-use DEPTRAC_202403\PhpParser\Node;
-use DEPTRAC_202403\PhpParser\Node\Identifier;
+use DEPTRAC_202404\PhpParser\Node;
+use DEPTRAC_202404\PhpParser\Node\Identifier;
 class UseUse extends Node\Stmt
 {
     /** @var int One of the Stmt\Use_::TYPE_* constants. Will only differ from TYPE_UNKNOWN for mixed group uses */

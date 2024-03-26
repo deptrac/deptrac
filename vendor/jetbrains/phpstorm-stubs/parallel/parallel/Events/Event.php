@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\parallel\Events;
+namespace DEPTRAC_202404\parallel\Events;
 
 /**
  * When an Event is returned, @see Event::$object shall be removed from the loop that returned it, should the event be a

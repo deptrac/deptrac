@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\parallel\Events;
+namespace DEPTRAC_202404\parallel\Events;
 
 /**
  * ### Events Input

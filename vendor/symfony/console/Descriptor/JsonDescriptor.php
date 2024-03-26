@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Descriptor;
+namespace DEPTRAC_202404\Symfony\Component\Console\Descriptor;
 
-use DEPTRAC_202403\Symfony\Component\Console\Application;
-use DEPTRAC_202403\Symfony\Component\Console\Command\Command;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputArgument;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputDefinition;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputOption;
+use DEPTRAC_202404\Symfony\Component\Console\Application;
+use DEPTRAC_202404\Symfony\Component\Console\Command\Command;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputArgument;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputDefinition;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputOption;
 /**
  * JSON descriptor.
  *

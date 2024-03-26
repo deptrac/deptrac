@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Core\Analyser;
 
-use DEPTRAC_202403\Psr\EventDispatcher\EventDispatcherInterface;
+use DEPTRAC_202404\Psr\EventDispatcher\EventDispatcherInterface;
 use Qossmic\Deptrac\Contract\Analyser\AnalysisResult;
 use Qossmic\Deptrac\Contract\Analyser\PostProcessEvent;
 use Qossmic\Deptrac\Contract\Analyser\ProcessEvent;

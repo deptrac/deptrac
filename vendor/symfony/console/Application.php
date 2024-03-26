@@ -8,51 +8,51 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console;
+namespace DEPTRAC_202404\Symfony\Component\Console;
 
-use DEPTRAC_202403\Symfony\Component\Console\Command\Command;
-use DEPTRAC_202403\Symfony\Component\Console\Command\CompleteCommand;
-use DEPTRAC_202403\Symfony\Component\Console\Command\DumpCompletionCommand;
-use DEPTRAC_202403\Symfony\Component\Console\Command\HelpCommand;
-use DEPTRAC_202403\Symfony\Component\Console\Command\LazyCommand;
-use DEPTRAC_202403\Symfony\Component\Console\Command\ListCommand;
-use DEPTRAC_202403\Symfony\Component\Console\Command\SignalableCommandInterface;
-use DEPTRAC_202403\Symfony\Component\Console\CommandLoader\CommandLoaderInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Completion\CompletionInput;
-use DEPTRAC_202403\Symfony\Component\Console\Completion\CompletionSuggestions;
-use DEPTRAC_202403\Symfony\Component\Console\Completion\Suggestion;
-use DEPTRAC_202403\Symfony\Component\Console\Event\ConsoleCommandEvent;
-use DEPTRAC_202403\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use DEPTRAC_202403\Symfony\Component\Console\Event\ConsoleSignalEvent;
-use DEPTRAC_202403\Symfony\Component\Console\Event\ConsoleTerminateEvent;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\CommandNotFoundException;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\ExceptionInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\LogicException;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\NamespaceNotFoundException;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\RuntimeException;
-use DEPTRAC_202403\Symfony\Component\Console\Formatter\OutputFormatter;
-use DEPTRAC_202403\Symfony\Component\Console\Helper\DebugFormatterHelper;
-use DEPTRAC_202403\Symfony\Component\Console\Helper\DescriptorHelper;
-use DEPTRAC_202403\Symfony\Component\Console\Helper\FormatterHelper;
-use DEPTRAC_202403\Symfony\Component\Console\Helper\Helper;
-use DEPTRAC_202403\Symfony\Component\Console\Helper\HelperSet;
-use DEPTRAC_202403\Symfony\Component\Console\Helper\ProcessHelper;
-use DEPTRAC_202403\Symfony\Component\Console\Helper\QuestionHelper;
-use DEPTRAC_202403\Symfony\Component\Console\Input\ArgvInput;
-use DEPTRAC_202403\Symfony\Component\Console\Input\ArrayInput;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputArgument;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputAwareInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputDefinition;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputOption;
-use DEPTRAC_202403\Symfony\Component\Console\Output\ConsoleOutput;
-use DEPTRAC_202403\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Output\OutputInterface;
-use DEPTRAC_202403\Symfony\Component\Console\SignalRegistry\SignalRegistry;
-use DEPTRAC_202403\Symfony\Component\Console\Style\SymfonyStyle;
-use DEPTRAC_202403\Symfony\Component\ErrorHandler\ErrorHandler;
-use DEPTRAC_202403\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use DEPTRAC_202403\Symfony\Contracts\Service\ResetInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Command\Command;
+use DEPTRAC_202404\Symfony\Component\Console\Command\CompleteCommand;
+use DEPTRAC_202404\Symfony\Component\Console\Command\DumpCompletionCommand;
+use DEPTRAC_202404\Symfony\Component\Console\Command\HelpCommand;
+use DEPTRAC_202404\Symfony\Component\Console\Command\LazyCommand;
+use DEPTRAC_202404\Symfony\Component\Console\Command\ListCommand;
+use DEPTRAC_202404\Symfony\Component\Console\Command\SignalableCommandInterface;
+use DEPTRAC_202404\Symfony\Component\Console\CommandLoader\CommandLoaderInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Completion\CompletionInput;
+use DEPTRAC_202404\Symfony\Component\Console\Completion\CompletionSuggestions;
+use DEPTRAC_202404\Symfony\Component\Console\Completion\Suggestion;
+use DEPTRAC_202404\Symfony\Component\Console\Event\ConsoleCommandEvent;
+use DEPTRAC_202404\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use DEPTRAC_202404\Symfony\Component\Console\Event\ConsoleSignalEvent;
+use DEPTRAC_202404\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\CommandNotFoundException;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\ExceptionInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\LogicException;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\NamespaceNotFoundException;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\Console\Formatter\OutputFormatter;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\DebugFormatterHelper;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\DescriptorHelper;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\FormatterHelper;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\Helper;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\HelperSet;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\ProcessHelper;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\QuestionHelper;
+use DEPTRAC_202404\Symfony\Component\Console\Input\ArgvInput;
+use DEPTRAC_202404\Symfony\Component\Console\Input\ArrayInput;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputArgument;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputAwareInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputDefinition;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputOption;
+use DEPTRAC_202404\Symfony\Component\Console\Output\ConsoleOutput;
+use DEPTRAC_202404\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\SignalRegistry\SignalRegistry;
+use DEPTRAC_202404\Symfony\Component\Console\Style\SymfonyStyle;
+use DEPTRAC_202404\Symfony\Component\ErrorHandler\ErrorHandler;
+use DEPTRAC_202404\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use DEPTRAC_202404\Symfony\Contracts\Service\ResetInterface;
 /**
  * An Application is the container for a collection of commands.
  *
@@ -868,7 +868,7 @@ class Application implements ResetInterface
                             $exitCode = $command->handleSignal($signal, $exitCode);
                             // BC layer for Symfony <= 5
                             if (null === $exitCode) {
-                                \DEPTRAC_202403\trigger_deprecation('symfony/console', '6.3', 'Not returning an exit code from "%s::handleSignal()" is deprecated, return "false" to keep the command running or "0" to exit successfully.', \get_debug_type($command));
+                                \DEPTRAC_202404\trigger_deprecation('symfony/console', '6.3', 'Not returning an exit code from "%s::handleSignal()" is deprecated, return "false" to keep the command running or "0" to exit successfully.', \get_debug_type($command));
                                 $exitCode = 0;
                             }
                         }
@@ -887,7 +887,7 @@ class Application implements ResetInterface
                     $exitCode = $command->handleSignal($signal);
                     // BC layer for Symfony <= 5
                     if (null === $exitCode) {
-                        \DEPTRAC_202403\trigger_deprecation('symfony/console', '6.3', 'Not returning an exit code from "%s::handleSignal()" is deprecated, return "false" to keep the command running or "0" to exit successfully.', \get_debug_type($command));
+                        \DEPTRAC_202404\trigger_deprecation('symfony/console', '6.3', 'Not returning an exit code from "%s::handleSignal()" is deprecated, return "false" to keep the command running or "0" to exit successfully.', \get_debug_type($command));
                         $exitCode = 0;
                     }
                     if (\false !== $exitCode) {

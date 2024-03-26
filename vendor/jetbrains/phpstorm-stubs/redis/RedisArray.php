@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 /**
  * Helper autocomplete for php redis extension
@@ -228,4 +228,4 @@ class RedisArray
  *
  * @link   https://github.com/phpredis/phpredis/blob/develop/redis_array.stub.php
  */
-\class_alias('DEPTRAC_202403\\RedisArray', 'RedisArray', \false);
+\class_alias('DEPTRAC_202404\\RedisArray', 'RedisArray', \false);

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of PECL pthreads 3.1.6
 /**
@@ -163,7 +163,7 @@ class Pool
  * including the management of references in the way required by pthreads.
  * @link https://secure.php.net/manual/en/class.pool.php
  */
-\class_alias('DEPTRAC_202403\\Pool', 'Pool', \false);
+\class_alias('DEPTRAC_202404\\Pool', 'Pool', \false);
 /**
  * Threaded objects form the basis of pthreads ability to execute user code
  * in parallel; they expose synchronization methods and various useful
@@ -383,7 +383,7 @@ class Threaded implements \Collectable, \Traversable, \Countable, \ArrayAccess
  *
  * @link https://secure.php.net/manual/en/class.threaded.php
  */
-\class_alias('DEPTRAC_202403\\Threaded', 'Threaded', \false);
+\class_alias('DEPTRAC_202404\\Threaded', 'Threaded', \false);
 /**
  * (PECL pthreads &gt;= 2.0.0)<br/>
  * When the start method of a Thread is invoked, the run method code will be
@@ -479,7 +479,7 @@ class Thread extends \Threaded implements \Countable, \Traversable, \ArrayAccess
  *
  * @link https://secure.php.net/manual/en/class.thread.php
  */
-\class_alias('DEPTRAC_202403\\Thread', 'Thread', \false);
+\class_alias('DEPTRAC_202404\\Thread', 'Thread', \false);
 /**
  * (PECL pthreads &gt;= 2.0.0)<br/>
  * Worker Threads have a persistent context, as such should be used over
@@ -572,7 +572,7 @@ class Worker extends \Thread implements \Traversable, \Countable, \ArrayAccess
  * objects run method.
  * @link https://secure.php.net/manual/en/class.worker.php
  */
-\class_alias('DEPTRAC_202403\\Worker', 'Worker', \false);
+\class_alias('DEPTRAC_202404\\Worker', 'Worker', \false);
 /**
  * (PECL pthreads &gt;= 2.0.8)<br/>
  * Represents a garbage-collectable object.
@@ -593,7 +593,7 @@ interface Collectable
  * Represents a garbage-collectable object.
  * @link https://secure.php.net/manual/en/class.collectable.php
  */
-\class_alias('DEPTRAC_202403\\Collectable', 'Collectable', \false);
+\class_alias('DEPTRAC_202404\\Collectable', 'Collectable', \false);
 /**
  * (PECL pthreads &gt;= 3.0.0)<br/>
  * The Volatile class is new to pthreads v3. Its introduction is a consequence of
@@ -615,4 +615,4 @@ class Volatile extends \Threaded implements \Collectable, \Traversable
  * @see Threaded
  * @link https://secure.php.net/manual/en/class.volatile.php
  */
-\class_alias('DEPTRAC_202403\\Volatile', 'Volatile', \false);
+\class_alias('DEPTRAC_202404\\Volatile', 'Volatile', \false);

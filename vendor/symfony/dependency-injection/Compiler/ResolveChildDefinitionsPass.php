@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ChildDefinition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ExceptionInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ChildDefinition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ExceptionInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 /**
  * This replaces all ChildDefinition instances with their equivalent fully
  * merged Definition instance.

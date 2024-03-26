@@ -1,24 +1,24 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Lexer;
+namespace DEPTRAC_202404\PhpParser\Lexer;
 
-use DEPTRAC_202403\PhpParser\Error;
-use DEPTRAC_202403\PhpParser\ErrorHandler;
-use DEPTRAC_202403\PhpParser\Lexer;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\AttributeEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\FnTokenEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\ReadonlyFunctionTokenEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\ReverseEmulator;
-use DEPTRAC_202403\PhpParser\Lexer\TokenEmulator\TokenEmulator;
+use DEPTRAC_202404\PhpParser\Error;
+use DEPTRAC_202404\PhpParser\ErrorHandler;
+use DEPTRAC_202404\PhpParser\Lexer;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\AttributeEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\EnumTokenEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\ExplicitOctalEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\FnTokenEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\MatchTokenEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\NullsafeTokenEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\NumericLiteralSeparatorEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\ReadonlyFunctionTokenEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\ReverseEmulator;
+use DEPTRAC_202404\PhpParser\Lexer\TokenEmulator\TokenEmulator;
 class Emulative extends Lexer
 {
     const PHP_7_3 = '7.3dev';

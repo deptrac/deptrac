@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Attribute;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute;
 
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
 /**
  * Attribute to wrap a service in a closure that returns it.
  */

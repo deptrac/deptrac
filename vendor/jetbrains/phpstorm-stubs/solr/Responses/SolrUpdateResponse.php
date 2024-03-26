@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 /**
  * Helper autocomplete for php solr extension.
@@ -45,4 +45,4 @@ final class SolrUpdateResponse extends \SolrResponse
  * This class represents a response to an update request.
  * @link https://php.net/manual/en/class.solrupdateresponse.php
  */
-\class_alias('DEPTRAC_202403\\SolrUpdateResponse', 'SolrUpdateResponse', \false);
+\class_alias('DEPTRAC_202404\\SolrUpdateResponse', 'SolrUpdateResponse', \false);

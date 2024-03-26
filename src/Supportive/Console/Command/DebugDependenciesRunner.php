@@ -36,7 +36,7 @@ final class DebugDependenciesRunner
     {
         $dependency = $rule->getDependency();
         $message = \sprintf('<info>%s</info> depends on <info>%s</info> (%s)', $dependency->getDepender()->toString(), $dependency->getDependent()->toString(), $rule->layer);
-        $fileOccurrence = $dependency->getFileOccurrence();
+        $fileOccurrence = $dependency->getContext()->fileOccurrence;
         $message .= \sprintf("\n%s:%d", $fileOccurrence->filepath, $fileOccurrence->line);
         return [$message];
     }

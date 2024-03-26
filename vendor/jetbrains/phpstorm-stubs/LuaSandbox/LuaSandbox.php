@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 /**
  * Stubs for the LuaSandbox PECL extension.
@@ -343,7 +343,7 @@ class LuaSandbox
  * @link https://www.php.net/manual/en/class.luasandbox.php
  * @since luasandbox >= 1.0.0
  */
-\class_alias('DEPTRAC_202403\\LuaSandbox', 'LuaSandbox', \false);
+\class_alias('DEPTRAC_202404\\LuaSandbox', 'LuaSandbox', \false);
 /**
  * Represents a Lua function, allowing it to be called from PHP.
  *
@@ -426,7 +426,7 @@ class LuaSandboxFunction
  *
  * @since luasandbox >= 1.0.0
  */
-\class_alias('DEPTRAC_202403\\LuaSandboxFunction', 'LuaSandboxFunction', \false);
+\class_alias('DEPTRAC_202404\\LuaSandboxFunction', 'LuaSandboxFunction', \false);
 /**
  * Base class for LuaSandbox exceptions.
  *
@@ -444,7 +444,7 @@ class LuaSandboxError extends \Exception
  *
  * @since luasandbox >= 1.0.0
  */
-\class_alias('DEPTRAC_202403\\LuaSandboxError', 'LuaSandboxError', \false);
+\class_alias('DEPTRAC_202404\\LuaSandboxError', 'LuaSandboxError', \false);
 /**
  * Catchable <i>LuaSandbox</i> runtime exceptions.
  *
@@ -462,7 +462,7 @@ class LuaSandboxRuntimeError extends \LuaSandboxError
  *
  * @since luasandbox >= 1.0.0
  */
-\class_alias('DEPTRAC_202403\\LuaSandboxRuntimeError', 'LuaSandboxRuntimeError', \false);
+\class_alias('DEPTRAC_202404\\LuaSandboxRuntimeError', 'LuaSandboxRuntimeError', \false);
 /**
  * Uncatchable <i>LuaSandbox</i> exceptions.
  *
@@ -480,7 +480,7 @@ class LuaSandboxFatalError extends \LuaSandboxError
  *
  * @since luasandbox >= 1.0.0
  */
-\class_alias('DEPTRAC_202403\\LuaSandboxFatalError', 'LuaSandboxFatalError', \false);
+\class_alias('DEPTRAC_202404\\LuaSandboxFatalError', 'LuaSandboxFatalError', \false);
 /**
  * Exception thrown when Lua encounters an error inside an error handler.
  *
@@ -494,7 +494,7 @@ class LuaSandboxErrorError extends \LuaSandboxFatalError
  *
  * @since luasandbox >= 1.0.0
  */
-\class_alias('DEPTRAC_202403\\LuaSandboxErrorError', 'LuaSandboxErrorError', \false);
+\class_alias('DEPTRAC_202404\\LuaSandboxErrorError', 'LuaSandboxErrorError', \false);
 /**
  * Exception thrown when Lua cannot allocate memory.
  *
@@ -510,7 +510,7 @@ class LuaSandboxMemoryError extends \LuaSandboxFatalError
  * @since luasandbox >= 1.0.0
  * @see LuaSandbox::setMemoryLimit()
  */
-\class_alias('DEPTRAC_202403\\LuaSandboxMemoryError', 'LuaSandboxMemoryError', \false);
+\class_alias('DEPTRAC_202404\\LuaSandboxMemoryError', 'LuaSandboxMemoryError', \false);
 /**
  * Exception thrown when Lua code cannot be parsed.
  *
@@ -524,7 +524,7 @@ class LuaSandboxSyntaxError extends \LuaSandboxFatalError
  *
  * @since luasandbox >= 1.0.0
  */
-\class_alias('DEPTRAC_202403\\LuaSandboxSyntaxError', 'LuaSandboxSyntaxError', \false);
+\class_alias('DEPTRAC_202404\\LuaSandboxSyntaxError', 'LuaSandboxSyntaxError', \false);
 /**
  * Exception thrown when the configured CPU time limit is exceeded.
  *
@@ -540,4 +540,4 @@ class LuaSandboxTimeoutError extends \LuaSandboxFatalError
  * @since luasandbox >= 1.0.0
  * @see LuaSandbox::setCPULimit()
  */
-\class_alias('DEPTRAC_202403\\LuaSandboxTimeoutError', 'LuaSandboxTimeoutError', \false);
+\class_alias('DEPTRAC_202404\\LuaSandboxTimeoutError', 'LuaSandboxTimeoutError', \false);

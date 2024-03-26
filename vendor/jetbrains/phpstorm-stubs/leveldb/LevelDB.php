@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 \define("LEVELDB_NO_COMPRESSION", 0);
 \define("LEVELDB_SNAPPY_COMPRESSION", 1);
@@ -123,7 +123,7 @@ class LevelDB
     {
     }
 }
-\class_alias('DEPTRAC_202403\\LevelDB', 'LevelDB', \false);
+\class_alias('DEPTRAC_202404\\LevelDB', 'LevelDB', \false);
 class LevelDBIterator implements \Iterator
 {
     public function __construct(\LevelDB $db, array $read_options = [])
@@ -160,7 +160,7 @@ class LevelDBIterator implements \Iterator
     {
     }
 }
-\class_alias('DEPTRAC_202403\\LevelDBIterator', 'LevelDBIterator', \false);
+\class_alias('DEPTRAC_202404\\LevelDBIterator', 'LevelDBIterator', \false);
 class LevelDBWriteBatch
 {
     public function __construct()
@@ -179,7 +179,7 @@ class LevelDBWriteBatch
     {
     }
 }
-\class_alias('DEPTRAC_202403\\LevelDBWriteBatch', 'LevelDBWriteBatch', \false);
+\class_alias('DEPTRAC_202404\\LevelDBWriteBatch', 'LevelDBWriteBatch', \false);
 class LevelDBSnapshot
 {
     public function __construct(\LevelDB $db)
@@ -189,8 +189,8 @@ class LevelDBSnapshot
     {
     }
 }
-\class_alias('DEPTRAC_202403\\LevelDBSnapshot', 'LevelDBSnapshot', \false);
+\class_alias('DEPTRAC_202404\\LevelDBSnapshot', 'LevelDBSnapshot', \false);
 class LevelDBException extends \Exception
 {
 }
-\class_alias('DEPTRAC_202403\\LevelDBException', 'LevelDBException', \false);
+\class_alias('DEPTRAC_202404\\LevelDBException', 'LevelDBException', \false);

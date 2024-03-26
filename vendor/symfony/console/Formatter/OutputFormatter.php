@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Formatter;
+namespace DEPTRAC_202404\Symfony\Component\Console\Formatter;
 
-use DEPTRAC_202403\Symfony\Component\Console\Exception\InvalidArgumentException;
-use function DEPTRAC_202403\Symfony\Component\String\b;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\InvalidArgumentException;
+use function DEPTRAC_202404\Symfony\Component\String\b;
 /**
  * Formatter class for console output.
  *

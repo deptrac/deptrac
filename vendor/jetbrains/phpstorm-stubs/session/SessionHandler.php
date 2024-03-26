@@ -1,9 +1,9 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
 /**
  * <b>SessionHandlerInterface</b> is an interface which defines
  * a prototype for creating a custom session handler.
@@ -109,7 +109,7 @@ interface SessionHandlerInterface
  * @link https://php.net/manual/en/class.sessionhandlerinterface.php
  * @since 5.4
  */
-\class_alias('DEPTRAC_202403\\SessionHandlerInterface', 'SessionHandlerInterface', \false);
+\class_alias('DEPTRAC_202404\\SessionHandlerInterface', 'SessionHandlerInterface', \false);
 /**
  * <b>SessionIdInterface</b>
  * @link https://php.net/manual/en/class.sessionidinterface.php
@@ -132,7 +132,7 @@ interface SessionIdInterface
  * @link https://php.net/manual/en/class.sessionidinterface.php
  * @since 5.5.1
  */
-\class_alias('DEPTRAC_202403\\SessionIdInterface', 'SessionIdInterface', \false);
+\class_alias('DEPTRAC_202404\\SessionIdInterface', 'SessionIdInterface', \false);
 /**
  * <b>SessionUpdateTimestampHandlerInterface</b> is an interface which
  * defines a prototype for updating the life time of an existing session.
@@ -175,7 +175,7 @@ interface SessionUpdateTimestampHandlerInterface
  * handler must implement this interface.
  * @since 7.0
  */
-\class_alias('DEPTRAC_202403\\SessionUpdateTimestampHandlerInterface', 'SessionUpdateTimestampHandlerInterface', \false);
+\class_alias('DEPTRAC_202404\\SessionUpdateTimestampHandlerInterface', 'SessionUpdateTimestampHandlerInterface', \false);
 /**
  * <b>SessionHandler</b> a special class that can
  * be used to expose the current internal PHP session
@@ -339,4 +339,4 @@ class SessionHandler implements \SessionHandlerInterface, \SessionIdInterface
  * @link https://php.net/manual/en/class.reflectionzendextension.php
  * @since 5.4
  */
-\class_alias('DEPTRAC_202403\\SessionHandler', 'SessionHandler', \false);
+\class_alias('DEPTRAC_202404\\SessionHandler', 'SessionHandler', \false);

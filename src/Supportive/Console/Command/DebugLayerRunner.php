@@ -26,8 +26,7 @@ final class DebugLayerRunner
         $debugLayers = $layer ? [$layer] : array_map(static fn(array $layer): string => $layer['name'], $this->layers);
         try {
             foreach ($debugLayers as $debugLayer) {
-                $matchedLayers = array_map(static fn(string $token) => (array) $token, $this->analyser->findTokensInLayer($debugLayer));
-                $output->getStyle()->table([$debugLayer], $matchedLayers);
+                $output->getStyle()->table([$debugLayer, 'Token Type'], $this->analyser->findTokensInLayer($debugLayer));
             }
         } catch (AnalyserException $e) {
             throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($e);

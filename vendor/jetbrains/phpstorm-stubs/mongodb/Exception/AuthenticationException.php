@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\MongoDB\Driver\Exception;
+namespace DEPTRAC_202404\MongoDB\Driver\Exception;
 
 /**
  * Thrown when the driver fails to authenticate with the server.

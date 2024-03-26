@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\Swoole;
+namespace DEPTRAC_202404\Swoole;
 
 class Client
 {

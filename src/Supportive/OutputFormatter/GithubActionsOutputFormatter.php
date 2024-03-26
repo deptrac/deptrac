@@ -54,7 +54,7 @@ final class GithubActionsOutputFormatter implements OutputFormatterInterface
     {
         foreach ($result->uncovered() as $u) {
             $dependency = $u->getDependency();
-            $output->writeLineFormatted(\sprintf('::%s file=%s,line=%s::%s has uncovered dependency on %s (%s)', $reportAsError ? 'error' : 'warning', $dependency->getFileOccurrence()->filepath, $dependency->getFileOccurrence()->line, $dependency->getDepender()->toString(), $dependency->getDependent()->toString(), $u->layer));
+            $output->writeLineFormatted(\sprintf('::%s file=%s,line=%s::%s has uncovered dependency on %s (%s)', $reportAsError ? 'error' : 'warning', $dependency->getContext()->fileOccurrence->filepath, $dependency->getContext()->fileOccurrence->line, $dependency->getDepender()->toString(), $dependency->getDependent()->toString(), $u->layer));
         }
     }
     private function multilinePathMessage(DependencyInterface $dep) : string
@@ -80,6 +80,6 @@ final class GithubActionsOutputFormatter implements OutputFormatterInterface
         if (\count($dependency->serialize()) > 1) {
             $message .= '%0A' . $this->multilinePathMessage($dependency);
         }
-        $output->writeLineFormatted(\sprintf('::%s file=%s,line=%s::%s', $this->determineLogLevel($rule), $dependency->getFileOccurrence()->filepath, $dependency->getFileOccurrence()->line, $message));
+        $output->writeLineFormatted(\sprintf('::%s file=%s,line=%s::%s', $this->determineLogLevel($rule), $dependency->getContext()->fileOccurrence->filepath, $dependency->getContext()->fileOccurrence->line, $message));
     }
 }

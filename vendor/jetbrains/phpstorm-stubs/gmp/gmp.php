@@ -1,11 +1,11 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of gmp v.
-use DEPTRAC_202403\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202403\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202403\JetBrains\PhpStorm\Pure;
+use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
 /**
  * Create GMP number
  * @link https://php.net/manual/en/function.gmp-init.php
@@ -883,5 +883,5 @@ class GMP implements \Serializable
     {
     }
 }
-\class_alias('DEPTRAC_202403\\GMP', 'GMP', \false);
+\class_alias('DEPTRAC_202404\\GMP', 'GMP', \false);
 // End of gmp v.

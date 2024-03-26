@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Container;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ExpressionLanguage;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Parameter;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ServiceLocator;
-use DEPTRAC_202403\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Container;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ExpressionLanguage;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Parameter;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ServiceLocator;
+use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * Checks whether injected parameters are compatible with type declarations.
  *

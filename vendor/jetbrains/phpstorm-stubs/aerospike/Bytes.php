@@ -22,7 +22,7 @@
  * @link       https://github.com/aerospike/aerospike-client-php/blob/master/doc/README.md#handling-unsupported-types
  * @filesource
  */
-namespace DEPTRAC_202403\Aerospike;
+namespace DEPTRAC_202404\Aerospike;
 
 /**
  * \Aerospike\Bytes is a utility for wrapping PHP strings containing

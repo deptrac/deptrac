@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\LogicException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202403\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\LogicException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * Run this pass before passes that need to know more about the relation of
  * your services.

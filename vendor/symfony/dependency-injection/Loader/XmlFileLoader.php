@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader;
 
-use DEPTRAC_202403\Symfony\Component\Config\Util\XmlUtils;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Alias;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ChildDefinition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\LogicException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202403\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_202404\Symfony\Component\Config\Util\XmlUtils;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Alias;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ChildDefinition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\LogicException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * XmlFileLoader loads XML files service definitions.
  *
@@ -477,7 +477,7 @@ class XmlFileLoader extends FileLoader
                 case 'service_locator':
                     $arg = $this->getArgumentsAsPhp($arg, $name, $file);
                     if (isset($arg[0])) {
-                        \DEPTRAC_202403\trigger_deprecation('symfony/dependency-injection', '6.3', 'Skipping "key" argument or using integers as values in a "service_locator" tag is deprecated. The keys will default to the IDs of the original services in 7.0.');
+                        \DEPTRAC_202404\trigger_deprecation('symfony/dependency-injection', '6.3', 'Skipping "key" argument or using integers as values in a "service_locator" tag is deprecated. The keys will default to the IDs of the original services in 7.0.');
                     }
                     $arguments[$key] = new ServiceLocatorArgument($arg);
                     break;

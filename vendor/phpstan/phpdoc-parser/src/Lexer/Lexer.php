@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PHPStan\PhpDocParser\Lexer;
+namespace DEPTRAC_202404\PHPStan\PhpDocParser\Lexer;
 
 use function implode;
 use function preg_match_all;

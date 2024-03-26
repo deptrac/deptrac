@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 /**
  * Helper autocomplete for php zmq extension
@@ -292,7 +292,7 @@ class ZMQ
  * Class ZMQ
  * @link https://secure.php.net/manual/en/class.zmq.php
  */
-\class_alias('DEPTRAC_202403\\ZMQ', 'ZMQ', \false);
+\class_alias('DEPTRAC_202404\\ZMQ', 'ZMQ', \false);
 /**
  * Class ZMQContext
  * @link https://secure.php.net/manual/en/class.zmqcontext.php
@@ -374,7 +374,7 @@ class ZMQContext
  * Class ZMQContext
  * @link https://secure.php.net/manual/en/class.zmqcontext.php
  */
-\class_alias('DEPTRAC_202403\\ZMQContext', 'ZMQContext', \false);
+\class_alias('DEPTRAC_202404\\ZMQContext', 'ZMQContext', \false);
 /**
  * Class ZMQSocket
  * @link https://secure.php.net/manual/en/class.zmqsocket.php
@@ -615,7 +615,7 @@ class ZMQSocket
  * Class ZMQSocket
  * @link https://secure.php.net/manual/en/class.zmqsocket.php
  */
-\class_alias('DEPTRAC_202403\\ZMQSocket', 'ZMQSocket', \false);
+\class_alias('DEPTRAC_202404\\ZMQSocket', 'ZMQSocket', \false);
 /**
  * Class ZMQPoll
  * @link https://secure.php.net/manual/en/class.zmqpoll.php
@@ -712,7 +712,7 @@ class ZMQPoll
  * Class ZMQPoll
  * @link https://secure.php.net/manual/en/class.zmqpoll.php
  */
-\class_alias('DEPTRAC_202403\\ZMQPoll', 'ZMQPoll', \false);
+\class_alias('DEPTRAC_202404\\ZMQPoll', 'ZMQPoll', \false);
 /**
  * Class ZMQDevice
  * @link https://secure.php.net/manual/en/class.zmqdevice.php
@@ -835,24 +835,24 @@ class ZMQDevice
  * Class ZMQDevice
  * @link https://secure.php.net/manual/en/class.zmqdevice.php
  */
-\class_alias('DEPTRAC_202403\\ZMQDevice', 'ZMQDevice', \false);
+\class_alias('DEPTRAC_202404\\ZMQDevice', 'ZMQDevice', \false);
 class ZMQException extends \Exception
 {
 }
-\class_alias('DEPTRAC_202403\\ZMQException', 'ZMQException', \false);
+\class_alias('DEPTRAC_202404\\ZMQException', 'ZMQException', \false);
 class ZMQContextException extends \ZMQException
 {
 }
-\class_alias('DEPTRAC_202403\\ZMQContextException', 'ZMQContextException', \false);
+\class_alias('DEPTRAC_202404\\ZMQContextException', 'ZMQContextException', \false);
 class ZMQSocketException extends \ZMQException
 {
 }
-\class_alias('DEPTRAC_202403\\ZMQSocketException', 'ZMQSocketException', \false);
+\class_alias('DEPTRAC_202404\\ZMQSocketException', 'ZMQSocketException', \false);
 class ZMQPollException extends \ZMQException
 {
 }
-\class_alias('DEPTRAC_202403\\ZMQPollException', 'ZMQPollException', \false);
+\class_alias('DEPTRAC_202404\\ZMQPollException', 'ZMQPollException', \false);
 class ZMQDeviceException extends \ZMQException
 {
 }
-\class_alias('DEPTRAC_202403\\ZMQDeviceException', 'ZMQDeviceException', \false);
+\class_alias('DEPTRAC_202404\\ZMQDeviceException', 'ZMQDeviceException', \false);

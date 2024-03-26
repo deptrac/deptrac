@@ -141,6 +141,87 @@ Will produce the following graph:
 #### Pointing to groups instead of nodes
 With `formatters.graphviz.pointToGroups` set to `true`, when you have a node inside a groups with the same name as the group itself, edges pointing to that node will point to the group instead. This might be useful for example if you want to provide a "public API" for a module defined by a group.
 
+## MermaidJS Formatter
+
+The MermaidJS formatter is a console formatter, which generates a mermaid.js compatible graph definition. It can be activated with `--formatter=mermaidjs`.
+With the -o option you can specify the output file.
+
+Available options:
+
+```
+--formatter=mermaidjs
+--output= path to a dumped file
+```
+With this example
+Yaml Config:
+
+```yaml
+deptrac:
+  layers:
+    - User Frontend
+    - User Backend
+    - Admin Frontend
+    - Admin Backend
+  formatters:
+    mermaidjs:
+      direction: TD
+      groups:
+        User:
+          - User Frontend
+          - User Backend
+        Admin:
+          - Admin Frontend
+          - Admin Backend
+```
+
+This will produce the following graph:
+
+```mermaid
+flowchart TD;
+  subgraph ContractGroup;
+    Contract;
+  end;
+  subgraph SupportiveGroup;
+    Supportive;
+    File;
+  end;
+  subgraph SymfonyGroup;
+    Console;
+    DependencyInjection;
+    OutputFormatter;
+  end;
+  subgraph CoreGroup;
+    Analyser;
+    Ast;
+    Dependency;
+    InputCollector;
+    Layer;
+  end;
+    Contract -->|6| Symfony;
+    InputCollector -->|3| File;
+    InputCollector -->|7| Symfony;
+    Dependency -->|36| Ast;
+    Layer -->|68| Ast;
+    Layer -->|8| Symfony;
+    Analyser -->|18| Ast;
+    Analyser -->|23| Dependency;
+    Analyser -->|6| Layer;
+    Analyser -->|10| Symfony;
+    Ast -->|3| Symfony;
+    Ast -->|3| InputCollector;
+    Ast -->|7| File;
+    OutputFormatter -->|5| Symfony;
+    OutputFormatter -->|1| DependencyInjection;
+    File -->|9| Symfony;
+    DependencyInjection -->|37| Symfony;
+    Console -->|66| Symfony;
+    Console -->|2| DependencyInjection;
+    Console -->|16| Analyser;
+    Console -->|5| File;
+    Console -->|4| OutputFormatter;
+    Console -->|4| Time;
+```
+
 ## JSON Formatter
 
 By default, Json formatter dumps information to *STDOUT*. It can be activated

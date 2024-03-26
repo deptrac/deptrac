@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection;
 
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceLocator as ArgumentServiceLocator;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\EnvNotFoundException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use DEPTRAC_202403\Symfony\Contracts\Service\ResetInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocator as ArgumentServiceLocator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\EnvNotFoundException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use DEPTRAC_202404\Symfony\Contracts\Service\ResetInterface;
 // Help opcache.preload discover always-needed symbols
 \class_exists(RewindableGenerator::class);
 \class_exists(ArgumentServiceLocator::class);

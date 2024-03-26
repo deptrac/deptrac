@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of ldap v.
-use DEPTRAC_202403\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202403\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware as PhpVersionAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable as Available;
+use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware as PhpVersionAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable as Available;
 use LDAP\Result;
 /**
  * PASSWD extended operation helper
@@ -19,7 +19,7 @@ use LDAP\Result;
  * @return string|bool Returns the generated password if newpw is empty or omitted. Otherwise returns TRUE on success and FALSE on failure.
  * @since 7.2
  */
-function ldap_exop_passwd(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[Available(from: '7.1', to: '7.1')] string $user = "", #[Available(from: '7.2', to: '7.2')] string $user, #[Available(from: '7.3')] string $user = "", #[Available(from: '7.1', to: '7.1')] string $old_password = "", #[Available(from: '7.2', to: '7.2')] string $old_password, #[Available(from: '7.3')] string $old_password = "", #[Available(from: '7.1', to: '7.1')] string $new_password = "", #[Available(from: '7.2', to: '7.2')] string $new_password, #[Available(from: '7.3')] string $new_password = "", #[Available(from: '7.3')] &$controls = null) : string|bool
+function ldap_exop_passwd(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[Available(from: '7.1', to: '7.1')] string $user = "", #[Available(from: '7.2', to: '7.2')] string $user, #[Available(from: '7.3')] string $user = "", #[Available(from: '7.1', to: '7.1')] string $old_password = "", #[Available(from: '7.2', to: '7.2')] string $old_password, #[Available(from: '7.3')] string $old_password = "", #[Available(from: '7.1', to: '7.1')] string $new_password = "", #[Available(from: '7.2', to: '7.2')] string $new_password, #[Available(from: '7.3')] string $new_password = "", #[Available(from: '7.3')] &$controls = null) : string|bool
 {
 }
 /**
@@ -31,7 +31,7 @@ function ldap_exop_passwd(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Con
  * @return int|false From RFC: The responseTtl field is the time in seconds which the server chooses to have as the time-to-live field for that entry. It must not be any smaller than that which the client requested, and it may be larger. However, to allow servers to maintain a relatively accurate directory, and to prevent clients from abusing the dynamic extensions, servers are permitted to shorten a client-requested time-to-live value, down to a minimum of 86400 seconds (one day). FALSE will be returned on error.
  * @since 7.3
  */
-function ldap_exop_refresh(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, int $ttl) : int|false
+function ldap_exop_refresh(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, int $ttl) : int|false
 {
 }
 /**
@@ -41,7 +41,7 @@ function ldap_exop_refresh(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Co
  * @return string|false The data returned by the server, or FALSE on error.
  * @since 7.2
  */
-function ldap_exop_whoami(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap) : string|false
+function ldap_exop_whoami(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap) : string|false
 {
 }
 /**
@@ -57,7 +57,7 @@ function ldap_exop_whoami(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Con
  * @since 7.2
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|bool'], default: 'resource|bool')]
-function ldap_exop(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $request_oid, ?string $request_data, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null, &$response_data, &$response_oid)
+function ldap_exop(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $request_oid, ?string $request_data, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null, &$response_data, &$response_oid)
 {
 }
 /**
@@ -70,7 +70,7 @@ function ldap_exop(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection
  * @return bool Returns TRUE on success or FALSE on failure.
  * @since 7.2
  */
-function ldap_parse_exop(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Result'], default: 'resource')] $result, #[Available(from: '7.2', to: '7.4')] &$response_data, #[Available(from: '8.0')] &$response_data = null, #[Available(from: '7.2', to: '7.4')] &$response_oid, #[Available(from: '8.0')] &$response_oid = null) : bool
+function ldap_parse_exop(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Result'], default: 'resource')] $result, #[Available(from: '7.2', to: '7.4')] &$response_data, #[Available(from: '8.0')] &$response_data = null, #[Available(from: '7.2', to: '7.4')] &$response_oid, #[Available(from: '8.0')] &$response_oid = null) : bool
 {
 }
 /**
@@ -124,7 +124,7 @@ function ldap_connect(?string $uri, int $port = 389)
  * @param resource $ldap
  * @return bool
  */
-function ldap_close(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap) : bool
+function ldap_close(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap) : bool
 {
 }
 /**
@@ -137,7 +137,7 @@ function ldap_close(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connectio
  * @param string|null $password [optional]
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_bind(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, ?string $dn, ?string $password) : bool
+function ldap_bind(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, ?string $dn, ?string $password) : bool
 {
 }
 /**
@@ -154,7 +154,7 @@ function ldap_bind(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection
  * @since 7.3
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|false'], default: 'resource|false')]
-function ldap_bind_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, ?string $dn, ?string $password, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_bind_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, ?string $dn, ?string $password, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -170,7 +170,7 @@ function ldap_bind_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connec
  * @param string $props [optional]
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_sasl_bind(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, $binddn = null, $password = null, $sasl_mech = null, $sasl_realm = null, $sasl_authc_id = null, $sasl_authz_id = null, $props = null) : bool
+function ldap_sasl_bind(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, $binddn = null, $password = null, $sasl_mech = null, $sasl_realm = null, $sasl_authc_id = null, $sasl_authz_id = null, $props = null) : bool
 {
 }
 /**
@@ -181,7 +181,7 @@ function ldap_sasl_bind(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Conne
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_unbind(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap) : bool
+function ldap_unbind(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap) : bool
 {
 }
 /**
@@ -247,7 +247,7 @@ function ldap_unbind(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connecti
  * @return resource|false a search result identifier or <b>FALSE</b> on error.
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|array|false'], default: 'resource|false')]
-function ldap_read(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, array|string $base, array|string $filter, array $attributes = [], int $attributes_only = 0, int $sizelimit = -1, int $timelimit = -1, int $deref = 0, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_read(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, array|string $base, array|string $filter, array $attributes = [], int $attributes_only = 0, int $sizelimit = -1, int $timelimit = -1, int $deref = 0, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -307,7 +307,7 @@ function ldap_read(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection
  * @return resource|false a search result identifier or <b>FALSE</b> on error.
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|array|false'], default: 'resource|false')]
-function ldap_list(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, array|string $base, array|string $filter, array $attributes = [], int $attributes_only = 0, int $sizelimit = -1, int $timelimit = -1, int $deref = 0, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_list(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, array|string $base, array|string $filter, array $attributes = [], int $attributes_only = 0, int $sizelimit = -1, int $timelimit = -1, int $deref = 0, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -371,7 +371,7 @@ function ldap_list(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection
  * @return resource|false a search result identifier or <b>FALSE</b> on error.
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|array|false'], default: 'resource|false')]
-function ldap_search(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, array|string $base, array|string $filter, array $attributes = [], int $attributes_only = 0, int $sizelimit = -1, int $timelimit = -1, int $deref = 0, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_search(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, array|string $base, array|string $filter, array $attributes = [], int $attributes_only = 0, int $sizelimit = -1, int $timelimit = -1, int $deref = 0, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -395,7 +395,7 @@ function ldap_free_result(#[Available(from: '5.3', to: '8.0')] $ldap, #[Availabl
  * @return int|false number of entries in the result or <b>FALSE</b> on error.
  */
 #[PhpVersionAware(["8.0" => "int"], default: "int|false")]
-function ldap_count_entries(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Result'], default: 'resource')] $result)
+function ldap_count_entries(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Result'], default: 'resource')] $result)
 {
 }
 /**
@@ -409,7 +409,7 @@ function ldap_count_entries(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\C
  * <b>FALSE</b> on error.
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\ResultEntry|false'], default: 'resource|false')]
-function ldap_first_entry(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Result'], default: 'resource')] $result)
+function ldap_first_entry(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Result'], default: 'resource')] $result)
 {
 }
 /**
@@ -424,7 +424,7 @@ function ldap_first_entry(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Con
  * there are no more entries in the result then it returns <b>FALSE</b>.
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\ResultEntry|false'], default: 'resource|false')]
-function ldap_next_entry(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\ResultEntry'], default: 'resource')] $entry)
+function ldap_next_entry(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\ResultEntry'], default: 'resource')] $entry)
 {
 }
 /**
@@ -453,7 +453,7 @@ function ldap_next_entry(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Conn
  * return_value[i]["attribute"][j] = jth value of attribute in ith entry
  * </pre>
  */
-function ldap_get_entries(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Result'], default: 'resource')] $result) : array|false
+function ldap_get_entries(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Result'], default: 'resource')] $result) : array|false
 {
 }
 /**
@@ -466,7 +466,7 @@ function ldap_get_entries(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Con
  * @return string|false the first attribute in the entry on success and <b>FALSE</b> on
  * error.
  */
-function ldap_first_attribute(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\ResultEntry'], default: 'resource')] $entry) : string|false
+function ldap_first_attribute(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\ResultEntry'], default: 'resource')] $entry) : string|false
 {
 }
 /**
@@ -479,7 +479,7 @@ function ldap_first_attribute(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\
  * @return string|false the next attribute in an entry on success and <b>FALSE</b> on
  * error.
  */
-function ldap_next_attribute(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\ResultEntry'], default: 'resource')] $entry) : string|false
+function ldap_next_attribute(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\ResultEntry'], default: 'resource')] $entry) : string|false
 {
 }
 /**
@@ -492,7 +492,7 @@ function ldap_next_attribute(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\
  * @return array a complete entry information in a multi-dimensional array
  * on success and <b>FALSE</b> on error.
  */
-function ldap_get_attributes(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\ResultEntry'], default: 'resource')] $entry) : array
+function ldap_get_attributes(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\ResultEntry'], default: 'resource')] $entry) : array
 {
 }
 /**
@@ -516,7 +516,7 @@ function ldap_get_attributes(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\
  * return_value[0] = first value of attribute
  * return_value[i] = ith value of attribute
  */
-function ldap_get_values(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\ResultEntry'], default: 'resource')] $entry, string $attribute) : array|false
+function ldap_get_values(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\ResultEntry'], default: 'resource')] $entry, string $attribute) : array|false
 {
 }
 /**
@@ -532,7 +532,7 @@ function ldap_get_values(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Conn
  * first index is 0. The number of values can be found by indexing "count"
  * in the resultant array.
  */
-function ldap_get_values_len(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\ResultEntry'], default: 'resource')] $entry, string $attribute) : array|false
+function ldap_get_values_len(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\ResultEntry'], default: 'resource')] $entry, string $attribute) : array|false
 {
 }
 /**
@@ -544,7 +544,7 @@ function ldap_get_values_len(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\
  * @param resource $entry
  * @return string|false the DN of the result entry and <b>FALSE</b> on error.
  */
-function ldap_get_dn(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\ResultEntry'], default: 'resource')] $entry) : string|false
+function ldap_get_dn(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\ResultEntry'], default: 'resource')] $entry) : string|false
 {
 }
 /**
@@ -602,7 +602,7 @@ function ldap_dn2ufn(string $dn) : string|false
  * @param array|null $controls Array of LDAP Controls to send with the request.
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_add(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
+function ldap_add(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
 {
 }
 /**
@@ -631,7 +631,7 @@ function ldap_add(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'
  * @since 7.3
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|false'], default: 'resource|false')]
-function ldap_add_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_add_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -646,7 +646,7 @@ function ldap_add_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connect
  * @param array|null $controls Array of LDAP Controls to send with the request.
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_delete(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
+function ldap_delete(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
 {
 }
 /**
@@ -664,7 +664,7 @@ function ldap_delete(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connecti
  * @since 7.3
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|false'], default: 'resource|false')]
-function ldap_delete_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_delete_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -681,7 +681,7 @@ function ldap_delete_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Conn
  * @param array|null $controls Array of LDAP Controls to send with the request.
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_modify(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
+function ldap_modify(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
 {
 }
 /**
@@ -697,7 +697,7 @@ function ldap_modify(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connecti
  * @param array|null $controls Array of LDAP Controls to send with the request.
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_mod_add(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
+function ldap_mod_add(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
 {
 }
 /**
@@ -716,7 +716,7 @@ function ldap_mod_add(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connect
  * @since 7.3
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|false'], default: 'resource|false')]
-function ldap_mod_add_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_mod_add_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -732,7 +732,7 @@ function ldap_mod_add_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Con
  * @param array|null $controls Array of LDAP Controls to send with the request.
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_mod_replace(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
+function ldap_mod_replace(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
 {
 }
 /**
@@ -751,7 +751,7 @@ function ldap_mod_replace(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Con
  * @since 7.3
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|false'], default: 'resource|false')]
-function ldap_mod_replace_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_mod_replace_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -767,7 +767,7 @@ function ldap_mod_replace_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\
  * @param array|null $controls Array of LDAP Controls to send with the request.
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_mod_del(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
+function ldap_mod_del(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
 {
 }
 /**
@@ -786,7 +786,7 @@ function ldap_mod_del(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connect
  * @since 7.3
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|false'], default: 'resource|false')]
-function ldap_mod_del_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_mod_del_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $entry, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -798,7 +798,7 @@ function ldap_mod_del_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Con
  * @return int Return the LDAP error number of the last LDAP command for this
  * link.
  */
-function ldap_errno(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap) : int
+function ldap_errno(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap) : int
 {
 }
 /**
@@ -820,7 +820,7 @@ function ldap_err2str(int $errno) : string
  * </p>
  * @return string string error message.
  */
-function ldap_error(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap) : string
+function ldap_error(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap) : string
 {
 }
 /**
@@ -842,7 +842,7 @@ function ldap_error(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connectio
  * @return int|bool <b>TRUE</b> if <i>value</i> matches otherwise returns
  * <b>FALSE</b>. Returns -1 on error.
  */
-function ldap_compare(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, string $attribute, string $value, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : int|bool
+function ldap_compare(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, string $attribute, string $value, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : int|bool
 {
 }
 /**
@@ -862,7 +862,7 @@ function ldap_compare(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connect
  * @return bool
  */
 #[Deprecated(since: "7.0")]
-function ldap_sort(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, $result, string $sortfilter) : bool
+function ldap_sort(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, $result, string $sortfilter) : bool
 {
 }
 /**
@@ -887,7 +887,7 @@ function ldap_sort(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection
  * @param array|null $controls Array of LDAP Controls to send with the request.
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_rename(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, string $new_rdn, string $new_parent, bool $delete_old_rdn, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
+function ldap_rename(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, string $new_rdn, string $new_parent, bool $delete_old_rdn, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
 {
 }
 /**
@@ -915,7 +915,7 @@ function ldap_rename(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connecti
  * @since 7.3
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\Result|false'], default: 'resource|false')]
-function ldap_rename_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, string $new_rdn, string $new_parent, bool $delete_old_rdn, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
+function ldap_rename_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, string $new_rdn, string $new_parent, bool $delete_old_rdn, #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null)
 {
 }
 /**
@@ -988,7 +988,7 @@ function ldap_rename_ext(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Conn
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ldap_get_option(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, int $option, #[Available(from: '5.3', to: '7.4')] &$value, #[Available(from: '8.0')] &$value = null) : bool
+function ldap_get_option(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, int $option, #[Available(from: '5.3', to: '7.4')] &$value, #[Available(from: '8.0')] &$value = null) : bool
 {
 }
 /**
@@ -1101,7 +1101,7 @@ function ldap_set_option(#[PhpVersionAware(['8.1' => 'LDAP\\Connection|null'], d
  * @return resource
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\ResultEntry|false'], default: 'resource')]
-function ldap_first_reference(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Result'], default: 'resource')] $result)
+function ldap_first_reference(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Result'], default: 'resource')] $result)
 {
 }
 /**
@@ -1112,7 +1112,7 @@ function ldap_first_reference(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\
  * @return resource
  */
 #[PhpVersionAware(['8.1' => 'LDAP\\ResultEntry|false'], default: 'resource')]
-function ldap_next_reference(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\ResultEntry'], default: 'resource')] $entry)
+function ldap_next_reference(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\ResultEntry'], default: 'resource')] $entry)
 {
 }
 /**
@@ -1123,7 +1123,7 @@ function ldap_next_reference(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\
  * @param array &$referrals
  * @return bool
  */
-function ldap_parse_reference(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\ResultEntry'], default: 'resource')] $entry, &$referrals) : bool
+function ldap_parse_reference(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\ResultEntry'], default: 'resource')] $entry, &$referrals) : bool
 {
 }
 /**
@@ -1138,7 +1138,7 @@ function ldap_parse_reference(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\
  * @param array &$controls An array of LDAP Controls which have been sent with the response.
  * @return bool
  */
-function ldap_parse_result(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Result'], default: 'resource')] $result, &$error_code, &$matched_dn, &$error_message, &$referrals, #[Available(from: '7.3')] &$controls = null) : bool
+function ldap_parse_result(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Result'], default: 'resource')] $result, &$error_code, &$matched_dn, &$error_message, &$referrals, #[Available(from: '7.3')] &$controls = null) : bool
 {
 }
 /**
@@ -1147,7 +1147,7 @@ function ldap_parse_result(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Co
  * @param resource $ldap
  * @return bool
  */
-function ldap_start_tls(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap) : bool
+function ldap_start_tls(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap) : bool
 {
 }
 /**
@@ -1157,7 +1157,7 @@ function ldap_start_tls(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Conne
  * @param callable|null $callback
  * @return bool
  */
-function ldap_set_rebind_proc(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, ?callable $callback) : bool
+function ldap_set_rebind_proc(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, ?callable $callback) : bool
 {
 }
 /**
@@ -1183,7 +1183,7 @@ function ldap_set_rebind_proc(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\
  * @removed 8.0
  */
 #[Deprecated(since: "7.4")]
-function ldap_control_paged_result(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, int $pagesize, $iscritical = \false, $cookie = "") : bool
+function ldap_control_paged_result(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, int $pagesize, $iscritical = \false, $cookie = "") : bool
 {
 }
 /**
@@ -1204,7 +1204,7 @@ function ldap_control_paged_result(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\
  * @removed 8.0
  */
 #[Deprecated(since: "7.4")]
-function ldap_control_paged_result_response(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, $result, &$cookie = null, &$estimated = null) : bool
+function ldap_control_paged_result_response(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, $result, &$cookie = null, &$estimated = null) : bool
 {
 }
 /**
@@ -1291,7 +1291,7 @@ function ldap_escape(string $value, string $ignore = "", int $flags = 0) : strin
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  * @since 5.4
  */
-function ldap_modify_batch(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $modifications_info, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
+function ldap_modify_batch(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, string $dn, array $modifications_info, #[Available(from: '7.3')] #[PhpVersionAware(["8.0" => "null|array"], default: "array")] $controls = null) : bool
 {
 }
 /**
@@ -1300,7 +1300,7 @@ function ldap_modify_batch(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Co
  * @return int returns the number of reference messages in a search result.
  * @since 8.0
  */
-function ldap_count_references(#[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202403\\LDAP\\Result'], default: 'resource')] $result) : int
+function ldap_count_references(#[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Connection'], default: 'resource')] $ldap, #[PhpVersionAware(['8.1' => 'DEPTRAC_202404\\LDAP\\Result'], default: 'resource')] $result) : int
 {
 }
 /**

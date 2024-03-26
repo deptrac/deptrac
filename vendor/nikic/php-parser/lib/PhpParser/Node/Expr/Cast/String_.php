@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node\Expr\Cast;
+namespace DEPTRAC_202404\PhpParser\Node\Expr\Cast;
 
-use DEPTRAC_202403\PhpParser\Node\Expr\Cast;
+use DEPTRAC_202404\PhpParser\Node\Expr\Cast;
 class String_ extends Cast
 {
     public function getType() : string

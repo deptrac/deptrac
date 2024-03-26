@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Config\Definition\Configurator;
+namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Configurator;
 
-use DEPTRAC_202403\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\Builder\NodeDefinition;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\Loader\DefinitionFileLoader;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\Loader\DefinitionFileLoader;
 /**
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  */

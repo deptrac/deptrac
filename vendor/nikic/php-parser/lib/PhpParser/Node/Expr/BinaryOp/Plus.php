@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node\Expr\BinaryOp;
+namespace DEPTRAC_202404\PhpParser\Node\Expr\BinaryOp;
 
-use DEPTRAC_202403\PhpParser\Node\Expr\BinaryOp;
+use DEPTRAC_202404\PhpParser\Node\Expr\BinaryOp;
 class Plus extends BinaryOp
 {
     public function getOperatorSigil() : string

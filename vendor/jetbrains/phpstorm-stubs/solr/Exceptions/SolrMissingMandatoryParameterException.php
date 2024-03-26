@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 /**
  * Helper autocomplete for php solr extension.
@@ -27,4 +27,4 @@ class SolrMissingMandatoryParameterException extends \SolrException
  * Class SolrMissingMandatoryParameterException<br/>
  * @link https://php.net/manual/en/class.solrmissingmandatoryparameterexception.php
  */
-\class_alias('DEPTRAC_202403\\SolrMissingMandatoryParameterException', 'SolrMissingMandatoryParameterException', \false);
+\class_alias('DEPTRAC_202404\\SolrMissingMandatoryParameterException', 'SolrMissingMandatoryParameterException', \false);

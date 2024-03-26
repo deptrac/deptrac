@@ -1,13 +1,13 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
-use DEPTRAC_202403\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202403\JetBrains\PhpStorm\Immutable;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\TentativeType;
-use DEPTRAC_202403\JetBrains\PhpStorm\Pure;
+use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_202404\JetBrains\PhpStorm\Immutable;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
 /**
  * The ReflectionClassConstant class reports information about a class constant.
  *
@@ -250,4 +250,4 @@ class ReflectionClassConstant implements \Reflector
  * @link https://www.php.net/manual/en/class.reflectionclassconstant.php
  * @since 7.1
  */
-\class_alias('DEPTRAC_202403\\ReflectionClassConstant', 'ReflectionClassConstant', \false);
+\class_alias('DEPTRAC_202404\\ReflectionClassConstant', 'ReflectionClassConstant', \false);

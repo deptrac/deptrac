@@ -1,10 +1,10 @@
 <?php
 
-namespace DEPTRAC_202403\JetBrains\PhpStorm\Internal;
+namespace DEPTRAC_202404\JetBrains\PhpStorm\Internal;
 
 use Attribute;
-use DEPTRAC_202403\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202403\JetBrains\PhpStorm\ExpectedValues;
+use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_202404\JetBrains\PhpStorm\ExpectedValues;
 /**
  * For PhpStorm internal use only
  * @since 8.0

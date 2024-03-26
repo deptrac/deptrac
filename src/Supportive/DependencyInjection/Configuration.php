@@ -6,9 +6,9 @@ namespace Qossmic\Deptrac\Supportive\DependencyInjection;
 use InvalidArgumentException;
 use Qossmic\Deptrac\Contract\Config\EmitterType;
 use RuntimeException;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\ConfigurationInterface;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\ConfigurationInterface;
 use function array_key_exists;
 use function is_array;
 /**
@@ -32,6 +32,7 @@ class Configuration implements ConfigurationInterface
         $this->appendFormatters($rootNode);
         $this->appendEmitterTypes($rootNode);
         $this->appendIgnoreUncoveredInternalClasses($rootNode);
+        $this->appendCacheFile($rootNode);
         return $builder;
     }
     private function appendAnalysedPaths(ArrayNodeDefinition $node) : void
@@ -63,7 +64,7 @@ class Configuration implements ConfigurationInterface
             $v['point_to_groups'] = $v['pointToGroups'];
             unset($v['pointToGroups']);
             return $v;
-        })->end()->end()->arrayNode('codeclimate')->addDefaultsIfNotSet()->info('Configure Codeclimate output formatters')->children()->arrayNode('severity')->info('Map how failures, skipped and uncovered dependencies map to severity in CodeClimate')->addDefaultsIfNotSet()->children()->enumNode('failure')->values(['info', 'minor', 'major', 'critical', 'blocker'])->defaultValue('major')->end()->enumNode('skipped')->values(['info', 'minor', 'major', 'critical', 'blocker'])->defaultValue('minor')->end()->enumNode('uncovered')->values(['info', 'minor', 'major', 'critical', 'blocker'])->defaultValue('info')->end()->end()->end()->end()->end()->end()->end()->end();
+        })->end()->end()->arrayNode('mermaidjs')->info('Configure MermaidJS output formatter')->addDefaultsIfNotSet()->children()->scalarNode('direction')->defaultValue('TD')->end()->arrayNode('groups')->info('Combine multiple layers to a group')->useAttributeAsKey('name')->arrayPrototype()->scalarPrototype()->end()->end()->end()->end()->end()->arrayNode('codeclimate')->addDefaultsIfNotSet()->info('Configure Codeclimate output formatters')->children()->arrayNode('severity')->info('Map how failures, skipped and uncovered dependencies map to severity in CodeClimate')->addDefaultsIfNotSet()->children()->enumNode('failure')->values(['info', 'minor', 'major', 'critical', 'blocker'])->defaultValue('major')->end()->enumNode('skipped')->values(['info', 'minor', 'major', 'critical', 'blocker'])->defaultValue('minor')->end()->enumNode('uncovered')->values(['info', 'minor', 'major', 'critical', 'blocker'])->defaultValue('info')->end()->end()->end()->end()->end()->end()->end()->end();
     }
     /**
      * @throws InvalidArgumentException
@@ -76,5 +77,9 @@ class Configuration implements ConfigurationInterface
     private function appendIgnoreUncoveredInternalClasses(ArrayNodeDefinition $node) : void
     {
         $node->children()->booleanNode('ignore_uncovered_internal_classes')->defaultTrue()->end()->end();
+    }
+    private function appendCacheFile(ArrayNodeDefinition $node) : void
+    {
+        $node->children()->scalarNode('cache_file')->defaultValue('.deptrac.cache')->end()->end();
     }
 }

@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Qossmic\Deptrac\Core\Ast\AstMap\File;
 
 use Qossmic\Deptrac\Contract\Ast\TokenInterface;
-use DEPTRAC_202403\Symfony\Component\Filesystem\Path;
+use DEPTRAC_202404\Symfony\Component\Filesystem\Path;
 final class FileToken implements TokenInterface
 {
     public readonly string $path;

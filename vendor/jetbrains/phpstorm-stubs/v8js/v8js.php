@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 class V8Js
 {
@@ -144,7 +144,7 @@ class V8Js
     {
     }
 }
-\class_alias('DEPTRAC_202403\\V8Js', 'V8Js', \false);
+\class_alias('DEPTRAC_202404\\V8Js', 'V8Js', \false);
 final class V8JsScriptException extends \Exception
 {
     /**
@@ -184,12 +184,12 @@ final class V8JsScriptException extends \Exception
     {
     }
 }
-\class_alias('DEPTRAC_202403\\V8JsScriptException', 'V8JsScriptException', \false);
+\class_alias('DEPTRAC_202404\\V8JsScriptException', 'V8JsScriptException', \false);
 final class V8JsTimeLimitException extends \Exception
 {
 }
-\class_alias('DEPTRAC_202403\\V8JsTimeLimitException', 'V8JsTimeLimitException', \false);
+\class_alias('DEPTRAC_202404\\V8JsTimeLimitException', 'V8JsTimeLimitException', \false);
 final class V8JsMemoryLimitException extends \Exception
 {
 }
-\class_alias('DEPTRAC_202403\\V8JsMemoryLimitException', 'V8JsMemoryLimitException', \false);
+\class_alias('DEPTRAC_202404\\V8JsMemoryLimitException', 'V8JsMemoryLimitException', \false);

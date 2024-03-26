@@ -6,7 +6,7 @@ namespace Qossmic\Deptrac\Supportive\File\Exception;
 use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 use SplFileInfo;
-use DEPTRAC_202403\Symfony\Component\Filesystem\Path;
+use DEPTRAC_202404\Symfony\Component\Filesystem\Path;
 use function sprintf;
 class FileNotWritableException extends RuntimeException implements ExceptionInterface
 {

@@ -8,24 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader;
 
-use DEPTRAC_202403\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
-use DEPTRAC_202403\Symfony\Component\Config\Exception\LoaderLoadException;
-use DEPTRAC_202403\Symfony\Component\Config\FileLocatorInterface;
-use DEPTRAC_202403\Symfony\Component\Config\Loader\FileLoader as BaseFileLoader;
-use DEPTRAC_202403\Symfony\Component\Config\Loader\Loader;
-use DEPTRAC_202403\Symfony\Component\Config\Resource\GlobResource;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Alias;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Attribute\AsAlias;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Attribute\Exclude;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Attribute\When;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ChildDefinition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\LogicException;
+use DEPTRAC_202404\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use DEPTRAC_202404\Symfony\Component\Config\Exception\LoaderLoadException;
+use DEPTRAC_202404\Symfony\Component\Config\FileLocatorInterface;
+use DEPTRAC_202404\Symfony\Component\Config\Loader\FileLoader as BaseFileLoader;
+use DEPTRAC_202404\Symfony\Component\Config\Loader\Loader;
+use DEPTRAC_202404\Symfony\Component\Config\Resource\GlobResource;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Alias;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\AsAlias;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\Exclude;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\When;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ChildDefinition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\LogicException;
 /**
  * FileLoader is the abstract class used by all built-in loaders that are file based.
  *

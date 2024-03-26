@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\DependencyInjection;
+namespace DEPTRAC_202404\Symfony\Component\Console\DependencyInjection;
 
-use DEPTRAC_202403\Symfony\Component\Console\Command\Command;
-use DEPTRAC_202403\Symfony\Component\Console\Command\LazyCommand;
-use DEPTRAC_202403\Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\TypedReference;
+use DEPTRAC_202404\Symfony\Component\Console\Command\Command;
+use DEPTRAC_202404\Symfony\Component\Console\Command\LazyCommand;
+use DEPTRAC_202404\Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Registers console commands.
  *

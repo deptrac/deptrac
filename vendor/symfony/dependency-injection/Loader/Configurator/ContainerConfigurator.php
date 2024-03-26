@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use DEPTRAC_202403\Symfony\Component\Config\Loader\ParamConfigurator;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use DEPTRAC_202403\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_202404\Symfony\Component\Config\Loader\ParamConfigurator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -109,7 +109,7 @@ function service_locator(array $values) : ServiceLocatorArgument
 {
     $values = AbstractConfigurator::processValue($values, \true);
     if (isset($values[0])) {
-        \DEPTRAC_202403\trigger_deprecation('symfony/dependency-injection', '6.3', 'Using integers as keys in a "service_locator()" argument is deprecated. The keys will default to the IDs of the original services in 7.0.');
+        \DEPTRAC_202404\trigger_deprecation('symfony/dependency-injection', '6.3', 'Using integers as keys in a "service_locator()" argument is deprecated. The keys will default to the IDs of the original services in 7.0.');
     }
     return new ServiceLocatorArgument($values);
 }

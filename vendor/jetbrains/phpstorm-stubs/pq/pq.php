@@ -10,9 +10,9 @@
  * * Fetching simple [multi-dimensional array maps](pq/Result/map).
  * * Working [Gateway implementation](https://bitbucket.org/m6w6/pq-gateway).
  */
-namespace DEPTRAC_202403\pq;
+namespace DEPTRAC_202404\pq;
 
-use DEPTRAC_202403\pq;
+use DEPTRAC_202404\pq;
 /**
  * Fast import/export using COPY.
  */
@@ -2552,7 +2552,7 @@ class Types implements \ArrayAccess
     {
     }
 }
-namespace DEPTRAC_202403\pq\Exception;
+namespace DEPTRAC_202404\pq\Exception;
 
 /**
  * A method call was not expected.

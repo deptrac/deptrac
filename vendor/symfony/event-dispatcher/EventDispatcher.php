@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\EventDispatcher;
+namespace DEPTRAC_202404\Symfony\Component\EventDispatcher;
 
-use DEPTRAC_202403\Psr\EventDispatcher\StoppableEventInterface;
-use DEPTRAC_202403\Symfony\Component\EventDispatcher\Debug\WrappedListener;
+use DEPTRAC_202404\Psr\EventDispatcher\StoppableEventInterface;
+use DEPTRAC_202404\Symfony\Component\EventDispatcher\Debug\WrappedListener;
 /**
  * The EventDispatcherInterface is the central point of Symfony's event listener system.
  *

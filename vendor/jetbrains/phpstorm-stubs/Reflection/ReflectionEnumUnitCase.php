@@ -1,8 +1,8 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
-use DEPTRAC_202403\JetBrains\PhpStorm\Pure;
+use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
 /**
  * @link https://php.net/manual/en/class.reflectionenumunitcase.php
  * @since 8.1
@@ -28,4 +28,4 @@ class ReflectionEnumUnitCase extends \ReflectionClassConstant
  * @link https://php.net/manual/en/class.reflectionenumunitcase.php
  * @since 8.1
  */
-\class_alias('DEPTRAC_202403\\ReflectionEnumUnitCase', 'ReflectionEnumUnitCase', \false);
+\class_alias('DEPTRAC_202404\\ReflectionEnumUnitCase', 'ReflectionEnumUnitCase', \false);

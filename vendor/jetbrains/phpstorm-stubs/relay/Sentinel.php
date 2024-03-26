@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\Relay;
+namespace DEPTRAC_202404\Relay;
 
 /**
  * Relay Sentinel client.
@@ -36,7 +36,7 @@ class Sentinel
      * @param  float  $read_timeout
      * @param  mixed  $auth
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Server]
+    #[\DEPTRAC_202404\Relay\Attributes\Server]
     public function __construct(array|string|null $host = null, int $port = 26379, float $timeout = 0, mixed $persistent = null, int $retry_interval = 0, float $read_timeout = 0, #[\SensitiveParameter] mixed $auth = null)
     {
     }
@@ -47,7 +47,7 @@ class Sentinel
      * @param  string  $master
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function ckquorum(string $master) : bool
     {
     }
@@ -58,7 +58,7 @@ class Sentinel
      * @param  string  $master
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function failover(string $master) : bool
     {
     }
@@ -68,7 +68,7 @@ class Sentinel
      *
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function flushconfig() : bool
     {
     }
@@ -78,7 +78,7 @@ class Sentinel
      * @param  string  $master
      * @return array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function getMasterAddrByName(string $master) : array|false
     {
     }
@@ -88,7 +88,7 @@ class Sentinel
      * @param  string  $master
      * @return array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function master(string $master) : array|false
     {
     }
@@ -97,7 +97,7 @@ class Sentinel
      *
      * @return array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function masters() : array|false
     {
     }
@@ -106,7 +106,7 @@ class Sentinel
      *
      * @return string
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function myid() : string
     {
     }
@@ -116,7 +116,7 @@ class Sentinel
      * @param  string|null  $message
      * @return string|bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function ping(?string $message = null) : string|bool
     {
     }
@@ -126,7 +126,7 @@ class Sentinel
      * @param  string  $pattern
      * @return int
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function reset(string $pattern) : int
     {
     }
@@ -136,7 +136,7 @@ class Sentinel
      * @param  string  $master
      * @return array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function sentinels(string $master) : array|false
     {
     }
@@ -146,7 +146,7 @@ class Sentinel
      * @param  string  $master
      * @return array|false
      */
-    #[\DEPTRAC_202403\Relay\Attributes\RedisCommand]
+    #[\DEPTRAC_202404\Relay\Attributes\RedisCommand]
     public function slaves(string $master) : array|false
     {
     }
@@ -155,7 +155,7 @@ class Sentinel
      *
      * @return string|null
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getLastError() : string|null
     {
     }
@@ -166,7 +166,7 @@ class Sentinel
      * @param  mixed  $value
      * @return bool
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function setOption(int $option, mixed $value) : bool
     {
     }
@@ -176,7 +176,7 @@ class Sentinel
      * @param  int  $option
      * @return mixed
      */
-    #[\DEPTRAC_202403\Relay\Attributes\Local]
+    #[\DEPTRAC_202404\Relay\Attributes\Local]
     public function getOption(int $option) : mixed
     {
     }

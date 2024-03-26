@@ -1,8 +1,8 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
-use DEPTRAC_202403\JetBrains\PhpStorm\ExpectedValues;
+use DEPTRAC_202404\JetBrains\PhpStorm\ExpectedValues;
 /** GNUPG Constants
  * @link https://php.net/manual/en/gnupg.constants.php
  */
@@ -344,7 +344,7 @@ class gnupg
  * @link https://php.net/manual/en/book.gnupg.php
  * Class gnupg
  */
-\class_alias('DEPTRAC_202403\\gnupg', 'gnupg', \false);
+\class_alias('DEPTRAC_202404\\gnupg', 'gnupg', \false);
 class gnupg_keylistiterator implements \Iterator
 {
     public function __construct()
@@ -366,7 +366,7 @@ class gnupg_keylistiterator implements \Iterator
     {
     }
 }
-\class_alias('DEPTRAC_202403\\gnupg_keylistiterator', 'gnupg_keylistiterator', \false);
+\class_alias('DEPTRAC_202404\\gnupg_keylistiterator', 'gnupg_keylistiterator', \false);
 /**
  * Initialize a connection
  * @link https://www.php.net/manual/en/function.gnupg-init.php

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Helper;
+namespace DEPTRAC_202404\Symfony\Component\Console\Helper;
 
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputAwareInterface;
-use DEPTRAC_202403\Symfony\Component\Console\Input\InputInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputAwareInterface;
+use DEPTRAC_202404\Symfony\Component\Console\Input\InputInterface;
 /**
  * An implementation of InputAwareInterface for Helpers.
  *

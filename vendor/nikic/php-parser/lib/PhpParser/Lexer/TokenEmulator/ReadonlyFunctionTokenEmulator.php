@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Lexer\TokenEmulator;
+namespace DEPTRAC_202404\PhpParser\Lexer\TokenEmulator;
 
-use DEPTRAC_202403\PhpParser\Lexer\Emulative;
+use DEPTRAC_202404\PhpParser\Lexer\Emulative;
 /*
  * In PHP 8.1, "readonly(" was special cased in the lexer in order to support functions with
  * name readonly. In PHP 8.2, this may conflict with readonly properties having a DNF type. For

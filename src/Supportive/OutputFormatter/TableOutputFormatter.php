@@ -13,7 +13,7 @@ use Qossmic\Deptrac\Contract\Result\SkippedViolation;
 use Qossmic\Deptrac\Contract\Result\Uncovered;
 use Qossmic\Deptrac\Contract\Result\Violation;
 use Qossmic\Deptrac\Contract\Result\Warning;
-use DEPTRAC_202403\Symfony\Component\Console\Helper\TableSeparator;
+use DEPTRAC_202404\Symfony\Component\Console\Helper\TableSeparator;
 use function count;
 final class TableOutputFormatter implements OutputFormatterInterface
 {
@@ -67,7 +67,7 @@ final class TableOutputFormatter implements OutputFormatterInterface
         if (count($dependency->serialize()) > 1) {
             $message .= "\n" . $this->formatMultilinePath($dependency);
         }
-        $fileOccurrence = $rule->getDependency()->getFileOccurrence();
+        $fileOccurrence = $rule->getDependency()->getContext()->fileOccurrence;
         $message .= \sprintf("\n%s:%d", $fileOccurrence->filepath, $fileOccurrence->line);
         return ['<fg=yellow>Skipped</>', $message];
     }
@@ -82,7 +82,7 @@ final class TableOutputFormatter implements OutputFormatterInterface
         if (count($dependency->serialize()) > 1) {
             $message .= "\n" . $this->formatMultilinePath($dependency);
         }
-        $fileOccurrence = $rule->getDependency()->getFileOccurrence();
+        $fileOccurrence = $rule->getDependency()->getContext()->fileOccurrence;
         $message .= \sprintf("\n%s:%d", $fileOccurrence->filepath, $fileOccurrence->line);
         return [\sprintf('<fg=red>%s</>', $rule->ruleName()), $message];
     }
@@ -113,7 +113,7 @@ final class TableOutputFormatter implements OutputFormatterInterface
         if (count($dependency->serialize()) > 1) {
             $message .= "\n" . $this->formatMultilinePath($dependency);
         }
-        $fileOccurrence = $rule->getDependency()->getFileOccurrence();
+        $fileOccurrence = $rule->getDependency()->getContext()->fileOccurrence;
         $message .= \sprintf("\n%s:%d", $fileOccurrence->filepath, $fileOccurrence->line);
         return [\sprintf('<fg=%s>Uncovered</>', $reportAsError ? 'red' : 'yellow'), $message];
     }

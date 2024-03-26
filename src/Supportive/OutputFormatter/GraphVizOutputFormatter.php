@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Supportive\OutputFormatter;
 
-use DEPTRAC_202403\phpDocumentor\GraphViz\Edge;
-use DEPTRAC_202403\phpDocumentor\GraphViz\Exception;
-use DEPTRAC_202403\phpDocumentor\GraphViz\Graph;
-use DEPTRAC_202403\phpDocumentor\GraphViz\Node;
+use DEPTRAC_202404\phpDocumentor\GraphViz\Edge;
+use DEPTRAC_202404\phpDocumentor\GraphViz\Exception;
+use DEPTRAC_202404\phpDocumentor\GraphViz\Graph;
+use DEPTRAC_202404\phpDocumentor\GraphViz\Node;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputException;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInterface;

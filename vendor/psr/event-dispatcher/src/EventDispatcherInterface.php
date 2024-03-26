@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\Psr\EventDispatcher;
+namespace DEPTRAC_202404\Psr\EventDispatcher;
 
 /**
  * Defines a dispatcher for events.

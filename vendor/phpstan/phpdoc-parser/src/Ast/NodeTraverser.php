@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PHPStan\PhpDocParser\Ast;
+namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast;
 
 use LogicException;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use function array_keys;
 use function array_pop;
 use function array_splice;

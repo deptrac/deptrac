@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 /**
  * @see https://github.com/libgeos/php-geos/blob/master/tests/000_General.phpt
@@ -106,7 +106,7 @@ class GEOSWKTReader
  * Class GEOSWKTReader
  * @see https://github.com/libgeos/php-geos/blob/master/tests/003_WKTReader.phpt
  */
-\class_alias('DEPTRAC_202403\\GEOSWKTReader', 'GEOSWKTReader', \false);
+\class_alias('DEPTRAC_202404\\GEOSWKTReader', 'GEOSWKTReader', \false);
 /**
  * Class GEOSWKTWriter
  * @see https://github.com/libgeos/php-geos/blob/master/tests/002_WKTWriter.phpt
@@ -163,7 +163,7 @@ class GEOSWKTWriter
  * Class GEOSWKTWriter
  * @see https://github.com/libgeos/php-geos/blob/master/tests/002_WKTWriter.phpt
  */
-\class_alias('DEPTRAC_202403\\GEOSWKTWriter', 'GEOSWKTWriter', \false);
+\class_alias('DEPTRAC_202404\\GEOSWKTWriter', 'GEOSWKTWriter', \false);
 /**
  * Class GEOSGeometry
  * @see https://github.com/libgeos/php-geos/blob/master/tests/001_Geometry.phpt
@@ -714,7 +714,7 @@ class GEOSGeometry
  * Class GEOSGeometry
  * @see https://github.com/libgeos/php-geos/blob/master/tests/001_Geometry.phpt
  */
-\class_alias('DEPTRAC_202403\\GEOSGeometry', 'GEOSGeometry', \false);
+\class_alias('DEPTRAC_202404\\GEOSGeometry', 'GEOSGeometry', \false);
 /**
  * Class GEOSWKBWriter
  * @see https://github.com/libgeos/php-geos/blob/master/tests/004_WKBWriter.phpt
@@ -787,7 +787,7 @@ class GEOSWKBWriter
  * Class GEOSWKBWriter
  * @see https://github.com/libgeos/php-geos/blob/master/tests/004_WKBWriter.phpt
  */
-\class_alias('DEPTRAC_202403\\GEOSWKBWriter', 'GEOSWKBWriter', \false);
+\class_alias('DEPTRAC_202404\\GEOSWKBWriter', 'GEOSWKBWriter', \false);
 /**
  * Class GEOSWKBReader
  * @see https://github.com/libgeos/php-geos/blob/master/tests/005_WKBReader.phpt
@@ -821,4 +821,4 @@ class GEOSWKBReader
  * Class GEOSWKBReader
  * @see https://github.com/libgeos/php-geos/blob/master/tests/005_WKBReader.phpt
  */
-\class_alias('DEPTRAC_202403\\GEOSWKBReader', 'GEOSWKBReader', \false);
+\class_alias('DEPTRAC_202404\\GEOSWKBReader', 'GEOSWKBReader', \false);

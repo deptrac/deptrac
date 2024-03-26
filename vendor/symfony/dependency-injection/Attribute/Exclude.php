@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Attribute;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute;
 
 /**
  * An attribute to tell the class should not be registered as service.

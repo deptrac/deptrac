@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Finder;
+namespace DEPTRAC_202404\Symfony\Component\Finder;
 
-use DEPTRAC_202403\Symfony\Component\Finder\Comparator\DateComparator;
-use DEPTRAC_202403\Symfony\Component\Finder\Comparator\NumberComparator;
-use DEPTRAC_202403\Symfony\Component\Finder\Exception\DirectoryNotFoundException;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\CustomFilterIterator;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\DateRangeFilterIterator;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\DepthRangeFilterIterator;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\ExcludeDirectoryFilterIterator;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\FilenameFilterIterator;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\LazyIterator;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\SizeRangeFilterIterator;
-use DEPTRAC_202403\Symfony\Component\Finder\Iterator\SortableIterator;
+use DEPTRAC_202404\Symfony\Component\Finder\Comparator\DateComparator;
+use DEPTRAC_202404\Symfony\Component\Finder\Comparator\NumberComparator;
+use DEPTRAC_202404\Symfony\Component\Finder\Exception\DirectoryNotFoundException;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\CustomFilterIterator;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\DateRangeFilterIterator;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\DepthRangeFilterIterator;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\ExcludeDirectoryFilterIterator;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\FilenameFilterIterator;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\LazyIterator;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\SizeRangeFilterIterator;
+use DEPTRAC_202404\Symfony\Component\Finder\Iterator\SortableIterator;
 /**
  * Finder allows to build rules to find files and directories.
  *

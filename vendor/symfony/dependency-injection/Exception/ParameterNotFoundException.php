@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception;
 
-use DEPTRAC_202403\Psr\Container\NotFoundExceptionInterface;
+use DEPTRAC_202404\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent parameter is used.
  *

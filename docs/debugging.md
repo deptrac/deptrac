@@ -10,11 +10,20 @@ With the `debug:layer`-command you can list all tokens which are matched in
 a specific layer. This command only shows tokens that would be emitted by your analyser configuration.
 
 ```console
-$ php deptrac.phar debug:layer --config-file=examples/DirectoryLayer.depfile.yaml Layer1
+$ php deptrac.phar debug:layer --config-file=deptrac.config.php Time
 
-examples\Layer1\AnotherClassLikeAController
-examples\Layer1\SomeClass
-examples\Layer1\SomeClass2
+ ---------------------------------------------------- ------------
+  Time                                                 Token Type
+ ---------------------------------------------------- ------------
+  /src/Supportive/Time/Period.php                      file
+  /src/Supportive/Time/StartedPeriod.php               file
+  /src/Supportive/Time/Stopwatch.php                   file
+  /src/Supportive/Time/StopwatchException.php          file
+  Qossmic\Deptrac\Supportive\Time\Period               class-like
+  Qossmic\Deptrac\Supportive\Time\StartedPeriod        class-like
+  Qossmic\Deptrac\Supportive\Time\Stopwatch            class-like
+  Qossmic\Deptrac\Supportive\Time\StopwatchException   class-like
+ ---------------------------------------------------- ------------
 ```
 
 ## `debug:token`
@@ -80,3 +89,22 @@ $ php deptrac.phar debug:unused --limit=10
   InputCollector layer is dependent File layer 3 times
   OutputFormatter layer is dependent DependencyInjection layer 1 times
 ```
+
+## `changed-files`
+
+> [!CAUTION]
+> This command in experimental and is not covered by
+> the [BC policy](bc_policy.md).
+
+This command list the layers corresponding to the passed files. Optionally it
+can also list all the layers that depend on those layers.
+
+```console
+$ php deptrac.phar changed-files --with-dependencies src/Supportive/File/FileReader.php
+
+  File
+  Console;Ast;InputCollector;Analyser;Dependency;Layer
+```
+
+For a discussion as to why that information might be useful, refer to
+the [90DaysOfDevOps Presentation](https://github.com/MichaelCade/90DaysOfDevOps/pull/472).

@@ -7,7 +7,7 @@
  * @author Mathijs Giesbers
  * @package mysql_xdevapi
  */
-namespace DEPTRAC_202403\mysql_xdevapi;
+namespace DEPTRAC_202404\mysql_xdevapi;
 
 \define('MYSQLX_LOCK_DEFAULT', 0);
 \define('MYSQLX_TYPE_DECIMAL', 0);

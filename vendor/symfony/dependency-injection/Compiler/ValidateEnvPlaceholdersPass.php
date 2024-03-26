@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202403\Symfony\Component\Config\Definition\BaseNode;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\ConfigurationInterface;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\Processor;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\BaseNode;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\ConfigurationInterface;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\Processor;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 /**
  * Validates environment variable placeholders used in extension configuration with dummy values.
  *

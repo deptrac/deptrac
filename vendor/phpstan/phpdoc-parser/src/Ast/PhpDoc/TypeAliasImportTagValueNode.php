@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PHPStan\PhpDocParser\Ast\PhpDoc;
+namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast\PhpDoc;
 
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use function trim;
 class TypeAliasImportTagValueNode implements PhpDocTagValueNode
 {

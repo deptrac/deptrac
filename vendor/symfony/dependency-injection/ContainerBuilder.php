@@ -8,45 +8,45 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection;
 
-use DEPTRAC_202403\Composer\InstalledVersions;
-use DEPTRAC_202403\Symfony\Component\Config\Resource\ClassExistenceResource;
-use DEPTRAC_202403\Symfony\Component\Config\Resource\ComposerResource;
-use DEPTRAC_202403\Symfony\Component\Config\Resource\DirectoryResource;
-use DEPTRAC_202403\Symfony\Component\Config\Resource\FileExistenceResource;
-use DEPTRAC_202403\Symfony\Component\Config\Resource\FileResource;
-use DEPTRAC_202403\Symfony\Component\Config\Resource\GlobResource;
-use DEPTRAC_202403\Symfony\Component\Config\Resource\ReflectionClassResource;
-use DEPTRAC_202403\Symfony\Component\Config\Resource\ResourceInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\LazyClosure;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Attribute\Target;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler\Compiler;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler\PassConfig;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\LogicException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\LazyServiceInstantiator;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use DEPTRAC_202403\Symfony\Component\ExpressionLanguage\Expression;
-use DEPTRAC_202403\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use DEPTRAC_202404\Composer\InstalledVersions;
+use DEPTRAC_202404\Symfony\Component\Config\Resource\ClassExistenceResource;
+use DEPTRAC_202404\Symfony\Component\Config\Resource\ComposerResource;
+use DEPTRAC_202404\Symfony\Component\Config\Resource\DirectoryResource;
+use DEPTRAC_202404\Symfony\Component\Config\Resource\FileExistenceResource;
+use DEPTRAC_202404\Symfony\Component\Config\Resource\FileResource;
+use DEPTRAC_202404\Symfony\Component\Config\Resource\GlobResource;
+use DEPTRAC_202404\Symfony\Component\Config\Resource\ReflectionClassResource;
+use DEPTRAC_202404\Symfony\Component\Config\Resource\ResourceInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\LazyClosure;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\Target;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\Compiler;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\LogicException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\LazyServiceInstantiator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 /**
  * ContainerBuilder is a DI container that provides an API to easily describe services.
  *
@@ -471,7 +471,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
             $alias = $this->aliasDefinitions[$id];
             if ($alias->isDeprecated()) {
                 $deprecation = $alias->getDeprecation($id);
-                \DEPTRAC_202403\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
+                \DEPTRAC_202404\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
             }
             return $this->doGet((string) $alias, $invalidBehavior, $inlineServices, $isConstructorArgument);
         }
@@ -889,7 +889,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
         }
         if ($definition->isDeprecated()) {
             $deprecation = $definition->getDeprecation($id);
-            \DEPTRAC_202403\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
+            \DEPTRAC_202404\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
         }
         $parameterBag = $this->getParameterBag();
         $class = $parameterBag->resolveValue($definition->getClass()) ?: (['Closure', 'fromCallable'] === $definition->getFactory() ? 'Closure' : null);
@@ -940,7 +940,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
             if (!$definition->isDeprecated() && \is_array($factory) && \is_string($factory[0])) {
                 $r = new \ReflectionClass($factory[0]);
                 if (0 < \strpos($r->getDocComment(), "\n * @deprecated ")) {
-                    \DEPTRAC_202403\trigger_deprecation('', '', 'The "%s" service relies on the deprecated "%s" factory class. It should either be deprecated or its factory upgraded.', $id, $r->name);
+                    \DEPTRAC_202404\trigger_deprecation('', '', 'The "%s" service relies on the deprecated "%s" factory class. It should either be deprecated or its factory upgraded.', $id, $r->name);
                 }
             }
         } else {
@@ -954,7 +954,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
                 $service = $r->getConstructor() ? $r->newInstanceArgs($arguments) : $r->newInstance();
             }
             if (!$definition->isDeprecated() && 0 < \strpos($r->getDocComment(), "\n * @deprecated ")) {
-                \DEPTRAC_202403\trigger_deprecation('', '', 'The "%s" service relies on the deprecated "%s" class. It should either be deprecated or its implementation upgraded.', $id, $r->name);
+                \DEPTRAC_202404\trigger_deprecation('', '', 'The "%s" service relies on the deprecated "%s" class. It should either be deprecated or its implementation upgraded.', $id, $r->name);
             }
         }
         $lastWitherIndex = null;

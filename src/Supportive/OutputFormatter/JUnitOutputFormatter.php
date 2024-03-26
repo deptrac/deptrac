@@ -162,7 +162,7 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
     private function addFailure(Violation $violation, DOMDocument $xmlDoc, DOMElement $testCase) : void
     {
         $dependency = $violation->getDependency();
-        $message = \sprintf('%s:%d must not depend on %s (%s on %s)', $dependency->getDepender()->toString(), $dependency->getFileOccurrence()->line, $dependency->getDependent()->toString(), $violation->getDependerLayer(), $violation->getDependentLayer());
+        $message = \sprintf('%s:%d must not depend on %s (%s on %s)', $dependency->getDepender()->toString(), $dependency->getContext()->fileOccurrence->line, $dependency->getDependent()->toString(), $violation->getDependerLayer(), $violation->getDependentLayer());
         /** @throws void */
         $error = $xmlDoc->createElement('failure');
         /** @throws void */
@@ -180,7 +180,7 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
     private function addWarning(Uncovered $rule, DOMDocument $xmlDoc, DOMElement $testCase) : void
     {
         $dependency = $rule->getDependency();
-        $message = \sprintf('%s:%d has uncovered dependency on %s (%s)', $dependency->getDepender()->toString(), $dependency->getFileOccurrence()->line, $dependency->getDependent()->toString(), $rule->layer);
+        $message = \sprintf('%s:%d has uncovered dependency on %s (%s)', $dependency->getDepender()->toString(), $dependency->getContext()->fileOccurrence->line, $dependency->getDependent()->toString(), $rule->layer);
         /** @throws void */
         $error = $xmlDoc->createElement('warning');
         /** @throws void */

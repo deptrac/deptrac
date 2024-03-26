@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\Elastic\Apm;
+namespace DEPTRAC_202404\Elastic\Apm;
 
 /**
  * Class ElasticApm is a facade (as in Facade design pattern) to the rest of Elastic APM public API.

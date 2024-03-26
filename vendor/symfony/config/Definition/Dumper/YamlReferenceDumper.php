@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Config\Definition\Dumper;
+namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Dumper;
 
-use DEPTRAC_202403\Symfony\Component\Config\Definition\ArrayNode;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\BaseNode;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\ConfigurationInterface;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\EnumNode;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\NodeInterface;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\PrototypedArrayNode;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\ScalarNode;
-use DEPTRAC_202403\Symfony\Component\Config\Definition\VariableNode;
-use DEPTRAC_202403\Symfony\Component\Yaml\Inline;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\ArrayNode;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\BaseNode;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\ConfigurationInterface;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\EnumNode;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\NodeInterface;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\ScalarNode;
+use DEPTRAC_202404\Symfony\Component\Config\Definition\VariableNode;
+use DEPTRAC_202404\Symfony\Component\Yaml\Inline;
 /**
  * Dumps a Yaml reference configuration for the given configuration/node instance.
  *

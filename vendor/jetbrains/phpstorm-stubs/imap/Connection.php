@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\IMAP;
+namespace DEPTRAC_202404\IMAP;
 
 /**
  * @since 8.1

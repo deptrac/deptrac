@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\MongoDB\BSON;
+namespace DEPTRAC_202404\MongoDB\BSON;
 
 /**
  * Classes that implement this interface may return data to be serialized as a BSON array or document in lieu of the object's public properties

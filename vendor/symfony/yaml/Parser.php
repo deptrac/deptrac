@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Yaml;
+namespace DEPTRAC_202404\Symfony\Component\Yaml;
 
-use DEPTRAC_202403\Symfony\Component\Yaml\Exception\ParseException;
-use DEPTRAC_202403\Symfony\Component\Yaml\Tag\TaggedValue;
+use DEPTRAC_202404\Symfony\Component\Yaml\Exception\ParseException;
+use DEPTRAC_202404\Symfony\Component\Yaml\Tag\TaggedValue;
 /**
  * Parser parses YAML strings to convert them to PHP arrays.
  *
@@ -163,7 +163,7 @@ class Parser
                 }
             } elseif (self::preg_match('#^(?P<key>(?:![^\\s]++\\s++)?(?:' . Inline::REGEX_QUOTED_STRING . '|(?:!?!php/const:)?[^ \'"\\[\\{!].*?)) *\\:(( |\\t)++(?P<value>.+))?$#u', \rtrim($this->currentLine), $values) && (!\str_contains($values['key'], ' #') || \in_array($values['key'][0], ['"', "'"]))) {
                 if (\str_starts_with($values['key'], '!php/const:')) {
-                    \DEPTRAC_202403\trigger_deprecation('symfony/yaml', '6.2', 'YAML syntax for key "%s" is deprecated and replaced by "!php/const %s".', $values['key'], \substr($values['key'], 11));
+                    \DEPTRAC_202404\trigger_deprecation('symfony/yaml', '6.2', 'YAML syntax for key "%s" is deprecated and replaced by "!php/const %s".', $values['key'], \substr($values['key'], 11));
                 }
                 if ($context && 'sequence' == $context) {
                     throw new ParseException('You cannot define a mapping item when in a sequence.', $this->currentLineNb + 1, $this->currentLine, $this->filename);

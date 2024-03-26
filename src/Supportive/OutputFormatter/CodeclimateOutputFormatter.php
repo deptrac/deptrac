@@ -124,10 +124,10 @@ final class CodeclimateOutputFormatter implements OutputFormatterInterface
      */
     private function buildRuleArray(RuleInterface $rule, string $message, string $severity) : array
     {
-        return ['type' => 'issue', 'check_name' => 'Dependency violation', 'fingerprint' => $this->buildFingerprint($rule), 'description' => $message, 'categories' => ['Style', 'Complexity'], 'severity' => $severity, 'location' => ['path' => $rule->getDependency()->getFileOccurrence()->filepath, 'lines' => ['begin' => $rule->getDependency()->getFileOccurrence()->line]]];
+        return ['type' => 'issue', 'check_name' => 'Dependency violation', 'fingerprint' => $this->buildFingerprint($rule), 'description' => $message, 'categories' => ['Style', 'Complexity'], 'severity' => $severity, 'location' => ['path' => $rule->getDependency()->getContext()->fileOccurrence->filepath, 'lines' => ['begin' => $rule->getDependency()->getContext()->fileOccurrence->line]]];
     }
     private function buildFingerprint(RuleInterface $rule) : string
     {
-        return \sha1(\implode(',', [$rule::class, $rule->getDependency()->getDepender()->toString(), $rule->getDependency()->getDependent()->toString(), $rule->getDependency()->getFileOccurrence()->filepath, $rule->getDependency()->getFileOccurrence()->line]));
+        return \sha1(\implode(',', [$rule::class, $rule->getDependency()->getDepender()->toString(), $rule->getDependency()->getDependent()->toString(), $rule->getDependency()->getContext()->fileOccurrence->filepath, $rule->getDependency()->getContext()->fileOccurrence->line]));
     }
 }

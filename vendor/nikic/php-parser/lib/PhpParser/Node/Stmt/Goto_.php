@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Node\Stmt;
+namespace DEPTRAC_202404\PhpParser\Node\Stmt;
 
-use DEPTRAC_202403\PhpParser\Node\Identifier;
-use DEPTRAC_202403\PhpParser\Node\Stmt;
+use DEPTRAC_202404\PhpParser\Node\Identifier;
+use DEPTRAC_202404\PhpParser\Node\Stmt;
 class Goto_ extends Stmt
 {
     /** @var Identifier Name of label to jump to */

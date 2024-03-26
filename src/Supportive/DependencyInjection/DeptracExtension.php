@@ -4,9 +4,9 @@ declare (strict_types=1);
 namespace Qossmic\Deptrac\Supportive\DependencyInjection;
 
 use Qossmic\Deptrac\Contract\Config\EmitterType;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Extension\Extension;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\Extension;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use function getcwd;
 /**
  * @psalm-suppress UndefinedDocblockClass
@@ -26,6 +26,7 @@ class DeptracExtension extends Extension implements PrependExtensionInterface
         $container->setParameter('formatters', $configs['formatters'] ?? []);
         $container->setParameter('analyser', $configs['analyser']);
         $container->setParameter('ignore_uncovered_internal_classes', $configs['ignore_uncovered_internal_classes']);
+        $container->setParameter('cache_file', $configs['cache_file']);
     }
     public function prepend(ContainerBuilder $container) : void
     {
@@ -55,6 +56,9 @@ class DeptracExtension extends Extension implements PrependExtensionInterface
         }
         if (!$container->hasParameter('ignore_uncovered_internal_classes')) {
             $container->setParameter('ignore_uncovered_internal_classes', \true);
+        }
+        if (!$container->hasParameter('cache_file')) {
+            $container->setParameter('cache_file', '.deptrac.cache');
         }
     }
 }

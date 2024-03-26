@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PhpParser\Builder;
+namespace DEPTRAC_202404\PhpParser\Builder;
 
-use DEPTRAC_202403\PhpParser;
-use DEPTRAC_202403\PhpParser\BuilderHelpers;
-use DEPTRAC_202403\PhpParser\Node;
-use DEPTRAC_202403\PhpParser\Node\Identifier;
-use DEPTRAC_202403\PhpParser\Node\Name;
-use DEPTRAC_202403\PhpParser\Node\Stmt;
-use DEPTRAC_202403\PhpParser\Node\ComplexType;
+use DEPTRAC_202404\PhpParser;
+use DEPTRAC_202404\PhpParser\BuilderHelpers;
+use DEPTRAC_202404\PhpParser\Node;
+use DEPTRAC_202404\PhpParser\Node\Identifier;
+use DEPTRAC_202404\PhpParser\Node\Name;
+use DEPTRAC_202404\PhpParser\Node\Stmt;
+use DEPTRAC_202404\PhpParser\Node\ComplexType;
 class Property implements PhpParser\Builder
 {
     protected $name;

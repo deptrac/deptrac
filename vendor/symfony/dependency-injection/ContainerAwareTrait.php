@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection;
 
-\DEPTRAC_202403\trigger_deprecation('symfony/dependency-injection', '6.4', '"%s" is deprecated, use dependency injection instead.', ContainerAwareTrait::class);
+\DEPTRAC_202404\trigger_deprecation('symfony/dependency-injection', '6.4', '"%s" is deprecated, use dependency injection instead.', ContainerAwareTrait::class);
 /**
  * ContainerAware trait.
  *
@@ -30,7 +30,7 @@ trait ContainerAwareTrait
     public function setContainer(ContainerInterface $container = null)
     {
         if (1 > \func_num_args()) {
-            \DEPTRAC_202403\trigger_deprecation('symfony/dependency-injection', '6.2', 'Calling "%s::%s()" without any arguments is deprecated, pass null explicitly instead.', __CLASS__, __FUNCTION__);
+            \DEPTRAC_202404\trigger_deprecation('symfony/dependency-injection', '6.2', 'Calling "%s::%s()" without any arguments is deprecated, pass null explicitly instead.', __CLASS__, __FUNCTION__);
         }
         $this->container = $container;
     }

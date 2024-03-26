@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202403\PHPStan\PhpDocParser\Ast\PhpDoc\Doctrine;
+namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast\PhpDoc\Doctrine;
 
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprIntegerNode;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprStringNode;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\Node;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use DEPTRAC_202403\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprIntegerNode;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprStringNode;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Node;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 /**
  * @phpstan-import-type ValueType from DoctrineArgument
  * @phpstan-type KeyType = ConstExprIntegerNode|ConstExprStringNode|IdentifierTypeNode|ConstFetchNode|null

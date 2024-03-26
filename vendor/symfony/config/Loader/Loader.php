@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Config\Loader;
+namespace DEPTRAC_202404\Symfony\Component\Config\Loader;
 
-use DEPTRAC_202403\Symfony\Component\Config\Exception\LoaderLoadException;
+use DEPTRAC_202404\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * Loader is the abstract class used by all built-in loaders.
  *

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Console\Question;
+namespace DEPTRAC_202404\Symfony\Component\Console\Question;
 
-use DEPTRAC_202403\Symfony\Component\Console\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\Console\Exception\LogicException;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\Console\Exception\LogicException;
 /**
  * Represents a Question.
  *
@@ -155,7 +155,7 @@ class Question
     public function setAutocompleterCallback(?callable $callback = null) : static
     {
         if (1 > \func_num_args()) {
-            \DEPTRAC_202403\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
+            \DEPTRAC_202404\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
         }
         if ($this->hidden && null !== $callback) {
             throw new LogicException('A hidden question cannot use the autocompleter.');
@@ -171,7 +171,7 @@ class Question
     public function setValidator(?callable $validator = null) : static
     {
         if (1 > \func_num_args()) {
-            \DEPTRAC_202403\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
+            \DEPTRAC_202404\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
         }
         $this->validator = null === $validator ? null : $validator(...);
         return $this;

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\Yaml;
+namespace DEPTRAC_202404\Symfony\Component\Yaml;
 
-use DEPTRAC_202403\Symfony\Component\Yaml\Exception\DumpException;
-use DEPTRAC_202403\Symfony\Component\Yaml\Exception\ParseException;
-use DEPTRAC_202403\Symfony\Component\Yaml\Tag\TaggedValue;
+use DEPTRAC_202404\Symfony\Component\Yaml\Exception\DumpException;
+use DEPTRAC_202404\Symfony\Component\Yaml\Exception\ParseException;
+use DEPTRAC_202404\Symfony\Component\Yaml\Tag\TaggedValue;
 /**
  * Inline implements a YAML parser/dumper for the YAML inline syntax.
  *

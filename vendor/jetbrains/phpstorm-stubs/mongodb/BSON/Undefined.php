@@ -1,8 +1,8 @@
 <?php
 
-namespace DEPTRAC_202403\MongoDB\BSON;
+namespace DEPTRAC_202404\MongoDB\BSON;
 
-use DEPTRAC_202403\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
 use MongoDB\Driver\Exception\InvalidArgumentException;
 use MongoDB\Driver\Exception\UnexpectedValueException;
 /**

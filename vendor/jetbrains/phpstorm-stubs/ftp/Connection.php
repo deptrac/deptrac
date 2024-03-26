@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\FTP;
+namespace DEPTRAC_202404\FTP;
 
 /**
  * @since 8.1

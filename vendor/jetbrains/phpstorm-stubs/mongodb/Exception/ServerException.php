@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403\MongoDB\Driver\Exception;
+namespace DEPTRAC_202404\MongoDB\Driver\Exception;
 
 /**
  * Base class for exceptions thrown by the server. The code of this exception and its subclasses will correspond to the original

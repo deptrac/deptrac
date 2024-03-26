@@ -1,16 +1,16 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 /**
  * Start of mysqli extension stubs v.0.1
  * @link https://php.net/manual/en/book.mysqli.php
  */
-use DEPTRAC_202403\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202403\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
 /**
  * mysqli_sql_exception
  */
@@ -39,7 +39,7 @@ final class mysqli_sql_exception extends \RuntimeException
 /**
  * mysqli_sql_exception
  */
-\class_alias('DEPTRAC_202403\\mysqli_sql_exception', 'mysqli_sql_exception', \false);
+\class_alias('DEPTRAC_202404\\mysqli_sql_exception', 'mysqli_sql_exception', \false);
 /**
  * MySQLi Driver.
  * @link https://php.net/manual/en/class.mysqli-driver.php
@@ -80,7 +80,7 @@ final class mysqli_driver
  * MySQLi Driver.
  * @link https://php.net/manual/en/class.mysqli-driver.php
  */
-\class_alias('DEPTRAC_202403\\mysqli_driver', 'mysqli_driver', \false);
+\class_alias('DEPTRAC_202404\\mysqli_driver', 'mysqli_driver', \false);
 /**
  * Represents a connection between PHP and a MySQL database.
  * @link https://php.net/manual/en/class.mysqli.php
@@ -911,7 +911,7 @@ class mysqli
  * Represents a connection between PHP and a MySQL database.
  * @link https://php.net/manual/en/class.mysqli.php
  */
-\class_alias('DEPTRAC_202403\\mysqli', 'mysqli', \false);
+\class_alias('DEPTRAC_202404\\mysqli', 'mysqli', \false);
 /**
  * Represents one or more MySQL warnings.
  * @link https://php.net/manual/en/class.mysqli-warning.php
@@ -962,7 +962,7 @@ final class mysqli_warning
  * Represents one or more MySQL warnings.
  * @link https://php.net/manual/en/class.mysqli-warning.php
  */
-\class_alias('DEPTRAC_202403\\mysqli_warning', 'mysqli_warning', \false);
+\class_alias('DEPTRAC_202404\\mysqli_warning', 'mysqli_warning', \false);
 /**
  * Represents the result set obtained from a query against the database.
  * Implements Traversable since 5.4
@@ -1366,7 +1366,7 @@ class mysqli_result implements \IteratorAggregate
  * Implements Traversable since 5.4
  * @link https://php.net/manual/en/class.mysqli-result.php
  */
-\class_alias('DEPTRAC_202403\\mysqli_result', 'mysqli_result', \false);
+\class_alias('DEPTRAC_202404\\mysqli_result', 'mysqli_result', \false);
 /**
  * Represents a prepared statement.
  * @link https://php.net/manual/en/class.mysqli-stmt.php
@@ -1728,7 +1728,7 @@ class mysqli_stmt
  * Represents a prepared statement.
  * @link https://php.net/manual/en/class.mysqli-stmt.php
  */
-\class_alias('DEPTRAC_202403\\mysqli_stmt', 'mysqli_stmt', \false);
+\class_alias('DEPTRAC_202404\\mysqli_stmt', 'mysqli_stmt', \false);
 /**
  * Gets the number of affected rows in a previous MySQL operation
  * @link https://secure.php.net/manual/en/mysqli.affected-rows.php

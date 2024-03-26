@@ -1,10 +1,10 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of sysvmsg v.
-use DEPTRAC_202403\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 /**
  * Create or attach to a message queue
  * @link https://php.net/manual/en/function.msg-get-queue.php
@@ -284,5 +284,5 @@ final class SysvMessageQueue
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202403\\SysvMessageQueue', 'SysvMessageQueue', \false);
+\class_alias('DEPTRAC_202404\\SysvMessageQueue', 'SysvMessageQueue', \false);
 // End of sysvmsg v.

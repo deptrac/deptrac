@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of SPL v.0.2
-use DEPTRAC_202403\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202403\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
 /**
  * The SplFileInfo class offers a high-level object oriented interface to
  * information for an individual file.
@@ -351,7 +351,7 @@ class SplFileInfo implements \Stringable
  * information for an individual file.
  * @link https://php.net/manual/en/class.splfileinfo.php
  */
-\class_alias('DEPTRAC_202403\\SplFileInfo', 'SplFileInfo', \false);
+\class_alias('DEPTRAC_202404\\SplFileInfo', 'SplFileInfo', \false);
 /**
  * The DirectoryIterator class provides a simple interface for viewing
  * the contents of filesystem directories.
@@ -442,7 +442,7 @@ class DirectoryIterator extends \SplFileInfo implements \SeekableIterator
  * the contents of filesystem directories.
  * @link https://php.net/manual/en/class.directoryiterator.php
  */
-\class_alias('DEPTRAC_202403\\DirectoryIterator', 'DirectoryIterator', \false);
+\class_alias('DEPTRAC_202404\\DirectoryIterator', 'DirectoryIterator', \false);
 /**
  * The Filesystem iterator
  * @link https://php.net/manual/en/class.filesystemiterator.php
@@ -535,7 +535,7 @@ class FilesystemIterator extends \DirectoryIterator
  * The Filesystem iterator
  * @link https://php.net/manual/en/class.filesystemiterator.php
  */
-\class_alias('DEPTRAC_202403\\FilesystemIterator', 'FilesystemIterator', \false);
+\class_alias('DEPTRAC_202404\\FilesystemIterator', 'FilesystemIterator', \false);
 /**
  * The <b>RecursiveDirectoryIterator</b> provides
  * an interface for iterating recursively over filesystem directories.
@@ -632,7 +632,7 @@ class RecursiveDirectoryIterator extends \FilesystemIterator implements \Recursi
  * an interface for iterating recursively over filesystem directories.
  * @link https://php.net/manual/en/class.recursivedirectoryiterator.php
  */
-\class_alias('DEPTRAC_202403\\RecursiveDirectoryIterator', 'RecursiveDirectoryIterator', \false);
+\class_alias('DEPTRAC_202404\\RecursiveDirectoryIterator', 'RecursiveDirectoryIterator', \false);
 /**
  * Iterates through a file system in a similar fashion to
  * <b>glob</b>.
@@ -665,7 +665,7 @@ class GlobIterator extends \FilesystemIterator implements \Countable
  * <b>glob</b>.
  * @link https://php.net/manual/en/class.globiterator.php
  */
-\class_alias('DEPTRAC_202403\\GlobIterator', 'GlobIterator', \false);
+\class_alias('DEPTRAC_202404\\GlobIterator', 'GlobIterator', \false);
 /**
  * The SplFileObject class offers an object oriented interface for a file.
  * @link https://php.net/manual/en/class.splfileobject.php
@@ -1106,7 +1106,7 @@ class SplFileObject extends \SplFileInfo implements \RecursiveIterator, \Seekabl
  * The SplFileObject class offers an object oriented interface for a file.
  * @link https://php.net/manual/en/class.splfileobject.php
  */
-\class_alias('DEPTRAC_202403\\SplFileObject', 'SplFileObject', \false);
+\class_alias('DEPTRAC_202404\\SplFileObject', 'SplFileObject', \false);
 /**
  * The SplTempFileObject class offers an object oriented interface for a temporary file.
  * @link https://php.net/manual/en/class.spltempfileobject.php
@@ -1128,7 +1128,7 @@ class SplTempFileObject extends \SplFileObject
  * The SplTempFileObject class offers an object oriented interface for a temporary file.
  * @link https://php.net/manual/en/class.spltempfileobject.php
  */
-\class_alias('DEPTRAC_202403\\SplTempFileObject', 'SplTempFileObject', \false);
+\class_alias('DEPTRAC_202404\\SplTempFileObject', 'SplTempFileObject', \false);
 /**
  * @template TValue
  * The SplDoublyLinkedList class provides the main functionalities of a doubly linked list.
@@ -1413,7 +1413,7 @@ class SplDoublyLinkedList implements \Iterator, \Countable, \ArrayAccess, \Seria
  * @template-implements Iterator<int, TValue>
  * @template-implements ArrayAccess<int, TValue>
  */
-\class_alias('DEPTRAC_202403\\SplDoublyLinkedList', 'SplDoublyLinkedList', \false);
+\class_alias('DEPTRAC_202404\\SplDoublyLinkedList', 'SplDoublyLinkedList', \false);
 /**
  * @template TValue
  * The SplQueue class provides the main functionalities of a queue implemented using a doubly linked list.
@@ -1461,7 +1461,7 @@ class SplQueue extends \SplDoublyLinkedList
  * The SplQueue class provides the main functionalities of a queue implemented using a doubly linked list.
  * @link https://php.net/manual/en/class.splqueue.php
  */
-\class_alias('DEPTRAC_202403\\SplQueue', 'SplQueue', \false);
+\class_alias('DEPTRAC_202404\\SplQueue', 'SplQueue', \false);
 /**
  * @template TValue
  * The SplStack class provides the main functionalities of a stack implemented using a doubly linked list.
@@ -1490,7 +1490,7 @@ class SplStack extends \SplDoublyLinkedList
  * @link https://php.net/manual/en/class.splstack.php
  * @template-extends SplDoublyLinkedList<TValue>
  */
-\class_alias('DEPTRAC_202403\\SplStack', 'SplStack', \false);
+\class_alias('DEPTRAC_202404\\SplStack', 'SplStack', \false);
 /**
  * @template TValue
  * The SplHeap class provides the main functionalities of an Heap.
@@ -1638,7 +1638,7 @@ abstract class SplHeap implements \Iterator, \Countable
  * @link https://php.net/manual/en/class.splheap.php
  * @template-implements Iterator<int, TValue>
  */
-\class_alias('DEPTRAC_202403\\SplHeap', 'SplHeap', \false);
+\class_alias('DEPTRAC_202404\\SplHeap', 'SplHeap', \false);
 /**
  * @template TValue
  * The SplMinHeap class provides the main functionalities of a heap, keeping the minimum on the top.
@@ -1763,7 +1763,7 @@ class SplMinHeap extends \SplHeap
  * @link https://php.net/manual/en/class.splminheap.php
  * @template-extends SplHeap<TValue>
  */
-\class_alias('DEPTRAC_202403\\SplMinHeap', 'SplMinHeap', \false);
+\class_alias('DEPTRAC_202404\\SplMinHeap', 'SplMinHeap', \false);
 /**
  * @template TValue
  * The SplMaxHeap class provides the main functionalities of a heap, keeping the maximum on the top.
@@ -1797,7 +1797,7 @@ class SplMaxHeap extends \SplHeap
  * @link https://php.net/manual/en/class.splmaxheap.php
  * @template-extends SplHeap<TValue>
  */
-\class_alias('DEPTRAC_202403\\SplMaxHeap', 'SplMaxHeap', \false);
+\class_alias('DEPTRAC_202404\\SplMaxHeap', 'SplMaxHeap', \false);
 /**
  * @template TPriority
  * @template TValue
@@ -1978,7 +1978,7 @@ class SplPriorityQueue implements \Iterator, \Countable
  * @link https://php.net/manual/en/class.splpriorityqueue.php
  * @template-implements Iterator<int, TValue>
  */
-\class_alias('DEPTRAC_202403\\SplPriorityQueue', 'SplPriorityQueue', \false);
+\class_alias('DEPTRAC_202404\\SplPriorityQueue', 'SplPriorityQueue', \false);
 /**
  * @template TValue
  * The SplFixedArray class provides the main functionalities of array. The
@@ -2184,7 +2184,7 @@ class SplFixedArray implements \Iterator, \ArrayAccess, \Countable, \IteratorAgg
  * @template-implements ArrayAccess<int, TValue>
  * @template-implements IteratorAggregate<int, TValue>
  */
-\class_alias('DEPTRAC_202403\\SplFixedArray', 'SplFixedArray', \false);
+\class_alias('DEPTRAC_202404\\SplFixedArray', 'SplFixedArray', \false);
 /**
  * The <b>SplObserver</b> interface is used alongside
  * <b>SplSubject</b> to implement the Observer Design Pattern.
@@ -2208,7 +2208,7 @@ interface SplObserver
  * <b>SplSubject</b> to implement the Observer Design Pattern.
  * @link https://php.net/manual/en/class.splobserver.php
  */
-\class_alias('DEPTRAC_202403\\SplObserver', 'SplObserver', \false);
+\class_alias('DEPTRAC_202404\\SplObserver', 'SplObserver', \false);
 /**
  * The <b>SplSubject</b> interface is used alongside
  * <b>SplObserver</b> to implement the Observer Design Pattern.
@@ -2249,7 +2249,7 @@ interface SplSubject
  * <b>SplObserver</b> to implement the Observer Design Pattern.
  * @link https://php.net/manual/en/class.splsubject.php
  */
-\class_alias('DEPTRAC_202403\\SplSubject', 'SplSubject', \false);
+\class_alias('DEPTRAC_202404\\SplSubject', 'SplSubject', \false);
 /**
  * @template TObject of object
  * @template TValue
@@ -2537,7 +2537,7 @@ class SplObjectStorage implements \Countable, \Iterator, \Serializable, \ArrayAc
  * @template-implements Iterator<int, TObject>
  * @template-implements ArrayAccess<TObject, TValue>
  */
-\class_alias('DEPTRAC_202403\\SplObjectStorage', 'SplObjectStorage', \false);
+\class_alias('DEPTRAC_202404\\SplObjectStorage', 'SplObjectStorage', \false);
 /**
  * An Iterator that sequentially iterates over all attached iterators
  * @link https://php.net/manual/en/class.multipleiterator.php
@@ -2690,4 +2690,4 @@ class MultipleIterator implements \Iterator
  * An Iterator that sequentially iterates over all attached iterators
  * @link https://php.net/manual/en/class.multipleiterator.php
  */
-\class_alias('DEPTRAC_202403\\MultipleIterator', 'MultipleIterator', \false);
+\class_alias('DEPTRAC_202404\\MultipleIterator', 'MultipleIterator', \false);

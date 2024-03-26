@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202403;
+namespace DEPTRAC_202404;
 
 // Start of memcache v.3.0.8
 class MemcachePool
@@ -346,7 +346,7 @@ class MemcachePool
     }
 }
 // Start of memcache v.3.0.8
-\class_alias('DEPTRAC_202403\\MemcachePool', 'MemcachePool', \false);
+\class_alias('DEPTRAC_202404\\MemcachePool', 'MemcachePool', \false);
 /**
  * Represents a connection to a set of memcache servers.
  * @link https://php.net/manual/en/class.memcache.php
@@ -382,7 +382,7 @@ class Memcache extends \MemcachePool
  * Represents a connection to a set of memcache servers.
  * @link https://php.net/manual/en/class.memcache.php
  */
-\class_alias('DEPTRAC_202403\\Memcache', 'Memcache', \false);
+\class_alias('DEPTRAC_202404\\Memcache', 'Memcache', \false);
 //  string $host [, int $port [, int $timeout ]]
 /**
  * (PECL memcache >= 0.2.0)<br/>

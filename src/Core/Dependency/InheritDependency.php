@@ -3,8 +3,7 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Core\Dependency;
 
-use Qossmic\Deptrac\Contract\Ast\DependencyType;
-use Qossmic\Deptrac\Contract\Ast\FileOccurrence;
+use Qossmic\Deptrac\Contract\Ast\DependencyContext;
 use Qossmic\Deptrac\Contract\Ast\TokenInterface;
 use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
 use Qossmic\Deptrac\Core\Ast\AstMap\AstInherit;
@@ -21,23 +20,19 @@ class InheritDependency implements DependencyInterface
             \array_unshift($buffer, ['name' => $p->classLikeName->toString(), 'line' => $p->fileOccurrence->line]);
         }
         $buffer[] = ['name' => $this->inheritPath->classLikeName->toString(), 'line' => $this->inheritPath->fileOccurrence->line];
-        $buffer[] = ['name' => $this->originalDependency->getDependent()->toString(), 'line' => $this->originalDependency->getFileOccurrence()->line];
+        $buffer[] = ['name' => $this->originalDependency->getDependent()->toString(), 'line' => $this->originalDependency->getContext()->fileOccurrence->line];
         return $buffer;
     }
     public function getDepender() : ClassLikeToken
     {
         return $this->depender;
     }
-    public function getFileOccurrence() : FileOccurrence
-    {
-        return $this->originalDependency->getFileOccurrence();
-    }
     public function getDependent() : TokenInterface
     {
         return $this->dependent;
     }
-    public function getType() : DependencyType
+    public function getContext() : DependencyContext
     {
-        return $this->originalDependency->getType();
+        return $this->originalDependency->getContext();
     }
 }

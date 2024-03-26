@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\ChildDefinition;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\Configurator\FromCallableConfigurator;
-use DEPTRAC_202403\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
-use DEPTRAC_202403\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\ChildDefinition;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\FromCallableConfigurator;
+use DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
+use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
 trait FromCallableTrait
 {
     public final function fromCallable(string|array|ReferenceConfigurator|Expression $callable) : FromCallableConfigurator
