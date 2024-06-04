@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 \define('MS_TRUE', 1);
 \define('MS_FALSE', 0);
@@ -560,7 +560,7 @@ final class classObj
  * Class Objects can be returned by the `layerObj`_ class, or can be
  * created using:
  */
-\class_alias('DEPTRAC_202404\\classObj', 'classObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\classObj', 'classObj', \false);
 /**
  * Instance of clusterObj is always embedded inside the `layerObj`_.
  */
@@ -627,7 +627,7 @@ final class clusterObj
 /**
  * Instance of clusterObj is always embedded inside the `layerObj`_.
  */
-\class_alias('DEPTRAC_202404\\clusterObj', 'clusterObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\clusterObj', 'clusterObj', \false);
 /**
  * Instances of colorObj are always embedded inside other classes.
  */
@@ -672,7 +672,7 @@ final class colorObj
 /**
  * Instances of colorObj are always embedded inside other classes.
  */
-\class_alias('DEPTRAC_202404\\colorObj', 'colorObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\colorObj', 'colorObj', \false);
 final class errorObj
 {
     /**
@@ -690,7 +690,7 @@ final class errorObj
      */
     public $routine;
 }
-\class_alias('DEPTRAC_202404\\errorObj', 'errorObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\errorObj', 'errorObj', \false);
 /**
  * The grid is always embedded inside a layer object defined as
  * a grid (layer->connectiontype = MS_GRATICULE)
@@ -754,7 +754,7 @@ final class gridObj
  * ms_newgridobj($oLayer);
  * $oLayer->grid->set("labelformat", "DDMMSS");
  */
-\class_alias('DEPTRAC_202404\\gridObj', 'gridObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\gridObj', 'gridObj', \false);
 /**
  * Instance of hashTableObj is always embedded inside the `classObj`_,
  * `layerObj`_, `mapObj`_ and `webObj`_. It is uses a read only.
@@ -822,7 +822,7 @@ final class hashTableObj
  * while ($key = $hashTable->nextkey($key))
  * echo "Key: ".$key." value: ".$hashTable->get($key)."<br/>";
  */
-\class_alias('DEPTRAC_202404\\hashTableObj', 'hashTableObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\hashTableObj', 'hashTableObj', \false);
 /**
  * Instances of imageObj are always created by the `mapObj`_ class methods.
  */
@@ -917,7 +917,7 @@ final class imageObj
 /**
  * Instances of imageObj are always created by the `mapObj`_ class methods.
  */
-\class_alias('DEPTRAC_202404\\imageObj', 'imageObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\imageObj', 'imageObj', \false);
 final class labelcacheMemberObj
 {
     /**
@@ -975,7 +975,7 @@ final class labelcacheMemberObj
      */
     public $tileindex;
 }
-\class_alias('DEPTRAC_202404\\labelcacheMemberObj', 'labelcacheMemberObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\labelcacheMemberObj', 'labelcacheMemberObj', \false);
 final class labelcacheObj
 {
     /**
@@ -988,7 +988,7 @@ final class labelcacheObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\labelcacheObj', 'labelcacheObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\labelcacheObj', 'labelcacheObj', \false);
 /**
  * labelObj are always embedded inside other classes.
  */
@@ -1304,7 +1304,7 @@ final class labelObj
 /**
  * labelObj are always embedded inside other classes.
  */
-\class_alias('DEPTRAC_202404\\labelObj', 'labelObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\labelObj', 'labelObj', \false);
 /**
  * Layer Objects can be returned by the `mapObj`_ class, or can be
  * created using:
@@ -2073,7 +2073,7 @@ final class layerObj
  * argument then all members of a this layer will be copied in the new
  * layer created.
  */
-\class_alias('DEPTRAC_202404\\layerObj', 'layerObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\layerObj', 'layerObj', \false);
 /**
  * Instances of legendObj are always are always embedded inside the `mapObj`_.
  */
@@ -2181,7 +2181,7 @@ final class legendObj
 /**
  * Instances of legendObj are always are always embedded inside the `mapObj`_.
  */
-\class_alias('DEPTRAC_202404\\legendObj', 'legendObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\legendObj', 'legendObj', \false);
 final class lineObj
 {
     /**
@@ -2260,7 +2260,7 @@ final class lineObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\lineObj', 'lineObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\lineObj', 'lineObj', \false);
 final class mapObj
 {
     /**
@@ -3278,7 +3278,7 @@ final class mapObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\mapObj', 'mapObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\mapObj', 'mapObj', \false);
 /**
  * Instance of outputformatObj is always embedded inside the `mapObj`_.
  * It is uses a read only.
@@ -3364,7 +3364,7 @@ final class outputformatObj
  * It is uses a read only.
  * No constructor available (coming soon, see ticket 979)
  */
-\class_alias('DEPTRAC_202404\\outputformatObj', 'outputformatObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\outputformatObj', 'outputformatObj', \false);
 final class OwsrequestObj
 {
     /**
@@ -3453,7 +3453,7 @@ final class OwsrequestObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\OwsrequestObj', 'OwsrequestObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\OwsrequestObj', 'OwsrequestObj', \false);
 final class pointObj
 {
     /**
@@ -3573,7 +3573,7 @@ final class pointObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\pointObj', 'pointObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\pointObj', 'pointObj', \false);
 final class projectionObj
 {
     /**
@@ -3613,7 +3613,7 @@ final class projectionObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\projectionObj', 'projectionObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\projectionObj', 'projectionObj', \false);
 /**
  * Instances of querymapObj are always are always embedded inside the
  * `mapObj`_.
@@ -3681,7 +3681,7 @@ final class querymapObj
  * Instances of querymapObj are always are always embedded inside the
  * `mapObj`_.
  */
-\class_alias('DEPTRAC_202404\\querymapObj', 'querymapObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\querymapObj', 'querymapObj', \false);
 /**
  * rectObj are sometimes embedded inside other objects.  New ones can
  * also be created with:
@@ -3782,7 +3782,7 @@ final class rectObj
  * rectObj are sometimes embedded inside other objects.  New ones can
  * also be created with:
  */
-\class_alias('DEPTRAC_202404\\rectObj', 'rectObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\rectObj', 'rectObj', \false);
 /**
  * Instances of referenceMapObj are always embedded inside the `mapObj`_.
  */
@@ -3879,7 +3879,7 @@ final class referenceMapObj
 /**
  * Instances of referenceMapObj are always embedded inside the `mapObj`_.
  */
-\class_alias('DEPTRAC_202404\\referenceMapObj', 'referenceMapObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\referenceMapObj', 'referenceMapObj', \false);
 final class resultObj
 {
     /**
@@ -3915,7 +3915,7 @@ final class resultObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\resultObj', 'resultObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\resultObj', 'resultObj', \false);
 /**
  * Instances of scalebarObj are always embedded inside the `mapObj`_.
  */
@@ -4035,7 +4035,7 @@ final class scalebarObj
 /**
  * Instances of scalebarObj are always embedded inside the `mapObj`_.
  */
-\class_alias('DEPTRAC_202404\\scalebarObj', 'scalebarObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\scalebarObj', 'scalebarObj', \false);
 final class shapefileObj
 {
     /**
@@ -4157,7 +4157,7 @@ final class shapefileObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\shapefileObj', 'shapefileObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\shapefileObj', 'shapefileObj', \false);
 final class shapeObj
 {
     /**
@@ -4553,7 +4553,7 @@ final class shapeObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\shapeObj', 'shapeObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\shapeObj', 'shapeObj', \false);
 /**
  * Instances of styleObj are always embedded inside a `classObj`_ or `labelObj`_.
  */
@@ -4752,7 +4752,7 @@ final class styleObj
 /**
  * Instances of styleObj are always embedded inside a `classObj`_ or `labelObj`_.
  */
-\class_alias('DEPTRAC_202404\\styleObj', 'styleObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\styleObj', 'styleObj', \false);
 final class symbolObj
 {
     /**
@@ -4921,7 +4921,7 @@ final class symbolObj
     {
     }
 }
-\class_alias('DEPTRAC_202404\\symbolObj', 'symbolObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\symbolObj', 'symbolObj', \false);
 /**
  * Instances of webObj are always are always embedded inside the `mapObj`_.
  */
@@ -5048,4 +5048,4 @@ final class webObj
 /**
  * Instances of webObj are always are always embedded inside the `mapObj`_.
  */
-\class_alias('DEPTRAC_202404\\webObj', 'webObj', \false);
+\class_alias('DEPTRAC_INTERNAL\\webObj', 'webObj', \false);

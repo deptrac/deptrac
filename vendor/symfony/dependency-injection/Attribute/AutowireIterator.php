@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
 /**
  * Autowires an iterator of services based on a tag name.
  */
@@ -20,7 +20,7 @@ class AutowireIterator extends Autowire
     /**
      * @param string|string[] $exclude A service or a list of services to exclude
      */
-    public function __construct(string $tag, string $indexAttribute = null, string $defaultIndexMethod = null, string $defaultPriorityMethod = null, string|array $exclude = [], bool $excludeSelf = \true)
+    public function __construct(string $tag, ?string $indexAttribute = null, ?string $defaultIndexMethod = null, ?string $defaultPriorityMethod = null, string|array $exclude = [], bool $excludeSelf = \true)
     {
         parent::__construct(new TaggedIteratorArgument($tag, $indexAttribute, $defaultIndexMethod, \false, $defaultPriorityMethod, (array) $exclude, $excludeSelf));
     }

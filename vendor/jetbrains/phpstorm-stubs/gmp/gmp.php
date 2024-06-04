@@ -1,11 +1,11 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of gmp v.
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Create GMP number
  * @link https://php.net/manual/en/function.gmp-init.php
@@ -847,7 +847,7 @@ function gmp_perfect_power(\GMP|string|int $num) : bool
  * The GMP library version
  * @link https://php.net/manual/en/gmp.constants.php
  */
-\define('GMP_VERSION', "6.2.1");
+\define('GMP_VERSION', "6.3.0");
 \define('GMP_MPIR_VERSION', '3.0.0');
 class GMP implements \Serializable
 {
@@ -883,5 +883,5 @@ class GMP implements \Serializable
     {
     }
 }
-\class_alias('DEPTRAC_202404\\GMP', 'GMP', \false);
+\class_alias('DEPTRAC_INTERNAL\\GMP', 'GMP', \false);
 // End of gmp v.

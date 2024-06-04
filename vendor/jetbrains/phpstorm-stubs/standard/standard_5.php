@@ -1,11 +1,11 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\ExpectedValues;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ExpectedValues;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * (PHP 5.5.0)<br/>
  * Get the boolean value of a variable

@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Alias;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ServiceLocator;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Alias;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ServiceLocator;
 /**
  * Applies the "container.service_locator" tag by wrapping references into ServiceClosureArgument instances.
  *
@@ -80,7 +80,7 @@ final class ServiceLocatorTagPass extends AbstractRecursivePass
         $this->container->setDefinition($id, $value->setPublic(\false));
         return new Reference($id);
     }
-    public static function register(ContainerBuilder $container, array $map, string $callerId = null) : Reference
+    public static function register(ContainerBuilder $container, array $map, ?string $callerId = null) : Reference
     {
         foreach ($map as $k => $v) {
             $map[$k] = new ServiceClosureArgument($v);

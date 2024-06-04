@@ -1,32 +1,32 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser;
+namespace DEPTRAC_INTERNAL\PhpParser;
 
 /*
  * This parser is based on a skeleton written by Moriyoshi Koizumi, which in
  * turn is based on work by Masato Bito.
  */
-use DEPTRAC_202404\PhpParser\Node\Expr;
-use DEPTRAC_202404\PhpParser\Node\Expr\Cast\Double;
-use DEPTRAC_202404\PhpParser\Node\Name;
-use DEPTRAC_202404\PhpParser\Node\Param;
-use DEPTRAC_202404\PhpParser\Node\Scalar\Encapsed;
-use DEPTRAC_202404\PhpParser\Node\Scalar\LNumber;
-use DEPTRAC_202404\PhpParser\Node\Scalar\String_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Class_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\ClassConst;
-use DEPTRAC_202404\PhpParser\Node\Stmt\ClassMethod;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Else_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\ElseIf_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Enum_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Interface_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Namespace_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Nop;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Property;
-use DEPTRAC_202404\PhpParser\Node\Stmt\TryCatch;
-use DEPTRAC_202404\PhpParser\Node\Stmt\UseUse;
-use DEPTRAC_202404\PhpParser\Node\VarLikeIdentifier;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr\Cast\Double;
+use DEPTRAC_INTERNAL\PhpParser\Node\Name;
+use DEPTRAC_INTERNAL\PhpParser\Node\Param;
+use DEPTRAC_INTERNAL\PhpParser\Node\Scalar\Encapsed;
+use DEPTRAC_INTERNAL\PhpParser\Node\Scalar\LNumber;
+use DEPTRAC_INTERNAL\PhpParser\Node\Scalar\String_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Class_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\ClassConst;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\ClassMethod;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Else_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\ElseIf_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Enum_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Interface_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Namespace_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Nop;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Property;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\TryCatch;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\UseUse;
+use DEPTRAC_INTERNAL\PhpParser\Node\VarLikeIdentifier;
 abstract class ParserAbstract implements Parser
 {
     const SYMBOL_NONE = -1;
@@ -139,7 +139,7 @@ abstract class ParserAbstract implements Parser
      * @return Node\Stmt[]|null Array of statements (or null non-throwing error handler is used and
      *                          the parser was unable to recover from an error).
      */
-    public function parse(string $code, ErrorHandler $errorHandler = null)
+    public function parse(string $code, ?ErrorHandler $errorHandler = null)
     {
         $this->errorHandler = $errorHandler ?: new ErrorHandler\Throwing();
         $this->lexer->startLexing($code, $this->errorHandler);

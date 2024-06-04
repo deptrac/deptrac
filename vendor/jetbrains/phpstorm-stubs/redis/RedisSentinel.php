@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * The MIT License (MIT)
@@ -50,6 +50,29 @@ class RedisSentinel
      * $sentinel = new RedisSentinel('127.0.0.1', 26379, 1, null, 100);
      */
     public function __construct(string $host, int $port, float $timeout = 0, ?string $persistent = null, int $retryInterval = 0, float $readTimeout = 0)
+    {
+    }
+    /**
+     * Creates a Redis Sentinel
+     *
+     * Accepts and array of options.
+     *
+     * Available options:
+     *   - 'host' => string, Sentinel IP address or hostname
+     *   - 'port' => int, Sentinel Port (optional, default is 26379)
+     *   - 'connectTimeout' => float, Value in seconds (optional, default is 0 meaning unlimited)
+     *   - 'persistent' => string, Persistent connection id (optional, default is NULL meaning not persistent)
+     *   - 'retryInterval' => int, Value in milliseconds (optional, default is 0)
+     *   - 'readTimeout' => float, Value in seconds (optional, default is 0 meaning unlimited)
+     *   - 'auth' => string|array, Authentication credentials (optional, default is NULL meaning NOAUTH)
+     *
+     * @param array $options Associative array of options
+     *
+     * @example $sentinel = new RedisSentinel(['host' => '127.0.0.1']); // default parameters
+     *
+     * @since >= 6.0.0
+     */
+    public function __construct(array $options)
     {
     }
     /**
@@ -232,4 +255,4 @@ class RedisSentinel
  * @author  Tawana Musewe <tawana@aeonis.co.za>
  * @link    https://github.com/tbtmuse/phpredis-sentinel-phpdoc
  */
-\class_alias('DEPTRAC_202404\\RedisSentinel', 'RedisSentinel', \false);
+\class_alias('DEPTRAC_INTERNAL\\RedisSentinel', 'RedisSentinel', \false);

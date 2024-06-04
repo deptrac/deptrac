@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Builder;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder;
 
 /**
  * This class builds validation conditions.
@@ -28,7 +28,7 @@ class ValidationBuilder
      *
      * @return ExprBuilder|$this
      */
-    public function rule(\Closure $closure = null) : ExprBuilder|static
+    public function rule(?\Closure $closure = null) : ExprBuilder|static
     {
         if (null !== $closure) {
             $this->rules[] = $closure;

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Contracts\Service;
+namespace DEPTRAC_INTERNAL\Symfony\Contracts\Service;
 
-use DEPTRAC_202404\Psr\Container\ContainerInterface;
+use DEPTRAC_INTERNAL\Psr\Container\ContainerInterface;
 /**
  * A ServiceProviderInterface exposes the identifiers and the types of services provided by a container.
  *

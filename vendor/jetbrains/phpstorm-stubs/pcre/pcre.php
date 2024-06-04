@@ -1,11 +1,11 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of pcre v.
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Perform a regular expression match
  * @link https://php.net/manual/en/function.preg-match.php

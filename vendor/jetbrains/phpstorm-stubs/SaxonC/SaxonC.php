@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\Saxon;
+namespace DEPTRAC_INTERNAL\Saxon;
 
 /**
  * @link https://www.saxonica.com/saxon-c/documentation/index.html#!api/saxon_c_php_api

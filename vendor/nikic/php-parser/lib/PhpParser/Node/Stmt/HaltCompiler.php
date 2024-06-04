@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Stmt;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 
-use DEPTRAC_202404\PhpParser\Node\Stmt;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 class HaltCompiler extends Stmt
 {
     /** @var string Remaining text after halt compiler statement. */

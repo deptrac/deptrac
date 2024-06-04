@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection;
 
 /**
  * EnvVarLoaderInterface objects return key/value pairs that are added to the list of available env vars.
@@ -18,7 +18,7 @@ namespace DEPTRAC_202404\Symfony\Component\DependencyInjection;
 interface EnvVarLoaderInterface
 {
     /**
-     * @return string[] Key/value pairs that can be accessed using the regular "%env()%" syntax
+     * @return array<string|\Stringable> Key/value pairs that can be accessed using the regular "%env()%" syntax
      */
     public function loadEnvVars() : array;
 }

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser;
+namespace DEPTRAC_INTERNAL\PhpParser;
 
-use DEPTRAC_202404\PhpParser\Node\Name;
-use DEPTRAC_202404\PhpParser\Node\Name\FullyQualified;
-use DEPTRAC_202404\PhpParser\Node\Stmt;
+use DEPTRAC_INTERNAL\PhpParser\Node\Name;
+use DEPTRAC_INTERNAL\PhpParser\Node\Name\FullyQualified;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 class NameContext
 {
     /** @var null|Name Current namespace */
@@ -32,7 +32,7 @@ class NameContext
      *
      * @param Name|null $namespace Null is the global namespace
      */
-    public function startNamespace(Name $namespace = null)
+    public function startNamespace(?Name $namespace = null)
     {
         $this->namespace = $namespace;
         $this->origAliases = $this->aliases = [Stmt\Use_::TYPE_NORMAL => [], Stmt\Use_::TYPE_FUNCTION => [], Stmt\Use_::TYPE_CONSTANT => []];

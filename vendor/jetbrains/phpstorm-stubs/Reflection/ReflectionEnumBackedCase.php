@@ -1,8 +1,8 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * @link https://php.net/manual/en/class.reflectionenumbackedcase.php
  * @since 8.1
@@ -21,4 +21,4 @@ class ReflectionEnumBackedCase extends \ReflectionEnumUnitCase
  * @link https://php.net/manual/en/class.reflectionenumbackedcase.php
  * @since 8.1
  */
-\class_alias('DEPTRAC_202404\\ReflectionEnumBackedCase', 'ReflectionEnumBackedCase', \false);
+\class_alias('DEPTRAC_INTERNAL\\ReflectionEnumBackedCase', 'ReflectionEnumBackedCase', \false);

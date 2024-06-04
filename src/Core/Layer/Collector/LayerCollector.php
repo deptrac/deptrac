@@ -23,7 +23,7 @@ final class LayerCollector implements CollectorInterface
     public function satisfy(array $config, TokenReferenceInterface $reference) : bool
     {
         if (!isset($config['value']) || !is_string($config['value'])) {
-            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('LayerCollector needs the layer configuration.');
+            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('LayerCollector needs the layer configuration, expected \'value\' config is missing or invalid.');
         }
         $layer = $config['value'];
         if (!$this->resolver->has($layer)) {

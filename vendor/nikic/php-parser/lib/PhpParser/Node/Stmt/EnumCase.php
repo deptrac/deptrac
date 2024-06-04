@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Stmt;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\Node\AttributeGroup;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\AttributeGroup;
 class EnumCase extends Node\Stmt
 {
     /** @var Node\Identifier Enum case name */
@@ -19,7 +19,7 @@ class EnumCase extends Node\Stmt
      * @param AttributeGroup[]          $attrGroups PHP attribute groups
      * @param array                     $attributes Additional attributes
      */
-    public function __construct($name, Node\Expr $expr = null, array $attrGroups = [], array $attributes = [])
+    public function __construct($name, ?Node\Expr $expr = null, array $attrGroups = [], array $attributes = [])
     {
         parent::__construct($attributes);
         $this->name = \is_string($name) ? new Node\Identifier($name) : $name;

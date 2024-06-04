@@ -8,27 +8,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Console\Style;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Console\Style;
 
-use DEPTRAC_202404\Symfony\Component\Console\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\Console\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\Console\Formatter\OutputFormatter;
-use DEPTRAC_202404\Symfony\Component\Console\Helper\Helper;
-use DEPTRAC_202404\Symfony\Component\Console\Helper\OutputWrapper;
-use DEPTRAC_202404\Symfony\Component\Console\Helper\ProgressBar;
-use DEPTRAC_202404\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
-use DEPTRAC_202404\Symfony\Component\Console\Helper\Table;
-use DEPTRAC_202404\Symfony\Component\Console\Helper\TableCell;
-use DEPTRAC_202404\Symfony\Component\Console\Helper\TableSeparator;
-use DEPTRAC_202404\Symfony\Component\Console\Input\InputInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Output\ConsoleSectionOutput;
-use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Output\TrimmedBufferOutput;
-use DEPTRAC_202404\Symfony\Component\Console\Question\ChoiceQuestion;
-use DEPTRAC_202404\Symfony\Component\Console\Question\ConfirmationQuestion;
-use DEPTRAC_202404\Symfony\Component\Console\Question\Question;
-use DEPTRAC_202404\Symfony\Component\Console\Terminal;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Formatter\OutputFormatter;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\Helper;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\OutputWrapper;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\ProgressBar;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\Table;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\TableCell;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\TableSeparator;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\ConsoleSectionOutput;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\TrimmedBufferOutput;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Question\ChoiceQuestion;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Question\ConfirmationQuestion;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Question\Question;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Terminal;
 /**
  * Output decorator helpers for the Symfony Style Guide.
  *

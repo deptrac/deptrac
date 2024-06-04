@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Scalar\MagicConst;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Scalar\MagicConst;
 
-use DEPTRAC_202404\PhpParser\Node\Scalar\MagicConst;
+use DEPTRAC_INTERNAL\PhpParser\Node\Scalar\MagicConst;
 class Dir extends MagicConst
 {
     public function getName() : string

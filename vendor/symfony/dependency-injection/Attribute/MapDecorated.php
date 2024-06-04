@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute;
 
-\DEPTRAC_202404\trigger_deprecation('symfony/dependency-injection', '6.3', 'The "%s" class is deprecated, use "%s" instead.', MapDecorated::class, AutowireDecorated::class);
+\DEPTRAC_INTERNAL\trigger_deprecation('symfony/dependency-injection', '6.3', 'The "%s" class is deprecated, use "%s" instead.', MapDecorated::class, AutowireDecorated::class);
 /**
  * @deprecated since Symfony 6.3, use AutowireDecorated instead
  */

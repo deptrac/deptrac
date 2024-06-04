@@ -6,7 +6,7 @@ namespace Qossmic\Deptrac\Supportive\File\Exception;
 use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 use SplFileInfo;
-use DEPTRAC_202404\Symfony\Component\Filesystem\Path;
+use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Path;
 use function sprintf;
 final class FileAlreadyExistsException extends RuntimeException implements ExceptionInterface
 {

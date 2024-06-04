@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * The constants below are defined by this extension, and will only be available when the extension has either been compiled into PHP or dynamically loaded at runtime.
@@ -279,7 +279,7 @@ final class Yaf_Application
  * </p>
  * @link https://secure.php.net/manual/en/class.yaf-application.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Application', 'Yaf_Application', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Application', 'Yaf_Application', \false);
 /**
  * <p><b>Yaf_Dispatcher</b> purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.</p><br/>
  * <p><b>Yaf_Dispatcher</b> also implements the Singleton pattern, meaning only a single instance of it may be available at any given time. This allows it to also act as a registry on which the other objects in the dispatch process may draw.</p>
@@ -606,7 +606,7 @@ final class Yaf_Dispatcher
  *
  * @link https://secure.php.net/manual/en/class.yaf-dispatcher.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Dispatcher', 'Yaf_Dispatcher', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Dispatcher', 'Yaf_Dispatcher', \false);
 /**
  * <p><b>Yaf_Loader</b> introduces a comprehensive autoloading solution for Yaf.</p>
  * <br/>
@@ -780,7 +780,7 @@ class Yaf_Loader
  * <p>If you want <b>Yaf_Loader</b> search some classes(libraries) in the local class directory(which is defined in application.ini, and by default, it is application.directory . "/library"), you should register the class prefix using the Yaf_Loader::registerLocalNameSpace()</p>
  * @link https://secure.php.net/manual/en/class.yaf-loader.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Loader', 'Yaf_Loader', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Loader', 'Yaf_Loader', \false);
 /**
  * <p>All methods of <b>Yaf_Registry</b> declared as static, making it universally accessible. This provides the ability to get or set any custom data from anyway in your code as necessary.</p>
  * @link https://secure.php.net/manual/en/class.yaf-registry.php
@@ -857,7 +857,7 @@ final class Yaf_Registry
  * <p>All methods of <b>Yaf_Registry</b> declared as static, making it universally accessible. This provides the ability to get or set any custom data from anyway in your code as necessary.</p>
  * @link https://secure.php.net/manual/en/class.yaf-registry.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Registry', 'Yaf_Registry', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Registry', 'Yaf_Registry', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-session.php
  * @version 2.2.9
@@ -1055,7 +1055,7 @@ final class Yaf_Session implements \Iterator, \ArrayAccess, \Countable
  * @link https://secure.php.net/manual/en/class.yaf-session.php
  * @version 2.2.9
  */
-\class_alias('DEPTRAC_202404\\Yaf_Session', 'Yaf_Session', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Session', 'Yaf_Session', \false);
 /**
  * <p><b>Yaf_Router</b> is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URI: see Yaf_Request_Abstract::setBaseUri()) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request. This values of the module, controller, action and other parameters are packaged into a Yaf_Request_Abstract object which is then processed by Yaf_Dispatcher. Routing occurs only once: when the request is initially received and before the first controller is dispatched. Yaf_Router is designed to allow for mod_rewrite-like functionality using pure PHP structures. It is very loosely based on Ruby on Rails routing and does not require any prior knowledge of webserver URL rewriting</p>
  * <br/>
@@ -1169,7 +1169,7 @@ class Yaf_Router
  * <p>** See examples by opening the external documentation</p>
  * @link https://secure.php.net/manual/en/class.yaf-router.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Router', 'Yaf_Router', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Router', 'Yaf_Router', \false);
 /**
  * <p>Bootstrap is a mechanism used to do some initial config before a Application run.<br/><br/></p>
  * <p>User may define their own Bootstrap class by inheriting <b>Yaf_Bootstrap_Abstract</b><br/><br/></p>
@@ -1187,7 +1187,7 @@ abstract class Yaf_Bootstrap_Abstract
  *
  * @link https://secure.php.net/manual/en/class.yaf-bootstrap-abstract.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Bootstrap_Abstract', 'Yaf_Bootstrap_Abstract', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Bootstrap_Abstract', 'Yaf_Bootstrap_Abstract', \false);
 /**
  * <p><b>Yaf_Controller_Abstract</b> is the heart of Yaf's system. MVC stands for Model-View-Controller and is a design pattern targeted at separating application logic from display logic.</p>
  * <br/>
@@ -1424,7 +1424,7 @@ abstract class Yaf_Controller_Abstract
  *
  * @link https://secure.php.net/manual/en/class.yaf-controller-abstract.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Controller_Abstract', 'Yaf_Controller_Abstract', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Controller_Abstract', 'Yaf_Controller_Abstract', \false);
 /**
  * <p>A action can be defined in a separate file in Yaf(see Yaf_Controller_Abstract). that is a action method can also be a <b>Yaf_Action_Abstract</b> class.</P>
  * <br/>
@@ -1470,7 +1470,7 @@ abstract class Yaf_Action_Abstract extends \Yaf_Controller_Abstract
  *
  * @link https://secure.php.net/manual/en/class.yaf-action-abstract.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Action_Abstract', 'Yaf_Action_Abstract', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Action_Abstract', 'Yaf_Action_Abstract', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-config-abstract.php
  */
@@ -1551,7 +1551,7 @@ abstract class Yaf_Config_Abstract implements \Iterator, \ArrayAccess, \Countabl
 /**
  * @link https://secure.php.net/manual/en/class.yaf-config-abstract.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Config_Abstract', 'Yaf_Config_Abstract', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Config_Abstract', 'Yaf_Config_Abstract', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-request-abstract.php
  */
@@ -1906,7 +1906,7 @@ abstract class Yaf_Request_Abstract
 /**
  * @link https://secure.php.net/manual/en/class.yaf-request-abstract.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Request_Abstract', 'Yaf_Request_Abstract', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Request_Abstract', 'Yaf_Request_Abstract', \false);
 /**
  * <p>Plugins allow for easy extensibility and customization of the framework.</p>
  * <br/>
@@ -2009,7 +2009,7 @@ abstract class Yaf_Plugin_Abstract
  * <p>A plugin could be loaded into Yaf by using Yaf_Dispatcher::registerPlugin(), after registered, All the methods which the plugin implemented according to this interface, will be called at the proper time.</p>
  * @link https://secure.php.net/manual/en/class.yaf-plugin-abstract.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Plugin_Abstract', 'Yaf_Plugin_Abstract', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Plugin_Abstract', 'Yaf_Plugin_Abstract', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-response-abstract.php
  */
@@ -2156,7 +2156,7 @@ abstract class Yaf_Response_Abstract
 /**
  * @link https://secure.php.net/manual/en/class.yaf-response-abstract.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Response_Abstract', 'Yaf_Response_Abstract', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Response_Abstract', 'Yaf_Response_Abstract', \false);
 /**
  * Yaf provides a ability for developers to use custom view engine instead of build-in engine which is Yaf_View_Simple. There is a example to explain how to do this, please see Yaf_Dispatcher::setView()
  *
@@ -2214,7 +2214,7 @@ interface Yaf_View_Interface
  *
  * @link https://secure.php.net/manual/en/class.yaf-view-interface.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_View_Interface', 'Yaf_View_Interface', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_View_Interface', 'Yaf_View_Interface', \false);
 /**
  * <b>Yaf_Route_Interface</b> used for developer defined their custom route.
  *
@@ -2252,7 +2252,7 @@ interface Yaf_Route_Interface
  *
  * @link https://secure.php.net/manual/en/class.yaf-route-interface.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Route_Interface', 'Yaf_Route_Interface', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Route_Interface', 'Yaf_Route_Interface', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception.php
  */
@@ -2265,7 +2265,7 @@ class Yaf_Exception extends \Exception
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception', 'Yaf_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception', 'Yaf_Exception', \false);
 class Yaf_Response_Http extends \Yaf_Response_Abstract
 {
     /**
@@ -2344,7 +2344,7 @@ class Yaf_Response_Http extends \Yaf_Response_Abstract
     {
     }
 }
-\class_alias('DEPTRAC_202404\\Yaf_Response_Http', 'Yaf_Response_Http', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Response_Http', 'Yaf_Response_Http', \false);
 class Yaf_Response_Cli extends \Yaf_Response_Abstract
 {
     private function __clone()
@@ -2357,7 +2357,7 @@ class Yaf_Response_Cli extends \Yaf_Response_Abstract
     {
     }
 }
-\class_alias('DEPTRAC_202404\\Yaf_Response_Cli', 'Yaf_Response_Cli', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Response_Cli', 'Yaf_Response_Cli', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-request-http.php
  */
@@ -2475,7 +2475,7 @@ class Yaf_Request_Http extends \Yaf_Request_Abstract
 /**
  * @link https://secure.php.net/manual/en/class.yaf-request-http.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Request_Http', 'Yaf_Request_Http', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Request_Http', 'Yaf_Request_Http', \false);
 /**
  * <b>Yaf_Request_Simple</b> is particularly used for test purpose. ie. simulate a spacial request under CLI mode.
  * @link https://secure.php.net/manual/en/class.yaf-request-simple.php
@@ -2596,7 +2596,7 @@ class Yaf_Request_Simple extends \Yaf_Request_Abstract
  * <b>Yaf_Request_Simple</b> is particularly used for test purpose. ie. simulate a spacial request under CLI mode.
  * @link https://secure.php.net/manual/en/class.yaf-request-simple.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Request_Simple', 'Yaf_Request_Simple', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Request_Simple', 'Yaf_Request_Simple', \false);
 /**
  * <p>Yaf_Config_Ini enables developers to store configuration data in a familiar INI format and read them in the application by using nested object property syntax. The INI format is specialized to provide both the ability to have a hierarchy of configuration data keys and inheritance between configuration data sections. Configuration data hierarchies are supported by separating the keys with the dot or period character ("."). A section may extend or inherit from another section by following the section name with a colon character (":") and the name of the section from which data are to be inherited.</p><br/>
  * <b>Note:</b>
@@ -2728,7 +2728,7 @@ class Yaf_Config_Ini extends \Yaf_Config_Abstract implements \Iterator, \ArrayAc
  * <p>Yaf_Config_Ini utilizes the » parse_ini_file() PHP function. Please review this documentation to be aware of its specific behaviors, which propagate to Yaf_Config_Ini, such as how the special values of "TRUE", "FALSE", "yes", "no", and "NULL" are handled.</p>
  * @link https://secure.php.net/manual/en/class.yaf-config-ini.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Config_Ini', 'Yaf_Config_Ini', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Config_Ini', 'Yaf_Config_Ini', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-config-simple.php
  */
@@ -2850,7 +2850,7 @@ class Yaf_Config_Simple extends \Yaf_Config_Abstract implements \Iterator, \Arra
 /**
  * @link https://secure.php.net/manual/en/class.yaf-config-simple.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Config_Simple', 'Yaf_Config_Simple', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Config_Simple', 'Yaf_Config_Simple', \false);
 /**
  * <b>Yaf_View_Simple</b> is the built-in template engine in Yaf, it is a simple but fast template engine, and only support PHP script template.
  * @link https://secure.php.net/manual/en/class.yaf-view-simple.php
@@ -3017,7 +3017,7 @@ class Yaf_View_Simple implements \Yaf_View_Interface
  * <b>Yaf_View_Simple</b> is the built-in template engine in Yaf, it is a simple but fast template engine, and only support PHP script template.
  * @link https://secure.php.net/manual/en/class.yaf-view-simple.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_View_Simple', 'Yaf_View_Simple', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_View_Simple', 'Yaf_View_Simple', \false);
 /**
  * <p>by default, Yaf_Router only have a <b>Yaf_Route_Static</b> as its default route.</p>
  * <br/>
@@ -3073,7 +3073,7 @@ class Yaf_Route_Static implements \Yaf_Route_Interface
  *
  * @link https://secure.php.net/manual/en/class.yaf-route-static.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Route_Static', 'Yaf_Route_Static', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Route_Static', 'Yaf_Route_Static', \false);
 /**
  * <p><b>Yaf_Route_Simple</b> will match the query string, and find the route info.</p>
  * <br/>
@@ -3145,7 +3145,7 @@ final class Yaf_Route_Simple implements \Yaf_Route_Interface
  *
  * @link https://secure.php.net/manual/en/class.yaf-route-simple.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Route_Simple', 'Yaf_Route_Simple', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Route_Simple', 'Yaf_Route_Simple', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-route-supervar.php
  */
@@ -3193,7 +3193,7 @@ final class Yaf_Route_Supervar implements \Yaf_Route_Interface
 /**
  * @link https://secure.php.net/manual/en/class.yaf-route-supervar.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Route_Supervar', 'Yaf_Route_Supervar', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Route_Supervar', 'Yaf_Route_Supervar', \false);
 /**
  * <p>For usage, please see the example section of Yaf_Route_Rewrite::__construct()</p>
  *
@@ -3259,7 +3259,7 @@ final class Yaf_Route_Rewrite extends \Yaf_Router implements \Yaf_Route_Interfac
  *
  * @link https://secure.php.net/manual/en/class.yaf-route-rewrite.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Route_Rewrite', 'Yaf_Route_Rewrite', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Route_Rewrite', 'Yaf_Route_Rewrite', \false);
 /**
  * <p><b>Yaf_Route_Regex</b> is the most flexible route among the Yaf built-in routes.</p>
  *
@@ -3336,7 +3336,7 @@ final class Yaf_Route_Regex extends \Yaf_Router implements \Yaf_Route_Interface
  *
  * @link https://secure.php.net/manual/en/class.yaf-route-regex.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Route_Regex', 'Yaf_Route_Regex', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Route_Regex', 'Yaf_Route_Regex', \false);
 /**
  * <p><b>Yaf_Route_Map</b> is a built-in route, it simply convert a URI endpoint (that part of the URI which comes after the base URI: see Yaf_Request_Abstract::setBaseUri()) to a controller name or action name(depends on the parameter passed to Yaf_Route_Map::__construct()) in following rule: A => controller A. A/B/C => controller A_B_C. A/B/C/D/E => controller A_B_C_D_E.</p>
  * <br/>
@@ -3393,7 +3393,7 @@ final class Yaf_Route_Map implements \Yaf_Route_Interface
  *
  * @link https://secure.php.net/manual/en/class.yaf-route-map.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Route_Map', 'Yaf_Route_Map', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Route_Map', 'Yaf_Route_Map', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-typeerror.php
  */
@@ -3403,7 +3403,7 @@ class Yaf_Exception_TypeError extends \Yaf_Exception
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-typeerror.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception_TypeError', 'Yaf_Exception_TypeError', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception_TypeError', 'Yaf_Exception_TypeError', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-startuperror.php
  */
@@ -3413,7 +3413,7 @@ class Yaf_Exception_StartupError extends \Yaf_Exception
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-startuperror.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception_StartupError', 'Yaf_Exception_StartupError', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception_StartupError', 'Yaf_Exception_StartupError', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-routefaild.php
  */
@@ -3423,7 +3423,7 @@ class Yaf_Exception_RouterFailed extends \Yaf_Exception
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-routefaild.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception_RouterFailed', 'Yaf_Exception_RouterFailed', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception_RouterFailed', 'Yaf_Exception_RouterFailed', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-dispatchfaild.php
  */
@@ -3433,7 +3433,7 @@ class Yaf_Exception_DispatchFailed extends \Yaf_Exception
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-dispatchfaild.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception_DispatchFailed', 'Yaf_Exception_DispatchFailed', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception_DispatchFailed', 'Yaf_Exception_DispatchFailed', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild.php
  */
@@ -3443,7 +3443,7 @@ class Yaf_Exception_LoadFailed extends \Yaf_Exception
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception_LoadFailed', 'Yaf_Exception_LoadFailed', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception_LoadFailed', 'Yaf_Exception_LoadFailed', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-module.php
  */
@@ -3453,7 +3453,7 @@ class Yaf_Exception_LoadFailed_Module extends \Yaf_Exception_LoadFailed
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-module.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception_LoadFailed_Module', 'Yaf_Exception_LoadFailed_Module', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception_LoadFailed_Module', 'Yaf_Exception_LoadFailed_Module', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-controller.php
  */
@@ -3463,7 +3463,7 @@ class Yaf_Exception_LoadFailed_Controller extends \Yaf_Exception_LoadFailed
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-controller.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception_LoadFailed_Controller', 'Yaf_Exception_LoadFailed_Controller', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception_LoadFailed_Controller', 'Yaf_Exception_LoadFailed_Controller', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-action.php
  */
@@ -3473,7 +3473,7 @@ class Yaf_Exception_LoadFailed_Action extends \Yaf_Exception_LoadFailed
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-action.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception_LoadFailed_Action', 'Yaf_Exception_LoadFailed_Action', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception_LoadFailed_Action', 'Yaf_Exception_LoadFailed_Action', \false);
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-view.php
  */
@@ -3483,4 +3483,4 @@ class Yaf_Exception_LoadFailed_View extends \Yaf_Exception_LoadFailed
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-view.php
  */
-\class_alias('DEPTRAC_202404\\Yaf_Exception_LoadFailed_View', 'Yaf_Exception_LoadFailed_View', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yaf_Exception_LoadFailed_View', 'Yaf_Exception_LoadFailed_View', \false);

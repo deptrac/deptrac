@@ -24,7 +24,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * The main entry point to the PHP Driver for Apache Cassandra.
@@ -423,13 +423,13 @@ final class Cassandra
  * Use Cassandra::ssl() to build SSL options instance.
  * @link https://docs.datastax.com/en/developer/php-driver/latest/api/class.Cassandra/
  */
-\class_alias('DEPTRAC_202404\\Cassandra', 'Cassandra', \false);
+\class_alias('DEPTRAC_INTERNAL\\Cassandra', 'Cassandra', \false);
 /**
  * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/
  */
-namespace DEPTRAC_202404\Cassandra;
+namespace DEPTRAC_INTERNAL\Cassandra;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
 /**
  * A PHP representation of a column
  * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/interface.Column/
@@ -5431,7 +5431,7 @@ final class UserTypeValue implements Value, \Countable, \Iterator
 /**
  * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/Cluster/
  */
-namespace DEPTRAC_202404\Cassandra\Cluster;
+namespace DEPTRAC_INTERNAL\Cassandra\Cluster;
 
 /**
  * Cluster builder allows fluent configuration of the cluster instance.
@@ -5842,7 +5842,7 @@ final class Builder
 /**
  * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/TimestampGenerator/
  */
-namespace DEPTRAC_202404\Cassandra\TimestampGenerator;
+namespace DEPTRAC_INTERNAL\Cassandra\TimestampGenerator;
 
 /**
  * A timestamp generator that allows the server-side to assign timestamps.
@@ -5867,7 +5867,7 @@ final class Monotonic implements \Cassandra\TimestampGenerator
 /**
  * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/RetryPolicy/
  */
-namespace DEPTRAC_202404\Cassandra\RetryPolicy;
+namespace DEPTRAC_INTERNAL\Cassandra\RetryPolicy;
 
 /**
  * The default retry policy. This policy retries a query, using the
@@ -5935,7 +5935,7 @@ final class Logging implements \Cassandra\RetryPolicy
 /**
  * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/Type/
  */
-namespace DEPTRAC_202404\Cassandra\Type;
+namespace DEPTRAC_INTERNAL\Cassandra\Type;
 
 /**
  * A class that represents the tuple type. The tuple type is able to represent
@@ -6339,7 +6339,7 @@ final class Scalar extends \Cassandra\Type
 /**
  * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/SSLOptions/
  */
-namespace DEPTRAC_202404\Cassandra\SSLOptions;
+namespace DEPTRAC_INTERNAL\Cassandra\SSLOptions;
 
 /**
  * SSLOptions builder allows fluent configuration of ssl options.
@@ -6420,9 +6420,9 @@ final class Builder
 /**
  * @link https://docs.datastax.com/en/developer/php-driver/latest/api/Cassandra/Exception/
  */
-namespace DEPTRAC_202404\Cassandra\Exception;
+namespace DEPTRAC_INTERNAL\Cassandra\Exception;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * ConfigurationException is raised when query is syntactically correct but
  * invalid because of some configuration issue.

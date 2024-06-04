@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Alias;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ChildDefinition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Alias;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ChildDefinition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -30,7 +30,7 @@ class ServicesConfigurator extends AbstractConfigurator
     private ?string $path;
     private string $anonymousHash;
     private int $anonymousCount;
-    public function __construct(ContainerBuilder $container, PhpFileLoader $loader, array &$instanceof, string $path = null, int &$anonymousCount = 0)
+    public function __construct(ContainerBuilder $container, PhpFileLoader $loader, array &$instanceof, ?string $path = null, int &$anonymousCount = 0)
     {
         $this->defaults = new Definition();
         $this->container = $container;
@@ -62,7 +62,7 @@ class ServicesConfigurator extends AbstractConfigurator
      * @param string|null $id    The service id, or null to create an anonymous service
      * @param string|null $class The class of the service, or null when $id is also the class name
      */
-    public final function set(?string $id, string $class = null) : ServiceConfigurator
+    public final function set(?string $id, ?string $class = null) : ServiceConfigurator
     {
         $defaults = $this->defaults;
         $definition = new Definition();
@@ -150,7 +150,7 @@ class ServicesConfigurator extends AbstractConfigurator
     /**
      * Registers a service.
      */
-    public final function __invoke(string $id, string $class = null) : ServiceConfigurator
+    public final function __invoke(string $id, ?string $class = null) : ServiceConfigurator
     {
         return $this->set($id, $class);
     }

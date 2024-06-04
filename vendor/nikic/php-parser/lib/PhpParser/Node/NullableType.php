@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node;
+namespace DEPTRAC_INTERNAL\PhpParser\Node;
 
 class NullableType extends ComplexType
 {

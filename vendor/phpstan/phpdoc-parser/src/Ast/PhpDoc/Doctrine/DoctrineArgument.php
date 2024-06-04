@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast\PhpDoc\Doctrine;
+namespace DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\PhpDoc\Doctrine;
 
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Node;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Node;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 /**
  * @phpstan-type ValueType = DoctrineAnnotation|IdentifierTypeNode|DoctrineArray|ConstExprNode
  */

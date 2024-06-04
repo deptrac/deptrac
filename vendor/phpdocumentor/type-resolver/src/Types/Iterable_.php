@@ -9,7 +9,7 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
 /**
  * Value Object representing iterable type

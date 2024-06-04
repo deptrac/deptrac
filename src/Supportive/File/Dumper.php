@@ -8,9 +8,9 @@ use Qossmic\Deptrac\Supportive\File\Exception\FileNotExistsException;
 use Qossmic\Deptrac\Supportive\File\Exception\FileNotWritableException;
 use Qossmic\Deptrac\Supportive\File\Exception\IOException;
 use SplFileInfo;
-use DEPTRAC_202404\Symfony\Component\Filesystem\Exception\FileNotFoundException;
-use DEPTRAC_202404\Symfony\Component\Filesystem\Exception\IOException as SymfonyIOException;
-use DEPTRAC_202404\Symfony\Component\Filesystem\Filesystem;
+use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Exception\FileNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Exception\IOException as SymfonyIOException;
+use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Filesystem;
 use function is_writable;
 class Dumper
 {

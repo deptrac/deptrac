@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection;
 
-use DEPTRAC_202404\Psr\Cache\CacheItemPoolInterface;
-use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
+use DEPTRAC_INTERNAL\Psr\Cache\CacheItemPoolInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
 if (!\class_exists(BaseExpressionLanguage::class)) {
     return;
 }
@@ -24,7 +24,7 @@ if (!\class_exists(BaseExpressionLanguage::class)) {
  */
 class ExpressionLanguage extends BaseExpressionLanguage
 {
-    public function __construct(CacheItemPoolInterface $cache = null, array $providers = [], callable $serviceCompiler = null, \Closure $getEnv = null)
+    public function __construct(?CacheItemPoolInterface $cache = null, array $providers = [], ?callable $serviceCompiler = null, ?\Closure $getEnv = null)
     {
         // prepend the default provider to let users override it easily
         \array_unshift($providers, new ExpressionLanguageProvider($serviceCompiler, $getEnv));

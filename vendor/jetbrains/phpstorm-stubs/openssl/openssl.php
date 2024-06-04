@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of openssl v.
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 /**
  * Frees a private key
  * @link https://php.net/manual/en/function.openssl-pkey-free.php
@@ -136,7 +136,7 @@ function openssl_pkey_get_public(#[LanguageLevelTypeAware(['8.0' => 'OpenSSLAsym
  * Depending on the key type used, additional details may be returned. Note that
  * some elements may not always be available.
  */
-#[ArrayShape(["bits" => "int", "key" => "string", "rsa" => "array", "dsa" => "array", "dh" => "array", "type" => "int"])]
+#[ArrayShape(["bits" => "int", "key" => "string", "rsa" => "array", "dsa" => "array", "dh" => "array", "ec" => "array", "type" => "int"])]
 function openssl_pkey_get_details(#[LanguageLevelTypeAware(["8.0" => "OpenSSLAsymmetricKey"], default: "resource")] $key) : array|false
 {
 }
@@ -1269,7 +1269,7 @@ function openssl_cms_read(string $input_filename, &$certificates) : bool
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\PKCS7_NOOLDMIMETYPE', 1024);
+\define('DEPTRAC_INTERNAL\\PKCS7_NOOLDMIMETYPE', 1024);
 /**
  * Don't try and verify the signatures on a message
  * @link https://php.net/manual/en/openssl.constants.php
@@ -1351,7 +1351,7 @@ function openssl_cms_read(string $input_filename, &$certificates) : bool
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\OPENSSL_CMS_OLDMIMETYPE', 1024);
+\define('DEPTRAC_INTERNAL\\OPENSSL_CMS_OLDMIMETYPE', 1024);
 /**
  * @since 8.0
  */
@@ -1368,7 +1368,7 @@ final class OpenSSLCertificate
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\OpenSSLCertificate', 'OpenSSLCertificate', \false);
+\class_alias('DEPTRAC_INTERNAL\\OpenSSLCertificate', 'OpenSSLCertificate', \false);
 /**
  * @since 8.0
  */
@@ -1385,7 +1385,7 @@ final class OpenSSLCertificateSigningRequest
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\OpenSSLCertificateSigningRequest', 'OpenSSLCertificateSigningRequest', \false);
+\class_alias('DEPTRAC_INTERNAL\\OpenSSLCertificateSigningRequest', 'OpenSSLCertificateSigningRequest', \false);
 /**
  * @since 8.0
  */
@@ -1402,4 +1402,4 @@ final class OpenSSLAsymmetricKey
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\OpenSSLAsymmetricKey', 'OpenSSLAsymmetricKey', \false);
+\class_alias('DEPTRAC_INTERNAL\\OpenSSLAsymmetricKey', 'OpenSSLAsymmetricKey', \false);

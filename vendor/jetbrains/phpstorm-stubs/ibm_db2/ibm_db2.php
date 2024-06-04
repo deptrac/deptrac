@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of ibm_db2 v.1.6.0
 /**
@@ -99,6 +99,20 @@ function db2_commit($connection) : bool
  * db2_pconnect returns false.
  */
 function db2_pconnect(#[\SensitiveParameter] string $database, ?string $username, #[\SensitiveParameter] ?string $password, array $options = [])
+{
+}
+/**
+ * Closes a persistent database connection
+ *
+ * This function closes a persistent DB2 client connection.
+ *
+ * @link https://php.net/manual/en/function.db2-pclose.php
+ *
+ * @param resource $connection Specifies a persistent DB2 client connection.
+ *
+ * @return bool Returns true on success or false on failure.
+ */
+function db2_pclose($connection) : bool
 {
 }
 /**

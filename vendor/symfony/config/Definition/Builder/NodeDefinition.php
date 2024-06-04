@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Builder;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder;
 
-use DEPTRAC_202404\Symfony\Component\Config\Definition\BaseNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\NodeInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\BaseNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\NodeInterface;
 /**
  * This class provides a fluent interface for defining a node.
  *
@@ -35,7 +35,7 @@ abstract class NodeDefinition implements NodeParentInterface
     protected $pathSeparator = BaseNode::DEFAULT_PATH_SEPARATOR;
     protected $parent;
     protected $attributes = [];
-    public function __construct(?string $name, NodeParentInterface $parent = null)
+    public function __construct(?string $name, ?NodeParentInterface $parent = null)
     {
         $this->parent = $parent;
         $this->name = $name;

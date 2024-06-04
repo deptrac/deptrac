@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser;
+namespace DEPTRAC_INTERNAL\PhpParser;
 
-use DEPTRAC_202404\PhpParser\NodeVisitor\FindingVisitor;
-use DEPTRAC_202404\PhpParser\NodeVisitor\FirstFindingVisitor;
+use DEPTRAC_INTERNAL\PhpParser\NodeVisitor\FindingVisitor;
+use DEPTRAC_INTERNAL\PhpParser\NodeVisitor\FirstFindingVisitor;
 class NodeFinder
 {
     /**

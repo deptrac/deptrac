@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast\PhpDoc\Doctrine;
+namespace DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\PhpDoc\Doctrine;
 
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\NodeAttributes;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode;
 use function trim;
 class DoctrineTagValueNode implements PhpDocTagValueNode
 {

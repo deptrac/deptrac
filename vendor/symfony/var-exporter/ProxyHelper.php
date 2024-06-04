@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\VarExporter;
+namespace DEPTRAC_INTERNAL\Symfony\Component\VarExporter;
 
-use DEPTRAC_202404\Symfony\Component\VarExporter\Exception\LogicException;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\Hydrator;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\LazyObjectRegistry;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Exception\LogicException;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\Hydrator;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\LazyObjectRegistry;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -26,7 +26,7 @@ final class ProxyHelper
     public static function generateLazyGhost(\ReflectionClass $class) : string
     {
         if (\PHP_VERSION_ID >= 80200 && \PHP_VERSION_ID < 80300 && $class->isReadOnly()) {
-            throw new LogicException(\sprintf('Cannot generate lazy ghost: class "%s" is readonly.', $class->name));
+            throw new LogicException(\sprintf('Cannot generate lazy ghost with PHP < 8.3: class "%s" is readonly.', $class->name));
         }
         if ($class->isFinal()) {
             throw new LogicException(\sprintf('Cannot generate lazy ghost: class "%s" is final.', $class->name));
@@ -85,7 +85,7 @@ EOPHP;
             throw new LogicException(\sprintf('Cannot generate lazy proxy: class "%s" is final.', $class->name));
         }
         if (\PHP_VERSION_ID >= 80200 && \PHP_VERSION_ID < 80300 && $class?->isReadOnly()) {
-            throw new LogicException(\sprintf('Cannot generate lazy proxy: class "%s" is readonly.', $class->name));
+            throw new LogicException(\sprintf('Cannot generate lazy proxy with PHP < 8.3: class "%s" is readonly.', $class->name));
         }
         $methodReflectors = [$class?->getMethods(\ReflectionMethod::IS_PUBLIC | \ReflectionMethod::IS_PROTECTED) ?? []];
         foreach ($interfaces as $interface) {
@@ -192,14 +192,16 @@ class_exists(\\Symfony\\Component\\VarExporter\\Internal\\LazyObjectState::class
 
 EOPHP;
     }
-    public static function exportSignature(\ReflectionFunctionAbstract $function, bool $withParameterTypes = \true, string &$args = null) : string
+    public static function exportSignature(\ReflectionFunctionAbstract $function, bool $withParameterTypes = \true, ?string &$args = null) : string
     {
         $byRefIndex = 0;
         $args = '';
         $param = null;
         $parameters = [];
+        $namespace = $function instanceof \ReflectionMethod ? $function->class : $function->getNamespaceName() . '\\';
+        $namespace = \substr($namespace, 0, \strrpos($namespace, '\\') ?: 0);
         foreach ($function->getParameters() as $param) {
-            $parameters[] = ($param->getAttributes(\SensitiveParameter::class) ? '#[\\SensitiveParameter] ' : '') . ($withParameterTypes && $param->hasType() ? self::exportType($param) . ' ' : '') . ($param->isPassedByReference() ? '&' : '') . ($param->isVariadic() ? '...' : '') . '$' . $param->name . ($param->isOptional() && !$param->isVariadic() ? ' = ' . self::exportDefault($param) : '');
+            $parameters[] = ($param->getAttributes(\SensitiveParameter::class) ? '#[\\SensitiveParameter] ' : '') . ($withParameterTypes && $param->hasType() ? self::exportType($param) . ' ' : '') . ($param->isPassedByReference() ? '&' : '') . ($param->isVariadic() ? '...' : '') . '$' . $param->name . ($param->isOptional() && !$param->isVariadic() ? ' = ' . self::exportDefault($param, $namespace) : '');
             if ($param->isPassedByReference()) {
                 $byRefIndex = 1 + $param->getPosition();
             }
@@ -235,7 +237,7 @@ EOPHP;
         }
         return $signature;
     }
-    public static function exportType(\ReflectionFunctionAbstract|\ReflectionProperty|\ReflectionParameter $owner, bool $noBuiltin = \false, \ReflectionType $type = null) : ?string
+    public static function exportType(\ReflectionFunctionAbstract|\ReflectionProperty|\ReflectionParameter $owner, bool $noBuiltin = \false, ?\ReflectionType $type = null) : ?string
     {
         if (!($type ??= $owner instanceof \ReflectionFunctionAbstract ? $owner->getReturnType() : $owner->getType())) {
             return null;
@@ -272,7 +274,7 @@ EOPHP;
             return '';
         }
         if (null === $glue) {
-            return (!$noBuiltin && $type->allowsNull() && 'mixed' !== $name ? '?' : '') . $types[0];
+            return (!$noBuiltin && $type->allowsNull() && !\in_array($name, ['mixed', 'null'], \true) ? '?' : '') . $types[0];
         }
         \sort($types);
         return \implode($glue, $types);
@@ -290,7 +292,7 @@ EOPHP;
         $propertyScopes = \str_replace("\n", "\n    ", $propertyScopes);
         return $propertyScopes;
     }
-    private static function exportDefault(\ReflectionParameter $param) : string
+    private static function exportDefault(\ReflectionParameter $param, $namespace) : string
     {
         $default = \rtrim(\substr(\explode('$' . $param->name . ' = ', (string) $param, 2)[1] ?? '', 0, -2));
         if (\in_array($default, ['<default>', 'NULL'], \true)) {
@@ -301,23 +303,30 @@ EOPHP;
         }
         $regexp = "/(\"(?:[^\"\\\\]*+(?:\\\\.)*+)*+\"|'(?:[^'\\\\]*+(?:\\\\.)*+)*+')/";
         $parts = \preg_split($regexp, $default, -1, \PREG_SPLIT_DELIM_CAPTURE | \PREG_SPLIT_NO_EMPTY);
-        $regexp = '/([\\[\\( ]|^)([a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*+(?:\\\\[a-zA-Z0-9_\\x7f-\\xff]++)*+)(?!: )/';
+        $regexp = '/([\\[\\( ]|^)([a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*+(?:\\\\[a-zA-Z0-9_\\x7f-\\xff]++)*+)(\\(?)(?!: )/';
         $callback = \false !== \strpbrk($default, "\\:('") && ($class = $param->getDeclaringClass()) ? fn($m) => $m[1] . match ($m[2]) {
             'new', 'false', 'true', 'null' => $m[2],
             'NULL' => 'null',
             'self' => '\\' . $class->name,
             'namespace\\parent', 'parent' => ($parent = $class->getParentClass()) ? '\\' . $parent->name : 'parent',
-            default => '\\' . $m[2],
-        } : fn($m) => $m[1] . match ($m[2]) {
+            default => self::exportSymbol($m[2], '(' !== $m[3], $namespace),
+        } . $m[3] : fn($m) => $m[1] . match ($m[2]) {
             'new', 'false', 'true', 'null', 'self', 'parent' => $m[2],
             'NULL' => 'null',
-            default => '\\' . $m[2],
-        };
+            default => self::exportSymbol($m[2], '(' !== $m[3], $namespace),
+        } . $m[3];
         return \implode('', \array_map(fn($part) => match ($part[0]) {
             '"' => $part,
             // for internal classes only
             "'" => \false !== \strpbrk($part, "\\\x00\r\n") ? '"' . \substr(\str_replace(['$', "\x00", "\r", "\n"], ['\\$', '\\0', '\\r', '\\n'], $part), 1, -1) . '"' : $part,
             default => \preg_replace_callback($regexp, $callback, $part),
         }, $parts));
+    }
+    private static function exportSymbol(string $symbol, bool $mightBeRootConst, string $namespace) : string
+    {
+        if (!$mightBeRootConst || \false === ($ns = \strrpos($symbol, '\\')) || \substr($symbol, 0, $ns) !== $namespace || \defined($symbol) || !\defined(\substr($symbol, $ns + 1))) {
+            return '\\' . $symbol;
+        }
+        return '\\' . \substr($symbol, $ns + 1);
     }
 }

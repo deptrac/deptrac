@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * @since 8.1
@@ -11,4 +11,4 @@ final class GdFont
 /**
  * @since 8.1
  */
-\class_alias('DEPTRAC_202404\\GdFont', 'GdFont', \false);
+\class_alias('DEPTRAC_INTERNAL\\GdFont', 'GdFont', \false);

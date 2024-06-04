@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\BSON;
+namespace DEPTRAC_INTERNAL\MongoDB\BSON;
 
 /**
  * This interface is implemented by MongoDB\BSON\Decimal128 but may also be used for type-hinting and userland classes.

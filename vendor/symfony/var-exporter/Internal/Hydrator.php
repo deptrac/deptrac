@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\VarExporter\Internal;
+namespace DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal;
 
-use DEPTRAC_202404\Symfony\Component\VarExporter\Exception\ClassNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Exception\ClassNotFoundException;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
@@ -236,10 +236,18 @@ class Hydrator
             }
             $name = $property->name;
             if (\ReflectionProperty::IS_PRIVATE & $flags) {
-                $propertyScopes["\x00{$class}\x00{$name}"] = $propertyScopes[$name] = [$class, $name, $flags & \ReflectionProperty::IS_READONLY ? $class : null, $property];
+                $readonlyScope = null;
+                if ($flags & \ReflectionProperty::IS_READONLY) {
+                    $readonlyScope = $class;
+                }
+                $propertyScopes["\x00{$class}\x00{$name}"] = $propertyScopes[$name] = [$class, $name, $readonlyScope, $property];
                 continue;
             }
-            $propertyScopes[$name] = [$class, $name, $flags & \ReflectionProperty::IS_READONLY ? $property->class : null, $property];
+            $readonlyScope = null;
+            if ($flags & \ReflectionProperty::IS_READONLY) {
+                $readonlyScope = $property->class;
+            }
+            $propertyScopes[$name] = [$class, $name, $readonlyScope, $property];
             if (\ReflectionProperty::IS_PROTECTED & $flags) {
                 $propertyScopes["\x00*\x00{$name}"] = $propertyScopes[$name];
             }

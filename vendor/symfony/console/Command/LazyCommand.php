@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Console\Command;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Console\Command;
 
-use DEPTRAC_202404\Symfony\Component\Console\Application;
-use DEPTRAC_202404\Symfony\Component\Console\Completion\CompletionInput;
-use DEPTRAC_202404\Symfony\Component\Console\Completion\CompletionSuggestions;
-use DEPTRAC_202404\Symfony\Component\Console\Completion\Suggestion;
-use DEPTRAC_202404\Symfony\Component\Console\Helper\HelperInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Helper\HelperSet;
-use DEPTRAC_202404\Symfony\Component\Console\Input\InputDefinition;
-use DEPTRAC_202404\Symfony\Component\Console\Input\InputInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Application;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Completion\CompletionInput;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Completion\CompletionSuggestions;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Completion\Suggestion;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\HelperInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\HelperSet;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputDefinition;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -39,7 +39,7 @@ final class LazyCommand extends Command
     public function setApplication(?Application $application = null) : void
     {
         if (1 > \func_num_args()) {
-            \DEPTRAC_202404\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
+            \DEPTRAC_INTERNAL\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
         }
         if ($this->command instanceof parent) {
             $this->command->setApplication($application);

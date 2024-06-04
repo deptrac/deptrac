@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver\Exception;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver\Exception;
 
 /**
  * Base class for exceptions thrown when the driver fails to establish a database connection.

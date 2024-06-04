@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Lexer\TokenEmulator;
+namespace DEPTRAC_INTERNAL\PhpParser\Lexer\TokenEmulator;
 
-use DEPTRAC_202404\PhpParser\Lexer\Emulative;
+use DEPTRAC_INTERNAL\PhpParser\Lexer\Emulative;
 final class AttributeEmulator extends TokenEmulator
 {
     public function getPhpVersion() : string

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // PECL stats stubs for PhpStorm
 // https://pecl.php.net/package/stats

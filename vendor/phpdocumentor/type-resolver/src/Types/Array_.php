@@ -9,7 +9,7 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
 /**
  * Represents an array type as described in the PSR-5, the PHPDoc Standard.

@@ -1,9 +1,9 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver\Monitoring;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver\Monitoring;
 
 use MongoDB\BSON\ObjectId;
-use DEPTRAC_202404\MongoDB\Driver\ServerDescription;
+use DEPTRAC_INTERNAL\MongoDB\Driver\ServerDescription;
 /**
  * @since 1.13.0
  */

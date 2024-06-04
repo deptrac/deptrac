@@ -8,9 +8,9 @@ use Qossmic\Deptrac\Supportive\File\Exception\FileAlreadyExistsException;
 use Qossmic\Deptrac\Supportive\File\Exception\FileNotExistsException;
 use Qossmic\Deptrac\Supportive\File\Exception\FileNotWritableException;
 use Qossmic\Deptrac\Supportive\File\Exception\IOException;
-use DEPTRAC_202404\Symfony\Component\Console\Command\Command;
-use DEPTRAC_202404\Symfony\Component\Console\Input\InputInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Command\Command;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\OutputInterface;
 use function sprintf;
 class InitCommand extends Command
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * @since 8.1
  */
@@ -17,4 +17,4 @@ class ReflectionIntersectionType extends \ReflectionType
 /**
  * @since 8.1
  */
-\class_alias('DEPTRAC_202404\\ReflectionIntersectionType', 'ReflectionIntersectionType', \false);
+\class_alias('DEPTRAC_INTERNAL\\ReflectionIntersectionType', 'ReflectionIntersectionType', \false);

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\VarExporter\Exception;
+namespace DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Exception;
 
 class NotInstantiableTypeException extends \Exception implements ExceptionInterface
 {
-    public function __construct(string $type, \Throwable $previous = null)
+    public function __construct(string $type, ?\Throwable $previous = null)
     {
         parent::__construct(\sprintf('Type "%s" is not instantiable.', $type), 0, $previous);
     }

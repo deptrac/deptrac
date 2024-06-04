@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Stmt;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\Node\FunctionLike;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\FunctionLike;
 class ClassMethod extends Node\Stmt implements FunctionLike
 {
     /** @var int Flags */

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\RdKafka\Metadata;
+namespace DEPTRAC_INTERNAL\RdKafka\Metadata;
 
 class Partition
 {

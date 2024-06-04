@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition;
 
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 /**
  * Node which only allows a finite set of values.
  *
@@ -19,7 +19,7 @@ use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\InvalidConfigur
 class EnumNode extends ScalarNode
 {
     private array $values;
-    public function __construct(?string $name, NodeInterface $parent = null, array $values = [], string $pathSeparator = BaseNode::DEFAULT_PATH_SEPARATOR)
+    public function __construct(?string $name, ?NodeInterface $parent = null, array $values = [], string $pathSeparator = BaseNode::DEFAULT_PATH_SEPARATOR)
     {
         if (!$values) {
             throw new \InvalidArgumentException('$values must contain at least one element.');

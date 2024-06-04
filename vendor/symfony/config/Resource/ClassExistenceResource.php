@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Resource;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Resource;
 
 /**
  * ClassExistenceResource represents a class existence.
@@ -31,7 +31,7 @@ class ClassExistenceResource implements SelfCheckingResourceInterface
      * @param string    $resource The fully-qualified class name
      * @param bool|null $exists   Boolean when the existence check has already been done
      */
-    public function __construct(string $resource, bool $exists = null)
+    public function __construct(string $resource, ?bool $exists = null)
     {
         $this->resource = $resource;
         if (null !== $exists) {
@@ -123,7 +123,7 @@ class ClassExistenceResource implements SelfCheckingResourceInterface
      *
      * @internal
      */
-    public static function throwOnRequiredClass(string $class, \Exception $previous = null) : void
+    public static function throwOnRequiredClass(string $class, ?\Exception $previous = null) : void
     {
         // If the passed class is the resource being checked, we shouldn't throw.
         if (null === $previous && self::$autoloadedClass === $class) {

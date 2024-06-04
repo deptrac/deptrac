@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 /**
  * Checks your services for circular references.
  *

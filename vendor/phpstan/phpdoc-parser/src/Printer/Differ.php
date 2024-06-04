@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PHPStan\PhpDocParser\Printer;
+namespace DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Printer;
 
 use Exception;
 use function array_reverse;

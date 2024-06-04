@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Supportive\OutputFormatter;
 
-use DEPTRAC_202404\Psr\Container\ContainerInterface;
+use DEPTRAC_INTERNAL\Psr\Container\ContainerInterface;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInterface;
 use Qossmic\Deptrac\Supportive\DependencyInjection\Exception\InvalidServiceInLocatorException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ServiceLocator;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ServiceLocator;
 use function array_keys;
 use function get_debug_type;
 final class FormatterProvider implements ContainerInterface

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Contracts\Service\Test;
+namespace DEPTRAC_INTERNAL\Symfony\Contracts\Service\Test;
 
 \class_alias(ServiceLocatorTestCase::class, ServiceLocatorTest::class);
 if (\false) {

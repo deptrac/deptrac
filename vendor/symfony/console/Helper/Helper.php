@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Console\Helper;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Console\Helper;
 
-use DEPTRAC_202404\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use DEPTRAC_202404\Symfony\Component\String\UnicodeString;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\String\UnicodeString;
 /**
  * Helper is the base class for all helper classes.
  *
@@ -26,7 +26,7 @@ abstract class Helper implements HelperInterface
     public function setHelperSet(?HelperSet $helperSet = null)
     {
         if (1 > \func_num_args()) {
-            \DEPTRAC_202404\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
+            \DEPTRAC_INTERNAL\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
         }
         $this->helperSet = $helperSet;
     }

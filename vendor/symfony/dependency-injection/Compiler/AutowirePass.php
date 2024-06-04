@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\Config\Resource\ClassExistenceResource;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\Autowire;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\AutowireCallable;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\AutowireDecorated;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\MapDecorated;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\Target;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\TypedReference;
-use DEPTRAC_202404\Symfony\Component\VarExporter\ProxyHelper;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\ClassExistenceResource;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\Autowire;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\AutowireCallable;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\AutowireDecorated;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\MapDecorated;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\Target;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\TypedReference;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\ProxyHelper;
 /**
  * Inspects existing service definitions and wires the autowired ones using the type hints of their classes.
  *
@@ -566,7 +566,7 @@ class AutowirePass extends AbstractRecursivePass
         }
         return null;
     }
-    private function populateAutowiringAlias(string $id, string $target = null) : void
+    private function populateAutowiringAlias(string $id, ?string $target = null) : void
     {
         if (!\preg_match('/(?(DEFINE)(?<V>[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*+))^((?&V)(?:\\\\(?&V))*+)(?: \\$((?&V)))?$/', $id, $m)) {
             return;
@@ -580,7 +580,7 @@ class AutowirePass extends AbstractRecursivePass
             $this->autowiringAliases[$type][$name] = $name;
         }
     }
-    private function getCombinedAlias(string $type, string $name = null) : ?string
+    private function getCombinedAlias(string $type, ?string $name = null) : ?string
     {
         if (\str_contains($type, '&')) {
             $types = \explode('&', $type);

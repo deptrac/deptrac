@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\VarExporter\ProxyHelper;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\ProxyHelper;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *

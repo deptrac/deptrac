@@ -1,8 +1,8 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Comment;
+namespace DEPTRAC_INTERNAL\PhpParser\Comment;
 
-class Doc extends \DEPTRAC_202404\PhpParser\Comment
+class Doc extends \DEPTRAC_INTERNAL\PhpParser\Comment
 {
 }

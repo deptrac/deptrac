@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of xsl v.0.1
 /**
@@ -176,7 +176,7 @@ class XSLTProcessor
 /**
  * @link https://php.net/manual/en/class.xsltprocessor.php
  */
-\class_alias('DEPTRAC_202404\\XSLTProcessor', 'XSLTProcessor', \false);
+\class_alias('DEPTRAC_INTERNAL\\XSLTProcessor', 'XSLTProcessor', \false);
 \define('XSL_CLONE_AUTO', 0);
 \define('XSL_CLONE_NEVER', -1);
 \define('XSL_CLONE_ALWAYS', 1);

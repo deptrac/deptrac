@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\EventDispatcher\Debug;
+namespace DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\Debug;
 
-use DEPTRAC_202404\Psr\EventDispatcher\StoppableEventInterface;
-use DEPTRAC_202404\Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use DEPTRAC_202404\Symfony\Component\Stopwatch\Stopwatch;
-use DEPTRAC_202404\Symfony\Component\VarDumper\Caster\ClassStub;
+use DEPTRAC_INTERNAL\Psr\EventDispatcher\StoppableEventInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Stopwatch\Stopwatch;
+use DEPTRAC_INTERNAL\Symfony\Component\VarDumper\Caster\ClassStub;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
@@ -44,7 +44,7 @@ final class WrappedListener
             $this->callableRef .= '::' . $listener[1];
         } elseif ($listener instanceof \Closure) {
             $r = new \ReflectionFunction($listener);
-            if (\str_contains($r->name, '{closure}')) {
+            if (\str_contains($r->name, '{closure')) {
                 $this->pretty = $this->name = 'closure';
             } elseif ($class = \PHP_VERSION_ID >= 80111 ? $r->getClosureCalledClass() : $r->getClosureScopeClass()) {
                 $this->name = $class->name;

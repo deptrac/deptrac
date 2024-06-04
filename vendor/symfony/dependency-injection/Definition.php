@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
 /**
  * Definition represents a service definition.
  *
@@ -54,7 +54,7 @@ class Definition
      * Used to store the behavior to follow when using service decoration and the decorated service is invalid
      */
     public ?int $decorationOnInvalid = null;
-    public function __construct(string $class = null, array $arguments = [])
+    public function __construct(?string $class = null, array $arguments = [])
     {
         if (null !== $class) {
             $this->setClass($class);
@@ -117,7 +117,7 @@ class Definition
      *
      * @throws InvalidArgumentException in case the decorated service id and the new decorated service id are equals
      */
-    public function setDecoratedService(?string $id, string $renamedId = null, int $priority = 0, int $invalidBehavior = ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE) : static
+    public function setDecoratedService(?string $id, ?string $renamedId = null, int $priority = 0, int $invalidBehavior = ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE) : static
     {
         if ($renamedId && $id === $renamedId) {
             throw new InvalidArgumentException(\sprintf('The decorated service inner name for "%s" must be different than the service name itself.', $id));

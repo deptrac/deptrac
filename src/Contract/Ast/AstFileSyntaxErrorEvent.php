@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Contract\Ast;
 
-use DEPTRAC_202404\Symfony\Contracts\EventDispatcher\Event;
+use DEPTRAC_INTERNAL\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Event triggered when parsing the AST failed on syntax error in the PHP file.
  */

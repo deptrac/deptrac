@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * Helper autocomplete for php solr extension.
@@ -41,4 +41,4 @@ class SolrIllegalArgumentException extends \SolrException
  * This object is thrown when an illegal or invalid argument is passed to a method.
  * @link https://php.net/manual/en/class.solrillegalargumentexception.php
  */
-\class_alias('DEPTRAC_202404\\SolrIllegalArgumentException', 'SolrIllegalArgumentException', \false);
+\class_alias('DEPTRAC_INTERNAL\\SolrIllegalArgumentException', 'SolrIllegalArgumentException', \false);

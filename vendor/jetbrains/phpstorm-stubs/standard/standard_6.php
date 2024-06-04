@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Runs the equivalent of the select() system call on the given
  * arrays of streams with a timeout specified by tv_sec and tv_usec

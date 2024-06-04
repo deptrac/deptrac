@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser;
+namespace DEPTRAC_INTERNAL\PhpParser;
 
 /**
  * @codeCoverageIgnore

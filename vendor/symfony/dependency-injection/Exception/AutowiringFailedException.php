@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Thrown when a definition cannot be autowired.
@@ -17,10 +17,10 @@ class AutowiringFailedException extends RuntimeException
 {
     private string $serviceId;
     private ?\Closure $messageCallback = null;
-    public function __construct(string $serviceId, string|\Closure $message = '', int $code = 0, \Throwable $previous = null)
+    public function __construct(string $serviceId, string|\Closure $message = '', int $code = 0, ?\Throwable $previous = null)
     {
         $this->serviceId = $serviceId;
-        if ($message instanceof \Closure && (\function_exists('xdebug_is_enabled') ? \xdebug_is_enabled() : \function_exists('xdebug_info'))) {
+        if ($message instanceof \Closure && \function_exists('xdebug_is_enabled') && \xdebug_is_enabled()) {
             $message = $message();
         }
         if (!$message instanceof \Closure) {

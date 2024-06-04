@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * Helper autocomplete for php redis cluster extension.
@@ -3734,8 +3734,8 @@ class RedisCluster
  *
  * @method mixed eval($script, $args = array(), $numKeys = 0)
  */
-\class_alias('DEPTRAC_202404\\RedisCluster', 'RedisCluster', \false);
+\class_alias('DEPTRAC_INTERNAL\\RedisCluster', 'RedisCluster', \false);
 class RedisClusterException extends \Exception
 {
 }
-\class_alias('DEPTRAC_202404\\RedisClusterException', 'RedisClusterException', \false);
+\class_alias('DEPTRAC_INTERNAL\\RedisClusterException', 'RedisClusterException', \false);

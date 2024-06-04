@@ -1,10 +1,10 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of sockets v.
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 /**
  * (PHP 7 &gt;= 7.2.0)<br/>
  * Get array with contents of getaddrinfo about the given hostname.
@@ -1478,11 +1478,11 @@ function socket_atmark(\Socket $socket) : bool
 \define('SO_TYPE', 3);
 \define('SO_ERROR', 4);
 \define('SO_BINDTODEVICE', 25);
-\define('DEPTRAC_202404\\SO_ATTACH_REUSEPORT_CBPF', 51);
-\define('DEPTRAC_202404\\SO_DETACH_FILTER', 27);
-\define('DEPTRAC_202404\\SO_DETACH_BPF', 27);
+\define('DEPTRAC_INTERNAL\\SO_ATTACH_REUSEPORT_CBPF', 51);
+\define('DEPTRAC_INTERNAL\\SO_DETACH_FILTER', 27);
+\define('DEPTRAC_INTERNAL\\SO_DETACH_BPF', 27);
 \define('SOL_SOCKET', 1);
-\define('DEPTRAC_202404\\SOL_UDPLITE', 136);
+\define('DEPTRAC_INTERNAL\\SOL_UDPLITE', 136);
 \define('SOMAXCONN', 128);
 /**
  * @since 8.1
@@ -1580,14 +1580,14 @@ function socket_atmark(\Socket $socket) : bool
  */
 \define('IPV6_MULTICAST_LOOP', 19);
 \define('IPV6_V6ONLY', 26);
-\define('DEPTRAC_202404\\IP_BIND_ADDRESS_NO_PORT', 24);
-\define('DEPTRAC_202404\\IP_MTU_DISCOVER', 10);
-\define('DEPTRAC_202404\\IP_PMTUDISC_DO', 2);
-\define('DEPTRAC_202404\\IP_PMTUDISC_DONT', 0);
-\define('DEPTRAC_202404\\IP_PMTUDISC_WANT', 1);
-\define('DEPTRAC_202404\\IP_PMTUDISC_PROBE', 3);
-\define('DEPTRAC_202404\\IP_PMTUDISC_INTERFACE', 4);
-\define('DEPTRAC_202404\\IP_PMTUDISC_OMIT', 5);
+\define('DEPTRAC_INTERNAL\\IP_BIND_ADDRESS_NO_PORT', 24);
+\define('DEPTRAC_INTERNAL\\IP_MTU_DISCOVER', 10);
+\define('DEPTRAC_INTERNAL\\IP_PMTUDISC_DO', 2);
+\define('DEPTRAC_INTERNAL\\IP_PMTUDISC_DONT', 0);
+\define('DEPTRAC_INTERNAL\\IP_PMTUDISC_WANT', 1);
+\define('DEPTRAC_INTERNAL\\IP_PMTUDISC_PROBE', 3);
+\define('DEPTRAC_INTERNAL\\IP_PMTUDISC_INTERFACE', 4);
+\define('DEPTRAC_INTERNAL\\IP_PMTUDISC_OMIT', 5);
 /**
  * Operation not permitted.
  * @link https://php.net/manual/en/sockets.constants.php
@@ -2228,11 +2228,11 @@ function socket_atmark(\Socket $socket) : bool
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\TCP_QUICKACK', 12);
+\define('DEPTRAC_INTERNAL\\TCP_QUICKACK', 12);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\TCP_REPAIR', 19);
+\define('DEPTRAC_INTERNAL\\TCP_REPAIR', 19);
 /**
  * Socket_set_option for the socket_send* functions.
  * It avoids copy b/w userland and kernel for both TCP and UDP protocols.
@@ -2261,7 +2261,7 @@ final class Socket
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\Socket', 'Socket', \false);
+\class_alias('DEPTRAC_INTERNAL\\Socket', 'Socket', \false);
 /**
  * @since 8.0
  */
@@ -2278,4 +2278,4 @@ final class AddressInfo
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\AddressInfo', 'AddressInfo', \false);
+\class_alias('DEPTRAC_INTERNAL\\AddressInfo', 'AddressInfo', \false);

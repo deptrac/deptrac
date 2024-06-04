@@ -9,7 +9,7 @@ use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
 use Qossmic\Deptrac\Contract\Result\OutputResult;
 use Qossmic\Deptrac\Contract\Result\SkippedViolation;
 use Qossmic\Deptrac\Contract\Result\Violation;
-use DEPTRAC_202404\Symfony\Component\Yaml\Yaml;
+use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Yaml;
 use function array_values;
 use function ksort;
 use function sort;

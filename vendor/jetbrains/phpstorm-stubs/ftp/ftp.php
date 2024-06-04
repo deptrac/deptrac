@@ -1,11 +1,11 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of ftp v.
-use DEPTRAC_202404\JetBrains\PhpStorm\ExpectedValues as EV;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ExpectedValues as EV;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 /**
  * append the contents of a file to another file on the ftp server
  * @param resource $ftp
@@ -15,7 +15,7 @@ use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
  * @return bool
  * @since 7.2
  */
-function ftp_append(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, string $local_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY) : bool
+function ftp_append(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, string $local_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY) : bool
 {
 }
 /**
@@ -25,7 +25,7 @@ function ftp_append(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Con
  * @return array|false
  * @since 7.2
  */
-function ftp_mlsd(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : array|false
+function ftp_mlsd(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : array|false
 {
 }
 /**
@@ -89,7 +89,7 @@ function ftp_ssl_connect(string $hostname, int $port = 21, int $timeout = 90)
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  * If login fails, PHP will also throw a warning.
  */
-function ftp_login(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $username, string $password) : bool
+function ftp_login(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $username, string $password) : bool
 {
 }
 /**
@@ -100,7 +100,7 @@ function ftp_login(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conn
  * </p>
  * @return string|false the current directory name or <b>FALSE</b> on error.
  */
-function ftp_pwd(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp) : string|false
+function ftp_pwd(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp) : string|false
 {
 }
 /**
@@ -111,7 +111,7 @@ function ftp_pwd(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connec
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_cdup(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp) : bool
+function ftp_cdup(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp) : bool
 {
 }
 /**
@@ -126,7 +126,7 @@ function ftp_cdup(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conne
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  * If changing directory fails, PHP will also throw a warning.
  */
-function ftp_chdir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : bool
+function ftp_chdir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : bool
 {
 }
 /**
@@ -141,7 +141,7 @@ function ftp_chdir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conn
  * @return bool <b>TRUE</b> if the command was successful (server sent response code:
  * 200); otherwise returns <b>FALSE</b>.
  */
-function ftp_exec(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $command) : bool
+function ftp_exec(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $command) : bool
 {
 }
 /**
@@ -158,7 +158,7 @@ function ftp_exec(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conne
  * <b>ftp_raw</b> determine if the command succeeded.
  */
 #[LanguageLevelTypeAware(['8.0' => 'array|null'], default: 'array')]
-function ftp_raw(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $command)
+function ftp_raw(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $command)
 {
 }
 /**
@@ -172,7 +172,7 @@ function ftp_raw(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connec
  * </p>
  * @return string|false the newly created directory name on success or <b>FALSE</b> on error.
  */
-function ftp_mkdir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : string|false
+function ftp_mkdir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : string|false
 {
 }
 /**
@@ -187,7 +187,7 @@ function ftp_mkdir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conn
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_rmdir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : bool
+function ftp_rmdir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : bool
 {
 }
 /**
@@ -204,7 +204,7 @@ function ftp_rmdir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conn
  * </p>
  * @return int|false the new file permissions on success or <b>FALSE</b> on error.
  */
-function ftp_chmod(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, int $permissions, string $filename) : int|false
+function ftp_chmod(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, int $permissions, string $filename) : int|false
 {
 }
 /**
@@ -222,7 +222,7 @@ function ftp_chmod(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conn
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_alloc(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, int $size, &$response) : bool
+function ftp_alloc(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, int $size, &$response) : bool
 {
 }
 /**
@@ -240,7 +240,7 @@ function ftp_alloc(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conn
  * @return string[]|false an array of filenames from the specified directory on success or
  * <b>FALSE</b> on error.
  */
-function ftp_nlist(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : array|false
+function ftp_nlist(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $directory) : array|false
 {
 }
 /**
@@ -263,7 +263,7 @@ function ftp_nlist(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conn
  * should be interpreted.
  * </p>
  */
-function ftp_rawlist(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $directory, bool $recursive = \false) : array|false
+function ftp_rawlist(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $directory, bool $recursive = \false) : array|false
 {
 }
 /**
@@ -274,7 +274,7 @@ function ftp_rawlist(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Co
  * </p>
  * @return string|false the remote system type, or <b>FALSE</b> on error.
  */
-function ftp_systype(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp) : string|false
+function ftp_systype(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp) : string|false
 {
 }
 /**
@@ -288,7 +288,7 @@ function ftp_systype(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Co
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_pasv(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, bool $enable) : bool
+function ftp_pasv(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, bool $enable) : bool
 {
 }
 /**
@@ -311,7 +311,7 @@ function ftp_pasv(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conne
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_get(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $local_filename, string $remote_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : bool
+function ftp_get(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $local_filename, string $remote_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : bool
 {
 }
 /**
@@ -334,7 +334,7 @@ function ftp_get(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connec
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_fget(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, $stream, string $remote_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : bool
+function ftp_fget(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, $stream, string $remote_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : bool
 {
 }
 /**
@@ -355,7 +355,7 @@ function ftp_fget(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conne
  * @param int $offset [optional] <p>The position in the remote file to start uploading to.</p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_put(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, string $local_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : bool
+function ftp_put(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, string $local_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : bool
 {
 }
 /**
@@ -376,7 +376,7 @@ function ftp_put(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connec
  * @param int $offset [optional] <p>The position in the remote file to start uploading to.</p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_fput(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, $stream, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : bool
+function ftp_fput(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, $stream, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : bool
 {
 }
 /**
@@ -390,7 +390,7 @@ function ftp_fput(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conne
  * </p>
  * @return int the file size on success, or -1 on error.
  */
-function ftp_size(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $filename) : int
+function ftp_size(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $filename) : int
 {
 }
 /**
@@ -405,7 +405,7 @@ function ftp_size(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conne
  * @return int the last modified time as a Unix timestamp on success, or -1 on
  * error.
  */
-function ftp_mdtm(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $filename) : int
+function ftp_mdtm(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $filename) : int
 {
 }
 /**
@@ -422,7 +422,7 @@ function ftp_mdtm(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conne
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_rename(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $from, string $to) : bool
+function ftp_rename(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $from, string $to) : bool
 {
 }
 /**
@@ -436,7 +436,7 @@ function ftp_rename(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Con
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_delete(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $filename) : bool
+function ftp_delete(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $filename) : bool
 {
 }
 /**
@@ -451,7 +451,7 @@ function ftp_delete(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Con
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_site(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $command) : bool
+function ftp_site(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $command) : bool
 {
 }
 /**
@@ -462,7 +462,7 @@ function ftp_site(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conne
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_close(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp) : bool
+function ftp_close(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp) : bool
 {
 }
 /**
@@ -503,7 +503,7 @@ function ftp_close(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Conn
  * supported or the passed <i>value</i> doesn't match the
  * expected value for the given <i>option</i>.
  */
-function ftp_set_option(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, #[EV(flags: [\FTP_TIMEOUT_SEC, \FTP_AUTOSEEK, \FTP_USEPASVADDRESS])] int $option, $value) : bool
+function ftp_set_option(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, #[EV(flags: [\FTP_TIMEOUT_SEC, \FTP_AUTOSEEK, \FTP_USEPASVADDRESS])] int $option, $value) : bool
 {
 }
 /**
@@ -534,7 +534,7 @@ function ftp_set_option(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\
  * <i>option</i> is not supported. In the latter case, a
  * warning message is also thrown.
  */
-function ftp_get_option(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, #[EV(flags: [\FTP_TIMEOUT_SEC, \FTP_AUTOSEEK])] int $option) : int|bool
+function ftp_get_option(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, #[EV(flags: [\FTP_TIMEOUT_SEC, \FTP_AUTOSEEK])] int $option) : int|bool
 {
 }
 /**
@@ -557,7 +557,7 @@ function ftp_get_option(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\
  * or <b>FTP_MOREDATA</b>.
  */
 #[EV([\FTP_FAILED, \FTP_FINISHED, \FTP_MOREDATA])]
-function ftp_nb_fget(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, $stream, string $remote_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : int
+function ftp_nb_fget(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, $stream, string $remote_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : int
 {
 }
 /**
@@ -581,7 +581,7 @@ function ftp_nb_fget(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Co
  */
 #[EV([\FTP_FAILED, \FTP_FINISHED, \FTP_MOREDATA])]
 #[LanguageLevelTypeAware(["8.1" => "int|false"], default: "int")]
-function ftp_nb_get(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $local_filename, string $remote_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0)
+function ftp_nb_get(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $local_filename, string $remote_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0)
 {
 }
 /**
@@ -594,7 +594,7 @@ function ftp_nb_get(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Con
  * or <b>FTP_MOREDATA</b>.
  */
 #[EV([\FTP_FAILED, \FTP_FINISHED, \FTP_MOREDATA])]
-function ftp_nb_continue(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp) : int
+function ftp_nb_continue(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp) : int
 {
 }
 /**
@@ -617,7 +617,7 @@ function ftp_nb_continue(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP
  * or <b>FTP_MOREDATA</b>.
  */
 #[EV([\FTP_FAILED, \FTP_FINISHED, \FTP_MOREDATA])]
-function ftp_nb_put(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, string $local_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : int|false
+function ftp_nb_put(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, string $local_filename, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : int|false
 {
 }
 /**
@@ -640,7 +640,7 @@ function ftp_nb_put(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Con
  * or <b>FTP_MOREDATA</b>.
  */
 #[EV([\FTP_FAILED, \FTP_FINISHED, \FTP_MOREDATA])]
-function ftp_nb_fput(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, $stream, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : int
+function ftp_nb_fput(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp, string $remote_filename, $stream, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '5.3', to: '7.2')] int $mode, #[EV([\FTP_ASCII, \FTP_BINARY])] #[PhpStormStubsElementAvailable(from: '7.3')] int $mode = \FTP_BINARY, int $offset = 0) : int
 {
 }
 /**
@@ -649,7 +649,7 @@ function ftp_nb_fput(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Co
  * @param resource $ftp
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function ftp_quit(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\FTP\\Connection'], default: 'resource')] $ftp) : bool
+function ftp_quit(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\FTP\\Connection'], default: 'resource')] $ftp) : bool
 {
 }
 /**

@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of fileinfo v.1.0.5
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 class finfo
 {
     /**
@@ -80,7 +80,7 @@ class finfo
     {
     }
 }
-\class_alias('DEPTRAC_202404\\finfo', 'finfo', \false);
+\class_alias('DEPTRAC_INTERNAL\\finfo', 'finfo', \false);
 /**
  * (PHP &gt;= 5.3.0, PECL fileinfo &gt;= 0.1.0)<br/>
  * Create a new fileinfo resource

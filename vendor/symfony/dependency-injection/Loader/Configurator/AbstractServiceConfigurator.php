@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 abstract class AbstractServiceConfigurator extends AbstractConfigurator
 {
     protected $parent;
     protected $id;
     private array $defaultTags = [];
-    public function __construct(ServicesConfigurator $parent, Definition $definition, string $id = null, array $defaultTags = [])
+    public function __construct(ServicesConfigurator $parent, Definition $definition, ?string $id = null, array $defaultTags = [])
     {
         $this->parent = $parent;
         $this->definition = $definition;
@@ -37,7 +37,7 @@ abstract class AbstractServiceConfigurator extends AbstractConfigurator
     /**
      * Registers a service.
      */
-    public final function set(?string $id, string $class = null) : ServiceConfigurator
+    public final function set(?string $id, ?string $class = null) : ServiceConfigurator
     {
         $this->__destruct();
         return $this->parent->set($id, $class);
@@ -89,7 +89,7 @@ abstract class AbstractServiceConfigurator extends AbstractConfigurator
     /**
      * Registers a service.
      */
-    public final function __invoke(string $id, string $class = null) : ServiceConfigurator
+    public final function __invoke(string $id, ?string $class = null) : ServiceConfigurator
     {
         $this->__destruct();
         return $this->parent->set($id, $class);

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of standard v.5.3.1-0.dotdeb.1
 \define('CONNECTION_ABORTED', 1);

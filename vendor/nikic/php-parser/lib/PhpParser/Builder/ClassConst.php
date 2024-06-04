@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Builder;
+namespace DEPTRAC_INTERNAL\PhpParser\Builder;
 
-use DEPTRAC_202404\PhpParser;
-use DEPTRAC_202404\PhpParser\BuilderHelpers;
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\Node\Const_;
-use DEPTRAC_202404\PhpParser\Node\Identifier;
-use DEPTRAC_202404\PhpParser\Node\Stmt;
+use DEPTRAC_INTERNAL\PhpParser;
+use DEPTRAC_INTERNAL\PhpParser\BuilderHelpers;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\Const_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Identifier;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 class ClassConst implements PhpParser\Builder
 {
     protected $flags = 0;

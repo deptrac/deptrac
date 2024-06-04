@@ -8,13 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\VarExporter;
+namespace DEPTRAC_INTERNAL\Symfony\Component\VarExporter;
 
-use DEPTRAC_202404\Symfony\Component\VarExporter\Hydrator as PublicHydrator;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\Hydrator;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\LazyObjectRegistry as Registry;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\LazyObjectState;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\LazyObjectTrait;
+use DEPTRAC_INTERNAL\Symfony\Component\Serializer\Attribute\Ignore;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Hydrator as PublicHydrator;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\Hydrator;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\LazyObjectRegistry as Registry;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\LazyObjectState;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\LazyObjectTrait;
 trait LazyProxyTrait
 {
     use LazyObjectTrait;
@@ -24,7 +25,7 @@ trait LazyProxyTrait
      * @param \Closure():object $initializer Returns the proxied object
      * @param static|null       $instance
      */
-    public static function createLazyProxy(\Closure $initializer, object $instance = null) : static
+    public static function createLazyProxy(\Closure $initializer, ?object $instance = null) : static
     {
         if (self::class !== ($class = $instance ? $instance::class : static::class)) {
             $skippedProperties = ["\x00" . self::class . "\x00lazyObjectState" => \true];
@@ -43,6 +44,7 @@ trait LazyProxyTrait
      *
      * @param $partial Whether partially initialized objects should be considered as initialized
      */
+    #[Ignore]
     public function isLazyObjectInitialized(bool $partial = \false) : bool
     {
         return !isset($this->lazyObjectState) || isset($this->lazyObjectState->realInstance) || Registry::$noInitializerState === $this->lazyObjectState->initializer;

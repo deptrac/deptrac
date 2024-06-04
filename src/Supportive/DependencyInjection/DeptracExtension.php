@@ -4,9 +4,9 @@ declare (strict_types=1);
 namespace Qossmic\Deptrac\Supportive\DependencyInjection;
 
 use Qossmic\Deptrac\Contract\Config\EmitterType;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\Extension;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\Extension;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use function getcwd;
 /**
  * @psalm-suppress UndefinedDocblockClass

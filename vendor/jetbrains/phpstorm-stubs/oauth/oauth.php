@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 \define('OAUTH_SIG_METHOD_RSASHA1', 'RSA-SHA1');
 \define('OAUTH_SIG_METHOD_HMACSHA1', 'HMAC-SHA1');
@@ -267,7 +267,7 @@ class OAuth
 /**
  * The OAuth extension provides a simple interface to interact with data providers using the OAuth HTTP specification to protect private resources.
  */
-\class_alias('DEPTRAC_202404\\OAuth', 'OAuth', \false);
+\class_alias('DEPTRAC_INTERNAL\\OAuth', 'OAuth', \false);
 class OAuthException extends \Exception
 {
     /**
@@ -280,7 +280,7 @@ class OAuthException extends \Exception
      */
     public $debugInfo;
 }
-\class_alias('DEPTRAC_202404\\OAuthException', 'OAuthException', \false);
+\class_alias('DEPTRAC_INTERNAL\\OAuthException', 'OAuthException', \false);
 /**
  * Manages an OAuth provider class.
  */
@@ -402,4 +402,4 @@ class OAuthProvider
 /**
  * Manages an OAuth provider class.
  */
-\class_alias('DEPTRAC_202404\\OAuthProvider', 'OAuthProvider', \false);
+\class_alias('DEPTRAC_INTERNAL\\OAuthProvider', 'OAuthProvider', \false);

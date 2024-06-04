@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Internal;
+namespace DEPTRAC_INTERNAL\PhpParser\Internal;
 
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 /**
  * This node is used internally by the format-preserving pretty printer to print anonymous classes.
  *
@@ -29,7 +29,7 @@ class PrintableNewAnonClassNode extends Expr
     public $implements;
     /** @var Node\Stmt[] Statements */
     public $stmts;
-    public function __construct(array $attrGroups, int $flags, array $args, Node\Name $extends = null, array $implements, array $stmts, array $attributes)
+    public function __construct(array $attrGroups, int $flags, array $args, ?Node\Name $extends, array $implements, array $stmts, array $attributes)
     {
         parent::__construct($attributes);
         $this->attrGroups = $attrGroups;

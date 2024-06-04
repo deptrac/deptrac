@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
 interface PrependExtensionInterface
 {
     /**

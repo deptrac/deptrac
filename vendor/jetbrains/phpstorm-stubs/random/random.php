@@ -1,10 +1,10 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Combined linear congruential generator
  * @link https://php.net/manual/en/function.lcg-value.php
@@ -111,7 +111,7 @@ function random_bytes(int $length) : string
 function random_int(int $min, int $max) : int
 {
 }
-namespace DEPTRAC_202404\Random\Engine;
+namespace DEPTRAC_INTERNAL\Random\Engine;
 
 /**
  * @since 8.2
@@ -194,7 +194,7 @@ final class Secure implements \Random\CryptoSafeEngine
     {
     }
 }
-namespace DEPTRAC_202404\Random;
+namespace DEPTRAC_INTERNAL\Random;
 
 use Error;
 use Exception;

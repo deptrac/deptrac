@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Contract\Analyser;
 
-use DEPTRAC_202404\Symfony\Contracts\EventDispatcher\Event;
+use DEPTRAC_INTERNAL\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Event fired after the analysis is complete.
  *

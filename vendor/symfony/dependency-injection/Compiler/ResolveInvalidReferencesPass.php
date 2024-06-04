@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\TypedReference;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Emulates the invalid behavior if the reference is not found within the
  * container.

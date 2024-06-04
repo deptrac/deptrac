@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of pdo_ibm v.1.2.3
 function confirm_pdo_ibm_compiled()

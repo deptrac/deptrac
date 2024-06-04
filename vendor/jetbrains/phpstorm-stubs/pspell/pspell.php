@@ -1,9 +1,9 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of pspell v.
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 /**
  * Load a new dictionary
  * @link https://php.net/manual/en/function.pspell-new.php
@@ -89,7 +89,7 @@ function pspell_new_personal(string $filename, string $language, string $spellin
  * @return int|false a dictionary link identifier on success.
  */
 #[LanguageLevelTypeAware(['8.1' => 'PSpell\\Dictionary|false'], default: 'int|false')]
-function pspell_new_config(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')] $config)
+function pspell_new_config(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')] $config)
 {
 }
 /**
@@ -101,7 +101,7 @@ function pspell_new_config(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\P
  * </p>
  * @return bool <b>TRUE</b> if the spelling is correct, <b>FALSE</b> if not.
  */
-function pspell_check(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $word) : bool
+function pspell_check(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $word) : bool
 {
 }
 /**
@@ -113,7 +113,7 @@ function pspell_check(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell
  * </p>
  * @return array|false an array of possible spellings.
  */
-function pspell_suggest(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $word) : array|false
+function pspell_suggest(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $word) : array|false
 {
 }
 /**
@@ -131,7 +131,7 @@ function pspell_suggest(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpe
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_store_replacement(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $misspelled, string $correct) : bool
+function pspell_store_replacement(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $misspelled, string $correct) : bool
 {
 }
 /**
@@ -143,7 +143,7 @@ function pspell_store_replacement(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_20
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_add_to_personal(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $word) : bool
+function pspell_add_to_personal(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $word) : bool
 {
 }
 /**
@@ -155,7 +155,7 @@ function pspell_add_to_personal(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_2024
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_add_to_session(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $word) : bool
+function pspell_add_to_session(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Dictionary'], default: 'int')] $dictionary, string $word) : bool
 {
 }
 /**
@@ -164,7 +164,7 @@ function pspell_add_to_session(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_20240
  * @param int $dictionary
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_clear_session(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Dictionary'], default: 'int')] $dictionary) : bool
+function pspell_clear_session(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Dictionary'], default: 'int')] $dictionary) : bool
 {
 }
 /**
@@ -176,7 +176,7 @@ function pspell_clear_session(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_save_wordlist(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Dictionary'], default: 'int')] $dictionary) : bool
+function pspell_save_wordlist(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Dictionary'], default: 'int')] $dictionary) : bool
 {
 }
 /**
@@ -206,7 +206,7 @@ function pspell_save_wordlist(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404
  * </p>
  * @return int Retuns a pspell config identifier.
  */
-#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')]
+#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')]
 function pspell_config_create(string $language, string $spelling = "", string $jargon = "", string $encoding = "")
 {
 }
@@ -220,7 +220,7 @@ function pspell_config_create(string $language, string $spelling = "", string $j
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_config_runtogether(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')] $config, bool $allow) : bool
+function pspell_config_runtogether(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')] $config, bool $allow) : bool
 {
 }
 /**
@@ -234,7 +234,7 @@ function pspell_config_runtogether(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_2
  * suggestions)</p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_config_mode(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')] $config, int $mode) : bool
+function pspell_config_mode(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')] $config, int $mode) : bool
 {
 }
 /**
@@ -246,7 +246,7 @@ function pspell_config_mode(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_config_ignore(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')] $config, int $min_length) : bool
+function pspell_config_ignore(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')] $config, int $min_length) : bool
 {
 }
 /**
@@ -259,7 +259,7 @@ function pspell_config_ignore(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_config_personal(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')] $config, string $filename) : bool
+function pspell_config_personal(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')] $config, string $filename) : bool
 {
 }
 /**
@@ -269,7 +269,7 @@ function pspell_config_personal(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_2024
  * @param string $directory
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_config_dict_dir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')] $config, string $directory) : bool
+function pspell_config_dict_dir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')] $config, string $directory) : bool
 {
 }
 /**
@@ -279,7 +279,7 @@ function pspell_config_dict_dir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_2024
  * @param string $directory
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_config_data_dir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')] $config, string $directory) : bool
+function pspell_config_data_dir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')] $config, string $directory) : bool
 {
 }
 /**
@@ -291,7 +291,7 @@ function pspell_config_data_dir(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_2024
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_config_repl(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')] $config, string $filename) : bool
+function pspell_config_repl(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')] $config, string $filename) : bool
 {
 }
 /**
@@ -304,7 +304,7 @@ function pspell_config_repl(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\
  * </p>
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
-function pspell_config_save_repl(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_202404\\PSpell\\Config'], default: 'int')] $config, bool $save) : bool
+function pspell_config_save_repl(#[LanguageLevelTypeAware(['8.1' => 'DEPTRAC_INTERNAL\\PSpell\\Config'], default: 'int')] $config, bool $save) : bool
 {
 }
 \define('PSPELL_FAST', 1);

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Filesystem;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Filesystem;
 
-use DEPTRAC_202404\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\Filesystem\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Exception\RuntimeException;
 /**
  * Contains utility methods for handling path strings.
  *
@@ -311,7 +311,7 @@ final class Path
             return \false;
         }
         // Strip scheme
-        if (\false !== ($schemeSeparatorPosition = \strpos($path, '://'))) {
+        if (\false !== ($schemeSeparatorPosition = \strpos($path, '://')) && 1 !== $schemeSeparatorPosition) {
             $path = \substr($path, $schemeSeparatorPosition + 3);
         }
         $firstCharacter = $path[0];

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\NodeVisitor;
+namespace DEPTRAC_INTERNAL\PhpParser\NodeVisitor;
 
 use function array_pop;
 use function count;
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\NodeVisitorAbstract;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\NodeVisitorAbstract;
 /**
  * Visitor that connects a child node to its parent node.
  *

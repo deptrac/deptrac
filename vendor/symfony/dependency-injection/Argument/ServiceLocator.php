@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
@@ -21,7 +21,7 @@ class ServiceLocator extends BaseServiceLocator
     private \Closure $factory;
     private array $serviceMap;
     private ?array $serviceTypes;
-    public function __construct(\Closure $factory, array $serviceMap, array $serviceTypes = null)
+    public function __construct(\Closure $factory, array $serviceMap, ?array $serviceTypes = null)
     {
         $this->factory = $factory;
         $this->serviceMap = $serviceMap;

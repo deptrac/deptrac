@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Expr;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 
-use DEPTRAC_202404\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 class Exit_ extends Expr
 {
     /* For use in "kind" attribute */
@@ -17,7 +17,7 @@ class Exit_ extends Expr
      * @param null|Expr $expr       Expression
      * @param array                    $attributes Additional attributes
      */
-    public function __construct(Expr $expr = null, array $attributes = [])
+    public function __construct(?Expr $expr = null, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->expr = $expr;

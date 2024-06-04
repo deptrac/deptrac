@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Dumper;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Dumper;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Alias;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Parameter;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Alias;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Parameter;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * XmlDumper dumps a service container as an XML string.
  *
@@ -119,15 +119,16 @@ class XmlDumper extends Dumper
         foreach ($tags as $name => $tags) {
             foreach ($tags as $attributes) {
                 $tag = $this->document->createElement('tag');
-                if (!\array_key_exists('name', $attributes)) {
-                    $tag->setAttribute('name', $name);
-                } else {
-                    $tag->appendChild($this->document->createTextNode($name));
-                }
                 // Check if we have recursive attributes
                 if (\array_filter($attributes, \is_array(...))) {
+                    $tag->setAttribute('name', $name);
                     $this->addTagRecursiveAttributes($tag, $attributes);
                 } else {
+                    if (!\array_key_exists('name', $attributes)) {
+                        $tag->setAttribute('name', $name);
+                    } else {
+                        $tag->appendChild($this->document->createTextNode($name));
+                    }
                     foreach ($attributes as $key => $value) {
                         $tag->setAttribute($key, $value ?? '');
                     }

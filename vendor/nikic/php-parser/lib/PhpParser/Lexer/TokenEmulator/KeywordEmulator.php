@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Lexer\TokenEmulator;
+namespace DEPTRAC_INTERNAL\PhpParser\Lexer\TokenEmulator;
 
 abstract class KeywordEmulator extends TokenEmulator
 {

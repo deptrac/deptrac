@@ -1,10 +1,10 @@
 <?php
 
-namespace DEPTRAC_202404\PhpParser;
+namespace DEPTRAC_INTERNAL\PhpParser;
 
 use function array_merge;
-use DEPTRAC_202404\PhpParser\Node\Expr;
-use DEPTRAC_202404\PhpParser\Node\Scalar;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Scalar;
 /**
  * Evaluates constant expressions.
  *
@@ -35,7 +35,7 @@ class ConstExprEvaluator
      *
      * @param callable|null $fallbackEvaluator To call if subexpression cannot be evaluated
      */
-    public function __construct(callable $fallbackEvaluator = null)
+    public function __construct(?callable $fallbackEvaluator = null)
     {
         $this->fallbackEvaluator = $fallbackEvaluator ?? function (Expr $expr) {
             throw new ConstExprEvaluationException("Expression of type {$expr->getType()} cannot be evaluated");

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * A bitmask consisting of one or more of
@@ -1107,11 +1107,11 @@ namespace DEPTRAC_202404;
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLINFO_CAPATH', 1048638);
+\define('DEPTRAC_INTERNAL\\CURLINFO_CAPATH', 1048638);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLINFO_CAINFO', 1048637);
+\define('DEPTRAC_INTERNAL\\CURLINFO_CAINFO', 1048637);
 /**
  * Supports IPv6
  * @link https://php.net/manual/en/curl.constants.php
@@ -1146,27 +1146,27 @@ namespace DEPTRAC_202404;
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLKHMATCH_OK', 0);
+\define('DEPTRAC_INTERNAL\\CURLKHMATCH_OK', 0);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLKHMATCH_MISMATCH', 1);
+\define('DEPTRAC_INTERNAL\\CURLKHMATCH_MISMATCH', 1);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLKHMATCH_MISSING', 2);
+\define('DEPTRAC_INTERNAL\\CURLKHMATCH_MISSING', 2);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLKHMATCH_LAST', 3);
+\define('DEPTRAC_INTERNAL\\CURLKHMATCH_LAST', 3);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLOPT_MIME_OPTIONS', 315);
+\define('DEPTRAC_INTERNAL\\CURLOPT_MIME_OPTIONS', 315);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLMIMEOPT_FORMESCAPE', 1);
+\define('DEPTRAC_INTERNAL\\CURLMIMEOPT_FORMESCAPE', 1);
 /**
  * The URL you passed to libcurl used a protocol that this libcurl does not support.
  * The support might be a compile-time option that you didn't use,
@@ -2044,31 +2044,31 @@ namespace DEPTRAC_202404;
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLOPT_SSH_HOSTKEYFUNCTION', 20316);
+\define('DEPTRAC_INTERNAL\\CURLOPT_SSH_HOSTKEYFUNCTION', 20316);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLOPT_PROTOCOLS_STR', 10318);
+\define('DEPTRAC_INTERNAL\\CURLOPT_PROTOCOLS_STR', 10318);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLOPT_REDIR_PROTOCOLS_STR', 10319);
+\define('DEPTRAC_INTERNAL\\CURLOPT_REDIR_PROTOCOLS_STR', 10319);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLOPT_WS_OPTIONS', 320);
+\define('DEPTRAC_INTERNAL\\CURLOPT_WS_OPTIONS', 320);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLWS_RAW_MODE', 1);
+\define('DEPTRAC_INTERNAL\\CURLWS_RAW_MODE', 1);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLOPT_CA_CACHE_TIMEOUT', 321);
+\define('DEPTRAC_INTERNAL\\CURLOPT_CA_CACHE_TIMEOUT', 321);
 /**
  * @since 8.3
  */
-\define('DEPTRAC_202404\\CURLOPT_QUICK_EXIT', 322);
+\define('DEPTRAC_INTERNAL\\CURLOPT_QUICK_EXIT', 322);
 /**
  * Value for the <b>CURLOPT_SSH_AUTH_TYPES</b> option.
  * libcurl attempts to connect to ssh-agent or pageant and let the agent attempt the authentication.

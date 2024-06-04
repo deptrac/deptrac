@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument;
 
 /**
  * Represents a collection of services found by tag name to lazily iterate over.
@@ -33,7 +33,7 @@ class TaggedIteratorArgument extends IteratorArgument
      * @param array       $exclude               Services to exclude from the iterator
      * @param bool        $excludeSelf           Whether to automatically exclude the referencing service from the iterator
      */
-    public function __construct(string $tag, string $indexAttribute = null, string $defaultIndexMethod = null, bool $needsIndexes = \false, string $defaultPriorityMethod = null, array $exclude = [], bool $excludeSelf = \true)
+    public function __construct(string $tag, ?string $indexAttribute = null, ?string $defaultIndexMethod = null, bool $needsIndexes = \false, ?string $defaultPriorityMethod = null, array $exclude = [], bool $excludeSelf = \true)
     {
         parent::__construct([]);
         if (null === $indexAttribute && $needsIndexes) {

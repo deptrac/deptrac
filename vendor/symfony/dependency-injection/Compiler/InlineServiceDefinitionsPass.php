@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
 /**
  * Inline service definitions where this is possible.
  *
@@ -30,7 +30,7 @@ class InlineServiceDefinitionsPass extends AbstractRecursivePass
     private array $inlinedIds = [];
     private array $notInlinableIds = [];
     private ?ServiceReferenceGraph $graph = null;
-    public function __construct(AnalyzeServiceReferencesPass $analyzingPass = null)
+    public function __construct(?AnalyzeServiceReferencesPass $analyzingPass = null)
     {
         $this->analyzingPass = $analyzingPass;
     }

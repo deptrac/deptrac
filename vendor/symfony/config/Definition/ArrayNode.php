@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition;
 
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * Represents an Array node in the config tree.
  *
@@ -216,7 +216,7 @@ class ArrayNode extends BaseNode implements PrototypeNodeInterface
             }
             if ($child->isDeprecated()) {
                 $deprecation = $child->getDeprecation($name, $this->getPath());
-                \DEPTRAC_202404\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
+                \DEPTRAC_INTERNAL\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
             }
             try {
                 $value[$name] = $child->finalize($value[$name]);

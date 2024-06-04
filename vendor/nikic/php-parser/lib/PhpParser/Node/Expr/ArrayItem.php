@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Expr;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 
-use DEPTRAC_202404\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 class ArrayItem extends Expr
 {
     /** @var null|Expr Key */
@@ -22,7 +22,7 @@ class ArrayItem extends Expr
      * @param bool      $byRef      Whether to assign by reference
      * @param array     $attributes Additional attributes
      */
-    public function __construct(Expr $value, Expr $key = null, bool $byRef = \false, array $attributes = [], bool $unpack = \false)
+    public function __construct(Expr $value, ?Expr $key = null, bool $byRef = \false, array $attributes = [], bool $unpack = \false)
     {
         $this->attributes = $attributes;
         $this->key = $key;

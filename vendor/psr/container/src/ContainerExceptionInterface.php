@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\Psr\Container;
+namespace DEPTRAC_INTERNAL\Psr\Container;
 
 use Throwable;
 /**

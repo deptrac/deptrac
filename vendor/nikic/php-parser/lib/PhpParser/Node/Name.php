@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node;
+namespace DEPTRAC_INTERNAL\PhpParser\Node;
 
-use DEPTRAC_202404\PhpParser\NodeAbstract;
+use DEPTRAC_INTERNAL\PhpParser\NodeAbstract;
 class Name extends NodeAbstract
 {
     /**
@@ -155,7 +155,7 @@ class Name extends NodeAbstract
      *
      * @return static|null Sliced name
      */
-    public function slice(int $offset, int $length = null)
+    public function slice(int $offset, ?int $length = null)
     {
         $numParts = \count($this->parts);
         $realOffset = $offset < 0 ? $offset + $numParts : $offset;

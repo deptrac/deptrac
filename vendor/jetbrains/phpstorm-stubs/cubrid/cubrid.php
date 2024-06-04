@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of cubrid v.1.1
 /**
@@ -1952,6 +1952,24 @@ function cubrid_set_drop($conn_identifier, $oid, $attr_name, $set_element)
  * </p>
  */
 function cubrid_version()
+{
+}
+/**
+ * (PHP 5, CUBRID >= 8.4.0)<br/>
+ * Write a string into the LOB large object
+ *
+ * @link https://php.net/manual/en/function.cubrid-lob2-write.php
+ * @param resource $lob_identifier <p>
+ * LOB identifier obtained by cubrid_lob2_new() or cubrid_lob2_import().
+ * </p>
+ * @param string $buf <p>
+ * The string to be written into the LOB.
+ * </p>
+ * @return bool <p>
+ * Returns true on success, false on failure.
+ * </p>
+ */
+function cubrid_lob2_write($lob_identifier, string $buf) : bool
 {
 }
 /**

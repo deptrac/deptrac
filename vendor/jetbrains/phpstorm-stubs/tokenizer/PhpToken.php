@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * A class for working with PHP tokens, which is an alternative to
@@ -86,4 +86,4 @@ class PhpToken implements \Stringable
  *
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\PhpToken', 'PhpToken', \false);
+\class_alias('DEPTRAC_INTERNAL\\PhpToken', 'PhpToken', \false);

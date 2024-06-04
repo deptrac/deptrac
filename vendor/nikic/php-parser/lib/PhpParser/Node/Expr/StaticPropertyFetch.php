@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Expr;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 
-use DEPTRAC_202404\PhpParser\Node\Expr;
-use DEPTRAC_202404\PhpParser\Node\Name;
-use DEPTRAC_202404\PhpParser\Node\VarLikeIdentifier;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Name;
+use DEPTRAC_INTERNAL\PhpParser\Node\VarLikeIdentifier;
 class StaticPropertyFetch extends Expr
 {
     /** @var Name|Expr Class name */

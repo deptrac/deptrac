@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Stmt;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 
-use DEPTRAC_202404\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node;
 class PropertyProperty extends Node\Stmt
 {
     /** @var Node\VarLikeIdentifier Name */
@@ -17,7 +17,7 @@ class PropertyProperty extends Node\Stmt
      * @param null|Node\Expr                $default    Default value
      * @param array                         $attributes Additional attributes
      */
-    public function __construct($name, Node\Expr $default = null, array $attributes = [])
+    public function __construct($name, ?Node\Expr $default = null, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->name = \is_string($name) ? new Node\VarLikeIdentifier($name) : $name;

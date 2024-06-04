@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\Config\Definition\BaseNode;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\LogicException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\Extension;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\BaseNode;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\LogicException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\Extension;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 /**
  * Merges extension configs into the container builder.
  *
@@ -135,7 +135,7 @@ class MergeExtensionConfigurationParameterBag extends EnvPlaceholderParameterBag
 class MergeExtensionConfigurationContainerBuilder extends ContainerBuilder
 {
     private string $extensionClass;
-    public function __construct(ExtensionInterface $extension, ParameterBagInterface $parameterBag = null)
+    public function __construct(ExtensionInterface $extension, ?ParameterBagInterface $parameterBag = null)
     {
         parent::__construct($parameterBag);
         $this->extensionClass = $extension::class;
@@ -152,7 +152,7 @@ class MergeExtensionConfigurationContainerBuilder extends ContainerBuilder
     {
         throw new LogicException(\sprintf('Cannot compile the container in extension "%s".', $this->extensionClass));
     }
-    public function resolveEnvPlaceholders(mixed $value, string|bool $format = null, array &$usedEnvs = null) : mixed
+    public function resolveEnvPlaceholders(mixed $value, string|bool|null $format = null, ?array &$usedEnvs = null) : mixed
     {
         if (\true !== $format || !\is_string($value)) {
             return parent::resolveEnvPlaceholders($value, $format, $usedEnvs);

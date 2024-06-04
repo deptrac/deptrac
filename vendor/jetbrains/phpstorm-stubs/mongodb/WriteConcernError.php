@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver;
 
 /**
  * The MongoDB\Driver\WriteConcernError class encapsulates information about a write concern error and may be returned by MongoDB\Driver\WriteResult::getWriteConcernError().

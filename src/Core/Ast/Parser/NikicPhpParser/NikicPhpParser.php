@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Core\Ast\Parser\NikicPhpParser;
 
-use DEPTRAC_202404\PhpParser\Error;
-use DEPTRAC_202404\PhpParser\ErrorHandler\Throwing;
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\Node\Identifier;
-use DEPTRAC_202404\PhpParser\Node\Stmt\ClassLike;
-use DEPTRAC_202404\PhpParser\NodeTraverser;
-use DEPTRAC_202404\PhpParser\NodeVisitor\FindingVisitor;
-use DEPTRAC_202404\PhpParser\NodeVisitor\NameResolver;
-use DEPTRAC_202404\PhpParser\Parser;
+use DEPTRAC_INTERNAL\PhpParser\Error;
+use DEPTRAC_INTERNAL\PhpParser\ErrorHandler\Throwing;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\Identifier;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\ClassLike;
+use DEPTRAC_INTERNAL\PhpParser\NodeTraverser;
+use DEPTRAC_INTERNAL\PhpParser\NodeVisitor\FindingVisitor;
+use DEPTRAC_INTERNAL\PhpParser\NodeVisitor\NameResolver;
+use DEPTRAC_INTERNAL\PhpParser\Parser;
 use Qossmic\Deptrac\Contract\Ast\CouldNotParseFileException;
 use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
 use Qossmic\Deptrac\Core\Ast\AstMap\File\FileReference;

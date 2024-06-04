@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Loader;
 
-use DEPTRAC_202404\Symfony\Component\Config\Exception\LoaderLoadException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * Loader is the abstract class used by all built-in loaders.
  *
@@ -20,7 +20,7 @@ abstract class Loader implements LoaderInterface
 {
     protected $resolver;
     protected $env;
-    public function __construct(string $env = null)
+    public function __construct(?string $env = null)
     {
         $this->env = $env;
     }
@@ -40,7 +40,7 @@ abstract class Loader implements LoaderInterface
      *
      * @return mixed
      */
-    public function import(mixed $resource, string $type = null)
+    public function import(mixed $resource, ?string $type = null)
     {
         return $this->resolve($resource, $type)->load($resource, $type);
     }
@@ -49,7 +49,7 @@ abstract class Loader implements LoaderInterface
      *
      * @throws LoaderLoadException If no loader is found
      */
-    public function resolve(mixed $resource, string $type = null) : LoaderInterface
+    public function resolve(mixed $resource, ?string $type = null) : LoaderInterface
     {
         if ($this->supports($resource, $type)) {
             return $this;

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Composer\Pcre;
+namespace DEPTRAC_INTERNAL\Composer\Pcre;
 
 final class MatchAllStrictGroupsResult
 {
@@ -31,7 +31,7 @@ final class MatchAllStrictGroupsResult
     public $matched;
     /**
      * @param 0|positive-int $count
-     * @param array<array<string>> $matches
+     * @param array<list<string>> $matches
      */
     public function __construct(int $count, array $matches)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver;
 
 /**
  * @since 1.13.0

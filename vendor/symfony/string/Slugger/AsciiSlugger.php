@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\String\Slugger;
+namespace DEPTRAC_INTERNAL\Symfony\Component\String\Slugger;
 
-use DEPTRAC_202404\Symfony\Component\Intl\Transliterator\EmojiTransliterator;
-use DEPTRAC_202404\Symfony\Component\String\AbstractUnicodeString;
-use DEPTRAC_202404\Symfony\Component\String\UnicodeString;
-use DEPTRAC_202404\Symfony\Contracts\Translation\LocaleAwareInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Intl\Transliterator\EmojiTransliterator;
+use DEPTRAC_INTERNAL\Symfony\Component\String\AbstractUnicodeString;
+use DEPTRAC_INTERNAL\Symfony\Component\String\UnicodeString;
+use DEPTRAC_INTERNAL\Symfony\Contracts\Translation\LocaleAwareInterface;
 if (!\interface_exists(LocaleAwareInterface::class)) {
     throw new \LogicException('You cannot use the "Symfony\\Component\\String\\Slugger\\AsciiSlugger" as the "symfony/translation-contracts" package is not installed. Try running "composer require symfony/translation-contracts".');
 }

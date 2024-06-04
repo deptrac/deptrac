@@ -1,13 +1,13 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Immutable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Immutable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * The <b>ReflectionMethod</b> class reports
  * information about a method.
@@ -322,4 +322,4 @@ class ReflectionMethod extends \ReflectionFunctionAbstract
  *
  * @link https://php.net/manual/en/class.reflectionmethod.php
  */
-\class_alias('DEPTRAC_202404\\ReflectionMethod', 'ReflectionMethod', \false);
+\class_alias('DEPTRAC_INTERNAL\\ReflectionMethod', 'ReflectionMethod', \false);

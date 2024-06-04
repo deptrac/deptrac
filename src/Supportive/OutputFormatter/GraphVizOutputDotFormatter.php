@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Supportive\OutputFormatter;
 
-use DEPTRAC_202404\phpDocumentor\GraphViz\Graph;
+use DEPTRAC_INTERNAL\phpDocumentor\GraphViz\Graph;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputException;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
 use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;

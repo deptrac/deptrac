@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\Decimal;
+namespace DEPTRAC_INTERNAL\Decimal;
 
 final class Decimal implements \JsonSerializable
 {

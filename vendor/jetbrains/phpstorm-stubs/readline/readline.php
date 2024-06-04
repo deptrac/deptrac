@@ -1,9 +1,9 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of readline v.5.5.3-1ubuntu2.1
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
 /**
  * Reads a line
  * @link https://php.net/manual/en/function.readline.php

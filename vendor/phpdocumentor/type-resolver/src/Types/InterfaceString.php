@@ -9,10 +9,10 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
-use DEPTRAC_202404\phpDocumentor\Reflection\Fqsen;
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Fqsen;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
 /**
  * Value Object representing the type 'string'.
  *
@@ -20,7 +20,8 @@ use DEPTRAC_202404\phpDocumentor\Reflection\Type;
  */
 final class InterfaceString implements Type
 {
-    private ?Fqsen $fqsen;
+    /** @var Fqsen|null */
+    private $fqsen;
     /**
      * Initializes this representation of a class string with the given Fqsen.
      */

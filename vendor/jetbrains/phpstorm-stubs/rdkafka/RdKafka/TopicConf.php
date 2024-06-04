@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\RdKafka;
+namespace DEPTRAC_INTERNAL\RdKafka;
 
 /**
  * Configuration reference: https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md

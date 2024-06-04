@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Console\Messenger;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Console\Messenger;
 
-use DEPTRAC_202404\Symfony\Component\Console\Application;
-use DEPTRAC_202404\Symfony\Component\Console\Command\Command;
-use DEPTRAC_202404\Symfony\Component\Console\Exception\RunCommandFailedException;
-use DEPTRAC_202404\Symfony\Component\Console\Input\StringInput;
-use DEPTRAC_202404\Symfony\Component\Console\Output\BufferedOutput;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Application;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Command\Command;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Exception\RunCommandFailedException;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\StringInput;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\BufferedOutput;
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
  */

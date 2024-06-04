@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\SimpleKafkaClient\Metadata;
+namespace DEPTRAC_INTERNAL\SimpleKafkaClient\Metadata;
 
 class Collection
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\Psr\Log;
+namespace DEPTRAC_INTERNAL\Psr\Log;
 
 /**
  * This is a simple Logger implementation that other Loggers can inherit from.

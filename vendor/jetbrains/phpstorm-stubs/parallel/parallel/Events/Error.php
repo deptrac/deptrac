@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\parallel\Events;
+namespace DEPTRAC_INTERNAL\parallel\Events;
 
 class Error extends \parallel\Error
 {

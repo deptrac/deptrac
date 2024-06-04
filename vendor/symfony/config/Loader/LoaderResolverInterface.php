@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Loader;
 
 /**
  * LoaderResolverInterface selects a loader for a given resource.
@@ -22,5 +22,5 @@ interface LoaderResolverInterface
      *
      * @param string|null $type The resource type or null if unknown
      */
-    public function resolve(mixed $resource, string $type = null) : LoaderInterface|false;
+    public function resolve(mixed $resource, ?string $type = null) : LoaderInterface|false;
 }

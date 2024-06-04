@@ -5,7 +5,7 @@ namespace Qossmic\Deptrac\Supportive\File\Exception;
 
 use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
-use DEPTRAC_202404\Symfony\Component\Yaml\Exception\ParseException;
+use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Exception\ParseException;
 /**
  * @internal
  */

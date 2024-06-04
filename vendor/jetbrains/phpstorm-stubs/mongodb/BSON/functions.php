@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\BSON;
+namespace DEPTRAC_INTERNAL\MongoDB\BSON;
 
 use MongoDB\Driver\Exception\InvalidArgumentException;
 use MongoDB\Driver\Exception\UnexpectedValueException;

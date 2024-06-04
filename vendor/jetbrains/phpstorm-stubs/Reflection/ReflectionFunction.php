@@ -1,13 +1,13 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Immutable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Immutable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * The <b>ReflectionFunction</b> class reports
  * information about a function.
@@ -121,4 +121,4 @@ class ReflectionFunction extends \ReflectionFunctionAbstract
  *
  * @link https://php.net/manual/en/class.reflectionfunction.php
  */
-\class_alias('DEPTRAC_202404\\ReflectionFunction', 'ReflectionFunction', \false);
+\class_alias('DEPTRAC_INTERNAL\\ReflectionFunction', 'ReflectionFunction', \false);

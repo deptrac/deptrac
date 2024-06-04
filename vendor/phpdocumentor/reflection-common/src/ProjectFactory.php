@@ -9,7 +9,7 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection;
 
 /**
  * Interface for project factories. A project factory shall convert a set of files

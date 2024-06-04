@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader;
 
 /**
  * DirectoryLoader is a recursive loader to go through directories.
@@ -17,7 +17,7 @@ namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader;
  */
 class DirectoryLoader extends FileLoader
 {
-    public function load(mixed $file, string $type = null) : mixed
+    public function load(mixed $file, ?string $type = null) : mixed
     {
         $file = \rtrim($file, '/');
         $path = $this->locator->locate($file);
@@ -34,7 +34,7 @@ class DirectoryLoader extends FileLoader
         }
         return null;
     }
-    public function supports(mixed $resource, string $type = null) : bool
+    public function supports(mixed $resource, ?string $type = null) : bool
     {
         if ('directory' === $type) {
             return \true;

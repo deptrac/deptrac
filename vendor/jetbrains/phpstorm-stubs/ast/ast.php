@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\ast;
+namespace DEPTRAC_INTERNAL\ast;
 
 /** Metadata entry for a single AST kind, as returned by ast\get_metadata(). */
 class Metadata
@@ -203,7 +203,7 @@ function parse_file(string $filename, int $version) : Node
 \define('ast\\AST_WHILE', 533);
 \define('ast\\AST_YIELD', 529);
 \define('ast\\AST_YIELD_FROM', 275);
-namespace DEPTRAC_202404\ast\flags;
+namespace DEPTRAC_INTERNAL\ast\flags;
 
 \define('ast\\flags\\ARRAY_ELEM_REF', 1);
 \define('ast\\flags\\ARRAY_SYNTAX_LIST', 1);

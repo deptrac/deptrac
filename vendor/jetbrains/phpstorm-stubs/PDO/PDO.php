@@ -1,14 +1,14 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of PDO v.1.0.4dev
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Represents an error raised by PDO. You should not throw a
  * <b>PDOException</b> from your own code.
@@ -27,7 +27,7 @@ class PDOException extends \RuntimeException
  * @see https://php.net/manual/en/language.exceptions.php Exceptions in PHP
  * @link https://php.net/manual/en/class.pdoexception.php
  */
-\class_alias('DEPTRAC_202404\\PDOException', 'PDOException', \false);
+\class_alias('DEPTRAC_INTERNAL\\PDOException', 'PDOException', \false);
 /**
  * Represents a connection between PHP and a database server.
  * @link https://php.net/manual/en/class.pdo.php
@@ -1401,7 +1401,7 @@ class PDO
  * Represents a connection between PHP and a database server.
  * @link https://php.net/manual/en/class.pdo.php
  */
-\class_alias('DEPTRAC_202404\\PDO', 'PDO', \false);
+\class_alias('DEPTRAC_INTERNAL\\PDO', 'PDO', \false);
 /**
  * (PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 1.0.0)<br/>
  * Represents a prepared statement and, after the statement is executed, an
@@ -1882,13 +1882,13 @@ class PDOStatement implements \IteratorAggregate
  * associated result set.
  * @link https://php.net/manual/en/class.pdostatement.php
  */
-\class_alias('DEPTRAC_202404\\PDOStatement', 'PDOStatement', \false);
+\class_alias('DEPTRAC_INTERNAL\\PDOStatement', 'PDOStatement', \false);
 final class PDORow
 {
     #[LanguageLevelTypeAware(['8.1' => 'string'], default: '')]
     public $queryString;
 }
-\class_alias('DEPTRAC_202404\\PDORow', 'PDORow', \false);
+\class_alias('DEPTRAC_INTERNAL\\PDORow', 'PDORow', \false);
 /**
  * (PHP 5 &gt;= 5.1.3, PHP 7, PECL pdo &gt;= 1.0.3)<br/>
  * Return an array of available PDO drivers

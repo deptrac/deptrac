@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Stmt;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 
-use DEPTRAC_202404\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node;
 class Declare_ extends Node\Stmt
 {
     /** @var DeclareDeclare[] List of declares */
@@ -17,7 +17,7 @@ class Declare_ extends Node\Stmt
      * @param Node\Stmt[]|null $stmts      Statements
      * @param array            $attributes Additional attributes
      */
-    public function __construct(array $declares, array $stmts = null, array $attributes = [])
+    public function __construct(array $declares, ?array $stmts = null, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->declares = $declares;

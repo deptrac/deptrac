@@ -10,9 +10,9 @@
  * * Fetching simple [multi-dimensional array maps](pq/Result/map).
  * * Working [Gateway implementation](https://bitbucket.org/m6w6/pq-gateway).
  */
-namespace DEPTRAC_202404\pq;
+namespace DEPTRAC_INTERNAL\pq;
 
-use DEPTRAC_202404\pq;
+use DEPTRAC_INTERNAL\pq;
 /**
  * Fast import/export using COPY.
  */
@@ -69,7 +69,7 @@ class COPY
      * @throws \pq\Exception\BadMethodCallException
      * @throws \pq\Exception\RuntimeException
      */
-    public function __construct(pq\Connection $conn, string $expression, int $direction, string $options = null)
+    public function __construct(Connection $conn, string $expression, int $direction, string $options = null)
     {
     }
     /**
@@ -128,7 +128,7 @@ class Cancel
      * @throws \pq\Exception\BadMethodCallException
      * @throws \pq\Exception\RuntimeException
      */
-    public function __construct(pq\Connection $conn)
+    public function __construct(Connection $conn)
     {
     }
     /**
@@ -722,7 +722,7 @@ class Connection
      * @throws \pq\Exception\InvalidArgumentException
      * @throws \pq\Exception\BadMethodCallException
      */
-    public function setConverter(pq\Converter $converter)
+    public function setConverter(Converter $converter)
     {
     }
     /**
@@ -825,7 +825,7 @@ class Connection
      * @throws \pq\Exception\InvalidArgumentException
      * @throws \pq\Exception\BadMethodCallException
      */
-    public function unsetConverter(pq\Converter $converter)
+    public function unsetConverter(Converter $converter)
     {
     }
 }
@@ -914,7 +914,7 @@ class Cursor
      * @throws \pq\Exception\BadMethodCallException
      * @throws \pq\Exception\RuntimeException
      */
-    public function __construct(pq\Connection $connection, string $name, int $flags, string $query, bool $async)
+    public function __construct(Connection $connection, string $name, int $flags, string $query, bool $async)
     {
     }
     /**
@@ -1150,7 +1150,7 @@ class LOB
      * @throws \pq\Exception\BadMethodCallException
      * @throws \pq\Exception\RuntimeException
      */
-    public function __construct(pq\Transaction $txn, int $oid = \pq\LOB::INVALID_OID, int $mode = \pq\LOB::RW)
+    public function __construct(Transaction $txn, int $oid = \pq\LOB::INVALID_OID, int $mode = \pq\LOB::RW)
     {
     }
     /**
@@ -1540,7 +1540,7 @@ class Statement
      * @throws \pq\Exception\RuntimeException
      * @throws \pq\Exception\DomainException
      */
-    public function __construct(pq\Connection $conn, string $name, string $query, array $types = null, bool $async = \false)
+    public function __construct(Connection $conn, string $name, string $query, array $types = null, bool $async = \false)
     {
     }
     /**
@@ -1711,7 +1711,7 @@ class Transaction
      * @throws \pq\Exception\BadMethodCallException
      * @throws \pq\Exception\RuntimeException
      */
-    public function __construct(pq\Connection $conn, bool $async = \false, int $isolation = \pq\Transaction::READ_COMMITTED, bool $readonly = \false, bool $deferrable = \false)
+    public function __construct(Connection $conn, bool $async = \false, int $isolation = \pq\Transaction::READ_COMMITTED, bool $readonly = \false, bool $deferrable = \false)
     {
     }
     /**
@@ -2537,7 +2537,7 @@ class Types implements \ArrayAccess
      * @throws \pq\Exception\BadMethodCallException
      * @throws \pq\Exception\RuntimeException
      */
-    public function __construct(pq\Connection $conn, array $namespaces = null)
+    public function __construct(Connection $conn, array $namespaces = null)
     {
     }
     /**
@@ -2552,7 +2552,7 @@ class Types implements \ArrayAccess
     {
     }
 }
-namespace DEPTRAC_202404\pq\Exception;
+namespace DEPTRAC_INTERNAL\pq\Exception;
 
 /**
  * A method call was not expected.

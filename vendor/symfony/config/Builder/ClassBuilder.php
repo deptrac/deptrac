@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Builder;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Builder;
 
 /**
  * Build PHP classes to generate config.
@@ -104,7 +104,7 @@ BODY
     {
         $this->methods[] = new Method(\strtr($body, ['NAME' => $this->camelCase($name)] + $params));
     }
-    public function addProperty(string $name, string $classType = null, string $defaultValue = null) : Property
+    public function addProperty(string $name, ?string $classType = null, ?string $defaultValue = null) : Property
     {
         $property = new Property($name, '_' !== $name[0] ? $this->camelCase($name) : $name);
         if (null !== $classType) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\parallel;
+namespace DEPTRAC_INTERNAL\parallel;
 
 use Throwable;
 /**

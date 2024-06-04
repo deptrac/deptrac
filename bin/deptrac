@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\Composer\XdebugHandler\XdebugHandler;
+use DEPTRAC_INTERNAL\Composer\XdebugHandler\XdebugHandler;
 use Qossmic\Deptrac\Supportive\Console\Application;
 if (\PHP_VERSION_ID < 80100) {
     echo 'Required at least PHP version 8.1.0, your version: ' . \PHP_VERSION . "\n";

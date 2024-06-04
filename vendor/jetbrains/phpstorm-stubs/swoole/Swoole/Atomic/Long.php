@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\Swoole\Atomic;
+namespace DEPTRAC_INTERNAL\Swoole\Atomic;
 
 class Long
 {

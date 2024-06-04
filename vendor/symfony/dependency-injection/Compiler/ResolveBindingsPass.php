@@ -8,19 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\Target;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\TypedReference;
-use DEPTRAC_202404\Symfony\Component\VarExporter\ProxyHelper;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\Autowire;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\Target;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\TypedReference;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\ProxyHelper;
 /**
  * @author Guilhem Niot <guilhem.niot@gmail.com>
  */
@@ -152,6 +153,9 @@ class ResolveBindingsPass extends AbstractRecursivePass
                     continue;
                 }
                 if (\array_key_exists($parameter->name, $arguments) && '' !== $arguments[$parameter->name]) {
+                    continue;
+                }
+                if ($value->isAutowired() && !$value->hasTag('container.ignore_attributes') && $parameter->getAttributes(Autowire::class, \ReflectionAttribute::IS_INSTANCEOF)) {
                     continue;
                 }
                 $typeHint = \ltrim(ProxyHelper::exportType($parameter) ?? '', '?');

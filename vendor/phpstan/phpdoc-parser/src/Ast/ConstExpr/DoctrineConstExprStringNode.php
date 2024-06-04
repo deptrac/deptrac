@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr;
+namespace DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\ConstExpr;
 
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function sprintf;
 use function str_replace;
 use function strlen;

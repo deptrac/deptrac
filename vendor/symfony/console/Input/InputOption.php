@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Console\Input;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Console\Input;
 
-use DEPTRAC_202404\Symfony\Component\Console\Command\Command;
-use DEPTRAC_202404\Symfony\Component\Console\Completion\CompletionInput;
-use DEPTRAC_202404\Symfony\Component\Console\Completion\CompletionSuggestions;
-use DEPTRAC_202404\Symfony\Component\Console\Completion\Suggestion;
-use DEPTRAC_202404\Symfony\Component\Console\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\Console\Exception\LogicException;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Command\Command;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Completion\CompletionInput;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Completion\CompletionSuggestions;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Completion\Suggestion;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Exception\LogicException;
 /**
  * Represents a command line option.
  *
@@ -65,7 +65,7 @@ class InputOption
         if (empty($name)) {
             throw new InvalidArgumentException('An option name cannot be empty.');
         }
-        if ('' === $shortcut || [] === $shortcut) {
+        if ('' === $shortcut || [] === $shortcut || \false === $shortcut) {
             $shortcut = null;
         }
         if (null !== $shortcut) {
@@ -160,7 +160,7 @@ class InputOption
     public function setDefault(string|bool|int|float|array|null $default = null)
     {
         if (1 > \func_num_args()) {
-            \DEPTRAC_202404\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
+            \DEPTRAC_INTERNAL\trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
         }
         if (self::VALUE_NONE === (self::VALUE_NONE & $this->mode) && null !== $default) {
             throw new LogicException('Cannot set a default value when using InputOption::VALUE_NONE mode.');

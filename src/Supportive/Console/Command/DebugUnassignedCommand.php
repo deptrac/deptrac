@@ -5,10 +5,10 @@ namespace Qossmic\Deptrac\Supportive\Console\Command;
 
 use Qossmic\Deptrac\Supportive\Console\Symfony\Style;
 use Qossmic\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
-use DEPTRAC_202404\Symfony\Component\Console\Command\Command;
-use DEPTRAC_202404\Symfony\Component\Console\Input\InputInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Style\SymfonyStyle;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Command\Command;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Style\SymfonyStyle;
 class DebugUnassignedCommand extends Command
 {
     public static $defaultName = 'debug:unassigned';

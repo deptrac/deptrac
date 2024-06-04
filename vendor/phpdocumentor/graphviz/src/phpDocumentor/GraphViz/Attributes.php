@@ -9,7 +9,7 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\GraphViz;
+namespace DEPTRAC_INTERNAL\phpDocumentor\GraphViz;
 
 use function array_key_exists;
 trait Attributes

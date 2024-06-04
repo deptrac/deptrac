@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\NodeVisitor;
+namespace DEPTRAC_INTERNAL\PhpParser\NodeVisitor;
 
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\NodeTraverser;
-use DEPTRAC_202404\PhpParser\NodeVisitorAbstract;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\NodeTraverser;
+use DEPTRAC_INTERNAL\PhpParser\NodeVisitorAbstract;
 /**
  * This visitor can be used to find the first node satisfying some criterion determined by
  * a filter callback.

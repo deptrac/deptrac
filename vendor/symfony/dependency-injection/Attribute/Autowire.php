@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\LogicException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\LogicException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * Attribute to tell a parameter how to be autowired.
  *
@@ -34,7 +34,7 @@ class Autowire
      * @param string|null                         $param      Parameter name (ie 'some.parameter.name')
      * @param bool|class-string|class-string[]    $lazy       Whether to use lazy-loading for this argument
      */
-    public function __construct(string|array|ArgumentInterface $value = null, string $service = null, string $expression = null, string $env = null, string $param = null, bool|string|array $lazy = \false)
+    public function __construct(string|array|ArgumentInterface|null $value = null, ?string $service = null, ?string $expression = null, ?string $env = null, ?string $param = null, bool|string|array $lazy = \false)
     {
         if ($this->lazy = \is_string($lazy) ? [$lazy] : $lazy) {
             if (null !== ($expression ?? $env ?? $param)) {

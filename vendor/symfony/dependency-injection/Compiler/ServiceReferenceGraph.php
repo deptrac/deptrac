@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
 /**
  * This is a directed graph of your services.
  *
@@ -66,7 +66,7 @@ class ServiceReferenceGraph
     /**
      * Connects 2 nodes together in the Graph.
      */
-    public function connect(?string $sourceId, mixed $sourceValue, ?string $destId, mixed $destValue = null, Reference $reference = null, bool $lazy = \false, bool $weak = \false, bool $byConstructor = \false) : void
+    public function connect(?string $sourceId, mixed $sourceValue, ?string $destId, mixed $destValue = null, ?Reference $reference = null, bool $lazy = \false, bool $weak = \false, bool $byConstructor = \false) : void
     {
         if (null === $sourceId || null === $destId) {
             return;

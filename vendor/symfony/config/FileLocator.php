@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config;
 
-use DEPTRAC_202404\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 /**
  * FileLocator uses an array of pre-defined paths to find files.
  *
@@ -27,9 +27,11 @@ class FileLocator implements FileLocatorInterface
         $this->paths = (array) $paths;
     }
     /**
-     * @return string|array
+     * @return string|string[]
+     *
+     * @psalm-return ($first is true ? string : string[])
      */
-    public function locate(string $name, string $currentPath = null, bool $first = \true)
+    public function locate(string $name, ?string $currentPath = null, bool $first = \true)
     {
         if ('' === $name) {
             throw new \InvalidArgumentException('An empty file name is not valid to be located.');

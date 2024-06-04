@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Builder;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder;
 
-use DEPTRAC_202404\Symfony\Component\Config\Definition\BooleanNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\BooleanNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
 /**
  * This class provides a fluent interface for defining a node.
  *
@@ -19,7 +19,7 @@ use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\InvalidDefiniti
  */
 class BooleanNodeDefinition extends ScalarNodeDefinition
 {
-    public function __construct(?string $name, NodeParentInterface $parent = null)
+    public function __construct(?string $name, ?NodeParentInterface $parent = null)
     {
         parent::__construct($name, $parent);
         $this->nullEquivalent = \true;

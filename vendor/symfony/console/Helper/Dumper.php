@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Console\Helper;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Console\Helper;
 
-use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
-use DEPTRAC_202404\Symfony\Component\VarDumper\Cloner\ClonerInterface;
-use DEPTRAC_202404\Symfony\Component\VarDumper\Cloner\VarCloner;
-use DEPTRAC_202404\Symfony\Component\VarDumper\Dumper\CliDumper;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\VarDumper\Cloner\ClonerInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\VarDumper\Cloner\VarCloner;
+use DEPTRAC_INTERNAL\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */

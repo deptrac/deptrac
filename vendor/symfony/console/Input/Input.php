@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Console\Input;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Console\Input;
 
-use DEPTRAC_202404\Symfony\Component\Console\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\Console\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Exception\RuntimeException;
 /**
  * Input is the base class for all concrete Input classes.
  *

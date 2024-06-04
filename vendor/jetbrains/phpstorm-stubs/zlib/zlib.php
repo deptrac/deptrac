@@ -1,11 +1,11 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of zlib v.2.0
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Output a gz-file
  * @link https://php.net/manual/en/function.readgzfile.php
@@ -571,7 +571,7 @@ final class InflateContext
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\InflateContext', 'InflateContext', \false);
+\class_alias('DEPTRAC_INTERNAL\\InflateContext', 'InflateContext', \false);
 /**
  * @since 8.0
  */
@@ -588,7 +588,7 @@ final class DeflateContext
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\DeflateContext', 'DeflateContext', \false);
+\class_alias('DEPTRAC_INTERNAL\\DeflateContext', 'DeflateContext', \false);
 \define('FORCE_GZIP', 31);
 \define('FORCE_DEFLATE', 15);
 /** @link https://php.net/manual/en/zlib.constants.php */

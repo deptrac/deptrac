@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Builder;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder;
 
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * This class builds an if expression.
  *
@@ -36,7 +36,7 @@ class ExprBuilder
      *
      * @return $this
      */
-    public function always(\Closure $then = null) : static
+    public function always(?\Closure $then = null) : static
     {
         $this->ifPart = static fn() => \true;
         $this->allowedTypes = self::TYPE_ANY;
@@ -52,7 +52,7 @@ class ExprBuilder
      *
      * @return $this
      */
-    public function ifTrue(\Closure $closure = null) : static
+    public function ifTrue(?\Closure $closure = null) : static
     {
         $this->ifPart = $closure ?? static fn($v) => \true === $v;
         $this->allowedTypes = self::TYPE_ANY;

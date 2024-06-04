@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\LazyProxy\PhpDumper\LazyServiceDumper;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\LazyProxy\PhpDumper\LazyServiceDumper;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

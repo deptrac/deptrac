@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser;
+namespace DEPTRAC_INTERNAL\PhpParser;
 
-use DEPTRAC_202404\PhpParser\Lexer\Emulative;
-use DEPTRAC_202404\PhpParser\Parser\Php7;
+use DEPTRAC_INTERNAL\PhpParser\Lexer\Emulative;
+use DEPTRAC_INTERNAL\PhpParser\Parser\Php7;
 class ParserFactory
 {
     const PREFER_PHP7 = 1;
@@ -20,7 +20,7 @@ class ParserFactory
      *
      * @return Parser The parser instance
      */
-    public function create(int $kind, Lexer $lexer = null, array $parserOptions = []) : Parser
+    public function create(int $kind, ?Lexer $lexer = null, array $parserOptions = []) : Parser
     {
         if (null === $lexer) {
             $lexer = new Lexer\Emulative();

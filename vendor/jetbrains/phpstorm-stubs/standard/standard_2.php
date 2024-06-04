@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\ReturnTypeContract as TypeContract;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\ReturnTypeContract as TypeContract;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Query language and locale information
  * @link https://php.net/manual/en/function.nl-langinfo.php
@@ -682,7 +682,7 @@ function unlink(string $filename, $context) : bool
  * exec.
  * </p>
  * @param int &$result_code [optional] <p>
- * If the return_var argument is present
+ * If the result_code argument is present
  * along with the output argument, then the
  * return status of the executed command will be written to this
  * variable.
@@ -705,7 +705,7 @@ function exec(string $command, &$output, &$result_code) : string|false
  * The command that will be executed.
  * </p>
  * @param int &$result_code [optional] <p>
- * If the return_var argument is present, then the
+ * If the result_code argument is present, then the
  * return status of the executed command will be written to this
  * variable.
  * </p>
@@ -746,7 +746,7 @@ function escapeshellarg(string $arg) : string
  * The command that will be executed.
  * </p>
  * @param int &$result_code [optional] <p>
- * If the return_var argument is present, the
+ * If the result_code argument is present, the
  * return status of the Unix command will be placed here.
  * </p>
  * @return bool|null null on success or false on failure.

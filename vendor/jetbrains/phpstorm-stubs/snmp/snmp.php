@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of snmp v.0.1
 /**
@@ -285,7 +285,7 @@ class SNMP
  * Represents SNMP session.
  * @link https://php.net/manual/en/class.snmp.php
  */
-\class_alias('DEPTRAC_202404\\SNMP', 'SNMP', \false);
+\class_alias('DEPTRAC_INTERNAL\\SNMP', 'SNMP', \false);
 /**
  * Represents an error raised by SNMP. You should not throw a
  * <b>SNMPException</b> from your own code.
@@ -311,7 +311,7 @@ class SNMPException extends \RuntimeException
  * information about Exceptions in PHP.
  * @link https://php.net/manual/en/class.snmpexception.php
  */
-\class_alias('DEPTRAC_202404\\SNMPException', 'SNMPException', \false);
+\class_alias('DEPTRAC_INTERNAL\\SNMPException', 'SNMPException', \false);
 /**
  * Fetch an SNMP object
  * @link https://php.net/manual/en/function.snmpget.php

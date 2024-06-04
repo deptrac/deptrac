@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\TypedReference;
-use DEPTRAC_202404\Symfony\Contracts\Service\Attribute\SubscribedService;
-use DEPTRAC_202404\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\TypedReference;
+use DEPTRAC_INTERNAL\Symfony\Contracts\Service\Attribute\SubscribedService;
+use DEPTRAC_INTERNAL\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * Autowires a service locator based on a tag name or an explicit list of key => service-type pairs.
  */
@@ -29,7 +29,7 @@ class AutowireLocator extends Autowire
      * @param string|array<string|SubscribedService> $services An explicit list of services or a tag name
      * @param string|string[]                        $exclude  A service or a list of services to exclude
      */
-    public function __construct(string|array $services, string $indexAttribute = null, string $defaultIndexMethod = null, string $defaultPriorityMethod = null, string|array $exclude = [], bool $excludeSelf = \true)
+    public function __construct(string|array $services, ?string $indexAttribute = null, ?string $defaultIndexMethod = null, ?string $defaultPriorityMethod = null, string|array $exclude = [], bool $excludeSelf = \true)
     {
         if (\is_string($services)) {
             parent::__construct(new ServiceLocatorArgument(new TaggedIteratorArgument($services, $indexAttribute, $defaultIndexMethod, \true, $defaultPriorityMethod, (array) $exclude, $excludeSelf)));

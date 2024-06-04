@@ -10,19 +10,19 @@
  *
  */
 declare (strict_types=1);
-namespace DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes;
 
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoType;
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Array_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\ArrayKey;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Mixed_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoType;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Array_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\ArrayKey;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Mixed_;
 use function implode;
 /** @psalm-immutable */
 class ArrayShape implements PseudoType
 {
     /** @var ArrayShapeItem[] */
-    private array $items;
+    private $items;
     public function __construct(ArrayShapeItem ...$items)
     {
         $this->items = $items;

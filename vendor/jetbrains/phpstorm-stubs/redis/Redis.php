@@ -1,8 +1,8 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
 /**
  * Helper autocomplete for php redis extension
  *
@@ -2427,7 +2427,7 @@ class Redis
      *
      * @param string $pattern pattern, using '*' as a wildcard
      *
-     * @return array|false|Redis The keys that match a certain pattern or Redis if in multimode
+     * @return list<string>|false|Redis The keys that match a certain pattern or Redis if in multimode
      *
      * @throws RedisException
      *
@@ -4240,7 +4240,7 @@ class Redis
      *
      * @param string $key
      *
-     * @return array|false|Redis An array of elements, the keys of the hash. This works like PHP's array_keys() or Redis if in multimode
+     * @return list<string>|false|Redis An array of elements, the keys of the hash. This works like PHP's array_keys() or Redis if in multimode
      *
      * @throws RedisException
      *
@@ -4276,7 +4276,7 @@ class Redis
      *
      * @param string $key
      *
-     * @return array|false|Redis An array of elements, the values of the hash. This works like PHP's array_values() or Redis if in multimode
+     * @return list<mixed>|false|Redis An array of elements, the values of the hash. This works like PHP's array_values() or Redis if in multimode
      *
      * @throws RedisException
      *
@@ -4312,7 +4312,7 @@ class Redis
      *
      * @param string $key
      *
-     * @return array|false|Redis An array of elements, the contents of the hash or Redis if in multimode
+     * @return array<string, mixed>|false|Redis An array of elements, the contents of the hash or Redis if in multimode
      *
      * @throws RedisException
      *
@@ -5702,36 +5702,26 @@ class Redis
     {
     }
     /**
-     * Trim the stream length to a given maximum.
-     * If the "approximate" flag is pasesed, Redis will use your size as a hint but only trim trees in whole nodes
-     * (this is more efficient)
+     * Truncate a STREAM key in various ways.
      *
-     * @param string $stream    The STREAM key to trim.
+     * @param string $key       The STREAM key to trim.
      * @param string $threshold This can either be a maximum length, or a minimum id.
      *                          MAXLEN - An integer describing the maximum desired length of the stream after the command.
      *                          MINID  - An ID that will become the new minimum ID in the stream, as Redis will trim all
-     *                          messages older than this ID.
+     *                                   messages older than this ID.
      * @param bool   $approx    Whether redis is allowed to do an approximate trimming of the stream.  This is
      *                          more efficient for Redis given how streams are stored internally.
      * @param bool   $minid     When set to `true`, users should pass a minimum ID to the `$threshold` argument.
      * @param int    $limit     An optional upper bound on how many entries to trim during the command.
      *
-     * @return false|int|Redis The number of messages trimed from the stream or Redis if in multimode
+     * @return Redis|int|false  The number of entries deleted from the stream.
      *
-     * @throws RedisException
+     * @see https://redis.io/commands/xtrim
      *
-     * @link    https://redis.io/commands/xtrim
-     * @example
-     * <pre>
-     * // Trim to exactly 100 messages
-     * $redis->xTrim('mystream', 100);
-     * // Let Redis approximate the trimming
-     * $redis->xTrim('mystream', 100, true);
-     * </pre>
+     * @example $redis->xTrim('stream', 3);
+     * @example $redis->xTrim('stream', '2-1', false, true);
      */
-    public function xTrim($stream, $threshold, $approx = \false, $minid = \false, $limit = -1)
-    {
-    }
+    public function xtrim(string $key, string $threshold, bool $approx = \false, bool $minid = \false, int $limit = -1) : \Redis|int|false;
     /**
      * Adds a values to the set value stored at key.
      *
@@ -6520,8 +6510,8 @@ class Redis
  *
  * @link https://github.com/phpredis/phpredis/blob/develop/redis.stub.php
  */
-\class_alias('DEPTRAC_202404\\Redis', 'Redis', \false);
+\class_alias('DEPTRAC_INTERNAL\\Redis', 'Redis', \false);
 class RedisException extends \Exception
 {
 }
-\class_alias('DEPTRAC_202404\\RedisException', 'RedisException', \false);
+\class_alias('DEPTRAC_INTERNAL\\RedisException', 'RedisException', \false);

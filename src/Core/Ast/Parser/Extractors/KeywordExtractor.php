@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Core\Ast\Parser\Extractors;
 
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\Node\Expr\Instanceof_;
-use DEPTRAC_202404\PhpParser\Node\Expr\New_;
-use DEPTRAC_202404\PhpParser\Node\Name;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Catch_;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr\Instanceof_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr\New_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Name;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Catch_;
 use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReferenceBuilder;
 use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
 use Qossmic\Deptrac\Core\Ast\Parser\TypeResolver;

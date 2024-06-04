@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of tidy v.2.0
 /**
@@ -338,7 +338,7 @@ class tidy
  * An HTML node in an HTML file, as detected by tidy.
  * @link https://php.net/manual/en/class.tidy.php
  */
-\class_alias('DEPTRAC_202404\\tidy', 'tidy', \false);
+\class_alias('DEPTRAC_INTERNAL\\tidy', 'tidy', \false);
 /**
  * An HTML node in an HTML file, as detected by tidy.
  * @link https://php.net/manual/en/class.tidynode.php
@@ -486,7 +486,7 @@ final class tidyNode
  * An HTML node in an HTML file, as detected by tidy.
  * @link https://php.net/manual/en/class.tidynode.php
  */
-\class_alias('DEPTRAC_202404\\tidyNode', 'tidyNode', \false);
+\class_alias('DEPTRAC_INTERNAL\\tidyNode', 'tidyNode', \false);
 /**
  * (PHP 5, PECL tidy &gt;= 0.5.2)<br/>
  * Returns the value of the specified configuration option for the tidy document

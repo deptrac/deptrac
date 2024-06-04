@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Qossmic\Deptrac\Contract\Layer;
 
-use DEPTRAC_202404\Psr\Container\ContainerExceptionInterface;
+use DEPTRAC_INTERNAL\Psr\Container\ContainerExceptionInterface;
 use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 use function implode;

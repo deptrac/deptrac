@@ -6,9 +6,9 @@ namespace Qossmic\Deptrac\Supportive\DependencyInjection;
 use InvalidArgumentException;
 use Qossmic\Deptrac\Contract\Config\EmitterType;
 use RuntimeException;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\ConfigurationInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\ConfigurationInterface;
 use function array_key_exists;
 use function is_array;
 /**

@@ -8,24 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader;
 
-use DEPTRAC_202404\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
-use DEPTRAC_202404\Symfony\Component\Config\Exception\LoaderLoadException;
-use DEPTRAC_202404\Symfony\Component\Config\FileLocatorInterface;
-use DEPTRAC_202404\Symfony\Component\Config\Loader\FileLoader as BaseFileLoader;
-use DEPTRAC_202404\Symfony\Component\Config\Loader\Loader;
-use DEPTRAC_202404\Symfony\Component\Config\Resource\GlobResource;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Alias;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\AsAlias;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\Exclude;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\When;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ChildDefinition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\LogicException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Exception\LoaderLoadException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\FileLocatorInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Loader\FileLoader as BaseFileLoader;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Loader\Loader;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\GlobResource;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Alias;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\AsAlias;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\Exclude;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\When;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ChildDefinition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\LogicException;
 /**
  * FileLoader is the abstract class used by all built-in loaders that are file based.
  *
@@ -42,7 +42,7 @@ abstract class FileLoader extends BaseFileLoader
     /** @var array<string, Alias> */
     protected $aliases = [];
     protected $autoRegisterAliasesForSinglyImplementedInterfaces = \true;
-    public function __construct(ContainerBuilder $container, FileLocatorInterface $locator, string $env = null)
+    public function __construct(ContainerBuilder $container, FileLocatorInterface $locator, ?string $env = null)
     {
         $this->container = $container;
         parent::__construct($locator, $env);
@@ -50,7 +50,7 @@ abstract class FileLoader extends BaseFileLoader
     /**
      * @param bool|string $ignoreErrors Whether errors should be ignored; pass "not_found" to ignore only when the loaded resource is not found
      */
-    public function import(mixed $resource, string $type = null, bool|string $ignoreErrors = \false, string $sourceResource = null, $exclude = null) : mixed
+    public function import(mixed $resource, ?string $type = null, bool|string $ignoreErrors = \false, ?string $sourceResource = null, $exclude = null) : mixed
     {
         $args = \func_get_args();
         if ($ignoreNotFound = 'not_found' === $ignoreErrors) {
@@ -86,7 +86,7 @@ abstract class FileLoader extends BaseFileLoader
      *
      * @return void
      */
-    public function registerClasses(Definition $prototype, string $namespace, string $resource, string|array $exclude = null)
+    public function registerClasses(Definition $prototype, string $namespace, string $resource, string|array|null $exclude = null)
     {
         if (!\str_ends_with($namespace, '\\')) {
             throw new InvalidArgumentException(\sprintf('Namespace prefix must end with a "\\": "%s".', $namespace));

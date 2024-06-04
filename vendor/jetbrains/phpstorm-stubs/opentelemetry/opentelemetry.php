@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\OpenTelemetry\Instrumentation;
+namespace DEPTRAC_INTERNAL\OpenTelemetry\Instrumentation;
 
 use Closure;
 /**

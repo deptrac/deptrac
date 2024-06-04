@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Builder;
+namespace DEPTRAC_INTERNAL\PhpParser\Builder;
 
-use DEPTRAC_202404\PhpParser;
-use DEPTRAC_202404\PhpParser\BuilderHelpers;
-use DEPTRAC_202404\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser;
+use DEPTRAC_INTERNAL\PhpParser\BuilderHelpers;
+use DEPTRAC_INTERNAL\PhpParser\Node;
 class Param implements PhpParser\Builder
 {
     protected $name;

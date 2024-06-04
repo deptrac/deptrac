@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 class CURLFile
 {
     #[LanguageLevelTypeAware(['8.1' => 'string'], default: '')]
@@ -88,7 +88,7 @@ class CURLFile
     {
     }
 }
-\class_alias('DEPTRAC_202404\\CURLFile', 'CURLFile', \false);
+\class_alias('DEPTRAC_INTERNAL\\CURLFile', 'CURLFile', \false);
 /**
  * Initialize a cURL session
  * @link https://php.net/manual/en/function.curl-init.php
@@ -2847,7 +2847,7 @@ final class CurlHandle
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\CurlHandle', 'CurlHandle', \false);
+\class_alias('DEPTRAC_INTERNAL\\CurlHandle', 'CurlHandle', \false);
 /**
  * @since 8.0
  */
@@ -2864,7 +2864,7 @@ final class CurlMultiHandle
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\CurlMultiHandle', 'CurlMultiHandle', \false);
+\class_alias('DEPTRAC_INTERNAL\\CurlMultiHandle', 'CurlMultiHandle', \false);
 /**
  * @since 8.0
  */
@@ -2881,4 +2881,4 @@ final class CurlShareHandle
 /**
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\CurlShareHandle', 'CurlShareHandle', \false);
+\class_alias('DEPTRAC_INTERNAL\\CurlShareHandle', 'CurlShareHandle', \false);

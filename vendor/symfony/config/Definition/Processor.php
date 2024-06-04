@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition;
 
 /**
  * This class is the entry point for config normalization/merging/finalization.
@@ -63,7 +63,7 @@ class Processor
      * @param string      $key    The key to normalize
      * @param string|null $plural The plural form of the key if it is irregular
      */
-    public static function normalizeConfig(array $config, string $key, string $plural = null) : array
+    public static function normalizeConfig(array $config, string $key, ?string $plural = null) : array
     {
         $plural ??= $key . 's';
         if (isset($config[$plural])) {

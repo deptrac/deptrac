@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 \define('RD_KAFKA_RESP_ERR__BEGIN', -200);
 \define('RD_KAFKA_RESP_ERR__BAD_MSG', -199);

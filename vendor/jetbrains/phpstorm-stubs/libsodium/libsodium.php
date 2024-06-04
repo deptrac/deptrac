@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\Sodium;
+namespace DEPTRAC_INTERNAL\Sodium;
 
 \define('Sodium\\CRYPTO_AEAD_AES256GCM_KEYBYTES', 32);
 \define('Sodium\\CRYPTO_AEAD_AES256GCM_NSECBYTES', 0);

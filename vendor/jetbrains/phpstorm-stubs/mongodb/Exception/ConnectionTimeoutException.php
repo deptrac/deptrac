@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver\Exception;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver\Exception;
 
 /**
  * Thrown when the driver fails to establish a database connection within a specified time limit (e.g. connectTimeoutMS).

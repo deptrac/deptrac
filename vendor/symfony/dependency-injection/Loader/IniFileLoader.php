@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader;
 
-use DEPTRAC_202404\Symfony\Component\Config\Util\XmlUtils;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Util\XmlUtils;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * IniFileLoader loads parameters from INI files.
  *
@@ -19,7 +19,7 @@ use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgume
  */
 class IniFileLoader extends FileLoader
 {
-    public function load(mixed $resource, string $type = null) : mixed
+    public function load(mixed $resource, ?string $type = null) : mixed
     {
         $path = $this->locator->locate($resource);
         $this->container->fileExists($path);
@@ -46,7 +46,7 @@ class IniFileLoader extends FileLoader
         }
         return null;
     }
-    public function supports(mixed $resource, string $type = null) : bool
+    public function supports(mixed $resource, ?string $type = null) : bool
     {
         if (!\is_string($resource)) {
             return \false;

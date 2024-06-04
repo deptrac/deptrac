@@ -9,86 +9,86 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection;
 
-use DEPTRAC_202404\Doctrine\Deprecations\Deprecation;
+use DEPTRAC_INTERNAL\Doctrine\Deprecations\Deprecation;
 use InvalidArgumentException;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\ArrayShape;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\ArrayShapeItem;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\CallableString;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\ConstExpression;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\False_;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\FloatValue;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\HtmlEscapedString;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\IntegerRange;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\IntegerValue;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\List_;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\LiteralString;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\LowercaseString;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\NegativeInteger;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\NonEmptyList;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\NonEmptyLowercaseString;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\NonEmptyString;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\Numeric_;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\NumericString;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\PositiveInteger;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\StringValue;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\TraitString;
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes\True_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\AggregatedType;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Array_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\ArrayKey;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Boolean;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Callable_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\CallableParameter;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\ClassString;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Collection;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Compound;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Context;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Expression;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Float_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Integer;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\InterfaceString;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Intersection;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Iterable_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Mixed_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Never_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Null_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Nullable;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Object_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Parent_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Resource_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Scalar;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Self_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Static_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\String_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\This;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Void_;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprFloatNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprIntegerNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprStringNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\ArrayShapeItemNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\ArrayShapeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\ArrayTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\CallableTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\CallableTypeParameterNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\ConditionalTypeForParameterNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\ConditionalTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\ConstTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\IntersectionTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\NullableTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\OffsetAccessTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\ThisTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\TypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type\UnionTypeNode;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Lexer\Lexer;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Parser\ConstExprParser;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Parser\ParserException;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Parser\TokenIterator;
-use DEPTRAC_202404\PHPStan\PhpDocParser\Parser\TypeParser;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\ArrayShape;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\ArrayShapeItem;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\CallableString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\ConstExpression;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\False_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\FloatValue;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\HtmlEscapedString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\IntegerRange;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\IntegerValue;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\List_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\LiteralString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\LowercaseString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NegativeInteger;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NonEmptyList;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NonEmptyLowercaseString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NonEmptyString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\Numeric_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NumericString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\PositiveInteger;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\StringValue;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\TraitString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\True_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\AggregatedType;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Array_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\ArrayKey;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Boolean;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Callable_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\CallableParameter;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\ClassString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Collection;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Compound;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Context;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Expression;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Float_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Integer;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\InterfaceString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Intersection;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Iterable_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Mixed_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Never_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Null_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Nullable;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Object_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Parent_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Resource_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Scalar;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Self_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Static_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\String_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\This;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Void_;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprFloatNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprIntegerNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\ConstExpr\ConstExprStringNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ArrayShapeItemNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ArrayShapeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ArrayTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\CallableTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\CallableTypeParameterNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ConditionalTypeForParameterNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ConditionalTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ConstTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\IntersectionTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\NullableTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\OffsetAccessTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ThisTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\TypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\UnionTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Lexer\Lexer;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\ConstExprParser;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\ParserException;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\TokenIterator;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\TypeParser;
 use RuntimeException;
 use function array_filter;
 use function array_key_exists;
@@ -110,13 +110,22 @@ final class TypeResolver
      * @var array<string, string> List of recognized keywords and unto which Value Object they map
      * @psalm-var array<string, class-string<Type>>
      */
-    private array $keywords = ['string' => String_::class, 'class-string' => ClassString::class, 'interface-string' => InterfaceString::class, 'html-escaped-string' => HtmlEscapedString::class, 'lowercase-string' => LowercaseString::class, 'non-empty-lowercase-string' => NonEmptyLowercaseString::class, 'non-empty-string' => NonEmptyString::class, 'numeric-string' => NumericString::class, 'numeric' => Numeric_::class, 'trait-string' => TraitString::class, 'int' => Integer::class, 'integer' => Integer::class, 'positive-int' => PositiveInteger::class, 'negative-int' => NegativeInteger::class, 'bool' => Boolean::class, 'boolean' => Boolean::class, 'real' => Float_::class, 'float' => Float_::class, 'double' => Float_::class, 'object' => Object_::class, 'mixed' => Mixed_::class, 'array' => Array_::class, 'array-key' => ArrayKey::class, 'resource' => Resource_::class, 'void' => Void_::class, 'null' => Null_::class, 'scalar' => Scalar::class, 'callback' => Callable_::class, 'callable' => Callable_::class, 'callable-string' => CallableString::class, 'false' => False_::class, 'true' => True_::class, 'literal-string' => LiteralString::class, 'self' => Self_::class, '$this' => This::class, 'static' => Static_::class, 'parent' => Parent_::class, 'iterable' => Iterable_::class, 'never' => Never_::class, 'list' => List_::class, 'non-empty-list' => NonEmptyList::class];
-    /** @psalm-readonly */
-    private FqsenResolver $fqsenResolver;
-    /** @psalm-readonly */
-    private TypeParser $typeParser;
-    /** @psalm-readonly */
-    private Lexer $lexer;
+    private $keywords = ['string' => String_::class, 'class-string' => ClassString::class, 'interface-string' => InterfaceString::class, 'html-escaped-string' => HtmlEscapedString::class, 'lowercase-string' => LowercaseString::class, 'non-empty-lowercase-string' => NonEmptyLowercaseString::class, 'non-empty-string' => NonEmptyString::class, 'numeric-string' => NumericString::class, 'numeric' => Numeric_::class, 'trait-string' => TraitString::class, 'int' => Integer::class, 'integer' => Integer::class, 'positive-int' => PositiveInteger::class, 'negative-int' => NegativeInteger::class, 'bool' => Boolean::class, 'boolean' => Boolean::class, 'real' => Float_::class, 'float' => Float_::class, 'double' => Float_::class, 'object' => Object_::class, 'mixed' => Mixed_::class, 'array' => Array_::class, 'array-key' => ArrayKey::class, 'resource' => Resource_::class, 'void' => Void_::class, 'null' => Null_::class, 'scalar' => Scalar::class, 'callback' => Callable_::class, 'callable' => Callable_::class, 'callable-string' => CallableString::class, 'false' => False_::class, 'true' => True_::class, 'literal-string' => LiteralString::class, 'self' => Self_::class, '$this' => This::class, 'static' => Static_::class, 'parent' => Parent_::class, 'iterable' => Iterable_::class, 'never' => Never_::class, 'list' => List_::class, 'non-empty-list' => NonEmptyList::class];
+    /**
+     * @psalm-readonly
+     * @var FqsenResolver
+     */
+    private $fqsenResolver;
+    /**
+     * @psalm-readonly
+     * @var TypeParser
+     */
+    private $typeParser;
+    /**
+     * @psalm-readonly
+     * @var Lexer
+     */
+    private $lexer;
     /**
      * Initializes this TypeResolver with the means to create and resolve Fqsen objects.
      */
@@ -166,7 +175,9 @@ final class TypeResolver
             case ArrayTypeNode::class:
                 return new Array_($this->createType($type->type, $context));
             case ArrayShapeNode::class:
-                return new ArrayShape(...array_map(fn(ArrayShapeItemNode $item) => new ArrayShapeItem((string) $item->keyName, $this->createType($item->valueType, $context), $item->optional), $type->items));
+                return new ArrayShape(...array_map(function (ArrayShapeItemNode $item) use($context) : ArrayShapeItem {
+                    return new ArrayShapeItem((string) $item->keyName, $this->createType($item->valueType, $context), $item->optional);
+                }, $type->items));
             case CallableTypeNode::class:
                 return $this->createFromCallable($type, $context);
             case ConstTypeNode::class:
@@ -176,7 +187,7 @@ final class TypeResolver
             case IdentifierTypeNode::class:
                 return $this->resolveSingleType($type->name, $context);
             case IntersectionTypeNode::class:
-                return new Intersection(array_filter(array_map(function (TypeNode $nestedType) use($context) {
+                return new Intersection(array_filter(array_map(function (TypeNode $nestedType) use($context) : Type {
                     $type = $this->createType($nestedType, $context);
                     if ($type instanceof AggregatedType) {
                         return new Expression($type);
@@ -187,7 +198,7 @@ final class TypeResolver
                 $nestedType = $this->createType($type->type, $context);
                 return new Nullable($nestedType);
             case UnionTypeNode::class:
-                return new Compound(array_filter(array_map(function (TypeNode $nestedType) use($context) {
+                return new Compound(array_filter(array_map(function (TypeNode $nestedType) use($context) : Type {
                     $type = $this->createType($nestedType, $context);
                     if ($type instanceof AggregatedType) {
                         return new Expression($type);
@@ -230,18 +241,22 @@ final class TypeResolver
                 }
                 return new IntegerRange((string) $type->genericTypes[0], (string) $type->genericTypes[1]);
             case 'iterable':
-                return new Iterable_(...array_reverse(array_map(fn(TypeNode $genericType) => $this->createType($genericType, $context), $type->genericTypes)));
+                return new Iterable_(...array_reverse(array_map(function (TypeNode $genericType) use($context) : Type {
+                    return $this->createType($genericType, $context);
+                }, $type->genericTypes)));
             default:
                 $collectionType = $this->createType($type->type, $context);
                 if ($collectionType instanceof Object_ === \false) {
                     throw new RuntimeException(sprintf('%s is not a collection', (string) $collectionType));
                 }
-                return new Collection($collectionType->getFqsen(), ...array_reverse(array_map(fn(TypeNode $genericType) => $this->createType($genericType, $context), $type->genericTypes)));
+                return new Collection($collectionType->getFqsen(), ...array_reverse(array_map(function (TypeNode $genericType) use($context) : Type {
+                    return $this->createType($genericType, $context);
+                }, $type->genericTypes)));
         }
     }
     private function createFromCallable(CallableTypeNode $type, Context $context) : Callable_
     {
-        return new Callable_(array_map(function (CallableTypeParameterNode $param) use($context) {
+        return new Callable_(array_map(function (CallableTypeParameterNode $param) use($context) : CallableParameter {
             return new CallableParameter($this->createType($param->type, $context), $param->parameterName !== '' ? trim($param->parameterName, '$') : null, $param->isReference, $param->isVariadic, $param->isOptional);
         }, $type->parameters), $this->createType($type->returnType, $context));
     }
@@ -357,7 +372,9 @@ final class TypeResolver
     /** @param TypeNode[] $typeNodes */
     private function createArray(array $typeNodes, Context $context) : Array_
     {
-        $types = array_reverse(array_map(fn(TypeNode $node) => $this->createType($node, $context), $typeNodes));
+        $types = array_reverse(array_map(function (TypeNode $node) use($context) : Type {
+            return $this->createType($node, $context);
+        }, $typeNodes));
         if (isset($types[1]) === \false) {
             return new Array_(...$types);
         }

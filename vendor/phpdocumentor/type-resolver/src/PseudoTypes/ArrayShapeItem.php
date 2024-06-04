@@ -10,16 +10,19 @@
  *
  */
 declare (strict_types=1);
-namespace DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes;
 
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Mixed_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Mixed_;
 use function sprintf;
 final class ArrayShapeItem
 {
-    private ?string $key;
-    private Type $value;
-    private bool $optional;
+    /** @var string|null */
+    private $key;
+    /** @var Type */
+    private $value;
+    /** @var bool */
+    private $optional;
     public function __construct(?string $key, ?Type $value, bool $optional)
     {
         $this->key = $key;

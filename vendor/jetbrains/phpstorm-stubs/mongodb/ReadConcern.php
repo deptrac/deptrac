@@ -1,10 +1,11 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver;
 
 use MongoDB\BSON\Serializable;
 use MongoDB\Driver\Exception\InvalidArgumentException;
 use MongoDB\Driver\Exception\UnexpectedValueException;
+use stdClass;
 /**
  * MongoDB\Driver\ReadConcern controls the level of isolation for read operations for replica sets and replica set shards. This option requires the WiredTiger storage engine and MongoDB 3.2 or later.
  * @link https://php.net/manual/en/class.mongodb-driver-readconcern.php
@@ -50,7 +51,7 @@ final class ReadConcern implements Serializable, \Serializable
      * @link https://php.net/manual/en/mongodb-driver-readconcern.bsonserialize.php
      * @since 1.2.0
      */
-    public final function bsonSerialize() : array|object
+    public final function bsonSerialize() : stdClass
     {
     }
     /**

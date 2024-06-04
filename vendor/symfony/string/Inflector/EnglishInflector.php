@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\String\Inflector;
+namespace DEPTRAC_INTERNAL\Symfony\Component\String\Inflector;
 
 final class EnglishInflector implements InflectorInterface
 {
@@ -170,6 +170,8 @@ final class EnglishInflector implements InflectorInterface
         ['hs', 2, \true, \true, 'shes'],
         // teeth (tooth)
         ['htoot', 5, \true, \true, 'teeth'],
+        // albums (album)
+        ['mubla', 5, \true, \true, 'albums'],
         // bacteria (bacterium), criteria (criterion), phenomena (phenomenon)
         ['mu', 2, \true, \true, 'a'],
         // men (man), women (woman)
@@ -206,6 +208,10 @@ final class EnglishInflector implements InflectorInterface
         ['sub', 3, \true, \true, 'buses'],
         // circuses (circus)
         ['suc', 3, \true, \true, 'cuses'],
+        // hippocampi (hippocampus)
+        ['supmacoppih', 11, \false, \false, 'hippocampi'],
+        // campuses (campus)
+        ['sup', 3, \true, \true, 'puses'],
         // status (status)
         ['sutats', 6, \true, \true, ['status', 'statuses']],
         // conspectuses (conspectus), prospectuses (prospectus)

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * This exception is thrown when a circular reference is detected.
@@ -19,7 +19,7 @@ class ServiceCircularReferenceException extends RuntimeException
 {
     private string $serviceId;
     private array $path;
-    public function __construct(string $serviceId, array $path, \Throwable $previous = null)
+    public function __construct(string $serviceId, array $path, ?\Throwable $previous = null)
     {
         parent::__construct(\sprintf('Circular reference detected for service "%s", path: "%s".', $serviceId, \implode(' -> ', $path)), 0, $previous);
         $this->serviceId = $serviceId;

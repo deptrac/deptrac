@@ -4,9 +4,9 @@ declare (strict_types=1);
 namespace Qossmic\Deptrac\Contract\Config;
 
 use Qossmic\Deptrac\Contract\Config\Formatter\FormatterConfigInterface;
-use DEPTRAC_202404\Symfony\Component\Config\Builder\ConfigBuilderInterface;
-use DEPTRAC_202404\Symfony\Component\Yaml\Exception\ParseException;
-use DEPTRAC_202404\Symfony\Component\Yaml\Yaml;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Builder\ConfigBuilderInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Exception\ParseException;
+use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Yaml;
 final class DeptracConfig implements ConfigBuilderInterface
 {
     private bool $ignoreUncoveredInternalClasses = \true;

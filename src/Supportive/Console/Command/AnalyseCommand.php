@@ -12,12 +12,12 @@ use Qossmic\Deptrac\Supportive\OutputFormatter\FormatterProvider;
 use Qossmic\Deptrac\Supportive\OutputFormatter\GithubActionsOutputFormatter;
 use Qossmic\Deptrac\Supportive\OutputFormatter\TableOutputFormatter;
 use Qossmic\Deptrac\Supportive\Time\Stopwatch;
-use DEPTRAC_202404\Symfony\Component\Console\Command\Command;
-use DEPTRAC_202404\Symfony\Component\Console\Input\InputInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Input\InputOption;
-use DEPTRAC_202404\Symfony\Component\Console\Output\OutputInterface;
-use DEPTRAC_202404\Symfony\Component\Console\Style\SymfonyStyle;
-use DEPTRAC_202404\Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Command\Command;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputOption;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\OutputInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Style\SymfonyStyle;
+use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventDispatcherInterface;
 class AnalyseCommand extends Command
 {
     public final const OPTION_REPORT_UNCOVERED = 'report-uncovered';

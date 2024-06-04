@@ -9,14 +9,14 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes;
 
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoType;
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\AggregatedType;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Compound;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Float_;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\Integer;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoType;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\AggregatedType;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Compound;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Float_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\Integer;
 /**
  * Value Object representing the 'numeric' pseudo-type, which is either a numeric-string, integer or float.
  *

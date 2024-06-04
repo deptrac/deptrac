@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\Swoole\Coroutine\MySQL;
+namespace DEPTRAC_INTERNAL\Swoole\Coroutine\MySQL;
 
 class Statement
 {

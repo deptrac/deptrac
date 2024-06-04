@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver\Exception;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver\Exception;
 
 /**
  * Thrown when the driver encounters an unexpected value (e.g. during BSON serialization or deserialization).

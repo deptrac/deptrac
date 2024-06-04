@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\EventDispatcher\DependencyInjection;
+namespace DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\DependencyInjection;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\EventDispatcher\EventDispatcher;
-use DEPTRAC_202404\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use DEPTRAC_202404\Symfony\Contracts\EventDispatcher\Event;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventDispatcher;
+use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use DEPTRAC_INTERNAL\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Compiler pass to register tagged services for an event dispatcher.
  */

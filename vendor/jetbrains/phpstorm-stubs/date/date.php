@@ -1,13 +1,13 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of date v.5.3.2-0.dotdeb.1
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Parse about any English textual datetime description into a Unix timestamp
  * @link https://php.net/manual/en/function.strtotime.php
@@ -467,7 +467,7 @@ function gmdate(string $format, ?int $timestamp)
  * it returned -1).
  */
 #[Pure(\true)]
-function mktime(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] int $hour = null, #[PhpStormStubsElementAvailable(from: '8.0')] int $hour, ?int $minute = null, ?int $second = null, ?int $month = null, ?int $day = null, ?int $year = null, #[Deprecated('Use the new timezone handling functions instead', since: '5.3')] #[PhpStormStubsElementAvailable(from: '5.5', to: '5.6')] $is_dst = -1) : int|false
+function mktime(#[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] int $hour = null, #[PhpStormStubsElementAvailable(from: '8.0')] int $hour, ?int $minute = null, ?int $second = null, ?int $month = null, ?int $day = null, ?int $year = null, #[Deprecated('Use the new timezone handling functions instead', since: '5.3')] #[PhpStormStubsElementAvailable(from: '5.5', to: '5.6')] int $is_dst = -1) : int|false
 {
 }
 /**

@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\EnvVarProcessor;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\EnvVarProcessorInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\EnvVarProcessor;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\EnvVarProcessorInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
 /**
  * Creates the container.env_var_processors_locator service.
  *

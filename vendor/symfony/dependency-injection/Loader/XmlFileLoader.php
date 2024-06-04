@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader;
 
-use DEPTRAC_202404\Symfony\Component\Config\Util\XmlUtils;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Alias;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ChildDefinition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\LogicException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Util\XmlUtils;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Alias;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ChildDefinition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\LogicException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * XmlFileLoader loads XML files service definitions.
  *
@@ -37,7 +37,7 @@ class XmlFileLoader extends FileLoader
 {
     public const NS = 'http://symfony.com/schema/dic/services';
     protected $autoRegisterAliasesForSinglyImplementedInterfaces = \false;
-    public function load(mixed $resource, string $type = null) : mixed
+    public function load(mixed $resource, ?string $type = null) : mixed
     {
         $path = $this->locator->locate($resource);
         $xml = $this->parseFileToDOM($path);
@@ -58,7 +58,7 @@ class XmlFileLoader extends FileLoader
         }
         return null;
     }
-    private function loadXml(\DOMDocument $xml, string $path, \DOMNode $root = null) : void
+    private function loadXml(\DOMDocument $xml, string $path, ?\DOMNode $root = null) : void
     {
         $defaults = $this->getServiceDefaults($xml, $path, $root);
         // anonymous services
@@ -77,7 +77,7 @@ class XmlFileLoader extends FileLoader
             $this->registerAliasesForSinglyImplementedInterfaces();
         }
     }
-    public function supports(mixed $resource, string $type = null) : bool
+    public function supports(mixed $resource, ?string $type = null) : bool
     {
         if (!\is_string($resource)) {
             return \false;
@@ -87,13 +87,13 @@ class XmlFileLoader extends FileLoader
         }
         return 'xml' === $type;
     }
-    private function parseParameters(\DOMDocument $xml, string $file, \DOMNode $root = null) : void
+    private function parseParameters(\DOMDocument $xml, string $file, ?\DOMNode $root = null) : void
     {
         if ($parameters = $this->getChildren($root ?? $xml->documentElement, 'parameters')) {
             $this->container->getParameterBag()->add($this->getArgumentsAsPhp($parameters[0], 'parameter', $file));
         }
     }
-    private function parseImports(\DOMDocument $xml, string $file, \DOMNode $root = null) : void
+    private function parseImports(\DOMDocument $xml, string $file, ?\DOMNode $root = null) : void
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
@@ -106,7 +106,7 @@ class XmlFileLoader extends FileLoader
             $this->import($import->getAttribute('resource'), XmlUtils::phpize($import->getAttribute('type')) ?: null, XmlUtils::phpize($import->getAttribute('ignore-errors')) ?: \false, $file);
         }
     }
-    private function parseDefinitions(\DOMDocument $xml, string $file, Definition $defaults, \DOMNode $root = null) : void
+    private function parseDefinitions(\DOMDocument $xml, string $file, Definition $defaults, ?\DOMNode $root = null) : void
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
@@ -154,7 +154,7 @@ class XmlFileLoader extends FileLoader
             }
         }
     }
-    private function getServiceDefaults(\DOMDocument $xml, string $file, \DOMNode $root = null) : Definition
+    private function getServiceDefaults(\DOMDocument $xml, string $file, ?\DOMNode $root = null) : Definition
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
@@ -376,7 +376,7 @@ class XmlFileLoader extends FileLoader
     /**
      * Processes anonymous services.
      */
-    private function processAnonymousServices(\DOMDocument $xml, string $file, \DOMNode $root = null) : void
+    private function processAnonymousServices(\DOMDocument $xml, string $file, ?\DOMNode $root = null) : void
     {
         $definitions = [];
         $count = 0;
@@ -477,7 +477,7 @@ class XmlFileLoader extends FileLoader
                 case 'service_locator':
                     $arg = $this->getArgumentsAsPhp($arg, $name, $file);
                     if (isset($arg[0])) {
-                        \DEPTRAC_202404\trigger_deprecation('symfony/dependency-injection', '6.3', 'Skipping "key" argument or using integers as values in a "service_locator" tag is deprecated. The keys will default to the IDs of the original services in 7.0.');
+                        \DEPTRAC_INTERNAL\trigger_deprecation('symfony/dependency-injection', '6.3', 'Skipping "key" argument or using integers as values in a "service_locator" tag is deprecated. The keys will default to the IDs of the original services in 7.0.');
                     }
                     $arguments[$key] = new ServiceLocatorArgument($arg);
                     break;

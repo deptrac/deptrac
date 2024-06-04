@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * Stubs for PECL/rrd extension
@@ -272,7 +272,7 @@ class RRDCreator
  * @link https://php.net/manual/en/class.rrdcreator.php
  * @since PECL rrd >= 0.9.0
  */
-\class_alias('DEPTRAC_202404\\RRDCreator', 'RRDCreator', \false);
+\class_alias('DEPTRAC_INTERNAL\\RRDCreator', 'RRDCreator', \false);
 /**
  * Class for exporting data from RRD database to image file.
  * @link https://php.net/manual/en/class.rrdgraph.php
@@ -329,7 +329,7 @@ class RRDGraph
  * @link https://php.net/manual/en/class.rrdgraph.php
  * @since PECL rrd >= 0.9.0
  */
-\class_alias('DEPTRAC_202404\\RRDGraph', 'RRDGraph', \false);
+\class_alias('DEPTRAC_INTERNAL\\RRDGraph', 'RRDGraph', \false);
 /**
  * Class for updating RDD database file.
  * @link https://php.net/manual/en/class.rrdupdater.php
@@ -371,5 +371,5 @@ class RRDUpdater
  * @link https://php.net/manual/en/class.rrdupdater.php
  * @since PECL rrd >= 0.9.0
  */
-\class_alias('DEPTRAC_202404\\RRDUpdater', 'RRDUpdater', \false);
+\class_alias('DEPTRAC_INTERNAL\\RRDUpdater', 'RRDUpdater', \false);
 // end of PECL/rrd v1.0

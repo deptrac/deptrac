@@ -5,7 +5,7 @@ namespace Qossmic\Deptrac\Contract\Analyser;
 
 use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
 use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
-use DEPTRAC_202404\Symfony\Contracts\EventDispatcher\Event;
+use DEPTRAC_INTERNAL\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Event that is triggered on every found dependency.
  *

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Stmt;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 
-use DEPTRAC_202404\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node;
 class Return_ extends Node\Stmt
 {
     /** @var null|Node\Expr Expression */
@@ -14,7 +14,7 @@ class Return_ extends Node\Stmt
      * @param null|Node\Expr $expr       Expression
      * @param array          $attributes Additional attributes
      */
-    public function __construct(Node\Expr $expr = null, array $attributes = [])
+    public function __construct(?Node\Expr $expr = null, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->expr = $expr;

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Expr;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 
-use DEPTRAC_202404\PhpParser\Node\Expr;
-use DEPTRAC_202404\PhpParser\Node\Identifier;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Identifier;
 class PropertyFetch extends Expr
 {
     /** @var Expr Variable holding object */

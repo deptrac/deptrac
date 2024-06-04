@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\Swoole\WebSocket;
+namespace DEPTRAC_INTERNAL\Swoole\WebSocket;
 
 class Server extends \Swoole\Http\Server
 {

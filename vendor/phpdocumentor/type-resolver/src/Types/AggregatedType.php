@@ -9,11 +9,11 @@
  * @link      http://phpdoc.org
  */
 declare (strict_types=1);
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
 use ArrayIterator;
 use IteratorAggregate;
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
 use function array_key_exists;
 use function implode;
 /**
@@ -31,8 +31,9 @@ abstract class AggregatedType implements Type, IteratorAggregate
      * @psalm-allow-private-mutation
      * @var array<int, Type>
      */
-    private array $types = [];
-    private string $token;
+    private $types = [];
+    /** @var string */
+    private $token;
     /**
      * @param array<Type> $types
      */

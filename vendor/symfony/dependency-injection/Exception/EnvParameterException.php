@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * This exception wraps exceptions whose messages contain a reference to an env parameter.
@@ -17,7 +17,7 @@ namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception;
  */
 class EnvParameterException extends InvalidArgumentException
 {
-    public function __construct(array $envs, \Throwable $previous = null, string $message = 'Incompatible use of dynamic environment variables "%s" found in parameters.')
+    public function __construct(array $envs, ?\Throwable $previous = null, string $message = 'Incompatible use of dynamic environment variables "%s" found in parameters.')
     {
         parent::__construct(\sprintf($message, \implode('", "', $envs)), 0, $previous);
     }

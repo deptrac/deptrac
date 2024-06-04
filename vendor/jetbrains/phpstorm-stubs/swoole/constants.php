@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 \define('SWOOLE_VERSION', '4.8.6');
 \define('SWOOLE_VERSION_ID', 40806);

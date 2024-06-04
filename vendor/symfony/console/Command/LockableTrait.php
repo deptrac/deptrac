@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Console\Command;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Console\Command;
 
-use DEPTRAC_202404\Symfony\Component\Console\Exception\LogicException;
-use DEPTRAC_202404\Symfony\Component\Lock\LockFactory;
-use DEPTRAC_202404\Symfony\Component\Lock\LockInterface;
-use DEPTRAC_202404\Symfony\Component\Lock\Store\FlockStore;
-use DEPTRAC_202404\Symfony\Component\Lock\Store\SemaphoreStore;
+use DEPTRAC_INTERNAL\Symfony\Component\Console\Exception\LogicException;
+use DEPTRAC_INTERNAL\Symfony\Component\Lock\LockFactory;
+use DEPTRAC_INTERNAL\Symfony\Component\Lock\LockInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Lock\Store\FlockStore;
+use DEPTRAC_INTERNAL\Symfony\Component\Lock\Store\SemaphoreStore;
 /**
  * Basic lock feature for commands.
  *

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\VarExporter\Internal;
+namespace DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal;
 
 /**
  * Stores the state of lazy objects and caches related reflection information.

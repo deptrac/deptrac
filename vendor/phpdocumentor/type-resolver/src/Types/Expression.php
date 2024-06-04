@@ -9,9 +9,9 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
 /**
  * Represents an expression type as described in the PSR-5, the PHPDoc Standard.
  *
@@ -19,7 +19,8 @@ use DEPTRAC_202404\phpDocumentor\Reflection\Type;
  */
 final class Expression implements Type
 {
-    protected Type $valueType;
+    /** @var Type */
+    protected $valueType;
     /**
      * Initializes this representation of an array with the given Type.
      */

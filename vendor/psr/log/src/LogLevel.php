@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\Psr\Log;
+namespace DEPTRAC_INTERNAL\Psr\Log;
 
 /**
  * Describes log levels.

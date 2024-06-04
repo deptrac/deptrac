@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader;
 
-use DEPTRAC_202404\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
-use DEPTRAC_202404\Symfony\Component\Config\Builder\ConfigBuilderGeneratorInterface;
-use DEPTRAC_202404\Symfony\Component\Config\Builder\ConfigBuilderInterface;
-use DEPTRAC_202404\Symfony\Component\Config\FileLocatorInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\When;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Container;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Builder\ConfigBuilderGeneratorInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Builder\ConfigBuilderInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\FileLocatorInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\When;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Container;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 /**
  * PhpFileLoader loads service definitions from a PHP file.
  *
@@ -33,12 +33,12 @@ class PhpFileLoader extends FileLoader
 {
     protected $autoRegisterAliasesForSinglyImplementedInterfaces = \false;
     private ?ConfigBuilderGeneratorInterface $generator;
-    public function __construct(ContainerBuilder $container, FileLocatorInterface $locator, string $env = null, ConfigBuilderGeneratorInterface $generator = null)
+    public function __construct(ContainerBuilder $container, FileLocatorInterface $locator, ?string $env = null, ?ConfigBuilderGeneratorInterface $generator = null)
     {
         parent::__construct($container, $locator, $env);
         $this->generator = $generator;
     }
-    public function load(mixed $resource, string $type = null) : mixed
+    public function load(mixed $resource, ?string $type = null) : mixed
     {
         // the container and loader variables are exposed to the included file below
         $container = $this->container;
@@ -61,7 +61,7 @@ class PhpFileLoader extends FileLoader
         }
         return null;
     }
-    public function supports(mixed $resource, string $type = null) : bool
+    public function supports(mixed $resource, ?string $type = null) : bool
     {
         if (!\is_string($resource)) {
             return \false;

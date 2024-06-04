@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\Relay;
+namespace DEPTRAC_INTERNAL\Relay;
 
 /**
  * Relay event class.

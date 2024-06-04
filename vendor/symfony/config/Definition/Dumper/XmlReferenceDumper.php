@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Dumper;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Dumper;
 
-use DEPTRAC_202404\Symfony\Component\Config\Definition\ArrayNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\BaseNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\BooleanNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\ConfigurationInterface;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\EnumNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\FloatNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\IntegerNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\NodeInterface;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\PrototypedArrayNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\ScalarNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\ArrayNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\BaseNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\BooleanNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\ConfigurationInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\EnumNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\FloatNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\IntegerNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\NodeInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\ScalarNode;
 /**
  * Dumps an XML reference configuration for the given configuration/node instance.
  *
@@ -31,14 +31,14 @@ class XmlReferenceDumper
     /**
      * @return string
      */
-    public function dump(ConfigurationInterface $configuration, string $namespace = null)
+    public function dump(ConfigurationInterface $configuration, ?string $namespace = null)
     {
         return $this->dumpNode($configuration->getConfigTreeBuilder()->buildTree(), $namespace);
     }
     /**
      * @return string
      */
-    public function dumpNode(NodeInterface $node, string $namespace = null)
+    public function dumpNode(NodeInterface $node, ?string $namespace = null)
     {
         $this->reference = '';
         $this->writeNode($node, 0, \true, $namespace);
@@ -46,7 +46,7 @@ class XmlReferenceDumper
         $this->reference = null;
         return $ref;
     }
-    private function writeNode(NodeInterface $node, int $depth = 0, bool $root = \false, string $namespace = null) : void
+    private function writeNode(NodeInterface $node, int $depth = 0, bool $root = \false, ?string $namespace = null) : void
     {
         $rootName = $root ? 'config' : $node->getName();
         $rootNamespace = $namespace ?: ($root ? 'http://example.org/schema/dic/' . $node->getName() : null);

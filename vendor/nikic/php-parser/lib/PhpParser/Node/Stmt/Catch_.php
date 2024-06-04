@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Stmt;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 class Catch_ extends Node\Stmt
 {
     /** @var Node\Name[] Types of exceptions to catch */
@@ -21,7 +21,7 @@ class Catch_ extends Node\Stmt
      * @param Node\Stmt[]           $stmts      Statements
      * @param array                 $attributes Additional attributes
      */
-    public function __construct(array $types, Expr\Variable $var = null, array $stmts = [], array $attributes = [])
+    public function __construct(array $types, ?Expr\Variable $var = null, array $stmts = [], array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->types = $types;

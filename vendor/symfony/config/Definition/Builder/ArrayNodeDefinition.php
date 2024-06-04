@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Builder;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder;
 
-use DEPTRAC_202404\Symfony\Component\Config\Definition\ArrayNode;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\NodeInterface;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\ArrayNode;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\NodeInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\PrototypedArrayNode;
 /**
  * This class provides a fluent interface for defining an array node.
  *
@@ -34,7 +34,7 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
     protected $addDefaultChildren = \false;
     protected $nodeBuilder;
     protected $normalizeKeys = \true;
-    public function __construct(?string $name, NodeParentInterface $parent = null)
+    public function __construct(?string $name, ?NodeParentInterface $parent = null)
     {
         parent::__construct($name, $parent);
         $this->nullEquivalent = [];
@@ -109,7 +109,7 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      *
      * @return $this
      */
-    public function addDefaultChildrenIfNoneSet(int|string|array $children = null) : static
+    public function addDefaultChildrenIfNoneSet(int|string|array|null $children = null) : static
     {
         $this->addDefaultChildren = $children;
         return $this;
@@ -146,7 +146,7 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      *
      * @return $this
      */
-    public function fixXmlConfig(string $singular, string $plural = null) : static
+    public function fixXmlConfig(string $singular, ?string $plural = null) : static
     {
         $this->normalization()->remap($singular, $plural);
         return $this;

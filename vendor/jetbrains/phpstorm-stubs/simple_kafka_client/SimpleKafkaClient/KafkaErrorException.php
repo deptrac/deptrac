@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\SimpleKafkaClient;
+namespace DEPTRAC_INTERNAL\SimpleKafkaClient;
 
 class KafkaErrorException extends Exception
 {

@@ -8,45 +8,45 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection;
 
-use DEPTRAC_202404\Composer\InstalledVersions;
-use DEPTRAC_202404\Symfony\Component\Config\Resource\ClassExistenceResource;
-use DEPTRAC_202404\Symfony\Component\Config\Resource\ComposerResource;
-use DEPTRAC_202404\Symfony\Component\Config\Resource\DirectoryResource;
-use DEPTRAC_202404\Symfony\Component\Config\Resource\FileExistenceResource;
-use DEPTRAC_202404\Symfony\Component\Config\Resource\FileResource;
-use DEPTRAC_202404\Symfony\Component\Config\Resource\GlobResource;
-use DEPTRAC_202404\Symfony\Component\Config\Resource\ReflectionClassResource;
-use DEPTRAC_202404\Symfony\Component\Config\Resource\ResourceInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\LazyClosure;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Attribute\Target;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\Compiler;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\PassConfig;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\LogicException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\LazyServiceInstantiator;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
-use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use DEPTRAC_INTERNAL\Composer\InstalledVersions;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\ClassExistenceResource;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\ComposerResource;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\DirectoryResource;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\FileExistenceResource;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\FileResource;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\GlobResource;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\ReflectionClassResource;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\ResourceInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\LazyClosure;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Attribute\Target;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler\Compiler;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\LogicException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\LazyServiceInstantiator;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_INTERNAL\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 /**
  * ContainerBuilder is a DI container that provides an API to easily describe services.
  *
@@ -123,7 +123,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      */
     private array $removedBindingIds = [];
     private const INTERNAL_TYPES = ['int' => \true, 'float' => \true, 'string' => \true, 'bool' => \true, 'resource' => \true, 'object' => \true, 'array' => \true, 'null' => \true, 'callable' => \true, 'iterable' => \true, 'mixed' => \true];
-    public function __construct(ParameterBagInterface $parameterBag = null)
+    public function __construct(?ParameterBagInterface $parameterBag = null)
     {
         parent::__construct($parameterBag);
         $this->trackResources = \interface_exists(ResourceInterface::class);
@@ -362,7 +362,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * @throws BadMethodCallException When this ContainerBuilder is compiled
      * @throws \LogicException        if the extension is not registered
      */
-    public function loadFromExtension(string $extension, array $values = null) : static
+    public function loadFromExtension(string $extension, ?array $values = null) : static
     {
         if ($this->isCompiled()) {
             throw new BadMethodCallException('Cannot load from an extension on a compiled container.');
@@ -446,7 +446,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
         }
         return $this->doGet($id, $invalidBehavior);
     }
-    private function doGet(string $id, int $invalidBehavior = ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE, array &$inlineServices = null, bool $isConstructorArgument = \false) : mixed
+    private function doGet(string $id, int $invalidBehavior = ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE, ?array &$inlineServices = null, bool $isConstructorArgument = \false) : mixed
     {
         if (isset($inlineServices[$id])) {
             return $inlineServices[$id];
@@ -471,7 +471,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
             $alias = $this->aliasDefinitions[$id];
             if ($alias->isDeprecated()) {
                 $deprecation = $alias->getDeprecation($id);
-                \DEPTRAC_202404\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
+                \DEPTRAC_INTERNAL\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
             }
             return $this->doGet((string) $alias, $invalidBehavior, $inlineServices, $isConstructorArgument);
         }
@@ -764,7 +764,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * This methods allows for simple registration of service definition
      * with a fluid interface.
      */
-    public function register(string $id, string $class = null) : Definition
+    public function register(string $id, ?string $class = null) : Definition
     {
         return $this->setDefinition($id, new Definition($class));
     }
@@ -774,7 +774,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * This method implements a shortcut for using setDefinition() with
      * an autowired definition.
      */
-    public function autowire(string $id, string $class = null) : Definition
+    public function autowire(string $id, ?string $class = null) : Definition
     {
         return $this->setDefinition($id, (new Definition($class))->setAutowired(\true));
     }
@@ -876,7 +876,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * @throws RuntimeException         When the service is a synthetic service
      * @throws InvalidArgumentException When configure callable is not callable
      */
-    private function createService(Definition $definition, array &$inlineServices, bool $isConstructorArgument = \false, string $id = null, bool|object $tryProxy = \true) : mixed
+    private function createService(Definition $definition, array &$inlineServices, bool $isConstructorArgument = \false, ?string $id = null, bool|object $tryProxy = \true) : mixed
     {
         if (null === $id && isset($inlineServices[$h = \spl_object_hash($definition)])) {
             return $inlineServices[$h];
@@ -889,7 +889,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
         }
         if ($definition->isDeprecated()) {
             $deprecation = $definition->getDeprecation($id);
-            \DEPTRAC_202404\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
+            \DEPTRAC_INTERNAL\trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
         }
         $parameterBag = $this->getParameterBag();
         $class = $parameterBag->resolveValue($definition->getClass()) ?: (['Closure', 'fromCallable'] === $definition->getFactory() ? 'Closure' : null);
@@ -940,7 +940,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
             if (!$definition->isDeprecated() && \is_array($factory) && \is_string($factory[0])) {
                 $r = new \ReflectionClass($factory[0]);
                 if (0 < \strpos($r->getDocComment(), "\n * @deprecated ")) {
-                    \DEPTRAC_202404\trigger_deprecation('', '', 'The "%s" service relies on the deprecated "%s" factory class. It should either be deprecated or its factory upgraded.', $id, $r->name);
+                    \DEPTRAC_INTERNAL\trigger_deprecation('', '', 'The "%s" service relies on the deprecated "%s" factory class. It should either be deprecated or its factory upgraded.', $id, $r->name);
                 }
             }
         } else {
@@ -954,7 +954,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
                 $service = $r->getConstructor() ? $r->newInstanceArgs($arguments) : $r->newInstance();
             }
             if (!$definition->isDeprecated() && 0 < \strpos($r->getDocComment(), "\n * @deprecated ")) {
-                \DEPTRAC_202404\trigger_deprecation('', '', 'The "%s" service relies on the deprecated "%s" class. It should either be deprecated or its implementation upgraded.', $id, $r->name);
+                \DEPTRAC_INTERNAL\trigger_deprecation('', '', 'The "%s" service relies on the deprecated "%s" class. It should either be deprecated or its implementation upgraded.', $id, $r->name);
             }
         }
         $lastWitherIndex = null;
@@ -1166,7 +1166,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      * "$fooBar"-named arguments with $type as type-hint. Such arguments will
      * receive the service $id when autowiring is used.
      */
-    public function registerAliasForArgument(string $id, string $type, string $name = null) : Alias
+    public function registerAliasForArgument(string $id, string $type, ?string $name = null) : Alias
     {
         $parsedName = (new Target($name ??= $id))->getParsedName();
         if (!\preg_match('/^[a-zA-Z_\\x7f-\\xff]/', $parsedName)) {
@@ -1206,7 +1206,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
      *
      * @return mixed The value with env parameters resolved if a string or an array is passed
      */
-    public function resolveEnvPlaceholders(mixed $value, string|bool $format = null, array &$usedEnvs = null) : mixed
+    public function resolveEnvPlaceholders(mixed $value, string|bool|null $format = null, ?array &$usedEnvs = null) : mixed
     {
         $bag = $this->getParameterBag();
         if (\true === ($format ??= '%%env(%s)%%')) {

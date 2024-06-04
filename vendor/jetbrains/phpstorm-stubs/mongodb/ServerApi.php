@@ -1,7 +1,8 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver;
 
+use stdClass;
 final class ServerApi implements \MongoDB\BSON\Serializable, \Serializable
 {
     public const V1 = 1;
@@ -17,7 +18,7 @@ final class ServerApi implements \MongoDB\BSON\Serializable, \Serializable
     public final function serialize() : string
     {
     }
-    public final function bsonSerialize() : array|object
+    public final function bsonSerialize() : stdClass
     {
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of posix v.
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Send a signal to a process
  * @link https://php.net/manual/en/function.posix-kill.php
@@ -908,18 +908,18 @@ function posix_eaccess(string $filename, int $flags = 0) : bool
  * @link https://php.net/manual/en/posix.constants.setrlimit.php
  */
 \define('POSIX_RLIMIT_INFINITY', 9223372036854775807);
-\define('DEPTRAC_202404\\POSIX_SC_ARG_MAX', 0);
-\define('DEPTRAC_202404\\POSIX_SC_PAGESIZE', 30);
-\define('DEPTRAC_202404\\POSIX_SC_NPROCESSORS_CONF', 83);
-\define('DEPTRAC_202404\\POSIX_SC_NPROCESSORS_ONLN', 84);
-\define('DEPTRAC_202404\\POSIX_PC_LINK_MAX', 0);
-\define('DEPTRAC_202404\\POSIX_PC_MAX_CANON', 1);
-\define('DEPTRAC_202404\\POSIX_PC_MAX_INPUT', 2);
-\define('DEPTRAC_202404\\POSIX_PC_NAME_MAX', 3);
-\define('DEPTRAC_202404\\POSIX_PC_PATH_MAX', 4);
-\define('DEPTRAC_202404\\POSIX_PC_PIPE_BUF', 5);
-\define('DEPTRAC_202404\\POSIX_PC_CHOWN_RESTRICTED', 6);
-\define('DEPTRAC_202404\\POSIX_PC_NO_TRUNC', 7);
-\define('DEPTRAC_202404\\POSIX_PC_ALLOC_SIZE_MIN', 18);
-\define('DEPTRAC_202404\\POSIX_PC_SYMLINK_MAX', 19);
+\define('DEPTRAC_INTERNAL\\POSIX_SC_ARG_MAX', 0);
+\define('DEPTRAC_INTERNAL\\POSIX_SC_PAGESIZE', 30);
+\define('DEPTRAC_INTERNAL\\POSIX_SC_NPROCESSORS_CONF', 83);
+\define('DEPTRAC_INTERNAL\\POSIX_SC_NPROCESSORS_ONLN', 84);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_LINK_MAX', 0);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_MAX_CANON', 1);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_MAX_INPUT', 2);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_NAME_MAX', 3);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_PATH_MAX', 4);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_PIPE_BUF', 5);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_CHOWN_RESTRICTED', 6);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_NO_TRUNC', 7);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_ALLOC_SIZE_MIN', 18);
+\define('DEPTRAC_INTERNAL\\POSIX_PC_SYMLINK_MAX', 19);
 // End of posix v.

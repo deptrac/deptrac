@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node;
+namespace DEPTRAC_INTERNAL\PhpParser\Node;
 
-use DEPTRAC_202404\PhpParser\NodeAbstract;
+use DEPTRAC_INTERNAL\PhpParser\NodeAbstract;
 class Param extends NodeAbstract
 {
     /** @var null|Identifier|Name|ComplexType Type declaration */
@@ -32,7 +32,7 @@ class Param extends NodeAbstract
      * @param int                                     $flags      Optional visibility flags
      * @param AttributeGroup[]                        $attrGroups PHP attribute groups
      */
-    public function __construct($var, Expr $default = null, $type = null, bool $byRef = \false, bool $variadic = \false, array $attributes = [], int $flags = 0, array $attrGroups = [])
+    public function __construct($var, ?Expr $default = null, $type = null, bool $byRef = \false, bool $variadic = \false, array $attributes = [], int $flags = 0, array $attrGroups = [])
     {
         $this->attributes = $attributes;
         $this->type = \is_string($type) ? new Identifier($type) : $type;

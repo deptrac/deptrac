@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Loader;
 
 /**
  * LoaderResolver selects a loader for a given resource.
@@ -33,7 +33,7 @@ class LoaderResolver implements LoaderResolverInterface
             $this->addLoader($loader);
         }
     }
-    public function resolve(mixed $resource, string $type = null) : LoaderInterface|false
+    public function resolve(mixed $resource, ?string $type = null) : LoaderInterface|false
     {
         foreach ($this->loaders as $loader) {
             if ($loader->supports($resource, $type)) {

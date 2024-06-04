@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node;
+namespace DEPTRAC_INTERNAL\PhpParser\Node;
 
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\NodeAbstract;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\NodeAbstract;
 class MatchArm extends NodeAbstract
 {
     /** @var null|Node\Expr[] */

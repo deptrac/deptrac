@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\VarExporter;
+namespace DEPTRAC_INTERNAL\Symfony\Component\VarExporter;
 
-use DEPTRAC_202404\Symfony\Component\VarExporter\Exception\ExceptionInterface;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\Exporter;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\Hydrator;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\Registry;
-use DEPTRAC_202404\Symfony\Component\VarExporter\Internal\Values;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Exception\ExceptionInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\Exporter;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\Hydrator;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\Registry;
+use DEPTRAC_INTERNAL\Symfony\Component\VarExporter\Internal\Values;
 /**
  * Exports serializable PHP values to PHP code.
  *
@@ -35,7 +35,7 @@ final class VarExporter
      *
      * @throws ExceptionInterface When the provided value cannot be serialized
      */
-    public static function export(mixed $value, bool &$isStaticValue = null, array &$foundClasses = []) : string
+    public static function export(mixed $value, ?bool &$isStaticValue = null, array &$foundClasses = []) : string
     {
         $isStaticValue = \true;
         if (!\is_object($value) && !(\is_array($value) && $value) && !\is_resource($value) || $value instanceof \UnitEnum) {

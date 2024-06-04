@@ -9,11 +9,11 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
 use InvalidArgumentException;
-use DEPTRAC_202404\phpDocumentor\Reflection\Fqsen;
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Fqsen;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
 use function strpos;
 /**
  * Value Object representing an object.
@@ -26,7 +26,8 @@ use function strpos;
  */
 final class Object_ implements Type
 {
-    private ?Fqsen $fqsen;
+    /** @var Fqsen|null */
+    private $fqsen;
     /**
      * Initializes this object with an optional FQSEN, if not provided this object is considered 'untyped'.
      *

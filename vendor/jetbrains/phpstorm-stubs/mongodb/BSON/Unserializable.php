@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\BSON;
+namespace DEPTRAC_INTERNAL\MongoDB\BSON;
 
 /**
  * Classes that implement this interface may be specified in a type map for unserializing BSON arrays and documents (both root and embedded).

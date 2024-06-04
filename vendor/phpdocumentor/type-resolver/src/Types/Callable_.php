@@ -9,9 +9,9 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
 /**
  * Value Object representing a Callable type.
  *
@@ -19,9 +19,10 @@ use DEPTRAC_202404\phpDocumentor\Reflection\Type;
  */
 final class Callable_ implements Type
 {
-    private ?Type $returnType;
+    /** @var Type|null */
+    private $returnType;
     /** @var CallableParameter[] */
-    private array $parameters;
+    private $parameters;
     /**
      * @param CallableParameter[] $parameters
      */

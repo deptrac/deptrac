@@ -1,15 +1,15 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of standard v.5.3.2-0.dotdeb.1
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\ExpectedValues;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ExpectedValues;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 class __PHP_Incomplete_Class
 {
     /**
@@ -17,7 +17,7 @@ class __PHP_Incomplete_Class
      */
     public $__PHP_Incomplete_Class_Name;
 }
-\class_alias('DEPTRAC_202404\\__PHP_Incomplete_Class', '__PHP_Incomplete_Class', \false);
+\class_alias('DEPTRAC_INTERNAL\\__PHP_Incomplete_Class', '__PHP_Incomplete_Class', \false);
 class php_user_filter
 {
     #[LanguageLevelTypeAware(['8.1' => 'string'], default: '')]
@@ -88,7 +88,7 @@ class php_user_filter
     {
     }
 }
-\class_alias('DEPTRAC_202404\\php_user_filter', 'php_user_filter', \false);
+\class_alias('DEPTRAC_INTERNAL\\php_user_filter', 'php_user_filter', \false);
 /**
  * Instances of Directory are created by calling the dir() function, not by the new operator.
  */
@@ -96,23 +96,23 @@ class Directory
 {
     /**
      * @var string The directory that was opened.
+     * @removed 8.1
      */
-    #[PhpStormStubsElementAvailable(to: '8.0')]
     public $path;
     /**
      * @var string The directory that was opened.
+     * @since 8.1
      */
-    #[PhpStormStubsElementAvailable(from: '8.1')]
     public readonly string $path;
     /**
      * @var resource Can be used with other directory functions such as {@see readdir()}, {@see rewinddir()} and {@see closedir()}.
+     * @removed 8.1
      */
-    #[PhpStormStubsElementAvailable(to: '8.0')]
     public $handle;
     /**
      * @var resource Can be used with other directory functions such as {@see readdir()}, {@see rewinddir()} and {@see closedir()}.
+     * @since 8.1
      */
-    #[PhpStormStubsElementAvailable(from: '8.1')]
     public readonly mixed $handle;
     /**
      * Close directory handle.
@@ -149,7 +149,7 @@ class Directory
 /**
  * Instances of Directory are created by calling the dir() function, not by the new operator.
  */
-\class_alias('DEPTRAC_202404\\Directory', 'Directory', \false);
+\class_alias('DEPTRAC_INTERNAL\\Directory', 'Directory', \false);
 /**
  * Returns the value of a constant
  * @link https://php.net/manual/en/function.constant.php

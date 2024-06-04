@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Definition\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Loader;
 
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use DEPTRAC_202404\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
-use DEPTRAC_202404\Symfony\Component\Config\FileLocatorInterface;
-use DEPTRAC_202404\Symfony\Component\Config\Loader\FileLoader;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\FileLocatorInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Loader\FileLoader;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * DefinitionFileLoader loads config definitions from a PHP file.
  *
@@ -28,7 +28,7 @@ class DefinitionFileLoader extends FileLoader
     {
         parent::__construct($locator);
     }
-    public function load(mixed $resource, string $type = null) : mixed
+    public function load(mixed $resource, ?string $type = null) : mixed
     {
         // the loader variable is exposed to the included file below
         $loader = $this;
@@ -45,7 +45,7 @@ class DefinitionFileLoader extends FileLoader
         }
         return null;
     }
-    public function supports(mixed $resource, string $type = null) : bool
+    public function supports(mixed $resource, ?string $type = null) : bool
     {
         if (!\is_string($resource)) {
             return \false;

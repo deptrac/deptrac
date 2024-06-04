@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 \define('YAF\\VERSION', '3.0.8', \true);
 \define('YAF\\ENVIRON', 'product', \true);
@@ -14,9 +14,9 @@ namespace DEPTRAC_202404;
 \define('YAF\\ERR\\CALL\\FAILED', 519, \true);
 \define('YAF\\ERR\\AUTOLOAD\\FAILED', 520, \true);
 \define('YAF\\ERR\\TYPE\\ERROR', 521, \true);
-namespace DEPTRAC_202404\Yaf;
+namespace DEPTRAC_INTERNAL\Yaf;
 
-use DEPTRAC_202404\Yaf;
+use DEPTRAC_INTERNAL\Yaf;
 /**
  * \Yaf\Application provides a bootstrapping facility for applications which provides reusable resources, common- and module-based bootstrap classes and dependency checking.
  * <br/>
@@ -163,7 +163,7 @@ final class Application
      * @param \Yaf\Bootstrap_Abstract $bootstrap A \Yaf\Bootstrap_Abstract instance
      * @return \Yaf\Application
      */
-    public function bootstrap(Yaf\Bootstrap_Abstract $bootstrap = null)
+    public function bootstrap(Bootstrap_Abstract $bootstrap = null)
     {
     }
     /**
@@ -381,7 +381,7 @@ final class Dispatcher
      * @param \Yaf\View_Interface $view A \Yaf\View_Interface instance
      * @return \Yaf\Dispatcher
      */
-    public function setView(Yaf\View_Interface $view)
+    public function setView(View_Interface $view)
     {
     }
     /**
@@ -390,7 +390,7 @@ final class Dispatcher
      * @param \Yaf\Request_Abstract $request
      * @return \Yaf\Dispatcher
      */
-    public function setRequest(Yaf\Request_Abstract $request)
+    public function setRequest(Request_Abstract $request)
     {
     }
     /**
@@ -529,7 +529,7 @@ final class Dispatcher
      *
      * @return \Yaf\Response_Abstract
      */
-    public function dispatch(Yaf\Request_Abstract $request)
+    public function dispatch(Request_Abstract $request)
     {
     }
     /**
@@ -564,7 +564,7 @@ final class Dispatcher
      * @param \Yaf\Plugin_Abstract $plugin
      * @return \Yaf\Dispatcher
      */
-    public function registerPlugin(Yaf\Plugin_Abstract $plugin)
+    public function registerPlugin(Plugin_Abstract $plugin)
     {
     }
 }
@@ -1016,7 +1016,7 @@ class Router
      *
      * @return \Yaf\Router|false return FALSE on failure
      */
-    public function addRoute($name, Yaf\Route_Interface $route)
+    public function addRoute($name, Route_Interface $route)
     {
     }
     /**
@@ -1028,7 +1028,7 @@ class Router
      *
      * @return \Yaf\Router|false return FALSE on failure
      */
-    public function addConfig(Yaf\Config_Abstract $config)
+    public function addConfig(Config_Abstract $config)
     {
     }
     /**
@@ -1038,7 +1038,7 @@ class Router
      *
      * @return \Yaf\Router|false return FALSE on failure
      */
-    public function route(Yaf\Request_Abstract $request)
+    public function route(Request_Abstract $request)
     {
     }
     /**
@@ -1294,7 +1294,7 @@ abstract class Controller_Abstract
      * @param \Yaf\View_Interface $view
      * @param array $invokeArgs
      */
-    public final function __construct(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response, Yaf\View_Interface $view, array $invokeArgs = null)
+    public final function __construct(Request_Abstract $request, Response_Abstract $response, View_Interface $view, array $invokeArgs = null)
     {
     }
     /**
@@ -1718,7 +1718,7 @@ abstract class Plugin_Abstract
      *
      * @return bool true
      */
-    public function routerStartup(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
+    public function routerStartup(Request_Abstract $request, Response_Abstract $response)
     {
     }
     /**
@@ -1731,7 +1731,7 @@ abstract class Plugin_Abstract
      *
      * @return bool true
      */
-    public function routerShutdown(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
+    public function routerShutdown(Request_Abstract $request, Response_Abstract $response)
     {
     }
     /**
@@ -1742,7 +1742,7 @@ abstract class Plugin_Abstract
      *
      * @return bool true
      */
-    public function dispatchLoopStartup(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
+    public function dispatchLoopStartup(Request_Abstract $request, Response_Abstract $response)
     {
     }
     /**
@@ -1755,7 +1755,7 @@ abstract class Plugin_Abstract
      *
      * @return bool true
      */
-    public function dispatchLoopShutdown(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
+    public function dispatchLoopShutdown(Request_Abstract $request, Response_Abstract $response)
     {
     }
     /**
@@ -1766,7 +1766,7 @@ abstract class Plugin_Abstract
      *
      * @return bool true
      */
-    public function preDispatch(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
+    public function preDispatch(Request_Abstract $request, Response_Abstract $response)
     {
     }
     /**
@@ -1777,7 +1777,7 @@ abstract class Plugin_Abstract
      *
      * @return bool true
      */
-    public function postDispatch(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
+    public function postDispatch(Request_Abstract $request, Response_Abstract $response)
     {
     }
     /**
@@ -1788,7 +1788,7 @@ abstract class Plugin_Abstract
      *
      * @return bool true
      */
-    public function preResponse(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response)
+    public function preResponse(Request_Abstract $request, Response_Abstract $response)
     {
     }
 }
@@ -1983,7 +1983,7 @@ interface Route_Interface
      * @param \Yaf\Request_Abstract $request
      * @return bool
      */
-    public function route(Yaf\Request_Abstract $request);
+    public function route(Request_Abstract $request);
     /**
      * <p><b>\Yaf\Route_Interface::assemble()</b> - assemble a request</p><br/>
      * <p>this method returns a url according to the argument info, and append query strings to the url according to the argument query.</p>
@@ -2033,7 +2033,7 @@ class Route_Static implements \Yaf\Route_Interface
      *
      * @return bool always TRUE
      */
-    public function route(Yaf\Request_Abstract $request)
+    public function route(Request_Abstract $request)
     {
     }
     /**
@@ -2049,7 +2049,7 @@ class Route_Static implements \Yaf\Route_Interface
     {
     }
 }
-namespace DEPTRAC_202404\Yaf\Response;
+namespace DEPTRAC_INTERNAL\Yaf\Response;
 
 class Http extends \Yaf\Response_Abstract
 {
@@ -2141,7 +2141,7 @@ class Cli extends \Yaf\Response_Abstract
     {
     }
 }
-namespace DEPTRAC_202404\Yaf\Request;
+namespace DEPTRAC_INTERNAL\Yaf\Request;
 
 /**
  * @link https://secure.php.net/manual/en/class.yaf-request-http.php
@@ -2372,7 +2372,7 @@ class Simple extends \Yaf\Request_Abstract
     {
     }
 }
-namespace DEPTRAC_202404\Yaf\Config;
+namespace DEPTRAC_INTERNAL\Yaf\Config;
 
 /**
  * <p>\Yaf\Config\Ini enables developers to store configuration data in a familiar INI format and read them in the application by using nested object property syntax. The INI format is specialized to provide both the ability to have a hierarchy of configuration data keys and inheritance between configuration data sections. Configuration data hierarchies are supported by separating the keys with the dot or period character ("."). A section may extend or inherit from another section by following the section name with a colon character (":") and the name of the section from which data are to be inherited.</p><br/>
@@ -2617,7 +2617,7 @@ class Simple extends \Yaf\Config_Abstract implements \Iterator, \Traversable, \A
     {
     }
 }
-namespace DEPTRAC_202404\Yaf\View;
+namespace DEPTRAC_INTERNAL\Yaf\View;
 
 /**
  * <b>\Yaf\View\Simple</b> is the built-in template engine in Yaf, it is a simple but fast template engine, and only support PHP script template.
@@ -2777,7 +2777,7 @@ class Simple implements \Yaf\View_Interface
     {
     }
 }
-namespace DEPTRAC_202404\Yaf\Route;
+namespace DEPTRAC_INTERNAL\Yaf\Route;
 
 /**
  * <p><b>\Yaf\Route\Simple</b> will match the query string, and find the route info.</p>
@@ -3059,7 +3059,7 @@ final class Map implements \Yaf\Route_Interface
     {
     }
 }
-namespace DEPTRAC_202404\Yaf\Exception;
+namespace DEPTRAC_INTERNAL\Yaf\Exception;
 
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-typeerror.php
@@ -3091,7 +3091,7 @@ class DispatchFailed extends \Yaf\Exception
 class LoadFailed extends \Yaf\Exception
 {
 }
-namespace DEPTRAC_202404\Yaf\Exception\LoadFailed;
+namespace DEPTRAC_INTERNAL\Yaf\Exception\LoadFailed;
 
 /**
  * @link https://secure.php.net/manual/en/class.yaf-exception-loadfaild-module.php

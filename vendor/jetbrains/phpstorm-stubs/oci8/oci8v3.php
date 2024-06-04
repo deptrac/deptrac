@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of oci8 v.3
 /**
@@ -301,7 +301,7 @@ class OCILob
  * @link https://php.net/manual/en/class.OCI-Lob.php
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\OCILob', 'OCILob', \false);
+\class_alias('DEPTRAC_INTERNAL\\OCILob', 'OCILob', \false);
 /**
  * OCI8 Collection functionality.
  * @link https://php.net/manual/en/class.OCICollection.php
@@ -410,7 +410,7 @@ class OCICollection
  * @link https://php.net/manual/en/class.OCICollection.php
  * @since 8.0
  */
-\class_alias('DEPTRAC_202404\\OCICollection', 'OCICollection', \false);
+\class_alias('DEPTRAC_INTERNAL\\OCICollection', 'OCICollection', \false);
 /**
  * (PHP 7.2 &gt;= 7.2.14, PHP 8, PHP 7 &gt;= 7.3.1, PHP 8, PECL OCI8 &gt;= 2.2.0)<br/>
  * Sets a millisecond timeout for database calls
@@ -437,5 +437,18 @@ function oci_set_call_timeout($connection, int $time_out)
  * @return bool <b>TRUE</b> on success or <b>FALSE</b> on failure.
  */
 function oci_set_db_operation($connection, string $dbop)
+{
+}
+/**
+ * Sets the size of the LOB column that will be prefetched by OCI8 when executing a query.
+ * This can improve performance when working with large LOB data.
+ *
+ * @param resource $statement The OCI8 statement resource.
+ * @param int $prefetch_lob_size The size of the LOB column, in bytes, to be prefetched.
+ * @return bool Returns TRUE on success or FALSE on failure.
+ * @link https://php.net/manual/en/function.oci-set-prefetch-lob.php
+ * @since 8.2
+ */
+function oci_set_prefetch_lob($statement, int $prefetch_lob_size) : bool
 {
 }

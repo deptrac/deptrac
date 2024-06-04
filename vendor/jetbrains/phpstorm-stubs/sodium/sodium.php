@@ -1,9 +1,9 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 \define('SODIUM_CRYPTO_AEAD_AES256GCM_KEYBYTES', 32);
 \define('SODIUM_CRYPTO_AEAD_AES256GCM_NSECBYTES', 0);
 \define('SODIUM_CRYPTO_AEAD_AES256GCM_NPUBBYTES', 12);
@@ -77,9 +77,9 @@ use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
 \define('SODIUM_CRYPTO_PWHASH_MEMLIMIT_MODERATE', 268435456);
 \define('SODIUM_CRYPTO_PWHASH_OPSLIMIT_SENSITIVE', 4);
 \define('SODIUM_CRYPTO_PWHASH_MEMLIMIT_SENSITIVE', 1073741824);
-\define('SODIUM_LIBRARY_VERSION', "1.0.18");
-\define('SODIUM_LIBRARY_MAJOR_VERSION', 10);
-\define('SODIUM_LIBRARY_MINOR_VERSION', 3);
+\define('SODIUM_LIBRARY_VERSION', "1.0.19");
+\define('SODIUM_LIBRARY_MAJOR_VERSION', 26);
+\define('SODIUM_LIBRARY_MINOR_VERSION', 1);
 \define('SODIUM_CRYPTO_KDF_BYTES_MIN', 16);
 \define('SODIUM_CRYPTO_KDF_BYTES_MAX', 64);
 \define('SODIUM_CRYPTO_KDF_CONTEXTBYTES', 8);
@@ -1251,4 +1251,4 @@ function sodium_base642bin(string $string, int $id, string $ignore = '') : strin
 class SodiumException extends \Exception
 {
 }
-\class_alias('DEPTRAC_202404\\SodiumException', 'SodiumException', \false);
+\class_alias('DEPTRAC_INTERNAL\\SodiumException', 'SodiumException', \false);

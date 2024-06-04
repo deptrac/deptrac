@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Yaml;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Yaml;
 
-use DEPTRAC_202404\Symfony\Component\Yaml\Exception\ParseException;
-use DEPTRAC_202404\Symfony\Component\Yaml\Tag\TaggedValue;
+use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Exception\ParseException;
+use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Tag\TaggedValue;
 /**
  * Parser parses YAML strings to convert them to PHP arrays.
  *
@@ -163,7 +163,7 @@ class Parser
                 }
             } elseif (self::preg_match('#^(?P<key>(?:![^\\s]++\\s++)?(?:' . Inline::REGEX_QUOTED_STRING . '|(?:!?!php/const:)?[^ \'"\\[\\{!].*?)) *\\:(( |\\t)++(?P<value>.+))?$#u', \rtrim($this->currentLine), $values) && (!\str_contains($values['key'], ' #') || \in_array($values['key'][0], ['"', "'"]))) {
                 if (\str_starts_with($values['key'], '!php/const:')) {
-                    \DEPTRAC_202404\trigger_deprecation('symfony/yaml', '6.2', 'YAML syntax for key "%s" is deprecated and replaced by "!php/const %s".', $values['key'], \substr($values['key'], 11));
+                    \DEPTRAC_INTERNAL\trigger_deprecation('symfony/yaml', '6.2', 'YAML syntax for key "%s" is deprecated and replaced by "!php/const %s".', $values['key'], \substr($values['key'], 11));
                 }
                 if ($context && 'sequence' == $context) {
                     throw new ParseException('You cannot define a mapping item when in a sequence.', $this->currentLineNb + 1, $this->currentLine, $this->filename);
@@ -467,7 +467,7 @@ class Parser
      *
      * @throws ParseException When indentation problem are detected
      */
-    private function getNextEmbedBlock(int $indentation = null, bool $inSequence = \false) : string
+    private function getNextEmbedBlock(?int $indentation = null, bool $inSequence = \false) : string
     {
         $oldLineIndentation = $this->getCurrentLineIndentation();
         if (!$this->moveToNextLine()) {
@@ -526,11 +526,11 @@ class Parser
                 break;
             }
             if ($this->isCurrentLineBlank()) {
-                $data[] = \substr($this->currentLine, $newIndent);
+                $data[] = \substr($this->currentLine, $newIndent ?? 0);
                 continue;
             }
             if ($indent >= $newIndent) {
-                $data[] = \substr($this->currentLine, $newIndent);
+                $data[] = \substr($this->currentLine, $newIndent ?? 0);
             } elseif ($this->isCurrentLineComment()) {
                 $data[] = $this->currentLine;
             } elseif (0 == $indent) {
@@ -851,7 +851,7 @@ class Parser
      *
      * @internal
      */
-    public static function preg_match(string $pattern, string $subject, array &$matches = null, int $flags = 0, int $offset = 0) : int
+    public static function preg_match(string $pattern, string $subject, ?array &$matches = null, int $flags = 0, int $offset = 0) : int
     {
         if (\false === ($ret = \preg_match($pattern, $subject, $matches, $flags, $offset))) {
             throw new ParseException(\preg_last_error_msg());

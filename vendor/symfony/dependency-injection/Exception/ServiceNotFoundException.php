@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception;
 
-use DEPTRAC_202404\Psr\Container\NotFoundExceptionInterface;
+use DEPTRAC_INTERNAL\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent service is requested.
  *
@@ -21,7 +21,7 @@ class ServiceNotFoundException extends InvalidArgumentException implements NotFo
     private string $id;
     private ?string $sourceId;
     private array $alternatives;
-    public function __construct(string $id, string $sourceId = null, \Throwable $previous = null, array $alternatives = [], string $msg = null)
+    public function __construct(string $id, ?string $sourceId = null, ?\Throwable $previous = null, array $alternatives = [], ?string $msg = null)
     {
         if (null !== $msg) {
             // no-op

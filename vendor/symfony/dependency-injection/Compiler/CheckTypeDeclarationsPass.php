@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Compiler;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Container;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ExpressionLanguage;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Parameter;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Reference;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ServiceLocator;
-use DEPTRAC_202404\Symfony\Component\ExpressionLanguage\Expression;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Container;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ExpressionLanguage;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Parameter;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Reference;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ServiceLocator;
+use DEPTRAC_INTERNAL\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * Checks whether injected parameters are compatible with type declarations.
  *
@@ -124,7 +124,7 @@ final class CheckTypeDeclarationsPass extends AbstractRecursivePass
     /**
      * @throws InvalidParameterTypeException When a parameter is not compatible with the declared type
      */
-    private function checkType(Definition $checkedDefinition, mixed $value, \ReflectionParameter $parameter, ?string $envPlaceholderUniquePrefix, \ReflectionType $reflectionType = null) : void
+    private function checkType(Definition $checkedDefinition, mixed $value, \ReflectionParameter $parameter, ?string $envPlaceholderUniquePrefix, ?\ReflectionType $reflectionType = null) : void
     {
         $reflectionType ??= $parameter->getType();
         if ($reflectionType instanceof \ReflectionUnionType) {

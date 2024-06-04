@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Loader;
 
 /**
  * GlobFileLoader loads files from a glob pattern.
@@ -17,11 +17,11 @@ namespace DEPTRAC_202404\Symfony\Component\Config\Loader;
  */
 class GlobFileLoader extends FileLoader
 {
-    public function load(mixed $resource, string $type = null) : mixed
+    public function load(mixed $resource, ?string $type = null) : mixed
     {
         return $this->import($resource);
     }
-    public function supports(mixed $resource, string $type = null) : bool
+    public function supports(mixed $resource, ?string $type = null) : bool
     {
         return 'glob' === $type;
     }

@@ -9,9 +9,9 @@
  *  @link      http://phpdoc.org
  */
 declare (strict_types=1);
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
 /**
  * Value Object representing a Callable parameters.
  *
@@ -19,11 +19,16 @@ use DEPTRAC_202404\phpDocumentor\Reflection\Type;
  */
 final class CallableParameter
 {
-    private Type $type;
-    private bool $isReference;
-    private bool $isVariadic;
-    private bool $isOptional;
-    private ?string $name;
+    /** @var Type */
+    private $type;
+    /** @var bool */
+    private $isReference;
+    /** @var bool */
+    private $isVariadic;
+    /** @var bool */
+    private $isOptional;
+    /** @var string|null */
+    private $name;
     public function __construct(Type $type, ?string $name = null, bool $isReference = \false, bool $isVariadic = \false, bool $isOptional = \false)
     {
         $this->type = $type;

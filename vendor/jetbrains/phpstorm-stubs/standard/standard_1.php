@@ -1,13 +1,13 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\ExpectedValues;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ExpectedValues;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Make a string uppercase
  * @link https://php.net/manual/en/function.strtoupper.php
@@ -362,13 +362,15 @@ function stristr(string $haystack, string $needle, bool $before_needle = \false)
  * If <b>needle</b> is not a string, it is converted to
  * an integer and applied as the ordinal value of a character.
  * </p>
+ * @param bool $before_needle Since 8.3 If true, strrchr() returns the part of the haystack before the last occurrence
+ * of the needle (excluding the needle).
  * @return string|false <p>
  * This function returns the portion of string, or <b>FALSE</b> if
  * <b>needle</b> is not found.
  * </p>
  */
 #[Pure]
-function strrchr(string $haystack, string $needle, #[PhpStormStubsElementAvailable(from: "8.3")] bool $before_needle = \false) : string|false
+function strrchr(string $haystack, string $needle, #[PhpStormStubsElementAvailable(from: '8.3')] bool $before_needle = \false) : string|false
 {
 }
 /**

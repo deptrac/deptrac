@@ -9,11 +9,11 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\PseudoTypes;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes;
 
-use DEPTRAC_202404\phpDocumentor\Reflection\PseudoType;
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
-use DEPTRAC_202404\phpDocumentor\Reflection\Types\String_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoType;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types\String_;
 /**
  * Value Object representing the type 'string'.
  *

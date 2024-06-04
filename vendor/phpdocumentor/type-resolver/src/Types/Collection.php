@@ -9,10 +9,10 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
-use DEPTRAC_202404\phpDocumentor\Reflection\Fqsen;
-use DEPTRAC_202404\phpDocumentor\Reflection\Type;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Fqsen;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\Type;
 /**
  * Represents a collection type as described in the PSR-5, the PHPDoc Standard.
  *
@@ -28,7 +28,8 @@ use DEPTRAC_202404\phpDocumentor\Reflection\Type;
  */
 final class Collection extends AbstractList
 {
-    private ?Fqsen $fqsen;
+    /** @var Fqsen|null */
+    private $fqsen;
     /**
      * Initializes this representation of an array with the given Type or Fqsen.
      */

@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of Phar v.2.0.1
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\TentativeType;
 /**
  * The PharException class provides a phar-specific exception class
  * for try/catch blocks.
@@ -20,7 +20,7 @@ class PharException extends \Exception
  * for try/catch blocks.
  * @link https://php.net/manual/en/class.pharexception.php
  */
-\class_alias('DEPTRAC_202404\\PharException', 'PharException', \false);
+\class_alias('DEPTRAC_INTERNAL\\PharException', 'PharException', \false);
 /**
  * The Phar class provides a high-level interface to accessing and creating
  * phar archives.
@@ -989,7 +989,7 @@ class Phar extends \RecursiveDirectoryIterator implements \RecursiveIterator, \S
  * phar archives.
  * @link https://php.net/manual/en/class.phar.php
  */
-\class_alias('DEPTRAC_202404\\Phar', 'Phar', \false);
+\class_alias('DEPTRAC_INTERNAL\\Phar', 'Phar', \false);
 /**
  * The PharData class provides a high-level interface to accessing and creating
  * non-executable tar and zip archives. Because these archives do not contain
@@ -1151,7 +1151,7 @@ class PharData extends \Phar
  * phar.readonly php.ini setting is 1.
  * @link https://php.net/manual/en/class.phardata.php
  */
-\class_alias('DEPTRAC_202404\\PharData', 'PharData', \false);
+\class_alias('DEPTRAC_INTERNAL\\PharData', 'PharData', \false);
 /**
  * The PharFileInfo class provides a high-level interface to the contents
  * and attributes of a single file within a phar archive.
@@ -1321,5 +1321,5 @@ class PharFileInfo extends \SplFileInfo
  * and attributes of a single file within a phar archive.
  * @link https://php.net/manual/en/class.pharfileinfo.php
  */
-\class_alias('DEPTRAC_202404\\PharFileInfo', 'PharFileInfo', \false);
+\class_alias('DEPTRAC_INTERNAL\\PharFileInfo', 'PharFileInfo', \false);
 // End of Phar v.2.0.1

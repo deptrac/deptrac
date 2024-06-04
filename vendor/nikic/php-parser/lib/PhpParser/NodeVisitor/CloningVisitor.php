@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\NodeVisitor;
+namespace DEPTRAC_INTERNAL\PhpParser\NodeVisitor;
 
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\NodeVisitorAbstract;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\NodeVisitorAbstract;
 /**
  * Visitor cloning all nodes and linking to the original nodes using an attribute.
  *

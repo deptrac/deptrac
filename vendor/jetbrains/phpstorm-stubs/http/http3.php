@@ -8,10 +8,10 @@
  * * Encapsulated env request/response.
  * * Modular client support.
  */
-namespace DEPTRAC_202404\http;
+namespace DEPTRAC_INTERNAL\http;
 
-use DEPTRAC_202404\http;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\http;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
 /**
  * The HTTP client. See http\Client\Curl's [options](http/Client/Curl#Options:) which is the only driver currently supported.
  */
@@ -151,7 +151,7 @@ class Client implements \SplSubject, \Countable
      * @throws \http\Exception\RuntimeException
      * @return \http\Client self.
      */
-    public function dequeue(http\Client\Request $request)
+    public function dequeue(Client\Request $request)
     {
     }
     /**
@@ -213,7 +213,7 @@ class Client implements \SplSubject, \Countable
      * @throws \http\Exception\RuntimeException
      * @return \http\Client self.
      */
-    public function enqueue(http\Client\Request $request, callable $cb = null)
+    public function enqueue(Client\Request $request, callable $cb = null)
     {
     }
     /**
@@ -295,7 +295,7 @@ class Client implements \SplSubject, \Countable
      * @return object|null object stdClass instance holding progress information.
      * 		 or NULL if $request is not enqueued.
      */
-    public function getProgressInfo(http\Client\Request $request)
+    public function getProgressInfo(Client\Request $request)
     {
     }
     /**
@@ -310,7 +310,7 @@ class Client implements \SplSubject, \Countable
      * @return \http\Client\Response|null \http\Client\Response the stored response for the request, or the last that was received.
      * 		 or NULL if no more response was available to pop, when no $request was given.
      */
-    public function getResponse(http\Client\Request $request = null)
+    public function getResponse(Client\Request $request = null)
     {
     }
     /**
@@ -330,7 +330,7 @@ class Client implements \SplSubject, \Countable
      * @throws \http\Exception\UnexpectedValueException
      * @return object stdClass instance holding transfer related information.
      */
-    public function getTransferInfo(http\Client\Request $request)
+    public function getTransferInfo(Client\Request $request)
     {
     }
     /**
@@ -342,7 +342,7 @@ class Client implements \SplSubject, \Countable
      * @throws \http\Exception\UnexpectedValueException
      * @return \http\Client self.
      */
-    public function notify(http\Client\Request $request = null, $progress = null)
+    public function notify(Client\Request $request = null, $progress = null)
     {
     }
     /**
@@ -366,7 +366,7 @@ class Client implements \SplSubject, \Countable
      * @throws \http\Exception\RuntimeException
      * @return \http\Client self.
      */
-    public function requeue(http\Client\Request $request, callable $cb = null)
+    public function requeue(Client\Request $request, callable $cb = null)
     {
     }
     /**
@@ -748,9 +748,9 @@ class Cookie
     {
     }
 }
-namespace DEPTRAC_202404\http\Encoding;
+namespace DEPTRAC_INTERNAL\http\Encoding;
 
-namespace DEPTRAC_202404\http;
+namespace DEPTRAC_INTERNAL\http;
 
 /**
  * The http\Env class provides static methods to manipulate and inspect the server's current request's HTTP environment.
@@ -1160,7 +1160,7 @@ class Message implements \Countable, \Serializable, \Iterator
      * @param \http\Message\Body $body The message body to add.
      * @return \http\Message self.
      */
-    public function addBody(http\Message\Body $body)
+    public function addBody(Message\Body $body)
     {
     }
     /**
@@ -1368,7 +1368,7 @@ class Message implements \Countable, \Serializable, \Iterator
      * @throws \http\Exception\UnexpectedValueException
      * @return \http\Message self.
      */
-    public function prepend(http\Message $message, bool $top = \true)
+    public function prepend(Message $message, bool $top = \true)
     {
     }
     /**
@@ -1408,7 +1408,7 @@ class Message implements \Countable, \Serializable, \Iterator
      * @throws \http\Exception\UnexpectedValueException
      * @return \http\Message self.
      */
-    public function setBody(http\Message\Body $body)
+    public function setBody(Message\Body $body)
     {
     }
     /**
@@ -2218,7 +2218,7 @@ class Url
 /**
  * The http\Client\Curl namespace holds option value constants specific to the curl driver of the http\Client.
  */
-namespace DEPTRAC_202404\http\Client\Curl;
+namespace DEPTRAC_INTERNAL\http\Client\Curl;
 
 \define('http\\Client\\Curl\\FEATURES', 4179869);
 \define('http\\Client\\Curl\\VERSIONS', 'libcurl/7.64.0 OpenSSL/1.1.1b zlib/1.2.11 libidn2/2.0.5 libpsl/0.20.2 (+libidn2/2.0.5) libssh2/1.8.0 nghttp2/1.36.0 librtmp/2.3');
@@ -2255,7 +2255,7 @@ namespace DEPTRAC_202404\http\Client\Curl;
 \define('http\\Client\\Curl\\POSTREDIR_302', 2);
 \define('http\\Client\\Curl\\POSTREDIR_303', 4);
 \define('http\\Client\\Curl\\POSTREDIR_ALL', 7);
-namespace DEPTRAC_202404\http\Client;
+namespace DEPTRAC_INTERNAL\http\Client;
 
 /**
  * The http\Client\Request class provides an HTTP message implementation tailored to represent a request message to be sent by the client.
@@ -2425,7 +2425,7 @@ class Response extends \http\Message
     {
     }
 }
-namespace DEPTRAC_202404\http\Client\Curl;
+namespace DEPTRAC_INTERNAL\http\Client\Curl;
 
 /**
  * Interface to an user event loop implementation for http\Client::configure()'s $use_eventloop option.
@@ -2509,7 +2509,7 @@ interface User
  * ***NOTE:***
  * These constants have been added in v2.6.0, resp. v3.1.0.
  */
-namespace DEPTRAC_202404\http\Client\Curl\Features;
+namespace DEPTRAC_INTERNAL\http\Client\Curl\Features;
 
 \define('http\\Client\\Curl\\Features\\ASYNCHDNS', 128);
 \define('http\\Client\\Curl\\Features\\GSSAPI', 131072);
@@ -2535,14 +2535,14 @@ namespace DEPTRAC_202404\http\Client\Curl\Features;
  * ***NOTE:***
  * These constants have been added in v2.6.0, resp. v3.1.0.
  */
-namespace DEPTRAC_202404\http\Client\Curl\Versions;
+namespace DEPTRAC_INTERNAL\http\Client\Curl\Versions;
 
 \define('http\\Client\\Curl\\Versions\\CURL', '7.64.0');
 \define('http\\Client\\Curl\\Versions\\SSL', 'OpenSSL/1.1.1b');
 \define('http\\Client\\Curl\\Versions\\LIBZ', '1.2.11');
 \define('http\\Client\\Curl\\Versions\\ARES', null);
 \define('http\\Client\\Curl\\Versions\\IDN', null);
-namespace DEPTRAC_202404\http\Encoding;
+namespace DEPTRAC_INTERNAL\http\Encoding;
 
 /**
  * Base class for encoding stream implementations.
@@ -2607,7 +2607,7 @@ abstract class Stream
     {
     }
 }
-namespace DEPTRAC_202404\http\Encoding\Stream;
+namespace DEPTRAC_INTERNAL\http\Encoding\Stream;
 
 /**
  * A [brotli](https://brotli.org) decoding stream.
@@ -2793,7 +2793,7 @@ class Inflate extends \http\Encoding\Stream
     {
     }
 }
-namespace DEPTRAC_202404\http\Env;
+namespace DEPTRAC_INTERNAL\http\Env;
 
 /**
  * The http\Env\Request class' instances represent the server's current HTTP request.
@@ -3153,7 +3153,7 @@ class Response extends \http\Message
 class Url extends \http\Url
 {
 }
-namespace DEPTRAC_202404\http\Exception;
+namespace DEPTRAC_INTERNAL\http\Exception;
 
 /**
  * A bad conversion (e.g. character conversion) was encountered.
@@ -3209,7 +3209,7 @@ class RuntimeException extends \RuntimeException implements \http\Exception
 class UnexpectedValueException extends \UnexpectedValueException implements \http\Exception
 {
 }
-namespace DEPTRAC_202404\http\Header;
+namespace DEPTRAC_INTERNAL\http\Header;
 
 /**
  * The parser which is underlying http\Header and http\Message.
@@ -3290,7 +3290,7 @@ class Parser
     {
     }
 }
-namespace DEPTRAC_202404\http\Message;
+namespace DEPTRAC_INTERNAL\http\Message;
 
 /**
  * The message body, represented as a PHP (temporary) stream.

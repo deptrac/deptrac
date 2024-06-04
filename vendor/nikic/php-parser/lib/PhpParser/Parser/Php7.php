@@ -1,20 +1,20 @@
 <?php
 
-namespace DEPTRAC_202404\PhpParser\Parser;
+namespace DEPTRAC_INTERNAL\PhpParser\Parser;
 
-use DEPTRAC_202404\PhpParser\Error;
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\Node\Expr;
-use DEPTRAC_202404\PhpParser\Node\Name;
-use DEPTRAC_202404\PhpParser\Node\Scalar;
-use DEPTRAC_202404\PhpParser\Node\Stmt;
+use DEPTRAC_INTERNAL\PhpParser\Error;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Name;
+use DEPTRAC_INTERNAL\PhpParser\Node\Scalar;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
 /* This is an automatically GENERATED file, which should not be manually edited.
  * Instead edit one of the following:
  *  * the grammar files grammar/php5.y or grammar/php7.y
  *  * the skeleton file grammar/parser.template
  *  * the preprocessing script grammar/rebuildParsers.php
  */
-class Php7 extends \DEPTRAC_202404\PhpParser\ParserAbstract
+class Php7 extends \DEPTRAC_INTERNAL\PhpParser\ParserAbstract
 {
     protected $tokenToSymbolMapSize = 396;
     protected $actionTableSize = 1241;

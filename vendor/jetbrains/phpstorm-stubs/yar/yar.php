@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * The constants below are defined by this extension,
@@ -69,7 +69,7 @@ class Yar_Server
  * @author weizhimiao001@lianjia.com
  * @link https://secure.php.net/manual/en/class.yar-server.php
  */
-\class_alias('DEPTRAC_202404\\Yar_Server', 'Yar_Server', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Server', 'Yar_Server', \false);
 class Yar_Client
 {
     protected $_protocol;
@@ -119,7 +119,7 @@ class Yar_Client
     {
     }
 }
-\class_alias('DEPTRAC_202404\\Yar_Client', 'Yar_Client', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Client', 'Yar_Client', \false);
 class Yar_Concurrent_Client
 {
     protected static $_callstack;
@@ -163,7 +163,7 @@ class Yar_Concurrent_Client
     {
     }
 }
-\class_alias('DEPTRAC_202404\\Yar_Concurrent_Client', 'Yar_Concurrent_Client', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Concurrent_Client', 'Yar_Concurrent_Client', \false);
 /**
  * Class Yar_Server_Exception
  * Date 2018/6/9 下午3:06
@@ -189,7 +189,7 @@ class Yar_Server_Exception extends \Exception
  * @author weizhimiao001@lianjia.com
  * @link https://secure.php.net/manual/en/class.yar-server-exception.php
  */
-\class_alias('DEPTRAC_202404\\Yar_Server_Exception', 'Yar_Server_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Server_Exception', 'Yar_Server_Exception', \false);
 /**
  * Class Yar_Client_Exception
  * Date 2018/6/9 下午3:05
@@ -213,32 +213,32 @@ class Yar_Client_Exception extends \Exception
  * @author weizhimiao001@lianjia.com
  * @link https://secure.php.net/manual/en/class.yar-client-exception.php
  */
-\class_alias('DEPTRAC_202404\\Yar_Client_Exception', 'Yar_Client_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Client_Exception', 'Yar_Client_Exception', \false);
 class Yar_Server_Request_Exception extends \Yar_Server_Exception
 {
 }
-\class_alias('DEPTRAC_202404\\Yar_Server_Request_Exception', 'Yar_Server_Request_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Server_Request_Exception', 'Yar_Server_Request_Exception', \false);
 class Yar_Server_Protocol_Exception extends \Yar_Server_Exception
 {
 }
-\class_alias('DEPTRAC_202404\\Yar_Server_Protocol_Exception', 'Yar_Server_Protocol_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Server_Protocol_Exception', 'Yar_Server_Protocol_Exception', \false);
 class Yar_Server_Packager_Exception extends \Yar_Server_Exception
 {
 }
-\class_alias('DEPTRAC_202404\\Yar_Server_Packager_Exception', 'Yar_Server_Packager_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Server_Packager_Exception', 'Yar_Server_Packager_Exception', \false);
 class Yar_Server_Output_Exception extends \Yar_Server_Exception
 {
 }
-\class_alias('DEPTRAC_202404\\Yar_Server_Output_Exception', 'Yar_Server_Output_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Server_Output_Exception', 'Yar_Server_Output_Exception', \false);
 class Yar_Client_Transport_Exception extends \Yar_Client_Exception
 {
 }
-\class_alias('DEPTRAC_202404\\Yar_Client_Transport_Exception', 'Yar_Client_Transport_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Client_Transport_Exception', 'Yar_Client_Transport_Exception', \false);
 class Yar_Client_Packager_Exception extends \Yar_Client_Exception
 {
 }
-\class_alias('DEPTRAC_202404\\Yar_Client_Packager_Exception', 'Yar_Client_Packager_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Client_Packager_Exception', 'Yar_Client_Packager_Exception', \false);
 class Yar_Client_Protocol_Exception extends \Yar_Client_Exception
 {
 }
-\class_alias('DEPTRAC_202404\\Yar_Client_Protocol_Exception', 'Yar_Client_Protocol_Exception', \false);
+\class_alias('DEPTRAC_INTERNAL\\Yar_Client_Protocol_Exception', 'Yar_Client_Protocol_Exception', \false);

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser;
+namespace DEPTRAC_INTERNAL\PhpParser;
 
-use DEPTRAC_202404\PhpParser\Node\Expr\Include_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Class_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\GroupUse;
-use DEPTRAC_202404\PhpParser\Node\Stmt\Use_;
-use DEPTRAC_202404\PhpParser\Node\Stmt\UseUse;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr\Include_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Class_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\GroupUse;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Use_;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\UseUse;
 class NodeDumper
 {
     private $dumpComments;
@@ -38,7 +38,7 @@ class NodeDumper
      *
      * @return string Dumped value
      */
-    public function dump($node, string $code = null) : string
+    public function dump($node, ?string $code = null) : string
     {
         $this->code = $code;
         return $this->dumpRecursive($node);

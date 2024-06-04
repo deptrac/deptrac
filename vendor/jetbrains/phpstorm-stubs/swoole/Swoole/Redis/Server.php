@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\Swoole\Redis;
+namespace DEPTRAC_INTERNAL\Swoole\Redis;
 
 class Server extends \Swoole\Server
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\PhpParser;
+namespace DEPTRAC_INTERNAL\PhpParser;
 
 class ConstExprEvaluationException extends \Exception
 {

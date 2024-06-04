@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\BSON;
+namespace DEPTRAC_INTERNAL\MongoDB\BSON;
 
 /**
  * @link https://www.php.net/manual/en/class.mongodb-bson-regexinterface.php

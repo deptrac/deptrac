@@ -1,10 +1,10 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of tokenizer v.0.1
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Split given source into PHP tokens
  * @link https://php.net/manual/en/function.token-get-all.php
@@ -173,6 +173,11 @@ function token_name(int $id) : string
 \define('T_TRAIT_C', 383);
 \define('T_METHOD_C', 384);
 \define('T_FUNC_C', 385);
+\define('T_NS_C', 386);
+/**
+ * @since 8.0
+ */
+\define('T_ATTRIBUTE', 387);
 \define('T_COMMENT', 392);
 \define('T_DOC_COMMENT', 393);
 \define('T_OPEN_TAG', 394);
@@ -185,7 +190,6 @@ function token_name(int $id) : string
 \define('T_CURLY_OPEN', 401);
 \define('T_PAAMAYIM_NEKUDOTAYIM', 402);
 \define('T_NAMESPACE', 375);
-\define('T_NS_C', 386);
 \define('T_NS_SEPARATOR', 403);
 \define('T_ELLIPSIS', 404);
 \define('T_DOUBLE_COLON', 402);
@@ -206,10 +210,6 @@ function token_name(int $id) : string
  * @since 8.0
  */
 \define('T_NAME_QUALIFIED', 316);
-/**
- * @since 8.0
- */
-\define('T_ATTRIBUTE', 387);
 /**
  * @since 8.0
  */

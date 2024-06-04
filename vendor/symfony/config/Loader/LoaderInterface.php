@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Loader;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Loader;
 
 /**
  * LoaderInterface is the interface implemented by all loader classes.
@@ -24,7 +24,7 @@ interface LoaderInterface
      *
      * @throws \Exception If something went wrong
      */
-    public function load(mixed $resource, string $type = null);
+    public function load(mixed $resource, ?string $type = null);
     /**
      * Returns whether this class supports the given resource.
      *
@@ -32,7 +32,7 @@ interface LoaderInterface
      *
      * @return bool
      */
-    public function supports(mixed $resource, string $type = null);
+    public function supports(mixed $resource, ?string $type = null);
     /**
      * Gets the loader resolver.
      *

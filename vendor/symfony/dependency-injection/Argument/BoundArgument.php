@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Argument;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument;
 
 /**
  * @author Guilhem Niot <guilhem.niot@gmail.com>
@@ -24,7 +24,7 @@ final class BoundArgument implements ArgumentInterface
     private ?bool $used = null;
     private int $type;
     private ?string $file;
-    public function __construct(mixed $value, bool $trackUsage = \true, int $type = 0, string $file = null)
+    public function __construct(mixed $value, bool $trackUsage = \true, int $type = 0, ?string $file = null)
     {
         $this->value = $value;
         if ($trackUsage) {

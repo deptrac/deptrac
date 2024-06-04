@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PHPStan\PhpDocParser\Ast\Type;
+namespace DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type;
 
-use DEPTRAC_202404\PHPStan\PhpDocParser\Ast\NodeAttributes;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\NodeAttributes;
 use function implode;
 class ObjectShapeNode implements TypeNode
 {

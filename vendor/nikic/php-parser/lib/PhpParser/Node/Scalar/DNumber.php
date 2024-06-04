@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Scalar;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Scalar;
 
-use DEPTRAC_202404\PhpParser\Node\Scalar;
+use DEPTRAC_INTERNAL\PhpParser\Node\Scalar;
 class DNumber extends Scalar
 {
     /** @var float Number value */

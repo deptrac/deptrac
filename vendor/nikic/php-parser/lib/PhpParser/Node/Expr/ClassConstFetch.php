@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Expr;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 
-use DEPTRAC_202404\PhpParser\Node\Expr;
-use DEPTRAC_202404\PhpParser\Node\Identifier;
-use DEPTRAC_202404\PhpParser\Node\Name;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Identifier;
+use DEPTRAC_INTERNAL\PhpParser\Node\Name;
 class ClassConstFetch extends Expr
 {
     /** @var Name|Expr Class name */

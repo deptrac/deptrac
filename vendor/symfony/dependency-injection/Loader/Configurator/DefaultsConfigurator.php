@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Definition;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Definition;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -23,7 +23,7 @@ class DefaultsConfigurator extends AbstractServiceConfigurator
     use Traits\PublicTrait;
     public const FACTORY = 'defaults';
     private ?string $path;
-    public function __construct(ServicesConfigurator $parent, Definition $definition, string $path = null)
+    public function __construct(ServicesConfigurator $parent, Definition $definition, ?string $path = null)
     {
         parent::__construct($parent, $definition, null, []);
         $this->path = $path;

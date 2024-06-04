@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * This class represents a RAR archive, which may be formed by several volumes (parts) and which contains a number of
@@ -145,7 +145,7 @@ final class RarArchive implements \Traversable
  *
  * @link https://php.net/manual/en/class.rararchive.php
  */
-\class_alias('DEPTRAC_202404\\RarArchive', 'RarArchive', \false);
+\class_alias('DEPTRAC_INTERNAL\\RarArchive', 'RarArchive', \false);
 /**
  * A RAR entry, representing a directory or a compressed file inside a RAR archive
  *
@@ -562,7 +562,7 @@ final class RarEntry
  *
  * @link https://php.net/manual/en/class.rarentry.php
  */
-\class_alias('DEPTRAC_202404\\RarEntry', 'RarEntry', \false);
+\class_alias('DEPTRAC_INTERNAL\\RarEntry', 'RarEntry', \false);
 /**
  * This class serves two purposes:
  * it is the type of the exceptions thrown by the RAR extension functions and methods and it allows, through static
@@ -632,4 +632,4 @@ final class RarException extends \Exception
  *
  * @link https://php.net/manual/en/class.rarexception.php
  */
-\class_alias('DEPTRAC_202404\\RarException', 'RarException', \false);
+\class_alias('DEPTRAC_INTERNAL\\RarException', 'RarException', \false);

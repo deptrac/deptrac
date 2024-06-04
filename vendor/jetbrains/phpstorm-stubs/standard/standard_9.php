@@ -1,15 +1,15 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 /**
  * @since 5.6
  */
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\ExpectedValues;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ExpectedValues;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 \define("ARRAY_FILTER_USE_BOTH", 1);
 /**
  * @since 5.6
@@ -278,8 +278,9 @@ function array_unique(array $array, int $flags = \SORT_STRING) : array
  * The array with main values to check.
  * </p>
  * @param array ...$arrays arrays to compare values against.
- * @return array an array containing all of the values in
- * array1 whose values exist in all of the parameters.
+ * @return array an array containing all the values of
+ * <code>array</code> that are present in all the arguments.
+ * Note that keys are preserved.
  * @meta
  */
 #[Pure]
@@ -293,8 +294,8 @@ function array_intersect(array $array, #[PhpStormStubsElementAvailable(from: '5.
  * The array with main keys to check.
  * </p>
  * @param array ...$arrays
- * @return array an associative array containing all the values and keys of
- * array1 which have keys that are present in all
+ * @return array an array containing all the entries of
+ * <code>array</code>  which have keys that are present in all the
  * arguments.
  * @meta
  */
@@ -315,7 +316,8 @@ function array_intersect_key(array $array, #[PhpStormStubsElementAvailable(from:
  * User supplied callback function to do the comparison.
  * </p>
  * @param ...$rest [optional]
- * @return array the values of array1 whose keys exist
+ * @return array an array containing all the values of
+ * <code>array</code> which have matching keys that are present
  * in all the arguments.
  * @meta
  */
@@ -341,7 +343,7 @@ function array_intersect_ukey(array $array, #[PhpStormStubsElementAvailable(from
  * the first argument is considered to be respectively less than, equal
  * to, or greater than the second.
  * </p>
- * @return array an array containing all the values and keys of array1
+ * @return array an array containing all the values of <code>array</code>
  * that are present in all the arguments.
  * @meta
  */
@@ -355,8 +357,8 @@ function array_uintersect(array $array, #[PhpStormStubsElementAvailable(from: '5
  * The array with main values to check.
  * </p>
  * @param array $arrays
- * @return array an associative array containing all the values and keys in
- * array1 that are present in all of the arguments.
+ * @return array an associative array containing all the values in
+ * <code>array</code> that are present in all of the arguments.
  * @meta
  */
 #[Pure]
@@ -380,8 +382,8 @@ function array_intersect_assoc(array $array, #[PhpStormStubsElementAvailable(fro
  * second.
  * </p>
  * @param array ...$rest
- * @return array an array containing all the values and keys of
- * array1 that are present in all the arguments.
+ * @return array an array containing all the values of
+ * <code>array</code> that are present in all the arguments.
  * @meta
  */
 function array_uintersect_assoc(array $array, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] array $array2, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] callable $data_compare_func, #[PhpStormStubsElementAvailable(from: '8.0')] ...$rest) : array
@@ -400,8 +402,7 @@ function array_uintersect_assoc(array $array, #[PhpStormStubsElementAvailable(fr
  * User supplied callback function to do the comparison.
  * </p>
  * @param array ...$rest
- * @return array the values of array1 whose values exist
- * in all of the arguments.
+ * @return array the values of <code>array</code> whose values exist in all of the arguments.
  * @meta
  */
 function array_intersect_uassoc(array $array, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] array $array2, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] callable $key_compare_func, #[PhpStormStubsElementAvailable(from: '8.0')] ...$rest) : array
@@ -443,7 +444,8 @@ function array_uintersect_uassoc(array $array, #[PhpStormStubsElementAvailable(f
  * </p>
  * @param array ...$arrays
  * @return array an array containing all the entries from
- * array1 that are not present in any of the other arrays.
+ * <code>array</code> that are not present in any of the other
+ * arrays. Keys in the array <code>array</code> are preserved.
  * @meta
  */
 #[Pure]
@@ -459,9 +461,8 @@ function array_diff(array $array, #[PhpStormStubsElementAvailable(from: '5.3', t
  * @param array $arrays <p>
  * An array to compare against
  * </p>
- * @return array an array containing all the values and keys from
- * array1 whose keys are not present in any of the
- * other arrays.
+ * @return array an array containing all the entries from
+ * <code>array</code> whose keys are absent from all of the other arrays.
  * @meta
  */
 #[Pure]
@@ -484,8 +485,8 @@ function array_diff_key(array $array, #[PhpStormStubsElementAvailable(from: '5.3
  * be respectively less than, equal to, or greater than the second.
  * </p>
  * @param array ...$rest [optional]
- * @return array an array containing all the values and keys from
- * array1 that are not present in any of the other arrays.
+ * @return array an array containing all the entries from
+ * <code>array</code> that are not present in any of the other arrays.
  * @meta
  */
 function array_diff_ukey(array $array, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] array $array2, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] callable $key_compare_func, #[PhpStormStubsElementAvailable(from: '8.0')] ...$rest) : array
@@ -510,8 +511,8 @@ function array_diff_ukey(array $array, #[PhpStormStubsElementAvailable(from: '5.
  * to, or greater than the second.
  * </p>
  * @param array ...$rest [optional]
- * @return array an array containing all the values and keys of array1
- * that are not present in any of the other arguments.
+ * @return array an array containing all the values of
+ * <code>array</code> that are not present in any of the other arguments.
  * @meta
  */
 function array_udiff(array $array, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] array $array2, #[PhpStormStubsElementAvailable(from: '5.3', to: '7.4')] callable $data_compare_func, #[PhpStormStubsElementAvailable(from: '8.0')] ...$rest) : array
@@ -527,7 +528,7 @@ function array_udiff(array $array, #[PhpStormStubsElementAvailable(from: '5.3', 
  * An array to compare against
  * </p>
  * @return array an array containing all the values from
- * array1 that are not present in any of the other arrays.
+ * <code>array</code> that are not present in any of the other arrays.
  * @meta
  */
 #[Pure]
@@ -553,8 +554,7 @@ function array_diff_assoc(array $array, #[PhpStormStubsElementAvailable(from: '5
  * to, or greater than the second.
  * </p>
  * @param array ...$rest [optional]
- * @return array array_udiff_assoc returns an array
- * containing all the values and keys from array1
+ * @return array returns an array containing all the values from <code>array</code>
  * that are not present in any of the other arguments.
  * Note that the keys are used in the comparison unlike
  * array_diff and array_udiff.
@@ -869,7 +869,7 @@ class AssertionError extends \Error
  * @link https://php.net/manual/en/class.assertionerror.php
  * @since 7.0
  */
-\class_alias('DEPTRAC_202404\\AssertionError', 'AssertionError', \false);
+\class_alias('DEPTRAC_INTERNAL\\AssertionError', 'AssertionError', \false);
 /**
  * Set/get the various assert flags
  * @link https://php.net/manual/en/function.assert-options.php

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Exception;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Exception;
 
 /**
  * File locator exception if a file does not exist.
@@ -18,7 +18,7 @@ namespace DEPTRAC_202404\Symfony\Component\Config\Exception;
 class FileLocatorFileNotFoundException extends \InvalidArgumentException
 {
     private array $paths;
-    public function __construct(string $message = '', int $code = 0, \Throwable $previous = null, array $paths = [])
+    public function __construct(string $message = '', int $code = 0, ?\Throwable $previous = null, array $paths = [])
     {
         parent::__construct($message, $code, $previous);
         $this->paths = $paths;

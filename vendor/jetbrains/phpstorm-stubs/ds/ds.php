@@ -7,7 +7,7 @@
  * @copyright © 2019 PHP Documentation Group
  * @license CC-BY 3.0, https://www.php.net/manual/en/cc.license.php
  */
-namespace DEPTRAC_202404\Ds;
+namespace DEPTRAC_INTERNAL\Ds;
 
 use ArrayAccess;
 use Countable;
@@ -538,6 +538,9 @@ class Vector implements Sequence
     public function get(int $index)
     {
     }
+    /**
+     * @return Traversable<TValue>
+     */
     public function getIterator() : Traversable
     {
     }
@@ -878,6 +881,9 @@ class Deque implements Sequence
     public function copy() : Collection
     {
     }
+    /**
+     * @return Traversable<TValue>
+     */
     public function getIterator() : Traversable
     {
     }
@@ -1395,6 +1401,9 @@ class Map implements Collection, ArrayAccess
     public function get($key, $default = null)
     {
     }
+    /**
+     * @return Traversable<TValue>
+     */
     public function getIterator() : Traversable
     {
     }
@@ -2120,6 +2129,9 @@ class Set implements Collection, ArrayAccess
     public function get(int $index)
     {
     }
+    /**
+     * @return Traversable<TValue>
+     */
     public function getIterator() : Traversable
     {
     }
@@ -2494,6 +2506,9 @@ class Stack implements Collection, ArrayAccess
     public function copy() : Stack
     {
     }
+    /**
+     * @return Traversable<TValue>
+     */
     public function getIterator() : Traversable
     {
     }
@@ -2821,6 +2836,9 @@ class PriorityQueue implements Collection
     public function copy()
     {
     }
+    /**
+     * @return Traversable<TValue>
+     */
     public function getIterator() : Traversable
     {
     }

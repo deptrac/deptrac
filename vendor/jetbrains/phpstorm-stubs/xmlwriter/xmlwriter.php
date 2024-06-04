@@ -1,11 +1,11 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of xmlwriter v.0.1
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\TentativeType;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\TentativeType;
 class XMLWriter
 {
     /**
@@ -596,7 +596,7 @@ class XMLWriter
     {
     }
 }
-\class_alias('DEPTRAC_202404\\XMLWriter', 'XMLWriter', \false);
+\class_alias('DEPTRAC_INTERNAL\\XMLWriter', 'XMLWriter', \false);
 /**
  * (PHP 5 &gt;= 5.1.2, PECL xmlwriter &gt;= 0.1.0)<br/>
  * Create new xmlwriter using source uri for output

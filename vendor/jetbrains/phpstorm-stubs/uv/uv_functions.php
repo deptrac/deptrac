@@ -1,8 +1,8 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-// Stubs for ext-uv: https://github.com/bwoebi/php-uv
+// Stubs for ext-uv: https://github.com/amphp/php-uv
 /**
  * Decrement reference.
  *
@@ -62,10 +62,11 @@ function uv_ref($uv_handle)
  * Run event loop.
  *
  * @param resource|null $uv_loop uv_loop resource.
+ * @param int $run_mode Run flags.
  *
  * @return void
  */
-function uv_run($uv_loop = null)
+function uv_run($uv_loop = null, $run_mode = \UV::RUN_DEFAULT)
 {
 }
 /**
@@ -172,11 +173,11 @@ function uv_shutdown($handle, callable $callback)
  * Close uv handle.
  *
  * @param resource $handle uv resources (uv_tcp, uv_udp, uv_pipe ...etc.).
- * @param callable $callback callable variables. this callback expects (resource $handle, long $status).
+ * @param ?callable $callback callable variables. this callback expects (resource $handle, long $status).
  *
  * @return void
  */
-function uv_close($handle, callable $callback)
+function uv_close($handle, callable $callback = null)
 {
 }
 /**

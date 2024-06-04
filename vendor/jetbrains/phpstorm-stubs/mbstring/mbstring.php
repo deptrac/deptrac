@@ -1,13 +1,13 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of mbstring v.
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Perform case folding on a string
  * @link https://php.net/manual/en/function.mb-convert-case.php
@@ -941,7 +941,8 @@ function mb_send_mail(string $to, string $subject, string $message, array|string
  */
 #[Pure]
 #[ArrayShape(['internal_encoding' => 'string', 'http_input' => 'string', 'http_output' => 'string', 'http_output_conv_mimetypes' => 'string', 'mail_charset' => 'string', 'mail_header_encoding' => 'string', 'mail_body_encoding' => 'string', 'illegal_chars' => 'string', 'encoding_translation' => 'string', 'language' => 'string', 'detect_order' => 'string', 'substitute_character' => 'string', 'strict_detection' => 'string'])]
-function mb_get_info(string $type = 'all') : array|string|int|false
+#[LanguageLevelTypeAware(['8.2' => 'array|string|int|false|null'], default: 'array|string|int|false')]
+function mb_get_info(string $type = 'all')
 {
 }
 /**
@@ -1504,5 +1505,5 @@ function mb_str_pad(string $string, int $length, string $pad_string = " ", int $
 /**
  * @since 7.4
  */
-\define('MB_ONIGURUMA_VERSION', '6.9.8');
+\define('MB_ONIGURUMA_VERSION', '6.9.9');
 // End of mbstring v.

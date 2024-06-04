@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\NodeVisitor;
+namespace DEPTRAC_INTERNAL\PhpParser\NodeVisitor;
 
-use DEPTRAC_202404\PhpParser\ErrorHandler;
-use DEPTRAC_202404\PhpParser\NameContext;
-use DEPTRAC_202404\PhpParser\Node;
-use DEPTRAC_202404\PhpParser\Node\Expr;
-use DEPTRAC_202404\PhpParser\Node\Name;
-use DEPTRAC_202404\PhpParser\Node\Name\FullyQualified;
-use DEPTRAC_202404\PhpParser\Node\Stmt;
-use DEPTRAC_202404\PhpParser\NodeVisitorAbstract;
+use DEPTRAC_INTERNAL\PhpParser\ErrorHandler;
+use DEPTRAC_INTERNAL\PhpParser\NameContext;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Name;
+use DEPTRAC_INTERNAL\PhpParser\Node\Name\FullyQualified;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt;
+use DEPTRAC_INTERNAL\PhpParser\NodeVisitorAbstract;
 class NameResolver extends NodeVisitorAbstract
 {
     /** @var NameContext Naming context */
@@ -32,7 +32,7 @@ class NameResolver extends NodeVisitorAbstract
      * @param ErrorHandler|null $errorHandler Error handler
      * @param array $options Options
      */
-    public function __construct(ErrorHandler $errorHandler = null, array $options = [])
+    public function __construct(?ErrorHandler $errorHandler = null, array $options = [])
     {
         $this->nameContext = new NameContext($errorHandler ?? new ErrorHandler\Throwing());
         $this->preserveOriginalNames = $options['preserveOriginalNames'] ?? \false;
@@ -150,7 +150,7 @@ class NameResolver extends NodeVisitorAbstract
         }
         return null;
     }
-    private function addAlias(Stmt\UseUse $use, int $type, Name $prefix = null)
+    private function addAlias(Stmt\UseUse $use, int $type, ?Name $prefix = null)
     {
         // Add prefix for group uses
         $name = $prefix ? Name::concat($prefix, $use->name) : $use->name;

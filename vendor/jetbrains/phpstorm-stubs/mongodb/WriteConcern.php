@@ -1,10 +1,11 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver;
 
 use MongoDB\BSON\Serializable;
 use MongoDB\Driver\Exception\InvalidArgumentException;
 use MongoDB\Driver\Exception\UnexpectedValueException;
+use stdClass;
 /**
  * WriteConcern controls the acknowledgment of a write operation, specifies the level of write guarantee for Replica Sets.
  */
@@ -56,7 +57,7 @@ final class WriteConcern implements Serializable, \Serializable
      * @return array|object Returns an object for serializing the WriteConcern as BSON.
      * @throws InvalidArgumentException
      */
-    public final function bsonSerialize() : array|object
+    public final function bsonSerialize() : stdClass
     {
     }
     /**

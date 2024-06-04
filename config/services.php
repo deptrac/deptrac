@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\PhpParser\Lexer;
-use DEPTRAC_202404\PhpParser\Parser;
-use DEPTRAC_202404\PhpParser\ParserFactory;
-use DEPTRAC_202404\Psr\EventDispatcher\EventDispatcherInterface;
+use DEPTRAC_INTERNAL\PhpParser\Lexer;
+use DEPTRAC_INTERNAL\PhpParser\Parser;
+use DEPTRAC_INTERNAL\PhpParser\ParserFactory;
+use DEPTRAC_INTERNAL\Psr\EventDispatcher\EventDispatcherInterface;
 use Qossmic\Deptrac\Contract\Analyser\EventHelper;
 use Qossmic\Deptrac\Contract\Config\CollectorType;
 use Qossmic\Deptrac\Contract\Config\EmitterType;
@@ -110,12 +110,12 @@ use Qossmic\Deptrac\Supportive\OutputFormatter\JUnitOutputFormatter;
 use Qossmic\Deptrac\Supportive\OutputFormatter\MermaidJSOutputFormatter;
 use Qossmic\Deptrac\Supportive\OutputFormatter\TableOutputFormatter;
 use Qossmic\Deptrac\Supportive\OutputFormatter\XMLOutputFormatter;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use DEPTRAC_202404\Symfony\Component\EventDispatcher\EventDispatcher;
-use function DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\param;
-use function DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\service;
-use function DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\tagged_iterator;
-use function DEPTRAC_202404\Symfony\Component\DependencyInjection\Loader\Configurator\tagged_locator;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventDispatcher;
+use function DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator\param;
+use function DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use function DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator\tagged_iterator;
+use function DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator\tagged_locator;
 return static function (ContainerConfigurator $container) : void {
     $services = $container->services();
     $services->defaults()->autowire();

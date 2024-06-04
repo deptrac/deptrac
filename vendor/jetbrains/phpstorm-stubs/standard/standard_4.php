@@ -1,12 +1,12 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
-use DEPTRAC_202404\JetBrains\PhpStorm\ArrayShape;
-use DEPTRAC_202404\JetBrains\PhpStorm\Deprecated;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-use DEPTRAC_202404\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
-use DEPTRAC_202404\JetBrains\PhpStorm\Pure;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\ArrayShape;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Deprecated;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Internal\PhpStormStubsElementAvailable;
+use DEPTRAC_INTERNAL\JetBrains\PhpStorm\Pure;
 /**
  * Get the last occurred error
  * @link https://php.net/manual/en/function.error-get-last.php
@@ -634,7 +634,7 @@ function restore_include_path()
  * setcookie successfully runs, it will return true.
  * This does not indicate whether the user accepted the cookie.
  */
-function setcookie(string $name, $value = "", $expires_or_options = 0, $path = "", $domain = "", $secure = \false, $httponly = \false) : bool
+function setcookie(string $name, string $value = "", int $expires_or_options = 0, string $path = "", string $domain = "", bool $secure = \false, bool $httponly = \false) : bool
 {
 }
 /**
@@ -658,7 +658,7 @@ function setcookie(string $name, $value = "", $expires_or_options = 0, $path = "
  *                        This does not indicate whether the user accepted the cookie.
  * @since 7.3
  */
-function setcookie(string $name, $value = '', array $options = []) : bool
+function setcookie(string $name, string $value = '', array $options = []) : bool
 {
 }
 /**
@@ -746,7 +746,7 @@ function header(string $header, bool $replace = \true, int $response_code = 0) :
  * This parameter is case-insensitive.
  * @return void
  */
-function header_remove(?string $name) : void
+function header_remove(?string $name = null) : void
 {
 }
 /**
@@ -765,7 +765,7 @@ function header_remove(?string $name) : void
  * @return bool headers_sent will return false if no HTTP headers
  * have already been sent or true otherwise.
  */
-function headers_sent(&$filename, &$line) : bool
+function headers_sent(&$filename = null, &$line = null) : bool
 {
 }
 /**

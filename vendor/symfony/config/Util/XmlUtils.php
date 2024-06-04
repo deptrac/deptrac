@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Util;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Util;
 
-use DEPTRAC_202404\Symfony\Component\Config\Util\Exception\InvalidXmlException;
-use DEPTRAC_202404\Symfony\Component\Config\Util\Exception\XmlParsingException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Util\Exception\InvalidXmlException;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Util\Exception\XmlParsingException;
 /**
  * XMLUtils is a bunch of utility methods to XML operations.
  *
@@ -39,7 +39,7 @@ class XmlUtils
      * @throws InvalidXmlException When parsing of XML with schema or callable produces any errors unrelated to the XML parsing itself
      * @throws \RuntimeException   When DOM extension is missing
      */
-    public static function parse(string $content, string|callable $schemaOrCallable = null) : \DOMDocument
+    public static function parse(string $content, string|callable|null $schemaOrCallable = null) : \DOMDocument
     {
         if (!\extension_loaded('dom')) {
             throw new \LogicException('Extension DOM is required.');
@@ -97,7 +97,7 @@ class XmlUtils
      * @throws XmlParsingException       When XML parsing returns any errors
      * @throws \RuntimeException         When DOM extension is missing
      */
-    public static function loadFile(string $file, string|callable $schemaOrCallable = null) : \DOMDocument
+    public static function loadFile(string $file, string|callable|null $schemaOrCallable = null) : \DOMDocument
     {
         if (!\is_file($file)) {
             throw new \InvalidArgumentException(\sprintf('Resource "%s" is not a file.', $file));

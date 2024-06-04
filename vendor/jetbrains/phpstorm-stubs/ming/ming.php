@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404;
+namespace DEPTRAC_INTERNAL;
 
 // Start of ming v.
 class SWFShape
@@ -55,7 +55,7 @@ class SWFShape
     }
 }
 // Start of ming v.
-\class_alias('DEPTRAC_202404\\SWFShape', 'SWFShape', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFShape', 'SWFShape', \false);
 class SWFFill
 {
     public function __construct()
@@ -77,7 +77,7 @@ class SWFFill
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFFill', 'SWFFill', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFFill', 'SWFFill', \false);
 class SWFGradient
 {
     public function __construct()
@@ -87,7 +87,7 @@ class SWFGradient
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFGradient', 'SWFGradient', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFGradient', 'SWFGradient', \false);
 class SWFBitmap
 {
     public function __construct()
@@ -100,7 +100,7 @@ class SWFBitmap
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFBitmap', 'SWFBitmap', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFBitmap', 'SWFBitmap', \false);
 class SWFText
 {
     public function __construct()
@@ -143,7 +143,7 @@ class SWFText
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFText', 'SWFText', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFText', 'SWFText', \false);
 class SWFTextField
 {
     public function __construct()
@@ -192,7 +192,7 @@ class SWFTextField
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFTextField', 'SWFTextField', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFTextField', 'SWFTextField', \false);
 class SWFFont
 {
     public function __construct()
@@ -217,7 +217,7 @@ class SWFFont
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFFont', 'SWFFont', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFFont', 'SWFFont', \false);
 class SWFDisplayItem
 {
     public function moveTo()
@@ -302,7 +302,7 @@ class SWFDisplayItem
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFDisplayItem', 'SWFDisplayItem', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFDisplayItem', 'SWFDisplayItem', \false);
 class SWFMovie
 {
     public function __construct()
@@ -372,7 +372,7 @@ class SWFMovie
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFMovie', 'SWFMovie', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFMovie', 'SWFMovie', \false);
 class SWFButton
 {
     public function __construct()
@@ -406,14 +406,14 @@ class SWFButton
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFButton', 'SWFButton', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFButton', 'SWFButton', \false);
 class SWFAction
 {
     public function __construct()
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFAction', 'SWFAction', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFAction', 'SWFAction', \false);
 class SWFMorph
 {
     public function __construct()
@@ -426,7 +426,7 @@ class SWFMorph
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFMorph', 'SWFMorph', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFMorph', 'SWFMorph', \false);
 class SWFSprite
 {
     public function __construct()
@@ -454,14 +454,14 @@ class SWFSprite
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFSprite', 'SWFSprite', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFSprite', 'SWFSprite', \false);
 class SWFSound
 {
     public function __construct()
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFSound', 'SWFSound', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFSound', 'SWFSound', \false);
 class SWFFontChar
 {
     public function addChars()
@@ -471,7 +471,7 @@ class SWFFontChar
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFFontChar', 'SWFFontChar', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFFontChar', 'SWFFontChar', \false);
 class SWFSoundInstance
 {
     public function noMultiple()
@@ -487,7 +487,7 @@ class SWFSoundInstance
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFSoundInstance', 'SWFSoundInstance', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFSoundInstance', 'SWFSoundInstance', \false);
 class SWFVideoStream
 {
     public function __construct()
@@ -500,7 +500,7 @@ class SWFVideoStream
     {
     }
 }
-\class_alias('DEPTRAC_202404\\SWFVideoStream', 'SWFVideoStream', \false);
+\class_alias('DEPTRAC_INTERNAL\\SWFVideoStream', 'SWFVideoStream', \false);
 /**
  * Set cubic threshold
  * @link https://php.net/manual/en/function.ming-setcubicthreshold.php

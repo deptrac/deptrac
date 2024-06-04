@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\MongoDB\Driver;
+namespace DEPTRAC_INTERNAL\MongoDB\Driver;
 
 use MongoDB\Driver\Exception\AuthenticationException;
 use MongoDB\Driver\Exception\BulkWriteException;

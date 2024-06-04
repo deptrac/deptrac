@@ -1,6 +1,6 @@
 <?php
 
-namespace DEPTRAC_202404\parallel\Runtime\Type;
+namespace DEPTRAC_INTERNAL\parallel\Runtime\Type;
 
 class Unavailable
 {

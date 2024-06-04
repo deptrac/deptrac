@@ -9,7 +9,7 @@ declare (strict_types=1);
  *
  * @link      http://phpdoc.org
  */
-namespace DEPTRAC_202404\phpDocumentor\Reflection\Types;
+namespace DEPTRAC_INTERNAL\phpDocumentor\Reflection\Types;
 
 use function strlen;
 use function substr;
@@ -33,12 +33,12 @@ use function trim;
 final class Context
 {
     /** @var string The current namespace. */
-    private string $namespace;
+    private $namespace;
     /**
      * @var string[] List of namespace aliases => Fully Qualified Namespace.
      * @psalm-var array<string, string>
      */
-    private array $namespaceAliases;
+    private $namespaceAliases;
     /**
      * Initializes the new context and normalizes all passed namespaces to be in Qualified Namespace Name (QNN)
      * format (without a preceding `\`).

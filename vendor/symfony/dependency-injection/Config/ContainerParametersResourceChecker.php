@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\DependencyInjection\Config;
+namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Config;
 
-use DEPTRAC_202404\Symfony\Component\Config\Resource\ResourceInterface;
-use DEPTRAC_202404\Symfony\Component\Config\ResourceCheckerInterface;
-use DEPTRAC_202404\Symfony\Component\DependencyInjection\ContainerInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\Resource\ResourceInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\Config\ResourceCheckerInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */

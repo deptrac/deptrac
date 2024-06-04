@@ -5,7 +5,7 @@ namespace Qossmic\Deptrac\Core\Analyser\EventHandler;
 
 use Qossmic\Deptrac\Contract\Analyser\ProcessEvent;
 use Qossmic\Deptrac\Contract\Result\Allowed;
-use DEPTRAC_202404\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * @internal
  */

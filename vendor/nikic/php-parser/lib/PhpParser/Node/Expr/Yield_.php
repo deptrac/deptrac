@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace DEPTRAC_202404\PhpParser\Node\Expr;
+namespace DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 
-use DEPTRAC_202404\PhpParser\Node\Expr;
+use DEPTRAC_INTERNAL\PhpParser\Node\Expr;
 class Yield_ extends Expr
 {
     /** @var null|Expr Key expression */
@@ -17,7 +17,7 @@ class Yield_ extends Expr
      * @param null|Expr $key        Key expression
      * @param array     $attributes Additional attributes
      */
-    public function __construct(Expr $value = null, Expr $key = null, array $attributes = [])
+    public function __construct(?Expr $value = null, ?Expr $key = null, array $attributes = [])
     {
         $this->attributes = $attributes;
         $this->key = $key;

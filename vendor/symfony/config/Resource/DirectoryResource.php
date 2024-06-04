@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace DEPTRAC_202404\Symfony\Component\Config\Resource;
+namespace DEPTRAC_INTERNAL\Symfony\Component\Config\Resource;
 
 /**
  * DirectoryResource represents a resources stored in a subdirectory tree.
@@ -27,7 +27,7 @@ class DirectoryResource implements SelfCheckingResourceInterface
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(string $resource, string $pattern = null)
+    public function __construct(string $resource, ?string $pattern = null)
     {
         $resolvedResource = \realpath($resource) ?: (\file_exists($resource) ? $resource : \false);
         $this->pattern = $pattern;
