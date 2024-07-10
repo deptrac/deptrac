@@ -1,0 +1,21 @@
+name: Build and deploy documentation
+on:
+  release:
+    types: [published]
+  workflow_dispatch: ~
+
+jobs:
+  build-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip mkdocs mkdocs-material
+      - name: Deploy documentation
+        run: mkdocs gh-deploy --force
