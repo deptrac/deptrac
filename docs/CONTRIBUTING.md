@@ -20,6 +20,18 @@ your merge request can be accepted.
 - [Composer](https://getcomposer.org/)
 - `make`
 
+### Using Docker Compose
+
+If preferred, you can use Docker to get a development environment up and
+running quickly.
+
+- [Install Docker](https://www.docker.com/get-started/)
+- Run `docker compose run deptrac`
+
+This will build and run a local Docker image with all the necessary system
+dependencies. You can now run all the following commands from within the
+container.
+
 ## Installing tools
 
 You can install all tools needed for developing Deptrac using the Makefile by

@@ -22,7 +22,7 @@ class DependsOnPrivateLayer implements ViolationCreatingInterface
     {
         $ruleset = $event->getResult();
         foreach ($event->dependentLayers as $dependentLayer => $isPublic) {
-            if ($event->dependerLayer === $dependentLayer && !$isPublic) {
+            if ($event->dependerLayer !== $dependentLayer && !$isPublic) {
                 $this->eventHelper->addSkippableViolation($event, $ruleset, $dependentLayer, $this);
                 $event->stopPropagation();
             }

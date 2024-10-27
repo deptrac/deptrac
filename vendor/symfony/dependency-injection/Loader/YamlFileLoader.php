@@ -304,8 +304,9 @@ class YamlFileLoader extends FileLoader
             }
             return $return ? $alias : $this->container->setAlias($id, $alias);
         }
+        $changes = [];
         if (null !== $definition) {
-            // no-op
+            $changes = $definition->getChanges();
         } elseif ($this->isLoadingInstanceof) {
             $definition = new ChildDefinition('');
         } elseif (isset($service['parent'])) {
@@ -325,7 +326,7 @@ class YamlFileLoader extends FileLoader
         if (isset($defaults['autoconfigure'])) {
             $definition->setAutoconfigured($defaults['autoconfigure']);
         }
-        $definition->setChanges([]);
+        $definition->setChanges($changes);
         if (isset($service['class'])) {
             $definition->setClass($service['class']);
         }
@@ -387,7 +388,7 @@ class YamlFileLoader extends FileLoader
                     throw new InvalidArgumentException(\sprintf('Invalid method call for service "%s": expected map or array, "%s" given in "%s".', $id, $call instanceof TaggedValue ? '!' . $call->getTag() : \get_debug_type($call), $file));
                 }
                 if (\is_string($k)) {
-                    throw new InvalidArgumentException(\sprintf('Invalid method call for service "%s", did you forgot a leading dash before "%s: ..." in "%s"?', $id, $k, $file));
+                    throw new InvalidArgumentException(\sprintf('Invalid method call for service "%s", did you forget a leading dash before "%s: ..." in "%s"?', $id, $k, $file));
                 }
                 if (isset($call['method']) && \is_string($call['method'])) {
                     $method = $call['method'];

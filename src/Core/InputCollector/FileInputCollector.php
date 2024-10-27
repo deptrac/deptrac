@@ -51,7 +51,7 @@ final class FileInputCollector implements \Qossmic\Deptrac\Core\InputCollector\I
             if ([] === $this->paths) {
                 throw new LogicException("No 'paths' defined in the depfile.");
             }
-            $finder = (new Finder())->in($this->paths)->name('*.php')->files()->followLinks()->ignoreUnreadableDirs()->ignoreVCS(\true)->notPath($this->excludedFilePatterns);
+            $finder = (new Finder())->in($this->paths)->name('*.php')->files()->followLinks()->ignoreUnreadableDirs()->ignoreVCS(\true)->notPath($this->excludedFilePatterns)->sortByName();
             $customFilterIterator = $finder->getIterator();
         } catch (LogicException|DirectoryNotFoundException $exception) {
             throw \Qossmic\Deptrac\Core\InputCollector\InputException::couldNotCollectFiles($exception);
