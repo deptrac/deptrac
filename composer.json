@@ -1,6 +1,9 @@
 {
     "name": "qossmic/deptrac",
     "description": "Deptrac is a static code analysis tool that helps to enforce rules for dependencies between software layers.",
+    "keywords": [
+        "static analysis"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.1",
