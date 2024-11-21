@@ -21,6 +21,7 @@ final class ServiceContainerBuilder
 {
     private ?SplFileInfo $configFile = null;
     private ?SplFileInfo $cacheFile = null;
+    private const DEPTRAC_INTERNAL_CONFIG_PATH = __DIR__ . '/../../../config';
     public function __construct(private readonly string $workingDirectory)
     {
     }
@@ -64,6 +65,7 @@ final class ServiceContainerBuilder
         self::registerCompilerPasses($container);
         $container->registerExtension(new \Qossmic\Deptrac\Supportive\DependencyInjection\DeptracExtension());
         $container->setParameter('projectDirectory', $this->workingDirectory);
+        self::loadServices($container);
         if (null !== $this->configFile) {
             self::loadConfiguration($container, $this->configFile);
         }
@@ -80,7 +82,9 @@ final class ServiceContainerBuilder
             }
             $this->withCache($cache);
         }
-        self::loadServices($container, $this->cacheFile);
+        if (null !== $this->cacheFile) {
+            self::loadCache($container, $this->cacheFile);
+        }
         $container->compile(\true);
         return $container;
     }
@@ -90,20 +94,24 @@ final class ServiceContainerBuilder
         $container->addCompilerPass(new RegisterListenersPass());
     }
     /**
-     * @throws CacheFileException
      * @throws CannotLoadConfiguration
      */
-    private static function loadServices(ContainerBuilder $container, ?SplFileInfo $cacheFile) : void
+    private static function loadServices(ContainerBuilder $container) : void
     {
-        $loader = new PhpFileLoader($container, new FileLocator([__DIR__ . '/../../../config']));
+        $loader = new PhpFileLoader($container, new FileLocator([self::DEPTRAC_INTERNAL_CONFIG_PATH]));
         try {
             $loader->load('services.php');
         } catch (Exception $exception) {
             throw CannotLoadConfiguration::fromServices('services.php', $exception->getMessage());
         }
-        if (!$cacheFile instanceof SplFileInfo) {
-            return;
-        }
+    }
+    /**
+     * @throws CacheFileException
+     * @throws CannotLoadConfiguration
+     */
+    private static function loadCache(ContainerBuilder $container, SplFileInfo $cacheFile) : void
+    {
+        $loader = new PhpFileLoader($container, new FileLocator([self::DEPTRAC_INTERNAL_CONFIG_PATH]));
         if (!\file_exists($cacheFile->getPathname())) {
             $dirname = $cacheFile->getPath() ?: '.';
             if (!\is_dir($dirname) && \mkdir($dirname . '/', 0777, \true) && !\is_dir($dirname)) {
