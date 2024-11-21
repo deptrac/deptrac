@@ -20,7 +20,7 @@ use function in_array;
 use const DIRECTORY_SEPARATOR;
 final class Application extends BaseApplication
 {
-    public const VERSION = '@git-version@';
+    public const VERSION = '2.0.4';
     public function __construct()
     {
         parent::__construct('deptrac', self::VERSION);
