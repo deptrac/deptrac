@@ -4,6 +4,13 @@ on:
     types: [published]
   workflow_dispatch: ~
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  deployments: write
+
 jobs:
   build-documentation:
     runs-on: ubuntu-latest
