@@ -8,6 +8,6 @@ harassment and will take action against any individual who is not acting
 professionally. This can range from reprimanding them privately to blocking them
 from interacting with the repository.
 
-[QOSSMIC](https://qossmic.com) as owner is responsible for upholding the code of conduct
+[QOSSMIC](https://deptrac.com) as owner is responsible for upholding the code of conduct
 and should be contacted if you have any issues. Please use the following email
-for this: [wecare@qossmic.com](mailto:wecare@qossmic.com?subject=Deptrac)
+for this: [wecare@deptrac.com](mailto:wecare@deptrac.com?subject=Deptrac)

@@ -1,9 +1,0 @@
-# we need the vendor
-composer.lock
-
-.phpunit.result.cache
-
-# to keep local rector outside git repository
-rector-local
-
-php-scoper.phar

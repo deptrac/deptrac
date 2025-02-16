@@ -1,10 +1,9 @@
 <?php
 
-namespace Qossmic\Deptrac\Core\Ast\Parser\Cache;
+namespace Deptrac\Deptrac\Core\Ast\Parser\Cache;
 
-interface AstFileReferenceDeferredCacheInterface extends AstFileReferenceCacheInterface
+interface AstFileReferenceDeferredCacheInterface extends \Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceCacheInterface
 {
-    public function load(): void;
-
-    public function write(): void;
+    public function load() : void;
+    public function write() : void;
 }

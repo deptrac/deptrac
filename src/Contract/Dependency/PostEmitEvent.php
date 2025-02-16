@@ -1,12 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Dependency;
 
-namespace Qossmic\Deptrac\Contract\Dependency;
-
-use Symfony\Contracts\EventDispatcher\Event;
-
+use DEPTRAC_INTERNAL\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Event triggered after all the dependencies have been resolved.
  */
-final class PostEmitEvent extends Event {}
+final class PostEmitEvent extends Event
+{
+}

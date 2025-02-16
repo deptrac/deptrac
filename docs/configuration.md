@@ -3,7 +3,7 @@
 The configuration file describes your [layers, ruleset](concepts.md) and adjusts
 output formatting.
 
-We suggest you also check out [Deptrac's configuration](https://github.com/qossmic/deptrac/blob/main/deptrac.yaml)
+We suggest you also check out [Deptrac's configuration](https://github.com/deptrac/deptrac/blob/main/deptrac.yaml)
 for checking its own architecture as it uses most available options.
 
 ## Deptrac
@@ -19,6 +19,23 @@ The following table shows the available config keys for Deptrac.
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>analyser.internal_tag</td>
+<td>
+Specifies a custom doc block tag which deptrac should use to identify layer-internal
+class-like structures. The tag <code>@deptrac-internal</code> will always be used
+for this purpose. This option allows an additional tag to be specified, such as
+<code>@layer-internal</code> or plain <code>@internal</code>.
+</td>
+<td>
+
+```yaml
+deptrac:
+  analyser:
+    internal_tag: "@layer-internal"
+```
+</td>
+</tr>
 <tr>
 <td>analyser.types</td>
 <td>
@@ -272,9 +289,9 @@ This allows you to register new services, e.g. custom formatters or collectors.
 
 ```yaml
 services:
-  - class: Internal\Qossmic\Deptrac\IgnoreDependenciesOnContract
+  - class: Internal\Deptrac\Deptrac\IgnoreDependenciesOnContract
     tags:
-      - { name: kernel.event_listener, event: Qossmic\Deptrac\Contract\Analyser\ProcessEvent }
+      - { name: kernel.event_listener, event: Deptrac\Deptrac\Contract\Analyser\ProcessEvent }
 ```
 
 ## Parameters
@@ -283,8 +300,8 @@ Deptrac provides parameters that can be user in your configuration.
 
 * `%currentWorkingDirectory%` The path Deptrac runs in
 * `%projectDirectory%` The path where the configuration is stored.
-* `%deptrac.cache_file%` contains the filename and path for the cache file.
-  Note: This parameter is set by `--cache-file=` and will be overwritten.
+* `%cache_file%` contains the filename and path for the cache file.
+  Note: This parameter is overwritten by `--cache-file=` if it is set.
 
 You can specify your own parameters and reuse them in your configuration:
 

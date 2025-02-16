@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Qossmic\Deptrac\Contract\Ast;
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Ast;
 
 /**
  * Specifies the type of AST dependency.
@@ -10,7 +9,7 @@ namespace Qossmic\Deptrac\Contract\Ast;
  * You can use this information to enrich the displayed output to the user in
  * your output formatter.
  */
-enum DependencyType: string
+enum DependencyType : string
 {
     case USE = 'use';
     case INHERIT = 'inherit';

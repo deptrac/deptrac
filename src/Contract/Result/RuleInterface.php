@@ -1,11 +1,9 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Result;
 
-namespace Qossmic\Deptrac\Contract\Result;
-
-use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
-
+use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
 /**
  * @psalm-immutable
  *
@@ -13,5 +11,5 @@ use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
  */
 interface RuleInterface
 {
-    public function getDependency(): DependencyInterface;
+    public function getDependency() : DependencyInterface;
 }

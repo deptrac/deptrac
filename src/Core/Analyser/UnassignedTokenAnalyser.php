@@ -1,58 +1,43 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Analyser;
 
-namespace Qossmic\Deptrac\Core\Analyser;
-
-use Qossmic\Deptrac\Contract\Ast\CouldNotParseFileException;
-use Qossmic\Deptrac\Contract\Config\EmitterType;
-use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use Qossmic\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
-use Qossmic\Deptrac\Core\Ast\AstException;
-use Qossmic\Deptrac\Core\Ast\AstMapExtractor;
-use Qossmic\Deptrac\Core\Dependency\TokenResolver;
-use Qossmic\Deptrac\Core\Dependency\UnrecognizedTokenException;
-use Qossmic\Deptrac\Core\Layer\LayerResolverInterface;
-
+use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
+use Deptrac\Deptrac\Contract\Config\EmitterType;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Deptrac\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
+use Deptrac\Deptrac\Core\Ast\AstException;
+use Deptrac\Deptrac\Core\Ast\AstMapExtractor;
+use Deptrac\Deptrac\Core\Dependency\TokenResolver;
+use Deptrac\Deptrac\Core\Dependency\UnrecognizedTokenException;
+use Deptrac\Deptrac\Core\Layer\LayerResolverInterface;
 use function array_values;
 use function natcasesort;
-
 class UnassignedTokenAnalyser
 {
     /**
      * @var array<TokenType>
      */
     private readonly array $tokenTypes;
-
     /**
      * @param array{types: array<string>} $config
      */
-    public function __construct(
-        private readonly AstMapExtractor $astMapExtractor,
-        private readonly TokenResolver $tokenResolver,
-        private readonly LayerResolverInterface $layerResolver,
-        array $config
-    ) {
-        $this->tokenTypes = array_filter(
-            array_map(
-                static fn (string $emitterType): ?TokenType => TokenType::tryFromEmitterType(EmitterType::from($emitterType)),
-                $config['types']
-            )
-        );
+    public function __construct(private readonly AstMapExtractor $astMapExtractor, private readonly TokenResolver $tokenResolver, private readonly LayerResolverInterface $layerResolver, array $config)
+    {
+        $this->tokenTypes = \array_filter(\array_map(static fn(string $emitterType): ?\Deptrac\Deptrac\Core\Analyser\TokenType => \Deptrac\Deptrac\Core\Analyser\TokenType::tryFromEmitterType(EmitterType::from($emitterType)), $config['types']));
     }
-
     /**
      * @return string[]
      *
      * @throws AnalyserException
      */
-    public function findUnassignedTokens(): array
+    public function findUnassignedTokens() : array
     {
         try {
             $astMap = $this->astMapExtractor->extract();
             $unassignedTokens = [];
-
-            if (in_array(TokenType::CLASS_LIKE, $this->tokenTypes, true)) {
+            if (\in_array(\Deptrac\Deptrac\Core\Analyser\TokenType::CLASS_LIKE, $this->tokenTypes, \true)) {
                 foreach ($astMap->getClassLikeReferences() as $classReference) {
                     $token = $this->tokenResolver->resolve($classReference->getToken(), $astMap);
                     if ([] === $this->layerResolver->getLayersForReference($token)) {
@@ -60,8 +45,7 @@ class UnassignedTokenAnalyser
                     }
                 }
             }
-
-            if (in_array(TokenType::FUNCTION, $this->tokenTypes, true)) {
+            if (\in_array(\Deptrac\Deptrac\Core\Analyser\TokenType::FUNCTION, $this->tokenTypes, \true)) {
                 foreach ($astMap->getFunctionReferences() as $functionReference) {
                     $token = $this->tokenResolver->resolve($functionReference->getToken(), $astMap);
                     if ([] === $this->layerResolver->getLayersForReference($token)) {
@@ -69,8 +53,7 @@ class UnassignedTokenAnalyser
                     }
                 }
             }
-
-            if (in_array(TokenType::FILE, $this->tokenTypes, true)) {
+            if (\in_array(\Deptrac\Deptrac\Core\Analyser\TokenType::FILE, $this->tokenTypes, \true)) {
                 foreach ($astMap->getFileReferences() as $fileReference) {
                     $token = $this->tokenResolver->resolve($fileReference->getToken(), $astMap);
                     if ([] === $this->layerResolver->getLayersForReference($token)) {
@@ -78,20 +61,18 @@ class UnassignedTokenAnalyser
                     }
                 }
             }
-
             natcasesort($unassignedTokens);
-
             return array_values($unassignedTokens);
         } catch (UnrecognizedTokenException $e) {
-            throw AnalyserException::unrecognizedToken($e);
+            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::unrecognizedToken($e);
         } catch (InvalidLayerDefinitionException $e) {
-            throw AnalyserException::invalidLayerDefinition($e);
+            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::invalidLayerDefinition($e);
         } catch (InvalidCollectorDefinitionException $e) {
-            throw AnalyserException::invalidCollectorDefinition($e);
+            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::invalidCollectorDefinition($e);
         } catch (AstException $e) {
-            throw AnalyserException::failedAstParsing($e);
+            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::failedAstParsing($e);
         } catch (CouldNotParseFileException $e) {
-            throw AnalyserException::couldNotParseFile($e);
+            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::couldNotParseFile($e);
         }
     }
 }

@@ -1,24 +1,22 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Ast\Parser\Extractors;
 
-namespace Qossmic\Deptrac\Core\Ast\Parser\Extractors;
-
-use PhpParser\Node;
-use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
-use Qossmic\Deptrac\Core\Ast\Parser\TypeResolver;
-use Qossmic\Deptrac\Core\Ast\Parser\TypeScope;
-
-class FunctionLikeExtractor implements ReferenceExtractorInterface
+use Deptrac\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeScope;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+class FunctionLikeExtractor implements \Deptrac\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface
 {
-    public function __construct(private readonly TypeResolver $typeResolver) {}
-
-    public function processNode(Node $node, ReferenceBuilder $referenceBuilder, TypeScope $typeScope): void
+    public function __construct(private readonly TypeResolver $typeResolver)
+    {
+    }
+    public function processNode(Node $node, ReferenceBuilder $referenceBuilder, TypeScope $typeScope) : void
     {
         if (!$node instanceof Node\FunctionLike) {
             return;
         }
-
         foreach ($node->getAttrGroups() as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {
                 foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, $attribute->name) as $classLikeName) {

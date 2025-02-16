@@ -1,47 +1,39 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Layer\Collector;
 
-namespace Qossmic\Deptrac\Core\Layer\Collector;
-
-use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
-use Qossmic\Deptrac\Core\Ast\Parser\NikicPhpParser\NikicPhpParser;
-
-final class MethodCollector extends RegexCollector
+use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
+use Deptrac\Deptrac\Core\Ast\Parser\NikicPhpParser\NikicPhpParser;
+final class MethodCollector extends \Deptrac\Deptrac\Core\Layer\Collector\RegexCollector
 {
-    public function __construct(private readonly NikicPhpParser $astParser) {}
-
-    public function satisfy(array $config, TokenReferenceInterface $reference): bool
+    public function __construct(private readonly NikicPhpParser $astParser)
+    {
+    }
+    public function satisfy(array $config, TokenReferenceInterface $reference) : bool
     {
         if (!$reference instanceof ClassLikeReference) {
-            return false;
+            return \false;
         }
-
         $pattern = $this->getValidatedPattern($config);
-
         $classLike = $this->astParser->getNodeForClassLikeReference($reference);
-
         if (null === $classLike) {
-            return false;
+            return \false;
         }
-
         foreach ($classLike->getMethods() as $classMethod) {
-            if (1 === preg_match($pattern, (string) $classMethod->name)) {
-                return true;
+            if (1 === \preg_match($pattern, (string) $classMethod->name)) {
+                return \true;
             }
         }
-
-        return false;
+        return \false;
     }
-
-    protected function getPattern(array $config): string
+    protected function getPattern(array $config) : string
     {
-        if (!isset($config['value']) || !is_string($config['value'])) {
+        if (!isset($config['value']) || !\is_string($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('MethodCollector needs the name configuration.');
         }
-
-        return '/'.$config['value'].'/i';
+        return '/' . $config['value'] . '/i';
     }
 }

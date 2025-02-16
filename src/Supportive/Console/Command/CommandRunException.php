@@ -1,36 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Supportive\Console\Command;
 
-namespace Qossmic\Deptrac\Supportive\Console\Command;
-
-use Qossmic\Deptrac\Contract\ExceptionInterface;
-use Qossmic\Deptrac\Core\Analyser\AnalyserException;
+use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Deptrac\Deptrac\Core\Analyser\AnalyserException;
 use RuntimeException;
-
 final class CommandRunException extends RuntimeException implements ExceptionInterface
 {
-    public static function invalidFormatter(): self
+    public static function invalidFormatter() : self
     {
         return new self('Invalid output formatter selected.');
     }
-
-    public static function finishedWithUncovered(): self
+    public static function finishedWithUncovered() : self
     {
         return new self('Analysis finished, but contains uncovered tokens.');
     }
-
-    public static function finishedWithViolations(): self
+    public static function finishedWithViolations() : self
     {
         return new self('Analysis finished, but contains ruleset violations.');
     }
-
-    public static function failedWithErrors(): self
+    public static function failedWithErrors() : self
     {
         return new self('Analysis failed, due to an error.');
     }
-
-    public static function analyserException(AnalyserException $e): self
+    public static function analyserException(AnalyserException $e) : self
     {
         return new self('Analysis failed.', 0, $e);
     }

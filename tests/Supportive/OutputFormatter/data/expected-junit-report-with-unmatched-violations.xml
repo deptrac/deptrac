@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-    <testsuite id="0" package="" name="Unmatched skipped violations" hostname="localhost" tests="0" failures="0" skipped="0" errors="1" time="0">
-        <error message="Skipped violation &quot;Class1&quot; for &quot;Class2&quot; was not matched." type="WARNING"/>
-    </testsuite>
-</testsuites>

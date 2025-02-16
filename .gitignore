@@ -1,17 +1,3 @@
-vendor/*
-coverage/*
-tools/
-.box_dump/
-/deptrac.phar
-/deptrac.phar.asc
-phpunit.xml
-box.json
-deptrac.version
-junit-report.xml
-.php-cs-fixer.php
-infection.log
-.cache/
-!.cache/.keep
+# we need the vendor
+composer.lock
 
-# downgrade with Rector
-/rector-local

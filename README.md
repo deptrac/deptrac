@@ -10,52 +10,52 @@ your project are truly independent of each other to make them easier to reuse.
 
 Deptrac can be used in a CI pipeline to make sure a pull request does not
 violate any of the architectural rules you defined. With the optional Graphviz
-formatter you can visualize your layers, rules and violations.
+or Mermaidjs formatter you can visualize your layers, rules and violations.
 
 ## Documentation
 
 You can find the documentation in the /docs directory or visit the doc page:
-https://qossmic.github.io/deptrac
+https://deptrac.github.io/deptrac
 
 ## Getting Started
 
 You can install Deptrac via Composer. We recommend using the
-[deptrac-shim](https://github.com/qossmic/deptrac-shim) package for this:
+[deptrac](https://github.com/deptrac/deptrac) package for this:
 
 ```console
-$ composer require --dev qossmic/deptrac-shim
+composer require --dev deptrac/deptrac
 ```
-
-Alternatively, you can also use [PHIVE](docs/index.md#phive) or download the
-[PHAR](docs/index.md#phar) attached to each release on GitHub.
-We strongly advise against using the deptrac package directly as a composer dependency.
-We update dependencies regularly, which might cause disruptions in your project.
 
 Once you have downloaded/installed deptrac, you will need to create a
 [configuration file](docs/index.md#configuration), where you define your layers and
-communication ruleset. This configuration file is written in YAML and, by default,
+communication ruleset. This configuration file is written in YAML or php and, by default,
 is stored with the name `deptrac.yaml` in your project's root directory.
 
 Deptrac can generate a template for you, using the `init` command.
 
 ```console
-$ vendor/bin/deptrac init
+vendor/bin/deptrac init
 ```
 
 When you have this file, you can analyse your code by
 running the `analyse` command:
 
 ```console
-$ vendor/bin/deptrac
+vendor/bin/deptrac
 
 # which is equivalent to
-$ vendor/bin/deptrac analyse --config-file=deptrac.yaml
+vendor/bin/deptrac analyse --config-file=deptrac.yaml
 ```
 
 In order to run Deptrac you need at least PHP 8.1.
 
 You can analyse projects that require an older PHP version as long as
 [nikic/php-parser](https://github.com/nikic/PHP-Parser) can parse it.
+
+
+## How to Contribute
+
+See the [contribution guide](docs/CONTRIBUTING.md) or go to development repository [deptrac/deptrac-src](https://github.com/deptrac/deptrac-src).
 
 ## Further Documentation
 

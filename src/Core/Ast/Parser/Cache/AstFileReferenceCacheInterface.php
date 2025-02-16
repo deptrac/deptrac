@@ -1,12 +1,10 @@
 <?php
 
-namespace Qossmic\Deptrac\Core\Ast\Parser\Cache;
+namespace Deptrac\Deptrac\Core\Ast\Parser\Cache;
 
-use Qossmic\Deptrac\Core\Ast\AstMap\File\FileReference;
-
+use Deptrac\Deptrac\Core\Ast\AstMap\File\FileReference;
 interface AstFileReferenceCacheInterface
 {
-    public function get(string $filepath): ?FileReference;
-
-    public function set(FileReference $fileReference): void;
+    public function get(string $filepath) : ?FileReference;
+    public function set(FileReference $fileReference) : void;
 }

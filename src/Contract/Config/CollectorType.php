@@ -1,10 +1,9 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Config;
 
-namespace Qossmic\Deptrac\Contract\Config;
-
-enum CollectorType: string
+enum CollectorType : string
 {
     // Note: Do not try to refactor to get rid of `TYPE_*` prefix as you cannot have `case CLASS`!!!
     case TYPE_ATTRIBUTE = 'attribute';
@@ -12,6 +11,7 @@ enum CollectorType: string
     case TYPE_CLASS = 'class';
     case TYPE_CLASSLIKE = 'classLike';
     case TYPE_CLASS_NAME_REGEX = 'classNameRegex';
+    case TYPE_TAG_VALUE_REGEX = 'tagValueRegex';
     case TYPE_DIRECTORY = 'directory';
     case TYPE_EXTENDS = 'extends';
     case TYPE_FUNCTION_NAME = 'functionName';
