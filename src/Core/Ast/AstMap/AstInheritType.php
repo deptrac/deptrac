@@ -1,10 +1,9 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Ast\AstMap;
 
-namespace Qossmic\Deptrac\Core\Ast\AstMap;
-
-enum AstInheritType: string
+enum AstInheritType : string
 {
     case EXTENDS = 'Extends';
     case IMPLEMENTS = 'Implements';

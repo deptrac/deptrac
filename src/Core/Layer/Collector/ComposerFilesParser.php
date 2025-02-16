@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Qossmic\Deptrac\Core\Layer\Collector;
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Layer\Collector;
 
 use JsonException;
 use RuntimeException;
-
 class ComposerFilesParser
 {
     /**
@@ -24,7 +22,6 @@ class ComposerFilesParser
      * }
      */
     private array $lockFile;
-
     /**
      * @var array<string, array{
      *     autoload?: array{'psr-0'?: array<string, string>, 'psr-4'?: array<string, string>},
@@ -32,14 +29,13 @@ class ComposerFilesParser
      * }>
      */
     private array $lockedPackages;
-
     /**
      * @throws RuntimeException
      */
     public function __construct(string $lockFile)
     {
-        $contents = file_get_contents($lockFile);
-        if (false === $contents) {
+        $contents = \file_get_contents($lockFile);
+        if (\false === $contents) {
             throw new RuntimeException('Could not load composer.lock file');
         }
         try {
@@ -57,14 +53,13 @@ class ComposerFilesParser
              *     }>,
              * } $jsonDecode
              */
-            $jsonDecode = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
+            $jsonDecode = \json_decode($contents, \true, 512, \JSON_THROW_ON_ERROR);
             $this->lockFile = $jsonDecode;
         } catch (JsonException $exception) {
             throw new RuntimeException('Could not parse composer.lock file', 0, $exception);
         }
         $this->lockedPackages = $this->getPackagesFromLockFile();
     }
-
     /**
      * Resolves an array of package names to an array of namespaces declared by those packages.
      *
@@ -74,42 +69,34 @@ class ComposerFilesParser
      *
      * @throws RuntimeException
      */
-    public function autoloadableNamespacesForRequirements(array $requirements, bool $includeDev): array
+    public function autoloadableNamespacesForRequirements(array $requirements, bool $includeDev) : array
     {
         $namespaces = [[]];
-
         foreach ($requirements as $package) {
-            if (!array_key_exists($package, $this->lockedPackages)) {
-                throw new RuntimeException(sprintf('Could not find a "%s" package', $package));
+            if (!\array_key_exists($package, $this->lockedPackages)) {
+                throw new RuntimeException(\sprintf('Could not find a "%s" package', $package));
             }
-
             $namespaces[] = $this->extractNamespaces($this->lockedPackages[$package], $includeDev);
         }
-
-        return array_merge(...$namespaces);
+        return \array_merge(...$namespaces);
     }
-
     /**
      * @return array<string, array{
      *     autoload?: array{'psr-0'?: array<string, string>, 'psr-4'?: array<string, string>},
      *     autoload-dev?: array{'psr-0'?: array<string, string>, 'psr-4'?: array<string, string>},
      * }>
      */
-    private function getPackagesFromLockFile(): array
+    private function getPackagesFromLockFile() : array
     {
         $lockedPackages = [];
-
         foreach ($this->lockFile['packages'] ?? [] as $package) {
             $lockedPackages[$package['name']] = $package;
         }
-
         foreach ($this->lockFile['packages-dev'] ?? [] as $package) {
             $lockedPackages[$package['name']] = $package;
         }
-
         return $lockedPackages;
     }
-
     /**
      * @param array{
      *     autoload?: array{'psr-0'?: array<string, string>, 'psr-4'?: array<string, string>},
@@ -118,25 +105,23 @@ class ComposerFilesParser
      *
      * @return string[]
      */
-    private function extractNamespaces(array $package, bool $includeDev): array
+    private function extractNamespaces(array $package, bool $includeDev) : array
     {
         $namespaces = [];
-        foreach (array_keys($package['autoload']['psr-0'] ?? []) as $namespace) {
+        foreach (\array_keys($package['autoload']['psr-0'] ?? []) as $namespace) {
             $namespaces[] = $namespace;
         }
-        foreach (array_keys($package['autoload']['psr-4'] ?? []) as $namespace) {
+        foreach (\array_keys($package['autoload']['psr-4'] ?? []) as $namespace) {
             $namespaces[] = $namespace;
         }
-
         if ($includeDev) {
-            foreach (array_keys($package['autoload-dev']['psr-0'] ?? []) as $namespace) {
+            foreach (\array_keys($package['autoload-dev']['psr-0'] ?? []) as $namespace) {
                 $namespaces[] = $namespace;
             }
-            foreach (array_keys($package['autoload-dev']['psr-4'] ?? []) as $namespace) {
+            foreach (\array_keys($package['autoload-dev']['psr-4'] ?? []) as $namespace) {
                 $namespaces[] = $namespace;
             }
         }
-
         return $namespaces;
     }
 }

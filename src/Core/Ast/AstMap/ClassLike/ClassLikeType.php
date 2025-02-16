@@ -1,19 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Ast\AstMap\ClassLike;
 
-namespace Qossmic\Deptrac\Core\Ast\AstMap\ClassLike;
-
-use Qossmic\Deptrac\Contract\Ast\TokenInterface;
-
-enum ClassLikeType: string implements TokenInterface
+use Deptrac\Deptrac\Contract\Ast\TokenInterface;
+enum ClassLikeType : string implements \Deptrac\Deptrac\Contract\Ast\TokenInterface
 {
     case TYPE_CLASSLIKE = 'classLike';
     case TYPE_CLASS = 'class';
     case TYPE_INTERFACE = 'interface';
     case TYPE_TRAIT = 'trait';
-
-    public function toString(): string
+    public function toString() : string
     {
         return $this->value;
     }

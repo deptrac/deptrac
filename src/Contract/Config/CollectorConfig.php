@@ -1,27 +1,20 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Qossmic\Deptrac\Contract\Config;
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Config;
 
 abstract class CollectorConfig
 {
-    protected bool $private = false;
-    protected CollectorType $collectorType;
-
-    public function private(): self
+    protected bool $private = \false;
+    protected \Deptrac\Deptrac\Contract\Config\CollectorType $collectorType;
+    public function private() : self
     {
-        $this->private = true;
-
+        $this->private = \true;
         return $this;
     }
-
-    /** @return array{'type': string, 'private': bool} */
-    public function toArray(): array
+    /** @return array{'type': string, 'private': bool, ...} */
+    public function toArray() : array
     {
-        return [
-            'type' => $this->collectorType->value,
-            'private' => $this->private,
-        ];
+        return ['type' => $this->collectorType->value, 'private' => $this->private];
     }
 }

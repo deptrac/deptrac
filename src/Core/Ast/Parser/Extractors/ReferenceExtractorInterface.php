@@ -1,14 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Ast\Parser\Extractors;
 
-namespace Qossmic\Deptrac\Core\Ast\Parser\Extractors;
-
-use PhpParser\Node;
-use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
-use Qossmic\Deptrac\Core\Ast\Parser\TypeScope;
-
+use Deptrac\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeScope;
+use DEPTRAC_INTERNAL\PhpParser\Node;
 interface ReferenceExtractorInterface
 {
-    public function processNode(Node $node, ReferenceBuilder $referenceBuilder, TypeScope $typeScope): void;
+    public function processNode(Node $node, ReferenceBuilder $referenceBuilder, TypeScope $typeScope) : void;
 }

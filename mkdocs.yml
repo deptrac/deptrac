@@ -1,9 +1,9 @@
 site_name: Deptrac
 site_description: "Deptrac: keep your architecture clean"
-site_url: https://qossmic.github.io/deptrac
+site_url: https://deptrac.github.io
 
-repo_name: 'qossmic/deptrac'
-repo_url: 'https://github.com/qossmic/deptrac'
+repo_name: 'deptrac/deptrac'
+repo_url: 'https://github.com/deptrac/deptrac'
 edit_uri: ''
 
 docs_dir: docs
@@ -28,9 +28,9 @@ nav:
 
 theme:
   name: material
-  logo: qossmic.png
+  logo: deptrac.png
   extra:
-    homepage: https://qossmic.com
+    homepage: https://deptrac.com
   icon:
     repo: fontawesome/brands/github
   palette:

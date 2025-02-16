@@ -1,6 +1,0 @@
-parameters:
-	ignoreErrors:
-		-
-			message: "#^Method Qossmic\\\\Deptrac\\\\Contract\\\\Result\\\\OutputResult\\:\\:allOf\\(\\) should return list\\<T of Qossmic\\\\Deptrac\\\\Contract\\\\Result\\\\RuleInterface\\> but returns list\\<Qossmic\\\\Deptrac\\\\Contract\\\\Result\\\\RuleInterface\\>\\.$#"
-			count: 1
-			path: src/Contract/Result/OutputResult.php

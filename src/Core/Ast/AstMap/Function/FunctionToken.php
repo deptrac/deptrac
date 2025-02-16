@@ -1,31 +1,27 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Ast\AstMap\Function;
 
-namespace Qossmic\Deptrac\Core\Ast\AstMap\Function;
-
-use Qossmic\Deptrac\Contract\Ast\TokenInterface;
-
+use Deptrac\Deptrac\Contract\Ast\TokenInterface;
 final class FunctionToken implements TokenInterface
 {
-    private function __construct(public readonly string $functionName) {}
-
-    public static function fromFQCN(string $functionName): self
+    private function __construct(public readonly string $functionName)
     {
-        return new self(ltrim($functionName, '\\'));
     }
-
-    public function match(string $pattern): bool
+    public static function fromFQCN(string $functionName) : self
     {
-        return 1 === preg_match($pattern, $this->functionName);
+        return new self(\ltrim($functionName, '\\'));
     }
-
-    public function toString(): string
+    public function match(string $pattern) : bool
     {
-        return $this->functionName.'()';
+        return 1 === \preg_match($pattern, $this->functionName);
     }
-
-    public function equals(self $functionName): bool
+    public function toString() : string
+    {
+        return $this->functionName . '()';
+    }
+    public function equals(self $functionName) : bool
     {
         return $this->functionName === $functionName->functionName;
     }

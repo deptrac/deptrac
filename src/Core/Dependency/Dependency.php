@@ -1,48 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Dependency;
 
-namespace Qossmic\Deptrac\Core\Dependency;
-
-use Qossmic\Deptrac\Contract\Ast\DependencyType;
-use Qossmic\Deptrac\Contract\Ast\FileOccurrence;
-use Qossmic\Deptrac\Contract\Ast\TokenInterface;
-use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
-
+use Deptrac\Deptrac\Contract\Ast\DependencyContext;
+use Deptrac\Deptrac\Contract\Ast\TokenInterface;
+use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
 class Dependency implements DependencyInterface
 {
-    public function __construct(
-        private readonly TokenInterface $depender,
-        private readonly TokenInterface $dependent,
-        private readonly FileOccurrence $fileOccurrence,
-        private readonly DependencyType $dependencyType
-    ) {}
-
-    public function serialize(): array
+    public function __construct(private readonly TokenInterface $depender, private readonly TokenInterface $dependent, private readonly DependencyContext $context)
     {
-        return [[
-            'name' => $this->dependent->toString(),
-            'line' => $this->fileOccurrence->line,
-        ]];
     }
-
-    public function getDepender(): TokenInterface
+    public function serialize() : array
+    {
+        return [['name' => $this->dependent->toString(), 'line' => $this->context->fileOccurrence->line]];
+    }
+    public function getDepender() : TokenInterface
     {
         return $this->depender;
     }
-
-    public function getDependent(): TokenInterface
+    public function getDependent() : TokenInterface
     {
         return $this->dependent;
     }
-
-    public function getFileOccurrence(): FileOccurrence
+    public function getContext() : DependencyContext
     {
-        return $this->fileOccurrence;
-    }
-
-    public function getType(): DependencyType
-    {
-        return $this->dependencyType;
+        return $this->context;
     }
 }

@@ -1,15 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Layer;
 
-namespace Qossmic\Deptrac\Contract\Layer;
-
-use Qossmic\Deptrac\Contract\ExceptionInterface;
+use Deptrac\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
-
 use function implode;
 use function sprintf;
-
 /**
  * Exception when there are circular dependencies between layers.
  *
@@ -23,7 +20,7 @@ final class CircularReferenceException extends RuntimeException implements Excep
     /**
      * @param list<string> $others
      */
-    public static function circularLayerDependency(string $layer, array $others): self
+    public static function circularLayerDependency(string $layer, array $others) : self
     {
         return new self(sprintf('Circular ruleset dependency for layer %s depending on: %s', $layer, implode('->', $others)));
     }

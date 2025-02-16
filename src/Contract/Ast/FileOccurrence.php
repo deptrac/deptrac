@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Qossmic\Deptrac\Contract\Ast;
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Ast;
 
 /**
  * @psalm-immutable
@@ -11,8 +10,7 @@ namespace Qossmic\Deptrac\Contract\Ast;
  */
 final class FileOccurrence
 {
-    public function __construct(
-        public readonly string $filepath,
-        public readonly int $line
-    ) {}
+    public function __construct(public readonly string $filepath, public readonly int $line)
+    {
+    }
 }

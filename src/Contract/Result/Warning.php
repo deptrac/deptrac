@@ -1,11 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Qossmic\Deptrac\Contract\Result;
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Result;
 
 use Stringable;
-
 /**
  * @psalm-immutable
  *
@@ -14,23 +12,17 @@ use Stringable;
  */
 final class Warning implements Stringable
 {
-    public function __construct(private readonly string $message) {}
-
+    public function __construct(private readonly string $message)
+    {
+    }
     /**
      * @param string[] $layerNames
      */
-    public static function tokenIsInMoreThanOneLayer(
-        string $tokenName,
-        array $layerNames
-    ): self {
-        return new self(sprintf(
-            '%s is in more than one layer ["%s"]. It is recommended that one token should only be in one layer.',
-            $tokenName,
-            implode('", "', $layerNames)
-        ));
+    public static function tokenIsInMoreThanOneLayer(string $tokenName, array $layerNames) : self
+    {
+        return new self(\sprintf('%s is in more than one layer ["%s"]. It is recommended that one token should only be in one layer.', $tokenName, \implode('", "', $layerNames)));
     }
-
-    public function __toString(): string
+    public function __toString() : string
     {
         return $this->message;
     }

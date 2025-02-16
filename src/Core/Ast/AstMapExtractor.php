@@ -1,31 +1,26 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Ast;
 
-namespace Qossmic\Deptrac\Core\Ast;
-
-use Qossmic\Deptrac\Core\Ast\AstMap\AstMap;
-use Qossmic\Deptrac\Core\InputCollector\InputCollectorInterface;
-use Qossmic\Deptrac\Core\InputCollector\InputException;
-
+use Deptrac\Deptrac\Core\Ast\AstMap\AstMap;
+use Deptrac\Deptrac\Core\InputCollector\InputCollectorInterface;
+use Deptrac\Deptrac\Core\InputCollector\InputException;
 class AstMapExtractor
 {
     private ?AstMap $astMapCache = null;
-
-    public function __construct(
-        private readonly InputCollectorInterface $inputCollector,
-        private readonly AstLoader $astLoader
-    ) {}
-
+    public function __construct(private readonly InputCollectorInterface $inputCollector, private readonly \Deptrac\Deptrac\Core\Ast\AstLoader $astLoader)
+    {
+    }
     /**
      * @throws AstException
      */
-    public function extract(): AstMap
+    public function extract() : AstMap
     {
         try {
             return $this->astMapCache ??= $this->astLoader->createAstMap($this->inputCollector->collect());
         } catch (InputException $exception) {
-            throw AstException::couldNotCollectFiles($exception);
+            throw \Deptrac\Deptrac\Core\Ast\AstException::couldNotCollectFiles($exception);
         }
     }
 }

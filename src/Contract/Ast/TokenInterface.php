@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Qossmic\Deptrac\Contract\Ast;
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Ast;
 
 /**
  * Represents an AST-Token, which can be referenced as dependency.
  */
 interface TokenInterface
 {
-    public function toString(): string;
+    public function toString() : string;
 }

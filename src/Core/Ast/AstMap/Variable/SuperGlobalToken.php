@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Ast\AstMap\Variable;
 
-namespace Qossmic\Deptrac\Core\Ast\AstMap\Variable;
-
-use Qossmic\Deptrac\Contract\Ast\TokenInterface;
-
-enum SuperGlobalToken: string implements TokenInterface
+use Deptrac\Deptrac\Contract\Ast\TokenInterface;
+enum SuperGlobalToken : string implements \Deptrac\Deptrac\Contract\Ast\TokenInterface
 {
     case GLOBALS = 'GLOBALS';
     case SERVER = '_SERVER';
@@ -17,17 +15,15 @@ enum SuperGlobalToken: string implements TokenInterface
     case SESSION = '_SESSION';
     case REQUEST = '_REQUEST';
     case ENV = '_ENV';
-
     /**
      * @return list<string>
      */
-    public static function allowedNames(): array
+    public static function allowedNames() : array
     {
-        return array_map(static fn (self $token): string => $token->value, self::cases());
+        return \array_map(static fn(self $token): string => $token->value, self::cases());
     }
-
-    public function toString(): string
+    public function toString() : string
     {
-        return '$'.$this->value;
+        return '$' . $this->value;
     }
 }

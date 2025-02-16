@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Ast\Parser;
 
-namespace Qossmic\Deptrac\Core\Ast\Parser;
-
-use Qossmic\Deptrac\Contract\Ast\CouldNotParseFileException;
-use Qossmic\Deptrac\Core\Ast\AstMap\File\FileReference;
-
+use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
+use Deptrac\Deptrac\Core\Ast\AstMap\File\FileReference;
 interface ParserInterface
 {
     /**
      * @throws CouldNotParseFileException
      */
-    public function parseFile(string $file): FileReference;
+    public function parseFile(string $file) : FileReference;
 }

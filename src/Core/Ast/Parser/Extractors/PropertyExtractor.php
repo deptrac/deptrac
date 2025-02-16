@@ -1,25 +1,23 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Ast\Parser\Extractors;
 
-namespace Qossmic\Deptrac\Core\Ast\Parser\Extractors;
-
-use PhpParser\Node;
-use PhpParser\Node\Stmt\Property;
-use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
-use Qossmic\Deptrac\Core\Ast\Parser\TypeResolver;
-use Qossmic\Deptrac\Core\Ast\Parser\TypeScope;
-
-class PropertyExtractor implements ReferenceExtractorInterface
+use Deptrac\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeScope;
+use DEPTRAC_INTERNAL\PhpParser\Node;
+use DEPTRAC_INTERNAL\PhpParser\Node\Stmt\Property;
+class PropertyExtractor implements \Deptrac\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface
 {
-    public function __construct(private readonly TypeResolver $typeResolver) {}
-
-    public function processNode(Node $node, ReferenceBuilder $referenceBuilder, TypeScope $typeScope): void
+    public function __construct(private readonly TypeResolver $typeResolver)
+    {
+    }
+    public function processNode(Node $node, ReferenceBuilder $referenceBuilder, TypeScope $typeScope) : void
     {
         if (!$node instanceof Property) {
             return;
         }
-
         foreach ($node->attrGroups as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {
                 foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, $attribute->name) as $classLikeName) {

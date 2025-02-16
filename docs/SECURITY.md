@@ -7,7 +7,7 @@ maintainers.
 
 If you think you have found a security issue in Deptrac, we ask you not to use
 the bug tracker and to not publish it publicly. Instead, all security issues
-must be sent to [security@qossmic.com](mailto:security@qossmic.com?subject=deptrac).
+must be sent to [security@deptrac.com](mailto:security@deptrac.com?subject=deptrac).
 
 ## Security bug bounties
 

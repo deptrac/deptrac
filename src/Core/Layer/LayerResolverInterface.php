@@ -1,14 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Core\Layer;
 
-namespace Qossmic\Deptrac\Core\Layer;
-
-use Qossmic\Deptrac\Contract\Ast\CouldNotParseFileException;
-use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use Qossmic\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
-
+use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
+use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Deptrac\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
 interface LayerResolverInterface
 {
     /**
@@ -18,14 +16,15 @@ interface LayerResolverInterface
      * @throws InvalidCollectorDefinitionException
      * @throws CouldNotParseFileException
      */
-    public function getLayersForReference(TokenReferenceInterface $reference): array;
-
+    public function getLayersForReference(TokenReferenceInterface $reference) : array;
     /**
      * @throws InvalidLayerDefinitionException
      * @throws InvalidCollectorDefinitionException
      * @throws CouldNotParseFileException
      */
-    public function isReferenceInLayer(string $layer, TokenReferenceInterface $reference): bool;
-
-    public function has(string $layer): bool;
+    public function isReferenceInLayer(string $layer, TokenReferenceInterface $reference) : bool;
+    /**
+     * @throws InvalidLayerDefinitionException
+     */
+    public function has(string $layer) : bool;
 }

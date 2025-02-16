@@ -16,7 +16,7 @@ There are several ways you can extend Deptrac:
 
 > **Note**
 > In examples where FQCN is not specified, the base
-> namespace `Qossmic\Deptrac\Contract\` is omitted for readability.
+> namespace `Deptrac\Deptrac\Contract\` is omitted for readability.
 
 ## Output Formatters
 
@@ -51,13 +51,13 @@ this event:
 ```php
 namespace App\DeptracExtension;
 
-use Qossmic\Deptrac\Contract\Analyser\ProcessEvent;
+use Deptrac\Deptrac\Contract\Analyser\ProcessEvent;
 
 class IgnoreDependenciesOnShouldNotHappenException implements \Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     public function onProcessEvent(ProcessEvent $event): void
     {
-        if ("Qossmic\Deptrac\Contract\ExceptionInterface" === $event->dependentReference->getToken()->toString()) {
+        if ("Deptrac\Deptrac\Contract\ExceptionInterface" === $event->dependentReference->getToken()->toString()) {
             $event->stopPropagation();
         }
     }

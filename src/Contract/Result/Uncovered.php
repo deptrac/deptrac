@@ -1,24 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Deptrac\Deptrac\Contract\Result;
 
-namespace Qossmic\Deptrac\Contract\Result;
-
-use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
-
+use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
 /**
  * @psalm-immutable
  *
  * Represents a dependency that is NOT covered by the current configuration.
  */
-final class Uncovered implements RuleInterface
+final class Uncovered implements \Deptrac\Deptrac\Contract\Result\RuleInterface
 {
-    public function __construct(
-        private readonly DependencyInterface $dependency,
-        public readonly string $layer
-    ) {}
-
-    public function getDependency(): DependencyInterface
+    public function __construct(private readonly DependencyInterface $dependency, public readonly string $layer)
+    {
+    }
+    public function getDependency() : DependencyInterface
     {
         return $this->dependency;
     }
