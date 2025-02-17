@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\Console\Subscriber;
+namespace Deptrac\Deptrac\Supportive\Console\Subscriber;
 
-use Qossmic\Deptrac\Contract\Ast\AstFileAnalysedEvent;
-use Qossmic\Deptrac\Contract\Ast\AstFileSyntaxErrorEvent;
-use Qossmic\Deptrac\Contract\Ast\PostCreateAstMapEvent;
-use Qossmic\Deptrac\Contract\Ast\PreCreateAstMapEvent;
-use Qossmic\Deptrac\Contract\Dependency\PostEmitEvent;
-use Qossmic\Deptrac\Contract\Dependency\PostFlattenEvent;
-use Qossmic\Deptrac\Contract\Dependency\PreEmitEvent;
-use Qossmic\Deptrac\Contract\Dependency\PreFlattenEvent;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
-use Qossmic\Deptrac\Supportive\Time\Stopwatch;
-use Qossmic\Deptrac\Supportive\Time\StopwatchException;
+use Deptrac\Deptrac\Contract\Ast\AstFileAnalysedEvent;
+use Deptrac\Deptrac\Contract\Ast\AstFileSyntaxErrorEvent;
+use Deptrac\Deptrac\Contract\Ast\PostCreateAstMapEvent;
+use Deptrac\Deptrac\Contract\Ast\PreCreateAstMapEvent;
+use Deptrac\Deptrac\Contract\Dependency\PostEmitEvent;
+use Deptrac\Deptrac\Contract\Dependency\PostFlattenEvent;
+use Deptrac\Deptrac\Contract\Dependency\PreEmitEvent;
+use Deptrac\Deptrac\Contract\Dependency\PreFlattenEvent;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
+use Deptrac\Deptrac\Supportive\Time\Stopwatch;
+use Deptrac\Deptrac\Supportive\Time\StopwatchException;
 use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use function sprintf;
 class ConsoleSubscriber implements EventSubscriberInterface

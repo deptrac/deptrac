@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\DependencyInjection;
+namespace Deptrac\Deptrac\Supportive\DependencyInjection;
 
-use Qossmic\Deptrac\Contract\Config\EmitterType;
+use Deptrac\Deptrac\Contract\Config\EmitterType;
 use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ContainerBuilder;
 use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\Extension;
 use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -16,7 +16,7 @@ class DeptracExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container) : void
     {
-        $configuration = new \Qossmic\Deptrac\Supportive\DependencyInjection\Configuration();
+        $configuration = new \Deptrac\Deptrac\Supportive\DependencyInjection\Configuration();
         $configs = $this->processConfiguration($configuration, $configs);
         $container->setParameter('paths', $configs['paths']);
         $container->setParameter('exclude_files', $configs['exclude_files']);

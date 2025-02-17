@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\OutputFormatter;
+namespace Deptrac\Deptrac\Supportive\OutputFormatter;
 
 use Exception;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInterface;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
-use Qossmic\Deptrac\Contract\Result\OutputResult;
-use Qossmic\Deptrac\Contract\Result\SkippedViolation;
-use Qossmic\Deptrac\Contract\Result\Uncovered;
-use Qossmic\Deptrac\Contract\Result\Violation;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInterface;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
+use Deptrac\Deptrac\Contract\Result\OutputResult;
+use Deptrac\Deptrac\Contract\Result\SkippedViolation;
+use Deptrac\Deptrac\Contract\Result\Uncovered;
+use Deptrac\Deptrac\Contract\Result\Violation;
 use function json_encode;
 use function json_last_error;
 use function sprintf;

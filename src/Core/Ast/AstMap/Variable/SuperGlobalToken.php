@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Ast\AstMap\Variable;
+namespace Deptrac\Deptrac\Core\Ast\AstMap\Variable;
 
-use Qossmic\Deptrac\Contract\Ast\TokenInterface;
-enum SuperGlobalToken : string implements \Qossmic\Deptrac\Contract\Ast\TokenInterface
+use Deptrac\Deptrac\Contract\Ast\TokenInterface;
+enum SuperGlobalToken : string implements \Deptrac\Deptrac\Contract\Ast\TokenInterface
 {
     case GLOBALS = 'GLOBALS';
     case SERVER = '_SERVER';

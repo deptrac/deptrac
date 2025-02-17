@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Layer\Collector;
+namespace Deptrac\Deptrac\Core\Layer\Collector;
 
-use Qossmic\Deptrac\Contract\Ast\CouldNotParseFileException;
-use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Qossmic\Deptrac\Contract\Layer\CollectorInterface;
-use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
+use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Deptrac\Deptrac\Contract\Layer\CollectorInterface;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use RuntimeException;
 final class ComposerCollector implements CollectorInterface
 {
@@ -26,7 +26,7 @@ final class ComposerCollector implements CollectorInterface
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('ComposerCollector needs the list of packages as string.');
         }
         try {
-            $this->parser[$config['composerLockPath']] ??= new \Qossmic\Deptrac\Core\Layer\Collector\ComposerFilesParser($config['composerLockPath']);
+            $this->parser[$config['composerLockPath']] ??= new \Deptrac\Deptrac\Core\Layer\Collector\ComposerFilesParser($config['composerLockPath']);
             $parser = $this->parser[$config['composerLockPath']];
         } catch (RuntimeException $exception) {
             throw new CouldNotParseFileException('Could not parse composer files.', 0, $exception);

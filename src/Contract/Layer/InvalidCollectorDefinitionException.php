@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\Layer;
+namespace Deptrac\Deptrac\Contract\Layer;
 
 use DEPTRAC_INTERNAL\Psr\Container\ContainerExceptionInterface;
-use Qossmic\Deptrac\Contract\ExceptionInterface;
+use Deptrac\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 use function implode;
 /**
@@ -27,7 +27,7 @@ final class InvalidCollectorDefinitionException extends RuntimeException impleme
     }
     public static function unsupportedClass(string $id, mixed $collector) : self
     {
-        $message = \sprintf('Type "%s" is not valid collector (expected "%s", but is "%s").', $id, \Qossmic\Deptrac\Contract\Layer\CollectorInterface::class, \get_debug_type($collector));
+        $message = \sprintf('Type "%s" is not valid collector (expected "%s", but is "%s").', $id, \Deptrac\Deptrac\Contract\Layer\CollectorInterface::class, \get_debug_type($collector));
         return new self($message);
     }
     public static function invalidCollectorConfiguration(string $message) : self

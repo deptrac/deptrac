@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Dependency\Emitter;
+namespace Deptrac\Deptrac\Core\Dependency\Emitter;
 
-use Qossmic\Deptrac\Core\Ast\AstMap\AstMap;
-use Qossmic\Deptrac\Core\Dependency\DependencyList;
+use Deptrac\Deptrac\Core\Ast\AstMap\AstMap;
+use Deptrac\Deptrac\Core\Dependency\DependencyList;
 interface DependencyEmitterInterface
 {
     public function getName() : string;

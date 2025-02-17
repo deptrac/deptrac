@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace DEPTRAC_INTERNAL;
 
-use Qossmic\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceCacheInterface;
-use Qossmic\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceDeferredCacheInterface;
-use Qossmic\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceFileCache;
-use Qossmic\Deptrac\Core\Ast\Parser\Cache\CacheableFileSubscriber;
-use Qossmic\Deptrac\Supportive\Console\Application;
+use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceCacheInterface;
+use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceDeferredCacheInterface;
+use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceFileCache;
+use Deptrac\Deptrac\Core\Ast\Parser\Cache\CacheableFileSubscriber;
+use Deptrac\Deptrac\Supportive\Console\Application;
 use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use function DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (ContainerConfigurator $container) : void {

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\Console\Command;
+namespace Deptrac\Deptrac\Supportive\Console\Command;
 
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
-use Qossmic\Deptrac\Contract\Result\Uncovered;
-use Qossmic\Deptrac\Core\Analyser\AnalyserException;
-use Qossmic\Deptrac\Core\Analyser\LayerDependenciesAnalyser;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
+use Deptrac\Deptrac\Contract\Result\Uncovered;
+use Deptrac\Deptrac\Core\Analyser\AnalyserException;
+use Deptrac\Deptrac\Core\Analyser\LayerDependenciesAnalyser;
 /**
  * @internal Should only be used by DebugDependenciesCommand
  */
@@ -26,7 +26,7 @@ final class DebugDependenciesRunner
                 $output->getStyle()->table([$targetLayer], \array_map(fn(Uncovered $violation): array => $this->formatRow($violation), $violations));
             }
         } catch (AnalyserException $e) {
-            throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($e);
+            throw \Deptrac\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($e);
         }
     }
     /**

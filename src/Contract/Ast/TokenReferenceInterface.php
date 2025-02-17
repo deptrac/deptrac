@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\Ast;
+namespace Deptrac\Deptrac\Contract\Ast;
 
 /**
  * Represents the AST-Token and its location.
@@ -9,5 +9,5 @@ namespace Qossmic\Deptrac\Contract\Ast;
 interface TokenReferenceInterface
 {
     public function getFilepath() : ?string;
-    public function getToken() : \Qossmic\Deptrac\Contract\Ast\TokenInterface;
+    public function getToken() : \Deptrac\Deptrac\Contract\Ast\TokenInterface;
 }

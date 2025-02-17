@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Ast\AstMap;
+namespace Deptrac\Deptrac\Core\Ast\AstMap;
 
-use Qossmic\Deptrac\Contract\Ast\DependencyContext;
-use Qossmic\Deptrac\Contract\Ast\TokenInterface;
+use Deptrac\Deptrac\Contract\Ast\DependencyContext;
+use Deptrac\Deptrac\Contract\Ast\TokenInterface;
 /**
  * @psalm-immutable
  */

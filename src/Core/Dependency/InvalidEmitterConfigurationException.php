@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Dependency;
+namespace Deptrac\Deptrac\Core\Dependency;
 
-use Qossmic\Deptrac\Contract\ExceptionInterface;
-use Qossmic\Deptrac\Core\Dependency\Emitter\DependencyEmitterInterface;
+use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Deptrac\Deptrac\Core\Dependency\Emitter\DependencyEmitterInterface;
 use RuntimeException;
 class InvalidEmitterConfigurationException extends RuntimeException implements ExceptionInterface
 {

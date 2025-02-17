@@ -10,7 +10,7 @@ return array(
     'Symfony\\Polyfill\\Intl\\Normalizer\\' => array($vendorDir . '/symfony/polyfill-intl-normalizer'),
     'Symfony\\Polyfill\\Intl\\Grapheme\\' => array($vendorDir . '/symfony/polyfill-intl-grapheme'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
-    'Qossmic\\Deptrac\\' => array($baseDir . '/src'),
+    'Deptrac\\Deptrac\\' => array($baseDir . '/src'),
     'DEPTRAC_INTERNAL\\phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
     'DEPTRAC_INTERNAL\\phpDocumentor\\GraphViz\\PHPStan\\' => array($vendorDir . '/phpdocumentor/graphviz/src/phpDocumentor/PHPStan'),
     'DEPTRAC_INTERNAL\\phpDocumentor\\GraphViz\\' => array($vendorDir . '/phpdocumentor/graphviz/src/phpDocumentor/GraphViz'),

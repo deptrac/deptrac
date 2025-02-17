@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\Console\Command;
+namespace Deptrac\Deptrac\Supportive\Console\Command;
 
-use Qossmic\Deptrac\Supportive\Console\Symfony\Style;
-use Qossmic\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
+use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Command\Command;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputArgument;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputInterface;
@@ -14,7 +14,7 @@ class DebugDependenciesCommand extends Command
 {
     public static $defaultName = 'debug:dependencies';
     public static $defaultDescription = 'List layer dependencies';
-    public function __construct(private readonly \Qossmic\Deptrac\Supportive\Console\Command\DebugDependenciesRunner $runner)
+    public function __construct(private readonly \Deptrac\Deptrac\Supportive\Console\Command\DebugDependenciesRunner $runner)
     {
         parent::__construct();
     }
@@ -36,7 +36,7 @@ class DebugDependenciesCommand extends Command
             /** @var string $layer */
             $layer = $input->getArgument('layer');
             $this->runner->run($symfonyOutput, $layer, $target);
-        } catch (\Qossmic\Deptrac\Supportive\Console\Command\CommandRunException $exception) {
+        } catch (\Deptrac\Deptrac\Supportive\Console\Command\CommandRunException $exception) {
             $outputStyle->error($exception->getMessage());
             return self::FAILURE;
         }

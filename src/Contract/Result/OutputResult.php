@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\Result;
+namespace Deptrac\Deptrac\Contract\Result;
 
-use Qossmic\Deptrac\Contract\Analyser\AnalysisResult;
+use Deptrac\Deptrac\Contract\Analyser\AnalysisResult;
 use function count;
 /**
  * @psalm-immutable
@@ -53,7 +53,7 @@ final class OutputResult
      */
     public function violations() : array
     {
-        return $this->allOf(\Qossmic\Deptrac\Contract\Result\Violation::class);
+        return $this->allOf(\Deptrac\Deptrac\Contract\Result\Violation::class);
     }
     public function hasViolations() : bool
     {
@@ -64,14 +64,14 @@ final class OutputResult
      */
     public function skippedViolations() : array
     {
-        return $this->allOf(\Qossmic\Deptrac\Contract\Result\SkippedViolation::class);
+        return $this->allOf(\Deptrac\Deptrac\Contract\Result\SkippedViolation::class);
     }
     /**
      * @return list<Uncovered>
      */
     public function uncovered() : array
     {
-        return $this->allOf(\Qossmic\Deptrac\Contract\Result\Uncovered::class);
+        return $this->allOf(\Deptrac\Deptrac\Contract\Result\Uncovered::class);
     }
     public function hasUncovered() : bool
     {
@@ -82,7 +82,7 @@ final class OutputResult
      */
     public function allowed() : array
     {
-        return $this->allOf(\Qossmic\Deptrac\Contract\Result\Allowed::class);
+        return $this->allOf(\Deptrac\Deptrac\Contract\Result\Allowed::class);
     }
     public function hasErrors() : bool
     {

@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Dependency\Emitter;
+namespace Deptrac\Deptrac\Core\Dependency\Emitter;
 
-use Qossmic\Deptrac\Contract\Ast\DependencyType;
-use Qossmic\Deptrac\Core\Ast\AstMap\AstMap;
-use Qossmic\Deptrac\Core\Ast\AstMap\DependencyToken;
-use Qossmic\Deptrac\Core\Dependency\Dependency;
-use Qossmic\Deptrac\Core\Dependency\DependencyList;
+use Deptrac\Deptrac\Contract\Ast\DependencyType;
+use Deptrac\Deptrac\Core\Ast\AstMap\AstMap;
+use Deptrac\Deptrac\Core\Ast\AstMap\DependencyToken;
+use Deptrac\Deptrac\Core\Dependency\Dependency;
+use Deptrac\Deptrac\Core\Dependency\DependencyList;
 use function array_map;
 use function array_merge;
 use function explode;
-final class UsesDependencyEmitter implements \Qossmic\Deptrac\Core\Dependency\Emitter\DependencyEmitterInterface
+final class UsesDependencyEmitter implements \Deptrac\Deptrac\Core\Dependency\Emitter\DependencyEmitterInterface
 {
     public function getName() : string
     {
@@ -21,7 +21,7 @@ final class UsesDependencyEmitter implements \Qossmic\Deptrac\Core\Dependency\Em
     {
         $references = array_merge($astMap->getClassLikeReferences(), $astMap->getFunctionReferences());
         $referencesFQDN = array_map(static fn($ref): string => $ref->getToken()->toString(), $references);
-        $FQDNIndex = new \Qossmic\Deptrac\Core\Dependency\Emitter\FQDNIndexNode();
+        $FQDNIndex = new \Deptrac\Deptrac\Core\Dependency\Emitter\FQDNIndexNode();
         foreach ($referencesFQDN as $reference) {
             $path = explode('\\', $reference);
             $FQDNIndex->setNestedNode($path);
@@ -36,7 +36,7 @@ final class UsesDependencyEmitter implements \Qossmic\Deptrac\Core\Dependency\Em
             }
         }
     }
-    private function isFQDN(DependencyToken $dependency, \Qossmic\Deptrac\Core\Dependency\Emitter\FQDNIndexNode $FQDNIndex) : bool
+    private function isFQDN(DependencyToken $dependency, \Deptrac\Deptrac\Core\Dependency\Emitter\FQDNIndexNode $FQDNIndex) : bool
     {
         $dependencyFQDN = $dependency->token->toString();
         $path = explode('\\', $dependencyFQDN);

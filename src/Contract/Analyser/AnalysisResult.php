@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\Analyser;
+namespace Deptrac\Deptrac\Contract\Analyser;
 
-use Qossmic\Deptrac\Contract\Result\Error;
-use Qossmic\Deptrac\Contract\Result\RuleInterface;
-use Qossmic\Deptrac\Contract\Result\Warning;
+use Deptrac\Deptrac\Contract\Result\Error;
+use Deptrac\Deptrac\Contract\Result\RuleInterface;
+use Deptrac\Deptrac\Contract\Result\Warning;
 use function spl_object_id;
 /**
  * Describes the result of a source code analysis.

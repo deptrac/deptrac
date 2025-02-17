@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Ast\AstMap;
+namespace Deptrac\Deptrac\Core\Ast\AstMap;
 
 enum AstInheritType : string
 {

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\Console\Command;
+namespace Deptrac\Deptrac\Supportive\Console\Command;
 
-use Qossmic\Deptrac\Supportive\File\Dumper as ConfigurationDumper;
-use Qossmic\Deptrac\Supportive\File\Exception\FileAlreadyExistsException;
-use Qossmic\Deptrac\Supportive\File\Exception\FileNotExistsException;
-use Qossmic\Deptrac\Supportive\File\Exception\FileNotWritableException;
-use Qossmic\Deptrac\Supportive\File\Exception\IOException;
+use Deptrac\Deptrac\Supportive\File\Dumper as ConfigurationDumper;
+use Deptrac\Deptrac\Supportive\File\Exception\FileAlreadyExistsException;
+use Deptrac\Deptrac\Supportive\File\Exception\FileNotExistsException;
+use Deptrac\Deptrac\Supportive\File\Exception\FileNotWritableException;
+use Deptrac\Deptrac\Supportive\File\Exception\IOException;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Command\Command;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputInterface;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Output\OutputInterface;

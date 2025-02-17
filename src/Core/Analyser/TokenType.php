@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Analyser;
+namespace Deptrac\Deptrac\Core\Analyser;
 
-use Qossmic\Deptrac\Contract\Config\EmitterType;
+use Deptrac\Deptrac\Contract\Config\EmitterType;
 enum TokenType : string
 {
     case CLASS_LIKE = 'class-like';

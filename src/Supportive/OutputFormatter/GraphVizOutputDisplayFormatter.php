@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\OutputFormatter;
+namespace Deptrac\Deptrac\Supportive\OutputFormatter;
 
 use DEPTRAC_INTERNAL\phpDocumentor\GraphViz\Exception;
 use DEPTRAC_INTERNAL\phpDocumentor\GraphViz\Graph;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputException;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputException;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
 /**
  * @internal
  */
-final class GraphVizOutputDisplayFormatter extends \Qossmic\Deptrac\Supportive\OutputFormatter\GraphVizOutputFormatter
+final class GraphVizOutputDisplayFormatter extends \Deptrac\Deptrac\Supportive\OutputFormatter\GraphVizOutputFormatter
 {
     /** @var positive-int */
     private const DELAY_OPEN = 2;

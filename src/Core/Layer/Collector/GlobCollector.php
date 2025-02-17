@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Layer\Collector;
+namespace Deptrac\Deptrac\Core\Layer\Collector;
 
-use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Path;
 use DEPTRAC_INTERNAL\Symfony\Component\Finder\Glob;
-final class GlobCollector extends \Qossmic\Deptrac\Core\Layer\Collector\RegexCollector
+final class GlobCollector extends \Deptrac\Deptrac\Core\Layer\Collector\RegexCollector
 {
     private readonly string $basePath;
     public function __construct(string $basePath)

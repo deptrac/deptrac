@@ -23,7 +23,7 @@ You can analyse projects that require an older PHP version as long as
 
 ## Installation
 
-You can install Deptrac via Composer. We recommend using the [deptrac](https://github.com/qossmic/deptrac) package for this.
+You can install Deptrac via Composer. We recommend using the [deptrac](https://github.com/deptrac/deptrac) package for this.
 Alternatively, you can also use [PHIVE](#phive) or download the
 [PHAR](#phar) attached to each release on GitHub.
 This will ensure that Deptrac and its dependencies are
@@ -32,13 +32,13 @@ bundled together and will not interfere with any of your project's dependencies.
 ### Composer
 
 ```console
-$ composer require --dev qossmic/deptrac
+$ composer require --dev deptrac/deptrac
 vendor/bin/deptrac analyse
 ```
 
 ### PHAR
 
-Download the latest [deptrac.phar](https://github.com/qossmic/deptrac/releases).
+Download the latest [deptrac.phar](https://github.com/deptrac/deptrac/releases).
 
 You can run the phar file using php:
 
@@ -53,7 +53,7 @@ Feel free to add Deptrac to your PATH (i.e. `/usr/local/bin/deptrac`) to make it
 globally available.
 
 ```console
-$ curl -LS https://github.com/qossmic/deptrac/releases/download/2.0.1/deptrac.phar -o deptrac.phar
+$ curl -LS https://github.com/deptrac/deptrac/releases/download/2.0.1/deptrac.phar -o deptrac.phar
 
 # optional
 $ sudo chmod +x deptrac.phar
@@ -64,14 +64,14 @@ $ sudo mv deptrac.phar /usr/local/bin/deptrac
 
 You can install Deptrac with [Phive](https://phar.io/#Install)
 
-`phive install -g qossmic/deptrac`
+`phive install -g deptrac/deptrac`
 
 and accept the key with fingerprint
 `57CB 556F 242F C8D4 FD48 3C2C 4743 6587 D82C 4A39`.
 
 To upgrade Deptrac use the following command:
 
-`phive update -g qossmic/deptrac`
+`phive update -g deptrac/deptrac`
 
 ### Optional Dependency: Graphviz
 
@@ -197,7 +197,7 @@ The generated output will roughly look like this:
  -------------------------- --------------------------------------------------------------------------------------------------------------------------------
   DependsOnDisallowedLayer   examples\MyNamespace\Repository\SomeRepository must not depend on examples\MyNamespace\Controllers\SomeController
                              You are depending on token that is a part of a layer that you are not allowed to depend on. (Controller)
-                             /Users/dbr/workspace/qossmic/deptrac/examples/ControllerServiceRepository1/SomeRepository.php:5
+                             /Users/dbr/workspace/deptrac/deptrac/examples/ControllerServiceRepository1/SomeRepository.php:5
  -------------------------- --------------------------------------------------------------------------------------------------------------------------------
 
 

@@ -1,25 +1,25 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Ast\Parser\Cache;
+namespace Deptrac\Deptrac\Core\Ast\Parser\Cache;
 
-use Qossmic\Deptrac\Contract\Ast\DependencyContext;
-use Qossmic\Deptrac\Contract\Ast\DependencyType;
-use Qossmic\Deptrac\Contract\Ast\FileOccurrence;
-use Qossmic\Deptrac\Core\Ast\AstMap\AstInherit;
-use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
-use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
-use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeType;
-use Qossmic\Deptrac\Core\Ast\AstMap\DependencyToken;
-use Qossmic\Deptrac\Core\Ast\AstMap\File\FileReference;
-use Qossmic\Deptrac\Core\Ast\AstMap\File\FileToken;
-use Qossmic\Deptrac\Core\Ast\AstMap\Function\FunctionReference;
-use Qossmic\Deptrac\Core\Ast\AstMap\Function\FunctionToken;
-use Qossmic\Deptrac\Core\Ast\AstMap\Variable\SuperGlobalToken;
-use Qossmic\Deptrac\Core\Ast\AstMap\Variable\VariableReference;
-use Qossmic\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
-use Qossmic\Deptrac\Supportive\File\Exception\FileNotExistsException;
-use Qossmic\Deptrac\Supportive\File\FileReader;
+use Deptrac\Deptrac\Contract\Ast\DependencyContext;
+use Deptrac\Deptrac\Contract\Ast\DependencyType;
+use Deptrac\Deptrac\Contract\Ast\FileOccurrence;
+use Deptrac\Deptrac\Core\Ast\AstMap\AstInherit;
+use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
+use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
+use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeType;
+use Deptrac\Deptrac\Core\Ast\AstMap\DependencyToken;
+use Deptrac\Deptrac\Core\Ast\AstMap\File\FileReference;
+use Deptrac\Deptrac\Core\Ast\AstMap\File\FileToken;
+use Deptrac\Deptrac\Core\Ast\AstMap\Function\FunctionReference;
+use Deptrac\Deptrac\Core\Ast\AstMap\Function\FunctionToken;
+use Deptrac\Deptrac\Core\Ast\AstMap\Variable\SuperGlobalToken;
+use Deptrac\Deptrac\Core\Ast\AstMap\Variable\VariableReference;
+use Deptrac\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
+use Deptrac\Deptrac\Supportive\File\Exception\FileNotExistsException;
+use Deptrac\Deptrac\Supportive\File\FileReader;
 use function array_filter;
 use function array_map;
 use function assert;
@@ -32,7 +32,7 @@ use function json_encode;
 use function realpath;
 use function sha1_file;
 use function unserialize;
-class AstFileReferenceFileCache implements \Qossmic\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceDeferredCacheInterface
+class AstFileReferenceFileCache implements \Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceDeferredCacheInterface
 {
     /** @var array<string, array{hash: string, reference: FileReference}> */
     private array $cache = [];

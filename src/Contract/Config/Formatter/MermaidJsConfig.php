@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\Config\Formatter;
+namespace Deptrac\Deptrac\Contract\Config\Formatter;
 
-use Qossmic\Deptrac\Contract\Config\Layer;
-final class MermaidJsConfig implements \Qossmic\Deptrac\Contract\Config\Formatter\FormatterConfigInterface
+use Deptrac\Deptrac\Contract\Config\Layer;
+final class MermaidJsConfig implements \Deptrac\Deptrac\Contract\Config\Formatter\FormatterConfigInterface
 {
     private string $name = 'mermaidjs';
     private string $direction = 'TD';

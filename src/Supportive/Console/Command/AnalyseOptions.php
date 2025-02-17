@@ -1,6 +1,6 @@
 <?php
 
-namespace Qossmic\Deptrac\Supportive\Console\Command;
+namespace Deptrac\Deptrac\Supportive\Console\Command;
 
 class AnalyseOptions
 {

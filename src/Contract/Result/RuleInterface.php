@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\Result;
+namespace Deptrac\Deptrac\Contract\Result;
 
-use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
+use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
 /**
  * @psalm-immutable
  *

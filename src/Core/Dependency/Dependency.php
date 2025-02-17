@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Dependency;
+namespace Deptrac\Deptrac\Core\Dependency;
 
-use Qossmic\Deptrac\Contract\Ast\DependencyContext;
-use Qossmic\Deptrac\Contract\Ast\TokenInterface;
-use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
+use Deptrac\Deptrac\Contract\Ast\DependencyContext;
+use Deptrac\Deptrac\Contract\Ast\TokenInterface;
+use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
 class Dependency implements DependencyInterface
 {
     public function __construct(private readonly TokenInterface $depender, private readonly TokenInterface $dependent, private readonly DependencyContext $context)

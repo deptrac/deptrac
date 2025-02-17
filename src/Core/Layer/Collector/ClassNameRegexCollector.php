@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Layer\Collector;
+namespace Deptrac\Deptrac\Core\Layer\Collector;
 
-use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
-final class ClassNameRegexCollector extends \Qossmic\Deptrac\Core\Layer\Collector\RegexCollector
+use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
+final class ClassNameRegexCollector extends \Deptrac\Deptrac\Core\Layer\Collector\RegexCollector
 {
     public function satisfy(array $config, TokenReferenceInterface $reference) : bool
     {

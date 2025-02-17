@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\OutputFormatter;
+namespace Deptrac\Deptrac\Supportive\OutputFormatter;
 
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInterface;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
-use Qossmic\Deptrac\Contract\Result\OutputResult;
-use Qossmic\Deptrac\Supportive\OutputFormatter\Configuration\FormatterConfiguration;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInterface;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
+use Deptrac\Deptrac\Contract\Result\OutputResult;
+use Deptrac\Deptrac\Supportive\OutputFormatter\Configuration\FormatterConfiguration;
 /**
  * @internal
  */
