@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Config\Formatter;
+namespace Qossmic\Deptrac\Contract\Config\Formatter;
 
 interface FormatterConfigInterface
 {

@@ -19,10 +19,10 @@ $ php deptrac.phar debug:layer --config-file=deptrac.config.php Time
   /src/Supportive/Time/StartedPeriod.php               file
   /src/Supportive/Time/Stopwatch.php                   file
   /src/Supportive/Time/StopwatchException.php          file
-  Deptrac\Deptrac\Supportive\Time\Period               class-like
-  Deptrac\Deptrac\Supportive\Time\StartedPeriod        class-like
-  Deptrac\Deptrac\Supportive\Time\Stopwatch            class-like
-  Deptrac\Deptrac\Supportive\Time\StopwatchException   class-like
+  Qossmic\Deptrac\Supportive\Time\Period               class-like
+  Qossmic\Deptrac\Supportive\Time\StartedPeriod        class-like
+  Qossmic\Deptrac\Supportive\Time\Stopwatch            class-like
+  Qossmic\Deptrac\Supportive\Time\StopwatchException   class-like
  ---------------------------------------------------- ------------
 ```
 
@@ -62,11 +62,11 @@ With the `debug:dependencies`-command you can see all dependencies of your layer
 ```console
 $ php deptrac.phar debug:dependencies debug:dependencies Ast InputCollector
 
-  Deptrac\Deptrac\Core\Ast\AstMapExtractor depends on Deptrac\Deptrac\Core\InputCollector\InputCollectorInterface (InputCollector)
+  Qossmic\Deptrac\Core\Ast\AstMapExtractor depends on Qossmic\Deptrac\Core\InputCollector\InputCollectorInterface (InputCollector)
   .../deptrac/src/Core/Ast/AstMapExtractor.php:15
-  Deptrac\Deptrac\Core\Ast\AstMapExtractor depends on Deptrac\Deptrac\Core\InputCollector\InputException (InputCollector)
+  Qossmic\Deptrac\Core\Ast\AstMapExtractor depends on Qossmic\Deptrac\Core\InputCollector\InputException (InputCollector)
   .../deptrac/src/Core/Ast/AstMapExtractor.php:28
-  Deptrac\Deptrac\Core\Ast\AstException depends on Deptrac\Deptrac\Core\InputCollector\InputException (InputCollector)
+  Qossmic\Deptrac\Core\Ast\AstException depends on Qossmic\Deptrac\Core\InputCollector\InputException (InputCollector)
   .../deptrac/src/Core/Ast/AstException.php:13
 ```
 

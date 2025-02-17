@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\AstMap\File;
+namespace Qossmic\Deptrac\Core\Ast\AstMap\File;
 
-use Deptrac\Deptrac\Contract\Ast\DependencyType;
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReferenceBuilder;
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
-use Deptrac\Deptrac\Core\Ast\AstMap\DependencyToken;
-use Deptrac\Deptrac\Core\Ast\AstMap\Function\FunctionReferenceBuilder;
-use Deptrac\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
+use Qossmic\Deptrac\Contract\Ast\DependencyType;
+use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReferenceBuilder;
+use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
+use Qossmic\Deptrac\Core\Ast\AstMap\DependencyToken;
+use Qossmic\Deptrac\Core\Ast\AstMap\Function\FunctionReferenceBuilder;
+use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
 final class FileReferenceBuilder extends ReferenceBuilder
 {
     /** @var ClassLikeReferenceBuilder[] */
@@ -74,7 +74,7 @@ final class FileReferenceBuilder extends ReferenceBuilder
         $this->functionReferences[] = $functionReference;
         return $functionReference;
     }
-    public function build() : \Deptrac\Deptrac\Core\Ast\AstMap\File\FileReference
+    public function build() : \Qossmic\Deptrac\Core\Ast\AstMap\File\FileReference
     {
         $classReferences = [];
         foreach ($this->classReferences as $classReference) {
@@ -84,6 +84,6 @@ final class FileReferenceBuilder extends ReferenceBuilder
         foreach ($this->functionReferences as $functionReference) {
             $functionReferences[] = $functionReference->build();
         }
-        return new \Deptrac\Deptrac\Core\Ast\AstMap\File\FileReference($this->filepath, $classReferences, $functionReferences, $this->dependencies);
+        return new \Qossmic\Deptrac\Core\Ast\AstMap\File\FileReference($this->filepath, $classReferences, $functionReferences, $this->dependencies);
     }
 }

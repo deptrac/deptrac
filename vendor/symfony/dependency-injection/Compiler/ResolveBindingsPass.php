@@ -10,6 +10,7 @@
  */
 namespace DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Compiler;
 
+use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
 use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\BoundArgument;
 use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
 use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
@@ -149,10 +150,10 @@ class ResolveBindingsPass extends AbstractRecursivePass
             $names = [];
             foreach ($reflectionMethod->getParameters() as $key => $parameter) {
                 $names[$key] = $parameter->name;
-                if (\array_key_exists($key, $arguments) && '' !== $arguments[$key]) {
+                if (\array_key_exists($key, $arguments) && '' !== $arguments[$key] && !$arguments[$key] instanceof AbstractArgument) {
                     continue;
                 }
-                if (\array_key_exists($parameter->name, $arguments) && '' !== $arguments[$parameter->name]) {
+                if (\array_key_exists($parameter->name, $arguments) && '' !== $arguments[$parameter->name] && !$arguments[$parameter->name] instanceof AbstractArgument) {
                     continue;
                 }
                 if ($value->isAutowired() && !$value->hasTag('container.ignore_attributes') && $parameter->getAttributes(Autowire::class, \ReflectionAttribute::IS_INSTANCEOF)) {
@@ -180,7 +181,9 @@ class ResolveBindingsPass extends AbstractRecursivePass
             }
             foreach ($names as $key => $name) {
                 if (\array_key_exists($name, $arguments) && (0 === $key || \array_key_exists($key - 1, $arguments))) {
-                    $arguments[$key] = $arguments[$name];
+                    if (!\array_key_exists($key, $arguments)) {
+                        $arguments[$key] = $arguments[$name];
+                    }
                     unset($arguments[$name]);
                 }
             }

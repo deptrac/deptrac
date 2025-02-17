@@ -3,7 +3,7 @@
 The configuration file describes your [layers, ruleset](concepts.md) and adjusts
 output formatting.
 
-We suggest you also check out [Deptrac's configuration](https://github.com/deptrac/deptrac/blob/main/deptrac.yaml)
+We suggest you also check out [Deptrac's configuration](https://github.com/qossmic/deptrac/blob/main/deptrac.yaml)
 for checking its own architecture as it uses most available options.
 
 ## Deptrac
@@ -289,9 +289,9 @@ This allows you to register new services, e.g. custom formatters or collectors.
 
 ```yaml
 services:
-  - class: Internal\Deptrac\Deptrac\IgnoreDependenciesOnContract
+  - class: Internal\Qossmic\Deptrac\IgnoreDependenciesOnContract
     tags:
-      - { name: kernel.event_listener, event: Deptrac\Deptrac\Contract\Analyser\ProcessEvent }
+      - { name: kernel.event_listener, event: Qossmic\Deptrac\Contract\Analyser\ProcessEvent }
 ```
 
 ## Parameters

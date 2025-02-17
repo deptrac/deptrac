@@ -1,6 +1,6 @@
 <?php
 
-namespace Deptrac\Deptrac\Contract\Config;
+namespace Qossmic\Deptrac\Contract\Config;
 
 enum CodeclimateLevelEnum : string
 {

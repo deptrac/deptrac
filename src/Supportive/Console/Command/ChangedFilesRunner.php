@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\Console\Command;
+namespace Qossmic\Deptrac\Supportive\Console\Command;
 
-use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
-use Deptrac\Deptrac\Contract\Result\CoveredRuleInterface;
-use Deptrac\Deptrac\Contract\Result\OutputResult;
-use Deptrac\Deptrac\Contract\Result\RuleInterface;
-use Deptrac\Deptrac\Core\Analyser\AnalyserException;
-use Deptrac\Deptrac\Core\Analyser\DependencyLayersAnalyser;
-use Deptrac\Deptrac\Core\Analyser\LayerForTokenAnalyser;
-use Deptrac\Deptrac\Core\Analyser\TokenType;
+use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
+use Qossmic\Deptrac\Contract\Result\CoveredRuleInterface;
+use Qossmic\Deptrac\Contract\Result\OutputResult;
+use Qossmic\Deptrac\Contract\Result\RuleInterface;
+use Qossmic\Deptrac\Core\Analyser\AnalyserException;
+use Qossmic\Deptrac\Core\Analyser\DependencyLayersAnalyser;
+use Qossmic\Deptrac\Core\Analyser\LayerForTokenAnalyser;
+use Qossmic\Deptrac\Core\Analyser\TokenType;
 /**
  * @internal Should only be used by ChangedFilesCommand
  */
@@ -38,7 +38,7 @@ final class ChangedFilesRunner
             }
             $output->writeLineFormatted(\implode(';', $layers));
         } catch (AnalyserException $exception) {
-            throw \Deptrac\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($exception);
+            throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($exception);
         }
         if ($withDependencies) {
             try {
@@ -57,7 +57,7 @@ final class ChangedFilesRunner
                 } while ($size !== \count($layerDependencies));
                 $output->writeLineFormatted(\implode(';', $layerDependencies));
             } catch (AnalyserException $exception) {
-                throw \Deptrac\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($exception);
+                throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($exception);
             }
         }
     }

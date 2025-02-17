@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\AstMap\Function;
+namespace Qossmic\Deptrac\Core\Ast\AstMap\Function;
 
-use Deptrac\Deptrac\Contract\Ast\TokenInterface;
+use Qossmic\Deptrac\Contract\Ast\TokenInterface;
 final class FunctionToken implements TokenInterface
 {
     private function __construct(public readonly string $functionName)

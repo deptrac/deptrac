@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\OutputFormatter;
+namespace Qossmic\Deptrac\Supportive\OutputFormatter;
 
 use DEPTRAC_INTERNAL\Psr\Container\ContainerInterface;
-use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInterface;
-use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\InvalidServiceInLocatorException;
+use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInterface;
+use Qossmic\Deptrac\Supportive\DependencyInjection\Exception\InvalidServiceInLocatorException;
 use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ServiceLocator;
 use function array_keys;
 use function get_debug_type;

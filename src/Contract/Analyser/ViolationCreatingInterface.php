@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Analyser;
+namespace Qossmic\Deptrac\Contract\Analyser;
 
 use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**

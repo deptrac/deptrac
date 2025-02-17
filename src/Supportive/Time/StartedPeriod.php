@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\Time;
+namespace Qossmic\Deptrac\Supportive\Time;
 
 /**
  * @psalm-immutable
@@ -15,8 +15,8 @@ final class StartedPeriod
     {
         return new self(\hrtime(\true));
     }
-    public function stop() : \Deptrac\Deptrac\Supportive\Time\Period
+    public function stop() : \Qossmic\Deptrac\Supportive\Time\Period
     {
-        return \Deptrac\Deptrac\Supportive\Time\Period::stop($this);
+        return \Qossmic\Deptrac\Supportive\Time\Period::stop($this);
     }
 }

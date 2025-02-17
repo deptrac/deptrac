@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Result;
+namespace Qossmic\Deptrac\Contract\Result;
 
-use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
+use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
 /**
  * @psalm-immutable
  *
  * Represents a Violation that is being skipped by the baseline file
  */
-final class SkippedViolation implements \Deptrac\Deptrac\Contract\Result\CoveredRuleInterface
+final class SkippedViolation implements \Qossmic\Deptrac\Contract\Result\CoveredRuleInterface
 {
     public function __construct(private readonly DependencyInterface $dependency, private readonly string $dependerLayer, private readonly string $dependentLayer)
     {

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Layer\Collector;
+namespace Qossmic\Deptrac\Core\Layer\Collector;
 
-use Deptrac\Deptrac\Contract\Layer\CollectorInterface;
-use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Qossmic\Deptrac\Contract\Layer\CollectorInterface;
+use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 abstract class RegexCollector implements CollectorInterface
 {
     /**

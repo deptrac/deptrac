@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Layer\Collector;
+namespace Qossmic\Deptrac\Core\Layer\Collector;
 
-use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Path;
-final class DirectoryCollector extends \Deptrac\Deptrac\Core\Layer\Collector\RegexCollector
+final class DirectoryCollector extends \Qossmic\Deptrac\Core\Layer\Collector\RegexCollector
 {
     public function satisfy(array $config, TokenReferenceInterface $reference) : bool
     {

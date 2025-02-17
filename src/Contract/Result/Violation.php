@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Result;
+namespace Qossmic\Deptrac\Contract\Result;
 
-use Deptrac\Deptrac\Contract\Analyser\ViolationCreatingInterface;
-use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
+use Qossmic\Deptrac\Contract\Analyser\ViolationCreatingInterface;
+use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
 /**
  * @psalm-immutable
  *
  * Represents a dependency that is NOT allowed to exist given the defined rules
  */
-final class Violation implements \Deptrac\Deptrac\Contract\Result\CoveredRuleInterface
+final class Violation implements \Qossmic\Deptrac\Contract\Result\CoveredRuleInterface
 {
     public function __construct(private readonly DependencyInterface $dependency, private readonly string $dependerLayer, private readonly string $dependentLayer, private readonly ViolationCreatingInterface $violationCreatingRule)
     {

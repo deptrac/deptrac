@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Layer\Collector;
+namespace Qossmic\Deptrac\Core\Layer\Collector;
 
-use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Deptrac\Deptrac\Contract\Layer\CollectorInterface;
-use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Qossmic\Deptrac\Contract\Layer\CollectorInterface;
+use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 final class BoolCollector implements CollectorInterface
 {
-    public function __construct(private readonly \Deptrac\Deptrac\Core\Layer\Collector\CollectorResolverInterface $collectorResolver)
+    public function __construct(private readonly \Qossmic\Deptrac\Core\Layer\Collector\CollectorResolverInterface $collectorResolver)
     {
     }
     public function satisfy(array $config, TokenReferenceInterface $reference) : bool

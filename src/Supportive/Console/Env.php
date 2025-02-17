@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\Console;
+namespace Qossmic\Deptrac\Supportive\Console;
 
 class Env
 {

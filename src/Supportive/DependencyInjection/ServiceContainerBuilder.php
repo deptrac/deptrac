@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\DependencyInjection;
+namespace Qossmic\Deptrac\Supportive\DependencyInjection;
 
 use Exception;
-use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CacheFileException;
-use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
+use Qossmic\Deptrac\Supportive\DependencyInjection\Exception\CacheFileException;
+use Qossmic\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use SplFileInfo;
 use DEPTRAC_INTERNAL\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
 use DEPTRAC_INTERNAL\Symfony\Component\Config\FileLocator;
@@ -63,7 +63,7 @@ final class ServiceContainerBuilder
         $container = new ContainerBuilder();
         $container->setParameter('currentWorkingDirectory', $this->workingDirectory);
         self::registerCompilerPasses($container);
-        $container->registerExtension(new \Deptrac\Deptrac\Supportive\DependencyInjection\DeptracExtension());
+        $container->registerExtension(new \Qossmic\Deptrac\Supportive\DependencyInjection\DeptracExtension());
         $container->setParameter('projectDirectory', $this->workingDirectory);
         self::loadServices($container);
         if (null !== $this->configFile) {
@@ -134,7 +134,6 @@ final class ServiceContainerBuilder
     private static function loadConfiguration(ContainerBuilder $container, SplFileInfo $configFile) : void
     {
         $configPathInfo = $configFile->getPathInfo();
-        /** @phpstan-ignore-next-line false positive */
         if (null === $configPathInfo) {
             throw CannotLoadConfiguration::fromConfig($configFile->getFilename(), 'Unable to load config: Invalid or missing path.');
         }

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\OutputFormatter;
+namespace Qossmic\Deptrac\Contract\OutputFormatter;
 
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Helper\TableSeparator;
 /**

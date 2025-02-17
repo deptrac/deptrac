@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Layer\Collector;
+namespace Qossmic\Deptrac\Core\Layer\Collector;
 
-use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Deptrac\Deptrac\Contract\Layer\CollectorInterface;
-use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use Deptrac\Deptrac\Core\Ast\AstException;
-use Deptrac\Deptrac\Core\Ast\AstMap\AstMap;
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
-use Deptrac\Deptrac\Core\Ast\AstMapExtractor;
+use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Qossmic\Deptrac\Contract\Layer\CollectorInterface;
+use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Qossmic\Deptrac\Core\Ast\AstException;
+use Qossmic\Deptrac\Core\Ast\AstMap\AstMap;
+use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
+use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
+use Qossmic\Deptrac\Core\Ast\AstMapExtractor;
 final class InheritsCollector implements CollectorInterface
 {
     private readonly AstMap $astMap;

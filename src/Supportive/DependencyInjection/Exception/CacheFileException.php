@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\DependencyInjection\Exception;
+namespace Qossmic\Deptrac\Supportive\DependencyInjection\Exception;
 
-use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 use SplFileInfo;
 final class CacheFileException extends RuntimeException implements ExceptionInterface

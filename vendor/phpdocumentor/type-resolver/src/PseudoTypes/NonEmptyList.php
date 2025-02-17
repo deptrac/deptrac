@@ -25,7 +25,7 @@ final class NonEmptyList extends Array_ implements PseudoType
 {
     public function underlyingType() : Type
     {
-        return new Array_();
+        return new Array_($this->valueType, $this->keyType);
     }
     public function __construct(?Type $valueType = null)
     {

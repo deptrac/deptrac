@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Config;
+namespace Qossmic\Deptrac\Contract\Config;
 
 enum CollectorType : string
 {

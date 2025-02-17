@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast;
+namespace Qossmic\Deptrac\Core\Ast;
 
 use DEPTRAC_INTERNAL\Psr\EventDispatcher\EventDispatcherInterface;
-use Deptrac\Deptrac\Contract\Ast\AstFileAnalysedEvent;
-use Deptrac\Deptrac\Contract\Ast\AstFileSyntaxErrorEvent;
-use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
-use Deptrac\Deptrac\Contract\Ast\PostCreateAstMapEvent;
-use Deptrac\Deptrac\Contract\Ast\PreCreateAstMapEvent;
-use Deptrac\Deptrac\Core\Ast\AstMap\AstMap;
-use Deptrac\Deptrac\Core\Ast\Parser\ParserInterface;
+use Qossmic\Deptrac\Contract\Ast\AstFileAnalysedEvent;
+use Qossmic\Deptrac\Contract\Ast\AstFileSyntaxErrorEvent;
+use Qossmic\Deptrac\Contract\Ast\CouldNotParseFileException;
+use Qossmic\Deptrac\Contract\Ast\PostCreateAstMapEvent;
+use Qossmic\Deptrac\Contract\Ast\PreCreateAstMapEvent;
+use Qossmic\Deptrac\Core\Ast\AstMap\AstMap;
+use Qossmic\Deptrac\Core\Ast\Parser\ParserInterface;
 class AstLoader
 {
     public function __construct(private readonly ParserInterface $parser, private readonly EventDispatcherInterface $eventDispatcher)

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\Parser\NikicPhpParser;
+namespace Qossmic\Deptrac\Core\Ast\Parser\NikicPhpParser;
 
 use DEPTRAC_INTERNAL\PhpParser\Error;
 use DEPTRAC_INTERNAL\PhpParser\ErrorHandler\Throwing;
@@ -12,16 +12,16 @@ use DEPTRAC_INTERNAL\PhpParser\NodeTraverser;
 use DEPTRAC_INTERNAL\PhpParser\NodeVisitor\FindingVisitor;
 use DEPTRAC_INTERNAL\PhpParser\NodeVisitor\NameResolver;
 use DEPTRAC_INTERNAL\PhpParser\Parser;
-use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
-use Deptrac\Deptrac\Core\Ast\AstMap\File\FileReference;
-use Deptrac\Deptrac\Core\Ast\AstMap\File\FileReferenceBuilder;
-use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceCacheInterface;
-use Deptrac\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface;
-use Deptrac\Deptrac\Core\Ast\Parser\ParserInterface;
-use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
-use Deptrac\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
-use Deptrac\Deptrac\Supportive\File\FileReader;
+use Qossmic\Deptrac\Contract\Ast\CouldNotParseFileException;
+use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
+use Qossmic\Deptrac\Core\Ast\AstMap\File\FileReference;
+use Qossmic\Deptrac\Core\Ast\AstMap\File\FileReferenceBuilder;
+use Qossmic\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceCacheInterface;
+use Qossmic\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface;
+use Qossmic\Deptrac\Core\Ast\Parser\ParserInterface;
+use Qossmic\Deptrac\Core\Ast\Parser\TypeResolver;
+use Qossmic\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
+use Qossmic\Deptrac\Supportive\File\FileReader;
 class NikicPhpParser implements ParserInterface
 {
     /**
@@ -43,7 +43,7 @@ class NikicPhpParser implements ParserInterface
             return $fileReference;
         }
         $fileReferenceBuilder = FileReferenceBuilder::create($file);
-        $visitor = new \Deptrac\Deptrac\Core\Ast\Parser\NikicPhpParser\FileReferenceVisitor($fileReferenceBuilder, $this->typeResolver, ...$this->extractors);
+        $visitor = new \Qossmic\Deptrac\Core\Ast\Parser\NikicPhpParser\FileReferenceVisitor($fileReferenceBuilder, $this->typeResolver, ...$this->extractors);
         $nodes = $this->loadNodesFromFile($file);
         $this->traverser->addVisitor($visitor);
         $this->traverser->traverse($nodes);

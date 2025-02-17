@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\InputCollector;
+namespace Qossmic\Deptrac\Core\InputCollector;
 
 use Exception;
-use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 class InputException extends RuntimeException implements ExceptionInterface
 {
