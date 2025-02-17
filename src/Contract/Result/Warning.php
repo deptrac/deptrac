@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Result;
+namespace Qossmic\Deptrac\Contract\Result;
 
 use Stringable;
 /**

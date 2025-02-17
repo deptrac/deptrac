@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Analyser;
+namespace Qossmic\Deptrac\Core\Analyser;
 
-use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
-use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use Deptrac\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
-use Deptrac\Deptrac\Core\Ast\AstException;
-use Deptrac\Deptrac\Core\Ast\AstMap\AstMap;
-use Deptrac\Deptrac\Core\Ast\AstMapExtractor;
-use Deptrac\Deptrac\Core\Dependency\TokenResolver;
-use Deptrac\Deptrac\Core\Dependency\UnrecognizedTokenException;
-use Deptrac\Deptrac\Core\Layer\LayerResolverInterface;
+use Qossmic\Deptrac\Contract\Ast\CouldNotParseFileException;
+use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Qossmic\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
+use Qossmic\Deptrac\Core\Ast\AstException;
+use Qossmic\Deptrac\Core\Ast\AstMap\AstMap;
+use Qossmic\Deptrac\Core\Ast\AstMapExtractor;
+use Qossmic\Deptrac\Core\Dependency\TokenResolver;
+use Qossmic\Deptrac\Core\Dependency\UnrecognizedTokenException;
+use Qossmic\Deptrac\Core\Layer\LayerResolverInterface;
 use function array_values;
 use function ksort;
 use function natcasesort;
@@ -27,25 +27,25 @@ class LayerForTokenAnalyser
      *
      * @throws AnalyserException
      */
-    public function findLayerForToken(string $tokenName, \Deptrac\Deptrac\Core\Analyser\TokenType $tokenType) : array
+    public function findLayerForToken(string $tokenName, \Qossmic\Deptrac\Core\Analyser\TokenType $tokenType) : array
     {
         try {
             $astMap = $this->astMapExtractor->extract();
             return match ($tokenType) {
-                \Deptrac\Deptrac\Core\Analyser\TokenType::CLASS_LIKE => $this->findLayersForReferences($astMap->getClassLikeReferences(), $tokenName, $astMap),
-                \Deptrac\Deptrac\Core\Analyser\TokenType::FUNCTION => $this->findLayersForReferences($astMap->getFunctionReferences(), $tokenName, $astMap),
-                \Deptrac\Deptrac\Core\Analyser\TokenType::FILE => $this->findLayersForReferences($astMap->getFileReferences(), $tokenName, $astMap),
+                \Qossmic\Deptrac\Core\Analyser\TokenType::CLASS_LIKE => $this->findLayersForReferences($astMap->getClassLikeReferences(), $tokenName, $astMap),
+                \Qossmic\Deptrac\Core\Analyser\TokenType::FUNCTION => $this->findLayersForReferences($astMap->getFunctionReferences(), $tokenName, $astMap),
+                \Qossmic\Deptrac\Core\Analyser\TokenType::FILE => $this->findLayersForReferences($astMap->getFileReferences(), $tokenName, $astMap),
             };
         } catch (UnrecognizedTokenException $e) {
-            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::unrecognizedToken($e);
+            throw \Qossmic\Deptrac\Core\Analyser\AnalyserException::unrecognizedToken($e);
         } catch (InvalidLayerDefinitionException $e) {
-            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::invalidLayerDefinition($e);
+            throw \Qossmic\Deptrac\Core\Analyser\AnalyserException::invalidLayerDefinition($e);
         } catch (InvalidCollectorDefinitionException $e) {
-            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::invalidCollectorDefinition($e);
+            throw \Qossmic\Deptrac\Core\Analyser\AnalyserException::invalidCollectorDefinition($e);
         } catch (AstException $e) {
-            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::failedAstParsing($e);
+            throw \Qossmic\Deptrac\Core\Analyser\AnalyserException::failedAstParsing($e);
         } catch (CouldNotParseFileException $e) {
-            throw \Deptrac\Deptrac\Core\Analyser\AnalyserException::couldNotParseFile($e);
+            throw \Qossmic\Deptrac\Core\Analyser\AnalyserException::couldNotParseFile($e);
         }
     }
     /**

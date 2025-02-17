@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Layer;
+namespace Qossmic\Deptrac\Contract\Layer;
 
-use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 use function implode;
 use function sprintf;

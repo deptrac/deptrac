@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Analyser\EventHandler;
+namespace Qossmic\Deptrac\Core\Analyser\EventHandler;
 
-use Deptrac\Deptrac\Contract\Analyser\EventHelper;
-use Deptrac\Deptrac\Contract\Analyser\PostProcessEvent;
-use Deptrac\Deptrac\Contract\Result\Error;
+use Qossmic\Deptrac\Contract\Analyser\EventHelper;
+use Qossmic\Deptrac\Contract\Analyser\PostProcessEvent;
+use Qossmic\Deptrac\Contract\Result\Error;
 use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use function sprintf;
 /**

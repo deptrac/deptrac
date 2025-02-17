@@ -1,9 +1,9 @@
 <?php
 
-namespace Deptrac\Deptrac\Contract\Config\Collector;
+namespace Qossmic\Deptrac\Contract\Config\Collector;
 
-use Deptrac\Deptrac\Contract\Config\CollectorType;
-use Deptrac\Deptrac\Contract\Config\ConfigurableCollectorConfig;
+use Qossmic\Deptrac\Contract\Config\CollectorType;
+use Qossmic\Deptrac\Contract\Config\ConfigurableCollectorConfig;
 final class AttributeConfig extends ConfigurableCollectorConfig
 {
     protected CollectorType $collectorType = CollectorType::TYPE_ATTRIBUTE;

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Config;
+namespace Qossmic\Deptrac\Contract\Config;
 
-use Deptrac\Deptrac\Contract\Config\Formatter\FormatterConfigInterface;
+use Qossmic\Deptrac\Contract\Config\Formatter\FormatterConfigInterface;
 use DEPTRAC_INTERNAL\Symfony\Component\Config\Builder\ConfigBuilderInterface;
 use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Exception\ParseException;
 use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Yaml;
@@ -18,7 +18,7 @@ final class DeptracConfig implements ConfigBuilderInterface
     private array $formatters = [];
     /** @var array<Ruleset> */
     private array $rulesets = [];
-    private ?\Deptrac\Deptrac\Contract\Config\AnalyserConfig $analyser = null;
+    private ?\Qossmic\Deptrac\Contract\Config\AnalyserConfig $analyser = null;
     /** @var array<string, array<string>> */
     private array $skipViolations = [];
     /** @var array<string> */
@@ -27,11 +27,11 @@ final class DeptracConfig implements ConfigBuilderInterface
     /**
      * @deprecated use analyser(AnalyserConfig::create()) instead
      */
-    public function analysers(\Deptrac\Deptrac\Contract\Config\EmitterType ...$types) : self
+    public function analysers(\Qossmic\Deptrac\Contract\Config\EmitterType ...$types) : self
     {
-        return $this->analyser(\Deptrac\Deptrac\Contract\Config\AnalyserConfig::create($types));
+        return $this->analyser(\Qossmic\Deptrac\Contract\Config\AnalyserConfig::create($types));
     }
-    public function analyser(\Deptrac\Deptrac\Contract\Config\AnalyserConfig $analyser) : self
+    public function analyser(\Qossmic\Deptrac\Contract\Config\AnalyserConfig $analyser) : self
     {
         $this->analyser = $analyser;
         return $this;
@@ -71,14 +71,14 @@ final class DeptracConfig implements ConfigBuilderInterface
         }
         return $this;
     }
-    public function layers(\Deptrac\Deptrac\Contract\Config\Layer ...$layerConfigs) : self
+    public function layers(\Qossmic\Deptrac\Contract\Config\Layer ...$layerConfigs) : self
     {
         foreach ($layerConfigs as $layerConfig) {
             $this->layers[$layerConfig->name] = $layerConfig;
         }
         return $this;
     }
-    public function rulesets(\Deptrac\Deptrac\Contract\Config\Ruleset ...$rulesetConfigs) : self
+    public function rulesets(\Qossmic\Deptrac\Contract\Config\Ruleset ...$rulesetConfigs) : self
     {
         foreach ($rulesetConfigs as $rulesetConfig) {
             $this->rulesets[$rulesetConfig->layerConfig->name] = $rulesetConfig;
@@ -107,10 +107,10 @@ final class DeptracConfig implements ConfigBuilderInterface
             $config['exclude_files'] = $this->excludeFiles;
         }
         if ([] !== $this->layers) {
-            $config['layers'] = \array_map(static fn(\Deptrac\Deptrac\Contract\Config\Layer $layerConfig) => $layerConfig->toArray(), $this->layers);
+            $config['layers'] = \array_map(static fn(\Qossmic\Deptrac\Contract\Config\Layer $layerConfig) => $layerConfig->toArray(), $this->layers);
         }
         if ([] !== $this->rulesets) {
-            $config['ruleset'] = \array_map(static fn(\Deptrac\Deptrac\Contract\Config\Ruleset $rulesetConfig) => $rulesetConfig->toArray(), $this->rulesets);
+            $config['ruleset'] = \array_map(static fn(\Qossmic\Deptrac\Contract\Config\Ruleset $rulesetConfig) => $rulesetConfig->toArray(), $this->rulesets);
         }
         if ([] !== $this->skipViolations) {
             $config['skip_violations'] = $this->skipViolations;

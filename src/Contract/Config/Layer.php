@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Config;
+namespace Qossmic\Deptrac\Contract\Config;
 
 final class Layer
 {
@@ -18,7 +18,7 @@ final class Layer
     {
         return new self($name);
     }
-    public function collectors(\Deptrac\Deptrac\Contract\Config\CollectorConfig ...$collectorConfigs) : self
+    public function collectors(\Qossmic\Deptrac\Contract\Config\CollectorConfig ...$collectorConfigs) : self
     {
         foreach ($collectorConfigs as $collectorConfig) {
             $this->collectors[] = $collectorConfig;
@@ -28,6 +28,6 @@ final class Layer
     /** @return array<string, mixed> */
     public function toArray() : array
     {
-        return ['name' => $this->name, 'collectors' => \array_map(static fn(\Deptrac\Deptrac\Contract\Config\CollectorConfig $config) => $config->toArray(), $this->collectors)];
+        return ['name' => $this->name, 'collectors' => \array_map(static fn(\Qossmic\Deptrac\Contract\Config\CollectorConfig $config) => $config->toArray(), $this->collectors)];
     }
 }

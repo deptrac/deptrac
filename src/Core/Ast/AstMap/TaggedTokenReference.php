@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\AstMap;
+namespace Qossmic\Deptrac\Core\Ast\AstMap;
 
-use Deptrac\Deptrac\Contract\Ast\TaggedTokenReferenceInterface;
+use Qossmic\Deptrac\Contract\Ast\TaggedTokenReferenceInterface;
 /**
  * Helper trait for implementing TaggedTokenReferenceInterface.
  *

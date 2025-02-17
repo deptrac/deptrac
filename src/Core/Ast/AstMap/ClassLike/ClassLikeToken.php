@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\AstMap\ClassLike;
+namespace Qossmic\Deptrac\Core\Ast\AstMap\ClassLike;
 
-use Deptrac\Deptrac\Contract\Ast\TokenInterface;
+use Qossmic\Deptrac\Contract\Ast\TokenInterface;
 final class ClassLikeToken implements TokenInterface
 {
     private function __construct(private readonly string $className)
@@ -21,7 +21,7 @@ final class ClassLikeToken implements TokenInterface
     {
         return $this->className;
     }
-    public function equals(\Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken $classLikeName) : bool
+    public function equals(\Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken $classLikeName) : bool
     {
         return $this->className === $classLikeName->className;
     }

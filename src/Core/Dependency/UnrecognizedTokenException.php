@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Dependency;
+namespace Qossmic\Deptrac\Core\Dependency;
 
-use Deptrac\Deptrac\Contract\Ast\TokenInterface;
-use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Qossmic\Deptrac\Contract\Ast\TokenInterface;
+use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 class UnrecognizedTokenException extends RuntimeException implements ExceptionInterface
 {

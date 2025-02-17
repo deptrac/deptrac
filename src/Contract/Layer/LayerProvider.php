@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Layer;
+namespace Qossmic\Deptrac\Contract\Layer;
 
 /**
  * Provides information about layer configuration.
@@ -33,7 +33,7 @@ final class LayerProvider
     private function getTransitiveDependencies(string $layerName, array $previousLayers) : array
     {
         if (\in_array($layerName, $previousLayers, \true)) {
-            throw \Deptrac\Deptrac\Contract\Layer\CircularReferenceException::circularLayerDependency($layerName, $previousLayers);
+            throw \Qossmic\Deptrac\Contract\Layer\CircularReferenceException::circularLayerDependency($layerName, $previousLayers);
         }
         $dependencies = [];
         foreach ($this->allowedLayers[$layerName] ?? [] as $layer) {

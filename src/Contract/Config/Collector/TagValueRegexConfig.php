@@ -1,9 +1,9 @@
 <?php
 
-namespace Deptrac\Deptrac\Contract\Config\Collector;
+namespace Qossmic\Deptrac\Contract\Config\Collector;
 
-use Deptrac\Deptrac\Contract\Config\CollectorConfig;
-use Deptrac\Deptrac\Contract\Config\CollectorType;
+use Qossmic\Deptrac\Contract\Config\CollectorConfig;
+use Qossmic\Deptrac\Contract\Config\CollectorType;
 final class TagValueRegexConfig extends CollectorConfig
 {
     protected CollectorType $collectorType = CollectorType::TYPE_TAG_VALUE_REGEX;

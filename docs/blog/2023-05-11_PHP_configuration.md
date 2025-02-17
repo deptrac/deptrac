@@ -22,7 +22,7 @@ Start by creating a `deptrac.config.php` file in the root of the project:
 ```php
 <?php
 
-use Deptrac\Deptrac\Contract\Config\DeptracConfig;
+use Qossmic\Deptrac\Contract\Config\DeptracConfig;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {
@@ -30,7 +30,7 @@ return static function (DeptracConfig $config, ContainerConfigurator $containerC
 };
 ```
 
-> All the required classes you might need for config definition exist in the `Deptrac\Deptrac\Contract\Config` namespace and are covered by the [backwards compatibility promise,](../bc_policy.md) so you don't need to worry your configuration will suddenly stop working without warning.
+> All the required classes you might need for config definition exist in the `Qossmic\Deptrac\Contract\Config` namespace and are covered by the [backwards compatibility promise,](../bc_policy.md) so you don't need to worry your configuration will suddenly stop working without warning.
 
 Then define the shared configuration for the project like `paths` to the analysed files and the used `analysers`:
 
@@ -67,7 +67,7 @@ Continue by defining some layers:
         );
 ```
 
-You can use all the collectors you find in the [collectors' documentation](../collectors.md). Use the appropriate config class in the  `Deptrac\Deptrac\Contract\Config\Collector\` namespace.
+You can use all the collectors you find in the [collectors' documentation](../collectors.md). Use the appropriate config class in the  `Qossmic\Deptrac\Contract\Config\Collector\` namespace.
 
 Notice that we assign all the layer configs to a variable. This is important to define rulesets between the layers:
 

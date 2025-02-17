@@ -61,7 +61,7 @@ following breaking changes only to happen in a major release:
 ## Code
 
 The following backwards compatibility promise extends only to code in the
-`Deptrac\Deptrac\Contract\` namespace. Other code may change within a major
+`Qossmic\Deptrac\Contract\` namespace. Other code may change within a major
 release, unless it is marked explicitly as `@public`. Conversely, if anything in
 the Contract namespace is marked as `@internal` the BC promise does not apply.
 

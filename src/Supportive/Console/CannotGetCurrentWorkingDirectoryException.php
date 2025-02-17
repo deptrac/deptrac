@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\Console;
+namespace Qossmic\Deptrac\Supportive\Console;
 
-use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 final class CannotGetCurrentWorkingDirectoryException extends RuntimeException implements ExceptionInterface
 {

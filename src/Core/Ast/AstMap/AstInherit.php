@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\AstMap;
+namespace Qossmic\Deptrac\Core\Ast\AstMap;
 
-use Deptrac\Deptrac\Contract\Ast\FileOccurrence;
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
+use Qossmic\Deptrac\Contract\Ast\FileOccurrence;
+use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
 use Stringable;
 use function array_reverse;
 use function implode;
@@ -17,7 +17,7 @@ class AstInherit implements Stringable
     /**
      * @param AstInherit[] $path
      */
-    public function __construct(public readonly ClassLikeToken $classLikeName, public readonly FileOccurrence $fileOccurrence, public readonly \Deptrac\Deptrac\Core\Ast\AstMap\AstInheritType $type, private readonly array $path = [])
+    public function __construct(public readonly ClassLikeToken $classLikeName, public readonly FileOccurrence $fileOccurrence, public readonly \Qossmic\Deptrac\Core\Ast\AstMap\AstInheritType $type, private readonly array $path = [])
     {
     }
     /**

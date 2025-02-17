@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\AstMap;
+namespace Qossmic\Deptrac\Core\Ast\AstMap;
 
 use ArrayObject;
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
-use Deptrac\Deptrac\Core\Ast\AstMap\File\FileReference;
-use Deptrac\Deptrac\Core\Ast\AstMap\File\FileToken;
-use Deptrac\Deptrac\Core\Ast\AstMap\Function\FunctionReference;
-use Deptrac\Deptrac\Core\Ast\AstMap\Function\FunctionToken;
+use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeReference;
+use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
+use Qossmic\Deptrac\Core\Ast\AstMap\File\FileReference;
+use Qossmic\Deptrac\Core\Ast\AstMap\File\FileToken;
+use Qossmic\Deptrac\Core\Ast\AstMap\Function\FunctionReference;
+use Qossmic\Deptrac\Core\Ast\AstMap\Function\FunctionToken;
 use SplStack;
 class AstMap
 {
@@ -87,7 +87,7 @@ class AstMap
      *
      * @return iterable<AstInherit>
      */
-    private function recursivelyResolveDependencies(\Deptrac\Deptrac\Core\Ast\AstMap\AstInherit $inheritDependency, ?ArrayObject $alreadyResolved = null, ?SplStack $pathStack = null) : iterable
+    private function recursivelyResolveDependencies(\Qossmic\Deptrac\Core\Ast\AstMap\AstInherit $inheritDependency, ?ArrayObject $alreadyResolved = null, ?SplStack $pathStack = null) : iterable
     {
         $alreadyResolved ??= new ArrayObject();
         /** @var ArrayObject<string, true> $alreadyResolved */

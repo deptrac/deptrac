@@ -1,9 +1,9 @@
 <?php
 
-namespace Deptrac\Deptrac\Contract\Config\Formatter;
+namespace Qossmic\Deptrac\Contract\Config\Formatter;
 
-use Deptrac\Deptrac\Contract\Config\CodeclimateLevelEnum;
-final class CodeclimateConfig implements \Deptrac\Deptrac\Contract\Config\Formatter\FormatterConfigInterface
+use Qossmic\Deptrac\Contract\Config\CodeclimateLevelEnum;
+final class CodeclimateConfig implements \Qossmic\Deptrac\Contract\Config\Formatter\FormatterConfigInterface
 {
     private function __construct(private CodeclimateLevelEnum $failure, private CodeclimateLevelEnum $skipped, private CodeclimateLevelEnum $uncovered)
     {

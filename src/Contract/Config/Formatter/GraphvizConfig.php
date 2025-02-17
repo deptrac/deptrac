@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Config\Formatter;
+namespace Qossmic\Deptrac\Contract\Config\Formatter;
 
-use Deptrac\Deptrac\Contract\Config\Layer;
-final class GraphvizConfig implements \Deptrac\Deptrac\Contract\Config\Formatter\FormatterConfigInterface
+use Qossmic\Deptrac\Contract\Config\Layer;
+final class GraphvizConfig implements \Qossmic\Deptrac\Contract\Config\Formatter\FormatterConfigInterface
 {
     private string $name = 'graphviz';
     private bool $pointsToGroup = \false;

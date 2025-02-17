@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Dependency\Emitter;
+namespace Qossmic\Deptrac\Core\Dependency\Emitter;
 
-use Deptrac\Deptrac\Contract\Ast\DependencyType;
-use Deptrac\Deptrac\Core\Ast\AstMap\AstMap;
-use Deptrac\Deptrac\Core\Dependency\Dependency;
-use Deptrac\Deptrac\Core\Dependency\DependencyList;
-final class FunctionDependencyEmitter implements \Deptrac\Deptrac\Core\Dependency\Emitter\DependencyEmitterInterface
+use Qossmic\Deptrac\Contract\Ast\DependencyType;
+use Qossmic\Deptrac\Core\Ast\AstMap\AstMap;
+use Qossmic\Deptrac\Core\Dependency\Dependency;
+use Qossmic\Deptrac\Core\Dependency\DependencyList;
+final class FunctionDependencyEmitter implements \Qossmic\Deptrac\Core\Dependency\Emitter\DependencyEmitterInterface
 {
     public function getName() : string
     {

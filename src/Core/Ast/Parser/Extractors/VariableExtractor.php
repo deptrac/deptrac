@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\Parser\Extractors;
+namespace Qossmic\Deptrac\Core\Ast\Parser\Extractors;
 
 use DEPTRAC_INTERNAL\PhpParser\Node;
-use Deptrac\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
-use Deptrac\Deptrac\Core\Ast\AstMap\Variable\SuperGlobalToken;
-use Deptrac\Deptrac\Core\Ast\Parser\TypeScope;
-class VariableExtractor implements \Deptrac\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface
+use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
+use Qossmic\Deptrac\Core\Ast\AstMap\Variable\SuperGlobalToken;
+use Qossmic\Deptrac\Core\Ast\Parser\TypeScope;
+class VariableExtractor implements \Qossmic\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface
 {
     /**
      * @var list<string>

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Dependency;
+namespace Qossmic\Deptrac\Contract\Dependency;
 
 use DEPTRAC_INTERNAL\Symfony\Contracts\EventDispatcher\Event;
 /**

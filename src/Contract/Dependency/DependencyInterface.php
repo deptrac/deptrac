@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Dependency;
+namespace Qossmic\Deptrac\Contract\Dependency;
 
-use Deptrac\Deptrac\Contract\Ast\DependencyContext;
-use Deptrac\Deptrac\Contract\Ast\TokenInterface;
+use Qossmic\Deptrac\Contract\Ast\DependencyContext;
+use Qossmic\Deptrac\Contract\Ast\TokenInterface;
 /**
  * Represents a dependency between 2 tokens (depender and dependent).
  */

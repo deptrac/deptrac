@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Layer\Collector;
+namespace Qossmic\Deptrac\Core\Layer\Collector;
 
-use Deptrac\Deptrac\Contract\Ast\TaggedTokenReferenceInterface;
-use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-final class TagValueRegexCollector extends \Deptrac\Deptrac\Core\Layer\Collector\RegexCollector
+use Qossmic\Deptrac\Contract\Ast\TaggedTokenReferenceInterface;
+use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+final class TagValueRegexCollector extends \Qossmic\Deptrac\Core\Layer\Collector\RegexCollector
 {
     /**
      * @param array<string, bool|string|array<string, string>> $config

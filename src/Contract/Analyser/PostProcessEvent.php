@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Analyser;
+namespace Qossmic\Deptrac\Contract\Analyser;
 
 use DEPTRAC_INTERNAL\Symfony\Contracts\EventDispatcher\Event;
 /**
@@ -12,14 +12,14 @@ use DEPTRAC_INTERNAL\Symfony\Contracts\EventDispatcher\Event;
  */
 final class PostProcessEvent extends Event
 {
-    public function __construct(private \Deptrac\Deptrac\Contract\Analyser\AnalysisResult $result)
+    public function __construct(private \Qossmic\Deptrac\Contract\Analyser\AnalysisResult $result)
     {
     }
-    public function getResult() : \Deptrac\Deptrac\Contract\Analyser\AnalysisResult
+    public function getResult() : \Qossmic\Deptrac\Contract\Analyser\AnalysisResult
     {
         return $this->result;
     }
-    public function replaceResult(\Deptrac\Deptrac\Contract\Analyser\AnalysisResult $result) : void
+    public function replaceResult(\Qossmic\Deptrac\Contract\Analyser\AnalysisResult $result) : void
     {
         $this->result = $result;
     }

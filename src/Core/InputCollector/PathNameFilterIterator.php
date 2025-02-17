@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\InputCollector;
+namespace Qossmic\Deptrac\Core\InputCollector;
 
 use SplFileInfo;
 use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Path;

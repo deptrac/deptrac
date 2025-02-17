@@ -155,8 +155,6 @@ class Definition
     }
     /**
      * Gets the service class.
-     *
-     * @return class-string|null
      */
     public function getClass() : ?string
     {

@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Layer;
+namespace Qossmic\Deptrac\Core\Layer;
 
-use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Deptrac\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
-use Deptrac\Deptrac\Core\Layer\Collector\Collectable;
-use Deptrac\Deptrac\Core\Layer\Collector\CollectorResolverInterface;
+use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Qossmic\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
+use Qossmic\Deptrac\Core\Layer\Collector\Collectable;
+use Qossmic\Deptrac\Core\Layer\Collector\CollectorResolverInterface;
 use function array_key_exists;
-class LayerResolver implements \Deptrac\Deptrac\Core\Layer\LayerResolverInterface
+class LayerResolver implements \Qossmic\Deptrac\Core\Layer\LayerResolverInterface
 {
     /**
      * @var array<string, Collectable[]>

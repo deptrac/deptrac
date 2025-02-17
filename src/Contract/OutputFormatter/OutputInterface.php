@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\OutputFormatter;
+namespace Qossmic\Deptrac\Contract\OutputFormatter;
 
 /**
  * Wrapper around Symfony Output.
@@ -14,7 +14,7 @@ interface OutputInterface
      */
     public function writeLineFormatted(string|array $message) : void;
     public function writeRaw(string $message) : void;
-    public function getStyle() : \Deptrac\Deptrac\Contract\OutputFormatter\OutputStyleInterface;
+    public function getStyle() : \Qossmic\Deptrac\Contract\OutputFormatter\OutputStyleInterface;
     public function isVerbose() : bool;
     public function isDebug() : bool;
 }

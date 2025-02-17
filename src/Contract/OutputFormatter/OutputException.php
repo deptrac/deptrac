@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\OutputFormatter;
+namespace Qossmic\Deptrac\Contract\OutputFormatter;
 
-use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 /**
  * Thrown when you are unable to provide output with your custom OutputFormatter.

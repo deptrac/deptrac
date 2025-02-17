@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\Console\Symfony;
+namespace Qossmic\Deptrac\Supportive\Console\Symfony;
 
-use Deptrac\Deptrac\Contract\OutputFormatter\OutputStyleInterface;
+use Qossmic\Deptrac\Contract\OutputFormatter\OutputStyleInterface;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Style\SymfonyStyle;
 /**
  * @internal

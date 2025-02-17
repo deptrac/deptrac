@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Ast;
+namespace Qossmic\Deptrac\Contract\Ast;
 
 /**
  * @psalm-immutable
@@ -12,7 +12,7 @@ namespace Deptrac\Deptrac\Contract\Ast;
  */
 final class DependencyContext
 {
-    public function __construct(public readonly \Deptrac\Deptrac\Contract\Ast\FileOccurrence $fileOccurrence, public readonly \Deptrac\Deptrac\Contract\Ast\DependencyType $dependencyType)
+    public function __construct(public readonly \Qossmic\Deptrac\Contract\Ast\FileOccurrence $fileOccurrence, public readonly \Qossmic\Deptrac\Contract\Ast\DependencyType $dependencyType)
     {
     }
 }

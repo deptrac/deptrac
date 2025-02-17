@@ -358,7 +358,7 @@ deptrac:
 ## Custom Collectors
 
 You can create custom collectors in your project by implementing the
-`Deptrac\Deptrac\Contract\Layer\CollectorInterface`. As soon as an unknown
+`Qossmic\Deptrac\Contract\Layer\CollectorInterface`. As soon as an unknown
 collector is referenced in the config file Deptrac will try to load the class in
 your project. With this you can create collectors specific for your use case.
 

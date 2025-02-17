@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\Console\Command;
+namespace Qossmic\Deptrac\Supportive\Console\Command;
 
-use Deptrac\Deptrac\Contract\ExceptionInterface;
-use Deptrac\Deptrac\Core\Analyser\AnalyserException;
+use Qossmic\Deptrac\Contract\ExceptionInterface;
+use Qossmic\Deptrac\Core\Analyser\AnalyserException;
 use RuntimeException;
 final class CommandRunException extends RuntimeException implements ExceptionInterface
 {

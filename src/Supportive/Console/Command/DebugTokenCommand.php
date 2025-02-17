@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\Console\Command;
+namespace Qossmic\Deptrac\Supportive\Console\Command;
 
-use Deptrac\Deptrac\Core\Analyser\TokenType;
-use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
-use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use Qossmic\Deptrac\Core\Analyser\TokenType;
+use Qossmic\Deptrac\Supportive\Console\Symfony\Style;
+use Qossmic\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Command\Command;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputArgument;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputInterface;
@@ -15,7 +15,7 @@ class DebugTokenCommand extends Command
 {
     public static $defaultName = 'debug:token|debug:class-like';
     public static $defaultDescription = 'Checks which layers the provided token belongs to';
-    public function __construct(private readonly \Deptrac\Deptrac\Supportive\Console\Command\DebugTokenRunner $runner)
+    public function __construct(private readonly \Qossmic\Deptrac\Supportive\Console\Command\DebugTokenRunner $runner)
     {
         parent::__construct();
     }
@@ -35,7 +35,7 @@ class DebugTokenCommand extends Command
         $tokenType = $input->getArgument('type');
         try {
             $this->runner->run($tokenName, TokenType::from($tokenType), $symfonyOutput);
-        } catch (\Deptrac\Deptrac\Supportive\Console\Command\CommandRunException $exception) {
+        } catch (\Qossmic\Deptrac\Supportive\Console\Command\CommandRunException $exception) {
             $outputStyle->error($exception->getMessage());
             return self::FAILURE;
         }

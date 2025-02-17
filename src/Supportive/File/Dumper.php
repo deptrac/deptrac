@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\File;
+namespace Qossmic\Deptrac\Supportive\File;
 
-use Deptrac\Deptrac\Supportive\File\Exception\FileAlreadyExistsException;
-use Deptrac\Deptrac\Supportive\File\Exception\FileNotExistsException;
-use Deptrac\Deptrac\Supportive\File\Exception\FileNotWritableException;
-use Deptrac\Deptrac\Supportive\File\Exception\IOException;
+use Qossmic\Deptrac\Supportive\File\Exception\FileAlreadyExistsException;
+use Qossmic\Deptrac\Supportive\File\Exception\FileNotExistsException;
+use Qossmic\Deptrac\Supportive\File\Exception\FileNotWritableException;
+use Qossmic\Deptrac\Supportive\File\Exception\IOException;
 use SplFileInfo;
 use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Exception\FileNotFoundException;
 use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Exception\IOException as SymfonyIOException;

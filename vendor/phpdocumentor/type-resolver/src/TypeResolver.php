@@ -23,14 +23,19 @@ use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\HtmlEscapedString;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\IntegerRange;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\IntegerValue;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\List_;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\ListShape;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\ListShapeItem;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\LiteralString;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\LowercaseString;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NegativeInteger;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NonEmptyArray;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NonEmptyList;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NonEmptyLowercaseString;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NonEmptyString;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\Numeric_;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\NumericString;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\ObjectShape;
+use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\ObjectShapeItem;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\PositiveInteger;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\StringValue;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\PseudoTypes\TraitString;
@@ -80,6 +85,8 @@ use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\IntersectionTypeNode;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\NullableTypeNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ObjectShapeItemNode;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ObjectShapeNode;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\OffsetAccessTypeNode;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\ThisTypeNode;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Ast\Type\TypeNode;
@@ -89,6 +96,7 @@ use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\ConstExprParser;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\ParserException;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\TokenIterator;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\TypeParser;
+use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\ParserConfig;
 use RuntimeException;
 use function array_filter;
 use function array_key_exists;
@@ -110,7 +118,7 @@ final class TypeResolver
      * @var array<string, string> List of recognized keywords and unto which Value Object they map
      * @psalm-var array<string, class-string<Type>>
      */
-    private $keywords = ['string' => String_::class, 'class-string' => ClassString::class, 'interface-string' => InterfaceString::class, 'html-escaped-string' => HtmlEscapedString::class, 'lowercase-string' => LowercaseString::class, 'non-empty-lowercase-string' => NonEmptyLowercaseString::class, 'non-empty-string' => NonEmptyString::class, 'numeric-string' => NumericString::class, 'numeric' => Numeric_::class, 'trait-string' => TraitString::class, 'int' => Integer::class, 'integer' => Integer::class, 'positive-int' => PositiveInteger::class, 'negative-int' => NegativeInteger::class, 'bool' => Boolean::class, 'boolean' => Boolean::class, 'real' => Float_::class, 'float' => Float_::class, 'double' => Float_::class, 'object' => Object_::class, 'mixed' => Mixed_::class, 'array' => Array_::class, 'array-key' => ArrayKey::class, 'resource' => Resource_::class, 'void' => Void_::class, 'null' => Null_::class, 'scalar' => Scalar::class, 'callback' => Callable_::class, 'callable' => Callable_::class, 'callable-string' => CallableString::class, 'false' => False_::class, 'true' => True_::class, 'literal-string' => LiteralString::class, 'self' => Self_::class, '$this' => This::class, 'static' => Static_::class, 'parent' => Parent_::class, 'iterable' => Iterable_::class, 'never' => Never_::class, 'list' => List_::class, 'non-empty-list' => NonEmptyList::class];
+    private $keywords = ['string' => String_::class, 'class-string' => ClassString::class, 'interface-string' => InterfaceString::class, 'html-escaped-string' => HtmlEscapedString::class, 'lowercase-string' => LowercaseString::class, 'non-empty-lowercase-string' => NonEmptyLowercaseString::class, 'non-empty-string' => NonEmptyString::class, 'numeric-string' => NumericString::class, 'numeric' => Numeric_::class, 'trait-string' => TraitString::class, 'int' => Integer::class, 'integer' => Integer::class, 'positive-int' => PositiveInteger::class, 'negative-int' => NegativeInteger::class, 'bool' => Boolean::class, 'boolean' => Boolean::class, 'real' => Float_::class, 'float' => Float_::class, 'double' => Float_::class, 'object' => Object_::class, 'mixed' => Mixed_::class, 'array' => Array_::class, 'array-key' => ArrayKey::class, 'non-empty-array' => NonEmptyArray::class, 'resource' => Resource_::class, 'void' => Void_::class, 'null' => Null_::class, 'scalar' => Scalar::class, 'callback' => Callable_::class, 'callable' => Callable_::class, 'callable-string' => CallableString::class, 'false' => False_::class, 'true' => True_::class, 'literal-string' => LiteralString::class, 'self' => Self_::class, '$this' => This::class, 'static' => Static_::class, 'parent' => Parent_::class, 'iterable' => Iterable_::class, 'never' => Never_::class, 'list' => List_::class, 'non-empty-list' => NonEmptyList::class];
     /**
      * @psalm-readonly
      * @var FqsenResolver
@@ -132,8 +140,13 @@ final class TypeResolver
     public function __construct(?FqsenResolver $fqsenResolver = null)
     {
         $this->fqsenResolver = $fqsenResolver ?: new FqsenResolver();
-        $this->typeParser = new TypeParser(new ConstExprParser());
-        $this->lexer = new Lexer();
+        if (class_exists(ParserConfig::class)) {
+            $this->typeParser = new TypeParser(new ParserConfig([]), new ConstExprParser(new ParserConfig([])));
+            $this->lexer = new Lexer(new ParserConfig([]));
+        } else {
+            $this->typeParser = new TypeParser(new ConstExprParser());
+            $this->lexer = new Lexer();
+        }
     }
     /**
      * Analyzes the given type and returns the FQCN variant.
@@ -175,8 +188,21 @@ final class TypeResolver
             case ArrayTypeNode::class:
                 return new Array_($this->createType($type->type, $context));
             case ArrayShapeNode::class:
-                return new ArrayShape(...array_map(function (ArrayShapeItemNode $item) use($context) : ArrayShapeItem {
-                    return new ArrayShapeItem((string) $item->keyName, $this->createType($item->valueType, $context), $item->optional);
+                switch ($type->kind) {
+                    case ArrayShapeNode::KIND_ARRAY:
+                        return new ArrayShape(...array_map(function (ArrayShapeItemNode $item) use($context) : ArrayShapeItem {
+                            return new ArrayShapeItem((string) $item->keyName, $this->createType($item->valueType, $context), $item->optional);
+                        }, $type->items));
+                    case ArrayShapeNode::KIND_LIST:
+                        return new ListShape(...array_map(function (ArrayShapeItemNode $item) use($context) : ListShapeItem {
+                            return new ListShapeItem(null, $this->createType($item->valueType, $context), $item->optional);
+                        }, $type->items));
+                    default:
+                        throw new RuntimeException('Unsupported array shape kind');
+                }
+            case ObjectShapeNode::class:
+                return new ObjectShape(...array_map(function (ObjectShapeItemNode $item) use($context) : ObjectShapeItem {
+                    return new ObjectShapeItem((string) $item->keyName, $this->createType($item->valueType, $context), $item->optional);
                 }, $type->items));
             case CallableTypeNode::class:
                 return $this->createFromCallable($type, $context);

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\Parser;
+namespace Qossmic\Deptrac\Core\Ast\Parser;
 
 use InvalidArgumentException;
 use DEPTRAC_INTERNAL\phpDocumentor\Reflection\FqsenResolver;
@@ -42,7 +42,7 @@ class TypeResolver
     /**
      * @return string[]
      */
-    public function resolvePHPParserTypes(\Deptrac\Deptrac\Core\Ast\Parser\TypeScope $typeScope, NodeAbstract ...$nodes) : array
+    public function resolvePHPParserTypes(\Qossmic\Deptrac\Core\Ast\Parser\TypeScope $typeScope, NodeAbstract ...$nodes) : array
     {
         $types = [];
         foreach ($nodes as $node) {
@@ -53,7 +53,7 @@ class TypeResolver
     /**
      * @return string[]
      */
-    private function resolvePHPParserType(\Deptrac\Deptrac\Core\Ast\Parser\TypeScope $typeScope, NodeAbstract $node) : array
+    private function resolvePHPParserType(\Qossmic\Deptrac\Core\Ast\Parser\TypeScope $typeScope, NodeAbstract $node) : array
     {
         return match (\true) {
             $node instanceof Name && $node->isSpecialClassName() => [],
@@ -69,7 +69,7 @@ class TypeResolver
      *
      * @return string[]
      */
-    public function resolvePHPStanDocParserType(TypeNode $type, \Deptrac\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
+    public function resolvePHPStanDocParserType(TypeNode $type, \Qossmic\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
     {
         return match (\true) {
             $type instanceof IdentifierTypeNode => \in_array($type->name, $templateTypes, \true) ? [] : $this->resolveString($type->name, $typeScope),
@@ -86,7 +86,7 @@ class TypeResolver
     /**
      * @return string[]
      */
-    private function resolveString(string $type, \Deptrac\Deptrac\Core\Ast\Parser\TypeScope $nameScope) : array
+    private function resolveString(string $type, \Qossmic\Deptrac\Core\Ast\Parser\TypeScope $nameScope) : array
     {
         try {
             $context = new Context($nameScope->namespace, $nameScope->getUses());
@@ -125,7 +125,7 @@ class TypeResolver
      *
      * @return string[]
      */
-    private function resolveGeneric(GenericTypeNode $type, \Deptrac\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
+    private function resolveGeneric(GenericTypeNode $type, \Qossmic\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
     {
         $preType = 'list' === $type->type->name ? [] : $this->resolvePHPStanDocParserType($type->type, $typeScope, $templateTypes);
         return \array_merge($preType, ...\array_map(fn(TypeNode $typeNode): array => $this->resolvePHPStanDocParserType($typeNode, $typeScope, $templateTypes), $type->genericTypes));
@@ -135,7 +135,7 @@ class TypeResolver
      *
      * @return string[]
      */
-    private function resolveCallable(CallableTypeNode $type, \Deptrac\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
+    private function resolveCallable(CallableTypeNode $type, \Qossmic\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
     {
         return \array_merge($this->resolvePHPStanDocParserType($type->returnType, $typeScope, $templateTypes), ...\array_map(fn(CallableTypeParameterNode $parameterNode): array => $this->resolvePHPStanDocParserType($parameterNode->type, $typeScope, $templateTypes), $type->parameters));
     }
@@ -144,7 +144,7 @@ class TypeResolver
      *
      * @return string[]
      */
-    private function resolveArray(ArrayShapeNode $type, \Deptrac\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
+    private function resolveArray(ArrayShapeNode $type, \Qossmic\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
     {
         return \array_merge([], ...\array_map(fn(ArrayShapeItemNode $itemNode): array => $this->resolvePHPStanDocParserType($itemNode->valueType, $typeScope, $templateTypes), $type->items));
     }
@@ -153,7 +153,7 @@ class TypeResolver
      *
      * @return string[]
      */
-    private function resolveVariableType(UnionTypeNode|IntersectionTypeNode $type, \Deptrac\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
+    private function resolveVariableType(UnionTypeNode|IntersectionTypeNode $type, \Qossmic\Deptrac\Core\Ast\Parser\TypeScope $typeScope, array $templateTypes) : array
     {
         return \array_merge([], ...\array_map(fn(TypeNode $typeNode): array => $this->resolvePHPStanDocParserType($typeNode, $typeScope, $templateTypes), $type->types));
     }

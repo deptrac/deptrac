@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Ast\Parser\Extractors;
+namespace Qossmic\Deptrac\Core\Ast\Parser\Extractors;
 
 use DEPTRAC_INTERNAL\PhpParser\Comment\Doc;
 use DEPTRAC_INTERNAL\PhpParser\Node;
@@ -14,10 +14,10 @@ use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\ConstExprParser;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\PhpDocParser;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\TokenIterator;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\TypeParser;
-use Deptrac\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
-use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
-use Deptrac\Deptrac\Core\Ast\Parser\TypeScope;
-class AnnotationReferenceExtractor implements \Deptrac\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface
+use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
+use Qossmic\Deptrac\Core\Ast\Parser\TypeResolver;
+use Qossmic\Deptrac\Core\Ast\Parser\TypeScope;
+class AnnotationReferenceExtractor implements \Qossmic\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface
 {
     private readonly Lexer $lexer;
     private readonly PhpDocParser $docParser;

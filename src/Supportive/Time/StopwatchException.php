@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\Time;
+namespace Qossmic\Deptrac\Supportive\Time;
 
-use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 use function sprintf;
 final class StopwatchException extends RuntimeException implements ExceptionInterface

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract\Config;
+namespace Qossmic\Deptrac\Contract\Config;
 
 abstract class CollectorConfig
 {
     protected bool $private = \false;
-    protected \Deptrac\Deptrac\Contract\Config\CollectorType $collectorType;
+    protected \Qossmic\Deptrac\Contract\Config\CollectorType $collectorType;
     public function private() : self
     {
         $this->private = \true;

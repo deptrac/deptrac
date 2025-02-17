@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Core\Layer\Collector;
+namespace Qossmic\Deptrac\Core\Layer\Collector;
 
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeType;
-class ClassCollector extends \Deptrac\Deptrac\Core\Layer\Collector\AbstractTypeCollector
+use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeType;
+class ClassCollector extends \Qossmic\Deptrac\Core\Layer\Collector\AbstractTypeCollector
 {
     protected function getType() : ClassLikeType
     {

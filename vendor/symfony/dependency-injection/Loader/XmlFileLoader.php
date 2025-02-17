@@ -97,7 +97,7 @@ class XmlFileLoader extends FileLoader
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
-        if (\false === ($imports = $xpath->query('.//container:imports/container:import', $root))) {
+        if (\false === ($imports = $xpath->query('./container:imports/container:import', $root))) {
             return;
         }
         $defaultDirectory = \dirname($file);
@@ -110,13 +110,13 @@ class XmlFileLoader extends FileLoader
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
-        if (\false === ($services = $xpath->query('.//container:services/container:service|.//container:services/container:prototype|.//container:services/container:stack', $root))) {
+        if (\false === ($services = $xpath->query('./container:services/container:service|./container:services/container:prototype|./container:services/container:stack', $root))) {
             return;
         }
         $this->setCurrentDir(\dirname($file));
         $this->instanceof = [];
         $this->isLoadingInstanceof = \true;
-        $instanceof = $xpath->query('.//container:services/container:instanceof', $root);
+        $instanceof = $xpath->query('./container:services/container:instanceof', $root);
         foreach ($instanceof as $service) {
             $this->setDefinition((string) $service->getAttribute('id'), $this->parseDefinition($service, $file, new Definition()));
         }
@@ -158,7 +158,7 @@ class XmlFileLoader extends FileLoader
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
-        if (null === ($defaultsNode = $xpath->query('.//container:services/container:defaults', $root)->item(0))) {
+        if (null === ($defaultsNode = $xpath->query('./container:services/container:defaults', $root)->item(0))) {
             return new Definition();
         }
         $defaultsNode->setAttribute('id', '<defaults>');
@@ -392,7 +392,7 @@ class XmlFileLoader extends FileLoader
                 }
             }
             if ($errors) {
-                throw new InvalidArgumentException(\sprintf('Unable to parse file "%s": ', $file) . \implode("/n", $errors), $e->getCode(), $e);
+                throw new InvalidArgumentException(\sprintf('Unable to parse file "%s": ', $file) . \implode("\n", $errors), $e->getCode(), $e);
             }
         }
         $this->validateExtensions($dom, $file);

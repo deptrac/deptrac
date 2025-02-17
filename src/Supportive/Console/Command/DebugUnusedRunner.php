@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\Console\Command;
+namespace Qossmic\Deptrac\Supportive\Console\Command;
 
-use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
-use Deptrac\Deptrac\Core\Analyser\AnalyserException;
-use Deptrac\Deptrac\Core\Analyser\RulesetUsageAnalyser;
+use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
+use Qossmic\Deptrac\Core\Analyser\AnalyserException;
+use Qossmic\Deptrac\Core\Analyser\RulesetUsageAnalyser;
 /**
  * @internal Should only be used by DebugUnusedCommand
  */
@@ -24,7 +24,7 @@ final class DebugUnusedRunner
             $outputTable = $this->prepareOutputTable($rulesetUsages, $limit);
             $output->getStyle()->table(['Unused'], $outputTable);
         } catch (AnalyserException $e) {
-            throw \Deptrac\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($e);
+            throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($e);
         }
     }
     /**

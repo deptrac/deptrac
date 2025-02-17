@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Contract;
+namespace Qossmic\Deptrac\Contract;
 
 use Throwable;
 /**

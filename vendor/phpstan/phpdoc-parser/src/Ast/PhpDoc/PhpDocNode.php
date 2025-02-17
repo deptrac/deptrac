@@ -67,6 +67,42 @@ class PhpDocNode implements Node
         });
     }
     /**
+     * @return ParamImmediatelyInvokedCallableTagValueNode[]
+     */
+    public function getParamImmediatelyInvokedCallableTagValues(string $tagName = '@param-immediately-invoked-callable') : array
+    {
+        return array_filter(array_column($this->getTagsByName($tagName), 'value'), static function (PhpDocTagValueNode $value) : bool {
+            return $value instanceof ParamImmediatelyInvokedCallableTagValueNode;
+        });
+    }
+    /**
+     * @return ParamLaterInvokedCallableTagValueNode[]
+     */
+    public function getParamLaterInvokedCallableTagValues(string $tagName = '@param-later-invoked-callable') : array
+    {
+        return array_filter(array_column($this->getTagsByName($tagName), 'value'), static function (PhpDocTagValueNode $value) : bool {
+            return $value instanceof ParamLaterInvokedCallableTagValueNode;
+        });
+    }
+    /**
+     * @return ParamClosureThisTagValueNode[]
+     */
+    public function getParamClosureThisTagValues(string $tagName = '@param-closure-this') : array
+    {
+        return array_filter(array_column($this->getTagsByName($tagName), 'value'), static function (PhpDocTagValueNode $value) : bool {
+            return $value instanceof ParamClosureThisTagValueNode;
+        });
+    }
+    /**
+     * @return PureUnlessCallableIsImpureTagValueNode[]
+     */
+    public function getPureUnlessCallableIsImpureTagValues(string $tagName = '@pure-unless-callable-is-impure') : array
+    {
+        return array_filter(array_column($this->getTagsByName($tagName), 'value'), static function (PhpDocTagValueNode $value) : bool {
+            return $value instanceof PureUnlessCallableIsImpureTagValueNode;
+        });
+    }
+    /**
      * @return TemplateTagValueNode[]
      */
     public function getTemplateTagValues(string $tagName = '@template') : array

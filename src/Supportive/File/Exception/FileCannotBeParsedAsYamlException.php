@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Deptrac\Deptrac\Supportive\File\Exception;
+namespace Qossmic\Deptrac\Supportive\File\Exception;
 
-use Deptrac\Deptrac\Contract\ExceptionInterface;
+use Qossmic\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Exception\ParseException;
 /**
