@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Dependency;
+namespace Deptrac\Deptrac\Core\Dependency;
 
-use Qossmic\Deptrac\Contract\Dependency\DependencyInterface;
-use Qossmic\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
+use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
+use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
 class DependencyList
 {
     /** @var array<string, Dependency[]> */
     private array $dependencies = [];
     /** @var array<string, InheritDependency[]> */
     private array $inheritDependencies = [];
-    public function addDependency(\Qossmic\Deptrac\Core\Dependency\Dependency $dependency) : self
+    public function addDependency(\Deptrac\Deptrac\Core\Dependency\Dependency $dependency) : self
     {
         $tokenName = $dependency->getDepender()->toString();
         if (!isset($this->dependencies[$tokenName])) {
@@ -20,7 +20,7 @@ class DependencyList
         $this->dependencies[$tokenName][] = $dependency;
         return $this;
     }
-    public function addInheritDependency(\Qossmic\Deptrac\Core\Dependency\InheritDependency $dependency) : self
+    public function addInheritDependency(\Deptrac\Deptrac\Core\Dependency\InheritDependency $dependency) : self
     {
         $classLikeName = $dependency->getDepender()->toString();
         if (!isset($this->inheritDependencies[$classLikeName])) {

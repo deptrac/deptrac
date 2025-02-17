@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\Ast;
+namespace Deptrac\Deptrac\Contract\Ast;
 
 /**
  * Represents an AST-Token, which can be referenced as dependency.

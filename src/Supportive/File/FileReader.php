@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\File;
+namespace Deptrac\Deptrac\Supportive\File;
 
-use Qossmic\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
+use Deptrac\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
 final class FileReader
 {
     /**

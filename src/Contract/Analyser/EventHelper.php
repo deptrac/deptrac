@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\Analyser;
+namespace Deptrac\Deptrac\Contract\Analyser;
 
-use Qossmic\Deptrac\Contract\Layer\LayerProvider;
-use Qossmic\Deptrac\Contract\Result\SkippedViolation;
-use Qossmic\Deptrac\Contract\Result\Violation;
+use Deptrac\Deptrac\Contract\Layer\LayerProvider;
+use Deptrac\Deptrac\Contract\Result\SkippedViolation;
+use Deptrac\Deptrac\Contract\Result\Violation;
 /**
  * Utility class for managing adding violations that could be skipped.
  */
@@ -44,7 +44,7 @@ final class EventHelper
     {
         return \array_filter($this->unmatchedSkippedViolation);
     }
-    public function addSkippableViolation(\Qossmic\Deptrac\Contract\Analyser\ProcessEvent $event, \Qossmic\Deptrac\Contract\Analyser\AnalysisResult $result, string $dependentLayer, \Qossmic\Deptrac\Contract\Analyser\ViolationCreatingInterface $violationCreatingRule) : void
+    public function addSkippableViolation(\Deptrac\Deptrac\Contract\Analyser\ProcessEvent $event, \Deptrac\Deptrac\Contract\Analyser\AnalysisResult $result, string $dependentLayer, \Deptrac\Deptrac\Contract\Analyser\ViolationCreatingInterface $violationCreatingRule) : void
     {
         if ($this->shouldViolationBeSkipped($event->dependency->getDepender()->toString(), $event->dependency->getDependent()->toString())) {
             $result->addRule(new SkippedViolation($event->dependency, $event->dependerLayer, $dependentLayer));

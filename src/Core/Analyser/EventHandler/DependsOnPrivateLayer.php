@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Analyser\EventHandler;
+namespace Deptrac\Deptrac\Core\Analyser\EventHandler;
 
-use Qossmic\Deptrac\Contract\Analyser\EventHelper;
-use Qossmic\Deptrac\Contract\Analyser\ProcessEvent;
-use Qossmic\Deptrac\Contract\Analyser\ViolationCreatingInterface;
+use Deptrac\Deptrac\Contract\Analyser\EventHelper;
+use Deptrac\Deptrac\Contract\Analyser\ProcessEvent;
+use Deptrac\Deptrac\Contract\Analyser\ViolationCreatingInterface;
 /**
  * @internal
  */

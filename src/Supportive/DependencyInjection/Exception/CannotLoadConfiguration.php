@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\DependencyInjection\Exception;
+namespace Deptrac\Deptrac\Supportive\DependencyInjection\Exception;
 
-use Qossmic\Deptrac\Contract\ExceptionInterface;
+use Deptrac\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 class CannotLoadConfiguration extends RuntimeException implements ExceptionInterface
 {

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Layer\Collector;
+namespace Deptrac\Deptrac\Core\Layer\Collector;
 
 use DEPTRAC_INTERNAL\Psr\Container\ContainerInterface;
-use Qossmic\Deptrac\Contract\Layer\CollectorInterface;
-use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Deptrac\Deptrac\Contract\Layer\CollectorInterface;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use DEPTRAC_INTERNAL\Symfony\Component\DependencyInjection\ServiceLocator;
 use function array_keys;
 final class CollectorProvider implements ContainerInterface

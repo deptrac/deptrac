@@ -3,7 +3,7 @@
 namespace DEPTRAC_INTERNAL;
 
 use DEPTRAC_INTERNAL\Composer\XdebugHandler\XdebugHandler;
-use Qossmic\Deptrac\Supportive\Console\Application;
+use Deptrac\Deptrac\Supportive\Console\Application;
 if (\PHP_VERSION_ID < 80100) {
     echo 'Required at least PHP version 8.1.0, your version: ' . \PHP_VERSION . "\n";
     exit(1);

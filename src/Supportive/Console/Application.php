@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\Console;
+namespace Deptrac\Deptrac\Supportive\Console;
 
-use Qossmic\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
-use Qossmic\Deptrac\Supportive\DependencyInjection\ServiceContainerBuilder;
+use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
+use Deptrac\Deptrac\Supportive\DependencyInjection\ServiceContainerBuilder;
 use RuntimeException;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Application as BaseApplication;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\CommandLoader\CommandLoaderInterface;
@@ -20,7 +20,7 @@ use function in_array;
 use const DIRECTORY_SEPARATOR;
 final class Application extends BaseApplication
 {
-    public const VERSION = '2.0.4';
+    public const VERSION = '2.0.5';
     public function __construct()
     {
         parent::__construct('deptrac', self::VERSION);
@@ -40,7 +40,7 @@ final class Application extends BaseApplication
     public function doRun(InputInterface $input, OutputInterface $output) : int
     {
         if (\false === ($currentWorkingDirectory = getcwd())) {
-            throw \Qossmic\Deptrac\Supportive\Console\CannotGetCurrentWorkingDirectoryException::cannotGetCWD();
+            throw \Deptrac\Deptrac\Supportive\Console\CannotGetCurrentWorkingDirectoryException::cannotGetCWD();
         }
         try {
             $input->bind($this->getDefinition());

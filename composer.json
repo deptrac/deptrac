@@ -1,5 +1,5 @@
 {
-    "name": "qossmic/deptrac",
+    "name": "deptrac/deptrac",
     "description": "Deptrac is a static code analysis tool that helps to enforce rules for dependencies between software layers.",
     "keywords": [
         "static analysis"
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Qossmic\\Deptrac\\": "src/"
+            "Deptrac\\Deptrac\\": "src/"
         },
         "files": [
             "bootstrap.php"

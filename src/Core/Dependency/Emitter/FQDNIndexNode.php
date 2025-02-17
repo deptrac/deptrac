@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Dependency\Emitter;
+namespace Deptrac\Deptrac\Core\Dependency\Emitter;
 
 use function array_shift;
 use function count;

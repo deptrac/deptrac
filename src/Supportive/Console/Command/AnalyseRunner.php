@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\Console\Command;
+namespace Deptrac\Deptrac\Supportive\Console\Command;
 
 use DEPTRAC_INTERNAL\Psr\Container\ContainerExceptionInterface;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
-use Qossmic\Deptrac\Contract\Result\OutputResult;
-use Qossmic\Deptrac\Core\Analyser\AnalyserException;
-use Qossmic\Deptrac\Core\Analyser\DependencyLayersAnalyser;
-use Qossmic\Deptrac\Supportive\OutputFormatter\FormatterProvider;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
+use Deptrac\Deptrac\Contract\Result\OutputResult;
+use Deptrac\Deptrac\Core\Analyser\AnalyserException;
+use Deptrac\Deptrac\Core\Analyser\DependencyLayersAnalyser;
+use Deptrac\Deptrac\Supportive\OutputFormatter\FormatterProvider;
 use Throwable;
 use function implode;
 use function sprintf;
@@ -24,13 +24,13 @@ final class AnalyseRunner
     /**
      * @throws CommandRunException
      */
-    public function run(\Qossmic\Deptrac\Supportive\Console\Command\AnalyseOptions $options, OutputInterface $output) : void
+    public function run(\Deptrac\Deptrac\Supportive\Console\Command\AnalyseOptions $options, OutputInterface $output) : void
     {
         try {
             $formatter = $this->formatterProvider->get($options->formatter);
         } catch (ContainerExceptionInterface) {
             $this->printFormatterNotFoundException($output, $options->formatter);
-            throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::invalidFormatter();
+            throw \Deptrac\Deptrac\Supportive\Console\Command\CommandRunException::invalidFormatter();
         }
         $formatterInput = new OutputFormatterInput($options->output, $options->reportSkipped, $options->reportUncovered, $options->failOnUncovered);
         $this->printCollectViolations($output);
@@ -38,7 +38,7 @@ final class AnalyseRunner
             $result = OutputResult::fromAnalysisResult($this->analyser->analyse());
         } catch (AnalyserException $e) {
             $this->printAnalysisException($output, $e);
-            throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($e);
+            throw \Deptrac\Deptrac\Supportive\Console\Command\CommandRunException::analyserException($e);
         }
         $this->printFormattingStart($output);
         try {
@@ -47,13 +47,13 @@ final class AnalyseRunner
             $this->printFormatterError($output, $formatter::getName(), $error);
         }
         if ($options->failOnUncovered && $result->hasUncovered()) {
-            throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::finishedWithUncovered();
+            throw \Deptrac\Deptrac\Supportive\Console\Command\CommandRunException::finishedWithUncovered();
         }
         if ($result->hasViolations()) {
-            throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::finishedWithViolations();
+            throw \Deptrac\Deptrac\Supportive\Console\Command\CommandRunException::finishedWithViolations();
         }
         if ($result->hasErrors()) {
-            throw \Qossmic\Deptrac\Supportive\Console\Command\CommandRunException::failedWithErrors();
+            throw \Deptrac\Deptrac\Supportive\Console\Command\CommandRunException::failedWithErrors();
         }
     }
     private function printCollectViolations(OutputInterface $output) : void

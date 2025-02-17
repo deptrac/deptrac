@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Ast\Parser\Extractors;
+namespace Deptrac\Deptrac\Core\Ast\Parser\Extractors;
 
 use DEPTRAC_INTERNAL\PhpParser\Node;
-use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
-use Qossmic\Deptrac\Core\Ast\Parser\TypeResolver;
-use Qossmic\Deptrac\Core\Ast\Parser\TypeScope;
-class FunctionLikeExtractor implements \Qossmic\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface
+use Deptrac\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeScope;
+class FunctionLikeExtractor implements \Deptrac\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface
 {
     public function __construct(private readonly TypeResolver $typeResolver)
     {

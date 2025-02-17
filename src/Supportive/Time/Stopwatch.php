@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\Time;
+namespace Deptrac\Deptrac\Supportive\Time;
 
 use function array_key_exists;
 final class Stopwatch
@@ -16,14 +16,14 @@ final class Stopwatch
     public function start(string $event) : void
     {
         $this->assertPeriodNotStarted($event);
-        $this->periods[$event] = \Qossmic\Deptrac\Supportive\Time\StartedPeriod::start();
+        $this->periods[$event] = \Deptrac\Deptrac\Supportive\Time\StartedPeriod::start();
     }
     /**
      * @param non-empty-string $event
      *
      * @throws StopwatchException
      */
-    public function stop(string $event) : \Qossmic\Deptrac\Supportive\Time\Period
+    public function stop(string $event) : \Deptrac\Deptrac\Supportive\Time\Period
     {
         $this->assertPeriodStarted($event);
         $period = $this->periods[$event]->stop();
@@ -38,7 +38,7 @@ final class Stopwatch
     private function assertPeriodNotStarted(string $event) : void
     {
         if (array_key_exists($event, $this->periods)) {
-            throw \Qossmic\Deptrac\Supportive\Time\StopwatchException::periodAlreadyStarted($event);
+            throw \Deptrac\Deptrac\Supportive\Time\StopwatchException::periodAlreadyStarted($event);
         }
     }
     /**
@@ -49,7 +49,7 @@ final class Stopwatch
     private function assertPeriodStarted(string $event) : void
     {
         if (!array_key_exists($event, $this->periods)) {
-            throw \Qossmic\Deptrac\Supportive\Time\StopwatchException::periodNotStarted($event);
+            throw \Deptrac\Deptrac\Supportive\Time\StopwatchException::periodNotStarted($event);
         }
     }
 }

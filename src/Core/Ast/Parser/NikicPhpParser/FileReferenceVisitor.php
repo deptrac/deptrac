@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Ast\Parser\NikicPhpParser;
+namespace Deptrac\Deptrac\Core\Ast\Parser\NikicPhpParser;
 
 use DEPTRAC_INTERNAL\PhpParser\Node;
 use DEPTRAC_INTERNAL\PhpParser\Node\Identifier;
@@ -22,11 +22,11 @@ use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\ConstExprParser;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\PhpDocParser;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\TokenIterator;
 use DEPTRAC_INTERNAL\PHPStan\PhpDocParser\Parser\TypeParser;
-use Qossmic\Deptrac\Core\Ast\AstMap\File\FileReferenceBuilder;
-use Qossmic\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
-use Qossmic\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface;
-use Qossmic\Deptrac\Core\Ast\Parser\TypeResolver;
-use Qossmic\Deptrac\Core\Ast\Parser\TypeScope;
+use Deptrac\Deptrac\Core\Ast\AstMap\File\FileReferenceBuilder;
+use Deptrac\Deptrac\Core\Ast\AstMap\ReferenceBuilder;
+use Deptrac\Deptrac\Core\Ast\Parser\Extractors\ReferenceExtractorInterface;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeScope;
 class FileReferenceVisitor extends NodeVisitorAbstract
 {
     /** @var ReferenceExtractorInterface[] */

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Ast\Parser\Cache;
+namespace Deptrac\Deptrac\Core\Ast\Parser\Cache;
 
-use Qossmic\Deptrac\Core\Ast\AstMap\File\FileReference;
-final class AstFileReferenceInMemoryCache implements \Qossmic\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceCacheInterface
+use Deptrac\Deptrac\Core\Ast\AstMap\File\FileReference;
+final class AstFileReferenceInMemoryCache implements \Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceCacheInterface
 {
     /**
      * @var array<string, FileReference>

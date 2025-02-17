@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\InputCollector;
+namespace Deptrac\Deptrac\Core\InputCollector;
 
 interface InputCollectorInterface
 {

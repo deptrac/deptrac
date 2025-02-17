@@ -14,7 +14,7 @@ spl_autoload_register(static function (string $class): void {
     }
 
     // load prefixed or native class, e.g. for running tests
-    if (str_starts_with($class, 'DEPTRAC_') || str_starts_with($class, 'Qossmic\\Deptrac\\')) {
+    if (str_starts_with($class, 'DEPTRAC_') || str_starts_with($class, 'Deptrac\\Deptrac\\')) {
         if ($composerAutoloader === null) {
             // prefixed version autoload
             $composerAutoloader = require __DIR__ . '/vendor/autoload.php';

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\DependencyInjection;
+namespace Deptrac\Deptrac\Supportive\DependencyInjection;
 
 use InvalidArgumentException;
-use Qossmic\Deptrac\Contract\Config\EmitterType;
+use Deptrac\Deptrac\Contract\Config\EmitterType;
 use RuntimeException;
 use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use DEPTRAC_INTERNAL\Symfony\Component\Config\Definition\Builder\TreeBuilder;

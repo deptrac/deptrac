@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\DependencyInjection;
+namespace Deptrac\Deptrac\Supportive\DependencyInjection;
 
 use Exception;
-use Qossmic\Deptrac\Supportive\DependencyInjection\Exception\CacheFileException;
-use Qossmic\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
+use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CacheFileException;
+use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use SplFileInfo;
 use DEPTRAC_INTERNAL\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
 use DEPTRAC_INTERNAL\Symfony\Component\Config\FileLocator;
@@ -63,7 +63,7 @@ final class ServiceContainerBuilder
         $container = new ContainerBuilder();
         $container->setParameter('currentWorkingDirectory', $this->workingDirectory);
         self::registerCompilerPasses($container);
-        $container->registerExtension(new \Qossmic\Deptrac\Supportive\DependencyInjection\DeptracExtension());
+        $container->registerExtension(new \Deptrac\Deptrac\Supportive\DependencyInjection\DeptracExtension());
         $container->setParameter('projectDirectory', $this->workingDirectory);
         self::loadServices($container);
         if (null !== $this->configFile) {

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Core\Layer;
+namespace Deptrac\Deptrac\Core\Layer;
 
-use Qossmic\Deptrac\Contract\Ast\CouldNotParseFileException;
-use Qossmic\Deptrac\Contract\Ast\TokenReferenceInterface;
-use Qossmic\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
-use Qossmic\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
+use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
+use Deptrac\Deptrac\Contract\Ast\TokenReferenceInterface;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
+use Deptrac\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
 interface LayerResolverInterface
 {
     /**

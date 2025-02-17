@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\Console\Subscriber;
+namespace Deptrac\Deptrac\Supportive\Console\Subscriber;
 
-use Qossmic\Deptrac\Contract\Ast\AstFileAnalysedEvent;
-use Qossmic\Deptrac\Contract\Ast\PostCreateAstMapEvent;
-use Qossmic\Deptrac\Contract\Ast\PreCreateAstMapEvent;
-use Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface;
+use Deptrac\Deptrac\Contract\Ast\AstFileAnalysedEvent;
+use Deptrac\Deptrac\Contract\Ast\PostCreateAstMapEvent;
+use Deptrac\Deptrac\Contract\Ast\PreCreateAstMapEvent;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
 use DEPTRAC_INTERNAL\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class ProgressSubscriber implements EventSubscriberInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\Console\Command;
+namespace Deptrac\Deptrac\Supportive\Console\Command;
 
-use Qossmic\Deptrac\Supportive\Console\Symfony\Style;
-use Qossmic\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
+use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Command\Command;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputArgument;
 use DEPTRAC_INTERNAL\Symfony\Component\Console\Input\InputInterface;
@@ -15,7 +15,7 @@ class ChangedFilesCommand extends Command
 {
     public static $defaultName = 'changed-files';
     public static $defaultDescription = 'Lists layers corresponding to the changed files';
-    public function __construct(private readonly \Qossmic\Deptrac\Supportive\Console\Command\ChangedFilesRunner $runner)
+    public function __construct(private readonly \Deptrac\Deptrac\Supportive\Console\Command\ChangedFilesRunner $runner)
     {
         parent::__construct();
     }
@@ -33,7 +33,7 @@ class ChangedFilesCommand extends Command
             /** @var list<string> $files */
             $files = $input->getArgument('files');
             $this->runner->run($files, (bool) $input->getOption('with-dependencies'), $symfonyOutput);
-        } catch (\Qossmic\Deptrac\Supportive\Console\Command\CommandRunException) {
+        } catch (\Deptrac\Deptrac\Supportive\Console\Command\CommandRunException) {
             return self::FAILURE;
         }
         return self::SUCCESS;

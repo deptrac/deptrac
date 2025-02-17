@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\OutputFormatter;
+namespace Deptrac\Deptrac\Contract\OutputFormatter;
 
-use Qossmic\Deptrac\Contract\Result\OutputResult;
+use Deptrac\Deptrac\Contract\Result\OutputResult;
 interface OutputFormatterInterface
 {
     /**
@@ -18,5 +18,5 @@ interface OutputFormatterInterface
      *
      * @throws OutputException
      */
-    public function finish(OutputResult $result, \Qossmic\Deptrac\Contract\OutputFormatter\OutputInterface $output, \Qossmic\Deptrac\Contract\OutputFormatter\OutputFormatterInput $outputFormatterInput) : void;
+    public function finish(OutputResult $result, \Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface $output, \Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInput $outputFormatterInput) : void;
 }

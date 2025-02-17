@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\File\Exception;
+namespace Deptrac\Deptrac\Supportive\File\Exception;
 
-use Qossmic\Deptrac\Contract\ExceptionInterface;
+use Deptrac\Deptrac\Contract\ExceptionInterface;
 use RuntimeException;
 class FileNotExistsException extends RuntimeException implements ExceptionInterface
 {

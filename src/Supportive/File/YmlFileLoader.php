@@ -1,10 +1,10 @@
 <?php
 
-namespace Qossmic\Deptrac\Supportive\File;
+namespace Deptrac\Deptrac\Supportive\File;
 
-use Qossmic\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
-use Qossmic\Deptrac\Supportive\File\Exception\FileCannotBeParsedAsYamlException;
-use Qossmic\Deptrac\Supportive\File\Exception\ParsedYamlIsNotAnArrayException;
+use Deptrac\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
+use Deptrac\Deptrac\Supportive\File\Exception\FileCannotBeParsedAsYamlException;
+use Deptrac\Deptrac\Supportive\File\Exception\ParsedYamlIsNotAnArrayException;
 use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Exception\ParseException;
 use DEPTRAC_INTERNAL\Symfony\Component\Yaml\Yaml;
 /**
@@ -22,7 +22,7 @@ class YmlFileLoader
     public function parseFile(string $file) : array
     {
         try {
-            $data = Yaml::parse(\Qossmic\Deptrac\Supportive\File\FileReader::read($file));
+            $data = Yaml::parse(\Deptrac\Deptrac\Supportive\File\FileReader::read($file));
         } catch (ParseException $exception) {
             throw FileCannotBeParsedAsYamlException::fromFilenameAndException($file, $exception);
         }

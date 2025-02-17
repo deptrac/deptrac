@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Contract\Config;
+namespace Deptrac\Deptrac\Contract\Config;
 
 final class AnalyserConfig
 {
@@ -16,12 +16,12 @@ final class AnalyserConfig
     public static function create(?array $types = null, ?string $internalTag = null) : self
     {
         $analyser = new self();
-        $types ??= [\Qossmic\Deptrac\Contract\Config\EmitterType::CLASS_TOKEN, \Qossmic\Deptrac\Contract\Config\EmitterType::FUNCTION_TOKEN];
+        $types ??= [\Deptrac\Deptrac\Contract\Config\EmitterType::CLASS_TOKEN, \Deptrac\Deptrac\Contract\Config\EmitterType::FUNCTION_TOKEN];
         $analyser->types(...$types);
         $analyser->internalTag($internalTag);
         return $analyser;
     }
-    public function types(\Qossmic\Deptrac\Contract\Config\EmitterType ...$types) : self
+    public function types(\Deptrac\Deptrac\Contract\Config\EmitterType ...$types) : self
     {
         $this->types = [];
         foreach ($types as $type) {
@@ -37,6 +37,6 @@ final class AnalyserConfig
     /** @return array<string, mixed> */
     public function toArray() : array
     {
-        return ['types' => \array_map(static fn(\Qossmic\Deptrac\Contract\Config\EmitterType $emitterType) => $emitterType->value, $this->types), 'internal_tag' => $this->internalTag];
+        return ['types' => \array_map(static fn(\Deptrac\Deptrac\Contract\Config\EmitterType $emitterType) => $emitterType->value, $this->types), 'internal_tag' => $this->internalTag];
     }
 }

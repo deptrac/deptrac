@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Qossmic\Deptrac\Supportive\OutputFormatter\Configuration;
+namespace Deptrac\Deptrac\Supportive\OutputFormatter\Configuration;
 
 class FormatterConfiguration
 {

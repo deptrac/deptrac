@@ -15,15 +15,15 @@ or Mermaidjs formatter you can visualize your layers, rules and violations.
 ## Documentation
 
 You can find the documentation in the /docs directory or visit the doc page:
-https://qossmic.github.io/deptrac
+https://deptrac.github.io/deptrac
 
 ## Getting Started
 
 You can install Deptrac via Composer. We recommend using the
-[deptrac](https://github.com/qossmic/deptrac) package for this:
+[deptrac](https://github.com/deptrac/deptrac) package for this:
 
 ```console
-composer require --dev qossmic/deptrac
+composer require --dev deptrac/deptrac
 ```
 
 Once you have downloaded/installed deptrac, you will need to create a
@@ -55,7 +55,7 @@ You can analyse projects that require an older PHP version as long as
 
 ## How to Contribute
 
-See the [contribution guide](docs/CONTRIBUTING.md) or go to development repository [qossmic/deptrac-src](https://github.com/qossmic/deptrac-src).
+See the [contribution guide](docs/CONTRIBUTING.md) or go to development repository [deptrac/deptrac-src](https://github.com/deptrac/deptrac-src).
 
 ## Further Documentation
 
