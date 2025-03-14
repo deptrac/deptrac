@@ -73,6 +73,25 @@ deptrac:
 </td>
 </tr>
 <tr>
+<td>feature_flags.phpstan_parser</td>
+<td>
+
+Enable **experimental** parsing of code using PHPStan parser instead of the default
+Nikic parser. This should result in more detailed dependency analysis and resolution
+between code.
+
+</td>
+<td>
+
+```yaml
+deptrac:
+  feature_flags:
+    phpstan_parser: true
+```
+
+</td>
+</tr>
+<tr>
 <td>paths</td>
 <td>
 

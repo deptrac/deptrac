@@ -13,7 +13,7 @@ use PhpParser\Node;
  *
  * @template T of Node
  */
-interface ReferenceExtractorInterface
+interface NikicReferenceExtractorInterface
 {
     /**
      * @return class-string<T>

@@ -9,6 +9,8 @@ use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
 use Deptrac\Deptrac\Core\Ast\AstLoader;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
 use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
 use Deptrac\Deptrac\Core\Dependency\DependencyList;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\AnonymousClassExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassExtractor;
@@ -35,16 +37,18 @@ trait EmitterTrait
     {
         $files = (array) $files;
 
+        $phpstanTypeResolver = new PhpStanTypeResolver();
+        $phpStanContainerDecorator = new PhpStanContainerDecorator(__DIR__, __DIR__, []);
         $nikicTypeResolver = new NikicTypeResolver();
         $parser = new NikicPhpParser(
             (new ParserFactory())->createForNewestSupportedVersion(),
             new AstFileReferenceInMemoryCache(),
             [
                 new AnonymousClassExtractor(),
-                new FunctionLikeExtractor($nikicTypeResolver),
-                new PropertyExtractor($nikicTypeResolver),
-                new FunctionCallExtractor($nikicTypeResolver),
-                new VariableExtractor($nikicTypeResolver),
+                new FunctionLikeExtractor($phpstanTypeResolver, $nikicTypeResolver),
+                new PropertyExtractor($phpStanContainerDecorator, $nikicTypeResolver),
+                new FunctionCallExtractor($phpstanTypeResolver, $nikicTypeResolver),
+                new VariableExtractor($phpStanContainerDecorator, $nikicTypeResolver),
                 new ClassExtractor(),
                 new UseExtractor(),
                 new InstanceofExtractor($nikicTypeResolver),

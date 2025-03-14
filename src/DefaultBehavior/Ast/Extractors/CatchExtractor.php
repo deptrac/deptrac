@@ -7,16 +7,19 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Extractors;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ReferenceBuilderInterface;
-use Deptrac\Deptrac\Contract\Ast\ReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Catch_;
+use PHPStan\Analyser\Scope;
 
 /**
- * @implements ReferenceExtractorInterface<Catch_>
+ * @implements NikicReferenceExtractorInterface<Catch_>
+ * @implements PHPStanReferenceExtractorInterface<Catch_>
  */
-final class CatchExtractor implements ReferenceExtractorInterface
+final class CatchExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
     public function __construct(private readonly TypeResolverInterface $typeResolver) {}
 
@@ -30,5 +33,15 @@ final class CatchExtractor implements ReferenceExtractorInterface
     public function getNodeType(): string
     {
         return Catch_::class;
+    }
+
+    public function processNodeWithPhpStanScope(
+        Node $node,
+        ReferenceBuilderInterface $referenceBuilder,
+        Scope $scope,
+    ): void {
+        foreach ($node->types as $classLikeName) {
+            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($scope->resolveName($classLikeName)), $node->getLine(), DependencyType::CATCH);
+        }
     }
 }

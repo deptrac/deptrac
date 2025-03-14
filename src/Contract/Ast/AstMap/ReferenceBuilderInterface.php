@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\Contract\Ast\AstMap;
 
-use Deptrac\Deptrac\Contract\Ast\ReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
 
 /**
  * Interface for defining deptrac dependencies inside "Reference Extractors".
  *
- * @see ReferenceExtractorInterface
+ * @see NikicReferenceExtractorInterface
  */
 interface ReferenceBuilderInterface
 {

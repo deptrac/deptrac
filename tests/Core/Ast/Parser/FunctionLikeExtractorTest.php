@@ -10,6 +10,9 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyToken;
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
 use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\FunctionLikeExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use PhpParser\ParserFactory;
@@ -80,6 +83,7 @@ final class FunctionLikeExtractorTest extends TestCase
     {
         return [
             'Nikic Parser' => [self::createNikicParser(...)],
+            'PHPStan Parser' => [self::createPhpStanParser(...)],
         ];
     }
 
@@ -89,11 +93,25 @@ final class FunctionLikeExtractorTest extends TestCase
 
         $cache = new AstFileReferenceInMemoryCache();
         $extractors = [
-            new FunctionLikeExtractor($typeResolver),
+            new FunctionLikeExtractor(new PhpStanTypeResolver(), $typeResolver),
         ];
 
         return new NikicPhpParser(
             (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
         );
     }
+
+    public static function createPhpStanParser(string $filePath): PhpStanParser
+    {
+        $typeResolver = new NikicTypeResolver();
+        $phpStanContainer = new PhpStanContainerDecorator(__DIR__, __DIR__, [$filePath]);
+
+        $cache = new AstFileReferenceInMemoryCache();
+        $extractors = [
+            new FunctionLikeExtractor(new PhpStanTypeResolver(), $typeResolver),
+        ];
+
+        return new PhpStanParser($phpStanContainer, $cache, $extractors);
+    }
+
 }

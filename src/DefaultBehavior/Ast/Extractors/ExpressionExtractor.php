@@ -7,11 +7,14 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Extractors;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ReferenceBuilderInterface;
-use Deptrac\Deptrac\Contract\Ast\ReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
+use PHPStan\Analyser\Scope;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\ConstExprParser;
@@ -21,14 +24,19 @@ use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\PhpDocParser\ParserConfig;
 
 /**
- * @implements ReferenceExtractorInterface<Node\Stmt\Expression>
+ * @see https://github.com/nikic/PHP-Parser/commit/4e27a17cd855b36abe0199efb81be143b144f40d#diff-4034fc485172f50147405c293a9d86685b0f333e69b666de5492da37406186afL44 for the change in nikic/php-parser
+ * @see https://github.com/phpstan/phpstan-src/commit/cc4bff635ebae19b010b81130360155692283ac6#diff-c4e3f0a39ea5d27cabb86159d23a29adbf4ba64b1931497f8a9bac2e720579d9R81 for the reference implementation from PHPStan
+ *
+ * @implements NikicReferenceExtractorInterface<Node\Stmt\Expression>
+ * @implements PHPStanReferenceExtractorInterface<Node\Stmt\Expression>
  */
-final class ExpressionExtractor implements ReferenceExtractorInterface
+final class ExpressionExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
     private readonly Lexer $lexer;
     private readonly PhpDocParser $docParser;
 
     public function __construct(
+        private readonly PhpStanContainerDecorator $phpStanContainer,
         private readonly TypeResolverInterface $typeResolver,
     ) {
         $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
@@ -37,10 +45,6 @@ final class ExpressionExtractor implements ReferenceExtractorInterface
         $this->docParser = new PhpDocParser($config, new TypeParser($config, $constExprParser), $constExprParser);
     }
 
-    /**
-     * @see https://github.com/nikic/PHP-Parser/commit/4e27a17cd855b36abe0199efb81be143b144f40d#diff-4034fc485172f50147405c293a9d86685b0f333e69b666de5492da37406186afL44 for the change in nikic/php-parser
-     * @see https://github.com/phpstan/phpstan-src/commit/cc4bff635ebae19b010b81130360155692283ac6#diff-c4e3f0a39ea5d27cabb86159d23a29adbf4ba64b1931497f8a9bac2e720579d9R81 for the reference implementation from PHPStan
-     */
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
     {
         if (!$node->expr instanceof Node\Expr\Assign && !$node->expr instanceof Node\Expr\AssignRef) {
@@ -74,5 +78,36 @@ final class ExpressionExtractor implements ReferenceExtractorInterface
     public function getNodeType(): string
     {
         return Node\Stmt\Expression::class;
+    }
+
+    public function processNodeWithPhpStanScope(
+        Node $node,
+        ReferenceBuilderInterface $referenceBuilder,
+        Scope $scope
+    ): void {
+        if (!$node->expr instanceof Node\Expr\Assign && !$node->expr instanceof Node\Expr\AssignRef) {
+            return;
+        }
+
+        $docComment = $node->getDocComment();
+        if (!$docComment instanceof Doc) {
+            return;
+        }
+
+        $fileTypeMapper = $this->phpStanContainer->createFileTypeMapper();
+        /** @throws void */
+        $resolvedPhpDoc = $fileTypeMapper->getResolvedPhpDoc(
+            $scope->getFile(),
+            $scope->getClassReflection()?->getName(),
+            $scope->getTraitReflection()?->getName(),
+            $scope->getFunction()?->getName(),
+            $docComment->getText(),
+        );
+
+        foreach ($resolvedPhpDoc->getVarTags() as $tag) {
+            foreach ($tag->getType()->getReferencedClasses() as $referencedClass) {
+                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $docComment->getStartLine(), DependencyType::VARIABLE);
+            }
+        }
     }
 }

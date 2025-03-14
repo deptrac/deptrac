@@ -7,15 +7,18 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Extractors;
 use Deptrac\Deptrac\Contract\Ast\AstMap\AstInheritType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ReferenceBuilderInterface;
-use Deptrac\Deptrac\Contract\Ast\ReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
 use PhpParser\Node;
+use PHPStan\Analyser\Scope;
 
 /**
- * @implements ReferenceExtractorInterface<\PhpParser\Node\Stmt\TraitUse>
+ * @implements NikicReferenceExtractorInterface<Node\Stmt\TraitUse>
+ * @implements PHPStanReferenceExtractorInterface<Node\Stmt\TraitUse>
  */
-final class TraitUseExtractor implements ReferenceExtractorInterface
+final class TraitUseExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
     public function __construct(private readonly TypeResolverInterface $typeResolver) {}
 
@@ -29,5 +32,15 @@ final class TraitUseExtractor implements ReferenceExtractorInterface
     public function getNodeType(): string
     {
         return Node\Stmt\TraitUse::class;
+    }
+
+    public function processNodeWithPhpStanScope(
+        Node $node,
+        ReferenceBuilderInterface $referenceBuilder,
+        Scope $scope
+    ): void {
+        foreach ($node->traits as $trait) {
+            $referenceBuilder->astInherits(ClassLikeToken::fromFQCN($scope->resolveName($trait)), $node->getLine(), AstInheritType::USES);
+        }
     }
 }

@@ -7,10 +7,13 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Extractors;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FunctionToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ReferenceBuilderInterface;
-use Deptrac\Deptrac\Contract\Ast\ReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
 use PhpParser\Node;
+use PHPStan\Analyser\Scope;
 
 /**
  * Unqualified function and constant names inside a namespace cannot be
@@ -19,11 +22,13 @@ use PhpParser\Node;
  * Because PHP-Parser does not have the necessary context to decide this,
  * such names are left unresolved.
  *
- * @implements ReferenceExtractorInterface<\PhpParser\Node\Expr\FuncCall>
+ * @implements NikicReferenceExtractorInterface<Node\Expr\FuncCall>
+ * @implements PHPStanReferenceExtractorInterface<Node\Expr\FuncCall>
  */
-final class FunctionCallExtractor implements ReferenceExtractorInterface
+final class FunctionCallExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
     public function __construct(
+        private readonly PhpStanTypeResolver $phpStanTypeResolver,
         private readonly TypeResolverInterface $typeResolver,
     ) {}
 
@@ -37,5 +42,15 @@ final class FunctionCallExtractor implements ReferenceExtractorInterface
     public function getNodeType(): string
     {
         return Node\Expr\FuncCall::class;
+    }
+
+    public function processNodeWithPhpStanScope(
+        Node $node,
+        ReferenceBuilderInterface $referenceBuilder,
+        Scope $scope
+    ): void {
+        foreach ($this->phpStanTypeResolver->resolveType($node->name, $scope) as $functionName) {
+            $referenceBuilder->dependency(FunctionToken::fromFQCN($functionName), $node->getLine(), DependencyType::UNRESOLVED_FUNCTION_CALL);
+        }
     }
 }

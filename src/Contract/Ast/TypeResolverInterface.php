@@ -15,7 +15,7 @@ use PHPStan\PhpDocParser\Ast\Type\TypeNode;
  * into FQCN to be used inside the reference extractor implementation
  * for defining references between tokens.
  *
- * @see ReferenceExtractorInterface
+ * @see NikicReferenceExtractorInterface
  */
 interface TypeResolverInterface
 {

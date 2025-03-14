@@ -6,6 +6,7 @@ use Deptrac\Deptrac\Contract\Config\Collector\ComposerConfig;
 use Deptrac\Deptrac\Contract\Config\Collector\DirectoryConfig;
 use Deptrac\Deptrac\Contract\Config\DeptracConfig;
 use Deptrac\Deptrac\Contract\Config\EmitterType;
+use Deptrac\Deptrac\Contract\Config\FeatureFlagsConfig;
 use Deptrac\Deptrac\Contract\Config\Formatter\GraphvizConfig;
 use Deptrac\Deptrac\Contract\Config\Formatter\MermaidJsConfig;
 use Deptrac\Deptrac\Contract\Config\Layer;
@@ -22,6 +23,7 @@ return static function (DeptracConfig $config, ContainerConfigurator $containerC
     $config
         ->paths('src')
         ->cacheFile('.cache/deptrac.cache')
+        ->featureFlags(FeatureFlagsConfig::create(phpstanParser: true))
         ->baseline('deptrac.baseline.yaml')
         ->analyser(
             AnalyserConfig::create()

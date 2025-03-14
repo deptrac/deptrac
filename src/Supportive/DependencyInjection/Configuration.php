@@ -37,6 +37,7 @@ class Configuration implements ConfigurationInterface
         $this->appendEmitterTypes($rootNode);
         $this->appendIgnoreUncoveredInternalClasses($rootNode);
         $this->appendCacheFile($rootNode);
+        $this->appendFeatureFlags($rootNode);
 
         return $builder;
     }
@@ -288,5 +289,21 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
         ;
+    }
+
+
+    private function appendFeatureFlags(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('feature_flags')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->booleanNode('phpstan_parser')
+                            ->defaultFalse()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
     }
 }

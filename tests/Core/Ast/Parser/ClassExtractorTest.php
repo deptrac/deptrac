@@ -9,7 +9,10 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
 use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\CatchExtractor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassConstantExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\PropertyExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use PhpParser\ParserFactory;
@@ -55,15 +58,17 @@ final class ClassExtractorTest extends TestCase
     {
         return [
             'Nikic Parser' => [self::createNikicParser(...)],
+            'PHPStan Parser' => [self::createPhpStanParser(...)],
         ];
     }
 
     public static function createNikicParser(string $filePath): NikicPhpParser
     {
+        $phpStanContainer = new PhpStanContainerDecorator(__DIR__, __DIR__, [$filePath]);
         $typeResolver = new NikicTypeResolver();
         $cache = new AstFileReferenceInMemoryCache();
         $extractors = [
-            new PropertyExtractor($typeResolver),
+            new PropertyExtractor($phpStanContainer, $typeResolver),
             new CatchExtractor($typeResolver),
         ];
 
@@ -71,4 +76,19 @@ final class ClassExtractorTest extends TestCase
             (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
         );
     }
+
+    public static function createPhpStanParser(string $filePath): PhpStanParser
+    {
+        $phpStanContainer = new PhpStanContainerDecorator(__DIR__, __DIR__, [$filePath]);
+        $typeResolver = new NikicTypeResolver();
+
+        $cache = new AstFileReferenceInMemoryCache();
+        $extractors = [
+            new PropertyExtractor($phpStanContainer, $typeResolver),
+            new CatchExtractor($typeResolver),
+        ];
+
+        return new PhpStanParser($phpStanContainer, $cache, $extractors);
+    }
+
 }

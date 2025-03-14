@@ -31,6 +31,7 @@ class DeptracExtension extends Extension implements PrependExtensionInterface
         $container->setParameter('analyser', $configs['analyser']);
         $container->setParameter('ignore_uncovered_internal_classes', $configs['ignore_uncovered_internal_classes']);
         $container->setParameter('cache_file', $configs['cache_file']);
+        $container->setParameter('feature_flags', $configs['feature_flags']);
     }
 
     public function prepend(ContainerBuilder $container): void
@@ -67,6 +68,9 @@ class DeptracExtension extends Extension implements PrependExtensionInterface
         }
         if (!$container->hasParameter('cache_file')) {
             $container->setParameter('cache_file', '.deptrac.cache');
+        }
+        if (!$container->hasParameter('feature_flags')) {
+            $container->setParameter('feature_flags', ['phpstan_parser' => false]);
         }
     }
 }

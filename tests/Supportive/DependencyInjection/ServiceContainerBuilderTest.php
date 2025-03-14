@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Deptrac\Deptrac\Supportive\DependencyInjection;
 
+use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use Deptrac\Deptrac\Supportive\DependencyInjection\ServiceContainerBuilder;
 use PHPUnit\Framework\TestCase;
@@ -17,7 +18,7 @@ final class ServiceContainerBuilderTest extends TestCase
         $container = $builder->build(null, false);
 
         // test service override is possible
-        self::assertSame(CustomPhpParser::class, $container->getDefinition(NikicPhpParser::class)->getClass());
+        self::assertSame(CustomPhpParser::class, $container->getDefinition(ParserInterface::class)->getClass());
 
         self::assertTrue($container->getParameter('ignore_uncovered_internal_classes'));
         self::assertSame(
@@ -45,5 +46,9 @@ final class ServiceContainerBuilderTest extends TestCase
             $container->getParameter('skip_violations')
         );
         self::assertSame(__DIR__.'/.deptrac.cache', $container->getParameter('cache_file'));
+        self::assertSame(
+            ['phpstan_parser' => false],
+            $container->getParameter('feature_flags')
+        );
     }
 }

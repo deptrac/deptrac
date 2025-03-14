@@ -22,7 +22,11 @@ use Deptrac\Deptrac\Core\Analyser\UnassignedTokenAnalyser;
 use Deptrac\Deptrac\Core\Ast\AstLoader;
 use Deptrac\Deptrac\Core\Ast\AstMapExtractor;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
+use Deptrac\Deptrac\Core\Ast\Parser\DelegatingParser;
 use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
 use Deptrac\Deptrac\Core\Dependency\DependencyResolver;
 use Deptrac\Deptrac\Core\Dependency\TokenResolver;
 use Deptrac\Deptrac\Core\InputCollector\FileInputCollector;
@@ -139,6 +143,14 @@ return static function (ContainerConfigurator $container): void {
         ->autowire()
     ;
 
+    $services
+        ->set(PhpStanContainerDecorator::class)
+        ->args([
+                   '$projectDirectory' => param('projectDirectory'),
+                   '$cwd' => param('currentWorkingDirectory'),
+                   '$paths' => param('paths'),
+               ]);
+
     /*
      * Utilities
      */
@@ -181,8 +193,19 @@ return static function (ContainerConfigurator $container): void {
             '$extractors' => tagged_iterator('reference_extractors'),
         ])
     ;
-    $services->alias(ParserInterface::class, NikicPhpParser::class);
+    $services
+        ->set(PhpStanParser::class)
+        ->args([
+                   '$extractors' => tagged_iterator('reference_extractors'),
+               ]);
+    $services
+        ->set(DelegatingParser::class)
+        ->args([
+                   '$featureFlags' => param('feature_flags'),
+               ]);
+    $services->alias(ParserInterface::class, DelegatingParser::class);
     $services->set(NikicTypeResolver::class);
+    $services->set(PhpStanTypeResolver::class);
     $services->alias(TypeResolverInterface::class, NikicTypeResolver::class);
     $services
         ->set(AnonymousClassExtractor::class)

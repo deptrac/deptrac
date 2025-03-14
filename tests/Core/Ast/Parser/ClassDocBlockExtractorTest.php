@@ -8,6 +8,9 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
 use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
+use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassLikeExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use PhpParser\ParserFactory;
@@ -47,16 +50,19 @@ final class ClassDocBlockExtractorTest extends TestCase
     public static function createParser(): array
     {
         $typeResolver = new NikicTypeResolver();
+        $phpStanContainer = new PhpStanContainerDecorator(__DIR__, __DIR__, []);
         $extractors = [
-            new ClassLikeExtractor($typeResolver),
+            new ClassLikeExtractor($phpStanContainer, new PhpStanTypeResolver(), $typeResolver),
         ];
         $cache = new AstFileReferenceInMemoryCache();
         $parser = new NikicPhpParser(
             (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
         );
+        $phpstanParser = new PhpStanParser($phpStanContainer, $cache, $extractors);
 
         return [
             'Nikic Parser' => [$parser],
+            'PHPStan Parser' => [$phpstanParser],
         ];
     }
 }
