@@ -32,7 +32,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
         $annotationDependency = $astClassReferences[0]->dependencies;
 
         self::assertCount(2, $astClassReferences);
-        self::assertCount(12, $annotationDependency);
+        self::assertCount(9, $annotationDependency);
         self::assertCount(0, $astClassReferences[1]->dependencies);
 
         self::assertSame(
@@ -53,35 +53,35 @@ final class AnnotationReferenceExtractorTest extends TestCase
 
         self::assertSame(
             'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\AnnotationDependencyChild',
-            $annotationDependency[3]->token->toString()
+            $annotationDependency[2]->token->toString()
         );
-        self::assertSame($filePath, $annotationDependency[3]->context->fileOccurrence->filepath);
-        self::assertSame(26, $annotationDependency[3]->context->fileOccurrence->line);
-        self::assertSame('variable', $annotationDependency[3]->context->dependencyType->value);
+        self::assertSame($filePath, $annotationDependency[2]->context->fileOccurrence->filepath);
+        self::assertSame(26, $annotationDependency[2]->context->fileOccurrence->line);
+        self::assertSame('variable', $annotationDependency[2]->context->dependencyType->value);
 
         self::assertSame(
             'Symfony\Component\Console\Exception\RuntimeException',
-            $annotationDependency[5]->token->toString()
+            $annotationDependency[3]->token->toString()
         );
-        self::assertSame($filePath, $annotationDependency[5]->context->fileOccurrence->filepath);
-        self::assertSame(29, $annotationDependency[5]->context->fileOccurrence->line);
-        self::assertSame('variable', $annotationDependency[5]->context->dependencyType->value);
+        self::assertSame($filePath, $annotationDependency[3]->context->fileOccurrence->filepath);
+        self::assertSame(29, $annotationDependency[3]->context->fileOccurrence->line);
+        self::assertSame('variable', $annotationDependency[3]->context->dependencyType->value);
 
         self::assertSame(
             'Symfony\Component\Finder\SplFileInfo',
-            $annotationDependency[7]->token->toString()
+            $annotationDependency[4]->token->toString()
         );
-        self::assertSame($filePath, $annotationDependency[7]->context->fileOccurrence->filepath);
-        self::assertSame(14, $annotationDependency[7]->context->fileOccurrence->line);
-        self::assertSame('parameter', $annotationDependency[7]->context->dependencyType->value);
+        self::assertSame($filePath, $annotationDependency[4]->context->fileOccurrence->filepath);
+        self::assertSame(14, $annotationDependency[4]->context->fileOccurrence->line);
+        self::assertSame('parameter', $annotationDependency[4]->context->dependencyType->value);
 
         self::assertSame(
             'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\AnnotationDependencyChild',
-            $annotationDependency[8]->token->toString()
+            $annotationDependency[5]->token->toString()
         );
-        self::assertSame($filePath, $annotationDependency[8]->context->fileOccurrence->filepath);
-        self::assertSame(14, $annotationDependency[8]->context->fileOccurrence->line);
-        self::assertSame('returntype', $annotationDependency[8]->context->dependencyType->value);
+        self::assertSame($filePath, $annotationDependency[5]->context->fileOccurrence->filepath);
+        self::assertSame(14, $annotationDependency[5]->context->fileOccurrence->line);
+        self::assertSame('returntype', $annotationDependency[5]->context->dependencyType->value);
     }
 
     /**

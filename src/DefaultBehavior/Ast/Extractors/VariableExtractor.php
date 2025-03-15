@@ -60,8 +60,8 @@ final class VariableExtractor implements NikicReferenceExtractorInterface, PHPSt
             return;
         }
 
-        $tokens        = new TokenIterator($this->lexer->tokenize($docComment->getText()));
-        $docNode       = $this->docParser->parse($tokens);
+        $tokens = new TokenIterator($this->lexer->tokenize($docComment->getText()));
+        $docNode = $this->docParser->parse($tokens);
         $templateTypes = array_merge(
             array_map(
                 static fn (TemplateTagValueNode $node): string => $node->name,
@@ -87,7 +87,7 @@ final class VariableExtractor implements NikicReferenceExtractorInterface, PHPSt
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope
+        Scope $scope,
     ): void {
         if (in_array($node->name, $this->allowedNames, true)) {
             /** @throws void */

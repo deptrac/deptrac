@@ -162,5 +162,4 @@ final class ParserTest extends TestCase
 
         return new PhpStanParser($phpStanContainer, $cache, $extractors);
     }
-
 }

@@ -63,8 +63,8 @@ final class PropertyExtractor implements NikicReferenceExtractorInterface, PHPSt
             return;
         }
 
-        $tokens        = new TokenIterator($this->lexer->tokenize($docComment->getText()));
-        $docNode       = $this->docParser->parse($tokens);
+        $tokens = new TokenIterator($this->lexer->tokenize($docComment->getText()));
+        $docNode = $this->docParser->parse($tokens);
         $templateTypes = array_merge(
             array_map(
                 static fn (TemplateTagValueNode $node): string => $node->name,
@@ -90,7 +90,7 @@ final class PropertyExtractor implements NikicReferenceExtractorInterface, PHPSt
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope
+        Scope $scope,
     ): void {
         foreach ($node->attrGroups as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {

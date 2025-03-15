@@ -43,7 +43,7 @@ final class StaticPropertyFetchExtractor implements NikicReferenceExtractorInter
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope
+        Scope $scope,
     ): void {
         if (!$node->class instanceof Name) {
             return;

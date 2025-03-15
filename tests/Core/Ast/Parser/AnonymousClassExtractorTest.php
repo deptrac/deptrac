@@ -85,5 +85,4 @@ final class AnonymousClassExtractorTest extends TestCase
 
         return new PhpStanParser($phpStanContainer, $cache, $extractors);
     }
-
 }

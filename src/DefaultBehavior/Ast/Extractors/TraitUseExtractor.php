@@ -37,7 +37,7 @@ final class TraitUseExtractor implements NikicReferenceExtractorInterface, PHPSt
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope
+        Scope $scope,
     ): void {
         foreach ($node->traits as $trait) {
             $referenceBuilder->astInherits(ClassLikeToken::fromFQCN($scope->resolveName($trait)), $node->getLine(), AstInheritType::USES);

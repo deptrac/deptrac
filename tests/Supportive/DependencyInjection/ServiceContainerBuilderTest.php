@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Deptrac\Deptrac\Supportive\DependencyInjection;
 
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
-use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use Deptrac\Deptrac\Supportive\DependencyInjection\ServiceContainerBuilder;
 use PHPUnit\Framework\TestCase;
 

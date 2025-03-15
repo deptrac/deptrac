@@ -146,10 +146,11 @@ return static function (ContainerConfigurator $container): void {
     $services
         ->set(PhpStanContainerDecorator::class)
         ->args([
-                   '$projectDirectory' => param('projectDirectory'),
-                   '$cwd' => param('currentWorkingDirectory'),
-                   '$paths' => param('paths'),
-               ]);
+            '$projectDirectory' => param('projectDirectory'),
+            '$cwd' => param('currentWorkingDirectory'),
+            '$paths' => param('paths'),
+        ])
+    ;
 
     /*
      * Utilities
@@ -196,13 +197,15 @@ return static function (ContainerConfigurator $container): void {
     $services
         ->set(PhpStanParser::class)
         ->args([
-                   '$extractors' => tagged_iterator('reference_extractors'),
-               ]);
+            '$extractors' => tagged_iterator('reference_extractors'),
+        ])
+    ;
     $services
         ->set(DelegatingParser::class)
         ->args([
-                   '$featureFlags' => param('feature_flags'),
-               ]);
+            '$featureFlags' => param('feature_flags'),
+        ])
+    ;
     $services->alias(ParserInterface::class, DelegatingParser::class);
     $services->set(NikicTypeResolver::class);
     $services->set(PhpStanTypeResolver::class);

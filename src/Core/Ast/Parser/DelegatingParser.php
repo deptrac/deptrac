@@ -24,7 +24,7 @@ final class DelegatingParser extends AbstractParser
 
     protected function loadNodesFromFile(string $filepath): array
     {
-        if ($this->featureFlags['phpstan_parser'] === true) {
+        if (true === $this->featureFlags['phpstan_parser']) {
             return $this->phpStanParser->loadNodesFromFile($filepath);
         }
 
@@ -33,7 +33,7 @@ final class DelegatingParser extends AbstractParser
 
     public function parseFile(string $file): FileReference
     {
-        if ($this->featureFlags['phpstan_parser'] === true) {
+        if (true === $this->featureFlags['phpstan_parser']) {
             return $this->phpStanParser->parseFile($file);
         }
 

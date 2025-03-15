@@ -12,7 +12,6 @@ use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
 use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
 use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\CatchExtractor;
-use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassConstantExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\PropertyExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use PhpParser\ParserFactory;
@@ -90,5 +89,4 @@ final class ClassExtractorTest extends TestCase
 
         return new PhpStanParser($phpStanContainer, $cache, $extractors);
     }
-
 }

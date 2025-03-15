@@ -43,7 +43,7 @@ final class InstanceofExtractor implements NikicReferenceExtractorInterface, PHP
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope
+        Scope $scope,
     ): void {
         if (!$node->class instanceof Name) {
             return;

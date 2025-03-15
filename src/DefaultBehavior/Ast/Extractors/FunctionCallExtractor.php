@@ -47,7 +47,7 @@ final class FunctionCallExtractor implements NikicReferenceExtractorInterface, P
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope
+        Scope $scope,
     ): void {
         foreach ($this->phpStanTypeResolver->resolveType($node->name, $scope) as $functionName) {
             $referenceBuilder->dependency(FunctionToken::fromFQCN($functionName), $node->getLine(), DependencyType::UNRESOLVED_FUNCTION_CALL);

@@ -65,7 +65,7 @@ final class FunctionLikeExtractor implements NikicReferenceExtractorInterface, P
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope
+        Scope $scope,
     ): void {
         foreach ($node->getAttrGroups() as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {

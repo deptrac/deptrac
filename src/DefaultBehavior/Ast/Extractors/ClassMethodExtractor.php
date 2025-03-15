@@ -93,7 +93,7 @@ final class ClassMethodExtractor implements NikicReferenceExtractorInterface, PH
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope
+        Scope $scope,
     ): void {
         $docComment = $node->getDocComment();
         if (!$docComment instanceof Doc) {
@@ -117,7 +117,8 @@ final class ClassMethodExtractor implements NikicReferenceExtractorInterface, PH
 
         $methodVariant = $classReflection
             ->getMethod($node->name->name, $scope)
-            ->getVariants()[0];
+            ->getVariants()[0]
+        ;
 
         foreach ($methodVariant->getParameters() as $tag) {
             foreach ($tag->getType()->getReferencedClasses() as $referencedClass) {

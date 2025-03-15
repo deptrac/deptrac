@@ -75,5 +75,4 @@ final class ClassConstantExtractorTest extends TestCase
 
         return new PhpStanParser($phpStanContainer, $cache, $extractors);
     }
-
 }
