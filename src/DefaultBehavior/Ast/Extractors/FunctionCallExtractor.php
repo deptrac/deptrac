@@ -11,7 +11,6 @@ use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
 use PhpParser\Node;
 use PHPStan\Analyser\Scope;
 
@@ -28,7 +27,6 @@ use PHPStan\Analyser\Scope;
 final class FunctionCallExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
     public function __construct(
-        private readonly PhpStanTypeResolver $phpStanTypeResolver,
         private readonly TypeResolverInterface $typeResolver,
     ) {}
 
@@ -49,7 +47,7 @@ final class FunctionCallExtractor implements NikicReferenceExtractorInterface, P
         ReferenceBuilderInterface $referenceBuilder,
         Scope $scope,
     ): void {
-        foreach ($this->phpStanTypeResolver->resolveType($node->name, $scope) as $functionName) {
+        foreach ($this->typeResolver->resolveType($node->name, $scope) as $functionName) {
             $referenceBuilder->dependency(FunctionToken::fromFQCN($functionName), $node->getLine(), DependencyType::UNRESOLVED_FUNCTION_CALL);
         }
     }

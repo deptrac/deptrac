@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Deptrac\Deptrac\Core\Ast\Parser;
+namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser;
 
 use Deptrac\Deptrac\Contract\Ast\AstMap\FileReference;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
-use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use PhpParser\NodeTraverser;
 
 final class DelegatingParser extends AbstractParser

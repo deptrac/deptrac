@@ -8,9 +8,7 @@ use Deptrac\Deptrac\Contract\Dependency\DependencyEmitterInterface;
 use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
 use Deptrac\Deptrac\Core\Ast\AstLoader;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
-use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
 use Deptrac\Deptrac\Core\Dependency\DependencyList;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\AnonymousClassExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassExtractor;
@@ -24,6 +22,7 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\StaticPropertyFetchExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\TraitUseExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\UseExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\VariableExtractor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use PhpParser\ParserFactory;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -37,25 +36,24 @@ trait EmitterTrait
     {
         $files = (array) $files;
 
-        $phpstanTypeResolver = new PhpStanTypeResolver();
         $phpStanContainerDecorator = new PhpStanContainerDecorator(__DIR__, __DIR__, []);
-        $nikicTypeResolver = new NikicTypeResolver();
+        $typeResolver = new TypeResolver();
         $parser = new NikicPhpParser(
             (new ParserFactory())->createForNewestSupportedVersion(),
             new AstFileReferenceInMemoryCache(),
             [
                 new AnonymousClassExtractor(),
-                new FunctionLikeExtractor($phpstanTypeResolver, $nikicTypeResolver),
-                new PropertyExtractor($phpStanContainerDecorator, $nikicTypeResolver),
-                new FunctionCallExtractor($phpstanTypeResolver, $nikicTypeResolver),
-                new VariableExtractor($phpStanContainerDecorator, $nikicTypeResolver),
+                new FunctionLikeExtractor($typeResolver),
+                new PropertyExtractor($phpStanContainerDecorator, $typeResolver),
+                new FunctionCallExtractor($typeResolver),
+                new VariableExtractor($phpStanContainerDecorator, $typeResolver),
                 new ClassExtractor(),
                 new UseExtractor(),
-                new InstanceofExtractor($nikicTypeResolver),
-                new StaticCallExtractor($nikicTypeResolver),
-                new StaticPropertyFetchExtractor($nikicTypeResolver),
-                new NewExtractor($nikicTypeResolver),
-                new TraitUseExtractor($nikicTypeResolver),
+                new InstanceofExtractor($typeResolver),
+                new StaticCallExtractor($typeResolver),
+                new StaticPropertyFetchExtractor($typeResolver),
+                new NewExtractor($typeResolver),
+                new TraitUseExtractor($typeResolver),
             ]
         );
         $astMap = (new AstLoader($parser, new EventDispatcher()))->createAstMap($files);

@@ -22,11 +22,7 @@ use Deptrac\Deptrac\Core\Analyser\UnassignedTokenAnalyser;
 use Deptrac\Deptrac\Core\Ast\AstLoader;
 use Deptrac\Deptrac\Core\Ast\AstMapExtractor;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
-use Deptrac\Deptrac\Core\Ast\Parser\DelegatingParser;
-use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
 use Deptrac\Deptrac\Core\Dependency\DependencyResolver;
 use Deptrac\Deptrac\Core\Dependency\TokenResolver;
 use Deptrac\Deptrac\Core\InputCollector\FileInputCollector;
@@ -61,7 +57,10 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\StaticPropertyFetchExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\TraitUseExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\UseExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\VariableExtractor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\DelegatingParser;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\ClassDependencyEmitter;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\ClassSuperglobalDependencyEmitter;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\FileDependencyEmitter;
@@ -207,9 +206,8 @@ return static function (ContainerConfigurator $container): void {
         ])
     ;
     $services->alias(ParserInterface::class, DelegatingParser::class);
-    $services->set(NikicTypeResolver::class);
-    $services->set(PhpStanTypeResolver::class);
-    $services->alias(TypeResolverInterface::class, NikicTypeResolver::class);
+    $services->set(TypeResolver::class);
+    $services->alias(TypeResolverInterface::class, TypeResolver::class);
     $services
         ->set(AnonymousClassExtractor::class)
         ->tag('reference_extractors')

@@ -8,9 +8,8 @@ use Deptrac\Deptrac\Contract\Ast\AstFileReferenceCacheInterface;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FileReference;
 use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
 use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
-use Deptrac\Deptrac\Core\Ast\Parser\AbstractParser;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\FileReferenceBuilder;
-use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\FileReferenceVisitor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\NikicFileReferenceVisitor;
 use PhpParser\Error;
 use PhpParser\ErrorHandler\Throwing;
 use PhpParser\Node;
@@ -40,7 +39,7 @@ class NikicPhpParser extends AbstractParser
         }
 
         $fileReferenceBuilder = FileReferenceBuilder::create($file);
-        $visitor = new FileReferenceVisitor($fileReferenceBuilder, ...$this->extractors);
+        $visitor = new NikicFileReferenceVisitor($fileReferenceBuilder, ...$this->extractors);
         $nodes = $this->loadNodesFromFile($file);
         $this->traverser->addVisitor($visitor);
         $this->traverser->traverse($nodes);

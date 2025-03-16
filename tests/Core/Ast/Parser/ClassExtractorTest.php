@@ -8,12 +8,12 @@ use Closure;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
-use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\CatchExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\PropertyExtractor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -64,7 +64,7 @@ final class ClassExtractorTest extends TestCase
     public static function createNikicParser(string $filePath): NikicPhpParser
     {
         $phpStanContainer = new PhpStanContainerDecorator(__DIR__, __DIR__, [$filePath]);
-        $typeResolver = new NikicTypeResolver();
+        $typeResolver = new TypeResolver();
         $cache = new AstFileReferenceInMemoryCache();
         $extractors = [
             new PropertyExtractor($phpStanContainer, $typeResolver),
@@ -79,7 +79,7 @@ final class ClassExtractorTest extends TestCase
     public static function createPhpStanParser(string $filePath): PhpStanParser
     {
         $phpStanContainer = new PhpStanContainerDecorator(__DIR__, __DIR__, [$filePath]);
-        $typeResolver = new NikicTypeResolver();
+        $typeResolver = new TypeResolver();
 
         $cache = new AstFileReferenceInMemoryCache();
         $extractors = [

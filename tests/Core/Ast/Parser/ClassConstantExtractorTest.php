@@ -7,10 +7,10 @@ namespace Tests\Deptrac\Deptrac\Core\Ast\Parser;
 use Closure;
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassConstantExtractor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
 

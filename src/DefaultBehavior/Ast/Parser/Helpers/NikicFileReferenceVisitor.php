@@ -24,7 +24,7 @@ use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\PhpDocParser\ParserConfig;
 
-class FileReferenceVisitor extends NodeVisitorAbstract
+class NikicFileReferenceVisitor extends NodeVisitorAbstract
 {
     /** @var NikicReferenceExtractorInterface<Node>[] */
     private readonly array $dependencyResolvers;

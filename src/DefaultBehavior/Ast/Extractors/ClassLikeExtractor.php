@@ -11,8 +11,7 @@ use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassLike;
@@ -37,7 +36,6 @@ final class ClassLikeExtractor implements NikicReferenceExtractorInterface, PHPS
 
     public function __construct(
         private readonly PhpStanContainerDecorator $phpStanContainer,
-        private readonly PhpStanTypeResolver $phpStanTypeResolver,
         private readonly TypeResolverInterface $typeResolver,
     ) {
         $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
@@ -114,7 +112,7 @@ final class ClassLikeExtractor implements NikicReferenceExtractorInterface, PHPS
     ): void {
         foreach ($node->attrGroups as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {
-                foreach ($this->phpStanTypeResolver->resolveType($attribute->name, $scope) as $classLikeName) {
+                foreach ($this->typeResolver->resolveType($attribute->name, $scope) as $classLikeName) {
                     $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $attribute->getLine(), DependencyType::ATTRIBUTE);
                 }
             }

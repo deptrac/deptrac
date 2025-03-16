@@ -7,12 +7,11 @@ namespace Tests\Deptrac\Deptrac\Core\Ast\Parser;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
-use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanParser;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassLikeExtractor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -49,10 +48,10 @@ final class ClassDocBlockExtractorTest extends TestCase
      */
     public static function createParser(): array
     {
-        $typeResolver = new NikicTypeResolver();
+        $typeResolver = new TypeResolver();
         $phpStanContainer = new PhpStanContainerDecorator(__DIR__, __DIR__, []);
         $extractors = [
-            new ClassLikeExtractor($phpStanContainer, new PhpStanTypeResolver(), $typeResolver),
+            new ClassLikeExtractor($phpStanContainer, $typeResolver),
         ];
         $cache = new AstFileReferenceInMemoryCache();
         $parser = new NikicPhpParser(

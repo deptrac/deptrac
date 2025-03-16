@@ -11,7 +11,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyToken;
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Core\Ast\AstLoader;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
-use Deptrac\Deptrac\Core\Ast\Parser\NikicTypeResolver;
+use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\AnonymousClassExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassConstantExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassExtractor;
@@ -170,7 +170,7 @@ final class AstMapGeneratorTest extends TestCase
 
     public static function createNikicParser(string $filePath): NikicPhpParser
     {
-        $typeResolver = new NikicTypeResolver();
+        $typeResolver = new TypeResolver();
         $cache = new AstFileReferenceInMemoryCache();
         $extractors = [
             new AnonymousClassExtractor(),

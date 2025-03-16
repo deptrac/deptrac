@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser;
+namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser;
 
 use Deptrac\Deptrac\Contract\Ast\AstFileReferenceCacheInterface;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FileReference;
 use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
-use Deptrac\Deptrac\Core\Ast\Parser\AbstractParser;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\FileReferenceBuilder;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanFileReferenceVisitor;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
 use PHPStan\Parser\Parser;
@@ -41,7 +42,7 @@ class PhpStanParser extends AbstractParser
         $reflectionProvider = $this->phpStanContainer->createReflectionProvider();
 
         $fileReferenceBuilder = FileReferenceBuilder::create($file);
-        $visitor = new FileReferenceVisitor($fileReferenceBuilder, $scopeFactory, $reflectionProvider, $file, ...$this->extractors);
+        $visitor = new PhpStanFileReferenceVisitor($fileReferenceBuilder, $scopeFactory, $reflectionProvider, $file, ...$this->extractors);
         $nodes = $this->loadNodesFromFile($file);
         $this->traverser->addVisitor($visitor);
         $this->traverser->traverse($nodes);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser;
+namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers;
 
 use PHPStan\Analyser\ScopeFactory;
 use PHPStan\DependencyInjection\Container;

@@ -11,7 +11,7 @@ use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanContainerDecorator;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassMethod;

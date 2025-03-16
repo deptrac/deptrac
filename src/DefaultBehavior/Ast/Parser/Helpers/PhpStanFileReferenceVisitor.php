@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser;
+namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers;
 
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
-use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\FileReferenceBuilder;
-use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\ReferenceBuilder;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt\Class_;
@@ -25,7 +23,7 @@ use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\PhpDocParser\ParserConfig;
 use PHPStan\Reflection\ReflectionProvider;
 
-class FileReferenceVisitor extends NodeVisitorAbstract
+class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
 {
     /** @var PHPStanReferenceExtractorInterface<Node>[] */
     private readonly array $dependencyResolvers;

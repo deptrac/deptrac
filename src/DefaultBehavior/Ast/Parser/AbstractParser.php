@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Deptrac\Deptrac\Core\Ast\Parser;
+namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser;
 
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;

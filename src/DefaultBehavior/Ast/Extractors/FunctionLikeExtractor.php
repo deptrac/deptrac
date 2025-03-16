@@ -11,7 +11,6 @@ use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
-use Deptrac\Deptrac\Core\Ast\Parser\PhpStanParser\PhpStanTypeResolver;
 use PhpParser\Node;
 use PHPStan\Analyser\Scope;
 
@@ -22,7 +21,6 @@ use PHPStan\Analyser\Scope;
 final class FunctionLikeExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
     public function __construct(
-        private readonly PhpStanTypeResolver $phpStanTypeResolver,
         private readonly TypeResolverInterface $typeResolver,
     ) {}
 
@@ -74,7 +72,7 @@ final class FunctionLikeExtractor implements NikicReferenceExtractorInterface, P
         }
         foreach ($node->getParams() as $param) {
             if (null !== $param->type) {
-                foreach ($this->phpStanTypeResolver->resolveType($param->type, $scope) as $item) {
+                foreach ($this->typeResolver->resolveType($param->type, $scope) as $item) {
                     $referenceBuilder->dependency(ClassLikeToken::fromFQCN($item), $param->type->getLine(), DependencyType::PARAMETER);
                 }
             }
@@ -86,7 +84,7 @@ final class FunctionLikeExtractor implements NikicReferenceExtractorInterface, P
         }
 
         $returnType = $node->getReturnType();
-        foreach ($this->phpStanTypeResolver->resolveType($returnType, $scope) as $item) {
+        foreach ($this->typeResolver->resolveType($returnType, $scope) as $item) {
             assert(null !== $returnType);
             $referenceBuilder->dependency(ClassLikeToken::fromFQCN($item), $returnType->getLine(), DependencyType::RETURN_TYPE);
         }
