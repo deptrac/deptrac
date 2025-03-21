@@ -6,20 +6,17 @@ namespace Deptrac\Deptrac\Contract\Ast;
 
 use Deptrac\Deptrac\Contract\Ast\AstMap\ReferenceBuilderInterface;
 use PhpParser\Node;
-use PHPStan\Analyser\Scope;
+use PHPStan\Analyser\MutatingScope;
 
 /**
  * @template T of Node
+ *
+ * @extends BaseReferenceExtractorInterface<T>
  */
-interface PHPStanReferenceExtractorInterface
+interface PHPStanReferenceExtractorInterface extends BaseReferenceExtractorInterface
 {
-    /**
-     * @return class-string<T>
-     */
-    public function getNodeType(): string;
-
     /**
      * @param T $node
      */
-    public function processNodeWithPhpStanScope(Node $node, ReferenceBuilderInterface $referenceBuilder, Scope $scope): void;
+    public function processNodeWithPhpStanScope(Node $node, ReferenceBuilderInterface $referenceBuilder, MutatingScope $scope): void;
 }

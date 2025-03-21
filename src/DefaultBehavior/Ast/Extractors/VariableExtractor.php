@@ -12,15 +12,13 @@ use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
+use Deptrac\Deptrac\DefaultBehavior\Ast\DocParsingHelper;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
-use PhpParser\Comment\Doc;
 use PhpParser\Node;
-use PHPStan\Analyser\Scope;
-use PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode;
+use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
-use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\PhpDocParser\ParserConfig;
 
@@ -55,26 +53,17 @@ final class VariableExtractor implements NikicReferenceExtractorInterface, PHPSt
             $referenceBuilder->dependency(SuperGlobalToken::from($node->name), $node->getLine(), DependencyType::SUPERGLOBAL_VARIABLE);
         }
 
-        $docComment = $node->getDocComment();
-        if (!$docComment instanceof Doc) {
+        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplates());
+        if (null === $resolved) {
             return;
         }
-
-        $tokens = new TokenIterator($this->lexer->tokenize($docComment->getText()));
-        $docNode = $this->docParser->parse($tokens);
-        $templateTypes = array_merge(
-            array_map(
-                static fn (TemplateTagValueNode $node): string => $node->name,
-                $docNode->getTemplateTagValues()
-            ),
-            $referenceBuilder->getTokenTemplates()
-        );
+        [$docNode, $templateTypes] = $resolved;
 
         foreach ($docNode->getVarTagValues() as $tag) {
             $types = $this->typeResolver->resolvePHPStanDocParserType($tag->type, $typeScope, $templateTypes);
 
             foreach ($types as $type) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $docComment->getStartLine(), DependencyType::VARIABLE);
+                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->getStartLine(), DependencyType::VARIABLE);
             }
         }
     }
@@ -87,31 +76,21 @@ final class VariableExtractor implements NikicReferenceExtractorInterface, PHPSt
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope,
+        MutatingScope $scope,
     ): void {
         if (in_array($node->name, $this->allowedNames, true)) {
             /** @throws void */
             $referenceBuilder->dependency(SuperGlobalToken::from($node->name), $node->getLine(), DependencyType::SUPERGLOBAL_VARIABLE);
         }
 
-        $docComment = $node->getDocComment();
-        if (!$docComment instanceof Doc) {
+        $resolvedPhpDoc = DocParsingHelper::resolvePHPDocWithPHPStanScope($node, $this->phpStanContainer, $scope);
+        if (null === $resolvedPhpDoc) {
             return;
         }
 
-        $fileTypeMapper = $this->phpStanContainer->createFileTypeMapper();
-        /** @throws void */
-        $resolvedPhpDoc = $fileTypeMapper->getResolvedPhpDoc(
-            $scope->getFile(),
-            $scope->getClassReflection()?->getName(),
-            $scope->getTraitReflection()?->getName(),
-            $scope->getFunction()?->getName(),
-            $docComment->getText(),
-        );
-
         foreach ($resolvedPhpDoc->getVarTags() as $tag) {
             foreach ($tag->getType()->getReferencedClasses() as $referencedClass) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $docComment->getStartLine(), DependencyType::VARIABLE);
+                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $node->getStartLine(), DependencyType::VARIABLE);
             }
         }
     }

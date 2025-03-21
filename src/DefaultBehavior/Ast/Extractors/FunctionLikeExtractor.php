@@ -12,7 +12,7 @@ use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
 use PhpParser\Node;
-use PHPStan\Analyser\Scope;
+use PHPStan\Analyser\MutatingScope;
 
 /**
  * @implements NikicReferenceExtractorInterface<Node\FunctionLike>
@@ -63,7 +63,7 @@ final class FunctionLikeExtractor implements NikicReferenceExtractorInterface, P
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope,
+        MutatingScope $scope,
     ): void {
         foreach ($node->getAttrGroups() as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {

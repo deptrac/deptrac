@@ -12,7 +12,7 @@ use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Trait_;
 use PhpParser\NodeVisitorAbstract;
-use PHPStan\Analyser\Scope;
+use PHPStan\Analyser\MutatingScope;
 use PHPStan\Analyser\ScopeContext;
 use PHPStan\Analyser\ScopeFactory;
 use PHPStan\PhpDocParser\Lexer\Lexer;
@@ -30,7 +30,7 @@ class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
 
     private ReferenceBuilder $currentReference;
 
-    private Scope $scope;
+    private MutatingScope $scope;
 
     private Lexer $lexer;
 

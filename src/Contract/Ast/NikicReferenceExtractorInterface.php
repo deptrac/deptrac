@@ -12,14 +12,11 @@ use PhpParser\Node;
  * parser node and define a dependency based on this node on another token.
  *
  * @template T of Node
+ *
+ * @extends BaseReferenceExtractorInterface<T>
  */
-interface NikicReferenceExtractorInterface
+interface NikicReferenceExtractorInterface extends BaseReferenceExtractorInterface
 {
-    /**
-     * @return class-string<T>
-     */
-    public function getNodeType(): string;
-
     /**
      * @param T $node
      */

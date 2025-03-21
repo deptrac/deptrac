@@ -22,7 +22,7 @@ use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\NullableType;
 use PhpParser\Node\UnionType;
 use PhpParser\NodeAbstract;
-use PHPStan\Analyser\Scope;
+use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
 use PHPStan\PhpDocParser\Ast\Type\ArrayShapeItemNode;
 use PHPStan\PhpDocParser\Ast\Type\ArrayShapeNode;
@@ -47,7 +47,7 @@ class TypeResolver implements TypeResolverInterface
         $this->typeResolver = new phpDocumentorTypeResolver(new FqsenResolver());
     }
 
-    public static function resolveType(Expr|ComplexType|Name|Identifier|null $type, Scope $scope): array
+    public static function resolveType(Expr|ComplexType|Name|Identifier|null $type, MutatingScope $scope): array
     {
         if (null === $type || $type instanceof Expr) {
             return [];

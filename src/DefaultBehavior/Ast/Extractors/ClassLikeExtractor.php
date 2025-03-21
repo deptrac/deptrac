@@ -11,17 +11,15 @@ use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
+use Deptrac\Deptrac\DefaultBehavior\Ast\DocParsingHelper;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
-use PhpParser\Comment\Doc;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassLike;
-use PHPStan\Analyser\Scope;
+use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PropertyTagValueNode;
-use PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
-use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\PhpDocParser\ParserConfig;
 
@@ -54,20 +52,11 @@ final class ClassLikeExtractor implements NikicReferenceExtractorInterface, PHPS
             }
         }
 
-        $docComment = $node->getDocComment();
-        if (!$docComment instanceof Doc) {
+        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplates());
+        if (null === $resolved) {
             return;
         }
-
-        $tokens = new TokenIterator($this->lexer->tokenize($docComment->getText()));
-        $docNode = $this->docParser->parse($tokens);
-        $templateTypes = array_merge(
-            array_map(
-                static fn (TemplateTagValueNode $node): string => $node->name,
-                $docNode->getTemplateTagValues()
-            ),
-            $referenceBuilder->getTokenTemplates()
-        );
+        [$docNode, $templateTypes] = $resolved;
 
         foreach ($docNode->getMethodTagValues() as $methodTagValue) {
             foreach ($methodTagValue->parameters as $tag) {
@@ -108,7 +97,7 @@ final class ClassLikeExtractor implements NikicReferenceExtractorInterface, PHPS
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope,
+        MutatingScope $scope,
     ): void {
         foreach ($node->attrGroups as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {
@@ -118,23 +107,10 @@ final class ClassLikeExtractor implements NikicReferenceExtractorInterface, PHPS
             }
         }
 
-        $docComment = $node->getDocComment();
-        if (!$docComment instanceof Doc) {
+        $resolvedPhpDoc = DocParsingHelper::resolvePHPDocWithPHPStanScope($node, $this->phpStanContainer, $scope);
+        if (null === $resolvedPhpDoc) {
             return;
         }
-
-        $fileTypeMapper = $this->phpStanContainer->createFileTypeMapper();
-        $classReflection = $scope->getClassReflection();
-        assert(null !== $classReflection);
-
-        /** @throws void */
-        $resolvedPhpDoc = $fileTypeMapper->getResolvedPhpDoc(
-            $scope->getFile(),
-            $classReflection->getName(),
-            $scope->getTraitReflection()?->getName(),
-            $scope->getFunction()?->getName(),
-            $docComment->getText(),
-        );
 
         foreach ($resolvedPhpDoc->getMethodTags() as $methodTag) {
             foreach ($methodTag->getParameters() as $methodTagParameter) {

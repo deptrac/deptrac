@@ -13,7 +13,7 @@ use Deptrac\Deptrac\Contract\Ast\TypeScope;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\GroupUse;
 use PhpParser\Node\Stmt\Use_;
-use PHPStan\Analyser\Scope;
+use PHPStan\Analyser\MutatingScope;
 
 /**
  * @implements NikicReferenceExtractorInterface<GroupUse>
@@ -47,7 +47,7 @@ final class GroupUseExtractor implements NikicReferenceExtractorInterface, PHPSt
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope,
+        MutatingScope $scope,
     ): void {
         $this->processNodeShared($node, $referenceBuilder);
     }

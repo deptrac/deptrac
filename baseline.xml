@@ -120,4 +120,17 @@
       <code><![CDATA[$layer]]></code>
     </RiskyTruthyFalsyComparison>
   </file>
+    <file src="src/Core/Ast/Parser/TypeResolver.php">
+        <NamedArgumentNotAllowed>
+            <code><![CDATA[array_map(static fn ($type): array => self::resolveType($type, $scope), $type->types)]]></code>
+        </NamedArgumentNotAllowed>
+    </file>
+    <file src="src/DefaultBehavior/Ast/Extractors/ClassMethodExtractor.php">
+        <RedundantCondition>
+            <code><![CDATA[$resolvedPhpDoc->getThrowsTag()?->getType()->getReferencedClasses()]]></code>
+        </RedundantCondition>
+        <TypeDoesNotContainNull>
+            <code><![CDATA[[]]]></code>
+        </TypeDoesNotContainNull>
+    </file>
 </files>

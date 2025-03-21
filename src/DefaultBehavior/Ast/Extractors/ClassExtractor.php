@@ -13,7 +13,7 @@ use Deptrac\Deptrac\Contract\Ast\TypeScope;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Class_;
-use PHPStan\Analyser\Scope;
+use PHPStan\Analyser\MutatingScope;
 
 /**
  * @implements NikicReferenceExtractorInterface<Class_>
@@ -34,7 +34,7 @@ final class ClassExtractor implements NikicReferenceExtractorInterface, PHPStanR
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope,
+        MutatingScope $scope,
     ): void {
         $this->processNodeShared($node, $referenceBuilder);
     }

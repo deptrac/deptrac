@@ -9,7 +9,7 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\NodeAbstract;
-use PHPStan\Analyser\Scope;
+use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDocParser\Ast\Type\TypeNode;
 
 /**
@@ -49,5 +49,5 @@ interface TypeResolverInterface
      *
      * @return list<string>
      */
-    public static function resolveType(Expr|ComplexType|Name|Identifier|null $type, Scope $scope): array;
+    public static function resolveType(Expr|ComplexType|Name|Identifier|null $type, MutatingScope $scope): array;
 }

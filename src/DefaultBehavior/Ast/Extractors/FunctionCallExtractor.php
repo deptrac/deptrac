@@ -12,7 +12,7 @@ use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
 use PhpParser\Node;
-use PHPStan\Analyser\Scope;
+use PHPStan\Analyser\MutatingScope;
 
 /**
  * Unqualified function and constant names inside a namespace cannot be
@@ -45,7 +45,7 @@ final class FunctionCallExtractor implements NikicReferenceExtractorInterface, P
     public function processNodeWithPhpStanScope(
         Node $node,
         ReferenceBuilderInterface $referenceBuilder,
-        Scope $scope,
+        MutatingScope $scope,
     ): void {
         foreach ($this->typeResolver->resolveType($node->name, $scope) as $functionName) {
             $referenceBuilder->dependency(FunctionToken::fromFQCN($functionName), $node->getLine(), DependencyType::UNRESOLVED_FUNCTION_CALL);
