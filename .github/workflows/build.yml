@@ -33,28 +33,28 @@ jobs:
       -   uses: "ramsey/composer-install@v2"
 
       - name: "Run deptrac without cache"
-        run: php bin/deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --no-cache
+        run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --no-cache
 
       - name: "Cache file should not exist"
         run: "[ ! -f '.deptrac.cache' ]"
 
       - name: "Run deptrac with cache enabled"
-        run: php bin/deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml
+        run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml
 
       - name: "Cache file should exist"
         run: "[ -f '.deptrac.cache' ]"
 
-      - name: "Run deptrac phar again with cache enabled to be sure the cache file could be reused"
-        run: php bin/deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml
+      - name: "Run deptrac again with cache enabled to be sure the cache file could be reused"
+        run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml
 
       - name: "Run deptrac with custom cache file output"
-        run: php bin/deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --cache-file=.deptrac.cache2
+        run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --cache-file=.deptrac.cache2
 
       - name: "Custom cache file should exist"
         run: "[ -f '.deptrac.cache2' ]"
 
       - name: "Run deptrac using transitive dependencies example"
-        run: php bin/deptrac analyse --config-file=docs/examples/Transitive.depfile.yaml
+        run: php deptrac analyse --config-file=docs/examples/Transitive.depfile.yaml
 
       - name: "Run deptrac with --fail-on-uncovered"
         run: sh .github/workflows/test-flag-fail-on-uncovered.sh
