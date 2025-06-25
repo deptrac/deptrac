@@ -1,0 +1,24 @@
+name: Composer Diff
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    paths:
+      - composer.lock
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  comment-composer-lock-diff:
+    name: Comment composer.lock diff
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Comment composer.lock diff
+        uses: WyriHaximus/github-action-composer.lock-diff@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
