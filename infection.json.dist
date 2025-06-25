@@ -1,0 +1,21 @@
+{
+  "timeout": 10,
+  "source": {
+    "directories": [
+      "src"
+    ]
+  },
+  "logs": {
+    "text": "infection.log"
+  },
+  "mutators": {
+    "@default": true,
+    "global-ignoreSourceCodeByRegex": [
+      "\\$output->writeLineFormatted.*"
+    ],
+    "CatchBlockRemoval": false
+  },
+  "phpUnit": {
+        "customPath": "./tools/phpunit/bin/phpunit"
+    }
+}

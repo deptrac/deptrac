@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries>
+  <entry type="violation">
+    <LayerA>LayerA</LayerA>
+    <LayerB>LayerB</LayerB>
+    <ClassA>OriginalA</ClassA>
+    <ClassB>OriginalB</ClassB>
+    <occurrence file="ClassA.php" line="12"/>
+  </entry>
+</entries>

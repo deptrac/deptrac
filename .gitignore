@@ -1,3 +1,17 @@
-# we need the vendor
-composer.lock
-
+vendor/*
+tools/**/vendor/*
+tools/**/bin/*
+coverage/*
+/deptrac.phar
+/deptrac.phar.asc
+phpunit.xml
+deptrac.version
+junit-report.xml
+.php-cs-fixer.php
+infection.log
+.cache/
+!.cache/.keep
+.deptrac.cache
+deptrac-report.xml
+tests/Supportive/DependencyInjection/.deptrac.cache
+tests/Supportive/OutputFormatter/data/graphviz.dot

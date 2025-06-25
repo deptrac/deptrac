@@ -1,6 +1,7 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Deptrac\Deptrac\Supportive\Time;
 
 /**
@@ -8,15 +9,19 @@ namespace Deptrac\Deptrac\Supportive\Time;
  */
 final class StartedPeriod
 {
-    private function __construct(public readonly float|int $startedAt)
+    private function __construct(
+        public readonly float|int $startedAt,
+    ) {}
+
+    public static function start(): self
     {
+        return new self(
+            hrtime(true),
+        );
     }
-    public static function start() : self
+
+    public function stop(): Period
     {
-        return new self(\hrtime(\true));
-    }
-    public function stop() : \Deptrac\Deptrac\Supportive\Time\Period
-    {
-        return \Deptrac\Deptrac\Supportive\Time\Period::stop($this);
+        return Period::stop($this);
     }
 }

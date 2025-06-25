@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.2/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true" executionOrder="random" resolveDependencies="true" cacheResultFile=".cache/phpunit/phpunit.result.cache" displayDetailsOnTestsThatTriggerWarnings="true">
+  <testsuites>
+    <testsuite name="Tests">
+      <directory suffix="Test.php">./tests/</directory>
+    </testsuite>
+      <testsuite name="Contract">
+          <directory>./tests/Contract</directory>
+      </testsuite>
+      <testsuite name="Analyser">
+          <directory>./tests/Core/Analyser</directory>
+      </testsuite>
+      <testsuite name="Ast">
+          <directory>./tests/Core/Ast</directory>
+      </testsuite>
+      <testsuite name="Dependency">
+          <directory>./tests/Core/Dependency</directory>
+      </testsuite>
+      <testsuite name="InputCollector">
+          <directory>./tests/Core/InputCollector</directory>
+      </testsuite>
+      <testsuite name="Layer">
+          <directory>./tests/Core/Layer</directory>
+      </testsuite>
+      <testsuite name="Console">
+          <directory>./tests/Supportive/Console</directory>
+      </testsuite>
+      <testsuite name="DependencyInjection">
+          <directory>./tests/Supportive/DependencyInjection</directory>
+      </testsuite>
+      <testsuite name="File">
+          <directory>./tests/Supportive/File</directory>
+      </testsuite>
+      <testsuite name="OutputFormatter">
+          <directory>./tests/Supportive/OutputFormatter</directory>
+      </testsuite>
+  </testsuites>
+  <coverage cacheDirectory="./.cache/phpunit"/>
+  <source>
+    <include>
+      <directory>./src</directory>
+    </include>
+  </source>
+</phpunit>

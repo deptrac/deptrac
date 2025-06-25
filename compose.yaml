@@ -1,0 +1,31 @@
+services:
+  php81:
+    build:
+      dockerfile: docker/php/Dockerfile
+      context: ./
+      args:
+        - "UID=${UID:-1000}"
+        - "GID=${GID:-1000}"
+    tty: true
+    environment:
+      PHP_IDE_CONFIG: serverName=deptrac
+      COMPOSER_CACHE_DIR: /home/deptrac/.composer
+      XDEBUG_DISCOVER_CLIENT_HOST: ${XDEBUG_DISCOVER_CLIENT_HOST:-0}
+      XDEBUG_START_WITH_REQUEST: ${XDEBUG_START_WITH_REQUEST:-default}
+      HISTFILE: /home/deptrac/.bash_history
+      HISTCONTROL: "ignoreboth:erasedups"
+    volumes:
+      - ./:/var/www/deptrac
+      - user-data:/home/deptrac/
+    extra_hosts:
+      - host.docker.internal:${HOST:-host-gateway}
+
+  php82:
+    extends: php81
+    build:
+      args:
+        PHP_VERSION: 8.2
+
+
+volumes:
+  user-data:

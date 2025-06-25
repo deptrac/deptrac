@@ -1,0 +1,9 @@
+{
+    "require-dev": {
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

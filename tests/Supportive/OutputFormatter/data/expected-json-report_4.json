@@ -1,0 +1,32 @@
+{
+    "Report": {
+        "Violations": 0,
+        "Skipped violations": 2,
+        "Uncovered": 0,
+        "Allowed": 0,
+        "Warnings": 0,
+        "Errors": 0
+    },
+    "files": {
+        "ClassA.php": {
+            "violations": 1,
+            "messages": [
+                {
+                    "message": "ClassA should not depend on ClassB (LayerA on LayerB)",
+                    "line": 12,
+                    "type": "warning"
+                }
+            ]
+        },
+        "ClassC.php": {
+            "violations": 1,
+            "messages": [
+                {
+                    "message": "ClassC should not depend on ClassD (LayerA on LayerB)",
+                    "line": 12,
+                    "type": "warning"
+                }
+            ]
+        }
+    }
+}

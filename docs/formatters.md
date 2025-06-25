@@ -222,6 +222,71 @@ flowchart TD;
     Console -->|4| Time;
 ```
 
+### Configuring default node options for custom node shapes
+
+You can configure the default node options for the MermaidJS formatter in deptrac using the `formatters.mermaidjs.default_node_options` setting. This allows you to specify the shape of the nodes. For instance, setting the node shape to `stadium` will apply this shape to all nodes.
+
+Example YAML Configuration:
+
+```yaml
+deptrac:
+  layers:
+    - LayerA
+    - LayerB
+    - LayerC
+    - LayerD
+  formatters:
+    mermaidjs:
+      direction: TD
+      groups:
+        UserGroup:
+          - LayerA
+          - LayerB
+        AdminGroup:
+          - LayerC
+          - LayerD
+      default_node_options:
+        shape: stadium
+```
+
+PHP Configuration:
+
+```php
+use Deptrac\Deptrac\Contract\Config\DeptracConfig;
+use Deptrac\Deptrac\Contract\Config\Formatter\MermaidJsConfig;
+// ...
+
+return static function (DeptracConfig $config): void {
+    // ...
+
+    $config->formatters(
+        MermaidJsConfig::create()
+            ->direction('TD')
+            ->groups('UserGroup', $layerA, $layerB)
+            ->groups('AdminGroup', $layerC, $layerD)
+            ->setDefaultNodeShape('stadium')
+    );
+};
+```
+
+This configuration will produce the following graph:
+
+```mermaid
+flowchart TD;
+  subgraph UserGroup;
+    LayerA;
+    LayerB;
+  end;
+  subgraph AdminGroup;
+    LayerC;
+    LayerD;
+  end;
+    LayerA@{shape: stadium} -->|2| LayerC@{shape: stadium};
+    LayerB@{shape: stadium} -->|1| LayerC@{shape: stadium};
+    LayerA@{shape: stadium} -->|2| LayerB@{shape: stadium};
+    LayerC@{shape: stadium} -->|1| LayerD@{shape: stadium};
+```
+
 ## JSON Formatter
 
 By default, Json formatter dumps information to *STDOUT*. It can be activated

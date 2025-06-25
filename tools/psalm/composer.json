@@ -1,0 +1,8 @@
+{
+    "require-dev": {
+        "vimeo/psalm": "^5.26"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

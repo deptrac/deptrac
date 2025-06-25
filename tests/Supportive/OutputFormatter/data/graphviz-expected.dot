@@ -1,0 +1,18 @@
+digraph "" {
+"LayerA" -> "LayerB" [
+label="2"
+color="red"
+]
+"LayerA" -> "LayerC" [
+label="1"
+]
+"LayerA" [
+
+]
+"LayerB" [
+
+]
+"LayerC" [
+
+]
+}

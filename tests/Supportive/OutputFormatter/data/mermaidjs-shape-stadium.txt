@@ -1,0 +1,15 @@
+flowchart TD;
+  subgraph UserGroup;
+    LayerA;
+    LayerB;
+  end;
+  subgraph AdminGroup;
+    LayerC;
+    LayerD;
+  end;
+    LayerA@{shape: stadium} -->|2| LayerC@{shape: stadium};
+    LayerB@{shape: stadium} -->|1| LayerC@{shape: stadium};
+    LayerA@{shape: stadium} -->|2| LayerB@{shape: stadium};
+    LayerC@{shape: stadium} -->|1| LayerD@{shape: stadium};
+    linkStyle 0 stroke:red,stroke-width:4px;
+    linkStyle 1 stroke:red,stroke-width:4px;

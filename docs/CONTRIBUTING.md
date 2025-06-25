@@ -26,7 +26,7 @@ If preferred, you can use Docker to get a development environment up and
 running quickly.
 
 - [Install Docker](https://www.docker.com/get-started/)
-- Run `docker compose run deptrac`
+- Run `make cli`
 
 This will build and run a local Docker image with all the necessary system
 dependencies. You can now run all the following commands from within the

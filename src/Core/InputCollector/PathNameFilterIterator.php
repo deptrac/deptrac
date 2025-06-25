@@ -1,18 +1,21 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Deptrac\Deptrac\Core\InputCollector;
 
 use SplFileInfo;
-use DEPTRAC_INTERNAL\Symfony\Component\Filesystem\Path;
-use DEPTRAC_INTERNAL\Symfony\Component\Finder\Iterator\PathFilterIterator;
+use Symfony\Component\Filesystem\Path;
+use Symfony\Component\Finder\Iterator\PathFilterIterator;
+
 use const DIRECTORY_SEPARATOR;
+
 /**
  * @internal
  */
 final class PathNameFilterIterator extends PathFilterIterator
 {
-    public function accept() : bool
+    public function accept(): bool
     {
         /**
          * @psalm-suppress UnnecessaryVarAnnotation
@@ -21,9 +24,11 @@ final class PathNameFilterIterator extends PathFilterIterator
          */
         $fileInfo = $this->current();
         $filename = $this->isWindows() ? Path::normalize($fileInfo->getPathname()) : $fileInfo->getPathName();
+
         return $this->isAccepted($filename);
     }
-    private function isWindows() : bool
+
+    private function isWindows(): bool
     {
         return '\\' === DIRECTORY_SEPARATOR;
     }

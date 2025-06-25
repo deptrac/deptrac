@@ -2,7 +2,7 @@
 
 namespace Deptrac\Deptrac\Contract\Config;
 
-enum CodeclimateLevelEnum : string
+enum CodeclimateLevelEnum: string
 {
     case INFO = 'info';
     case MINOR = 'minor';

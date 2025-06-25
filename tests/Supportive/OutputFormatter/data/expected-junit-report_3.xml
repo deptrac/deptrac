@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<testsuite errors="0" failures="0" hostname="localhost" name="LayerA" skipped="0" tests="1" time="0" timestamp="2025-03-28T22:17:43">
+    <properties/>
+    <testcase classname="OriginalA" name="LayerA - OriginalA" time="0"/>
+    <system-out/>
+    <system-err/>
+</testsuite>
