@@ -56,6 +56,9 @@
             "Tests\\Deptrac\\Deptrac\\": "tests/"
         }
     },
+    "bin": [
+        "bin/deptrac"
+    ],
     "config": {
         "allow-plugins": {
             "bamarni/composer-bin-plugin": true,
