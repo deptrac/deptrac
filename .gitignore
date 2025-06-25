@@ -2,8 +2,6 @@ vendor/*
 tools/**/vendor/*
 tools/**/bin/*
 coverage/*
-/deptrac.phar
-/deptrac.phar.asc
 phpunit.xml
 deptrac.version
 junit-report.xml
