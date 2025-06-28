@@ -1,0 +1,35 @@
+digraph "" {
+subgraph "cluster_User" {
+label="User"
+"User Frontend" [
+group="User"
+]
+"User Backend" [
+group="User"
+]
+}
+subgraph "cluster_Admin" {
+label="Admin"
+"Admin" [
+group="Admin"
+]
+"Admin Backend" [
+group="Admin"
+]
+}
+compound="true"
+"User Frontend" -> "User Backend" [
+label="1"
+]
+"User Frontend" -> "Admin" [
+lhead="cluster_Admin"
+label="1"
+]
+"Admin" -> "Admin Backend" [
+label="1"
+]
+"User Backend" -> "Admin" [
+lhead="cluster_Admin"
+label="1"
+]
+}

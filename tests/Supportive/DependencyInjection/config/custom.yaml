@@ -1,0 +1,3 @@
+services:
+  Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser:
+    class: Tests\Deptrac\Deptrac\Supportive\DependencyInjection\CustomPhpParser

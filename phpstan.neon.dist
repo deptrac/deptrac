@@ -1,0 +1,20 @@
+includes:
+    - phpstan-baseline.neon
+    - vendor/phpdocumentor/graphviz/extension.neon
+    - tools/phpstan/vendor/phpstan/phpstan-symfony/extension.neon
+
+parameters:
+    reportUnmatchedIgnoredErrors: true
+    checkMissingCallableSignature: true
+    level: max
+    paths: [src]
+    tmpDir: ./.cache/phpstan
+    stubFiles:
+        - internal/stubs/Function_.php
+        - internal/stubs/ClassLike.php
+        - internal/stubs/Name.php
+    exceptions:
+        implicitThrows: false
+        check:
+            missingCheckedExceptionInThrows: true
+            tooWideThrowType: true

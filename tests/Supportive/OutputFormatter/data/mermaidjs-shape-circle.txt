@@ -1,0 +1,15 @@
+flowchart TD;
+  subgraph UserGroup;
+    LayerA;
+    LayerB;
+  end;
+  subgraph AdminGroup;
+    LayerC;
+    LayerD;
+  end;
+    LayerA@{shape: circle} -->|2| LayerC@{shape: circle};
+    LayerB@{shape: circle} -->|1| LayerC@{shape: circle};
+    LayerA@{shape: circle} -->|2| LayerB@{shape: circle};
+    LayerC@{shape: circle} -->|1| LayerD@{shape: circle};
+    linkStyle 0 stroke:red,stroke-width:4px;
+    linkStyle 1 stroke:red,stroke-width:4px;

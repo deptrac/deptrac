@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries>
+  <entry type="skipped_violation">
+    <LayerA>LayerA</LayerA>
+    <LayerB>LayerB</LayerB>
+    <ClassA>ClassA</ClassA>
+    <ClassB>ClassB</ClassB>
+    <occurrence file="ClassA.php" line="12"/>
+  </entry>
+  <entry type="skipped_violation">
+    <LayerA>LayerA</LayerA>
+    <LayerB>LayerB</LayerB>
+    <ClassA>ClassC</ClassA>
+    <ClassB>ClassD</ClassB>
+    <occurrence file="ClassA.php" line="12"/>
+  </entry>
+</entries>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+  <file src="src/Contract/Ast/AstMap/AstInherit.php">
+    <ImpureMethodCall>
+      <code><![CDATA[toString]]></code>
+    </ImpureMethodCall>
+  </file>
+  <file src="src/Contract/Ast/AstMap/ClassLikeToken.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$pattern]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/Contract/Ast/AstMap/FunctionToken.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$pattern]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/Contract/Ast/TypeScope.php">
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$alias]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Contract/Result/OutputResult.php">
+    <InvalidReturnStatement>
+      <code><![CDATA[array_key_exists($type, $this->rules) ? array_values($this->rules[$type]) : []]]></code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
+      <code><![CDATA[list<T>]]></code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/DefaultBehavior/Layer/BoolCollector.php">
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[!$configuration['must']]]></code>
+      <code><![CDATA[!$configuration['must_not']]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/DefaultBehavior/Layer/DirectoryCollector.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$validatedPattern]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/DefaultBehavior/Layer/ExtendsCollector.php">
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[$astMap]]></code>
+    </PropertyNotSetInConstructor>
+    <RedundantPropertyInitializationCheck>
+      <code><![CDATA[$this->astMap]]></code>
+      <code><![CDATA[$this->astMapExtractor->extract()]]></code>
+    </RedundantPropertyInitializationCheck>
+  </file>
+  <file src="src/DefaultBehavior/Layer/GlobCollector.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$validatedPattern]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/DefaultBehavior/Layer/Helpers/ComposerFilesParser.php">
+    <InvalidReturnStatement>
+      <code><![CDATA[$lockedPackages]]></code>
+    </InvalidReturnStatement>
+    <InvalidReturnType>
+      <code><![CDATA[array<string, array{
+     *     autoload?: array{'psr-0'?: array<string, string>, 'psr-4'?: array<string, string>},
+     *     autoload-dev?: array{'psr-0'?: array<string, string>, 'psr-4'?: array<string, string>},
+     * }>]]></code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/DefaultBehavior/Layer/Helpers/RegexCollector.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$pattern]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/DefaultBehavior/Layer/ImplementsCollector.php">
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[$astMap]]></code>
+    </PropertyNotSetInConstructor>
+    <RedundantPropertyInitializationCheck>
+      <code><![CDATA[$this->astMap]]></code>
+      <code><![CDATA[$this->astMapExtractor->extract()]]></code>
+    </RedundantPropertyInitializationCheck>
+  </file>
+  <file src="src/DefaultBehavior/Layer/InheritanceLevelCollector.php">
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[$astMap]]></code>
+    </PropertyNotSetInConstructor>
+    <RedundantPropertyInitializationCheck>
+      <code><![CDATA[$this->astMap]]></code>
+      <code><![CDATA[$this->astMapExtractor->extract()]]></code>
+    </RedundantPropertyInitializationCheck>
+  </file>
+  <file src="src/DefaultBehavior/Layer/InheritsCollector.php">
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[$astMap]]></code>
+    </PropertyNotSetInConstructor>
+    <RedundantPropertyInitializationCheck>
+      <code><![CDATA[$this->astMap]]></code>
+      <code><![CDATA[$this->astMapExtractor->extract()]]></code>
+    </RedundantPropertyInitializationCheck>
+  </file>
+  <file src="src/DefaultBehavior/Layer/MethodCollector.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$pattern]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/DefaultBehavior/Layer/TagValueRegexCollector.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$pattern]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/DefaultBehavior/Layer/UsesCollector.php">
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[$astMap]]></code>
+    </PropertyNotSetInConstructor>
+    <RedundantPropertyInitializationCheck>
+      <code><![CDATA[$this->astMap]]></code>
+      <code><![CDATA[$this->astMapExtractor->extract()]]></code>
+    </RedundantPropertyInitializationCheck>
+  </file>
+  <file src="src/Supportive/Console/Command/DebugLayerRunner.php">
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$layer]]></code>
+    </RiskyTruthyFalsyComparison>
+  </file>
+</files>

@@ -1,9 +1,10 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Deptrac\Deptrac\Contract\Config;
 
-enum CollectorType : string
+enum CollectorType: string
 {
     // Note: Do not try to refactor to get rid of `TYPE_*` prefix as you cannot have `case CLASS`!!!
     case TYPE_ATTRIBUTE = 'attribute';

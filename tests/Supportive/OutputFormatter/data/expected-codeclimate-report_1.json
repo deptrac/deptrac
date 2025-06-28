@@ -1,0 +1,44 @@
+[
+    {
+        "type": "issue",
+        "check_name": "Dependency violation",
+        "fingerprint": "dafb561c7399b285ee0d324e9de921da0864c73d",
+        "description": "ClassA must not depend on ClassB (LayerA on LayerB)",
+        "categories": ["Style", "Complexity"],
+        "severity": "major",
+        "location": {
+            "path": "ClassA.php",
+            "lines": {
+                "begin": 12
+            }
+        }
+    },
+    {
+        "type": "issue",
+        "check_name": "Dependency violation",
+        "fingerprint": "9bba68d622223e44189ee5022d0274e983376de1",
+        "description": "ClassC must not depend on ClassD (LayerA on LayerC)",
+        "categories": ["Style", "Complexity"],
+        "severity": "major",
+        "location": {
+            "path": "ClassC.php",
+            "lines": {
+                "begin": 12
+            }
+        }
+    },
+    {
+        "type": "issue",
+        "check_name": "Dependency violation",
+        "fingerprint": "01b1c18d092cfb3d7b3034538194d3f9c8751a5c",
+        "description": "ClassC must not depend on ClassE (LayerA on LayerE)",
+        "categories": ["Style", "Complexity"],
+        "severity": "major",
+        "location": {
+            "path": "ClassC.php",
+            "lines": {
+                "begin": 15
+            }
+        }
+    }
+]

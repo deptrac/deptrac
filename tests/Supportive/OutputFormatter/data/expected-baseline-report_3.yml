@@ -1,0 +1,4 @@
+deptrac:
+  skip_violations:
+    OriginalA:
+      - OriginalB

@@ -1,0 +1,22 @@
+{
+    "Report": {
+        "Violations": 1,
+        "Skipped violations": 0,
+        "Uncovered": 0,
+        "Allowed": 0,
+        "Warnings": 0,
+        "Errors": 0
+    },
+    "files": {
+        "ClassA.php": {
+            "violations": 1,
+            "messages": [
+                {
+                    "message": "OriginalA must not depend on OriginalB (LayerA on LayerB)",
+                    "line": 12,
+                    "type": "error"
+                }
+            ]
+        }
+    }
+}

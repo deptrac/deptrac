@@ -1,0 +1,60 @@
+name: "e2e"
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    tags:
+      - "**"
+
+jobs:
+  e2e-tests:
+    name: "Run e2e tests on PHP ${{ matrix.php-version }}"
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04]
+        php-version: [8.1, 8.2, 8.3]
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, xml, ctype, iconv
+          coverage: none
+          tools: composer
+
+      -   uses: "ramsey/composer-install@v2"
+
+      - name: "Run deptrac without cache"
+        run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --no-cache
+
+      - name: "Cache file should not exist"
+        run: "[ ! -f '.deptrac.cache' ]"
+
+      - name: "Run deptrac with cache enabled"
+        run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml
+
+      - name: "Cache file should exist"
+        run: "[ -f '.deptrac.cache' ]"
+
+      - name: "Run deptrac again with cache enabled to be sure the cache file could be reused"
+        run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml
+
+      - name: "Run deptrac with custom cache file output"
+        run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --cache-file=.deptrac.cache2
+
+      - name: "Custom cache file should exist"
+        run: "[ -f '.deptrac.cache2' ]"
+
+      - name: "Run deptrac using transitive dependencies example"
+        run: php deptrac analyse --config-file=docs/examples/Transitive.depfile.yaml
+
+      - name: "Run deptrac with --fail-on-uncovered"
+        run: sh .github/workflows/test-flag-fail-on-uncovered.sh

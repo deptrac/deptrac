@@ -1,0 +1,70 @@
+{
+    "name": "deptrac/deptrac",
+    "description": "Deptrac is a static code analysis tool that helps to enforce rules for dependencies between software layers.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tim Glabisch"
+        },
+        {
+            "name": "Simon Mönch",
+            "email": "simon.moench@deptrac.com"
+        },
+        {
+            "name": "Denis Brumann",
+            "email": "denis.brumann@deptrac.com",
+            "role": "maintainer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "composer/xdebug-handler": "^3.0",
+        "jetbrains/phpstorm-stubs": "^2022.2",
+        "nikic/php-parser": "^4.13",
+        "phpdocumentor/graphviz": "^2.1",
+        "phpdocumentor/type-resolver": "^1.6",
+        "phpstan/phpdoc-parser": "^1.5",
+        "symfony/config": "^6.0",
+        "symfony/console": "^6.0",
+        "symfony/dependency-injection": "^6.0",
+        "symfony/event-dispatcher": "^6.0",
+        "symfony/filesystem": "^6.0",
+        "symfony/finder": "^6.0",
+        "symfony/yaml": "^6.0"
+    },
+    "suggest": {
+        "ext-dom": "For using the JUnit output formatter"
+    },
+    "autoload": {
+        "psr-4": {
+            "Deptrac\\Deptrac\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Deptrac\\Deptrac\\": "tests/",
+            "Internal\\Deptrac\\Deptrac\\": "internal/deptrac/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.1"
+        },
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.4",
+        "humbug/box": "^4.1.0",
+        "infection/infection": "^0.26.16",
+        "phpstan/phpstan": "^1.6.8",
+        "phpstan/phpstan-symfony": "^1.1",
+        "phpunit/phpunit": "^9.5",
+        "rector/rector": "^0.15.17",
+        "roave/infection-static-analysis-plugin": "^1.28",
+        "vimeo/psalm": "^4.22"
+    }
+}

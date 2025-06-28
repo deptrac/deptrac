@@ -1,0 +1,15 @@
+flowchart TD;
+  subgraph UserGroup;
+    LayerA;
+    LayerB;
+  end;
+  subgraph AdminGroup;
+    LayerC;
+    LayerD;
+  end;
+    LayerA -->|2| LayerC;
+    LayerB -->|1| LayerC;
+    LayerA -->|2| LayerB;
+    LayerC -->|1| LayerD;
+    linkStyle 0 stroke:red,stroke-width:4px;
+    linkStyle 1 stroke:red,stroke-width:4px;

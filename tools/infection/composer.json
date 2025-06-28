@@ -1,0 +1,15 @@
+{
+    "require-dev": {
+        "roave/infection-static-analysis-plugin": "^1.35",
+        "theofidry/composer-inheritance-plugin": "^1.2"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "allow-plugins": {
+            "infection/extension-installer": true,
+            "wikimedia/composer-merge-plugin": true,
+            "theofidry/composer-inheritance-plugin": true,
+            "ergebnis/composer-normalize": true
+        }
+    }
+}

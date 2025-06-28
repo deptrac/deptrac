@@ -1,47 +1,58 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Deptrac\Deptrac\Core\Dependency;
 
+use Deptrac\Deptrac\Contract\Ast\AstMap\TokenInterface;
 use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
-use Deptrac\Deptrac\Core\Ast\AstMap\ClassLike\ClassLikeToken;
-class DependencyList
+use Deptrac\Deptrac\Contract\Dependency\DependencyListInterface;
+
+class DependencyList implements DependencyListInterface
 {
-    /** @var array<string, Dependency[]> */
+    /** @var array<string, DependencyInterface[]> */
     private array $dependencies = [];
+
     /** @var array<string, InheritDependency[]> */
     private array $inheritDependencies = [];
-    public function addDependency(\Deptrac\Deptrac\Core\Dependency\Dependency $dependency) : self
+
+    public function addDependency(DependencyInterface $dependency): void
     {
         $tokenName = $dependency->getDepender()->toString();
         if (!isset($this->dependencies[$tokenName])) {
             $this->dependencies[$tokenName] = [];
         }
+
         $this->dependencies[$tokenName][] = $dependency;
-        return $this;
     }
-    public function addInheritDependency(\Deptrac\Deptrac\Core\Dependency\InheritDependency $dependency) : self
+
+    public function addInheritDependency(InheritDependency $dependency): self
     {
-        $classLikeName = $dependency->getDepender()->toString();
-        if (!isset($this->inheritDependencies[$classLikeName])) {
-            $this->inheritDependencies[$classLikeName] = [];
+        $tokenName = $dependency->getDepender()->toString();
+        if (!isset($this->inheritDependencies[$tokenName])) {
+            $this->inheritDependencies[$tokenName] = [];
         }
-        $this->inheritDependencies[$classLikeName][] = $dependency;
+
+        $this->inheritDependencies[$tokenName][] = $dependency;
+
         return $this;
     }
-    /**
-     * @return Dependency[]
-     */
-    public function getDependenciesByClass(ClassLikeToken $classLikeName) : array
-    {
-        return $this->dependencies[$classLikeName->toString()] ?? [];
-    }
+
     /**
      * @return DependencyInterface[]
      */
-    public function getDependenciesAndInheritDependencies() : array
+    public function getDependenciesByClass(TokenInterface $classLikeName): array
+    {
+        return $this->dependencies[$classLikeName->toString()] ?? [];
+    }
+
+    /**
+     * @return DependencyInterface[]
+     */
+    public function getDependenciesAndInheritDependencies(): array
     {
         $buffer = [];
+
         foreach ($this->dependencies as $deps) {
             foreach ($deps as $dependency) {
                 $buffer[] = $dependency;
@@ -52,6 +63,7 @@ class DependencyList
                 $buffer[] = $dependency;
             }
         }
+
         return $buffer;
     }
 }

@@ -1,0 +1,132 @@
+name: "Static analysis"
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    tags:
+      - "**"
+
+jobs:
+  coding-standards:
+    name: "Coding Standards"
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            php-version: 8.1
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, xml, ctype, iconv
+          coverage: none
+          tools: composer
+
+      - name: "Check cs"
+        run: make php-cs-check
+
+  static-code-analysis-phpstan:
+    name: "Static Code Analysis by PHPStan"
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            php-version: 8.1
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, xml, ctype, iconv
+          coverage: none
+          tools: composer
+
+      - uses: "ramsey/composer-install@v2"
+
+      - name: PHPStan
+        run: make phpstan
+
+  static-code-analysis-psalm:
+    name: "Static Code Analysis by Psalm"
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            php-version: 8.1
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, xml, ctype, iconv
+          coverage: none
+          tools: composer
+
+      - name: Get composer cache directory
+        id: composercache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composercache.outputs.dir }}
+          key: composer-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('composer.*') }}
+          restore-keys: |
+            composer-${{ runner.os }}-${{ matrix.php-version }}-
+            composer-${{ runner.os }}-
+            composer-
+
+      - name: Psalm
+        run: make psalm
+
+
+  static-code-analysis-composer-dependency-analyser:
+    name: "Static Code Analysis by composer-dependency-analyser"
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            php-version: 8.1
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, xml, ctype, iconv
+          coverage: none
+          tools: composer
+
+      - uses: "ramsey/composer-install@v2"
+
+      - name: composer-dependency-analyser
+        run: make composer-dependency-analyser

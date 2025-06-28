@@ -1,0 +1,5 @@
+deptrac:
+  skip_violations:
+    Deptrac\Deptrac\Supportive\Console\Command\AnalyseCommand:
+      - Deptrac\Deptrac\DefaultBehavior\OutputFormatter\GithubActionsOutputFormatter
+      - Deptrac\Deptrac\DefaultBehavior\OutputFormatter\TableOutputFormatter

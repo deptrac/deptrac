@@ -1,0 +1,70 @@
+[
+    {
+        "categories": [
+            "Style",
+            "Complexity"
+        ],
+        "check_name": "Dependency violation",
+        "description": "ClassA should not depend on ClassB (LayerA on LayerB)",
+        "fingerprint": "123648edf37b47a2a68a6c1ee29376d6d3a5fe84",
+        "location": {
+            "lines": {
+                "begin": 15
+            },
+            "path": "ClassA.php"
+        },
+        "severity": "minor",
+        "type": "issue"
+    },
+    {
+        "categories": [
+            "Style",
+            "Complexity"
+        ],
+        "check_name": "Dependency violation",
+        "description": "ClassC should not depend on ClassD (LayerA on LayerB)",
+        "fingerprint": "c0034602567ed515fa4499a76496d3ad67bc0230",
+        "location": {
+            "lines": {
+                "begin": 12
+            },
+            "path": "ClassC.php"
+        },
+        "severity": "minor",
+        "type": "issue"
+    },
+    {
+        "categories": [
+            "Style",
+            "Complexity"
+        ],
+        "check_name": "Dependency violation",
+        "description": "OriginalA has uncovered dependency on OriginalB (LayerA)",
+        "fingerprint": "a4913a259c35f45eedb0252e4c0bed11c5188f93",
+        "location": {
+            "lines": {
+                "begin": 12
+            },
+            "path": "OriginalA.php"
+        },
+        "severity": "info",
+        "type": "issue"
+    },
+    {
+        "categories": [
+            "Style",
+            "Complexity"
+        ],
+        "check_name": "Dependency violation",
+        "description": "ClassA must not depend on ClassB (LayerA on LayerB)",
+        "fingerprint": "dafb561c7399b285ee0d324e9de921da0864c73d",
+        "location": {
+            "lines": {
+                "begin": 12
+            },
+            "path": "ClassA.php"
+        },
+        "severity": "major",
+        "type": "issue"
+    }
+]

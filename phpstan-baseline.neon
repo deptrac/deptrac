@@ -1,0 +1,79 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Property Deptrac\\Deptrac\\Contract\\Analyser\\EventHelper\:\:\$unmatchedSkippedViolation \(array\<string, list\<string\>\>\) does not accept array\<string, array\<int\<0, max\>, string\>\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Contract/Analyser/EventHelper.php
+
+		-
+			message: '#^Method Deptrac\\Deptrac\\Contract\\Result\\OutputResult\:\:allOf\(\) should return list\<T of Deptrac\\Deptrac\\Contract\\Result\\RuleInterface\> but returns list\<Deptrac\\Deptrac\\Contract\\Result\\RuleInterface\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Contract/Result/OutputResult.php
+
+		-
+			message: '#^Method Deptrac\\Deptrac\\Core\\Analyser\\TokenInLayerAnalyser\:\:__construct\(\) throws checked exception TypeError but it''s missing from the PHPDoc @throws tag\.$#'
+			identifier: missingType.checkedException
+			count: 1
+			path: src/Core/Analyser/TokenInLayerAnalyser.php
+
+		-
+			message: '#^Method Deptrac\\Deptrac\\Core\\Analyser\\TokenInLayerAnalyser\:\:__construct\(\) throws checked exception ValueError but it''s missing from the PHPDoc @throws tag\.$#'
+			identifier: missingType.checkedException
+			count: 1
+			path: src/Core/Analyser/TokenInLayerAnalyser.php
+
+		-
+			message: '#^Method Deptrac\\Deptrac\\Core\\Analyser\\UnassignedTokenAnalyser\:\:__construct\(\) throws checked exception TypeError but it''s missing from the PHPDoc @throws tag\.$#'
+			identifier: missingType.checkedException
+			count: 1
+			path: src/Core/Analyser/UnassignedTokenAnalyser.php
+
+		-
+			message: '#^Method Deptrac\\Deptrac\\Core\\Analyser\\UnassignedTokenAnalyser\:\:__construct\(\) throws checked exception ValueError but it''s missing from the PHPDoc @throws tag\.$#'
+			identifier: missingType.checkedException
+			count: 1
+			path: src/Core/Analyser/UnassignedTokenAnalyser.php
+
+		-
+			message: '#^Property Deptrac\\Deptrac\\DefaultBehavior\\Ast\\Parser\\Helpers\\ReferenceBuilder\:\:\$tokenTemplates \(list\<string\>\) does not accept array\<int\<0, max\>, string\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/DefaultBehavior/Ast/Parser/Helpers/ReferenceBuilder.php
+
+		-
+			message: '#^Method Deptrac\\Deptrac\\Supportive\\Console\\Command\\DebugTokenCommand\:\:execute\(\) throws checked exception TypeError but it''s missing from the PHPDoc @throws tag\.$#'
+			identifier: missingType.checkedException
+			count: 1
+			path: src/Supportive/Console/Command/DebugTokenCommand.php
+
+		-
+			message: '#^Method Deptrac\\Deptrac\\Supportive\\Console\\Command\\DebugTokenCommand\:\:execute\(\) throws checked exception ValueError but it''s missing from the PHPDoc @throws tag\.$#'
+			identifier: missingType.checkedException
+			count: 1
+			path: src/Supportive/Console/Command/DebugTokenCommand.php
+
+		-
+			message: '#^Cannot access offset ''pointToGroups'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Supportive/DependencyInjection/Configuration.php
+
+		-
+			message: '#^Cannot access offset ''point_to_groups'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Supportive/DependencyInjection/Configuration.php
+
+		-
+			message: '#^Parameter \#2 \$value of method Symfony\\Component\\DependencyInjection\\Container\:\:setParameter\(\) expects array\|bool\|float\|int\|string\|UnitEnum\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 9
+			path: src/Supportive/DependencyInjection/DeptracExtension.php
+
+		-
+			message: '#^Possibly impure instantiation of class Deptrac\\Deptrac\\Supportive\\Time\\Period in pure method Deptrac\\Deptrac\\Supportive\\Time\\Period\:\:stop\(\)\.$#'
+			identifier: possiblyImpure.new
+			count: 1
+			path: src/Supportive/Time/Period.php
