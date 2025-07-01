@@ -11,13 +11,13 @@ Jun 28, 2025 - 3 min read
 ---
 
 Have you tried installing Deptrac as a `composer --dev` dependency and
-encountered composer conflicts? This blog post is for you! We will show you how
+encountered Composer conflicts? This blog post is for you! We will show you how
 to install Deptrac as a Composer dependency in a separate scoped installation
 that will not conflict with any of your existing Composer dependencies.
 
 ---
 
-Deptrac as a library itself has its own dependencies as many PHP packages do. This may become a problem if the dependencies of Deptrac are not compatible of already existing dependencies in your project. Most notably, Deptrac depends on a number of `symfony` packages.
+Deptrac as a library itself has its own dependencies as many PHP packages do. This may become a problem if the dependencies of Deptrac are not compatible with already existing dependencies in your project. Most notably, Deptrac depends on a number of `symfony` packages.
 
 Imagine a situation where you depend on newer major version of `symfony/console` than Deptrac does. For example your `composer.json` file looks like this:
 
