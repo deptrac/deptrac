@@ -10,12 +10,15 @@ if (PHP_VERSION_ID < 80100) {
 }
 
 (static function (): void {
-    if (\file_exists($autoload = __DIR__.'/../vendor/autoload.php')) {
+    /**
+     * @see https://getcomposer.org/doc/articles/vendor-binaries.md#finding-the-composer-autoloader-from-a-binary
+     */
+    global $_composer_autoload_path;
+
+    if (\file_exists($autoload = $_composer_autoload_path ?? __DIR__.'/../vendor/autoload.php')) {
         require_once $autoload;
     }
-})();
 
-(static function (): void {
     if (\file_exists($autoload = getcwd().'/vendor/autoload.php')) {
         include_once $autoload;
     }
