@@ -24,11 +24,9 @@ use const DIRECTORY_SEPARATOR;
 
 final class Application extends BaseApplication
 {
-    public const VERSION = '@git-version@';
-
     public function __construct()
     {
-        parent::__construct('deptrac', self::VERSION);
+        parent::__construct('deptrac', DeptracVersion::get());
     }
 
     /**
