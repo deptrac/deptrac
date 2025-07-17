@@ -55,7 +55,7 @@ You can analyse projects that require an older PHP version as long as
 
 ## How to Contribute
 
-See the [contribution guide](docs/CONTRIBUTING.md) or go to development repository [deptrac/deptrac-src](https://github.com/deptrac/deptrac-src).
+See the [contribution guide](docs/CONTRIBUTING.md).
 
 ## Further Documentation
 
