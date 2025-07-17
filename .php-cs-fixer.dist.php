@@ -11,6 +11,7 @@ $finder = (new PhpCsFixer\Finder())
     ->exclude('Fixtures')
     ->append([
         __DIR__.'/deptrac.php',
+        __DIR__.'/deptrac',
         __DIR__.'/'.__FILE__,
     ]);
 

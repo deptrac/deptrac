@@ -9,17 +9,43 @@ if (PHP_VERSION_ID < 80100) {
     exit(1);
 }
 
-(static function (): void {
-    if (\file_exists($autoload = __DIR__.'/../vendor/autoload.php')) {
-        require_once $autoload;
-    }
-})();
+/**
+ * $_composer_autoload_path is set by composer (available from composer 2.2).
+ *
+ * @see https://getcomposer.org/doc/articles/vendor-binaries.md#finding-the-composer-autoloader-from-a-binary
+ */
+if (isset($_composer_autoload_path)) {
+    define('DEPTRAC_COMPOSER_INSTALL', $_composer_autoload_path);
+} else {
+    $autoloadPaths = [
+        __DIR__.'/../../autoload.php', // inside vendor dir like "vendor/deptrac/deptrac"
+        __DIR__.'/../vendor/autoload.php', // first level project dir like "bin/deptrac"
+        __DIR__.'/vendor/autoload.php', // project root like (./deptrac)
+    ];
 
-(static function (): void {
-    if (\file_exists($autoload = getcwd().'/vendor/autoload.php')) {
-        include_once $autoload;
+    foreach ($autoloadPaths as $path) {
+        if (file_exists($path)) {
+            define('DEPTRAC_COMPOSER_INSTALL', $path);
+
+            break;
+        }
     }
-})();
+
+    unset($autoloadPaths, $path);
+}
+
+if (!defined('DEPTRAC_COMPOSER_INSTALL')) {
+    fwrite(
+        STDERR,
+        'You need to set up the project dependencies using Composer:'.PHP_EOL.PHP_EOL.
+        '    composer install'.PHP_EOL.PHP_EOL.
+        'You can learn all about Composer on https://getcomposer.org/.'.PHP_EOL
+    );
+
+    exit(1);
+}
+
+require_once DEPTRAC_COMPOSER_INSTALL;
 
 $xdebug = new XdebugHandler('DEPTRAC');
 $xdebug->check();
