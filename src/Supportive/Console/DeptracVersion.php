@@ -39,7 +39,7 @@ final class DeptracVersion
             return self::SYMFONY_MAGIC_CONST_UNKNOWN;
         }
 
-        $installedVersion = InstalledVersions::getVersion('deptrac/deptrac');
+        $installedVersion = InstalledVersions::getPrettyVersion('deptrac/deptrac');
 
         if (null === $installedVersion || '' === $installedVersion) {
             return self::SYMFONY_MAGIC_CONST_UNKNOWN;
