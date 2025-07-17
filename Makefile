@@ -45,7 +45,7 @@ composer-dependency-analyser: install ## Performs static code analysis using com
 	$(COMPOSER_DEPENDENCY_ANALYSER)
 
 deptrac: install ## Analyses own architecture using the default config confile
-	./deptrac analyse -c deptrac.config.php --no-progress --ansi
+	./deptrac analyse -c deptrac.php --no-progress --ansi
 
 infection: install ## Runs mutation tests
 	$(INFECTION) --threads=$(shell nproc || sysctl -n hw.ncpu || 1) --test-framework-options='--testsuite=Tests' --only-covered --min-msi=85 --psalm-config=psalm.xml
