@@ -9,18 +9,29 @@ if (PHP_VERSION_ID < 80100) {
     exit(1);
 }
 
-if (isset($GLOBALS['_composer_autoload_path'])) {
-    define('DEPTRAC_COMPOSER_INSTALL', $GLOBALS['_composer_autoload_path']);
+/**
+ * $_composer_autoload_path is set by composer (available from composer 2.2).
+ *
+ * @see https://getcomposer.org/doc/articles/vendor-binaries.md#finding-the-composer-autoloader-from-a-binary
+ */
+if (isset($_composer_autoload_path)) {
+    define('DEPTRAC_COMPOSER_INSTALL', $_composer_autoload_path);
 } else {
-    foreach ([__DIR__.'/../../autoload.php', __DIR__.'/../vendor/autoload.php', __DIR__.'/vendor/autoload.php'] as $file) {
-        if (file_exists($file)) {
-            define('DEPTRAC_COMPOSER_INSTALL', $file);
+    $autoloadPaths = [
+        __DIR__.'/../../autoload.php', // inside vendor dir like "vendor/deptrac/deptrac"
+        __DIR__.'/../vendor/autoload.php', // first level project dir like "bin/deptrac"
+        __DIR__.'/vendor/autoload.php', // project root like (./deptrac)
+    ];
+
+    foreach ($autoloadPaths as $path) {
+        if (file_exists($path)) {
+            define('DEPTRAC_COMPOSER_INSTALL', $path);
 
             break;
         }
     }
 
-    unset($file);
+    unset($autoloadPaths, $path);
 }
 
 if (!defined('DEPTRAC_COMPOSER_INSTALL')) {
