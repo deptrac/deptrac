@@ -15,7 +15,7 @@ use function class_exists;
  */
 final class DeptracVersion
 {
-    private const SYMFONY_MAGIC_CONST_UNKNOWN = 'UNKNOWN';
+    private const UNKNOWN_VERSION = 'UNKNOWN';
     private const DEPTRAC_VERSION = '@git-version@';
 
     public static function get(): string
@@ -28,13 +28,13 @@ final class DeptracVersion
          * @see https://getcomposer.org/doc/07-runtime.md#installed-versions
          */
         if (!class_exists(InstalledVersions::class)) {
-            return self::SYMFONY_MAGIC_CONST_UNKNOWN;
+            return self::UNKNOWN_VERSION;
         }
 
         $installedVersion = InstalledVersions::getPrettyVersion('deptrac/deptrac');
 
         if (null === $installedVersion || '' === $installedVersion) {
-            return self::SYMFONY_MAGIC_CONST_UNKNOWN;
+            return self::UNKNOWN_VERSION;
         }
 
         return $installedVersion;
