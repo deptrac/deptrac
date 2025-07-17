@@ -55,6 +55,12 @@ parameters:
 			path: src/Supportive/Console/Command/DebugTokenCommand.php
 
 		-
+			message: '#^Strict comparison using \!\=\= between ''@git\-version@'' and ''@git\-version@'' will always evaluate to false\.$#'
+			identifier: notIdentical.alwaysFalse
+			count: 1
+			path: src/Supportive/Console/DeptracVersion.php
+
+		-
 			message: '#^Cannot access offset ''pointToGroups'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 2
