@@ -4,7 +4,7 @@
 help: ## Displays list of available targets with their descriptions
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
 
-PHP_VERSION = 81
+PHP_VERSION = 82
 CONTAINER = docker compose
 CLI = $(CONTAINER) exec php$(PHP_VERSION)
 
@@ -48,7 +48,7 @@ deptrac: install ## Analyses own architecture using the default config confile
 	./deptrac analyse -c deptrac.php --no-progress --ansi
 
 infection: install ## Runs mutation tests
-	$(INFECTION) --threads=$(shell nproc || sysctl -n hw.ncpu || 1) --test-framework-options='--testsuite=Tests' --only-covered --min-msi=85 --psalm-config=psalm.xml
+	$(INFECTION) --threads=$(shell nproc || sysctl -n hw.ncpu || 1) --test-framework-options='--testsuite=Tests' --only-covered --min-msi=95 --psalm-config=psalm.xml
 
 php-cs-check: install ## Checks for code style violation
 	$(PHP_CS_FIXER) fix --diff --using-cache=no --verbose --dry-run

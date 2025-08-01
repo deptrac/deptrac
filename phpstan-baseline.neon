@@ -83,3 +83,9 @@ parameters:
 			identifier: possiblyImpure.new
 			count: 1
 			path: src/Supportive/Time/Period.php
+
+		-
+			message: '#^Impure call to function hrtime\(\) in pure method Deptrac\\Deptrac\\Supportive\\Time\\Period\:\:stop\(\)\.$#'
+			identifier: impure.functionCall
+			count: 1
+			path: src/Supportive/Time/Period.php

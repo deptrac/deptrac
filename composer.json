@@ -18,13 +18,13 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "composer/xdebug-handler": "^3.0",
         "jetbrains/phpstorm-stubs": "2024.1",
         "nikic/php-parser": "^5",
         "phpdocumentor/graphviz": "^2.1",
         "phpdocumentor/type-resolver": "^1.6",
-        "phpstan/phpdoc-parser": "^1.5",
+        "phpstan/phpdoc-parser": "^2.0",
         "psr/container": "^2.0",
         "psr/event-dispatcher": "^1.0",
         "symfony/config": "^6.0",
@@ -66,7 +66,7 @@
             "infection/extension-installer": true
         },
         "platform": {
-            "php": "8.1"
+            "php": "8.2"
         },
         "sort-packages": true
     },
