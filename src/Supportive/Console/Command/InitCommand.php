@@ -17,12 +17,19 @@ use function sprintf;
 
 class InitCommand extends Command
 {
-    public static $defaultName = 'init';
-    public static $defaultDescription = 'Creates a depfile template';
-
     public function __construct(private readonly ConfigurationDumper $dumper)
     {
         parent::__construct();
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'init';
+    }
+
+    public static function getDefaultDescription(): ?string
+    {
+        return 'Creates a depfile template';
     }
 
     protected function configure(): void

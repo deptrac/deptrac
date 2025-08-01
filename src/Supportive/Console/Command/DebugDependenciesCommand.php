@@ -14,12 +14,19 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class DebugDependenciesCommand extends Command
 {
-    public static $defaultName = 'debug:dependencies';
-    public static $defaultDescription = 'List layer dependencies';
-
     public function __construct(private readonly DebugDependenciesRunner $runner)
     {
         parent::__construct();
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'debug:dependencies';
+    }
+
+    public static function getDefaultDescription(): ?string
+    {
+        return 'List layer dependencies';
     }
 
     protected function configure(): void

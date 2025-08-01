@@ -13,13 +13,21 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class DebugUnassignedCommand extends Command
 {
-    public static $defaultName = 'debug:unassigned';
-    public static $defaultDescription = 'Lists tokens that are not assigned to any layer';
     public const EXIT_WITH_UNASSIGNED_TOKENS = 2;
 
     public function __construct(private readonly DebugUnassignedRunner $runner)
     {
         parent::__construct();
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'debug:unassigned';
+    }
+
+    public static function getDefaultDescription(): ?string
+    {
+        return 'Lists tokens that are not assigned to any layer';
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

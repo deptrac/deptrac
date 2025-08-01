@@ -15,13 +15,20 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class ChangedFilesCommand extends Command
 {
-    public static $defaultName = 'changed-files';
-    public static $defaultDescription = 'Lists layers corresponding to the changed files';
-
     public function __construct(
         private readonly ChangedFilesRunner $runner,
     ) {
         parent::__construct();
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'changed-files';
+    }
+
+    public static function getDefaultDescription(): ?string
+    {
+        return 'Lists layers corresponding to the changed files';
     }
 
     protected function configure(): void

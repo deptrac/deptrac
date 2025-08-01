@@ -14,12 +14,19 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class DebugLayerCommand extends Command
 {
-    public static $defaultName = 'debug:layer';
-    public static $defaultDescription = 'Checks which tokens belong to the provided layer';
-
     public function __construct(private readonly DebugLayerRunner $runner)
     {
         parent::__construct();
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'debug:layer';
+    }
+
+    public static function getDefaultDescription(): ?string
+    {
+        return 'Checks which tokens belong to the provided layer';
     }
 
     protected function configure(): void
