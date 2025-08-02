@@ -1,3 +1,4 @@
+/.deptrac                        export-ignore
 /.github                         export-ignore
 /tools                           export-ignore
 /tests                           export-ignore
