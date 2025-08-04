@@ -13,3 +13,4 @@ infection.log
 deptrac-report.xml
 tests/Supportive/DependencyInjection/.deptrac.cache
 tests/Supportive/OutputFormatter/data/graphviz.dot
+.idea
