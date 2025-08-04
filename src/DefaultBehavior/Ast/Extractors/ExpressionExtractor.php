@@ -18,6 +18,7 @@ use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\PhpDocParser\Parser\TypeParser;
+use PHPStan\PhpDocParser\ParserConfig;
 
 /**
  * @implements ReferenceExtractorInterface<Node\Stmt\Expression>
@@ -30,8 +31,10 @@ final class ExpressionExtractor implements ReferenceExtractorInterface
     public function __construct(
         private readonly TypeResolverInterface $typeResolver,
     ) {
-        $this->lexer = new Lexer();
-        $this->docParser = new PhpDocParser(new TypeParser(), new ConstExprParser());
+        $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
+        $this->lexer = new Lexer($config);
+        $constExprParser = new ConstExprParser($config);
+        $this->docParser = new PhpDocParser($config, new TypeParser($config, $constExprParser), $constExprParser);
     }
 
     /**
