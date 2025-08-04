@@ -15,12 +15,19 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class DebugTokenCommand extends Command
 {
-    public static $defaultName = 'debug:token|debug:class-like';
-    public static $defaultDescription = 'Checks which layers the provided token belongs to';
-
     public function __construct(private readonly DebugTokenRunner $runner)
     {
         parent::__construct();
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'debug:token|debug:class-like';
+    }
+
+    public static function getDefaultDescription(): ?string
+    {
+        return 'Checks which layers the provided token belongs to';
     }
 
     protected function configure(): void

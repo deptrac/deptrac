@@ -14,12 +14,19 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class DebugUnusedCommand extends Command
 {
-    public static $defaultName = 'debug:unused';
-    public static $defaultDescription = 'Lists unused (or barely used) layer dependencies';
-
     public function __construct(private readonly DebugUnusedRunner $runner)
     {
         parent::__construct();
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'debug:unused';
+    }
+
+    public static function getDefaultDescription(): ?string
+    {
+        return 'Lists unused (or barely used) layer dependencies';
     }
 
     protected function configure(): void
