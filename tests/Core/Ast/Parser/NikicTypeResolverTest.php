@@ -10,6 +10,7 @@ use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\PhpDocParser\Parser\TypeParser;
+use PHPStan\PhpDocParser\ParserConfig;
 use PHPUnit\Framework\TestCase;
 
 final class NikicTypeResolverTest extends TestCase
@@ -21,8 +22,10 @@ final class NikicTypeResolverTest extends TestCase
     {
         parent::setUp();
 
-        $this->lexer = new Lexer();
-        $this->typeParser = new TypeParser(new ConstExprParser());
+        $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
+        $this->lexer = new Lexer($config);
+        $constExprParser = new ConstExprParser($config);
+        $this->typeParser = new TypeParser($config, $constExprParser);
     }
 
     /**
