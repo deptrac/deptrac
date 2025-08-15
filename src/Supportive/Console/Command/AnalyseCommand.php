@@ -13,6 +13,7 @@ use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
 use Deptrac\Deptrac\Supportive\OutputFormatter\FormatterProvider;
 use Deptrac\Deptrac\Supportive\Time\Stopwatch;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -20,14 +21,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+#[AsCommand(
+    name: 'analyse|analyze',
+    description: 'Analyses your project using the provided depfile',
+)]
 class AnalyseCommand extends Command
 {
     final public const OPTION_REPORT_UNCOVERED = 'report-uncovered';
     final public const OPTION_FAIL_ON_UNCOVERED = 'fail-on-uncovered';
     final public const OPTION_REPORT_SKIPPED = 'report-skipped';
-
-    public static $defaultName = 'analyse|analyze';
-    public static $defaultDescription = 'Analyses your project using the provided depfile';
 
     public function __construct(
         private readonly AnalyseRunner $runner,
