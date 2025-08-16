@@ -12,7 +12,7 @@ use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers\FormatterConfigurati
 
 final class MermaidJSOutputFormatter implements OutputFormatterInterface
 {
-    /** @var array{direction: string, groups: array<string, string[]>, default_node_options: array<string, string>} */
+    /** @var array{direction: string, hidden_layers?: string[], groups: array<string, string[]>, default_node_options: array<string, string>} */
     private array $config;
     private const GRAPH_TYPE = 'flowchart %s;';
 
@@ -24,7 +24,7 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
 
     public function __construct(FormatterConfiguration $config)
     {
-        /** @var array{direction: string, groups: array<string, string[]>, default_node_options: array<string, string>}  $extractedConfig */
+        /** @var array{direction: string, hidden_layers: string[], groups: array<string, string[]>, default_node_options: array<string, string>}  $extractedConfig */
         $extractedConfig = $config->getConfigFor('mermaidjs');
         $this->config = $extractedConfig;
     }
@@ -34,6 +34,14 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
         return 'mermaidjs';
     }
 
+    /**
+     * @param string ...$layers
+     */
+    private function isLayerHidden(...$layers): bool
+    {
+        return [] !== array_intersect($layers, $this->config['hidden_layers'] ?? []);
+    }
+
     public function finish(
         OutputResult $result,
         OutputInterface $output,
@@ -41,17 +49,23 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
     ): void {
         $graph = $this->parseResults($result);
         $violations = $result->violations();
-        $buffer = '';
-
-        $buffer .= sprintf(self::GRAPH_TYPE.PHP_EOL, $this->config['direction']);
+        $buffer = sprintf(self::GRAPH_TYPE.PHP_EOL, $this->config['direction']);
 
         foreach ($this->config['groups'] as $subGraphName => $layers) {
-            $buffer .= sprintf(self::SUBGRAPH.PHP_EOL, $subGraphName);
+            $layerBuffer = '';
 
             foreach ($layers as $layer) {
-                $buffer .= sprintf(self::LAYER.PHP_EOL, $layer);
+                if ($this->isLayerHidden($layer)) {
+                    continue;
+                }
+                $layerBuffer .= sprintf(self::LAYER.PHP_EOL, $layer);
             }
 
+            if ('' === $layerBuffer) {
+                continue;
+            }
+            $buffer .= \sprintf(self::SUBGRAPH.PHP_EOL, $subGraphName);
+            $buffer .= $layerBuffer;
             $buffer .= self::GRAPH_END.PHP_EOL;
         }
 
@@ -60,6 +74,9 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
         $violationGraphLinks = [];
 
         foreach ($violations as $violation) {
+            if ($this->isLayerHidden($violation->getDependerLayer(), $violation->getDependentLayer())) {
+                continue;
+            }
             if (!isset($violationsLinks[$violation->getDependerLayer()][$violation->getDependentLayer()])) {
                 $violationsLinks[$violation->getDependerLayer()][$violation->getDependentLayer()] = 1;
             } else {
@@ -108,6 +125,9 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
         $graph = [];
 
         foreach ($result->allowed() as $rule) {
+            if ($this->isLayerHidden($rule->getDependerLayer(), $rule->getDependentLayer())) {
+                continue;
+            }
             if (!isset($graph[$rule->getDependerLayer()][$rule->getDependentLayer()])) {
                 $graph[$rule->getDependerLayer()][$rule->getDependentLayer()] = 1;
             } else {
