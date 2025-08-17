@@ -73,8 +73,13 @@
     "extra": {
         "bamarni-bin": {
             "bin-links": false,
-            "forward-command": true,
+            "forward-command": false,
             "target-directory": "tools"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@composer bin all install --ansi"
+        ]
     }
 }
