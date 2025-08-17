@@ -38,7 +38,7 @@ cache-clear: ## clears cache
 	rm -rf .cache/*
 
 install: vendor ## Installs dependencies
-vendor: composer.json composer.lock
+vendor: tools composer.json composer.lock
 	$(COMPOSER) install --no-interaction --no-progress --ansi
 
 composer-dependency-analyser: install ## Performs static code analysis using composer-dependency-analyser
