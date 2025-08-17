@@ -37,8 +37,7 @@ cli: up ## connect into container
 cache-clear: ## clears cache
 	rm -rf .cache/*
 
-install: vendor ## Installs dependencies
-vendor: tools composer.json composer.lock
+install: ## Installs dependencies
 	$(COMPOSER) install --no-interaction --no-progress --ansi
 
 composer-dependency-analyser: install ## Performs static code analysis using composer-dependency-analyser
