@@ -42,6 +42,10 @@
         "ergebnis/composer-normalize": "^2.45",
         "symfony/stopwatch": "^6.4"
     },
+    "replace": {
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*"
+    },
     "suggest": {
         "ext-dom": "For using the JUnit output formatter"
     },
