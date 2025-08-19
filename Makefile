@@ -71,3 +71,5 @@ test-coverage: install ## Runs tests and generate an html coverage report
 tests: install ## Runs tests followed by a very basic e2e-test
 	$(PHPUNIT)
 	./deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --no-cache
+
+qa: php-cs-check composer-dependency-analyser phpstan psalm deptrac tests infection ## runs all qa tools
