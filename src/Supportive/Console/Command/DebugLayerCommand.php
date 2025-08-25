@@ -6,17 +6,19 @@ namespace Deptrac\Deptrac\Supportive\Console\Command;
 
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand(
+    name: 'debug:layer',
+    description: 'Checks which tokens belong to the provided layer',
+)]
 class DebugLayerCommand extends Command
 {
-    public static $defaultName = 'debug:layer';
-    public static $defaultDescription = 'Checks which tokens belong to the provided layer';
-
     public function __construct(private readonly DebugLayerRunner $runner)
     {
         parent::__construct();

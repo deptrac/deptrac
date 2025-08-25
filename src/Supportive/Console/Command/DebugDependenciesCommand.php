@@ -6,17 +6,19 @@ namespace Deptrac\Deptrac\Supportive\Console\Command;
 
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand(
+    name: 'debug:dependencies',
+    description: 'List layer dependencies',
+)]
 class DebugDependenciesCommand extends Command
 {
-    public static $defaultName = 'debug:dependencies';
-    public static $defaultDescription = 'List layer dependencies';
-
     public function __construct(private readonly DebugDependenciesRunner $runner)
     {
         parent::__construct();

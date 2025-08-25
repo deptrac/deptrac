@@ -9,17 +9,19 @@ use Deptrac\Deptrac\Supportive\File\Exception\FileAlreadyExistsException;
 use Deptrac\Deptrac\Supportive\File\Exception\FileNotExistsException;
 use Deptrac\Deptrac\Supportive\File\Exception\FileNotWritableException;
 use Deptrac\Deptrac\Supportive\File\Exception\IOException;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use function sprintf;
 
+#[AsCommand(
+    name: 'init',
+    description: 'Creates a depfile template',
+)]
 class InitCommand extends Command
 {
-    public static $defaultName = 'init';
-    public static $defaultDescription = 'Creates a depfile template';
-
     public function __construct(private readonly ConfigurationDumper $dumper)
     {
         parent::__construct();

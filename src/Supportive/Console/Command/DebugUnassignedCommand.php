@@ -6,15 +6,18 @@ namespace Deptrac\Deptrac\Supportive\Console\Command;
 
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand(
+    name: 'debug:unassigned',
+    description: 'Lists tokens that are not assigned to any layer',
+)]
 class DebugUnassignedCommand extends Command
 {
-    public static $defaultName = 'debug:unassigned';
-    public static $defaultDescription = 'Lists tokens that are not assigned to any layer';
     public const EXIT_WITH_UNASSIGNED_TOKENS = 2;
 
     public function __construct(private readonly DebugUnassignedRunner $runner)

@@ -6,6 +6,7 @@ namespace Deptrac\Deptrac\Supportive\Console\Command;
 
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,11 +14,12 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand(
+    name: 'changed-files',
+    description: 'Lists layers corresponding to the changed files',
+)]
 class ChangedFilesCommand extends Command
 {
-    public static $defaultName = 'changed-files';
-    public static $defaultDescription = 'Lists layers corresponding to the changed files';
-
     public function __construct(
         private readonly ChangedFilesRunner $runner,
     ) {
