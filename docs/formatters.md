@@ -235,9 +235,12 @@ deptrac:
     - LayerB
     - LayerC
     - LayerD
+    - IrrelevantLayer
   formatters:
     mermaidjs:
       direction: TD
+      hidden_layers:
+        - IrrelevantLayer
       groups:
         UserGroup:
           - LayerA
@@ -262,6 +265,7 @@ return static function (DeptracConfig $config): void {
     $config->formatters(
         MermaidJsConfig::create()
             ->direction('TD')
+            ->hiddenLayers('IrrelevantLayer')
             ->groups('UserGroup', $layerA, $layerB)
             ->groups('AdminGroup', $layerC, $layerD)
             ->setDefaultNodeShape('stadium')

@@ -44,6 +44,8 @@ final class MermaidJSOutputFormatterTest extends TestCase
         $analysisResult->addRule(new Allowed($dependency, 'LayerA', 'LayerB'));
         $analysisResult->addRule(new Allowed($dependency, 'LayerC', 'LayerD'));
         $analysisResult->addRule(new Allowed($dependency, 'LayerA', 'LayerC'));
+        $analysisResult->addRule(new Allowed($dependency, 'IrrelevantLayer', 'LayerC'));
+        $analysisResult->addRule(new Allowed($dependency, 'LayerA', 'IrrelevantLayer'));
 
         $analysisResult->addRule(new Violation($dependency, 'LayerA', 'LayerC', new DummyViolationCreatingRule()));
         $analysisResult->addRule(new Violation($dependency, 'LayerA', 'LayerC', new DummyViolationCreatingRule()));
@@ -57,6 +59,9 @@ final class MermaidJSOutputFormatterTest extends TestCase
         $mermaidJsConfig = [
             'mermaidjs' => [
                 'direction' => 'TD',
+                'hidden_layers' => [
+                    'IrrelevantLayer',
+                ],
                 'groups' => [
                     'User' => [
                         'LayerA',

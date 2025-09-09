@@ -15,6 +15,9 @@ final class MermaidJsConfig implements FormatterConfigInterface
     /** @var array<string, Layer[]> */
     private array $groups = [];
 
+    /** @var Layer[] */
+    private array $hiddenLayers = [];
+
     /** @var array<string, string> */
     private array $defaultNodeOptions = [];
 
@@ -31,6 +34,15 @@ final class MermaidJsConfig implements FormatterConfigInterface
     public function direction(string $direction): self
     {
         $this->direction = $direction;
+
+        return $this;
+    }
+
+    public function hiddenLayers(Layer ...$LayerConfigs): self
+    {
+        foreach ($LayerConfigs as $layerConfig) {
+            $this->hiddenLayers[] = $layerConfig;
+        }
 
         return $this;
     }
@@ -54,6 +66,10 @@ final class MermaidJsConfig implements FormatterConfigInterface
     public function toArray(): array
     {
         $output = [];
+
+        if ([] !== $this->hiddenLayers) {
+            $output['hidden_layers'] = array_map(static fn (Layer $config) => $config->name, $this->hiddenLayers);
+        }
 
         if ([] !== $this->groups) {
             $output['groups'] = array_map(
