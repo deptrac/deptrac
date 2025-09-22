@@ -7,6 +7,7 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers;
 use PHPStan\Analyser\ScopeFactory;
 use PHPStan\DependencyInjection\Container;
 use PHPStan\DependencyInjection\ContainerFactory;
+use PHPStan\DependencyInjection\MissingServiceException;
 use PHPStan\Parser\Parser;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Type\FileTypeMapper;
@@ -36,11 +37,17 @@ class PhpStanContainerDecorator
         ], $paths);
     }
 
+    /**
+     * @throws MissingServiceException
+     */
     public function createReflectionProvider(): ReflectionProvider
     {
         return $this->container->getByType(ReflectionProvider::class);
     }
 
+    /**
+     * @throws MissingServiceException
+     */
     public function createPHPStanParser(): Parser
     {
         $service = $this->container->getService('currentPhpVersionRichParser');
@@ -49,6 +56,9 @@ class PhpStanContainerDecorator
         return $service;
     }
 
+    /**
+     * @throws MissingServiceException
+     */
     public function createScopeFactory(): ScopeFactory
     {
         return $this->container->getByType(ScopeFactory::class);

@@ -13,13 +13,11 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanFileReferenceVisitor;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
-use PHPStan\Parser\Parser;
+use PHPStan\DependencyInjection\MissingServiceException;
 use PHPStan\Parser\ParserErrorsException;
 
 class PhpStanParser extends AbstractParser
 {
-    private Parser $parser;
-
     /**
      * @param PHPStanReferenceExtractorInterface<Node>[] $extractors
      */
@@ -29,7 +27,6 @@ class PhpStanParser extends AbstractParser
         private readonly iterable $extractors,
     ) {
         $this->traverser = new NodeTraverser();
-        $this->parser = $this->phpStanContainer->createPHPStanParser();
     }
 
     public function parseFile(string $file): FileReference
@@ -38,8 +35,12 @@ class PhpStanParser extends AbstractParser
             return $fileReference;
         }
 
-        $scopeFactory = $this->phpStanContainer->createScopeFactory();
-        $reflectionProvider = $this->phpStanContainer->createReflectionProvider();
+        try {
+            $scopeFactory = $this->phpStanContainer->createScopeFactory();
+            $reflectionProvider = $this->phpStanContainer->createReflectionProvider();
+        } catch (MissingServiceException $exception) {
+            throw CouldNotParseFileException::because('Could not initialize PHPStan.', $exception);
+        }
 
         $fileReferenceBuilder = FileReferenceBuilder::create($file);
         $visitor = new PhpStanFileReferenceVisitor($fileReferenceBuilder, $scopeFactory, $reflectionProvider, $file, ...$this->extractors);
@@ -54,10 +55,13 @@ class PhpStanParser extends AbstractParser
     protected function loadNodesFromFile(string $filepath): array
     {
         try {
-            $nodes = $this->parser->parseFile($filepath);
+            $parser = $this->phpStanContainer->createPHPStanParser();
+            $nodes = $parser->parseFile($filepath);
 
             /** @var array<Node> $nodes */
             return $nodes;
+        } catch (MissingServiceException $exception) {
+            throw CouldNotParseFileException::because('Could not initialize PHPStan.', $exception);
         } catch (ParserErrorsException $exception) {
             throw CouldNotParseFileException::because($exception->getMessage(), $exception);
         }

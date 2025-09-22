@@ -88,3 +88,8 @@ parameters:
 			message: "#^Calling PHPStan\\\\Analyser\\\\ScopeContext\\:\\:enterClass\\(\\) is not covered by backward compatibility promise\\. The method might change in a minor PHPStan version\\.$#"
 			count: 1
 			path: src/DefaultBehavior/Ast/Parser/Helpers/PhpStanFileReferenceVisitor.php
+
+		-
+			message: '#^Method Deptrac\\Deptrac\\DefaultBehavior\\Ast\\Parser\\Helpers\\PhpStanContainerDecorator\:\:createFileTypeMapper\(\) throws checked exception PHPStan\\DependencyInjection\\MissingServiceException but it''s missing from the PHPDoc @throws tag\.$#'
+			count: 1
+			path: src/DefaultBehavior/Ast/Parser/Helpers/PhpStanContainerDecorator.php

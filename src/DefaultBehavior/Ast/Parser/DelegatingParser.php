@@ -10,7 +10,7 @@ use PhpParser\NodeTraverser;
 final class DelegatingParser extends AbstractParser
 {
     /**
-     * @param  array{phpstan_parser: bool, ...}  $featureFlags
+     * @param array{phpstan_parser: bool, ...} $featureFlags
      */
     public function __construct(
         private readonly array $featureFlags,
