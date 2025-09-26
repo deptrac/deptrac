@@ -85,7 +85,7 @@ class TableOutputFormatterTest extends TestCase
   Reason      LayerA                            
  ----------- ---------------------------------- 
   DummyRule   ClassA must not depend on ClassB  
-              Why? Because! (LayerB)            
+              Why? Because! (LayerA -> LayerB)            
               ClassInheritD::6 ->               
               ClassInheritC::5 ->               
               ClassInheritB::4 ->               

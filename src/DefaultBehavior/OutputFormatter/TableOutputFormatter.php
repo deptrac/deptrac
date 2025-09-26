@@ -110,7 +110,12 @@ final class TableOutputFormatter implements OutputFormatterInterface
             $dependency->getDepender()->toString(),
             $dependency->getDependent()->toString(),
         );
-        $message .= sprintf("\n%s (%s)", $rule->ruleDescription(), $rule->getDependentLayer());
+        $message .= sprintf(
+            "\n%s (<info>%s</info> -> <info>%s</info>)",
+            $rule->ruleDescription(),
+            $rule->getDependerLayer(),
+            $rule->getDependentLayer(),
+        );
 
         if (count($dependency->serialize()) > 1) {
             $message .= "\n".$this->formatMultilinePath($dependency);
