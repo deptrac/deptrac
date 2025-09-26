@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "edf908e1f6b0e4fca8854163be177e40",
+    "content-hash": "fb78960ff7e774a72d424270c4bd3d90",
     "packages": [],
     "packages-dev": [
         {
@@ -566,16 +566,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.55",
+            "version": "10.5.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4b2d546b336876bd9562f24641b08a25335b06b6"
+                "reference": "8e7598bbb17bb5cd80728f4831d3f83223d3a6b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4b2d546b336876bd9562f24641b08a25335b06b6",
-                "reference": "4b2d546b336876bd9562f24641b08a25335b06b6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8e7598bbb17bb5cd80728f4831d3f83223d3a6b3",
+                "reference": "8e7598bbb17bb5cd80728f4831d3f83223d3a6b3",
                 "shasum": ""
             },
             "require": {
@@ -599,7 +599,7 @@
                 "sebastian/comparator": "^5.0.4",
                 "sebastian/diff": "^5.1.1",
                 "sebastian/environment": "^6.1.0",
-                "sebastian/exporter": "^5.1.2",
+                "sebastian/exporter": "^5.1.4",
                 "sebastian/global-state": "^6.0.2",
                 "sebastian/object-enumerator": "^5.0.0",
                 "sebastian/recursion-context": "^5.0.1",
@@ -647,7 +647,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.55"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.57"
             },
             "funding": [
                 {
@@ -671,7 +671,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-14T06:19:20+00:00"
+            "time": "2025-09-24T06:30:38+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -1121,16 +1121,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "5.1.3",
+            "version": "5.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "9e7e86260de48e405ec3086bcb62e677ef192e7f"
+                "reference": "0735b90f4da94969541dac1da743446e276defa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/9e7e86260de48e405ec3086bcb62e677ef192e7f",
-                "reference": "9e7e86260de48e405ec3086bcb62e677ef192e7f",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/0735b90f4da94969541dac1da743446e276defa6",
+                "reference": "0735b90f4da94969541dac1da743446e276defa6",
                 "shasum": ""
             },
             "require": {
@@ -1187,7 +1187,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/exporter/issues",
                 "security": "https://github.com/sebastianbergmann/exporter/security/policy",
-                "source": "https://github.com/sebastianbergmann/exporter/tree/5.1.3"
+                "source": "https://github.com/sebastianbergmann/exporter/tree/5.1.4"
             },
             "funding": [
                 {
@@ -1207,7 +1207,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-22T05:25:48+00:00"
+            "time": "2025-09-24T06:09:11+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -1684,5 +1684,8 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
+    "platform-overrides": {
+        "php": "8.1"
+    },
     "plugin-api-version": "2.6.0"
 }

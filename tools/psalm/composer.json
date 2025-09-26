@@ -3,6 +3,9 @@
         "vimeo/psalm": "^5.26"
     },
     "config": {
+        "platform": {
+            "php": "8.1"
+        },
         "bin-dir": "bin"
     }
 }

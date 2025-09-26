@@ -30,7 +30,8 @@ jobs:
           coverage: none
           tools: composer
 
-      -   uses: "ramsey/composer-install@v2"
+      - name: "Install dependencies"
+        uses: ramsey/composer-install@v2
 
       - name: "Run deptrac without cache"
         run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --no-cache
