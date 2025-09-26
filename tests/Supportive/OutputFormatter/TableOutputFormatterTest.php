@@ -124,7 +124,7 @@ class TableOutputFormatterTest extends TestCase
   Reason      LayerA                                  
  ----------- ---------------------------------------- 
   DummyRule   OriginalA must not depend on OriginalB  
-              Why? Because! (LayerB)                  
+              Why? Because! (LayerA -> LayerB)                  
               originalA.php:12                        
  ----------- ---------------------------------------- 
 
@@ -175,7 +175,7 @@ class TableOutputFormatterTest extends TestCase
             ' --------- ------------------------------------------------- 
   Reason    LayerA                                           
  --------- ------------------------------------------------- 
-  Skipped   OriginalA must not depend on OriginalB (LayerB)  
+  Skipped   OriginalA must not depend on OriginalB (LayerA -> LayerB)  
             originalA.php:12                                 
  --------- ------------------------------------------------- 
 
