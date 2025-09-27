@@ -56,36 +56,37 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
         $xmlDoc = new DOMDocument('1.0', 'UTF-8');
         $xmlDoc->formatOutput = true;
 
+        $testSuite = $xmlDoc->createElement('testsuite');
+        /** @throws void */
+        $testSuite->appendChild(new DOMAttr('name', 'Deptrac'));
+        /** @throws void */
+        $testSuite->appendChild(new DOMAttr('tests', (string) count($result->rules)));
+        /** @throws void */
+        $testSuite->appendChild(new DOMAttr('failures', (string) count($result->violations())));
+        /** @throws void */
+        $testSuite->appendChild(new DOMAttr('skipped', (string) count($result->skippedViolations())));
+        /** @throws void */
+        $testSuite->appendChild(new DOMAttr('errors', (string) count($result->errors)));
+        /** @throws void */
+        $testSuite->appendChild(new DOMAttr('time', '0'));
+        /** @throws void */
+        $testSuite->appendChild(new DOMAttr('timestamp', $result->analysisComplete->format('Y-m-d\TH:i:s')));
+        /** @throws void */
+        $testSuite->appendChild(new DOMAttr('hostname', 'localhost'));
+        /** @throws void */
+        $testSuite->appendChild($xmlDoc->createElement('properties'));
+
         if ($result->hasErrors()) {
             /** @throws void */
-            $testSuite = $xmlDoc->createElement('testsuite');
+            $testCase = $xmlDoc->createElement('testcase');
             /** @throws void */
-            $testSuite->appendChild(new DOMAttr('name', 'Analysis Errors'));
+            $testCase->appendChild(new DOMAttr('name', 'Analysis Errors'));
             /** @throws void */
-            $testSuite->appendChild(new DOMAttr('tests', '0'));
+            $testCase->appendChild(new DOMAttr('classname', 'N/A'));
             /** @throws void */
-            $testSuite->appendChild(new DOMAttr('failures', '0'));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('skipped', '0'));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('errors', (string) count($result->errors)));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('time', '0'));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('timestamp', $result->analysisComplete->format('Y-m-d\TH:i:s')));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('hostname', 'localhost'));
-            /** @throws void */
-            $testSuite->appendChild($xmlDoc->createElement('properties'));
-            foreach ($result->errors as $index => $error) {
-                /** @throws void */
-                $testCase = $xmlDoc->createElement('testcase');
-                /** @throws void */
-                $testCase->appendChild(new DOMAttr('name', 'Error '.$index));
-                /** @throws void */
-                $testCase->appendChild(new DOMAttr('classname', 'N/A'));
-                /** @throws void */
-                $testCase->appendChild(new DOMAttr('time', '0'));
+            $testCase->appendChild(new DOMAttr('time', '0'));
+
+            foreach ($result->errors as $error) {
                 /** @throws void */
                 $errorElement = $xmlDoc->createElement('error');
                 /** @throws void */
@@ -93,21 +94,24 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
                 /** @throws void */
                 $errorElement->appendChild(new DOMAttr('type', 'Analysis Error'));
                 $testCase->appendChild($errorElement);
-                $testSuite->appendChild($testCase);
             }
-            /** @throws void */
-            $testSuite->appendChild($xmlDoc->createElement('system-out'));
-            /** @throws void */
-            $testSuite->appendChild($xmlDoc->createElement('system-err'));
 
-            $xmlDoc->appendChild($testSuite);
+            $testSuite->appendChild($testCase);
         }
-        $this->addTestSuite($result, $xmlDoc, $outputFormatterInput);
+
+        $this->addTestCases($result, $xmlDoc, $testSuite, $outputFormatterInput);
+
+        /** @throws void */
+        $testSuite->appendChild($xmlDoc->createElement('system-out'));
+        /** @throws void */
+        $testSuite->appendChild($xmlDoc->createElement('system-err'));
+
+        $xmlDoc->appendChild($testSuite);
 
         return (string) $xmlDoc->saveXML();
     }
 
-    private function addTestSuite(OutputResult $result, DOMDocument $xmlDoc, OutputFormatterInput $outputFormatterInput): void
+    private function addTestCases(OutputResult $result, DOMDocument $xmlDoc, DOMElement $testSuite, OutputFormatterInput $outputFormatterInput): void
     {
         /** @var array<string, array<RuleInterface>> $layers */
         $layers = [];
@@ -119,64 +123,18 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
             }
         }
 
-        $layerIndex = 0;
         foreach ($layers as $layer => $rules) {
-            $violationsByLayer = array_filter($rules, static fn (RuleInterface $rule) => $rule instanceof Violation);
-
-            $skippedViolationsByLayer = array_filter($rules, static fn (RuleInterface $rule) => $rule instanceof SkippedViolation);
-
-            $rulesByClassName = [];
             foreach ($rules as $rule) {
-                $rulesByClassName[$rule->getDependency()->getDepender()->toString()][] = $rule;
-            }
+                $className = $rule->getDependency()->getDepender()->toString();
+                /** @throws void */
+                $testCase = $xmlDoc->createElement('testcase');
+                /** @throws void */
+                $testCase->appendChild(new DOMAttr('name', $layer));
+                /** @throws void */
+                $testCase->appendChild(new DOMAttr('classname', $className));
+                /** @throws void */
+                $testCase->appendChild(new DOMAttr('time', '0'));
 
-            /** @throws void */
-            $testSuite = $xmlDoc->createElement('testsuite');
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('name', $layer));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('tests', (string) count($rulesByClassName)));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('failures', (string) count($violationsByLayer)));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('skipped', (string) count($skippedViolationsByLayer)));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('errors', '0'));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('time', '0'));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('timestamp', $result->analysisComplete->format('Y-m-d\TH:i:s')));
-            /** @throws void */
-            $testSuite->appendChild(new DOMAttr('hostname', 'localhost'));
-            /** @throws void */
-            $testSuite->appendChild($xmlDoc->createElement('properties'));
-
-            $xmlDoc->appendChild($testSuite);
-
-            $this->addTestCase($layer, $rulesByClassName, $xmlDoc, $testSuite, $outputFormatterInput);
-            /** @throws void */
-            $testSuite->appendChild($xmlDoc->createElement('system-out'));
-            /** @throws void */
-            $testSuite->appendChild($xmlDoc->createElement('system-err'));
-        }
-    }
-
-    /**
-     * @param array<string, RuleInterface[]> $rulesByClassName
-     */
-    private function addTestCase(string $layer, array $rulesByClassName, DOMDocument $xmlDoc, DOMElement $testSuite, OutputFormatterInput $outputFormatterInput): void
-    {
-        foreach ($rulesByClassName as $className => $rules) {
-            /** @throws void */
-            $testCase = $xmlDoc->createElement('testcase');
-            /** @throws void */
-            $testCase->appendChild(new DOMAttr('name', $layer.' - '.$className));
-            /** @throws void */
-            $testCase->appendChild(new DOMAttr('classname', $className));
-            /** @throws void */
-            $testCase->appendChild(new DOMAttr('time', '0'));
-
-            foreach ($rules as $rule) {
                 if ($rule instanceof SkippedViolation && $outputFormatterInput->reportSkipped) {
                     $this->addSkipped($rule, $xmlDoc, $testCase);
                 } elseif ($rule instanceof Violation) {
@@ -184,9 +142,8 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
                 } elseif ($rule instanceof Uncovered && $outputFormatterInput->reportUncovered) {
                     $this->addWarning($rule, $xmlDoc, $testCase, $outputFormatterInput);
                 }
+                $testSuite->appendChild($testCase);
             }
-
-            $testSuite->appendChild($testCase);
         }
     }
 
