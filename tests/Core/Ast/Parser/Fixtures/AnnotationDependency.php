@@ -62,4 +62,12 @@ final class AnnotationDependencyChild
     {
 
     }
+
+    /**
+     * @param int<0, max> $rangeParameter
+     */
+    public function intRangeTest($rangeParameter)
+    {
+
+    }
 }
