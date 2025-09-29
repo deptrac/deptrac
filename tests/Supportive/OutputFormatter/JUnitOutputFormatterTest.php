@@ -191,6 +191,24 @@ final class JUnitOutputFormatterTest extends TestCase
             ],
             'expected-junit-report-with-unmatched-violations.xml',
         ];
+
+        yield [
+            [
+                new Violation(
+                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
+                    'LayerA',
+                    'LayerB',
+                    new DummyViolationCreatingRule()
+                ),
+                new Violation(
+                    new Dependency($originalB, $originalA, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
+                    'LayerB',
+                    'LayerA',
+                    new DummyViolationCreatingRule()
+                ),
+            ],
+            'expected-junit-report_4.xml',
+        ];
     }
 
     /**
@@ -217,9 +235,11 @@ final class JUnitOutputFormatterTest extends TestCase
                 true, true, true)
         );
 
-        $reader = new DOMDocument();
-        $reader->load(__DIR__.'/data/'.self::$actual_junit_report_file);
         libxml_use_internal_errors(true);
+        $reader = new DOMDocument();
+        $loaded = $reader->load(__DIR__.'/data/'.self::$actual_junit_report_file);
+
+        self::assertTrue($loaded);
 
         self::assertTrue($reader->schemaValidate(__DIR__.'/data/junit-schema-ant.xsd'),
             implode(array_map(static fn ($e) => $e->line.': '.$e->message, libxml_get_errors())));

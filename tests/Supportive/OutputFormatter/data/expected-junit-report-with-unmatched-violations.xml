@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<testsuite errors="1" failures="0" hostname="localhost" name="Analysis Errors" skipped="0" tests="0" time="0" timestamp="2025-03-28T22:17:43">
+<testsuite errors="1" failures="0" hostname="localhost" name="Deptrac" skipped="0" tests="0" time="0" timestamp="2025-03-28T22:17:43">
     <properties/>
-    <testcase classname="N/A" name="Error 0" time="0">
+    <testcase classname="N/A" name="Analysis Errors" time="0">
         <error message="Skipped violation &quot;Class1&quot; for &quot;Class2&quot; was not matched." type="Analysis Error"/>
     </testcase>
     <system-out/>
