@@ -136,7 +136,17 @@ class NikicTypeResolver implements TypeResolverInterface
      */
     private function resolveGeneric(GenericTypeNode $type, TypeScope $typeScope, array $templateTypes): array
     {
-        $preType = 'list' === $type->type->name
+        /** Generic int (e.g. int<0, max>) can never contain resolvable generic type, so only resolve the `int` */
+        if ('int' === $type->type->name) {
+            return $this->resolvePHPStanDocParserType(
+                $type->type,
+                $typeScope,
+                $templateTypes
+            );
+        }
+
+        /** Does the identifier of generic (e.g. list in list<Class>) need resolving? */
+        $preType = in_array($type->type->name, ['list', 'non-empty-list'], true)
             ? []
             : $this->resolvePHPStanDocParserType(
                 $type->type,
