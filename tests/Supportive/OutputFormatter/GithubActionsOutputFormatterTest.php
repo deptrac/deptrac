@@ -85,7 +85,7 @@ final class GithubActionsOutputFormatterTest extends TestCase
         $originalAOccurrence = new FileOccurrence('/home/testuser/originalA.php', 12);
 
         yield 'Simple Violation' => [
-            'violations' => [
+            'rules' => [
                 new Violation(
                     new Dependency($originalA, $originalB, new DependencyContext($originalAOccurrence, DependencyType::PARAMETER)),
                     'LayerA',
@@ -99,7 +99,7 @@ final class GithubActionsOutputFormatterTest extends TestCase
         ];
 
         yield 'Skipped Violation' => [
-            'violations' => [
+            'rules' => [
                 new SkippedViolation(
                     new Dependency($originalA, $originalB, new DependencyContext($originalAOccurrence, DependencyType::PARAMETER)),
                     'LayerA',
@@ -112,7 +112,7 @@ final class GithubActionsOutputFormatterTest extends TestCase
         ];
 
         yield 'Uncovered Dependency' => [
-            'violations' => [
+            'rules' => [
                 new Uncovered(
                     new Dependency($originalA, $originalB, new DependencyContext($originalAOccurrence, DependencyType::PARAMETER)),
                     'LayerA'
@@ -124,7 +124,7 @@ final class GithubActionsOutputFormatterTest extends TestCase
         ];
 
         yield 'Inherit dependency' => [
-            'violations' => [
+            'rules' => [
                 new Violation(
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
@@ -163,14 +163,14 @@ final class GithubActionsOutputFormatterTest extends TestCase
         ];
 
         yield 'an error occurred' => [
-            'violations' => [],
+            'rules' => [],
             'errors' => [new Error('an error occurred')],
             'warnings' => [],
             '::error ::an error occurred'.PHP_EOL,
         ];
 
         yield 'an warning occurred' => [
-            'violations' => [],
+            'rules' => [],
             'errors' => [],
             'warnings' => [
                 Warning::tokenIsInMoreThanOneLayer(ClassLikeToken::fromFQCN('Foo\Bar')->toString(), ['Layer 1', 'Layer 2']),
