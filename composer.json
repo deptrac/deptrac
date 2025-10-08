@@ -40,6 +40,7 @@
     "require-dev": {
         "ext-libxml": "*",
         "bamarni/composer-bin-plugin": "^1.8",
+        "carthage-software/mago": "^1.0.0-beta.27",
         "ergebnis/composer-normalize": "^2.45",
         "symfony/stopwatch": "^6.4"
     },
@@ -63,6 +64,7 @@
     "config": {
         "allow-plugins": {
             "bamarni/composer-bin-plugin": true,
+            "carthage-software/mago": true,
             "ergebnis/composer-normalize": true,
             "infection/extension-installer": true
         },

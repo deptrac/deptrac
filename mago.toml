@@ -1,0 +1,43 @@
+# Welcome to Mago!
+# For full documentation, see https://mago.carthage.software/tools/overview
+php-version = "8.1.0"
+
+[source]
+paths = ["internal/deptrac/", "src/", "tests/", "config/", "./deptrac.php"]
+includes = ["vendor"]
+excludes = ["tests/Core/Ast/Fixtures/"]
+
+[formatter]
+print-width = 180
+tab-width = 4
+use-tabs = false
+
+null-type-hint = "question"
+space-before-arrow-function-parameter-list-parenthesis = true
+space-around-concatenation-binary-operator = false
+always-break-named-arguments-list = false
+preserve-breaking-member-access-chain = true
+preserve-breaking-argument-list = true
+preserve-breaking-array-like = true
+preserve-breaking-parameter-list = true
+preserve-breaking-attribute-list = true
+
+inline-empty-classlike-braces = true
+inline-empty-function-braces = true
+inline-empty-method-braces = true
+
+[linter]
+integrations = ["symfony"]
+
+[linter.rules]
+ambiguous-function-call = { enabled = false }
+literal-named-argument = { enabled = false }
+halstead = { effort-threshold = 7000 }
+
+[analyzer]
+find-unused-definitions = true
+find-unused-expressions = false
+analyze-dead-code = false
+check-throws = true
+allow-possibly-undefined-array-keys = true
+perform-heuristic-checks = false
