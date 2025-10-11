@@ -31,7 +31,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
         $astClassReferences = $astFileReference->classLikeReferences;
         $annotationDependency = $astClassReferences[0]->dependencies;
 
-        self::assertCount(2, $astClassReferences);
+        self::assertCount(3, $astClassReferences);
         self::assertCount(9, $annotationDependency);
         self::assertCount(0, $astClassReferences[1]->dependencies);
 

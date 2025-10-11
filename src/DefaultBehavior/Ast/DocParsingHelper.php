@@ -25,13 +25,11 @@ class DocParsingHelper
         }
 
         $fileTypeMapper = $phpStanContainer->createFileTypeMapper();
-        $classReflection = $scope->getClassReflection();
-        assert(null !== $classReflection);
 
         /** @throws void */
         return $fileTypeMapper->getResolvedPhpDoc(
             $scope->getFile(),
-            $classReflection->getName(),
+            $scope->getClassReflection()?->getName(),
             $scope->getTraitReflection()?->getName(),
             $scope->getFunction()?->getName(),
             $docComment->getText(),
