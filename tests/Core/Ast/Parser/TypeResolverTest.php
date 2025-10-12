@@ -13,7 +13,7 @@ use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\PhpDocParser\ParserConfig;
 use PHPUnit\Framework\TestCase;
 
-final class NikicTypeResolverTest extends TestCase
+final class TypeResolverTest extends TestCase
 {
     private Lexer $lexer;
     private TypeParser $typeParser;
