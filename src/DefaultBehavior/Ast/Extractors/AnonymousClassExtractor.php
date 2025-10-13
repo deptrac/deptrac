@@ -7,18 +7,24 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Extractors;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ReferenceBuilderInterface;
-use Deptrac\Deptrac\Contract\Ast\ReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Class_;
+use PHPStan\Analyser\MutatingScope;
 
 /**
- * @implements ReferenceExtractorInterface<Class_>
+ * @implements NikicReferenceExtractorInterface<Class_>
+ * @implements PHPStanReferenceExtractorInterface<Class_>
  */
-final class AnonymousClassExtractor implements ReferenceExtractorInterface
+final class AnonymousClassExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
-    public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
+    /**
+     * @param Class_ $node
+     */
+    private function processNodeShared(Node $node, ReferenceBuilderInterface $referenceBuilder): void
     {
         if (null !== $node->name) {
             return;
@@ -37,6 +43,16 @@ final class AnonymousClassExtractor implements ReferenceExtractorInterface
                 $referenceBuilder->dependency(ClassLikeToken::fromFQCN($trait->toCodeString()), $trait->getLine(), DependencyType::ANONYMOUS_CLASS_TRAIT);
             }
         }
+    }
+
+    public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
+    {
+        $this->processNodeShared($node, $referenceBuilder);
+    }
+
+    public function processNodeWithPhpStanScope(Node $node, ReferenceBuilderInterface $referenceBuilder, MutatingScope $scope): void
+    {
+        $this->processNodeShared($node, $referenceBuilder);
     }
 
     public function getNodeType(): string

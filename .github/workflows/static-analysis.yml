@@ -31,6 +31,9 @@ jobs:
           coverage: none
           tools: composer
 
+      - name: "Install dependencies"
+        uses: ramsey/composer-install@v2
+
       - name: "Check cs"
         run: make php-cs-check
 
@@ -57,7 +60,8 @@ jobs:
           coverage: none
           tools: composer
 
-      - uses: "ramsey/composer-install@v2"
+      - name: "Install dependencies"
+        uses: ramsey/composer-install@v2
 
       - name: PHPStan
         run: make phpstan
@@ -85,19 +89,8 @@ jobs:
           coverage: none
           tools: composer
 
-      - name: Get composer cache directory
-        id: composercache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.composercache.outputs.dir }}
-          key: composer-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('composer.*') }}
-          restore-keys: |
-            composer-${{ runner.os }}-${{ matrix.php-version }}-
-            composer-${{ runner.os }}-
-            composer-
+      - name: "Install dependencies"
+        uses: ramsey/composer-install@v2
 
       - name: Psalm
         run: make psalm
@@ -126,7 +119,8 @@ jobs:
           coverage: none
           tools: composer
 
-      - uses: "ramsey/composer-install@v2"
+      - name: "Install dependencies"
+        uses: ramsey/composer-install@v2
 
       - name: composer-dependency-analyser
         run: make composer-dependency-analyser

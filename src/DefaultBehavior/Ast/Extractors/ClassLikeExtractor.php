@@ -7,30 +7,33 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Extractors;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ReferenceBuilderInterface;
-use Deptrac\Deptrac\Contract\Ast\ReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
-use PhpParser\Comment\Doc;
+use Deptrac\Deptrac\DefaultBehavior\Ast\DocParsingHelper;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassLike;
+use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PropertyTagValueNode;
-use PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
-use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\PhpDocParser\ParserConfig;
 
 /**
- * @implements ReferenceExtractorInterface<ClassLike>
+ * @implements NikicReferenceExtractorInterface<ClassLike>
+ * @implements PHPStanReferenceExtractorInterface<ClassLike>
  */
-final class ClassLikeExtractor implements ReferenceExtractorInterface
+final class ClassLikeExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
     private readonly Lexer $lexer;
     private readonly PhpDocParser $docParser;
 
     public function __construct(
+        private readonly PhpStanContainerDecorator $phpStanContainer,
         private readonly TypeResolverInterface $typeResolver,
     ) {
         $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
@@ -49,20 +52,11 @@ final class ClassLikeExtractor implements ReferenceExtractorInterface
             }
         }
 
-        $docComment = $node->getDocComment();
-        if (!$docComment instanceof Doc) {
+        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplates());
+        if (null === $resolved) {
             return;
         }
-
-        $tokens = new TokenIterator($this->lexer->tokenize($docComment->getText()));
-        $docNode = $this->docParser->parse($tokens);
-        $templateTypes = array_merge(
-            array_map(
-                static fn (TemplateTagValueNode $node): string => $node->name,
-                $docNode->getTemplateTagValues()
-            ),
-            $referenceBuilder->getTokenTemplates()
-        );
+        [$docNode, $templateTypes] = $resolved;
 
         foreach ($docNode->getMethodTagValues() as $methodTagValue) {
             foreach ($methodTagValue->parameters as $tag) {
@@ -98,5 +92,45 @@ final class ClassLikeExtractor implements ReferenceExtractorInterface
     public function getNodeType(): string
     {
         return ClassLike::class;
+    }
+
+    public function processNodeWithPhpStanScope(
+        Node $node,
+        ReferenceBuilderInterface $referenceBuilder,
+        MutatingScope $scope,
+    ): void {
+        foreach ($node->attrGroups as $attrGroup) {
+            foreach ($attrGroup->attrs as $attribute) {
+                foreach ($this->typeResolver->resolveType($attribute->name, $scope) as $classLikeName) {
+                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $attribute->getLine(), DependencyType::ATTRIBUTE);
+                }
+            }
+        }
+
+        $resolvedPhpDoc = DocParsingHelper::resolvePHPDocWithPHPStanScope($node, $this->phpStanContainer, $scope);
+        if (null === $resolvedPhpDoc) {
+            return;
+        }
+
+        foreach ($resolvedPhpDoc->getMethodTags() as $methodTag) {
+            foreach ($methodTag->getParameters() as $methodTagParameter) {
+                foreach ($methodTagParameter->getType()->getReferencedClasses() as $referencedClass) {
+                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $node->getStartLine(), DependencyType::PARAMETER);
+                }
+            }
+            foreach ($methodTag->getReturnType()->getReferencedClasses() as $referencedClass) {
+                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $node->getStartLine(), DependencyType::RETURN_TYPE);
+            }
+        }
+
+        foreach ($resolvedPhpDoc->getPropertyTags() as $propertyTag) {
+            $referencedClasses = array_merge(
+                $propertyTag->getReadableType()?->getReferencedClasses() ?? [],
+                $propertyTag->getWritableType()?->getReferencedClasses() ?? [],
+            );
+            foreach (array_unique($referencedClasses) as $referencedClass) {
+                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $node->getStartLine(), DependencyType::VARIABLE);
+            }
+        }
     }
 }

@@ -29,7 +29,8 @@ jobs:
           coverage: none
           tools: composer
 
-      -   uses: "ramsey/composer-install@v2"
+      - name: "Install dependencies"
+        uses: ramsey/composer-install@v2
 
       - name: "Run tests"
         run: make tests
@@ -39,7 +40,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-24.04]
-        php-version: [8.1, 8.2, 8.3]
+        php-version: [8.2, 8.3, 8.4]
 
     steps:
       - name: "Checkout"
@@ -53,19 +54,8 @@ jobs:
           coverage: xdebug
           tools: composer
 
-      - name: Get composer cache directory
-        id: composercache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.composercache.outputs.dir }}
-          key: composer-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('composer.*') }}
-          restore-keys: |
-            composer-${{ runner.os }}-${{ matrix.php-version }}-
-            composer-${{ runner.os }}-
-            composer-
+      - name: "Install dependencies"
+        uses: ramsey/composer-install@v2
 
       - name: "Run infection"
         run: make infection
@@ -91,19 +81,8 @@ jobs:
           coverage: none
           tools: composer
 
-      - name: Get composer cache directory
-        id: composercache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.composercache.outputs.dir }}
-          key: composer-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('composer.*') }}
-          restore-keys: |
-            composer-${{ runner.os }}-${{ matrix.php-version }}-
-            composer-${{ runner.os }}-
-            composer-
+      - name: "Install dependencies"
+        uses: ramsey/composer-install@v2
 
       - name: "Run deptrac"
         run: make deptrac

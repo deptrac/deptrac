@@ -14,6 +14,7 @@ use phpDocumentor\Reflection\Types\Compound;
 use phpDocumentor\Reflection\Types\Context;
 use phpDocumentor\Reflection\Types\Object_;
 use PhpParser\Node\ComplexType;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\IntersectionType;
 use PhpParser\Node\Name;
@@ -21,6 +22,7 @@ use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\NullableType;
 use PhpParser\Node\UnionType;
 use PhpParser\NodeAbstract;
+use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDocParser\Ast\ConstExpr\ConstFetchNode;
 use PHPStan\PhpDocParser\Ast\Type\ArrayShapeItemNode;
 use PHPStan\PhpDocParser\Ast\Type\ArrayShapeNode;
@@ -36,13 +38,28 @@ use PHPStan\PhpDocParser\Ast\Type\TypeNode;
 use PHPStan\PhpDocParser\Ast\Type\UnionTypeNode;
 use Throwable;
 
-class NikicTypeResolver implements TypeResolverInterface
+class TypeResolver implements TypeResolverInterface
 {
     private readonly phpDocumentorTypeResolver $typeResolver;
 
     public function __construct()
     {
         $this->typeResolver = new phpDocumentorTypeResolver(new FqsenResolver());
+    }
+
+    public static function resolveType(Expr|ComplexType|Name|Identifier|null $type, MutatingScope $scope): array
+    {
+        if (null === $type || $type instanceof Expr) {
+            return [];
+        }
+
+        return match (true) {
+            $type instanceof Name => [$scope->resolveName($type)],
+            $type instanceof Identifier => [],
+            $type instanceof NullableType => self::resolveType($type->type, $scope),
+            $type instanceof IntersectionType, $type instanceof UnionType => array_merge(...array_map(static fn ($type): array => self::resolveType($type, $scope), $type->types)),
+            default => [],
+        };
     }
 
     public function resolvePHPParserTypes(TypeScope $typeScope, NodeAbstract ...$nodes): array

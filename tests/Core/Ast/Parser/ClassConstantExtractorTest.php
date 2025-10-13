@@ -8,7 +8,9 @@ use Closure;
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassConstantExtractor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -46,6 +48,7 @@ final class ClassConstantExtractorTest extends TestCase
     {
         return [
             'Nikic Parser' => [self::createNikicParser(...)],
+            'PHPStan Parser' => [self::createPhpStanParser(...)],
         ];
     }
 
@@ -59,5 +62,17 @@ final class ClassConstantExtractorTest extends TestCase
         return new NikicPhpParser(
             (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
         );
+    }
+
+    public static function createPhpStanParser(string $filePath): PhpStanParser
+    {
+        $phpStanContainer = new PhpStanContainerDecorator(__DIR__, __DIR__, [$filePath]);
+
+        $cache = new AstFileReferenceInMemoryCache();
+        $extractors = [
+            new ClassConstantExtractor(),
+        ];
+
+        return new PhpStanParser($phpStanContainer, $cache, $extractors);
     }
 }

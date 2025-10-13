@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04]
-        php-version: [8.1, 8.2, 8.3]
+        php-version: [8.1, 8.2, 8.3, 8.4]
 
     steps:
       - name: "Checkout"
@@ -30,7 +30,8 @@ jobs:
           coverage: none
           tools: composer
 
-      -   uses: "ramsey/composer-install@v2"
+      - name: "Install dependencies"
+        uses: ramsey/composer-install@v2
 
       - name: "Run deptrac without cache"
         run: php deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --no-cache

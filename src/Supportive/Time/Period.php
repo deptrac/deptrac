@@ -23,6 +23,7 @@ final class Period
     {
         return new self(
             $startedPeriod->startedAt,
+            // @phpstan-ignore impure.functionCall (false positive)
             hrtime(true),
         );
     }

@@ -4,6 +4,9 @@
         "phpstan/phpstan-symfony": "^2.0"
     },
     "config": {
+        "platform": {
+            "php": "8.1"
+        },
         "bin-dir": "bin"
     }
 }

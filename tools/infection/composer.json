@@ -4,6 +4,9 @@
         "theofidry/composer-inheritance-plugin": "^1.2"
     },
     "config": {
+        "platform": {
+            "php": "8.2.4"
+        },
         "bin-dir": "bin",
         "allow-plugins": {
             "infection/extension-installer": true,

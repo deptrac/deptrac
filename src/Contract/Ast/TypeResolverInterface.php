@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Deptrac\Deptrac\Contract\Ast;
 
 use PhpParser\Node\ComplexType;
+use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\NodeAbstract;
+use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDocParser\Ast\Type\TypeNode;
 
 /**
@@ -15,7 +17,7 @@ use PHPStan\PhpDocParser\Ast\Type\TypeNode;
  * into FQCN to be used inside the reference extractor implementation
  * for defining references between tokens.
  *
- * @see ReferenceExtractorInterface
+ * @see NikicReferenceExtractorInterface
  */
 interface TypeResolverInterface
 {
@@ -41,4 +43,11 @@ interface TypeResolverInterface
      * @return string[]
      */
     public function resolvePropertyType(Identifier|Name|ComplexType $type): array;
+
+    /**
+     * Resolves a type given a PHPStan scope.
+     *
+     * @return list<string>
+     */
+    public static function resolveType(Expr|ComplexType|Name|Identifier|null $type, MutatingScope $scope): array;
 }

@@ -7,18 +7,42 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Extractors;
 use Deptrac\Deptrac\Contract\Ast\AstMap\AstInheritType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ReferenceBuilderInterface;
-use Deptrac\Deptrac\Contract\Ast\ReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
+use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\Class_;
+use PHPStan\Analyser\MutatingScope;
 
 /**
- * @implements ReferenceExtractorInterface<Class_>
+ * @implements NikicReferenceExtractorInterface<Class_>
+ * @implements PHPStanReferenceExtractorInterface<Class_>
  */
-final class ClassExtractor implements ReferenceExtractorInterface
+final class ClassExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
+    {
+        $this->processNodeShared($node, $referenceBuilder);
+    }
+
+    public function getNodeType(): string
+    {
+        return Class_::class;
+    }
+
+    public function processNodeWithPhpStanScope(
+        Node $node,
+        ReferenceBuilderInterface $referenceBuilder,
+        MutatingScope $scope,
+    ): void {
+        $this->processNodeShared($node, $referenceBuilder);
+    }
+
+    /**
+     * @param Class_ $node
+     */
+    private function processNodeShared(Node $node, ReferenceBuilderInterface $referenceBuilder): void
     {
         if (null !== $node->name) {
             if ($node->extends instanceof Name) {
@@ -29,10 +53,5 @@ final class ClassExtractor implements ReferenceExtractorInterface
                 $referenceBuilder->astInherits(ClassLikeToken::fromFQCN($implement->toCodeString()), $implement->getLine(), AstInheritType::IMPLEMENTS);
             }
         }
-    }
-
-    public function getNodeType(): string
-    {
-        return Class_::class;
     }
 }

@@ -3,6 +3,9 @@
         "friendsofphp/php-cs-fixer": "^3.66"
     },
     "config": {
+        "platform": {
+            "php": "8.1"
+        },
         "bin-dir": "bin"
     }
 }

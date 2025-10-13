@@ -71,3 +71,20 @@ final class AnnotationDependencyChild
 
     }
 }
+
+trait TestTrait
+{
+
+    /**
+     * @var \DateTimeImmutable[] $array
+     */
+    private array $times = [];
+
+    private function getTime(): int
+    {
+        /** @var \DateTimeImmutable[] $array */
+        $array = [new \DateTimeImmutable()];
+
+        return 123;
+    }
+}
