@@ -26,6 +26,11 @@ services:
       args:
         PHP_VERSION: 8.2
 
+  php84:
+    extends: php81
+    build:
+      args:
+        PHP_VERSION: 8.4
 
 volumes:
   user-data:
