@@ -37,7 +37,7 @@ parameters:
 			path: src/Core/Analyser/UnassignedTokenAnalyser.php
 
 		-
-			message: '#^Property Deptrac\\Deptrac\\DefaultBehavior\\Ast\\Parser\\Helpers\\ReferenceBuilder\:\:\$tokenTemplates \(list\<string\>\) does not accept array\<int\<0, max\>, string\>\.$#'
+			message: '#^Property Deptrac\\Deptrac\\DefaultBehavior\\Ast\\Parser\\Helpers\\ReferenceBuilder\:\:\$tokenTemplateLikes \(list\<string\>\) does not accept array\<int\<0, max\>, string\>\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: src/DefaultBehavior/Ast/Parser/Helpers/ReferenceBuilder.php
