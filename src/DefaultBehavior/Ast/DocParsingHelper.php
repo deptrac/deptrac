@@ -37,12 +37,12 @@ class DocParsingHelper
     }
 
     /**
-     * @param list<string> $tokenTemplates
+     * @param list<string> $tokenTemplateLikes
      *
      * @return ?array{PhpDocNode, list<string>}
      */
-    public static function resolvePHPDocWithNativeScope(Node $node, Lexer $lexer, PhpDocParser $docParser, array $tokenTemplates): ?array
-    {
+    public static function resolvePHPDocWithNativeScope(Node $node, Lexer $lexer, PhpDocParser $docParser, array $tokenTemplateLikes,
+    ): ?array {
         $docComment = $node->getDocComment();
         if (!$docComment instanceof Doc) {
             return null;
@@ -53,11 +53,21 @@ class DocParsingHelper
         $templateTypes = array_values(array_merge(
             array_map(
                 static fn (TemplateTagValueNode $node): string => $node->name,
-                $docNode->getTemplateTagValues()
+                self::getTagsIntroducingIgnoredNames($docNode)
             ),
-            $tokenTemplates
+            $tokenTemplateLikes
         ));
 
         return [$docNode, $templateTypes];
+    }
+
+    /**
+     * These tags produce "names" or tokens that should be ignored by Deptrac.
+     */
+    private static function getTagsIntroducingIgnoredNames(PhpDocNode $docNode): array
+    {
+        return $docNode->getTemplateTagValues()
+               + $docNode->getTemplateTagValues('@template-covariant')
+               + $docNode->getTypeAliasTagValues() + $docNode->getTypeAliasImportTagValues();
     }
 }

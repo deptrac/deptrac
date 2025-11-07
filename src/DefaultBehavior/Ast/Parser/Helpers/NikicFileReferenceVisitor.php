@@ -17,6 +17,7 @@ use PhpParser\Node\Stmt\Trait_;
 use PhpParser\Node\Stmt\Use_;
 use PhpParser\NodeVisitorAbstract;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode;
+use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasTagValueNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
@@ -54,7 +55,7 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
     /**
      * @return list<string>
      */
-    private function templatesFromDocs(Node $node): array
+    private function templateLikesFromDocs(Node $node): array
     {
         $docComment = $node->getDocComment();
         if (null === $docComment) {
@@ -63,14 +64,22 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
         $docText = $docComment->getText();
 
         // prevent expensive parsing, when not templates involved.
-        if (!str_contains($docText, '@template')) {
+        if (!str_contains($docText, '@template')
+            && !str_contains($docText, '@template-covariant')
+            && !str_contains($docText, '@phpstan-type')
+        ) {
             return [];
         }
 
         $tokens = new TokenIterator($this->lexer->tokenize($docText));
         $docNode = $this->docParser->parse($tokens);
 
-        return array_values(array_map(static fn (TemplateTagValueNode $tag): string => $tag->name, $docNode->getTemplateTagValues()));
+        $templateNames =
+            array_map(static fn (TemplateTagValueNode $tag): string => $tag->name,
+                $docNode->getTemplateTagValues() + $docNode->getTemplateTagValues('@template-covariant'));
+        $importNames = array_map(static fn (TypeAliasTagValueNode $tag): string => $tag->alias, $docNode->getTypeAliasTagValues());
+
+        return array_values($templateNames + $importNames);
     }
 
     public function enterNode(Node $node)
@@ -96,8 +105,8 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
         }
 
         if ($node instanceof Node\FunctionLike) {
-            foreach ($this->templatesFromDocs($node) as $template) {
-                $this->currentReference->removeTokenTemplate($template);
+            foreach ($this->templateLikesFromDocs($node) as $template) {
+                $this->currentReference->removeTokenTemplateLike($template);
             }
         }
 
@@ -115,7 +124,7 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
         $name = $this->getReferenceName($node);
         if (null !== $name) {
             $tags = $this->getTags($node);
-            $templateTypes = $this->templatesFromDocs($node);
+            $templateTypes = $this->templateLikesFromDocs($node);
 
             $this->currentReference = match (true) {
                 $node instanceof Node\Stmt\Function_ => $this->fileReferenceBuilder->newFunction($name, $templateTypes, $tags),
@@ -142,8 +151,8 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
 
     private function enterFunctionLike(Node\FunctionLike $node): void
     {
-        foreach ($this->templatesFromDocs($node) as $template) {
-            $this->currentReference->addTokenTemplate($template);
+        foreach ($this->templateLikesFromDocs($node) as $template) {
+            $this->currentReference->addTokenTemplateLike($template);
         }
     }
 
