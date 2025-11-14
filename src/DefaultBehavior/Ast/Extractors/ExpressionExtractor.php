@@ -16,10 +16,7 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator
 use PhpParser\Node;
 use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDocParser\Lexer\Lexer;
-use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
-use PHPStan\PhpDocParser\Parser\TypeParser;
-use PHPStan\PhpDocParser\ParserConfig;
 
 /**
  * @see https://github.com/nikic/PHP-Parser/commit/4e27a17cd855b36abe0199efb81be143b144f40d#diff-4034fc485172f50147405c293a9d86685b0f333e69b666de5492da37406186afL44 for the change in nikic/php-parser
@@ -37,10 +34,7 @@ final class ExpressionExtractor implements NikicReferenceExtractorInterface, PHP
         private readonly PhpStanContainerDecorator $phpStanContainer,
         private readonly TypeResolverInterface $typeResolver,
     ) {
-        $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
-        $this->lexer = new Lexer($config);
-        $constExprParser = new ConstExprParser($config);
-        $this->docParser = new PhpDocParser($config, new TypeParser($config, $constExprParser), $constExprParser);
+        [$this->lexer, $this->docParser] = DocParsingHelper::create();
     }
 
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void

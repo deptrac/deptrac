@@ -12,11 +12,47 @@ use PHPStan\PhpDoc\ResolvedPhpDocBlock;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
+use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
+use PHPStan\PhpDocParser\Parser\TypeParser;
+use PHPStan\PhpDocParser\ParserConfig;
 
 class DocParsingHelper
 {
+    /**
+     * @return array{Lexer, PhpDocParser}
+     */
+    public static function create(): array
+    {
+        if (class_exists(ParserConfig::class)) {
+            $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
+            $lexer = new Lexer($config);
+            $constExprParser = new ConstExprParser($config);
+            $docParser = new PhpDocParser($config, new TypeParser($config, $constExprParser), $constExprParser);
+        } else {
+            // For phpstan/phpdoc-parser v1
+
+            /**
+             * @psalm-suppress TooFewArguments
+             * @psalm-suppress InvalidArgument
+             *
+             * @phpstan-ignore-next-line
+             */
+            $lexer = new Lexer();
+
+            /**
+             * @psalm-suppress TooFewArguments
+             * @psalm-suppress InvalidArgument
+             *
+             * @phpstan-ignore-next-line
+             */
+            $docParser = new PhpDocParser(new TypeParser(), new ConstExprParser());
+        }
+
+        return [$lexer, $docParser];
+    }
+
     public static function resolvePHPDocWithPHPStanScope(Node $node, PhpStanContainerDecorator $phpStanContainer, MutatingScope $scope): ?ResolvedPhpDocBlock
     {
         $docComment = $node->getDocComment();

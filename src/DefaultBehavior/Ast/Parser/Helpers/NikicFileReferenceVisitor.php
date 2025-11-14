@@ -6,6 +6,7 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers;
 
 use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
+use Deptrac\Deptrac\DefaultBehavior\Ast\DocParsingHelper;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt\Class_;
@@ -18,11 +19,8 @@ use PhpParser\Node\Stmt\Use_;
 use PhpParser\NodeVisitorAbstract;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
-use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
-use PHPStan\PhpDocParser\Parser\TypeParser;
-use PHPStan\PhpDocParser\ParserConfig;
 
 class NikicFileReferenceVisitor extends NodeVisitorAbstract
 {
@@ -43,10 +41,7 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
         NikicReferenceExtractorInterface ...$dependencyResolvers,
     ) {
         $this->currentTypeScope = new TypeScope('');
-        $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
-        $this->lexer = new Lexer($config);
-        $constExprParser = new ConstExprParser($config);
-        $this->docParser = new PhpDocParser($config, new TypeParser($config, $constExprParser), $constExprParser);
+        [$this->lexer, $this->docParser] = DocParsingHelper::create();
         $this->dependencyResolvers = $dependencyResolvers;
         $this->currentReference = $fileReferenceBuilder;
     }
