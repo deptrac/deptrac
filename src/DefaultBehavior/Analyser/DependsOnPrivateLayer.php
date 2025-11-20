@@ -12,7 +12,7 @@ final class DependsOnPrivateLayer implements ViolationCreatingInterface
 {
     public function __construct(private readonly EventHelper $eventHelper) {}
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             ProcessEvent::class => ['invoke', -3],

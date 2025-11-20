@@ -8,7 +8,7 @@ use Deptrac\Deptrac\Contract\Analyser\ViolationCreatingInterface;
 
 class DummyViolationCreatingRule implements ViolationCreatingInterface
 {
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [];
     }
