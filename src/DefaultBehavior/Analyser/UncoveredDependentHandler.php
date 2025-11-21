@@ -41,7 +41,7 @@ final class UncoveredDependentHandler implements EventSubscriberInterface
         return isset(PhpStormStubsMap::CLASSES[$tokenString]) || 'ReturnTypeWillChange' === $tokenString;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             ProcessEvent::class => ['invoke', 2],

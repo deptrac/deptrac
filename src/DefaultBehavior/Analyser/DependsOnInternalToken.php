@@ -23,7 +23,7 @@ final class DependsOnInternalToken implements ViolationCreatingInterface
         $this->internalTag = $config['internal_tag'];
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             ProcessEvent::class => ['invoke', -2],

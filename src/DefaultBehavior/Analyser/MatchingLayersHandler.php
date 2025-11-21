@@ -22,7 +22,7 @@ final class MatchingLayersHandler implements EventSubscriberInterface
         $event->stopPropagation();
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             ProcessEvent::class => ['invoke', 1],
