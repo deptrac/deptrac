@@ -16,7 +16,7 @@ interface ReferenceBuilderInterface
     /**
      * @return list<string>
      */
-    public function getTokenTemplates(): array;
+    public function getTokenTemplateLikes(): array;
 
     public function dependency(TokenInterface $token, int $occursAtLine, DependencyType $type): static;
 

@@ -11,6 +11,8 @@ use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDoc\ResolvedPhpDocBlock;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\TemplateTagValueNode;
+use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasImportTagValueNode;
+use PHPStan\PhpDocParser\Ast\PhpDoc\TypeAliasTagValueNode;
 use PHPStan\PhpDocParser\Lexer\Lexer;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
@@ -37,12 +39,12 @@ class DocParsingHelper
     }
 
     /**
-     * @param list<string> $tokenTemplates
+     * @param list<string> $tokenTemplateLikes
      *
      * @return ?array{PhpDocNode, list<string>}
      */
-    public static function resolvePHPDocWithNativeScope(Node $node, Lexer $lexer, PhpDocParser $docParser, array $tokenTemplates): ?array
-    {
+    public static function resolvePHPDocWithNativeScope(Node $node, Lexer $lexer, PhpDocParser $docParser, array $tokenTemplateLikes,
+    ): ?array {
         $docComment = $node->getDocComment();
         if (!$docComment instanceof Doc) {
             return null;
@@ -50,14 +52,24 @@ class DocParsingHelper
 
         $tokens = new TokenIterator($lexer->tokenize($docComment->getText()));
         $docNode = $docParser->parse($tokens);
-        $templateTypes = array_values(array_merge(
-            array_map(
-                static fn (TemplateTagValueNode $node): string => $node->name,
-                $docNode->getTemplateTagValues()
-            ),
-            $tokenTemplates
-        ));
+        $templateTypes = array_merge(self::getTagsIntroducingIgnoredNames($docNode), $tokenTemplateLikes);
 
         return [$docNode, $templateTypes];
+    }
+
+    /**
+     * These tags produce "names" or tokens that should be ignored by Deptrac.
+     *
+     * @return list<string>
+     */
+    private static function getTagsIntroducingIgnoredNames(PhpDocNode $docNode): array
+    {
+        $templateNames =
+            array_map(static fn (TemplateTagValueNode $tag): string => $tag->name,
+                $docNode->getTemplateTagValues() + $docNode->getTemplateTagValues('@template-covariant'));
+        $aliasNames = array_map(static fn (TypeAliasTagValueNode $tag): string => $tag->alias, $docNode->getTypeAliasTagValues());
+        $importNames = array_map(static fn (TypeAliasImportTagValueNode $tag): string => $tag->importedAs ?? $tag->importedAlias, $docNode->getTypeAliasImportTagValues());
+
+        return array_values($templateNames + $aliasNames + $importNames);
     }
 }

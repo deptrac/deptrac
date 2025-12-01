@@ -49,7 +49,7 @@ final class ExpressionExtractor implements NikicReferenceExtractorInterface, PHP
             return;
         }
 
-        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplates());
+        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplateLikes());
         if (null === $resolved) {
             return;
         }

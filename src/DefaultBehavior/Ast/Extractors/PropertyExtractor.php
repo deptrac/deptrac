@@ -56,7 +56,7 @@ final class PropertyExtractor implements NikicReferenceExtractorInterface, PHPSt
             }
         }
 
-        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplates());
+        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplateLikes());
         if (null === $resolved) {
             return;
         }

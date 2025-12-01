@@ -88,3 +88,29 @@ trait TestTrait
         return 123;
     }
 }
+
+/**
+ * @template-covariant TEntityId
+ */
+interface TemplateInterface
+{
+    /**
+     * @return TEntityId
+     */
+    public function getId(): mixed;
+
+}
+
+/**
+ * @phpstan-type arrayAlias array<string, mixed>
+ */
+class SomeClass
+{
+    /**
+     * @return arrayAlias
+     */
+    private function someMethod(): array
+    {
+        return [];
+    }
+}

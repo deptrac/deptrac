@@ -22,13 +22,13 @@ abstract class ReferenceBuilder implements ReferenceBuilderInterface
     protected array $dependencies = [];
 
     /**
-     * @param list<string> $tokenTemplates
+     * @param list<string> $tokenTemplateLikes
      */
-    protected function __construct(protected array $tokenTemplates, protected string $filepath) {}
+    protected function __construct(protected array $tokenTemplateLikes, protected string $filepath) {}
 
-    final public function getTokenTemplates(): array
+    final public function getTokenTemplateLikes(): array
     {
-        return $this->tokenTemplates;
+        return $this->tokenTemplateLikes;
     }
 
     protected function createContext(int $occursAtLine, DependencyType $type): DependencyContext
@@ -50,16 +50,16 @@ abstract class ReferenceBuilder implements ReferenceBuilderInterface
         return $this;
     }
 
-    public function addTokenTemplate(string $tokenTemplate): void
+    public function addTokenTemplateLike(string $tokenTemplateLike): void
     {
-        $this->tokenTemplates[] = $tokenTemplate;
+        $this->tokenTemplateLikes[] = $tokenTemplateLike;
     }
 
-    public function removeTokenTemplate(string $tokenTemplate): void
+    public function removeTokenTemplateLike(string $tokenTemplateLike): void
     {
-        $key = array_search($tokenTemplate, $this->tokenTemplates, true);
+        $key = array_search($tokenTemplateLike, $this->tokenTemplateLikes, true);
         if (false !== $key) {
-            unset($this->tokenTemplates[$key]);
+            unset($this->tokenTemplateLikes[$key]);
         }
     }
 }

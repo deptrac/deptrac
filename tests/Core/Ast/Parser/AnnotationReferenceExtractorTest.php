@@ -31,9 +31,11 @@ final class AnnotationReferenceExtractorTest extends TestCase
         $astClassReferences = $astFileReference->classLikeReferences;
         $annotationDependency = $astClassReferences[0]->dependencies;
 
-        self::assertCount(3, $astClassReferences);
+        self::assertCount(5, $astClassReferences);
         self::assertCount(9, $annotationDependency);
         self::assertCount(0, $astClassReferences[1]->dependencies);
+        self::assertCount(0, $astClassReferences[3]->dependencies);
+        self::assertCount(0, $astClassReferences[4]->dependencies);
 
         self::assertSame(
             'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\AnnotationDependencyChild',
