@@ -6,7 +6,6 @@ services:
       args:
         - "UID=${UID:-1000}"
         - "GID=${GID:-1000}"
-    tty: true
     environment:
       PHP_IDE_CONFIG: serverName=deptrac
       COMPOSER_CACHE_DIR: /home/deptrac/.composer
@@ -26,6 +25,11 @@ services:
       args:
         PHP_VERSION: 8.2
 
+  php84:
+    extends: php81
+    build:
+      args:
+        PHP_VERSION: 8.4
 
 volumes:
   user-data:
