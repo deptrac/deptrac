@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Deptrac\Deptrac\Utils\File;
+namespace Tests\Deptrac\Deptrac\Supportive\File;
 
 use Deptrac\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
 use PHPUnit\Framework\TestCase;
