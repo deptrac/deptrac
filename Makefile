@@ -6,7 +6,7 @@ help: ## Displays list of available targets with their descriptions
 
 PHP_VERSION = 81
 CONTAINER = docker compose
-CLI = $(CONTAINER) exec php$(PHP_VERSION)
+CLI = $(CONTAINER) run --rm php$(PHP_VERSION)
 
 COMPOSER = composer
 COMPOSER_DEPENDENCY_ANALYSER = ./tools/dependency-analyser/bin/composer-dependency-analyser
@@ -16,22 +16,10 @@ PSALM = ./tools/psalm/bin/psalm
 PHPUNIT = ./tools/phpunit/bin/phpunit -c .
 INFECTION = ./tools/infection/bin/roave-infection-static-analysis-plugin
 
-# container setup
-up: ## Start all containers with docker compose up
-	$(CONTAINER) up -d
-
-down: ## Shutdown all containers with docker compose down
-	$(CONTAINER) down --remove-orphans
-
-restart: up down ## Restart all containers
-
 update:
-	$(CONTAINER) pull
-	$(CONTAINER) build --build-arg UID=$(UID)
-	$(CONTAINER) down
-	$(CONTAINER) up -d
+	$(CONTAINER) build --pull --build-arg UID=$(UID)
 
-cli: up ## connect into container
+cli: ## connect into container
 	$(CLI) bash
 
 cache-clear: ## clears cache
