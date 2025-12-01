@@ -6,7 +6,6 @@ help: ## Displays list of available targets with their descriptions
 
 PHP_VERSION = 81
 CONTAINER = docker compose
-CLI = $(CONTAINER) run --rm php$(PHP_VERSION)
 
 COMPOSER = composer
 COMPOSER_DEPENDENCY_ANALYSER = ./tools/dependency-analyser/bin/composer-dependency-analyser
@@ -20,7 +19,7 @@ update:
 	$(CONTAINER) build --pull --build-arg UID=$(UID)
 
 cli: ## connect into container
-	$(CLI) bash
+	$(CONTAINER) run --rm php$(PHP_VERSION)
 
 cache-clear: ## clears cache
 	rm -rf .cache/*
