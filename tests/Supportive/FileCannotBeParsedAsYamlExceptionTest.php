@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Deptrac\Deptrac\Utils;
+namespace Tests\Deptrac\Deptrac\Supportive;
 
 use Deptrac\Deptrac\Supportive\File\Exception\FileCannotBeParsedAsYamlException;
 use PHPUnit\Framework\TestCase;
