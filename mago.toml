@@ -5,7 +5,7 @@ php-version = "8.1.0"
 [source]
 paths = ["internal/deptrac/", "src/", "tests/", "config/", "./deptrac.php"]
 includes = ["vendor"]
-excludes = ["tests/Core/Ast/Fixtures/"]
+excludes = ["tests/**/Fixtures/**"]
 
 [formatter]
 print-width = 180
@@ -25,19 +25,3 @@ preserve-breaking-attribute-list = true
 inline-empty-classlike-braces = true
 inline-empty-function-braces = true
 inline-empty-method-braces = true
-
-[linter]
-integrations = ["symfony"]
-
-[linter.rules]
-ambiguous-function-call = { enabled = false }
-literal-named-argument = { enabled = false }
-halstead = { effort-threshold = 7000 }
-
-[analyzer]
-find-unused-definitions = true
-find-unused-expressions = false
-analyze-dead-code = false
-check-throws = true
-allow-possibly-undefined-array-keys = true
-perform-heuristic-checks = false
