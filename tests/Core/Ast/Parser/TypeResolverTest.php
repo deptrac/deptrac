@@ -22,10 +22,30 @@ final class TypeResolverTest extends TestCase
     {
         parent::setUp();
 
-        $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
-        $this->lexer = new Lexer($config);
-        $constExprParser = new ConstExprParser($config);
-        $this->typeParser = new TypeParser($config, $constExprParser);
+        if (class_exists(ParserConfig::class)) {
+            $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
+            $this->lexer = new Lexer($config);
+            $constExprParser = new ConstExprParser($config);
+            $this->typeParser = new TypeParser($config, $constExprParser);
+        } else {
+            // For phpstan/phpdoc-parser v1
+
+            /**
+             * @psalm-suppress TooFewArguments
+             * @psalm-suppress InvalidArgument
+             *
+             * @phpstan-ignore-next-line
+             */
+            $this->lexer = new Lexer();
+
+            /**
+             * @psalm-suppress TooFewArguments
+             * @psalm-suppress InvalidArgument
+             *
+             * @phpstan-ignore-next-line
+             */
+            $this->typeParser = new TypeParser(new ConstExprParser());
+        }
     }
 
     /**

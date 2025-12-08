@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers;
 
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
+use Deptrac\Deptrac\DefaultBehavior\Ast\DocParsingHelper;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt\Class_;
@@ -16,11 +17,8 @@ use PHPStan\Analyser\MutatingScope;
 use PHPStan\Analyser\ScopeContext;
 use PHPStan\Analyser\ScopeFactory;
 use PHPStan\PhpDocParser\Lexer\Lexer;
-use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
-use PHPStan\PhpDocParser\Parser\TypeParser;
-use PHPStan\PhpDocParser\ParserConfig;
 use PHPStan\Reflection\ReflectionProvider;
 
 class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
@@ -49,10 +47,7 @@ class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
         $this->dependencyResolvers = $dependencyResolvers;
         $this->currentReference = $fileReferenceBuilder;
         $this->scope = $this->scopeFactory->create(ScopeContext::create($this->file));
-        $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
-        $this->lexer = new Lexer($config);
-        $constExprParser = new ConstExprParser($config);
-        $this->docParser = new PhpDocParser($config, new TypeParser($config, $constExprParser), $constExprParser);
+        [$this->lexer, $this->docParser] = DocParsingHelper::create();
     }
 
     public function enterNode(Node $node)

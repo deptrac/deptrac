@@ -17,10 +17,7 @@ use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassMethod;
 use PHPStan\Analyser\MutatingScope;
 use PHPStan\PhpDocParser\Lexer\Lexer;
-use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\PhpDocParser;
-use PHPStan\PhpDocParser\Parser\TypeParser;
-use PHPStan\PhpDocParser\ParserConfig;
 
 /**
  * @implements NikicReferenceExtractorInterface<ClassMethod>
@@ -35,10 +32,7 @@ final class ClassMethodExtractor implements NikicReferenceExtractorInterface, PH
         private readonly PhpStanContainerDecorator $phpStanContainer,
         private readonly TypeResolverInterface $typeResolver,
     ) {
-        $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
-        $this->lexer = new Lexer($config);
-        $constExprParser = new ConstExprParser($config);
-        $this->docParser = new PhpDocParser($config, new TypeParser($config, $constExprParser), $constExprParser);
+        [$this->lexer, $this->docParser] = DocParsingHelper::create();
     }
 
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
