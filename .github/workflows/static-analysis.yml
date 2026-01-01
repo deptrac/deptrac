@@ -17,7 +17,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-24.04
-            php-version: 8.1
+            php-version: 8.2
 
     steps:
       - name: "Checkout"
@@ -46,7 +46,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-24.04
-            php-version: 8.1
+            php-version: 8.2
 
     steps:
       - name: "Checkout"
@@ -75,7 +75,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-24.04
-            php-version: 8.1
+            php-version: 8.2
 
     steps:
       - name: "Checkout"
@@ -105,7 +105,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-24.04
-            php-version: 8.1
+            php-version: 8.2
 
     steps:
       - name: "Checkout"
