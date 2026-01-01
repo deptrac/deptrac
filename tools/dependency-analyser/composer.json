@@ -4,7 +4,7 @@
     },
     "config": {
         "platform": {
-            "php": "8.1"
+            "php": "8.2"
         },
         "bin-dir": "bin"
     }
