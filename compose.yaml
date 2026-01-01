@@ -1,5 +1,5 @@
 services:
-  php81:
+  php82:
     build:
       dockerfile: docker/php/Dockerfile
       context: ./
@@ -19,14 +19,8 @@ services:
     extra_hosts:
       - host.docker.internal:${HOST:-host-gateway}
 
-  php82:
-    extends: php81
-    build:
-      args:
-        PHP_VERSION: 8.2
-
   php84:
-    extends: php81
+    extends: php82
     build:
       args:
         PHP_VERSION: 8.4
