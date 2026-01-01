@@ -4,8 +4,8 @@
 use Composer\XdebugHandler\XdebugHandler;
 use Deptrac\Deptrac\Supportive\Console\Application;
 
-if (PHP_VERSION_ID < 80100) {
-    echo 'Required at least PHP version 8.1.0, your version: '.PHP_VERSION."\n";
+if (PHP_VERSION_ID < 80200) {
+    echo 'Required at least PHP version 8.2.0, your version: '.PHP_VERSION."\n";
     exit(1);
 }
 
