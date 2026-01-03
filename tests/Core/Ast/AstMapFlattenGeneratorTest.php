@@ -20,6 +20,7 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\InterfaceExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use LogicException;
 use PhpParser\ParserFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -45,9 +46,7 @@ use Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceC;
 
 final class AstMapFlattenGeneratorTest extends TestCase
 {
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testBasicInheritance(Closure $parserBuilder): void
     {
         $expectedEvents = [
@@ -105,9 +104,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testBasicInheritanceInterfaces(Closure $parserBuilder): void
     {
         $expectedEvents = [
@@ -164,9 +161,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testBasicMultipleInheritanceInterfaces(Closure $parserBuilder): void
     {
         $expectedEvents = [
@@ -224,9 +219,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testBasicMultipleInheritanceWithNoise(Closure $parserBuilder): void
     {
         $expectedEvents = [

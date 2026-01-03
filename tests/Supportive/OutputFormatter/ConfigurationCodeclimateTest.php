@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Tests\Deptrac\Deptrac\Supportive\OutputFormatter;
 
 use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers\ConfigurationCodeclimate;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers\ConfigurationCodeclimate
- */
+#[CoversClass(ConfigurationCodeclimate::class)]
 final class ConfigurationCodeclimateTest extends TestCase
 {
     public function testFromArray(): void

@@ -22,6 +22,7 @@ use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\BaselineOutputFormatter;
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
 use Deptrac\Deptrac\Supportive\OutputFormatter\YamlBaselineMapper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -116,9 +117,7 @@ class BaselineOutputFormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider basicDataProvider
-     */
+    #[DataProvider('basicDataProvider')]
     public function testBasic(array $rules, string $expectedOutput): void
     {
         $generatedBaselineFile = tempnam(sys_get_temp_dir(), 'deptrac_');

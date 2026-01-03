@@ -7,6 +7,7 @@ namespace Tests\Deptrac\Deptrac\Core\Layer\Collector;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\FileReferenceBuilder;
 use Deptrac\Deptrac\DefaultBehavior\Layer\GlobCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class GlobCollectorTest extends TestCase
@@ -29,9 +30,7 @@ final class GlobCollectorTest extends TestCase
         yield [['value' => 'foo/layer2/*'], 'foo\\layer2\\bar.php', true];
     }
 
-    /**
-     * @dataProvider dataProviderSatisfy
-     */
+    #[DataProvider('dataProviderSatisfy')]
     public function testSatisfy(array $configuration, string $filePath, bool $expected): void
     {
         $fileReferenceBuilder = FileReferenceBuilder::create($filePath);

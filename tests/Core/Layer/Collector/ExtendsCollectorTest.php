@@ -16,6 +16,7 @@ use Deptrac\Deptrac\Core\Ast\AstMap;
 use Deptrac\Deptrac\Core\Ast\AstMapExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\FileReferenceBuilder;
 use Deptrac\Deptrac\DefaultBehavior\Layer\ExtendsCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
@@ -30,9 +31,7 @@ final class ExtendsCollectorTest extends TestCase
         yield [['value' => 'App\None'], false];
     }
 
-    /**
-     * @dataProvider dataProviderSatisfy
-     */
+    #[DataProvider('dataProviderSatisfy')]
     public function testSatisfy(array $configuration, bool $expected): void
     {
         $fooFileReferenceBuilder = FileReferenceBuilder::create('foo.php');

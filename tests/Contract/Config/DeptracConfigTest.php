@@ -8,6 +8,7 @@ use Deptrac\Deptrac\Contract\Config\AnalyserConfig;
 use Deptrac\Deptrac\Contract\Config\DeptracConfig;
 use Deptrac\Deptrac\Contract\Config\EmitterType;
 use Deptrac\Deptrac\Supportive\DependencyInjection\Configuration;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 
@@ -49,9 +50,7 @@ final class DeptracConfigTest extends TestCase
         yield 'internal_tag' => [$config, $expected];
     }
 
-    /**
-     * @dataProvider provideConfig
-     */
+    #[DataProvider('provideConfig')]
     public function testConfigCompliance(DeptracConfig $config, array $expected): void
     {
         $array = $config->toArray();

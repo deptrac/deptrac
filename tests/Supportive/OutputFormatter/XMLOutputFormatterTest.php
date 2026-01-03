@@ -20,6 +20,7 @@ use Deptrac\Deptrac\DefaultBehavior\Dependency\Helpers\Dependency;
 use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\XMLOutputFormatter;
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -170,9 +171,7 @@ final class XMLOutputFormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider basicDataProvider
-     */
+    #[DataProvider('basicDataProvider')]
     public function testBasic(array $rules, $expectedOutputFile): void
     {
         $bufferedOutput = new BufferedOutput();

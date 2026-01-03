@@ -14,15 +14,15 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\RequiresPhp;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 use TypeError;
 
 final class ParserTest extends TestCase
 {
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testParseWithInvalidData(Closure $parserBuilder): void
     {
         $parser = $parserBuilder('');
@@ -30,9 +30,7 @@ final class ParserTest extends TestCase
         $parser->parseFile(new stdClass());
     }
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testParseDoesNotIgnoreUsesByDefault(Closure $parserBuilder): void
     {
         $filePath = __DIR__.'/Fixtures/CountingUseStatements.php';
@@ -40,11 +38,8 @@ final class ParserTest extends TestCase
         self::assertCount(1, $parser->parseFile($filePath)->dependencies);
     }
 
-    /**
-     * @requires PHP >= 8.0
-     *
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
+    #[RequiresPhp('>= 8.0')]
     public function testParseAttributes(Closure $parserBuilder): void
     {
         $filePath = __DIR__.'/Fixtures/Attributes.php';
@@ -56,9 +51,7 @@ final class ParserTest extends TestCase
         self::assertCount(1, $astClassReferences[2]->dependencies);
     }
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testParseTemplateTypes(Closure $parserBuilder): void
     {
         $filePath = __DIR__.'/Fixtures/TemplateTypes.php';
@@ -68,9 +61,7 @@ final class ParserTest extends TestCase
         self::assertCount(0, $astClassReferences[0]->dependencies);
     }
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testParseClassDocTags(Closure $parserBuilder): void
     {
         $filePath = __DIR__.'/Fixtures/DocTags.php';
@@ -90,9 +81,7 @@ final class ParserTest extends TestCase
         $this->assertSame([], $classesByName['UntaggedThing']->tags);
     }
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testParseFunctionDocTags(Closure $parserBuilder): void
     {
         $filePath = __DIR__.'/Fixtures/Functions.php';

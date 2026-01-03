@@ -11,6 +11,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\FunctionToken;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use Deptrac\Deptrac\DefaultBehavior\Layer\MethodCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class MethodCollectorTest extends TestCase
@@ -57,9 +58,7 @@ final class MethodCollectorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideSatisfy
-     */
+    #[DataProvider('provideSatisfy')]
     public function testSatisfy(array $configuration, array $methods, bool $expected): void
     {
         $astClassReference = new ClassLikeReference(ClassLikeToken::fromFQCN('foo'));

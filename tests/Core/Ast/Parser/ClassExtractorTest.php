@@ -15,13 +15,12 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class ClassExtractorTest extends TestCase
 {
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testPropertyDependencyResolving(Closure $parserBuilder): void
     {
         $filePath = __DIR__.'/Fixtures/ClassExtract.php';

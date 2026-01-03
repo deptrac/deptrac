@@ -10,6 +10,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\SuperGlobalToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\ClassNameRegexCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class ClassNameRegexCollectorTest extends TestCase
@@ -29,9 +30,7 @@ final class ClassNameRegexCollectorTest extends TestCase
         yield [['value' => '/^Foo\\\\Bar$/i'], 'Foo\\Baz', false];
     }
 
-    /**
-     * @dataProvider dataProviderSatisfy
-     */
+    #[DataProvider('dataProviderSatisfy')]
     public function testSatisfy(array $configuration, string $className, bool $expected): void
     {
         $actual = $this->collector->satisfy(

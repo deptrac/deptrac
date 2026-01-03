@@ -11,6 +11,7 @@ use Deptrac\Deptrac\Contract\Layer\CollectorInterface;
 use Deptrac\Deptrac\Contract\Layer\CollectorResolverInterface;
 use Deptrac\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
 use Deptrac\Deptrac\Core\Layer\LayerResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class LayerResolverTest extends TestCase
@@ -70,9 +71,7 @@ final class LayerResolverTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideInvalidLayerConfigs
-     */
+    #[DataProvider('provideInvalidLayerConfigs')]
     public function testInvalidLayerConfigs(array $layers, string $exception, string $expectedMessage): void
     {
         $this->expectException($exception);

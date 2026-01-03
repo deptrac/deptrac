@@ -10,6 +10,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\SuperGlobalToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\FunctionNameCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class FunctionNameCollectorTest extends TestCase
@@ -29,9 +30,7 @@ final class FunctionNameCollectorTest extends TestCase
         yield [['value' => 'a'], 'foo\bbr', false];
     }
 
-    /**
-     * @dataProvider dataProviderSatisfy
-     */
+    #[DataProvider('dataProviderSatisfy')]
     public function testSatisfy(array $configuration, string $functionName, bool $expected): void
     {
         $actual = $this->collector->satisfy(

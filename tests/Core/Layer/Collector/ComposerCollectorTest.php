@@ -9,6 +9,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeType;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\ComposerCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class ComposerCollectorTest extends TestCase
@@ -42,9 +43,7 @@ final class ComposerCollectorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataProviderSatisfy
-     */
+    #[DataProvider('dataProviderSatisfy')]
     public function testSatisfy(array $configuration, string $className, bool $expected): void
     {
         $stat = $this->sut->satisfy(
