@@ -22,6 +22,6 @@ return RectorConfig::configure()
         // symfony: true,
         // phpunit: true,
     )
-    ->withImportNames(importShortClasses: false)
+    // ->withImportNames(importShortClasses: false)
     ->withParallel()
 ;

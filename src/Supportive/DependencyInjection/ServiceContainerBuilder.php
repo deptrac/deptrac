@@ -91,7 +91,7 @@ final class ServiceContainerBuilder
         /** @var ?string $cacheFileFromConfig */
         $cacheFileFromConfig = $container->getExtensionConfig('deptrac')[0]['cache_file'] ?? null; // if there is any
         $cache = $cacheOverride ?? $cacheFileFromConfig; // override if there is a no-cache or path to file
-        $cache = $cache ?? '.deptrac.cache'; // override if there is no file specified and needs one
+        $cache ??= '.deptrac.cache'; // override if there is no file specified and needs one
 
         if (false !== $cache) {
             if ($clearCache) {
