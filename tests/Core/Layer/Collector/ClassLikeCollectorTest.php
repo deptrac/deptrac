@@ -9,6 +9,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeType;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\ClassLikeCollector;
+use Foo\Bar;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +24,7 @@ final class ClassLikeCollectorTest extends TestCase
 
     public static function dataProviderSatisfy(): iterable
     {
-        yield [['value' => '^Foo\\\\Bar$'], 'Foo\\Bar', true];
+        yield [['value' => '^Foo\\\\Bar$'], Bar::class, true];
         yield [['value' => '^Foo\\\\Bar$'], 'Foo\\Baz', false];
     }
 
@@ -51,7 +52,7 @@ final class ClassLikeCollectorTest extends TestCase
     {
         $stat = $this->sut->satisfy(
             ['value' => '^Foo\\\\Bar$'],
-            new ClassLikeReference(ClassLikeToken::fromFQCN('Foo\\Bar'), $classLikeType),
+            new ClassLikeReference(ClassLikeToken::fromFQCN(Bar::class), $classLikeType),
         );
 
         self::assertSame($matches, $stat);

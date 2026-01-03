@@ -19,8 +19,6 @@ final class SuperglobalCollectorTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->collector = new SuperglobalCollector();
     }
 

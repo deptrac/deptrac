@@ -16,8 +16,6 @@ final class GlobCollectorTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->collector = new GlobCollector(__DIR__);
     }
 

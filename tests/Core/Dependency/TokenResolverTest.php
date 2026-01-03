@@ -22,8 +22,6 @@ final class TokenResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->resolver = new TokenResolver();
     }
 

@@ -51,8 +51,6 @@ final class DeptracExtensionTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->container = new ContainerBuilder();
         $this->extension = new DeptracExtension();
     }

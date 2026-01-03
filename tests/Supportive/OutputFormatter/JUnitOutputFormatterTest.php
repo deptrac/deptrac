@@ -242,13 +242,13 @@ final class JUnitOutputFormatterTest extends TestCase
         self::assertTrue($loaded);
 
         self::assertTrue($reader->schemaValidate(__DIR__.'/data/junit-schema-ant.xsd'),
-            implode(array_map(static fn ($e) => $e->line.': '.$e->message, libxml_get_errors())));
+            implode('', array_map(static fn ($e) => $e->line.': '.$e->message, libxml_get_errors())));
         self::assertTrue($reader->schemaValidate(__DIR__.'/data/junit-schema-jenkins.xsd'),
-            implode(array_map(static fn ($e) => $e->message, libxml_get_errors())));
+            implode('', array_map(static fn ($e) => $e->message, libxml_get_errors())));
         self::assertTrue($reader->schemaValidate(__DIR__.'/data/junit-schema-llg.xsd'),
-            implode(array_map(static fn ($e) => $e->message, libxml_get_errors())));
+            implode('', array_map(static fn ($e) => $e->message, libxml_get_errors())));
         self::assertTrue($reader->schemaValidate(__DIR__.'/data/junit-schema-maven.xsd'),
-            implode(array_map(static fn ($e) => $e->message, libxml_get_errors())));
+            implode('', array_map(static fn ($e) => $e->message, libxml_get_errors())));
 
         self::assertXmlFileEqualsXmlFile(
             __DIR__.'/data/'.self::$actual_junit_report_file,

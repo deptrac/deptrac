@@ -13,7 +13,6 @@ class AnalyseCommandTest extends TestCase
     protected function setUp(): void
     {
         putenv('GITHUB_ACTIONS=true');
-        parent::setUp();
     }
 
     public function testDefaultFormatterForGithubActions(): void

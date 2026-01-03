@@ -62,13 +62,11 @@ trait EmitterTrait
         $emitter->applyDependencies($astMap, $result);
 
         return array_map(
-            static function (DependencyInterface $d) {
-                return sprintf('%s:%d on %s',
-                    $d->getDepender()->toString(),
-                    $d->getContext()->fileOccurrence->line,
-                    $d->getDependent()->toString()
-                );
-            },
+            static fn (DependencyInterface $d) => sprintf('%s:%d on %s',
+                $d->getDepender()->toString(),
+                $d->getContext()->fileOccurrence->line,
+                $d->getDependent()->toString()
+            ),
             $result->getDependenciesAndInheritDependencies()
         );
     }

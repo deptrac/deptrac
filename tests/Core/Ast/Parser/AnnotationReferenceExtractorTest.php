@@ -18,6 +18,9 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Console\Exception\RuntimeException;
+use Symfony\Component\Finder\SplFileInfo;
+use Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\AnnotationDependencyChild;
 
 final class AnnotationReferenceExtractorTest extends TestCase
 {
@@ -37,7 +40,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
         self::assertCount(0, $astClassReferences[4]->dependencies);
 
         self::assertSame(
-            'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\AnnotationDependencyChild',
+            AnnotationDependencyChild::class,
             $annotationDependency[0]->token->toString()
         );
         self::assertSame($filePath, $annotationDependency[0]->context->fileOccurrence->filepath);
@@ -45,7 +48,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
         self::assertSame('variable', $annotationDependency[0]->context->dependencyType->value);
 
         self::assertSame(
-            'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\AnnotationDependencyChild',
+            AnnotationDependencyChild::class,
             $annotationDependency[1]->token->toString()
         );
         self::assertSame($filePath, $annotationDependency[1]->context->fileOccurrence->filepath);
@@ -53,7 +56,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
         self::assertSame('variable', $annotationDependency[1]->context->dependencyType->value);
 
         self::assertSame(
-            'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\AnnotationDependencyChild',
+            AnnotationDependencyChild::class,
             $annotationDependency[2]->token->toString()
         );
         self::assertSame($filePath, $annotationDependency[2]->context->fileOccurrence->filepath);
@@ -61,7 +64,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
         self::assertSame('variable', $annotationDependency[2]->context->dependencyType->value);
 
         self::assertSame(
-            'Symfony\Component\Console\Exception\RuntimeException',
+            RuntimeException::class,
             $annotationDependency[3]->token->toString()
         );
         self::assertSame($filePath, $annotationDependency[3]->context->fileOccurrence->filepath);
@@ -69,7 +72,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
         self::assertSame('variable', $annotationDependency[3]->context->dependencyType->value);
 
         self::assertSame(
-            'Symfony\Component\Finder\SplFileInfo',
+            SplFileInfo::class,
             $annotationDependency[4]->token->toString()
         );
         self::assertSame($filePath, $annotationDependency[4]->context->fileOccurrence->filepath);
@@ -77,7 +80,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
         self::assertSame('parameter', $annotationDependency[4]->context->dependencyType->value);
 
         self::assertSame(
-            'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\AnnotationDependencyChild',
+            AnnotationDependencyChild::class,
             $annotationDependency[5]->token->toString()
         );
         self::assertSame($filePath, $annotationDependency[5]->context->fileOccurrence->filepath);

@@ -21,8 +21,6 @@ final class TypeResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         if (class_exists(ParserConfig::class)) {
             $config = new ParserConfig(usedAttributes: ['lines' => true, 'indexes' => true]);
             $this->lexer = new Lexer($config);

@@ -21,8 +21,6 @@ final class MethodCollectorTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->astParser = $this->createMock(NikicPhpParser::class);
 
         $this->collector = new MethodCollector($this->astParser);

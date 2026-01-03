@@ -19,8 +19,6 @@ final class FunctionNameCollectorTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->collector = new FunctionNameCollector();
     }
 

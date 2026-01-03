@@ -14,6 +14,7 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\ClassA;
 
 final class ClassConstantExtractorTest extends TestCase
 {
@@ -32,7 +33,7 @@ final class ClassConstantExtractorTest extends TestCase
 
         $dependencies = $astClassReferences[1]->dependencies;
         self::assertSame(
-            'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\ClassA',
+            ClassA::class,
             $dependencies[0]->token->toString()
         );
         self::assertSame($filePath, $dependencies[0]->context->fileOccurrence->filepath);

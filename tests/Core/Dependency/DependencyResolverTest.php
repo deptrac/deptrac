@@ -38,8 +38,6 @@ final class DependencyResolverTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->dispatcher = $this->createMock(EventDispatcherInterface::class);
 
         $this->container = new ContainerBuilder();
@@ -169,9 +167,7 @@ final class DependencyResolverTest extends TestCase
 
         $inheritDeps = array_filter(
             $dependencyResult->getDependenciesAndInheritDependencies(),
-            static function ($v) {
-                return $v instanceof InheritDependency;
-            }
+            static fn ($v) => $v instanceof InheritDependency
         );
 
         self::assertCount(2, $inheritDeps);

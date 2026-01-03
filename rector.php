@@ -13,8 +13,7 @@ return RectorConfig::configure()
         './docs',
         './tests/*/Fixtures/*',
     ])
-    // ->withPhpSets(php81: true)
-    ->withPhpLevel(1)
+    ->withPhpSets(php81: true)
     ->withPreparedSets(
         // typeDeclarations: true,
         // privatization: true,

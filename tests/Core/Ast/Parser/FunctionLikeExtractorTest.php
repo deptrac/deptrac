@@ -67,9 +67,7 @@ final class FunctionLikeExtractorTest extends TestCase
         }
 
         return array_map(
-            static function (DependencyToken $dependency) {
-                return "{$dependency->token->toString()}::{$dependency->context->fileOccurrence->line} ({$dependency->context->dependencyType->value})";
-            },
+            static fn (DependencyToken $dependency) => "{$dependency->token->toString()}::{$dependency->context->fileOccurrence->line} ({$dependency->context->dependencyType->value})",
             $classReference->dependencies
         );
     }
