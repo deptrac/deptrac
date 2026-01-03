@@ -11,6 +11,7 @@ use Deptrac\Deptrac\Contract\Layer\CollectorInterface;
 use Deptrac\Deptrac\Contract\Layer\CollectorResolverInterface;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\BoolCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class BoolCollectorTest extends TestCase
@@ -187,9 +188,7 @@ final class BoolCollectorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider provideSatisfiableConfiguration
-     */
+    #[DataProvider('provideSatisfiableConfiguration')]
     public function testSatisfy(array $config, bool $expectedOutcome): void
     {
         $reference = new ClassLikeReference(ClassLikeToken::fromFQCN('App\\Foo'));

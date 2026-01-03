@@ -8,11 +8,10 @@ use Deptrac\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
 use Deptrac\Deptrac\Supportive\File\Exception\FileCannotBeParsedAsYamlException;
 use Deptrac\Deptrac\Supportive\File\Exception\ParsedYamlIsNotAnArrayException;
 use Deptrac\Deptrac\Supportive\File\YmlFileLoader;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Deptrac\Deptrac\Supportive\File\YmlFileLoader
- */
+#[CoversClass(YmlFileLoader::class)]
 final class YmlFileLoaderTest extends TestCase
 {
     public function testLoadThrowsFileDoesNotExistsExceptionWhenFileDoesNotExist(): void

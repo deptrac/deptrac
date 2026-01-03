@@ -10,6 +10,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\SuperGlobalToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\SuperglobalCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class SuperglobalCollectorTest extends TestCase
@@ -29,9 +30,7 @@ final class SuperglobalCollectorTest extends TestCase
         yield [['value' => ['_COOKIE']], '_POST', false];
     }
 
-    /**
-     * @dataProvider provideSatisfy
-     */
+    #[DataProvider('provideSatisfy')]
     public function testSatisfy(array $configuration, string $name, bool $expected): void
     {
         $actual = $this->collector->satisfy(

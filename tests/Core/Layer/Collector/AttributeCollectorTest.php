@@ -13,6 +13,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\FileReferenceBuilder;
 use Deptrac\Deptrac\DefaultBehavior\Layer\AttributeCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class AttributeCollectorTest extends TestCase
@@ -42,9 +43,7 @@ final class AttributeCollectorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataProviderSatisfy
-     */
+    #[DataProvider('dataProviderSatisfy')]
     public function testSatisfy(array $config, bool $expected): void
     {
         $classLikeReference = FileReferenceBuilder::create('Foo.php')

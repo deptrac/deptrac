@@ -23,6 +23,7 @@ use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers\FormatterConfigurati
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
 use Exception;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -379,9 +380,7 @@ final class CodeclimateOutputFormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider basicDataProvider
-     */
+    #[DataProvider('basicDataProvider')]
     public function testFileOutput(
         array $rules,
         $expectedOutputFile,
@@ -416,9 +415,7 @@ final class CodeclimateOutputFormatterTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider basicDataProvider
-     */
+    #[DataProvider('basicDataProvider')]
     public function testConsoleOutput(
         array $rules,
         $expectedOutputFile,

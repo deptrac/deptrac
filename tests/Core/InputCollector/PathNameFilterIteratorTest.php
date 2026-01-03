@@ -7,6 +7,7 @@ namespace Tests\Deptrac\Deptrac\Core\InputCollector;
 use ArrayIterator;
 use Deptrac\Deptrac\Core\InputCollector\PathNameFilterIterator;
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use SplFileInfo;
 
@@ -14,9 +15,7 @@ use const DIRECTORY_SEPARATOR;
 
 final class PathNameFilterIteratorTest extends TestCase
 {
-    /**
-     * @dataProvider getTestFilterData
-     */
+    #[DataProvider('getTestFilterData')]
     public function testFilter(Iterator $inner, array $matchPatterns, array $noMatchPatterns, array $resultArray): void
     {
         $iterator = new PathNameFilterIterator($inner, $matchPatterns, $noMatchPatterns);

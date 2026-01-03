@@ -26,6 +26,7 @@ use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\JUnitOutputFormatter;
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
 use DOMDocument;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -212,10 +213,9 @@ final class JUnitOutputFormatterTest extends TestCase
     }
 
     /**
-     * @dataProvider basicDataProvider
-     *
      * @param list<RuleInterface|Error> $rules
      */
+    #[DataProvider('basicDataProvider')]
     public function testBasic(array $rules, string $expectedOutputFile): void
     {
         $analysisResult = new AnalysisResult(new DateTimeImmutable('2025-03-28T22:17:43'));

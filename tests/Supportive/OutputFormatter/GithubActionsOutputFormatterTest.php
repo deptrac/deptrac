@@ -23,6 +23,7 @@ use Deptrac\Deptrac\DefaultBehavior\Dependency\Helpers\Dependency;
 use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\GithubActionsOutputFormatter;
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -38,9 +39,7 @@ final class GithubActionsOutputFormatterTest extends TestCase
         self::assertSame('github-actions', (new GithubActionsOutputFormatter())->getName());
     }
 
-    /**
-     * @dataProvider finishProvider
-     */
+    #[DataProvider('finishProvider')]
     public function testFinish(array $rules, array $errors, array $warnings, string $expectedOutput): void
     {
         $bufferedOutput = new BufferedOutput();

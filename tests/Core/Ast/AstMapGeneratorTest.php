@@ -20,6 +20,7 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\TraitUseExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\UseExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use PhpParser\ParserFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicDependency\BasicDependencyClassB;
@@ -32,9 +33,7 @@ use Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicDependency\BasicDependencyTrait
 
 final class AstMapGeneratorTest extends TestCase
 {
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testBasicDependencyClass(Closure $parserBuilder): void
     {
         $filePath = __DIR__.'/Fixtures/BasicDependency/BasicDependencyClass.php';
@@ -66,9 +65,7 @@ final class AstMapGeneratorTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testBasicTraitsClass(Closure $parserBuilder): void
     {
         $filePath = __DIR__.'/Fixtures/BasicDependency/BasicDependencyTraits.php';
@@ -118,9 +115,7 @@ final class AstMapGeneratorTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testIssue319(Closure $parserBuilder): void
     {
         $filePath = __DIR__.'/Fixtures/Issue319.php';

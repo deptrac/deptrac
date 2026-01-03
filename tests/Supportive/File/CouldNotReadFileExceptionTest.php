@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Tests\Deptrac\Deptrac\Supportive\File;
 
 use Deptrac\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
-/**
- * @covers \Deptrac\Deptrac\Supportive\File\Exception\CouldNotReadFileException
- */
+#[CoversClass(CouldNotReadFileException::class)]
 final class CouldNotReadFileExceptionTest extends TestCase
 {
     public function testIsRuntimeException(): void

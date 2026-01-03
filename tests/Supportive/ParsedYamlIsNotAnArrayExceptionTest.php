@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Tests\Deptrac\Deptrac\Supportive;
 
 use Deptrac\Deptrac\Supportive\File\Exception\ParsedYamlIsNotAnArrayException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
-/**
- * @covers \Deptrac\Deptrac\Supportive\File\Exception\ParsedYamlIsNotAnArrayException
- */
+#[CoversClass(ParsedYamlIsNotAnArrayException::class)]
 final class ParsedYamlIsNotAnArrayExceptionTest extends TestCase
 {
     public function testIsRuntimeException(): void

@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Tests\Deptrac\Deptrac\Supportive;
 
 use Deptrac\Deptrac\Supportive\File\Exception\FileCannotBeParsedAsYamlException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use Symfony\Component\Yaml\Exception\ParseException;
 
-/**
- * @covers \Deptrac\Deptrac\Supportive\File\Exception\FileCannotBeParsedAsYamlException
- */
+#[CoversClass(FileCannotBeParsedAsYamlException::class)]
 final class FileCannotBeParsedAsYamlExceptionTest extends TestCase
 {
     public function testIsRuntimeException(): void

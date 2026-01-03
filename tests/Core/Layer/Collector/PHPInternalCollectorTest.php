@@ -15,6 +15,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\TokenReferenceInterface;
 use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\PhpInternalCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class PHPInternalCollectorTest extends TestCase
@@ -32,9 +33,7 @@ final class PHPInternalCollectorTest extends TestCase
         yield [['value' => '.*'], new FunctionReference(FunctionToken::fromFQCN('pdo_drivers_non_existent')), false];
     }
 
-    /**
-     * @dataProvider provideSatisfy
-     */
+    #[DataProvider('provideSatisfy')]
     public function testSatisfy(array $config, TokenReferenceInterface $reference, bool $expected): void
     {
         $collector = new PhpInternalCollector();

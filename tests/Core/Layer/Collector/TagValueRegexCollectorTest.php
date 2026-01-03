@@ -12,6 +12,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
 use Deptrac\Deptrac\Contract\Config\Collector\TagValueRegexConfig;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\TagValueRegexCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class TagValueRegexCollectorTest extends TestCase
@@ -48,9 +49,7 @@ final class TagValueRegexCollectorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataProviderSatisfy
-     */
+    #[DataProvider('dataProviderSatisfy')]
     public function testSatisfy(TagValueRegexConfig $configuration, array $tags): void
     {
         $actual = $this->collector->satisfy(
@@ -78,9 +77,7 @@ final class TagValueRegexCollectorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataProviderNotSatisfy
-     */
+    #[DataProvider('dataProviderNotSatisfy')]
     public function testNotSatisfy(TagValueRegexConfig $configuration, array $tags): void
     {
         $actual = $this->collector->satisfy(
@@ -110,9 +107,7 @@ final class TagValueRegexCollectorTest extends TestCase
         yield 'bad regex value' => [['tag' => '@test', 'value' => '(((]]]']];
     }
 
-    /**
-     * @dataProvider dataProviderBadConfig
-     */
+    #[DataProvider('dataProviderBadConfig')]
     public function testBadConfig($config): void
     {
         $this->expectException(InvalidCollectorDefinitionException::class);

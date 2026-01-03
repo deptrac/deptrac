@@ -11,6 +11,7 @@ use PHPStan\PhpDocParser\Parser\ConstExprParser;
 use PHPStan\PhpDocParser\Parser\TokenIterator;
 use PHPStan\PhpDocParser\Parser\TypeParser;
 use PHPStan\PhpDocParser\ParserConfig;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class TypeResolverTest extends TestCase
@@ -48,9 +49,7 @@ final class TypeResolverTest extends TestCase
         }
     }
 
-    /**
-     * @dataProvider docBlockProvider
-     */
+    #[DataProvider('docBlockProvider')]
     public function testResolvePHPStanDocParserType(string $doc, array $types): void
     {
         $tokens = new TokenIterator($this->lexer->tokenize($doc));

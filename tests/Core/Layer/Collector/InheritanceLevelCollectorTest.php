@@ -15,6 +15,7 @@ use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\Core\Ast\AstMap;
 use Deptrac\Deptrac\Core\Ast\AstMapExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Layer\InheritanceLevelCollector;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
@@ -32,9 +33,7 @@ final class InheritanceLevelCollectorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataTests
-     */
+    #[DataProvider('dataTests')]
     public function testSatisfy(int $pathLevel, int $levelConfig, bool $expected): void
     {
         $classInherit = $this->createMock(AstInherit::class);

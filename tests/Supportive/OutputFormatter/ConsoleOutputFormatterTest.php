@@ -23,6 +23,7 @@ use Deptrac\Deptrac\DefaultBehavior\Dependency\Helpers\Dependency;
 use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\ConsoleOutputFormatter;
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -230,9 +231,7 @@ final class ConsoleOutputFormatterTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider basicDataProvider
-     */
+    #[DataProvider('basicDataProvider')]
     public function testBasic(array $rules, array $errors, array $warnings, string $expectedOutput): void
     {
         $bufferedOutput = new BufferedOutput();

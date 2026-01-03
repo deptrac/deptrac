@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Tests\Deptrac\Deptrac\Supportive\OutputFormatter;
 
 use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers\ConfigurationGraphViz;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers\ConfigurationGraphViz
- */
+#[CoversClass(ConfigurationGraphViz::class)]
 final class ConfigurationGraphVizTest extends TestCase
 {
     public function testFromArray(): void

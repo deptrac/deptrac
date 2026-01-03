@@ -13,6 +13,7 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers\PhpStanContainerDecorator
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\NikicPhpParser;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class ClassDocBlockExtractorTest extends TestCase
@@ -25,9 +26,7 @@ final class ClassDocBlockExtractorTest extends TestCase
         ['Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\ClassDocBlockDependencyBrother', DependencyType::VARIABLE],
     ];
 
-    /**
-     * @dataProvider createParser
-     */
+    #[DataProvider('createParser')]
     public function testMethodResolving(ParserInterface $parser): void
     {
         $filePath = __DIR__.'/Fixtures/ClassDocBlockDependency.php';
