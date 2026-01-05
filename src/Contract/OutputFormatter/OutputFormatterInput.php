@@ -7,12 +7,12 @@ namespace Deptrac\Deptrac\Contract\OutputFormatter;
 /**
  * @psalm-immutable
  */
-final class OutputFormatterInput
+final readonly class OutputFormatterInput
 {
     public function __construct(
-        public readonly ?string $outputPath,
-        public readonly bool $reportSkipped,
-        public readonly bool $reportUncovered,
-        public readonly bool $failOnUncovered,
+        public ?string $outputPath,
+        public bool $reportSkipped,
+        public bool $reportUncovered,
+        public bool $failOnUncovered,
     ) {}
 }

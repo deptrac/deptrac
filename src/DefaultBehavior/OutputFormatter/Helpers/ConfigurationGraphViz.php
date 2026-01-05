@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers;
 
-final class ConfigurationGraphViz
+final readonly class ConfigurationGraphViz
 {
     /**
      * @param array{hidden_layers?: string[], groups?: array<string, string[]>, point_to_groups?: bool} $arr
@@ -19,8 +19,8 @@ final class ConfigurationGraphViz
      * @param array<string, string[]> $groupsLayerMap
      */
     private function __construct(
-        public readonly array $hiddenLayers,
-        public readonly array $groupsLayerMap,
-        public readonly bool $pointToGroups,
+        public array $hiddenLayers,
+        public array $groupsLayerMap,
+        public bool $pointToGroups,
     ) {}
 }

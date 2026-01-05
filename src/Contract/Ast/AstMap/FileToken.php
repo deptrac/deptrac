@@ -6,9 +6,9 @@ namespace Deptrac\Deptrac\Contract\Ast\AstMap;
 
 use Symfony\Component\Filesystem\Path;
 
-final class FileToken implements TokenInterface
+final readonly class FileToken implements TokenInterface
 {
-    public readonly string $path;
+    public string $path;
 
     public function __construct(string $path)
     {

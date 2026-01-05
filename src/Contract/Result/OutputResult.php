@@ -14,7 +14,7 @@ use function count;
  *
  * Represents a result ready for output formatting
  */
-final class OutputResult
+final readonly class OutputResult
 {
     /**
      * @param array<class-string<RuleInterface>, array<int, RuleInterface>> $rules
@@ -22,10 +22,10 @@ final class OutputResult
      * @param list<Warning> $warnings
      */
     private function __construct(
-        public readonly array $rules,
-        public readonly array $errors,
-        public readonly array $warnings,
-        public readonly DateTimeImmutable $analysisComplete,
+        public array $rules,
+        public array $errors,
+        public array $warnings,
+        public DateTimeImmutable $analysisComplete,
     ) {}
 
     public static function fromAnalysisResult(AnalysisResult $analysisResult): self

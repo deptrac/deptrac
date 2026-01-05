@@ -12,9 +12,9 @@ use Deptrac\Deptrac\Core\Analyser\LayerDependenciesAnalyser;
 /**
  * @internal Should only be used by DebugDependenciesCommand
  */
-final class DebugDependenciesRunner
+final readonly class DebugDependenciesRunner
 {
-    public function __construct(private readonly LayerDependenciesAnalyser $analyser) {}
+    public function __construct(private LayerDependenciesAnalyser $analyser) {}
 
     /**
      * @throws CommandRunException
