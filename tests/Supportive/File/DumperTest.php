@@ -29,16 +29,12 @@ final class DumperTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->sourceFile = __DIR__.'/Fixtures/deptrac.yaml';
         $this->dumper = new Dumper($this->sourceFile);
     }
 
     protected function tearDown(): void
     {
-        parent::tearDown();
-
         unset($this->dumper);
     }
 

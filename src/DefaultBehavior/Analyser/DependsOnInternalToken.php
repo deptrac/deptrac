@@ -11,15 +11,15 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 
 final class DependsOnInternalToken implements ViolationCreatingInterface
 {
-    private ?string $internalTag;
+    private readonly ?string $internalTag;
 
     /**
      * @param array{internal_tag:string|null, ...} $config
      */
     public function __construct(
         private readonly EventHelper $eventHelper,
-        array $config)
-    {
+        array $config,
+    ) {
         $this->internalTag = $config['internal_tag'];
     }
 

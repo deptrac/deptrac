@@ -15,7 +15,7 @@ use Symfony\Component\Filesystem\Path;
 
 class PhpStanContainerDecorator
 {
-    private Container $container;
+    private readonly Container $container;
 
     /**
      * @param list<string> $paths

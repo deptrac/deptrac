@@ -133,9 +133,7 @@ final class AstMapGeneratorTest extends TestCase
                 'LogicException',
             ],
             array_map(
-                static function (DependencyToken $dependency) {
-                    return $dependency->token->toString();
-                },
+                static fn (DependencyToken $dependency) => $dependency->token->toString(),
                 $astMap->getFileReferences()[$filePath]->dependencies
             )
         );
@@ -150,7 +148,7 @@ final class AstMapGeneratorTest extends TestCase
             return [];
         }
 
-        return array_map('strval', $classReference->inherits);
+        return array_map(strval(...), $classReference->inherits);
     }
 
     /**

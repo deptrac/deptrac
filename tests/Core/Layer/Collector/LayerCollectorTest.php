@@ -19,8 +19,6 @@ final class LayerCollectorTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->resolver = $this->createMock(LayerResolverInterface::class);
 
         $this->collector = new LayerCollector($this->resolver);
@@ -66,9 +64,7 @@ final class LayerCollectorTest extends TestCase
         $this->resolver
             ->method('isReferenceInLayer')
             ->with('FooLayer', $reference)
-            ->willReturnCallback(function (string $layerName, ClassLikeReference $reference) {
-                return $this->collector->satisfy(['value' => 'FooLayer'], $reference);
-            })
+            ->willReturnCallback(fn (string $layerName, ClassLikeReference $reference) => $this->collector->satisfy(['value' => 'FooLayer'], $reference))
         ;
 
         $this->expectException(InvalidLayerDefinitionException::class);

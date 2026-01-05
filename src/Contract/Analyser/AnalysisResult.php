@@ -35,7 +35,7 @@ final class AnalysisResult
 
     public function __construct(?DateTimeImmutable $analysisComplete = null)
     {
-        $this->analysisComplete = null === $analysisComplete ? new DateTimeImmutable() : $analysisComplete;
+        $this->analysisComplete = $analysisComplete ?? new DateTimeImmutable();
     }
 
     public function addRule(RuleInterface $rule): void

@@ -9,6 +9,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeType;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\ComposerCollector;
+use PHPStan\PhpDocParser\Ast\Attribute;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -29,7 +30,7 @@ final class ComposerCollectorTest extends TestCase
                 'composerLockPath' => __DIR__.DIRECTORY_SEPARATOR.'data/composer.lock',
                 'packages' => ['phpstan/phpdoc-parser'],
             ],
-            'PHPStan\\PhpDocParser\\Ast\\Attribute',
+            Attribute::class,
             true,
         ];
         yield [

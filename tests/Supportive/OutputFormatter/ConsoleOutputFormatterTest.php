@@ -23,6 +23,7 @@ use Deptrac\Deptrac\DefaultBehavior\Dependency\Helpers\Dependency;
 use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\ConsoleOutputFormatter;
 use Deptrac\Deptrac\Supportive\Console\Symfony\Style;
 use Deptrac\Deptrac\Supportive\Console\Symfony\SymfonyOutput;
+use Foo\Bar;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
@@ -226,7 +227,7 @@ final class ConsoleOutputFormatterTest extends TestCase
         yield 'an warning occurred' => [
             [],
             [],
-            'warnings' => [Warning::tokenIsInMoreThanOneLayer(ClassLikeToken::fromFQCN('Foo\Bar')->toString(), ['Layer 1', 'Layer 2'])],
+            'warnings' => [Warning::tokenIsInMoreThanOneLayer(ClassLikeToken::fromFQCN(Bar::class)->toString(), ['Layer 1', 'Layer 2'])],
             '[WARNING]Foo\Barisinmorethanonelayer["Layer1","Layer2"].Itisrecommendedthatonetokenshouldonlybeinonelayer.Report:Violations:0Skippedviolations:0Uncovered:0Allowed:0Warnings:1Errors:0',
         ];
     }

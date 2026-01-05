@@ -6,15 +6,12 @@ namespace Deptrac\Deptrac\Contract\Config;
 
 final class Ruleset
 {
-    public Layer $layerConfig;
-
     /** @var array<Layer> */
     private array $accessableLayers = [];
 
     /** @param  array<Layer> $layerConfigs */
-    public function __construct(Layer $layerConfig, array $layerConfigs)
+    public function __construct(public Layer $layerConfig, array $layerConfigs)
     {
-        $this->layerConfig = $layerConfig;
         $this->accesses(...$layerConfigs);
     }
 

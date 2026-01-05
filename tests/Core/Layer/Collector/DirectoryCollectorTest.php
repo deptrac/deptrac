@@ -16,8 +16,6 @@ final class DirectoryCollectorTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->collector = new DirectoryCollector();
     }
 

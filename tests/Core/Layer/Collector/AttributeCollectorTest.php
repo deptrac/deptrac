@@ -22,8 +22,6 @@ final class AttributeCollectorTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $this->collector = new AttributeCollector();
     }
 

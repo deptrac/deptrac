@@ -17,6 +17,8 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Parser\PhpStanParser;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\ClassAttribute;
+use Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\ClassB;
 
 final class ClassExtractorTest extends TestCase
 {
@@ -33,12 +35,12 @@ final class ClassExtractorTest extends TestCase
 
         $dependencies = $astClassReferences[1]->dependencies;
         self::assertSame(
-            'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\ClassAttribute',
+            ClassAttribute::class,
             $dependencies[0]->token->toString()
         );
         self::assertSame(DependencyType::ATTRIBUTE, $dependencies[0]->context->dependencyType);
         self::assertSame(
-            'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\ClassB',
+            ClassB::class,
             $dependencies[1]->token->toString()
         );
         self::assertSame(DependencyType::VARIABLE, $dependencies[1]->context->dependencyType);

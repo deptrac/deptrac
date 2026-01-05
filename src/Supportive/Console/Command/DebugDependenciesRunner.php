@@ -26,7 +26,7 @@ final class DebugDependenciesRunner
             foreach ($dependencies as $targetLayer => $violations) {
                 $output->getStyle()->table(
                     [$targetLayer],
-                    array_map(fn (Uncovered $violation): array => $this->formatRow($violation), $violations)
+                    array_map($this->formatRow(...), $violations)
                 );
             }
         } catch (AnalyserException $e) {

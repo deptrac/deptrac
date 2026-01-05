@@ -14,6 +14,7 @@ PHPSTAN = ./tools/phpstan/bin/phpstan
 PSALM = ./tools/psalm/bin/psalm
 PHPUNIT = ./tools/phpunit/bin/phpunit -c .
 INFECTION = ./tools/infection/bin/roave-infection-static-analysis-plugin
+RECTOR = ./tools/rector/bin/rector
 
 update:
 	$(CONTAINER) build --pull --build-arg UID=$(UID)
@@ -48,6 +49,12 @@ phpstan: install ## Performs static code analysis using phpstan
 
 psalm: install ## Performs static code analysis using psalm
 	$(PSALM)
+
+rector-check: install ## Checks for automated code refactoring using rector
+	$(RECTOR) process --dry-run
+
+rector: install ## Performs automated code refactoring using rector
+	$(RECTOR) process
 
 test: install ## run our testsuite
 	$(PHPUNIT)

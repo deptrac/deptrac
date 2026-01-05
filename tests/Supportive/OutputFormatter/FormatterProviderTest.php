@@ -18,8 +18,8 @@ final class FormatterProviderTest extends TestCase
     public function testGet(): void
     {
         $formatterProvider = new FormatterProvider(new ServiceLocator([
-            ConsoleOutputFormatter::getName() => static function () { return new ConsoleOutputFormatter(); },
-            TableOutputFormatter::getName() => static function () { return new TableOutputFormatter(); },
+            ConsoleOutputFormatter::getName() => static fn () => new ConsoleOutputFormatter(),
+            TableOutputFormatter::getName() => static fn () => new TableOutputFormatter(),
         ]));
 
         self::assertTrue($formatterProvider->has(ConsoleOutputFormatter::getName()));

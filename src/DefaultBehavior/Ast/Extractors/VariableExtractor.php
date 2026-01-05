@@ -28,7 +28,7 @@ final class VariableExtractor implements NikicReferenceExtractorInterface, PHPSt
     /**
      * @var list<string>
      */
-    private array $allowedNames;
+    private readonly array $allowedNames;
     private readonly Lexer $lexer;
     private readonly PhpDocParser $docParser;
 

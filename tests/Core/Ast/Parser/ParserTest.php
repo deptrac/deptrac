@@ -103,7 +103,7 @@ final class ParserTest extends TestCase
         $refsByName = [];
 
         foreach ($refs as $ref) {
-            $name = preg_replace('/^.*\\\\(\w+(\(\))?)$/', '$1', $ref->getToken()->toString());
+            $name = preg_replace('/^.*\\\\(\w+(\(\))?)$/', '$1', (string) $ref->getToken()->toString());
             $refsByName[$name] = $ref;
         }
 

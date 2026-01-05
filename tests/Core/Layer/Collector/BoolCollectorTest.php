@@ -20,8 +20,6 @@ final class BoolCollectorTest extends TestCase
 
     protected function setUp(): void
     {
-        parent::setUp();
-
         $collector = $this->createMock(CollectorInterface::class);
         $collector
             ->method('satisfy')

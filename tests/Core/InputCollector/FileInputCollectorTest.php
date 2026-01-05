@@ -18,9 +18,7 @@ final class FileInputCollectorTest extends TestCase
     {
         $collector = new FileInputCollector([__DIR__.'/Fixtures'], [], sys_get_temp_dir());
 
-        $files = array_map(static function ($filePath) {
-            return Path::normalize($filePath);
-        }, $collector->collect());
+        $files = array_map(Path::normalize(...), $collector->collect());
 
         natcasesort($files);
 
@@ -34,9 +32,7 @@ final class FileInputCollectorTest extends TestCase
     {
         $collector = new FileInputCollector(['Fixtures'], [], __DIR__);
 
-        $files = array_map(static function ($filePath) {
-            return Path::normalize($filePath);
-        }, $collector->collect());
+        $files = array_map(Path::normalize(...), $collector->collect());
 
         natcasesort($files);
 

@@ -74,7 +74,7 @@ final class BaselineOutputFormatter implements OutputFormatterInterface
         }
 
         return array_map(
-            static fn (array $dependencies): array => array_values($dependencies),
+            array_values(...),
             $violations
         );
     }

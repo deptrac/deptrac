@@ -8,12 +8,10 @@ final class Layer
 {
     /** @var array<CollectorConfig> */
     private array $collectors = [];
-    public string $name;
 
     /** @param  array<CollectorConfig> $collectorConfig */
-    public function __construct(string $name, array $collectorConfig = [])
+    public function __construct(public string $name, array $collectorConfig = [])
     {
-        $this->name = $name;
         $this->collectors(...$collectorConfig);
     }
 

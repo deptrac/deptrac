@@ -10,7 +10,7 @@ final class TagValueRegexConfig extends CollectorConfig
     protected CollectorType $collectorType = CollectorType::TYPE_TAG_VALUE_REGEX;
 
     public function __construct(
-        private string $tag,
+        private readonly string $tag,
         private ?string $value = null,
     ) {}
 

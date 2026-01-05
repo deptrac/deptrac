@@ -13,7 +13,6 @@ class EnvTest extends TestCase
     {
         putenv('TEST=test');
         putenv('FOO=true');
-        parent::setUp();
     }
 
     public function testEnvPresent(): void

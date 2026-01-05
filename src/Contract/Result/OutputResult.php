@@ -30,7 +30,12 @@ final class OutputResult
 
     public static function fromAnalysisResult(AnalysisResult $analysisResult): self
     {
-        return new self($analysisResult->rules(), $analysisResult->errors(), $analysisResult->warnings(), $analysisResult->analysisComplete);
+        return new self(
+            $analysisResult->rules(),
+            $analysisResult->errors(),
+            $analysisResult->warnings(),
+            $analysisResult->analysisComplete,
+        );
     }
 
     /**
