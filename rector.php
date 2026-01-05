@@ -1,6 +1,7 @@
 <?php
 
 use Rector\Config\RectorConfig;
+use Rector\Php81\Rector\ClassMethod\NewInInitializerRector;
 use Rector\ValueObject\PhpVersion;
 
 return RectorConfig::configure()
@@ -12,6 +13,8 @@ return RectorConfig::configure()
         './tools',
         './docs',
         './tests/*/Fixtures/*',
+
+         NewInInitializerRector::class,
     ])
     ->withPhpSets(php81: true)
     ->withPreparedSets(

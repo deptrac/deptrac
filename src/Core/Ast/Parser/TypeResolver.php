@@ -126,7 +126,7 @@ class TypeResolver implements TypeResolverInterface
             $type instanceof UnionType || $type instanceof IntersectionType => array_merge(
                 [],
                 ...array_map(
-                    fn (Identifier|Name|IntersectionType $typeNode): array => $this->resolvePropertyType($typeNode),
+                    $this->resolvePropertyType(...),
                     $type->types
                 )
             ),
@@ -141,7 +141,7 @@ class TypeResolver implements TypeResolverInterface
     {
         return match (true) {
             $resolvedType instanceof Object_ => ($fqsen = $resolvedType->getFqsen()) ? [(string) $fqsen] : [],
-            $resolvedType instanceof Compound => array_merge([], ...array_map(fn (Type $type) => $this->resolveReflectionType($type), iterator_to_array($resolvedType))),
+            $resolvedType instanceof Compound => array_merge([], ...array_map($this->resolveReflectionType(...), iterator_to_array($resolvedType))),
             default => [],
         };
     }

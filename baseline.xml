@@ -28,6 +28,34 @@
       <code><![CDATA[list<T>]]></code>
     </InvalidReturnType>
   </file>
+  <file src="src/Core/Ast/Parser/TypeResolver.php">
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[array]]></code>
+      <code><![CDATA[match (true) {
+            $type instanceof FullyQualified => [(string) $type],
+            $type instanceof NullableType => $this->resolvePropertyType($type->type),
+            $type instanceof UnionType || $type instanceof IntersectionType => array_merge(
+                [],
+                ...array_map(
+                    $this->resolvePropertyType(...),
+                    $type->types
+                )
+            ),
+            default => [],
+        }]]></code>
+    </MixedReturnTypeCoercion>
+    <NamedArgumentNotAllowed>
+      <code><![CDATA[array_map(static fn ($type): array => self::resolveType($type, $scope), $type->types)]]></code>
+    </NamedArgumentNotAllowed>
+  </file>
+  <file src="src/DefaultBehavior/Ast/Extractors/ClassMethodExtractor.php">
+    <RedundantCondition>
+      <code><![CDATA[$resolvedPhpDoc->getThrowsTag()?->getType()->getReferencedClasses()]]></code>
+    </RedundantCondition>
+    <TypeDoesNotContainNull>
+      <code><![CDATA[[]]]></code>
+    </TypeDoesNotContainNull>
+  </file>
   <file src="src/DefaultBehavior/Layer/BoolCollector.php">
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[!$configuration['must']]]></code>
@@ -115,22 +143,18 @@
       <code><![CDATA[$this->astMapExtractor->extract()]]></code>
     </RedundantPropertyInitializationCheck>
   </file>
+  <file src="src/DefaultBehavior/OutputFormatter/BaselineOutputFormatter.php">
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[array<string,list<string>>]]></code>
+      <code><![CDATA[array_map(
+            array_values(...),
+            $violations
+        )]]></code>
+    </MixedReturnTypeCoercion>
+  </file>
   <file src="src/Supportive/Console/Command/DebugLayerRunner.php">
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$layer]]></code>
     </RiskyTruthyFalsyComparison>
   </file>
-    <file src="src/Core/Ast/Parser/TypeResolver.php">
-        <NamedArgumentNotAllowed>
-            <code><![CDATA[array_map(static fn ($type): array => self::resolveType($type, $scope), $type->types)]]></code>
-        </NamedArgumentNotAllowed>
-    </file>
-    <file src="src/DefaultBehavior/Ast/Extractors/ClassMethodExtractor.php">
-        <RedundantCondition>
-            <code><![CDATA[$resolvedPhpDoc->getThrowsTag()?->getType()->getReferencedClasses()]]></code>
-        </RedundantCondition>
-        <TypeDoesNotContainNull>
-            <code><![CDATA[[]]]></code>
-        </TypeDoesNotContainNull>
-    </file>
 </files>
