@@ -6,6 +6,8 @@ namespace Deptrac\Deptrac\Supportive\DependencyInjection;
 
 use Closure;
 use Deptrac\Deptrac\Contract\Config\DeptracConfig;
+use LogicException;
+use ReflectionException;
 use ReflectionFunction;
 use ReflectionNamedType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -14,6 +16,7 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use function dirname;
 use function is_callable;
 use function is_object;
+use function is_string;
 
 /**
  * Custom PHP file loader that provides DeptracConfig to configuration closures.
@@ -23,54 +26,87 @@ final class DeptracPhpConfigLoader extends PhpFileLoader
 {
     public function load(mixed $resource, ?string $type = null): mixed
     {
-        assert(is_string($resource), 'Argument "$resource" must be of type string!');
+        if (!is_string($resource)) {
+            return parent::load($resource, $type);
+        }
 
         $path = $this->locator->locate($resource);
         $this->setCurrentDir(dirname($path));
         $this->container->fileExists($path);
 
-        // Load the PHP file
-        $load = Closure::bind(static function ($path) {
-            return include $path;
-        }, null, null);
+        $content = self::loadFileContent($path);
 
-        $result = $load($path);
+        if (self::isDeptracConfigClosure($content)) {
+            $this->loadDeptracConfig($content, $path, $resource);
 
-        // If it's a callable expecting DeptracConfig, call it with our config instance
-        if (is_object($result) && is_callable($result)) {
-            $reflectionFunction = new ReflectionFunction($result);
-            $parameters = $reflectionFunction->getParameters();
-
-            // Check if first parameter is DeptracConfig
-            if (isset($parameters[0])) {
-                $firstParamType = $parameters[0]->getType();
-                if ($firstParamType instanceof ReflectionNamedType
-                    && DeptracConfig::class === $firstParamType->getName()
-                ) {
-                    // Call with DeptracConfig instance and ContainerConfigurator
-                    $config = new DeptracConfig();
-                    $instanceof = [];
-                    $containerConfigurator = new ContainerConfigurator(
-                        $this->container,
-                        $this,
-                        $instanceof,
-                        $path,
-                        $resource,
-                        $this->env ?? null
-                    );
-
-                    $result($config, $containerConfigurator);
-
-                    // Load the configuration array into the extension
-                    $configArray = $config->toArray();
-                    $this->container->loadFromExtension($config->getExtensionAlias(), $configArray);
-
-                    return null;
-                }
-            }
+            return null;
         }
 
-        // Otherwise use parent behavior
+        // Otherwise use parent behavior for standard Symfony configs
         return parent::load($resource, $type);
+    }
+
+    /**
+     * Creates a closure to load PHP file content in isolated scope.
+     *
+     * @return mixed
+     */
+    private static function loadFileContent(string $path)
+    {
+        $loader = Closure::bind(static fn ($path) => include $path, null, null);
+
+        return $loader($path);
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    private static function isDeptracConfigClosure(mixed $content): bool
+    {
+        if (!is_object($content) || !is_callable($content)) {
+            return false;
+        }
+
+        $reflection = new ReflectionFunction(Closure::fromCallable($content));
+        $parameters = $reflection->getParameters();
+
+        if (!isset($parameters[0])) {
+            return false;
+        }
+
+        $firstParamType = $parameters[0]->getType();
+
+        return $firstParamType instanceof ReflectionNamedType
+            && DeptracConfig::class === $firstParamType->getName();
+    }
+
+    /**
+     * @throws LogicException
+     */
+    private function loadDeptracConfig(mixed $loader, string $path, string $resource): void
+    {
+        if (!is_callable($loader)) {
+            return;
+        }
+
+        $config = new DeptracConfig();
+        $instanceof = [];
+        $containerConfigurator = new ContainerConfigurator(
+            $this->container,
+            $this,
+            $instanceof,
+            $path,
+            $resource,
+            $this->env
+        );
+
+        $loader($config, $containerConfigurator);
+
+        /** @var array<string, mixed> $configArray */
+        $configArray = $config->toArray();
+        $this->container->loadFromExtension(
+            $config->getExtensionAlias(),
+            $configArray
+        );
     }
 }
