@@ -23,15 +23,14 @@ final class DeptracPhpConfigLoader extends PhpFileLoader
 {
     public function load(mixed $resource, ?string $type = null): mixed
     {
-        $container = $this->container;
-        $loader = $this;
+        assert(is_string($resource), 'Argument "$resource" must be of type string!');
 
         $path = $this->locator->locate($resource);
         $this->setCurrentDir(dirname($path));
         $this->container->fileExists($path);
 
         // Load the PHP file
-        $load = Closure::bind(static function ($path) use ($container, $loader) {
+        $load = Closure::bind(static function ($path) {
             return include $path;
         }, null, null);
 
