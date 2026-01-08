@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\Supportive\DependencyInjection;
 
+use Deptrac\Deptrac\Contract\Config\DeptracConfig;
 use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CacheFileException;
 use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use Exception;
@@ -174,9 +175,10 @@ final class ServiceContainerBuilder
 
         $container->setParameter('projectDirectory', $configPathInfo->getPathname());
 
+        // Use custom loader for PHP files to support DeptracConfig
         $loader = new DelegatingLoader(new LoaderResolver([
             new YamlFileLoader($container, new FileLocator([$configPathInfo->getPathname()])),
-            new PhpFileLoader($container, new FileLocator([$configPathInfo->getPathname()])),
+            new DeptracPhpConfigLoader($container, new FileLocator([$configPathInfo->getPathname()])),
         ]));
 
         try {
