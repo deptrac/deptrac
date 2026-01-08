@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\Supportive\DependencyInjection;
 
-use Closure;
 use Deptrac\Deptrac\Contract\Config\DeptracConfig;
 use LogicException;
 use ReflectionException;
@@ -34,7 +33,8 @@ final class DeptracPhpConfigLoader extends PhpFileLoader
         $this->setCurrentDir(dirname($path));
         $this->container->fileExists($path);
 
-        $content = self::loadFileContent($path);
+        /** @psalm-suppress UnresolvableInclude, MixedAssignment */
+        $content = include $path;
 
         if (self::isDeptracConfigClosure($content)) {
             $this->loadDeptracConfig($content, $path, $resource);
@@ -47,18 +47,6 @@ final class DeptracPhpConfigLoader extends PhpFileLoader
     }
 
     /**
-     * Creates a closure to load PHP file content in isolated scope.
-     *
-     * @return mixed
-     */
-    private static function loadFileContent(string $path)
-    {
-        $loader = Closure::bind(static fn ($path) => include $path, null, null);
-
-        return $loader($path);
-    }
-
-    /**
      * @throws ReflectionException
      */
     private static function isDeptracConfigClosure(mixed $content): bool
@@ -67,7 +55,7 @@ final class DeptracPhpConfigLoader extends PhpFileLoader
             return false;
         }
 
-        $reflection = new ReflectionFunction(Closure::fromCallable($content));
+        $reflection = new ReflectionFunction($content(...));
         $parameters = $reflection->getParameters();
 
         if (!isset($parameters[0])) {
