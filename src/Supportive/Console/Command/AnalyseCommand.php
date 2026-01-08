@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\Supportive\Console\Command;
 
-use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\GithubActionsOutputFormatter;
-use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\TableOutputFormatter;
+use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterNames;
 use Deptrac\Deptrac\Supportive\Console\Env;
 use Deptrac\Deptrac\Supportive\Console\Subscriber\ConsoleSubscriber;
 use Deptrac\Deptrac\Supportive\Console\Subscriber\ProgressSubscriber;
@@ -96,6 +95,6 @@ class AnalyseCommand extends Command
 
     public static function getDefaultFormatter(): string
     {
-        return false !== (new Env())->get('GITHUB_ACTIONS') ? GithubActionsOutputFormatter::getName() : TableOutputFormatter::getName();
+        return false !== (new Env())->get('GITHUB_ACTIONS') ? OutputFormatterNames::GITHUB_ACTIONS : OutputFormatterNames::TABLE;
     }
 }
