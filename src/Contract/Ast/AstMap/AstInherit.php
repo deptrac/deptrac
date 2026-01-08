@@ -40,7 +40,12 @@ class AstInherit implements Stringable
 
     public function __toString(): string
     {
-        $description = "{$this->classLikeName->toString()}::{$this->fileOccurrence->line} ({$this->type->value})";
+        $description = sprintf(
+            '%s::%s (%s)',
+            $this->classLikeName->toString(),
+            $this->fileOccurrence->line,
+            $this->type->value
+        );
 
         if ([] === $this->path) {
             return $description;
