@@ -8,7 +8,7 @@ use Deptrac\Deptrac\Contract\Config\Formatter\FormatterConfigInterface;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
-final class DeptracConfig implements ConfigBuilderInterface
+final class DeptracConfig
 {
     private bool $ignoreUncoveredInternalClasses = true;
 
