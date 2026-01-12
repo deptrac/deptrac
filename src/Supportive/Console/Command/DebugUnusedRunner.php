@@ -51,11 +51,11 @@ final class DebugUnusedRunner
                 if ($numberOfDependencies <= $limit) {
                     if (0 === $numberOfDependencies) {
                         $rows[] = [
-                            sprintf('<info>%s</info> layer is not dependent on <info>%s</info>', $dependerLayerName, $dependentLayerName),
+                            "<info>{$dependerLayerName}</info> layer is not dependent on <info>{$dependentLayerName}</info>",
                         ];
                     } else {
                         $rows[] = [
-                            sprintf('<info>%s</info> layer is dependent <info>%s</info> layer %d times', $dependerLayerName, $dependentLayerName, $numberOfDependencies),
+                            "<info>{$dependerLayerName}</info> layer is dependent <info>{$dependentLayerName}</info> layer {$numberOfDependencies} times",
                         ];
                     }
                 }
