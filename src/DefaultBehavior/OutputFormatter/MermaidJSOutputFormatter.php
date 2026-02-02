@@ -120,7 +120,7 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
     /**
      * @return array<string, array<string, int<1, max>>>
      */
-    protected function parseResults(OutputResult $result): array
+    private function parseResults(OutputResult $result): array
     {
         $graph = [];
 
@@ -138,7 +138,7 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
         return $graph;
     }
 
-    protected function compileDefaultNodeOptions(): string
+    private function compileDefaultNodeOptions(): string
     {
         return implode(
             ', ',
@@ -150,7 +150,7 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
         );
     }
 
-    protected static function renderNode(string $nodeId, string $compiledNodeOptions): string
+    private static function renderNode(string $nodeId, string $compiledNodeOptions): string
     {
         return '' === $compiledNodeOptions ? $nodeId : sprintf('%s@{%s}', $nodeId, $compiledNodeOptions);
     }

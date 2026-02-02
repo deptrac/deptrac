@@ -41,7 +41,7 @@ final class TagValueRegexCollector implements CollectorInterface
      *
      * @throws InvalidCollectorDefinitionException
      */
-    protected function getTagName(array $config): string
+    private function getTagName(array $config): string
     {
         if (!isset($config['tag'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('TagValueRegexCollector: Missing "tag" configuration.');
@@ -62,7 +62,7 @@ final class TagValueRegexCollector implements CollectorInterface
      *
      * @throws InvalidCollectorDefinitionException
      */
-    protected function getValidatedPattern(array $config): string
+    private function getValidatedPattern(array $config): string
     {
         if (!isset($config['value'])) {
             return '/^.?/'; // any string
