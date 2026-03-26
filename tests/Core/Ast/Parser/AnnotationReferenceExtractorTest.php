@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Deptrac\Deptrac\Core\Ast\Parser;
 
+use DateTimeImmutable;
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
 use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
@@ -22,6 +23,8 @@ use Symfony\Component\Console\Exception\RuntimeException;
 use Symfony\Component\Finder\SplFileInfo;
 use Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\AnnotationDependencyChild;
 
+use function in_array;
+
 final class AnnotationReferenceExtractorTest extends TestCase
 {
     #[DataProvider('createParser')]
@@ -36,6 +39,17 @@ final class AnnotationReferenceExtractorTest extends TestCase
         self::assertCount(5, $astClassReferences);
         self::assertCount(9, $annotationDependency);
         self::assertCount(0, $astClassReferences[1]->dependencies);
+        // TestTrait[2]: addTime() has @param \DateTimeImmutable and @return \DateTimeImmutable[]
+        // This triggers ClassMethodExtractor — must not crash with phpstanParser and must extract method PHPDoc
+        $traitMethodDocblockDeps = array_filter(
+            $astClassReferences[2]->dependencies,
+            static fn ($dependency) => in_array($dependency->context->dependencyType->value, ['parameter', 'returntype'], true)
+                && DateTimeImmutable::class === $dependency->token->toString()
+        );
+        self::assertNotEmpty(
+            $traitMethodDocblockDeps,
+            'Trait methods with PHPDoc @param/@return should produce parameter/returntype dependencies for \DateTimeImmutable'
+        );
         self::assertCount(0, $astClassReferences[3]->dependencies);
         self::assertCount(0, $astClassReferences[4]->dependencies);
 
