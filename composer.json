@@ -20,7 +20,7 @@
     "require": {
         "php": "^8.2",
         "composer/xdebug-handler": "^3.0",
-        "jetbrains/phpstorm-stubs": "2024.3 || 2025.3",
+        "jetbrains/phpstorm-stubs": "2024.3 || 2025.3 || 2026.1",
         "nikic/php-parser": "^5",
         "phpdocumentor/graphviz": "^2.1",
         "phpdocumentor/type-resolver": "^1.9.0 || ^2.0.0",
