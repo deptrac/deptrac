@@ -11,9 +11,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 use function sprintf;
 
-final class UnmatchedSkippedViolations implements EventSubscriberInterface
+final readonly class UnmatchedSkippedViolations implements EventSubscriberInterface
 {
-    public function __construct(private readonly EventHelper $eventHelper) {}
+    public function __construct(private EventHelper $eventHelper) {}
 
     public function invoke(PostProcessEvent $event): void
     {

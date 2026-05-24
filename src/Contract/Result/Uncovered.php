@@ -11,11 +11,11 @@ use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
  *
  * Represents a dependency that is NOT covered by the current configuration.
  */
-final class Uncovered implements RuleInterface
+final readonly class Uncovered implements RuleInterface
 {
     public function __construct(
-        private readonly DependencyInterface $dependency,
-        public readonly string $layer,
+        private DependencyInterface $dependency,
+        public string $layer,
     ) {}
 
     public function getDependency(): DependencyInterface

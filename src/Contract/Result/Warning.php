@@ -12,9 +12,9 @@ use Stringable;
  * Represents a situation that, while valid, is not recommended. This can be
  * used to guide the end-user to a more proper solution.
  */
-final class Warning implements Stringable
+final readonly class Warning implements Stringable
 {
-    public function __construct(private readonly string $message) {}
+    public function __construct(private string $message) {}
 
     /**
      * @param string[] $layerNames

@@ -9,9 +9,9 @@ use Stringable;
 /**
  * @psalm-immutable
  */
-final class Error implements Stringable
+final readonly class Error implements Stringable
 {
-    public function __construct(private readonly string $message) {}
+    public function __construct(private string $message) {}
 
     public function __toString(): string
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers;
 
-final class ConfigurationCodeclimate
+final readonly class ConfigurationCodeclimate
 {
     /**
      * @param array{severity?: array{failure?: string, skipped?: string, uncovered?: string}} $array
@@ -17,7 +17,7 @@ final class ConfigurationCodeclimate
     /**
      * @param array{failure?: string, skipped?: string, uncovered?: string} $severityMap
      */
-    private function __construct(private readonly array $severityMap) {}
+    private function __construct(private array $severityMap) {}
 
     public function getSeverity(string $key): ?string
     {

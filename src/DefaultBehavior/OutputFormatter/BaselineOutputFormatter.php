@@ -16,12 +16,12 @@ use function array_values;
 use function ksort;
 use function sort;
 
-final class BaselineOutputFormatter implements OutputFormatterInterface
+final readonly class BaselineOutputFormatter implements OutputFormatterInterface
 {
     private const DEFAULT_PATH = './deptrac.baseline.yaml';
 
     public function __construct(
-        private readonly BaselineMapperInterface $baselineMapper,
+        private BaselineMapperInterface $baselineMapper,
     ) {}
 
     public static function getName(): string
