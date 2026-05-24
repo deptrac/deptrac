@@ -84,7 +84,39 @@ final class ClassMethodExtractor implements NikicReferenceExtractorInterface, PH
         }
 
         $classReflection = $scope->getClassReflection();
-        assert(null !== $classReflection);
+        if (null === $classReflection) {
+            // Traits have no class reflection in scope — PHPStan's resolved
+            // PHPDoc is unreliable without a class context. Fall back to the
+            // nikic-based PHPDoc parsing which is always stable.
+            $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplateLikes());
+            if (null === $resolved) {
+                return;
+            }
+            [$docNode, $templateTypes] = $resolved;
+
+            foreach ($docNode->getParamTagValues() as $tag) {
+                $types = $this->typeResolver->resolvePHPStanDocParserType($tag->type, new TypeScope(''), $templateTypes);
+                foreach ($types as $type) {
+                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->getStartLine(), DependencyType::PARAMETER);
+                }
+            }
+
+            foreach ($docNode->getReturnTagValues() as $tag) {
+                $types = $this->typeResolver->resolvePHPStanDocParserType($tag->type, new TypeScope(''), $templateTypes);
+                foreach ($types as $type) {
+                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->getStartLine(), DependencyType::RETURN_TYPE);
+                }
+            }
+
+            foreach ($docNode->getThrowsTagValues() as $tag) {
+                $types = $this->typeResolver->resolvePHPStanDocParserType($tag->type, new TypeScope(''), $templateTypes);
+                foreach ($types as $type) {
+                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->getStartLine(), DependencyType::THROW);
+                }
+            }
+
+            return;
+        }
         $methodVariant = $classReflection
             ->getMethod($node->name->name, $scope)
             ->getVariants()[0]
