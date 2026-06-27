@@ -75,28 +75,6 @@ final class Application extends BaseApplication
     }
 
     /**
-     * Resolve the configuration file from the raw input tokens.
-     *
-     * This reads directly from the tokens rather than from a bound option
-     * because binding in {@see self::doRun()} is only partial (command options
-     * are not known yet) and aborts on the first unknown option. Reading the
-     * bound option would therefore miss `--config-file` whenever another option
-     * precedes it on the command line. This mirrors how `--cache-file` and
-     * `--no-cache` are read.
-     *
-     * @internal
-     */
-    public static function determineConfigFile(InputInterface $input, string $currentWorkingDirectory): string
-    {
-        /** @var string|numeric|false $configFile */
-        $configFile = $input->getParameterOption(['--config-file', '-c'], false);
-
-        return false !== $configFile
-            ? (string) $configFile
-            : $currentWorkingDirectory.DIRECTORY_SEPARATOR.'deptrac.yaml';
-    }
-
-    /**
      * @throws Throwable
      */
     public function doRun(InputInterface $input, OutputInterface $output): int
@@ -115,7 +93,7 @@ final class Application extends BaseApplication
             return parent::doRun($input, $output);
         }
 
-        $config = self::determineConfigFile($input, $currentWorkingDirectory);
+        $config = (new ConfigFileResolver())->resolve($input, $currentWorkingDirectory);
 
         /** @var ?string $cache */
         $cache = $input->getParameterOption('--cache-file', null);
