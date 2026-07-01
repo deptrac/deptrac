@@ -1,0 +1,13 @@
+deptrac:
+  paths: ["./ModelController2"]
+  exclude_files: []
+  layers:
+    - name: Models
+      collectors:
+        - type: classLike
+          value: .*MyNamespace\\Models\\.*
+    - name: Controller
+      collectors:
+        - type: classLike
+          value: .*MyNamespace\\.*Controller.*
+  ruleset: []

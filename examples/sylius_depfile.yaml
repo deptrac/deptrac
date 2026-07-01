@@ -1,0 +1,303 @@
+deptrac:
+  paths:
+    - /tmp/c1023228a
+  exclude_files:
+    - .*test.*
+  layers:
+    - name: Component_Addressing
+      collectors:
+        - type: classLike
+          value: .*Component\\Addressing.*
+    - name: Component_Archetype
+      collectors:
+        - type: classLike
+          value: .*Component\\Archetype.*
+    - name: Component_Association
+      collectors:
+        - type: classLike
+          value: .*Component\\Association.*
+    - name: Component_Attribute
+      collectors:
+        - type: classLike
+          value: .*Component\\Attribute.*
+    - name: Component_Cart
+      collectors:
+        - type: classLike
+          value: .*Component\\Cart.*
+    - name: Component_Channel
+      collectors:
+        - type: classLike
+          value: .*Component\\Channel.*
+    - name: Component_Contact
+      collectors:
+        - type: classLike
+          value: .*Component\\Contact.*
+    - name: Component_Core
+      collectors:
+        - type: classLike
+          value: .*Component\\Core.*
+    - name: Component_Currency
+      collectors:
+        - type: classLike
+          value: .*Component\\Currency.*
+    - name: Component_Inventory
+      collectors:
+        - type: classLike
+          value: .*Component\\Inventory.*
+    - name: Component_Locale
+      collectors:
+        - type: classLike
+          value: .*Component\\Locale.*
+    - name: Component_Mailer
+      collectors:
+        - type: classLike
+          value: .*Component\\Mailer.*
+    - name: Component_Metadata
+      collectors:
+        - type: classLike
+          value: .*Component\\Metadata.*
+    - name: Component_Order
+      collectors:
+        - type: classLike
+          value: .*Component\\Order.*
+    - name: Component_Originator
+      collectors:
+        - type: classLike
+          value: .*Component\\Originator.*
+    - name: Component_Payment
+      collectors:
+        - type: classLike
+          value: .*Component\\Payment.*
+    - name: Component_Pricing
+      collectors:
+        - type: classLike
+          value: .*Component\\Pricingg.*
+    - name: Component_Product
+      collectors:
+        - type: classLike
+          value: .*Component\\Product.*
+    - name: Component_Promotion
+      collectors:
+        - type: classLike
+          value: .*Component\\Promotion.*
+    - name: Component_Rbac
+      collectors:
+        - type: classLike
+          value: .*Component\\Rbac.*
+    - name: Component_Registry
+      collectors:
+        - type: classLike
+          value: .*Component\\Registry.*
+    - name: Component_Report
+      collectors:
+        - type: classLike
+          value: .*Component\\Report.*
+    - name: Component_Resource
+      collectors:
+        - type: classLike
+          value: .*Component\\Resource.*
+    - name: Component_Review
+      collectors:
+        - type: classLike
+          value: .*Component\\Review.*
+    - name: Component_Sequence
+      collectors:
+        - type: classLike
+          value: .*Component\\Sequence.*
+    - name: Component_Shipping
+      collectors:
+        - type: classLike
+          value: .*Component\\Shipping.*
+    - name: Component_Storage
+      collectors:
+        - type: classLike
+          value: .*Component\\Storage.*
+    - name: Component_Taxation
+      collectors:
+        - type: classLike
+          value: .*Component\\Taxation.*
+    - name: Component_Taxonomy
+      collectors:
+        - type: classLike
+          value: .*Component\\Taxonomy.*
+    - name: Component_Translation
+      collectors:
+        - type: classLike
+          value: .*Component\\Translation.*
+    - name: Component_User
+      collectors:
+        - type: classLike
+          value: .*Component\\User.*
+    - name: Component_Variation
+      collectors:
+        - type: classLike
+          value: .*Component\\Variation.*
+    - name: AddressingBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\AddressingBundle.*
+    - name: AdminBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\AdminBundle.*
+    - name: ApiBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ApiBundle.*
+    - name: ArchetypeBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ArchetypeBundle.*
+    - name: AssociationBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\AssociationBundle.*
+    - name: AttributeBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\AttributeBundle.*
+    - name: CartBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\CartBundle.*
+    - name: ChannelBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ChannelBundle.*
+    - name: ContactBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ContactBundle.*
+    - name: ContentBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ContentBundle.*
+    - name: CoreBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\CoreBundle.*
+    - name: CurrencyBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\CurrencyBundle.*
+    - name: FixturesBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\FixturesBundle.*
+    - name: FlowBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\FlowBundle.*
+    - name: InstallerBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\InstallerBundle.*
+    - name: InventoryBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\InventoryBundle.*
+    - name: LocaleBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\LocaleBundle.*
+    - name: MailerBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\MailerBundle.*
+    - name: MetadataBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\MetadataBundle.*
+    - name: MoneyBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\MoneyBundle.*
+    - name: OrderBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\OrderBundle.*
+    - name: PaymentBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\PaymentBundle.*
+    - name: PayumBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\PayumBundle.*
+    - name: PricingBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\PricingBundle.*
+    - name: ProductBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ProductBundle.*
+    - name: PromotionBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\PromotionBundle.*
+    - name: RbacBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\RbacBundle.*
+    - name: ReportBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ReportBundle.*
+    - name: ResourceBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ResourceBundle.*
+    - name: ReviewBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ReviewBundle.*
+    - name: SearchBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\SearchBundle.*
+    - name: SequenceBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\SequenceBundle.*
+    - name: SettingsBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\SettingsBundle.*
+    - name: ShippingBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ShippingBundle.*
+    - name: TaxationBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\TaxationBundle.*
+    - name: TaxonomyBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\TaxonomyBundle.*
+    - name: ThemeBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\ThemeBundle.*
+    - name: TranslationBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\TranslationBundle.*
+    - name: UiBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\UiBundle.*
+    - name: UserBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\UserBundle.*
+    - name: VariationBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\VariationBundle.*
+    - name: WebBundle
+      collectors:
+        - type: classLike
+          value: .*Bundle\\WebBundle.*
+  ruleset: []

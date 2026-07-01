@@ -1,0 +1,24 @@
+deptrac:
+  paths: ["./Layer1/", "./Layer2/"]
+  exclude_files: []
+  layers:
+    - name: Controller
+      collectors:
+        - type: classLike
+          value: .*Controller.*
+    - name: Layer1
+      collectors:
+        - type: directory
+          value: ./examples/Layer1/.*
+    - name: Layer2
+      collectors:
+        - type: directory
+          value: ./examples/Layer2/.*
+  ruleset:
+    Controller:
+      - Layer1
+    Layer1:
+      - Layer2
+  skip_violations:
+    examples\Layer2\SomeOtherClass:
+      - examples\Layer1\SomeClass

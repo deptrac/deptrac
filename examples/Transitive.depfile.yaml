@@ -1,0 +1,29 @@
+deptrac:
+  paths: ["./Transitive"]
+  exclude_files: []
+  layers:
+    - name: Foo
+      collectors:
+        - type: classLike
+          value: .*\\Foo$
+    - name: Baz
+      collectors:
+        - type: classLike
+          value: .*\\Baz$
+    - name: Bar
+      collectors:
+        - type: classLike
+          value: .*\\Bar$
+    - name: Bat
+      collectors:
+        - type: classLike
+          value: .*\\Bat$
+  ruleset:
+    Foo:
+      - Bar
+    Bar: ~
+    Baz:
+      - +Foo
+    Bat:
+      - Foo
+      - Bar
