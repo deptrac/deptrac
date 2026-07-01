@@ -93,11 +93,7 @@ final class Application extends BaseApplication
             return parent::doRun($input, $output);
         }
 
-        /** @var string|numeric|null $configFile */
-        $configFile = $input->getOption('config-file');
-        $config = $input->hasOption('config-file')
-            ? (string) $configFile
-            : $currentWorkingDirectory.DIRECTORY_SEPARATOR.'deptrac.yaml';
+        $config = (new ConfigFileResolver())->resolve($input, $currentWorkingDirectory);
 
         /** @var ?string $cache */
         $cache = $input->getParameterOption('--cache-file', null);
