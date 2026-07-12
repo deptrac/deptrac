@@ -9,7 +9,7 @@ CONTAINER = docker compose
 
 COMPOSER = composer
 COMPOSER_DEPENDENCY_ANALYSER = ./tools/dependency-analyser/bin/composer-dependency-analyser
-PHP_CS_FIXER = ./tools/php-cs-fixer/bin/php-cs-fixer
+MAGO = ./vendor/bin/mago
 PHPSTAN = ./tools/phpstan/bin/phpstan
 PHPUNIT = ./tools/phpunit/bin/phpunit -c .
 INFECTION = ./tools/infection/bin/roave-infection-static-analysis-plugin
@@ -38,10 +38,10 @@ infection: install ## Runs mutation tests
 	$(INFECTION) --threads=$(shell nproc || sysctl -n hw.ncpu || 1) --test-framework-options='--testsuite=Tests' --only-covered --min-msi=85 --psalm-config=psalm.xml
 
 php-cs-check: install ## Checks for code style violation
-	$(PHP_CS_FIXER) fix --diff --using-cache=no --verbose --dry-run
+	$(MAGO) format --check
 
-cs: install ## Fixes any found code style violation
-	$(PHP_CS_FIXER) fix
+php-cs-fix: install ## Fixes any found code style violation
+	$(MAGO) format
 
 phpstan: install ## Performs static code analysis using phpstan
 	$(PHPSTAN) analyse

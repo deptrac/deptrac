@@ -1,0 +1,15 @@
+#:schema https://mago.carthage.software/latest/schema.json
+version = "1"
+php-version = "8.2"
+
+[source]
+paths = ["config", "src", "tests", "internal/deptrac"]
+excludes = [
+    "**/Fixtures/**",
+]
+
+[formatter]
+preset = "psr-12"
+excludes = [
+    "**/Fixtures/**",
+]

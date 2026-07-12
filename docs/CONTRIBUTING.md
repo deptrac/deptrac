@@ -72,7 +72,7 @@ problem.
 ### Code style
 
 You can check if your code changes are in line with our coding guidelines using
-php-cs-fixer.
+Mago.
 
 ```
 make php-cs-check
