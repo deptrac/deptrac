@@ -33,7 +33,7 @@ final class ConfigFileResolverTest extends TestCase
     {
         self::assertSame(
             $expected,
-            $this->resolver->resolve(new ArgvInput($argv))
+            (new ConfigFileResolver(''))->resolve(new ArgvInput($argv))
         );
     }
 

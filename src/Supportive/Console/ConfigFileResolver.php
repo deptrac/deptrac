@@ -17,10 +17,19 @@ final class ConfigFileResolver
     ];
 
     public function __construct(
-        private string $currentDir = '',
+        private string $currentDir,
     ) {}
 
     /**
+     * Resolve the configuration file from the raw input tokens.
+     *
+     * This reads directly from the tokens rather than from a bound option
+     * because the input binding in {@see Application::doRun()} is only partial
+     * (command options are not known yet) and aborts on the first unknown
+     * option. Reading the bound option would therefore miss `--config-file`
+     * whenever another option precedes it on the command line. This mirrors how
+     * `--cache-file` and `--no-cache` are read.
+     *
      * @throws CannotLoadConfiguration When no config file is found
      */
     public function resolve(InputInterface $input): string
