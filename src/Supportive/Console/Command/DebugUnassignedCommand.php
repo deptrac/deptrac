@@ -20,8 +20,9 @@ class DebugUnassignedCommand extends Command
 {
     public const EXIT_WITH_UNASSIGNED_TOKENS = 2;
 
-    public function __construct(private readonly DebugUnassignedRunner $runner)
-    {
+    public function __construct(
+        private readonly DebugUnassignedRunner $runner,
+    ) {
         parent::__construct();
     }
 

@@ -14,6 +14,7 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
 {
     /** @var array{direction: string, hidden_layers?: string[], groups: array<string, string[]>, default_node_options: array<string, string>} */
     private array $config;
+
     private const GRAPH_TYPE = 'flowchart %s;';
 
     private const GRAPH_END = '  end;';
@@ -58,12 +59,14 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
                 if ($this->isLayerHidden($layer)) {
                     continue;
                 }
+
                 $layerBuffer .= sprintf(self::LAYER.PHP_EOL, $layer);
             }
 
             if ('' === $layerBuffer) {
                 continue;
             }
+
             $buffer .= \sprintf(self::SUBGRAPH.PHP_EOL, $subGraphName);
             $buffer .= $layerBuffer;
             $buffer .= self::GRAPH_END.PHP_EOL;
@@ -77,6 +80,7 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
             if ($this->isLayerHidden($violation->getDependerLayer(), $violation->getDependentLayer())) {
                 continue;
             }
+
             if (!isset($violationsLinks[$violation->getDependerLayer()][$violation->getDependentLayer()])) {
                 $violationsLinks[$violation->getDependerLayer()][$violation->getDependentLayer()] = 1;
             } else {
@@ -90,7 +94,12 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
             foreach ($layers as $dependentLayer => $count) {
                 $renderedDependerNode = self::renderNode($dependerLayer, $compiledNodeOptions);
                 $renderedDependentNode = self::renderNode($dependentLayer, $compiledNodeOptions);
-                $buffer .= sprintf(self::GRAPH_NODE_FORMAT.PHP_EOL, $renderedDependerNode, $count, $renderedDependentNode);
+                $buffer .= sprintf(
+                    self::GRAPH_NODE_FORMAT.PHP_EOL,
+                    $renderedDependerNode,
+                    $count,
+                    $renderedDependentNode,
+                );
                 $violationGraphLinks[] = $linkCount;
                 ++$linkCount;
             }
@@ -101,7 +110,12 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
                 if (!isset($violationsLinks[$dependerLayer][$dependentLayer])) {
                     $renderedDependerNode = self::renderNode($dependerLayer, $compiledNodeOptions);
                     $renderedDependentNode = self::renderNode($dependentLayer, $compiledNodeOptions);
-                    $buffer .= sprintf(self::GRAPH_NODE_FORMAT.PHP_EOL, $renderedDependerNode, $count, $renderedDependentNode);
+                    $buffer .= sprintf(
+                        self::GRAPH_NODE_FORMAT.PHP_EOL,
+                        $renderedDependerNode,
+                        $count,
+                        $renderedDependentNode,
+                    );
                 }
             }
         }
@@ -128,6 +142,7 @@ final class MermaidJSOutputFormatter implements OutputFormatterInterface
             if ($this->isLayerHidden($rule->getDependerLayer(), $rule->getDependentLayer())) {
                 continue;
             }
+
             if (!isset($graph[$rule->getDependerLayer()][$rule->getDependentLayer()])) {
                 $graph[$rule->getDependerLayer()][$rule->getDependentLayer()] = 1;
             } else {

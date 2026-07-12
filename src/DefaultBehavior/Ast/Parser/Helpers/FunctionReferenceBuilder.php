@@ -21,7 +21,7 @@ final class FunctionReferenceBuilder extends ReferenceBuilder
     ) {
         parent::__construct(
             $tokenTemplates,
-            $filepath
+            $filepath,
         );
     }
 
@@ -40,7 +40,7 @@ final class FunctionReferenceBuilder extends ReferenceBuilder
         return new FunctionReference(
             FunctionToken::fromFQCN($this->functionName),
             $this->dependencies,
-            $this->tags
+            $this->tags,
         );
     }
 }

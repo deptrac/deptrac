@@ -49,12 +49,17 @@ class AnalyseCommand extends Command
             InputOption::VALUE_OPTIONAL,
             sprintf(
                 'Format in which to print the result of the analysis. Possible: ["%s"]',
-                implode('", "', $this->formatterProvider->getKnownFormatters())
-            )
+                implode('", "', $this->formatterProvider->getKnownFormatters()),
+            ),
         );
         $this->addOption('output', 'o', InputOption::VALUE_OPTIONAL, 'Output file path for formatter (if applicable)');
         $this->addOption('no-progress', null, InputOption::VALUE_NONE, 'Do not show progress bar');
-        $this->addOption(self::OPTION_FAIL_ON_UNCOVERED, null, InputOption::VALUE_NONE, 'Fails if any uncovered dependency is found');
+        $this->addOption(
+            self::OPTION_FAIL_ON_UNCOVERED,
+            null,
+            InputOption::VALUE_NONE,
+            'Fails if any uncovered dependency is found',
+        );
         $this->addOption(self::OPTION_REPORT_UNCOVERED, null, InputOption::VALUE_NONE, 'Report uncovered dependencies');
         $this->addOption(self::OPTION_REPORT_SKIPPED, null, InputOption::VALUE_NONE, 'Report skipped violations');
     }
@@ -77,7 +82,7 @@ class AnalyseCommand extends Command
             null === $output ? null : (string) $output,
             (bool) $input->getOption(self::OPTION_REPORT_SKIPPED),
             (bool) $input->getOption(self::OPTION_REPORT_UNCOVERED),
-            (bool) $input->getOption(self::OPTION_FAIL_ON_UNCOVERED)
+            (bool) $input->getOption(self::OPTION_FAIL_ON_UNCOVERED),
         );
 
         $this->dispatcher->addSubscriber(new ConsoleSubscriber($symfonyOutput, new Stopwatch()));
@@ -96,6 +101,8 @@ class AnalyseCommand extends Command
 
     public static function getDefaultFormatter(): string
     {
-        return false !== (new Env())->get('GITHUB_ACTIONS') ? GithubActionsOutputFormatter::getName() : TableOutputFormatter::getName();
+        return false !== (new Env())->get('GITHUB_ACTIONS')
+            ? GithubActionsOutputFormatter::getName()
+            : TableOutputFormatter::getName();
     }
 }

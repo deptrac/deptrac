@@ -22,7 +22,9 @@ use PHPStan\Analyser\MutatingScope;
  */
 final class NewExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
-    public function __construct(private readonly TypeResolverInterface $typeResolver) {}
+    public function __construct(
+        private readonly TypeResolverInterface $typeResolver,
+    ) {}
 
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
     {
@@ -31,7 +33,11 @@ final class NewExtractor implements NikicReferenceExtractorInterface, PHPStanRef
         }
 
         foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, $node->class) as $classLikeName) {
-            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $node->class->getLine(), DependencyType::NEW);
+            $referenceBuilder->dependency(
+                ClassLikeToken::fromFQCN($classLikeName),
+                $node->class->getLine(),
+                DependencyType::NEW,
+            );
         }
     }
 
@@ -49,6 +55,10 @@ final class NewExtractor implements NikicReferenceExtractorInterface, PHPStanRef
             return;
         }
 
-        $referenceBuilder->dependency(ClassLikeToken::fromFQCN($scope->resolveName($node->class)), $node->class->getLine(), DependencyType::NEW);
+        $referenceBuilder->dependency(
+            ClassLikeToken::fromFQCN($scope->resolveName($node->class)),
+            $node->class->getLine(),
+            DependencyType::NEW,
+        );
     }
 }

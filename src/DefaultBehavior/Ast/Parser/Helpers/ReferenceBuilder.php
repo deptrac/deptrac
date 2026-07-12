@@ -24,7 +24,10 @@ abstract class ReferenceBuilder implements ReferenceBuilderInterface
     /**
      * @param list<string> $tokenTemplateLikes
      */
-    protected function __construct(protected array $tokenTemplateLikes, protected string $filepath) {}
+    protected function __construct(
+        protected array $tokenTemplateLikes,
+        protected string $filepath,
+    ) {}
 
     final public function getTokenTemplateLikes(): array
     {

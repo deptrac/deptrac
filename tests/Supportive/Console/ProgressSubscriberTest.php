@@ -29,7 +29,7 @@ final class ProgressSubscriberTest extends TestCase
                 PostCreateAstMapEvent::class => ['onPostCreateAstMapEvent', 1],
                 AstFileAnalysedEvent::class => 'onAstFileAnalysedEvent',
             ],
-            ProgressSubscriber::getSubscribedEvents()
+            ProgressSubscriber::getSubscribedEvents(),
         );
     }
 
@@ -42,8 +42,8 @@ final class ProgressSubscriberTest extends TestCase
         $subscriber->onAstFileAnalysedEvent(new AstFileAnalysedEvent('foo.php'));
         $subscriber->onPostCreateAstMapEvent(new PostCreateAstMapEvent());
 
-        $expectedOutput = " 0/1 [{$this->getEmptyBarOutput()}]   0%".PHP_EOL.
-            " 1/1 [{$this->getBarOutput()}] 100%".PHP_EOL.PHP_EOL;
+        $expectedOutput =
+            " 0/1 [{$this->getEmptyBarOutput()}]   0%".PHP_EOL." 1/1 [{$this->getBarOutput()}] 100%".PHP_EOL.PHP_EOL;
 
         self::assertSame($expectedOutput, $bufferedOutput->fetch());
     }
@@ -56,8 +56,8 @@ final class ProgressSubscriberTest extends TestCase
         $subscriber->onPreCreateAstMapEvent(new PreCreateAstMapEvent(1));
         $subscriber->onPostCreateAstMapEvent(new PostCreateAstMapEvent());
 
-        $expectedOutput = " 0/1 [{$this->getEmptyBarOutput()}]   0%".PHP_EOL.
-            " 1/1 [{$this->getBarOutput()}] 100%".PHP_EOL.PHP_EOL;
+        $expectedOutput =
+            " 0/1 [{$this->getEmptyBarOutput()}]   0%".PHP_EOL." 1/1 [{$this->getBarOutput()}] 100%".PHP_EOL.PHP_EOL;
 
         self::assertSame($expectedOutput, $formatter->fetch());
     }
@@ -66,7 +66,7 @@ final class ProgressSubscriberTest extends TestCase
     {
         return new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
     }
 
@@ -74,7 +74,8 @@ final class ProgressSubscriberTest extends TestCase
     {
         $progressChar = $this->getProgressBar()->getProgressCharacter();
 
-        return $progressChar.str_repeat($this->getProgressBar()->getEmptyBarCharacter(), '' === $progressChar ? 28 : 27);
+        return $progressChar
+        .str_repeat($this->getProgressBar()->getEmptyBarCharacter(), '' === $progressChar ? 28 : 27);
     }
 
     private function getBarOutput(): string

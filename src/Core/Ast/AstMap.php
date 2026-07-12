@@ -148,6 +148,7 @@ class AstMap implements AstMapInterface
         foreach ($astFileReference->classLikeReferences as $astClassReference) {
             $this->addClassLike($astClassReference);
         }
+
         foreach ($astFileReference->functionReferences as $astFunctionReference) {
             $this->addFunction($astFunctionReference);
         }

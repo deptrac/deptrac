@@ -37,17 +37,27 @@ final class ClassMethodExtractor implements NikicReferenceExtractorInterface, PH
 
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
     {
-        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplateLikes());
+        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope(
+            $node,
+            $this->lexer,
+            $this->docParser,
+            $referenceBuilder->getTokenTemplateLikes(),
+        );
         if (null === $resolved) {
             return;
         }
+
         [$docNode, $templateTypes] = $resolved;
 
         foreach ($docNode->getParamTagValues() as $tag) {
             $types = $this->typeResolver->resolvePHPStanDocParserType($tag->type, $typeScope, $templateTypes);
 
             foreach ($types as $type) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->getStartLine(), DependencyType::PARAMETER);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($type),
+                    $node->getStartLine(),
+                    DependencyType::PARAMETER,
+                );
             }
         }
 
@@ -55,7 +65,11 @@ final class ClassMethodExtractor implements NikicReferenceExtractorInterface, PH
             $types = $this->typeResolver->resolvePHPStanDocParserType($tag->type, $typeScope, $templateTypes);
 
             foreach ($types as $type) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->getStartLine(), DependencyType::RETURN_TYPE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($type),
+                    $node->getStartLine(),
+                    DependencyType::RETURN_TYPE,
+                );
             }
         }
 
@@ -63,7 +77,11 @@ final class ClassMethodExtractor implements NikicReferenceExtractorInterface, PH
             $types = $this->typeResolver->resolvePHPStanDocParserType($tag->type, $typeScope, $templateTypes);
 
             foreach ($types as $type) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->getStartLine(), DependencyType::THROW);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($type),
+                    $node->getStartLine(),
+                    DependencyType::THROW,
+                );
             }
         }
     }
@@ -87,21 +105,32 @@ final class ClassMethodExtractor implements NikicReferenceExtractorInterface, PH
         assert(null !== $classReflection);
         $methodVariant = $classReflection
             ->getMethod($node->name->name, $scope)
-            ->getVariants()[0]
-        ;
+            ->getVariants()[0];
 
         foreach ($methodVariant->getParameters() as $tag) {
             foreach ($tag->getType()->getReferencedClasses() as $referencedClass) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $node->getStartLine(), DependencyType::PARAMETER);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($referencedClass),
+                    $node->getStartLine(),
+                    DependencyType::PARAMETER,
+                );
             }
         }
 
         foreach ($methodVariant->getPhpDocReturnType()->getReferencedClasses() as $referencedClass) {
-            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $node->getStartLine(), DependencyType::RETURN_TYPE);
+            $referenceBuilder->dependency(
+                ClassLikeToken::fromFQCN($referencedClass),
+                $node->getStartLine(),
+                DependencyType::RETURN_TYPE,
+            );
         }
 
         foreach ($resolvedPhpDoc->getThrowsTag()?->getType()->getReferencedClasses() ?? [] as $referencedClass) {
-            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $node->getStartLine(), DependencyType::THROW);
+            $referenceBuilder->dependency(
+                ClassLikeToken::fromFQCN($referencedClass),
+                $node->getStartLine(),
+                DependencyType::THROW,
+            );
         }
     }
 }

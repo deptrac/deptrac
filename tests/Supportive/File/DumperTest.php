@@ -51,8 +51,12 @@ final class DumperTest extends TestCase
     {
         $tempDir = sprintf('%s/%s', rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR), uniqid());
         if (!mkdir($tempDir) || !chmod($tempDir, 0444)) {
-            $this->markTestSkipped(sprintf('Skipping test. Could not create readonly temporary directory "%s". Please check permissions', $tempDir));
+            $this->markTestSkipped(sprintf(
+                'Skipping test. Could not create readonly temporary directory "%s". Please check permissions',
+                $tempDir,
+            ));
         }
+
         $tempFile = new SplFileInfo($tempDir.DIRECTORY_SEPARATOR.'deptrac.yaml');
 
         $this->expectException(FileNotWritableException::class);
@@ -66,12 +70,17 @@ final class DumperTest extends TestCase
         if (false === $tempFilename) {
             $this->markTestSkipped('Skipping test. Could not create temporary file. Please check permissions');
         }
+
         $tempFile = new SplFileInfo($tempFilename);
         unlink($tempFile->getPathname());
         $tempDir = $tempFile->getPath();
         if (!is_writable($tempDir)) {
-            $this->markTestSkipped(sprintf('Skipping test. Can not write to temporary directory "%s". Please check your permissions.', $tempDir));
+            $this->markTestSkipped(sprintf(
+                'Skipping test. Can not write to temporary directory "%s". Please check your permissions.',
+                $tempDir,
+            ));
         }
+
         if ($tempFile->isFile()) {
             $this->fail(sprintf('Temporary file "%s" already exists.', $tempFile->getPathname()));
         }

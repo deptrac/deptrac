@@ -36,17 +36,17 @@ final class ClassExtractorTest extends TestCase
         $dependencies = $astClassReferences[1]->dependencies;
         self::assertSame(
             ClassAttribute::class,
-            $dependencies[0]->token->toString()
+            $dependencies[0]->token->toString(),
         );
         self::assertSame(DependencyType::ATTRIBUTE, $dependencies[0]->context->dependencyType);
         self::assertSame(
             ClassB::class,
-            $dependencies[1]->token->toString()
+            $dependencies[1]->token->toString(),
         );
         self::assertSame(DependencyType::VARIABLE, $dependencies[1]->context->dependencyType);
         self::assertSame(
             'Throwable',
-            $dependencies[2]->token->toString()
+            $dependencies[2]->token->toString(),
         );
         self::assertSame(DependencyType::CATCH, $dependencies[2]->context->dependencyType);
     }
@@ -73,7 +73,9 @@ final class ClassExtractorTest extends TestCase
         ];
 
         return new NikicPhpParser(
-            (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
+            (new ParserFactory())->createForNewestSupportedVersion(),
+            $cache,
+            $extractors,
         );
     }
 

@@ -67,28 +67,36 @@ final class JUnitOutputFormatterTest extends TestCase
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
                         ClassLikeToken::fromFQCN('ClassB'),
-                        new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
+                        new Dependency(
+                            $originalA,
+                            $originalB,
+                            new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER),
+                        ),
                         (new AstInherit(
-                            $classInheritA, new FileOccurrence('foo.php', 3),
-                            AstInheritType::EXTENDS
+                            $classInheritA,
+                            new FileOccurrence('foo.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath([
                             new AstInherit(
-                                $classInheritB, new FileOccurrence('foo.php', 4),
-                                AstInheritType::EXTENDS
+                                $classInheritB,
+                                new FileOccurrence('foo.php', 4),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                $classInheritC, new FileOccurrence('foo.php', 5),
-                                AstInheritType::EXTENDS
+                                $classInheritC,
+                                new FileOccurrence('foo.php', 5),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                $classInheritD, new FileOccurrence('foo.php', 6),
-                                AstInheritType::EXTENDS
+                                $classInheritD,
+                                new FileOccurrence('foo.php', 6),
+                                AstInheritType::EXTENDS,
                             ),
-                        ])
+                        ]),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'expected-junit-report_1.xml',
@@ -97,10 +105,14 @@ final class JUnitOutputFormatterTest extends TestCase
         yield [
             [
                 new Violation(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'expected-junit-report_2.xml',
@@ -109,7 +121,11 @@ final class JUnitOutputFormatterTest extends TestCase
         yield [
             [
                 new Allowed(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
                     'LayerB',
                 ),
@@ -123,54 +139,70 @@ final class JUnitOutputFormatterTest extends TestCase
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
                         ClassLikeToken::fromFQCN('ClassB'),
-                        new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
+                        new Dependency(
+                            $originalA,
+                            $originalB,
+                            new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER),
+                        ),
                         (new AstInherit(
-                            $classInheritA, new FileOccurrence('foo.php', 3),
-                            AstInheritType::EXTENDS
+                            $classInheritA,
+                            new FileOccurrence('foo.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath([
                             new AstInherit(
-                                $classInheritB, new FileOccurrence('foo.php', 4),
-                                AstInheritType::EXTENDS
+                                $classInheritB,
+                                new FileOccurrence('foo.php', 4),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                $classInheritC, new FileOccurrence('foo.php', 5),
-                                AstInheritType::EXTENDS
+                                $classInheritC,
+                                new FileOccurrence('foo.php', 5),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                $classInheritD, new FileOccurrence('foo.php', 6),
-                                AstInheritType::EXTENDS
+                                $classInheritD,
+                                new FileOccurrence('foo.php', 6),
+                                AstInheritType::EXTENDS,
                             ),
-                        ])
+                        ]),
                     ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
                 new Violation(
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassC'),
                         ClassLikeToken::fromFQCN('ClassD'),
-                        new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
+                        new Dependency(
+                            $originalA,
+                            $originalB,
+                            new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER),
+                        ),
                         (new AstInherit(
-                            $classInheritA, new FileOccurrence('foo.php', 3),
-                            AstInheritType::EXTENDS
+                            $classInheritA,
+                            new FileOccurrence('foo.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath([
                             new AstInherit(
-                                $classInheritB, new FileOccurrence('foo.php', 4),
-                                AstInheritType::EXTENDS
+                                $classInheritB,
+                                new FileOccurrence('foo.php', 4),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                $classInheritC, new FileOccurrence('foo.php', 5),
-                                AstInheritType::EXTENDS
+                                $classInheritC,
+                                new FileOccurrence('foo.php', 5),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                $classInheritD, new FileOccurrence('foo.php', 6),
-                                AstInheritType::EXTENDS
+                                $classInheritD,
+                                new FileOccurrence('foo.php', 6),
+                                AstInheritType::EXTENDS,
                             ),
-                        ])
+                        ]),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'expected-junit-report-with-skipped-violations.xml',
@@ -179,8 +211,12 @@ final class JUnitOutputFormatterTest extends TestCase
         yield [
             [
                 new Uncovered(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
-                    'test'
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER),
+                    ),
+                    'test',
                 ),
             ],
             'expected-junit-report-with-uncovered.xml',
@@ -196,16 +232,24 @@ final class JUnitOutputFormatterTest extends TestCase
         yield [
             [
                 new Violation(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
                 new Violation(
-                    new Dependency($originalB, $originalA, new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalB,
+                        $originalA,
+                        new DependencyContext(new FileOccurrence('foo.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerB',
                     'LayerA',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'expected-junit-report_4.xml',
@@ -231,8 +275,7 @@ final class JUnitOutputFormatterTest extends TestCase
         $formatter->finish(
             OutputResult::fromAnalysisResult($analysisResult),
             $this->createSymfonyOutput(new BufferedOutput()),
-            new OutputFormatterInput(__DIR__.'/data/'.self::$actual_junit_report_file,
-                true, true, true)
+            new OutputFormatterInput(__DIR__.'/data/'.self::$actual_junit_report_file, true, true, true),
         );
 
         libxml_use_internal_errors(true);
@@ -241,18 +284,26 @@ final class JUnitOutputFormatterTest extends TestCase
 
         self::assertTrue($loaded);
 
-        self::assertTrue($reader->schemaValidate(__DIR__.'/data/junit-schema-ant.xsd'),
-            implode('', array_map(static fn ($e) => $e->line.': '.$e->message, libxml_get_errors())));
-        self::assertTrue($reader->schemaValidate(__DIR__.'/data/junit-schema-jenkins.xsd'),
-            implode('', array_map(static fn ($e) => $e->message, libxml_get_errors())));
-        self::assertTrue($reader->schemaValidate(__DIR__.'/data/junit-schema-llg.xsd'),
-            implode('', array_map(static fn ($e) => $e->message, libxml_get_errors())));
-        self::assertTrue($reader->schemaValidate(__DIR__.'/data/junit-schema-maven.xsd'),
-            implode('', array_map(static fn ($e) => $e->message, libxml_get_errors())));
+        self::assertTrue(
+            $reader->schemaValidate(__DIR__.'/data/junit-schema-ant.xsd'),
+            implode('', array_map(static fn ($e) => $e->line.': '.$e->message, libxml_get_errors())),
+        );
+        self::assertTrue(
+            $reader->schemaValidate(__DIR__.'/data/junit-schema-jenkins.xsd'),
+            implode('', array_map(static fn ($e) => $e->message, libxml_get_errors())),
+        );
+        self::assertTrue(
+            $reader->schemaValidate(__DIR__.'/data/junit-schema-llg.xsd'),
+            implode('', array_map(static fn ($e) => $e->message, libxml_get_errors())),
+        );
+        self::assertTrue(
+            $reader->schemaValidate(__DIR__.'/data/junit-schema-maven.xsd'),
+            implode('', array_map(static fn ($e) => $e->message, libxml_get_errors())),
+        );
 
         self::assertXmlFileEqualsXmlFile(
             __DIR__.'/data/'.self::$actual_junit_report_file,
-            __DIR__.'/data/'.$expectedOutputFile
+            __DIR__.'/data/'.$expectedOutputFile,
         );
     }
 
@@ -260,7 +311,7 @@ final class JUnitOutputFormatterTest extends TestCase
     {
         return new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
     }
 }

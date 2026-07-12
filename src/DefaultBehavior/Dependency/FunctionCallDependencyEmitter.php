@@ -31,8 +31,11 @@ final class FunctionCallDependencyEmitter implements DependencyEmitterInterface
     /**
      * @param array<FunctionReference|ClassLikeReference|FileReference> $references
      */
-    private function createDependenciesForReferences(array $references, AstMapInterface $astMap, DependencyListInterface $dependencyList): void
-    {
+    private function createDependenciesForReferences(
+        array $references,
+        AstMapInterface $astMap,
+        DependencyListInterface $dependencyList,
+    ): void {
         foreach ($references as $reference) {
             foreach ($reference->dependencies as $dependency) {
                 if (DependencyType::UNRESOLVED_FUNCTION_CALL !== $dependency->context->dependencyType) {
@@ -47,8 +50,10 @@ final class FunctionCallDependencyEmitter implements DependencyEmitterInterface
 
                 $dependencyList->addDependency(
                     new Dependency(
-                        $reference->getToken(), $dependency->token, $dependency->context
-                    )
+                        $reference->getToken(),
+                        $dependency->token,
+                        $dependency->context,
+                    ),
                 );
             }
         }

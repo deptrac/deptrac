@@ -51,33 +51,36 @@ final class XMLOutputFormatterTest extends TestCase
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
                         ClassLikeToken::fromFQCN('ClassB'),
-                        new Dependency(ClassLikeToken::fromFQCN('OriginalA'), ClassLikeToken::fromFQCN('OriginalB'),
-                            new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER)
+                        new Dependency(
+                            ClassLikeToken::fromFQCN('OriginalA'),
+                            ClassLikeToken::fromFQCN('OriginalB'),
+                            new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER),
                         ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('ClassA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath([
                             new AstInherit(
                                 ClassLikeToken::fromFQCN('ClassInheritB'),
                                 new FileOccurrence('ClassInheritA.php', 4),
-                                AstInheritType::EXTENDS
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
                                 ClassLikeToken::fromFQCN('ClassInheritC'),
                                 new FileOccurrence('ClassInheritB.php', 5),
-                                AstInheritType::EXTENDS
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
                                 ClassLikeToken::fromFQCN('ClassInheritD'),
                                 new FileOccurrence('ClassInheritC.php', 6),
-                                AstInheritType::EXTENDS
+                                AstInheritType::EXTENDS,
                             ),
-                        ])
+                        ]),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'expected-xml-report_1.xml',
@@ -86,12 +89,14 @@ final class XMLOutputFormatterTest extends TestCase
         yield [
             [
                 new Violation(
-                    new Dependency(ClassLikeToken::fromFQCN('OriginalA'), ClassLikeToken::fromFQCN('OriginalB'),
-                        new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER)
+                    new Dependency(
+                        ClassLikeToken::fromFQCN('OriginalA'),
+                        ClassLikeToken::fromFQCN('OriginalB'),
+                        new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'expected-xml-report_2.xml',
@@ -108,63 +113,69 @@ final class XMLOutputFormatterTest extends TestCase
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
                         ClassLikeToken::fromFQCN('ClassB'),
-                        new Dependency(ClassLikeToken::fromFQCN('OriginalA'), ClassLikeToken::fromFQCN('OriginalB'),
-                            new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER)
+                        new Dependency(
+                            ClassLikeToken::fromFQCN('OriginalA'),
+                            ClassLikeToken::fromFQCN('OriginalB'),
+                            new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER),
                         ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('ClassA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath([
                             new AstInherit(
                                 ClassLikeToken::fromFQCN('ClassInheritB'),
                                 new FileOccurrence('ClassInheritA.php', 4),
-                                AstInheritType::EXTENDS
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
                                 ClassLikeToken::fromFQCN('ClassInheritC'),
                                 new FileOccurrence('ClassInheritB.php', 5),
-                                AstInheritType::EXTENDS
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
                                 ClassLikeToken::fromFQCN('ClassInheritD'),
                                 new FileOccurrence('ClassInheritC.php', 6),
-                                AstInheritType::EXTENDS
+                                AstInheritType::EXTENDS,
                             ),
-                        ])
+                        ]),
                     ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
                 new SkippedViolation(
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassC'),
                         ClassLikeToken::fromFQCN('ClassD'),
-                        new Dependency(ClassLikeToken::fromFQCN('OriginalA'), ClassLikeToken::fromFQCN('OriginalB'),
-                            new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER)
+                        new Dependency(
+                            ClassLikeToken::fromFQCN('OriginalA'),
+                            ClassLikeToken::fromFQCN('OriginalB'),
+                            new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER),
                         ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('ClassA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath([
                             new AstInherit(
                                 ClassLikeToken::fromFQCN('ClassInheritB'),
                                 new FileOccurrence('ClassInheritA.php', 4),
-                                AstInheritType::EXTENDS
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
                                 ClassLikeToken::fromFQCN('ClassInheritC'),
                                 new FileOccurrence('ClassInheritB.php', 5),
-                                AstInheritType::EXTENDS
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
                                 ClassLikeToken::fromFQCN('ClassInheritD'),
                                 new FileOccurrence('ClassInheritC.php', 6),
-                                AstInheritType::EXTENDS
+                                AstInheritType::EXTENDS,
                             ),
-                        ])
+                        ]),
                     ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
             ],
             'expected-xml-report-with-skipped-violations.xml',
@@ -185,12 +196,12 @@ final class XMLOutputFormatterTest extends TestCase
         $formatter->finish(
             OutputResult::fromAnalysisResult($analysisResult),
             $this->createSymfonyOutput($bufferedOutput),
-            new OutputFormatterInput(__DIR__.'/data/'.self::$actual_xml_report_file, false, false, false)
+            new OutputFormatterInput(__DIR__.'/data/'.self::$actual_xml_report_file, false, false, false),
         );
 
         self::assertXmlFileEqualsXmlFile(
             __DIR__.'/data/'.self::$actual_xml_report_file,
-            __DIR__.'/data/'.$expectedOutputFile
+            __DIR__.'/data/'.$expectedOutputFile,
         );
     }
 
@@ -198,7 +209,7 @@ final class XMLOutputFormatterTest extends TestCase
     {
         return new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
     }
 }

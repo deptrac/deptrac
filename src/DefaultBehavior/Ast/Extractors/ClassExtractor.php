@@ -46,11 +46,19 @@ final class ClassExtractor implements NikicReferenceExtractorInterface, PHPStanR
     {
         if (null !== $node->name) {
             if ($node->extends instanceof Name) {
-                $referenceBuilder->astInherits(ClassLikeToken::fromFQCN($node->extends->toCodeString()), $node->extends->getLine(), AstInheritType::EXTENDS);
+                $referenceBuilder->astInherits(
+                    ClassLikeToken::fromFQCN($node->extends->toCodeString()),
+                    $node->extends->getLine(),
+                    AstInheritType::EXTENDS,
+                );
             }
 
             foreach ($node->implements as $implement) {
-                $referenceBuilder->astInherits(ClassLikeToken::fromFQCN($implement->toCodeString()), $implement->getLine(), AstInheritType::IMPLEMENTS);
+                $referenceBuilder->astInherits(
+                    ClassLikeToken::fromFQCN($implement->toCodeString()),
+                    $implement->getLine(),
+                    AstInheritType::IMPLEMENTS,
+                );
             }
         }
     }

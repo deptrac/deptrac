@@ -10,8 +10,10 @@ final class Layer
     private array $collectors = [];
 
     /** @param  array<CollectorConfig> $collectorConfig */
-    public function __construct(public string $name, array $collectorConfig = [])
-    {
+    public function __construct(
+        public string $name,
+        array $collectorConfig = [],
+    ) {
         $this->collectors(...$collectorConfig);
     }
 

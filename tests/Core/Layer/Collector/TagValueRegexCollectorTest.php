@@ -52,7 +52,7 @@ final class TagValueRegexCollectorTest extends TestCase
     {
         $actual = $this->collector->satisfy(
             $configuration->toArray(),
-            new ClassLikeReference(ClassLikeToken::fromFQCN('Dummy'), ClassLikeType::TYPE_CLASS, [], [], $tags)
+            new ClassLikeReference(ClassLikeToken::fromFQCN('Dummy'), ClassLikeType::TYPE_CLASS, [], [], $tags),
         );
 
         self::assertTrue($actual);
@@ -80,7 +80,7 @@ final class TagValueRegexCollectorTest extends TestCase
     {
         $actual = $this->collector->satisfy(
             $configuration->toArray(),
-            new ClassLikeReference(ClassLikeToken::fromFQCN('Dummy'), ClassLikeType::TYPE_CLASS, [], [], $tags)
+            new ClassLikeReference(ClassLikeToken::fromFQCN('Dummy'), ClassLikeType::TYPE_CLASS, [], [], $tags),
         );
 
         self::assertFalse($actual);
@@ -112,7 +112,7 @@ final class TagValueRegexCollectorTest extends TestCase
 
         $this->collector->satisfy(
             $config,
-            new ClassLikeReference(ClassLikeToken::fromFQCN('Foo'))
+            new ClassLikeReference(ClassLikeToken::fromFQCN('Foo')),
         );
     }
 
@@ -120,7 +120,7 @@ final class TagValueRegexCollectorTest extends TestCase
     {
         $actual = $this->collector->satisfy(
             TagValueRegexConfig::create('@foo')->toArray(),
-            new VariableReference(SuperGlobalToken::GET)
+            new VariableReference(SuperGlobalToken::GET),
         );
 
         self::assertFalse($actual);

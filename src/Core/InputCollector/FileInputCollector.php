@@ -27,12 +27,16 @@ final class FileInputCollector implements InputCollectorInterface
      *
      * @throws InvalidPathException
      */
-    public function __construct(array $paths, private readonly array $excludedFilePatterns, string $basePath)
-    {
+    public function __construct(
+        array $paths,
+        private readonly array $excludedFilePatterns,
+        string $basePath,
+    ) {
         $basePathInfo = new SplFileInfo($basePath);
         if (!$basePathInfo->isDir() || !$basePathInfo->isReadable()) {
             throw InvalidPathException::unreadablePath($basePathInfo);
         }
+
         $this->paths = [];
         foreach ($paths as $originalPath) {
             if (Path::isRelative($originalPath)) {
@@ -41,10 +45,12 @@ final class FileInputCollector implements InputCollectorInterface
             } else {
                 $path = $originalPath;
             }
+
             $path = new SplFileInfo($path);
             if (!$path->isReadable()) {
                 throw InvalidPathException::unreadablePath($path);
             }
+
             $this->paths[] = Path::canonicalize($path->getPathname());
         }
     }
@@ -76,7 +82,7 @@ final class FileInputCollector implements InputCollectorInterface
 
         return array_values(array_map(
             static fn (SplFileInfo $fileInfo) => (string) $fileInfo->getRealPath(),
-            iterator_to_array($finder)
+            iterator_to_array($finder),
         ));
     }
 }

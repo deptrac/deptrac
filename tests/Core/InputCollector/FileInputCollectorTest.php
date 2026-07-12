@@ -24,7 +24,7 @@ final class FileInputCollectorTest extends TestCase
 
         self::assertSame(
             [Path::normalize(__DIR__.'/Fixtures/example.php')],
-            array_values($files)
+            array_values($files),
         );
     }
 
@@ -38,7 +38,7 @@ final class FileInputCollectorTest extends TestCase
 
         self::assertSame(
             [Path::normalize(__DIR__.'/Fixtures/example.php')],
-            array_values($files)
+            array_values($files),
         );
     }
 }

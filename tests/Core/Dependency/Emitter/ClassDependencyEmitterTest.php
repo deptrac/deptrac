@@ -20,7 +20,7 @@ final class ClassDependencyEmitterTest extends TestCase
     {
         $deps = $this->getEmittedDependencies(
             new ClassDependencyEmitter(),
-            __DIR__.'/Fixtures/Foo.php'
+            __DIR__.'/Fixtures/Foo.php',
         );
 
         self::assertCount(18, $deps);

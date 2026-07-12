@@ -40,6 +40,7 @@ final class ChangedFilesRunner
                     }
                 }
             }
+
             $output->writeLineFormatted(implode(';', $layers));
         } catch (AnalyserException $exception) {
             throw CommandRunException::analyserException($exception);
@@ -54,6 +55,7 @@ final class ChangedFilesRunner
                 foreach ($layers as $layer) {
                     $layerDependencies += $layersDependOnLayers[$layer] ?? [];
                 }
+
                 do {
                     $size = count($layerDependencies);
                     $layerDependenciesCopy = $layerDependencies;

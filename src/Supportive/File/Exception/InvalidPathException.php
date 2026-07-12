@@ -15,6 +15,9 @@ final class InvalidPathException extends RuntimeException implements ExceptionIn
 {
     public static function unreadablePath(SplFileInfo $path): self
     {
-        return new self(sprintf('Path "%s" is not a directory or is not readable.', Path::canonicalize($path->getPathname())));
+        return new self(sprintf(
+            'Path "%s" is not a directory or is not readable.',
+            Path::canonicalize($path->getPathname()),
+        ));
     }
 }

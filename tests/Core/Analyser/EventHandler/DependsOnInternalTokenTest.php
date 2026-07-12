@@ -31,7 +31,9 @@ final class DependsOnInternalTokenTest extends TestCase
     }
 
     private function makeEvent(
-        array $dependerTags, array $dependentTags, $dependentLayer = 'DependentLayer',
+        array $dependerTags,
+        array $dependentTags,
+        $dependentLayer = 'DependentLayer',
     ): ProcessEvent {
         $dependerToken = ClassLikeToken::fromFQCN('DependerClass');
         $dependentToken = ClassLikeToken::fromFQCN('DependentClass');
@@ -40,16 +42,13 @@ final class DependsOnInternalTokenTest extends TestCase
             new Dependency(
                 $dependerToken,
                 $dependentToken,
-                new DependencyContext(new FileOccurrence('test', 1),
-                    DependencyType::STATIC_METHOD)
+                new DependencyContext(new FileOccurrence('test', 1), DependencyType::STATIC_METHOD),
             ),
-            new ClassLikeReference($dependerToken, ClassLikeType::TYPE_CLASS,
-                [], [], $dependerTags),
+            new ClassLikeReference($dependerToken, ClassLikeType::TYPE_CLASS, [], [], $dependerTags),
             'DependerLayer',
-            new ClassLikeReference($dependentToken, ClassLikeType::TYPE_CLASS,
-                [], [], $dependentTags),
+            new ClassLikeReference($dependentToken, ClassLikeType::TYPE_CLASS, [], [], $dependentTags),
             [$dependentLayer => true],
-            new AnalysisResult()
+            new AnalysisResult(),
         );
 
         return $event;
@@ -65,7 +64,7 @@ final class DependsOnInternalTokenTest extends TestCase
 
         $this->assertFalse(
             $event->isPropagationStopped(),
-            'Propagation should continue if neither reference has the "layer-internal" tag'
+            'Propagation should continue if neither reference has the "layer-internal" tag',
         );
 
         $event = $this->makeEvent(['@layer-internal' => ['']], []);
@@ -73,7 +72,7 @@ final class DependsOnInternalTokenTest extends TestCase
 
         $this->assertFalse(
             $event->isPropagationStopped(),
-            'Propagation should continue if only the depender is marked @layer-internal'
+            'Propagation should continue if only the depender is marked @layer-internal',
         );
 
         $event = $this->makeEvent([], ['@layer-internal' => ['']]);
@@ -81,7 +80,7 @@ final class DependsOnInternalTokenTest extends TestCase
 
         $this->assertTrue(
             $event->isPropagationStopped(),
-            'Propagation should be stopped if the dependent is marked @layer-internal'
+            'Propagation should be stopped if the dependent is marked @layer-internal',
         );
 
         $event = $this->makeEvent([], ['@layer-internal' => ['']], 'DependerLayer');
@@ -89,8 +88,8 @@ final class DependsOnInternalTokenTest extends TestCase
 
         $this->assertFalse(
             $event->isPropagationStopped(),
-            'Propagation should not be stopped if the dependent is marked @layer-internal '.
-            'but dependent is in the same layer'
+            'Propagation should not be stopped if the dependent is marked @layer-internal '
+            .'but dependent is in the same layer',
         );
 
         $event = $this->makeEvent([], ['@deptrac-internal' => ['']]);
@@ -98,7 +97,7 @@ final class DependsOnInternalTokenTest extends TestCase
 
         $this->assertTrue(
             $event->isPropagationStopped(),
-            'Propagation should be stopped if the dependent is marked @deptrac-internal'
+            'Propagation should be stopped if the dependent is marked @deptrac-internal',
         );
     }
 
@@ -112,7 +111,7 @@ final class DependsOnInternalTokenTest extends TestCase
 
         $this->assertFalse(
             $event->isPropagationStopped(),
-            'The @internal tag should not be used per default'
+            'The @internal tag should not be used per default',
         );
 
         $event = $this->makeEvent([], ['@deptrac-internal' => ['']]);
@@ -120,7 +119,7 @@ final class DependsOnInternalTokenTest extends TestCase
 
         $this->assertTrue(
             $event->isPropagationStopped(),
-            'The @deptrac-internal tag should be used per default'
+            'The @deptrac-internal tag should be used per default',
         );
     }
 }

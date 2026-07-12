@@ -56,10 +56,12 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
         if (null === $docComment) {
             return [];
         }
+
         $docText = $docComment->getText();
 
         // prevent expensive parsing, when not templates involved.
-        if (!str_contains($docText, '@template')
+        if (
+            !str_contains($docText, '@template')
             && !str_contains($docText, '@template-covariant')
             && !str_contains($docText, '@phpstan-type')
         ) {
@@ -69,10 +71,14 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
         $tokens = new TokenIterator($this->lexer->tokenize($docText));
         $docNode = $this->docParser->parse($tokens);
 
-        $templateNames =
-            array_map(static fn (TemplateTagValueNode $tag): string => $tag->name,
-                $docNode->getTemplateTagValues() + $docNode->getTemplateTagValues('@template-covariant'));
-        $importNames = array_map(static fn (TypeAliasTagValueNode $tag): string => $tag->alias, $docNode->getTypeAliasTagValues());
+        $templateNames = array_map(
+            static fn (TemplateTagValueNode $tag): string => $tag->name,
+            $docNode->getTemplateTagValues() + $docNode->getTemplateTagValues('@template-covariant'),
+        );
+        $importNames = array_map(
+            static fn (TypeAliasTagValueNode $tag): string => $tag->alias,
+            $docNode->getTypeAliasTagValues(),
+        );
 
         return array_values($templateNames + $importNames);
     }
@@ -80,8 +86,12 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
     public function enterNode(Node $node)
     {
         match (true) {
-            $node instanceof Namespace_ => $this->currentTypeScope = new TypeScope($node->name ? $node->name->toCodeString() : ''),
-            $node instanceof ClassLike, $node instanceof Node\Stmt\Function_ => $this->enterReferenceChangingNode($node),
+            $node instanceof Namespace_ => $this->currentTypeScope = new TypeScope(
+                $node->name ? $node->name->toCodeString() : '',
+            ),
+            $node instanceof ClassLike,
+            $node instanceof Node\Stmt\Function_,
+                => $this->enterReferenceChangingNode($node),
             $node instanceof Node\FunctionLike => $this->enterFunctionLike($node),
             $node instanceof Use_ && Use_::TYPE_NORMAL === $node->type => $this->enterUse($node),
             $node instanceof GroupUse => $this->enterGroupUse($node),
@@ -94,7 +104,7 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
     public function leaveNode(Node $node)
     {
         foreach ($this->dependencyResolvers as $resolver) {
-            if ($node instanceof ($resolver->getNodeType())) {
+            if ($node instanceof $resolver->getNodeType()) {
                 $resolver->processNode($node, $this->currentReference, $this->currentTypeScope);
             }
         }
@@ -122,7 +132,11 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
             $templateTypes = $this->templateLikesFromDocs($node);
 
             $this->currentReference = match (true) {
-                $node instanceof Node\Stmt\Function_ => $this->fileReferenceBuilder->newFunction($name, $templateTypes, $tags),
+                $node instanceof Node\Stmt\Function_ => $this->fileReferenceBuilder->newFunction(
+                    $name,
+                    $templateTypes,
+                    $tags,
+                ),
                 $node instanceof Interface_ => $this->fileReferenceBuilder->newInterface($name, $templateTypes, $tags),
                 $node instanceof Class_ => $this->fileReferenceBuilder->newClass($name, $templateTypes, $tags),
                 $node instanceof Trait_ => $this->fileReferenceBuilder->newTrait($name, $templateTypes, $tags),

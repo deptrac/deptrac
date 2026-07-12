@@ -16,7 +16,7 @@ final class ConfigFileResolverTest extends TestCase
     {
         self::assertSame(
             $expected,
-            (new ConfigFileResolver())->resolve(new ArgvInput($argv), $currentWorkingDirectory)
+            (new ConfigFileResolver())->resolve(new ArgvInput($argv), $currentWorkingDirectory),
         );
     }
 

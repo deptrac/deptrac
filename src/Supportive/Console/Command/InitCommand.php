@@ -22,8 +22,9 @@ use function sprintf;
 )]
 class InitCommand extends Command
 {
-    public function __construct(private readonly ConfigurationDumper $dumper)
-    {
+    public function __construct(
+        private readonly ConfigurationDumper $dumper,
+    ) {
         parent::__construct();
     }
 
@@ -43,7 +44,9 @@ class InitCommand extends Command
             $output->writeln('Depfile <info>dumped.</info>');
 
             return self::SUCCESS;
-        } catch (FileNotWritableException|FileAlreadyExistsException|IOException|FileNotExistsException $fileException) {
+        } catch (
+            FileNotWritableException|FileAlreadyExistsException|IOException|FileNotExistsException $fileException
+        ) {
             $output->writeln(sprintf('<error>%s</error>', $fileException->getMessage()));
 
             return self::FAILURE;

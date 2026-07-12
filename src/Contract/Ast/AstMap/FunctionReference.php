@@ -28,7 +28,7 @@ final class FunctionReference extends TaggedTokenReference
             $this->functionName,
             $this->dependencies,
             $this->tags,
-            $astFileReference
+            $astFileReference,
         );
     }
 

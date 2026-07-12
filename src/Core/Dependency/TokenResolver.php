@@ -24,10 +24,17 @@ class TokenResolver
     public function resolve(TokenInterface $token, AstMap $astMap): TokenReferenceInterface
     {
         return match (true) {
-            $token instanceof ClassLikeToken => $astMap->getClassReferenceForToken($token) ?? new ClassLikeReference($token),
-            $token instanceof FunctionToken => $astMap->getFunctionReferenceForToken($token) ?? new FunctionReference($token),
+            $token instanceof ClassLikeToken
+                => $astMap->getClassReferenceForToken($token) ?? new ClassLikeReference($token),
+            $token instanceof FunctionToken
+                => $astMap->getFunctionReferenceForToken($token) ?? new FunctionReference($token),
             $token instanceof SuperGlobalToken => new VariableReference($token),
-            $token instanceof FileToken => $astMap->getFileReferenceForToken($token) ?? new FileReference($token->path, [], [], []),
+            $token instanceof FileToken => $astMap->getFileReferenceForToken($token) ?? new FileReference(
+                $token->path,
+                [],
+                [],
+                [],
+            ),
             default => throw UnrecognizedTokenException::cannotCreateReference($token),
         };
     }

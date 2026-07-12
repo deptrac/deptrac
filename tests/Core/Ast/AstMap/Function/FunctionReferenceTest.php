@@ -19,7 +19,7 @@ final class FunctionReferenceTest extends TestCase
         return new FunctionReference(
             FunctionToken::fromFQCN('testing'),
             [],
-            $tags
+            $tags,
         );
     }
 }

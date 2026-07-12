@@ -34,9 +34,7 @@ final class DependsOnInternalToken implements ViolationCreatingInterface
     {
         $ruleset = $event->getResult();
         foreach ($event->dependentLayers as $dependentLayer => $_) {
-            if ($event->dependerLayer !== $dependentLayer
-                && $event->dependentReference instanceof ClassLikeReference
-            ) {
+            if ($event->dependerLayer !== $dependentLayer && $event->dependentReference instanceof ClassLikeReference) {
                 $isInternal = $event->dependentReference->hasTag('@deptrac-internal');
 
                 if (!$isInternal && null !== $this->internalTag) {

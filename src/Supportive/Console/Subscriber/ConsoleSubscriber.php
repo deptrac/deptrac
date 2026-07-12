@@ -51,8 +51,8 @@ class ConsoleSubscriber implements EventSubscriberInterface
             $this->output->writeLineFormatted(
                 sprintf(
                     'Start to create an AstMap for <info>%u</info> Files.',
-                    $preCreateAstMapEvent->expectedFileCount
-                )
+                    $preCreateAstMapEvent->expectedFileCount,
+                ),
             );
         }
     }
@@ -63,7 +63,7 @@ class ConsoleSubscriber implements EventSubscriberInterface
             $this->printMessageWithTime(
                 'ast',
                 '<info>AstMap created in %01.2f sec.</info>',
-                '<info>AstMap created.</info>'
+                '<info>AstMap created.</info>',
             );
         }
     }
@@ -80,7 +80,7 @@ class ConsoleSubscriber implements EventSubscriberInterface
         $this->output->writeLineFormatted(sprintf(
             "\nSyntax Error on File %s\n<error>%s</error>\n",
             $astFileSyntaxErrorEvent->file,
-            $astFileSyntaxErrorEvent->syntaxError
+            $astFileSyntaxErrorEvent->syntaxError,
         ));
     }
 
@@ -90,7 +90,7 @@ class ConsoleSubscriber implements EventSubscriberInterface
             $this->stopwatchStart('deps');
 
             $this->output->writeLineFormatted(
-                sprintf('start emitting dependencies <info>"%s"</info>', $event->emitterName)
+                sprintf('start emitting dependencies <info>"%s"</info>', $event->emitterName),
             );
         }
     }
@@ -101,7 +101,7 @@ class ConsoleSubscriber implements EventSubscriberInterface
             $this->printMessageWithTime(
                 'deps',
                 '<info>Dependencies emitted in %01.f sec.</info>',
-                '<info>Dependencies emitted.</info>'
+                '<info>Dependencies emitted.</info>',
             );
         }
     }
@@ -121,7 +121,7 @@ class ConsoleSubscriber implements EventSubscriberInterface
             $this->printMessageWithTime(
                 'flatten',
                 '<info>Dependencies flattened in %01.f sec.</info>',
-                '<info>Dependencies flattened.</info>'
+                '<info>Dependencies flattened.</info>',
             );
         }
     }

@@ -25,11 +25,17 @@ final class DependencyListTest extends TestCase
 
         $dependencyResult = new DependencyList();
         $dependencyResult->addDependency($dep1 = new Dependency($classA, $classB, new DependencyContext(
-            new FileOccurrence('a.php', 12), DependencyType::PARAMETER)));
+            new FileOccurrence('a.php', 12),
+            DependencyType::PARAMETER,
+        )));
         $dependencyResult->addDependency($dep2 = new Dependency($classB, $classC, new DependencyContext(
-            new FileOccurrence('b.php', 12), DependencyType::PARAMETER)));
+            new FileOccurrence('b.php', 12),
+            DependencyType::PARAMETER,
+        )));
         $dependencyResult->addDependency($dep3 = new Dependency($classA, $classC, new DependencyContext(
-            new FileOccurrence('a.php', 12), DependencyType::PARAMETER)));
+            new FileOccurrence('a.php', 12),
+            DependencyType::PARAMETER,
+        )));
         self::assertSame([$dep1, $dep3], $dependencyResult->getDependenciesByClass($classA));
         self::assertSame([$dep2], $dependencyResult->getDependenciesByClass($classB));
         self::assertSame([], $dependencyResult->getDependenciesByClass($classC));
@@ -43,14 +49,14 @@ final class DependencyListTest extends TestCase
 
         $dependencyResult = new DependencyList();
         $dependencyResult->addDependency($dep1 = new Dependency($classA, $classB, new DependencyContext(
-            new FileOccurrence('a.php', 12), DependencyType::PARAMETER)));
-        $dependencyResult->addInheritDependency($dep2 = new InheritDependency($classA, $classB, $dep1,
-            new AstInherit(
-                $classB,
-                new FileOccurrence('a.php', 12),
-                AstInheritType::EXTENDS
-            )
-        ));
+            new FileOccurrence('a.php', 12),
+            DependencyType::PARAMETER,
+        )));
+        $dependencyResult->addInheritDependency($dep2 = new InheritDependency($classA, $classB, $dep1, new AstInherit(
+            $classB,
+            new FileOccurrence('a.php', 12),
+            AstInheritType::EXTENDS,
+        )));
         self::assertSame([$dep1, $dep2], $dependencyResult->getDependenciesAndInheritDependencies());
     }
 }

@@ -28,7 +28,7 @@ final class FileCannotBeParsedAsYamlExceptionTest extends TestCase
 
         $message = sprintf(
             'File "%s" cannot be parsed as YAML: abc',
-            $filename
+            $filename,
         );
 
         self::assertSame($message, $exception->getMessage());

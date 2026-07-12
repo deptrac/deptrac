@@ -79,7 +79,7 @@ final class LayerResolverTest extends TestCase
 
         $resolver = new LayerResolver(
             $this->createMock(CollectorResolverInterface::class),
-            $layers
+            $layers,
         );
 
         $resolver->has('Anything');
@@ -98,7 +98,7 @@ final class LayerResolverTest extends TestCase
                         ],
                     ],
                 ],
-            ]
+            ],
         );
 
         self::assertTrue($resolver->has('test'));
@@ -120,7 +120,7 @@ final class LayerResolverTest extends TestCase
                         ],
                     ],
                 ],
-            ]
+            ],
         );
 
         self::assertTrue($resolver->isReferenceInLayer(
@@ -149,12 +149,12 @@ final class LayerResolverTest extends TestCase
                         ],
                     ],
                 ],
-            ]
+            ],
         );
 
         self::assertSame(
             ['test' => true],
-            $resolver->getLayersForReference($reference)
+            $resolver->getLayersForReference($reference),
         );
     }
 
@@ -173,12 +173,12 @@ final class LayerResolverTest extends TestCase
                         ],
                     ],
                 ],
-            ]
+            ],
         );
 
         self::assertSame(
             [],
-            $resolver->getLayersForReference($reference)
+            $resolver->getLayersForReference($reference),
         );
     }
 

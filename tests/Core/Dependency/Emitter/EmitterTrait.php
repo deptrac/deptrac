@@ -54,7 +54,7 @@ trait EmitterTrait
                 new StaticPropertyFetchExtractor($typeResolver),
                 new NewExtractor($typeResolver),
                 new TraitUseExtractor($typeResolver),
-            ]
+            ],
         );
         $astMap = (new AstLoader($parser, new EventDispatcher()))->createAstMap($files);
         $result = new DependencyList();
@@ -62,12 +62,13 @@ trait EmitterTrait
         $emitter->applyDependencies($astMap, $result);
 
         return array_map(
-            static fn (DependencyInterface $d) => sprintf('%s:%d on %s',
+            static fn (DependencyInterface $d) => sprintf(
+                '%s:%d on %s',
                 $d->getDepender()->toString(),
                 $d->getContext()->fileOccurrence->line,
-                $d->getDependent()->toString()
+                $d->getDependent()->toString(),
             ),
-            $result->getDependenciesAndInheritDependencies()
+            $result->getDependenciesAndInheritDependencies(),
         );
     }
 }

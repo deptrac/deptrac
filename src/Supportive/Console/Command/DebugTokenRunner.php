@@ -17,7 +17,9 @@ use function sprintf;
  */
 final class DebugTokenRunner
 {
-    public function __construct(private readonly LayerForTokenAnalyser $analyser) {}
+    public function __construct(
+        private readonly LayerForTokenAnalyser $analyser,
+    ) {}
 
     /**
      * @throws CommandRunException

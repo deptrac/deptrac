@@ -52,8 +52,10 @@ class DependencyLayersAnalyser
                 $dependerLayers = array_keys($this->layerResolver->getLayersForReference($dependerRef));
 
                 if (!isset($warnings[$depender->toString()]) && count($dependerLayers) > 1) {
-                    $warnings[$depender->toString()] =
-                        Warning::tokenIsInMoreThanOneLayer($depender->toString(), $dependerLayers);
+                    $warnings[$depender->toString()] = Warning::tokenIsInMoreThanOneLayer(
+                        $depender->toString(),
+                        $dependerLayers,
+                    );
                 }
 
                 $dependent = $dependency->getDependent();
@@ -62,7 +64,12 @@ class DependencyLayersAnalyser
 
                 foreach ($dependerLayers as $dependerLayer) {
                     $event = new ProcessEvent(
-                        $dependency, $dependerRef, $dependerLayer, $dependentRef, $dependentLayers, $result
+                        $dependency,
+                        $dependerRef,
+                        $dependerLayer,
+                        $dependentRef,
+                        $dependentLayers,
+                        $result,
                     );
                     $this->eventDispatcher->dispatch($event);
 

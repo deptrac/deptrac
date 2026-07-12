@@ -13,7 +13,10 @@ use Symfony\Component\Console\Output\OutputInterface as SymfonyOutputInterface;
  */
 class SymfonyOutput implements OutputInterface
 {
-    public function __construct(private readonly SymfonyOutputInterface $symfonyOutput, private readonly OutputStyleInterface $style) {}
+    public function __construct(
+        private readonly SymfonyOutputInterface $symfonyOutput,
+        private readonly OutputStyleInterface $style,
+    ) {}
 
     public function writeFormatted(string $message): void
     {

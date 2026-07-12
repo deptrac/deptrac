@@ -33,7 +33,11 @@ final class FunctionCallExtractor implements NikicReferenceExtractorInterface, P
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
     {
         foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, $node->name) as $functionName) {
-            $referenceBuilder->dependency(FunctionToken::fromFQCN($functionName), $node->getLine(), DependencyType::UNRESOLVED_FUNCTION_CALL);
+            $referenceBuilder->dependency(
+                FunctionToken::fromFQCN($functionName),
+                $node->getLine(),
+                DependencyType::UNRESOLVED_FUNCTION_CALL,
+            );
         }
     }
 
@@ -48,7 +52,11 @@ final class FunctionCallExtractor implements NikicReferenceExtractorInterface, P
         MutatingScope $scope,
     ): void {
         foreach ($this->typeResolver->resolveType($node->name, $scope) as $functionName) {
-            $referenceBuilder->dependency(FunctionToken::fromFQCN($functionName), $node->getLine(), DependencyType::UNRESOLVED_FUNCTION_CALL);
+            $referenceBuilder->dependency(
+                FunctionToken::fromFQCN($functionName),
+                $node->getLine(),
+                DependencyType::UNRESOLVED_FUNCTION_CALL,
+            );
         }
     }
 }

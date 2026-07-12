@@ -15,7 +15,9 @@ final class LayerProvider implements LayerProviderInterface
     /**
      * @param array<string, list<string>> $allowedLayers source layer -> target layers
      */
-    public function __construct(private readonly array $allowedLayers) {}
+    public function __construct(
+        private readonly array $allowedLayers,
+    ) {}
 
     /**
      * @return list<string>
@@ -39,12 +41,14 @@ final class LayerProvider implements LayerProviderInterface
         if (in_array($layerName, $previousLayers, true)) {
             throw CircularReferenceException::circularLayerDependency($layerName, $previousLayers);
         }
+
         $dependencies = [];
         foreach ($this->allowedLayers[$layerName] ?? [] as $layer) {
             if (str_starts_with($layer, '+')) {
                 $layer = ltrim($layer, '+');
                 $dependencies[] = $this->getTransitiveDependencies($layer, array_merge([$layerName], $previousLayers));
             }
+
             $dependencies[] = [$layer];
         }
 

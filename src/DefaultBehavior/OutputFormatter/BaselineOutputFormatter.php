@@ -48,6 +48,7 @@ final class BaselineOutputFormatter implements OutputFormatterInterface
 
             return;
         }
+
         file_put_contents(
             $baselineFile,
             $this->baselineMapper->fromPHPListToString($groupedViolations),
@@ -75,7 +76,7 @@ final class BaselineOutputFormatter implements OutputFormatterInterface
 
         return array_map(
             array_values(...),
-            $violations
+            $violations,
         );
     }
 }

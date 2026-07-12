@@ -45,12 +45,13 @@ class LayerDependenciesAnalyser
                         $this->tokenResolver->resolve($dependency->getDependent(), $astMap),
                     );
                     foreach ($dependentLayerNames as $dependentLayerName => $_) {
-                        if ($layer === $dependentLayerName
-                            || (null !== $targetLayer
-                                && $targetLayer !== $dependentLayerName)
+                        if (
+                            $layer === $dependentLayerName
+                            || null !== $targetLayer && $targetLayer !== $dependentLayerName
                         ) {
                             continue;
                         }
+
                         $result[$dependentLayerName][] = new Uncovered($dependency, $dependentLayerName);
                     }
                 }

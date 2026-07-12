@@ -46,7 +46,7 @@ final class TokenResolverTest extends TestCase
                 $classReference,
             ],
             [],
-            []
+            [],
         );
         $astMap = new AstMap([$fileReference]);
 
@@ -77,7 +77,7 @@ final class TokenResolverTest extends TestCase
             [
                 $functionReference,
             ],
-            []
+            [],
         );
         $astMap = new AstMap([$fileReference]);
 
@@ -115,7 +115,7 @@ final class TokenResolverTest extends TestCase
             'path/to/file.php',
             [],
             [],
-            []
+            [],
         );
         $astMap = new AstMap([$fileReference]);
         $token = new FileToken('path/to/file.php');

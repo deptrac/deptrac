@@ -18,7 +18,10 @@ final class DebugLayerRunner
     /**
      * @param array<array{name: string, collectors: array<array<string, string|array<string, string>>>}> $layers
      */
-    public function __construct(private readonly TokenInLayerAnalyser $analyser, private readonly array $layers) {}
+    public function __construct(
+        private readonly TokenInLayerAnalyser $analyser,
+        private readonly array $layers,
+    ) {}
 
     /**
      * @throws CommandRunException
@@ -31,7 +34,10 @@ final class DebugLayerRunner
 
         try {
             foreach ($debugLayers as $debugLayer) {
-                $output->getStyle()->table([$debugLayer, 'Token Type'], $this->analyser->findTokensInLayer($debugLayer));
+                $output->getStyle()->table(
+                    [$debugLayer, 'Token Type'],
+                    $this->analyser->findTokensInLayer($debugLayer),
+                );
             }
         } catch (AnalyserException $e) {
             throw CommandRunException::analyserException($e);

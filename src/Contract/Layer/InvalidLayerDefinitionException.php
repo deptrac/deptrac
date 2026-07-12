@@ -28,7 +28,10 @@ final class InvalidLayerDefinitionException extends RuntimeException implements 
 
     public static function collectorRequired(string $layerName): self
     {
-        return new self(sprintf('The layer "%s" is empty. You must assign at least 1 collector to a layer.', $layerName));
+        return new self(sprintf(
+            'The layer "%s" is empty. You must assign at least 1 collector to a layer.',
+            $layerName,
+        ));
     }
 
     public static function layerRequired(): self
@@ -38,6 +41,10 @@ final class InvalidLayerDefinitionException extends RuntimeException implements 
 
     public static function circularTokenReference(string $collectorName, string $tokenName): self
     {
-        return new self(sprintf('%s: Circular dependency between layers detected. Token "%s" could not be resolved.', $collectorName, $tokenName));
+        return new self(sprintf(
+            '%s: Circular dependency between layers detected. Token "%s" could not be resolved.',
+            $collectorName,
+            $tokenName,
+        ));
     }
 }

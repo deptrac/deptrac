@@ -14,7 +14,9 @@ use Stringable;
  */
 final class Warning implements Stringable
 {
-    public function __construct(private readonly string $message) {}
+    public function __construct(
+        private readonly string $message,
+    ) {}
 
     /**
      * @param string[] $layerNames
@@ -26,7 +28,7 @@ final class Warning implements Stringable
         return new self(sprintf(
             '%s is in more than one layer ["%s"]. It is recommended that one token should only be in one layer.',
             $tokenName,
-            implode('", "', $layerNames)
+            implode('", "', $layerNames),
         ));
     }
 

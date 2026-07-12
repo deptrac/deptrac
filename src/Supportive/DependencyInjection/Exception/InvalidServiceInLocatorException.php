@@ -11,7 +11,9 @@ use RuntimeException;
 use function implode;
 use function sprintf;
 
-class InvalidServiceInLocatorException extends RuntimeException implements ExceptionInterface, ContainerExceptionInterface
+class InvalidServiceInLocatorException extends RuntimeException implements
+    ExceptionInterface,
+    ContainerExceptionInterface
 {
     public static function invalidType(string $id, string $actualType, string ...$expectedTypes): self
     {
@@ -19,7 +21,7 @@ class InvalidServiceInLocatorException extends RuntimeException implements Excep
             'Trying to get unsupported service "%s" from locator (expected "%s", but is "%s").',
             $id,
             $actualType,
-            implode('", "', $expectedTypes)
+            implode('", "', $expectedTypes),
         );
 
         return new self($message);

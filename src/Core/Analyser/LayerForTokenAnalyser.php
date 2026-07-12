@@ -42,12 +42,12 @@ class LayerForTokenAnalyser
                 TokenType::CLASS_LIKE => $this->findLayersForReferences(
                     $astMap->getClassLikeReferences(),
                     $tokenName,
-                    $astMap
+                    $astMap,
                 ),
                 TokenType::FUNCTION => $this->findLayersForReferences(
                     $astMap->getFunctionReferences(),
                     $tokenName,
-                    $astMap
+                    $astMap,
                 ),
                 TokenType::FILE => $this->findLayersForReferences($astMap->getFileReferences(), $tokenName, $astMap),
             };
@@ -85,6 +85,7 @@ class LayerForTokenAnalyser
             if (!str_contains($reference->getToken()->toString(), $tokenName)) {
                 continue;
             }
+
             $token = $this->tokenResolver->resolve($reference->getToken(), $astMap);
             $matchingLayers = array_keys($this->layerResolver->getLayersForReference($token));
 

@@ -20,8 +20,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class DebugTokenCommand extends Command
 {
-    public function __construct(private readonly DebugTokenRunner $runner)
-    {
+    public function __construct(
+        private readonly DebugTokenRunner $runner,
+    ) {
         parent::__construct();
     }
 

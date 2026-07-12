@@ -37,6 +37,7 @@ final class GraphVizOutputDisplayFormatter extends GraphVizOutputFormatter
             } else {
                 exec('xdg-open '.escapeshellarg($filename).' > /dev/null 2>&1 &');
             }
+
             $next = microtime(true) + (float) self::DELAY_OPEN;
         } catch (Exception $exception) {
             throw OutputException::withMessage('Unable to display output: '.$exception->getMessage());

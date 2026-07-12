@@ -37,7 +37,7 @@ final class AnonymousClassExtractorTest extends TestCase
 
         self::assertSame(
             ClassA::class,
-            $dependencies[0]->token->toString()
+            $dependencies[0]->token->toString(),
         );
         self::assertSame($filePath, $dependencies[0]->context->fileOccurrence->filepath);
         self::assertSame(19, $dependencies[0]->context->fileOccurrence->line);
@@ -45,7 +45,7 @@ final class AnonymousClassExtractorTest extends TestCase
 
         self::assertSame(
             InterfaceC::class,
-            $dependencies[1]->token->toString()
+            $dependencies[1]->token->toString(),
         );
         self::assertSame($filePath, $dependencies[1]->context->fileOccurrence->filepath);
         self::assertSame(19, $dependencies[1]->context->fileOccurrence->line);
@@ -71,7 +71,9 @@ final class AnonymousClassExtractorTest extends TestCase
         ];
 
         return new NikicPhpParser(
-            (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
+            (new ParserFactory())->createForNewestSupportedVersion(),
+            $cache,
+            $extractors,
         );
     }
 

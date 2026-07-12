@@ -25,16 +25,26 @@ final class PhpInternalCollector implements CollectorInterface
         if ($reference instanceof ClassLikeReference) {
             $token = $reference->getToken();
 
-            return $token->match($this->getPattern($config)) && array_key_exists(
-                $token->toString(), PhpStormStubsMap::CLASSES);
+            return (
+                $token->match($this->getPattern($config))
+                && array_key_exists(
+                    $token->toString(),
+                    PhpStormStubsMap::CLASSES,
+                )
+            );
         }
 
         if ($reference instanceof FunctionReference) {
             $token = $reference->getToken();
             assert($token instanceof FunctionToken);
 
-            return $token->match($this->getPattern($config)) && array_key_exists(
-                $token->functionName, PhpStormStubsMap::FUNCTIONS);
+            return (
+                $token->match($this->getPattern($config))
+                && array_key_exists(
+                    $token->functionName,
+                    PhpStormStubsMap::FUNCTIONS,
+                )
+            );
         }
 
         // future-proof catch all
@@ -51,6 +61,7 @@ final class PhpInternalCollector implements CollectorInterface
         if (!isset($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('PhpInternalCollector: Missing configuration.');
         }
+
         if (!is_string($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('PhpInternalCollector: Configuration is not a string.');
         }

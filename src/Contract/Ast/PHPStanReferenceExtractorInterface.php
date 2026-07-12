@@ -18,5 +18,9 @@ interface PHPStanReferenceExtractorInterface extends BaseReferenceExtractorInter
     /**
      * @param T $node
      */
-    public function processNodeWithPhpStanScope(Node $node, ReferenceBuilderInterface $referenceBuilder, MutatingScope $scope): void;
+    public function processNodeWithPhpStanScope(
+        Node $node,
+        ReferenceBuilderInterface $referenceBuilder,
+        MutatingScope $scope,
+    ): void;
 }

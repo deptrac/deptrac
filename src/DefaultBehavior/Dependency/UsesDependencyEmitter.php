@@ -28,7 +28,7 @@ final class UsesDependencyEmitter implements DependencyEmitterInterface
         $references = array_merge($astMap->getClassLikeReferences(), $astMap->getFunctionReferences());
         $referencesFQDN = array_map(
             static fn ($ref): string => $ref->getToken()->toString(),
-            $references
+            $references,
         );
 
         $FQDNIndex = new FQDNIndexNode();
@@ -40,7 +40,8 @@ final class UsesDependencyEmitter implements DependencyEmitterInterface
         foreach ($astMap->getFileReferences() as $fileReference) {
             foreach ($fileReference->classLikeReferences as $astClassReference) {
                 foreach ($fileReference->dependencies as $emittedDependency) {
-                    if (DependencyType::USE === $emittedDependency->context->dependencyType
+                    if (
+                        DependencyType::USE === $emittedDependency->context->dependencyType
                         && $this->isFQDN($emittedDependency, $FQDNIndex)
                     ) {
                         $dependencyList->addDependency(
@@ -48,7 +49,7 @@ final class UsesDependencyEmitter implements DependencyEmitterInterface
                                 $astClassReference->getToken(),
                                 $emittedDependency->token,
                                 $emittedDependency->context,
-                            )
+                            ),
                         );
                     }
                 }

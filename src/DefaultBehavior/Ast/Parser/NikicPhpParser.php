@@ -34,7 +34,7 @@ class NikicPhpParser extends AbstractParser
 
     public function parseFile(string $file): FileReference
     {
-        if (null !== $fileReference = $this->cache->get($file)) {
+        if (null !== ($fileReference = $this->cache->get($file))) {
             return $fileReference;
         }
 

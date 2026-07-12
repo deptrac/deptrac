@@ -27,7 +27,7 @@ final class CouldNotReadFileExceptionTest extends TestCase
 
         $message = sprintf(
             'File "%s" cannot be read.',
-            $filename
+            $filename,
         );
 
         self::assertSame($message, $exception->getMessage());

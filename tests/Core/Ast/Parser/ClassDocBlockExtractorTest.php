@@ -22,10 +22,10 @@ use Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\ClassDocBlockDependencySister
 final class ClassDocBlockExtractorTest extends TestCase
 {
     private const EXPECTED = [
-        [ClassDocBlockDependencySister::class, DependencyType::PARAMETER],
+        [ClassDocBlockDependencySister::class,  DependencyType::PARAMETER],
         [ClassDocBlockDependencyBrother::class, DependencyType::RETURN_TYPE],
-        [ClassDocBlockDependencyChild::class, DependencyType::VARIABLE],
-        [ClassDocBlockDependencySister::class, DependencyType::VARIABLE],
+        [ClassDocBlockDependencyChild::class,   DependencyType::VARIABLE],
+        [ClassDocBlockDependencySister::class,  DependencyType::VARIABLE],
         [ClassDocBlockDependencyBrother::class, DependencyType::VARIABLE],
     ];
 
@@ -57,7 +57,9 @@ final class ClassDocBlockExtractorTest extends TestCase
         ];
         $cache = new AstFileReferenceInMemoryCache();
         $parser = new NikicPhpParser(
-            (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
+            (new ParserFactory())->createForNewestSupportedVersion(),
+            $cache,
+            $extractors,
         );
         $phpstanParser = new PhpStanParser($phpStanContainer, $cache, $extractors);
 

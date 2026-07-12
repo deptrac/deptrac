@@ -11,5 +11,7 @@ use Symfony\Contracts\EventDispatcher\Event;
  */
 final class AstFileAnalysedEvent extends Event
 {
-    public function __construct(public readonly string $file) {}
+    public function __construct(
+        public readonly string $file,
+    ) {}
 }

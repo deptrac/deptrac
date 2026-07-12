@@ -29,12 +29,12 @@ final class FileReference implements TokenReferenceInterface
         /** @psalm-suppress ImpureFunctionCall */
         $this->classLikeReferences = array_map(
             fn (ClassLikeReference $classReference): ClassLikeReference => $classReference->withFileReference($this),
-            $classLikeReferences
+            $classLikeReferences,
         );
         /** @psalm-suppress ImpureFunctionCall */
         $this->functionReferences = array_map(
             fn (FunctionReference $functionReference): FunctionReference => $functionReference->withFileReference($this),
-            $functionReferences
+            $functionReferences,
         );
     }
 

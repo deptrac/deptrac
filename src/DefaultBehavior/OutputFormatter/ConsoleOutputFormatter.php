@@ -60,13 +60,11 @@ final class ConsoleOutputFormatter implements OutputFormatterInterface
             sprintf(
                 '%s<info>%s</info> must not depend on <info>%s</info> (%s on %s)',
                 $rule instanceof SkippedViolation ? '[SKIPPED] ' : '',
-                $dependency->getDepender()
-                    ->toString(),
-                $dependency->getDependent()
-                    ->toString(),
+                $dependency->getDepender()->toString(),
+                $dependency->getDependent()->toString(),
                 $rule->getDependerLayer(),
-                $rule->getDependentLayer()
-            )
+                $rule->getDependentLayer(),
+            ),
         );
         $this->printFileOccurrence($output, $dependency->getContext()->fileOccurrence);
 
@@ -81,8 +79,8 @@ final class ConsoleOutputFormatter implements OutputFormatterInterface
             " -> \n",
             array_map(
                 static fn (array $dependency): string => sprintf("\t%s:%d", $dependency['name'], $dependency['line']),
-                $dep->serialize()
-            )
+                $dep->serialize(),
+            ),
         );
 
         $output->writeLineFormatted($buffer);
@@ -103,37 +101,37 @@ final class ConsoleOutputFormatter implements OutputFormatterInterface
             sprintf(
                 '<fg=%s>Violations: %d</>',
                 $violationCount > 0 ? 'red' : 'default',
-                $violationCount
-            )
+                $violationCount,
+            ),
         );
         $output->writeLineFormatted(
             sprintf(
                 '<fg=%s>Skipped violations: %d</>',
                 $skippedViolationCount > 0 ? 'yellow' : 'default',
-                $skippedViolationCount
-            )
+                $skippedViolationCount,
+            ),
         );
         $output->writeLineFormatted(
             sprintf(
                 '<fg=%s>Uncovered: %d</>',
                 $uncoveredCount > 0 ? 'yellow' : 'default',
-                $uncoveredCount
-            )
+                $uncoveredCount,
+            ),
         );
         $output->writeLineFormatted(sprintf('<info>Allowed: %d</info>', $allowedCount));
         $output->writeLineFormatted(
             sprintf(
                 '<fg=%s>Warnings: %d</>',
                 $warningsCount > 0 ? 'yellow' : 'default',
-                $warningsCount
-            )
+                $warningsCount,
+            ),
         );
         $output->writeLineFormatted(
             sprintf(
                 '<fg=%s>Errors: %d</>',
                 $errorsCount > 0 ? 'red' : 'default',
-                $errorsCount
-            )
+                $errorsCount,
+            ),
         );
     }
 
@@ -150,12 +148,10 @@ final class ConsoleOutputFormatter implements OutputFormatterInterface
             $output->writeLineFormatted(
                 sprintf(
                     '<info>%s</info> has uncovered dependency on <info>%s</info> (%s)',
-                    $dependency->getDepender()
-                        ->toString(),
-                    $dependency->getDependent()
-                        ->toString(),
-                    $u->layer
-                )
+                    $dependency->getDepender()->toString(),
+                    $dependency->getDependent()->toString(),
+                    $u->layer,
+                ),
             );
             $this->printFileOccurrence($output, $dependency->getContext()->fileOccurrence);
 

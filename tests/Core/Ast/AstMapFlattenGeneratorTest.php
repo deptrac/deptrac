@@ -59,11 +59,11 @@ final class AstMapFlattenGeneratorTest extends TestCase
         $parser = $parserBuilder($filePath);
         $eventDispatcher = new TraceableEventDispatcher(
             new EventDispatcher(),
-            new Stopwatch()
+            new Stopwatch(),
         );
         $astLoader = new AstLoader(
             $parser,
-            $eventDispatcher
+            $eventDispatcher,
         );
 
         $astMap = $astLoader->createAstMap([$filePath]);
@@ -73,17 +73,19 @@ final class AstMapFlattenGeneratorTest extends TestCase
 
         self::assertEqualsCanonicalizing(
             [],
-            self::getInheritedInherits(FixtureBasicInheritanceA::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceA::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
             [],
-            self::getInheritedInherits(FixtureBasicInheritanceB::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceB::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
-            ['Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceA::6 (Extends) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceB::7 (Extends))'],
-            self::getInheritedInherits(FixtureBasicInheritanceC::class, $astMap)
+            [
+                'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceA::6 (Extends) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceB::7 (Extends))',
+            ],
+            self::getInheritedInherits(FixtureBasicInheritanceC::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
@@ -91,7 +93,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceA::6 (Extends) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceC::8 (Extends) -> Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceB::7 (Extends))',
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceB::7 (Extends) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceC::8 (Extends))',
             ],
-            self::getInheritedInherits(FixtureBasicInheritanceD::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceD::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
@@ -100,7 +102,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceB::7 (Extends) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceD::9 (Extends) -> Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceC::8 (Extends))',
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceC::8 (Extends) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceD::9 (Extends))',
             ],
-            self::getInheritedInherits(FixtureBasicInheritanceE::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceE::class, $astMap),
         );
     }
 
@@ -117,11 +119,11 @@ final class AstMapFlattenGeneratorTest extends TestCase
         $parser = $parserBuilder($filePath);
         $eventDispatcher = new TraceableEventDispatcher(
             new EventDispatcher(),
-            new Stopwatch()
+            new Stopwatch(),
         );
         $astLoader = new AstLoader(
             $parser,
-            $eventDispatcher
+            $eventDispatcher,
         );
         $astMap = $astLoader->createAstMap([$filePath]);
 
@@ -130,17 +132,19 @@ final class AstMapFlattenGeneratorTest extends TestCase
 
         self::assertEqualsCanonicalizing(
             [],
-            self::getInheritedInherits(FixtureBasicInheritanceInterfaceA::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceInterfaceA::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
             [],
-            self::getInheritedInherits(FixtureBasicInheritanceInterfaceB::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceInterfaceB::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
-            ['Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceA::6 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceB::7 (Implements))'],
-            self::getInheritedInherits(FixtureBasicInheritanceInterfaceC::class, $astMap)
+            [
+                'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceA::6 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceB::7 (Implements))',
+            ],
+            self::getInheritedInherits(FixtureBasicInheritanceInterfaceC::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
@@ -148,7 +152,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceA::6 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceC::8 (Implements) -> Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceB::7 (Implements))',
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceB::7 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceC::8 (Implements))',
             ],
-            self::getInheritedInherits(FixtureBasicInheritanceInterfaceD::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceInterfaceD::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
@@ -157,7 +161,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceB::7 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceD::9 (Implements) -> Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceC::8 (Implements))',
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceC::8 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\FixtureBasicInheritanceInterfaceD::9 (Implements))',
             ],
-            self::getInheritedInherits(FixtureBasicInheritanceInterfaceE::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceInterfaceE::class, $astMap),
         );
     }
 
@@ -174,11 +178,11 @@ final class AstMapFlattenGeneratorTest extends TestCase
         $parser = $parserBuilder($filePath);
         $eventDispatcher = new TraceableEventDispatcher(
             new EventDispatcher(),
-            new Stopwatch()
+            new Stopwatch(),
         );
         $astLoader = new AstLoader(
             $parser,
-            $eventDispatcher
+            $eventDispatcher,
         );
         $astMap = $astLoader->createAstMap([$filePath]);
 
@@ -187,17 +191,17 @@ final class AstMapFlattenGeneratorTest extends TestCase
 
         self::assertEqualsCanonicalizing(
             [],
-            self::getInheritedInherits(MultipleInteritanceA1::class, $astMap)
+            self::getInheritedInherits(MultipleInteritanceA1::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
             [],
-            self::getInheritedInherits(MultipleInteritanceA2::class, $astMap)
+            self::getInheritedInherits(MultipleInteritanceA2::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
             [],
-            self::getInheritedInherits(MultipleInteritanceA::class, $astMap)
+            self::getInheritedInherits(MultipleInteritanceA::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
@@ -205,7 +209,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceA1::7 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceA::8 (Implements))',
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceA2::7 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceA::8 (Implements))',
             ],
-            self::getInheritedInherits(MultipleInteritanceB::class, $astMap)
+            self::getInheritedInherits(MultipleInteritanceB::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
@@ -215,7 +219,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceA2::7 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceB::9 (Implements) -> Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceA::8 (Implements))',
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceA::8 (Implements) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\MultipleInteritanceB::9 (Implements))',
             ],
-            self::getInheritedInherits(MultipleInteritanceC::class, $astMap)
+            self::getInheritedInherits(MultipleInteritanceC::class, $astMap),
         );
     }
 
@@ -232,11 +236,11 @@ final class AstMapFlattenGeneratorTest extends TestCase
         $parser = $parserBuilder($filePath);
         $eventDispatcher = new TraceableEventDispatcher(
             new EventDispatcher(),
-            new Stopwatch()
+            new Stopwatch(),
         );
         $astLoader = new AstLoader(
             $parser,
-            $eventDispatcher
+            $eventDispatcher,
         );
         $astMap = $astLoader->createAstMap([$filePath]);
 
@@ -245,17 +249,19 @@ final class AstMapFlattenGeneratorTest extends TestCase
 
         self::assertEqualsCanonicalizing(
             [],
-            self::getInheritedInherits(FixtureBasicInheritanceWithNoiseA::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceWithNoiseA::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
             [],
-            self::getInheritedInherits(FixtureBasicInheritanceWithNoiseB::class, $astMap)
+            self::getInheritedInherits(FixtureBasicInheritanceWithNoiseB::class, $astMap),
         );
 
         self::assertEqualsCanonicalizing(
-            ['Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicInheritance\FixtureBasicInheritanceWithNoiseA::18 (Extends) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicInheritance\FixtureBasicInheritanceWithNoiseB::19 (Extends))'],
-            self::getInheritedInherits(FixtureBasicInheritanceWithNoiseC::class, $astMap)
+            [
+                'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicInheritance\FixtureBasicInheritanceWithNoiseA::18 (Extends) (path: Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicInheritance\FixtureBasicInheritanceWithNoiseB::19 (Extends))',
+            ],
+            self::getInheritedInherits(FixtureBasicInheritanceWithNoiseC::class, $astMap),
         );
     }
 
@@ -269,7 +275,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
         $parser = $this->createMock(ParserInterface::class);
         $eventDispatcher = new TraceableEventDispatcher(
             new EventDispatcher(),
-            new Stopwatch()
+            new Stopwatch(),
         );
         $astLoader = new AstLoader($parser, $eventDispatcher);
 
@@ -291,7 +297,7 @@ final class AstMapFlattenGeneratorTest extends TestCase
         $parser = $this->createMock(ParserInterface::class);
         $eventDispatcher = new TraceableEventDispatcher(
             new EventDispatcher(),
-            new Stopwatch()
+            new Stopwatch(),
         );
         $astLoader = new AstLoader($parser, $eventDispatcher);
 
@@ -327,7 +333,9 @@ final class AstMapFlattenGeneratorTest extends TestCase
         ];
 
         return new NikicPhpParser(
-            (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
+            (new ParserFactory())->createForNewestSupportedVersion(),
+            $cache,
+            $extractors,
         );
     }
 

@@ -42,6 +42,7 @@ final class ComposerFilesParser
         if (false === $contents) {
             throw new RuntimeException('Could not load composer.lock file');
         }
+
         try {
             /**
              * @var array{
@@ -62,6 +63,7 @@ final class ComposerFilesParser
         } catch (JsonException $exception) {
             throw new RuntimeException('Could not parse composer.lock file', 0, $exception);
         }
+
         $this->lockedPackages = $this->getPackagesFromLockFile();
     }
 
@@ -124,6 +126,7 @@ final class ComposerFilesParser
         foreach (array_keys($package['autoload']['psr-0'] ?? []) as $namespace) {
             $namespaces[] = $namespace;
         }
+
         foreach (array_keys($package['autoload']['psr-4'] ?? []) as $namespace) {
             $namespaces[] = $namespace;
         }
@@ -132,6 +135,7 @@ final class ComposerFilesParser
             foreach (array_keys($package['autoload-dev']['psr-0'] ?? []) as $namespace) {
                 $namespaces[] = $namespace;
             }
+
             foreach (array_keys($package['autoload-dev']['psr-4'] ?? []) as $namespace) {
                 $namespaces[] = $namespace;
             }

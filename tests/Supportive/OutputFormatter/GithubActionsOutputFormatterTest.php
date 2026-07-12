@@ -49,9 +49,11 @@ final class GithubActionsOutputFormatterTest extends TestCase
         foreach ($rules as $rule) {
             $analysisResult->addRule($rule);
         }
+
         foreach ($errors as $error) {
             $analysisResult->addError($error);
         }
+
         foreach ($warnings as $warning) {
             $analysisResult->addWarning($warning);
         }
@@ -64,8 +66,8 @@ final class GithubActionsOutputFormatterTest extends TestCase
                 null,
                 true,
                 true,
-                false
-            )
+                false,
+            ),
         );
 
         self::assertSame($expectedOutput, $bufferedOutput->fetch());
@@ -87,40 +89,55 @@ final class GithubActionsOutputFormatterTest extends TestCase
         yield 'Simple Violation' => [
             'rules' => [
                 new Violation(
-                    new Dependency($originalA, $originalB, new DependencyContext($originalAOccurrence, DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext($originalAOccurrence, DependencyType::PARAMETER),
+                    ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'errors' => [],
             'warnings' => [],
-            "::error file=/home/testuser/originalA.php,line=12::ACME\OriginalA must not depend on ACME\OriginalB (LayerA on LayerB)".PHP_EOL,
+            "::error file=/home/testuser/originalA.php,line=12::ACME\OriginalA must not depend on ACME\OriginalB (LayerA on LayerB)"
+                .PHP_EOL,
         ];
 
         yield 'Skipped Violation' => [
             'rules' => [
                 new SkippedViolation(
-                    new Dependency($originalA, $originalB, new DependencyContext($originalAOccurrence, DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext($originalAOccurrence, DependencyType::PARAMETER),
+                    ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
             ],
             'errors' => [],
             'warnings' => [],
-            "::warning file=/home/testuser/originalA.php,line=12::[SKIPPED] ACME\OriginalA must not depend on ACME\OriginalB (LayerA on LayerB)".PHP_EOL,
+            "::warning file=/home/testuser/originalA.php,line=12::[SKIPPED] ACME\OriginalA must not depend on ACME\OriginalB (LayerA on LayerB)"
+                .PHP_EOL,
         ];
 
         yield 'Uncovered Dependency' => [
             'rules' => [
                 new Uncovered(
-                    new Dependency($originalA, $originalB, new DependencyContext($originalAOccurrence, DependencyType::PARAMETER)),
-                    'LayerA'
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext($originalAOccurrence, DependencyType::PARAMETER),
+                    ),
+                    'LayerA',
                 ),
             ],
             'errors' => [],
             'warnings' => [],
-            "::warning file=/home/testuser/originalA.php,line=12::ACME\OriginalA has uncovered dependency on ACME\OriginalB (LayerA)".PHP_EOL,
+            "::warning file=/home/testuser/originalA.php,line=12::ACME\OriginalA has uncovered dependency on ACME\OriginalB (LayerA)"
+                .PHP_EOL,
         ];
 
         yield 'Inherit dependency' => [
@@ -129,37 +146,43 @@ final class GithubActionsOutputFormatterTest extends TestCase
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
                         ClassLikeToken::fromFQCN('ClassB'),
-                        new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                        new Dependency(
+                            $originalA,
+                            $originalB,
+                            new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                        ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('originalA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('originalA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))
                             ->replacePath([
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritB'),
                                     new FileOccurrence('originalA.php', 4),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritC'),
                                     new FileOccurrence('originalA.php', 5),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritD'),
                                     new FileOccurrence('originalA.php', 6),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
-                            ])
+                            ]),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'errors' => [],
             'warnings' => [],
-            "::error file=originalA.php,line=12::ClassA must not depend on ClassB (LayerA on LayerB)%0AClassInheritD::6 ->%0AClassInheritC::5 ->%0AClassInheritB::4 ->%0AClassInheritA::3 ->%0AACME\OriginalB::12".PHP_EOL,
+            "::error file=originalA.php,line=12::ClassA must not depend on ClassB (LayerA on LayerB)%0AClassInheritD::6 ->%0AClassInheritC::5 ->%0AClassInheritB::4 ->%0AClassInheritA::3 ->%0AACME\OriginalB::12"
+                .PHP_EOL,
         ];
 
         yield 'an error occurred' => [
@@ -173,9 +196,13 @@ final class GithubActionsOutputFormatterTest extends TestCase
             'rules' => [],
             'errors' => [],
             'warnings' => [
-                Warning::tokenIsInMoreThanOneLayer(ClassLikeToken::fromFQCN(Bar::class)->toString(), ['Layer 1', 'Layer 2']),
+                Warning::tokenIsInMoreThanOneLayer(
+                    ClassLikeToken::fromFQCN(Bar::class)->toString(),
+                    ['Layer 1', 'Layer 2'],
+                ),
             ],
-            "::warning ::Foo\Bar is in more than one layer [\"Layer 1\", \"Layer 2\"]. It is recommended that one token should only be in one layer.".PHP_EOL,
+            "::warning ::Foo\Bar is in more than one layer [\"Layer 1\", \"Layer 2\"]. It is recommended that one token should only be in one layer."
+                .PHP_EOL,
         ];
     }
 
@@ -188,10 +215,14 @@ final class GithubActionsOutputFormatterTest extends TestCase
         $analysisResult = new AnalysisResult();
         $analysisResult->addRule(
             new SkippedViolation(
-                new Dependency($originalA, $originalB, new DependencyContext($originalAOccurrence, DependencyType::PARAMETER)),
+                new Dependency(
+                    $originalA,
+                    $originalB,
+                    new DependencyContext($originalAOccurrence, DependencyType::PARAMETER),
+                ),
                 'LayerA',
-                'LayerB'
-            )
+                'LayerB',
+            ),
         );
 
         $bufferedOutput = new BufferedOutput();
@@ -205,7 +236,7 @@ final class GithubActionsOutputFormatterTest extends TestCase
                 false,
                 true,
                 false,
-            )
+            ),
         );
 
         self::assertSame('', $bufferedOutput->fetch());
@@ -220,9 +251,13 @@ final class GithubActionsOutputFormatterTest extends TestCase
         $analysisResult = new AnalysisResult();
         $analysisResult->addRule(
             new Uncovered(
-                new Dependency($originalA, $originalB, new DependencyContext($originalAOccurrence, DependencyType::PARAMETER)),
-                'LayerA'
-            )
+                new Dependency(
+                    $originalA,
+                    $originalB,
+                    new DependencyContext($originalAOccurrence, DependencyType::PARAMETER),
+                ),
+                'LayerA',
+            ),
         );
 
         $bufferedOutput = new BufferedOutput();
@@ -236,12 +271,13 @@ final class GithubActionsOutputFormatterTest extends TestCase
                 false,
                 true,
                 true,
-            )
+            ),
         );
 
         self::assertSame(
-            "::error file=/home/testuser/originalA.php,line=12::ACME\OriginalA has uncovered dependency on ACME\OriginalB (LayerA)".PHP_EOL,
-            $bufferedOutput->fetch()
+            "::error file=/home/testuser/originalA.php,line=12::ACME\OriginalA has uncovered dependency on ACME\OriginalB (LayerA)"
+            .PHP_EOL,
+            $bufferedOutput->fetch(),
         );
     }
 
@@ -249,7 +285,7 @@ final class GithubActionsOutputFormatterTest extends TestCase
     {
         return new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
     }
 }

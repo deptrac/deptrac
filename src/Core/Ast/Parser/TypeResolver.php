@@ -57,7 +57,10 @@ class TypeResolver implements TypeResolverInterface
             $type instanceof Name => [$scope->resolveName($type)],
             $type instanceof Identifier => [],
             $type instanceof NullableType => self::resolveType($type->type, $scope),
-            $type instanceof IntersectionType, $type instanceof UnionType => array_merge(...array_map(static fn ($type): array => self::resolveType($type, $scope), $type->types)),
+            $type instanceof IntersectionType, $type instanceof UnionType => array_merge(...array_map(
+                static fn ($type): array => self::resolveType($type, $scope),
+                $type->types,
+            )),
             default => [],
         };
     }
@@ -90,11 +93,28 @@ class TypeResolver implements TypeResolverInterface
     public function resolvePHPStanDocParserType(TypeNode $type, TypeScope $typeScope, array $templateTypes): array
     {
         return match (true) {
-            $type instanceof IdentifierTypeNode => in_array($type->name, $templateTypes, true) ? [] : $this->resolveString($type->name, $typeScope),
-            $type instanceof ConstTypeNode && $type->constExpr instanceof ConstFetchNode => $this->resolveString($type->constExpr->className, $typeScope),
-            $type instanceof NullableTypeNode => $this->resolvePHPStanDocParserType($type->type, $typeScope, $templateTypes),
-            $type instanceof ArrayTypeNode => $this->resolvePHPStanDocParserType($type->type, $typeScope, $templateTypes),
-            $type instanceof UnionTypeNode || $type instanceof IntersectionTypeNode => $this->resolveVariableType($type, $typeScope, $templateTypes),
+            $type instanceof IdentifierTypeNode => in_array($type->name, $templateTypes, true)
+                ? []
+                : $this->resolveString($type->name, $typeScope),
+            $type instanceof ConstTypeNode && $type->constExpr instanceof ConstFetchNode => $this->resolveString(
+                $type->constExpr->className,
+                $typeScope,
+            ),
+            $type instanceof NullableTypeNode => $this->resolvePHPStanDocParserType(
+                $type->type,
+                $typeScope,
+                $templateTypes,
+            ),
+            $type instanceof ArrayTypeNode => $this->resolvePHPStanDocParserType(
+                $type->type,
+                $typeScope,
+                $templateTypes,
+            ),
+            $type instanceof UnionTypeNode || $type instanceof IntersectionTypeNode => $this->resolveVariableType(
+                $type,
+                $typeScope,
+                $templateTypes,
+            ),
             $type instanceof GenericTypeNode => $this->resolveGeneric($type, $typeScope, $templateTypes),
             $type instanceof ArrayShapeNode => $this->resolveArray($type, $typeScope, $templateTypes),
             $type instanceof CallableTypeNode => $this->resolveCallable($type, $typeScope, $templateTypes),
@@ -127,8 +147,8 @@ class TypeResolver implements TypeResolverInterface
                 [],
                 ...array_map(
                     $this->resolvePropertyType(...),
-                    $type->types
-                )
+                    $type->types,
+                ),
             ),
             default => [],
         };
@@ -141,7 +161,10 @@ class TypeResolver implements TypeResolverInterface
     {
         return match (true) {
             $resolvedType instanceof Object_ => ($fqsen = $resolvedType->getFqsen()) ? [(string) $fqsen] : [],
-            $resolvedType instanceof Compound => array_merge([], ...array_map($this->resolveReflectionType(...), iterator_to_array($resolvedType))),
+            $resolvedType instanceof Compound => array_merge(
+                [],
+                ...array_map($this->resolveReflectionType(...), iterator_to_array($resolvedType)),
+            ),
             default => [],
         };
     }
@@ -158,7 +181,7 @@ class TypeResolver implements TypeResolverInterface
             return $this->resolvePHPStanDocParserType(
                 $type->type,
                 $typeScope,
-                $templateTypes
+                $templateTypes,
             );
         }
 
@@ -168,7 +191,7 @@ class TypeResolver implements TypeResolverInterface
             : $this->resolvePHPStanDocParserType(
                 $type->type,
                 $typeScope,
-                $templateTypes
+                $templateTypes,
             );
 
         return array_merge(
@@ -177,10 +200,10 @@ class TypeResolver implements TypeResolverInterface
                 fn (TypeNode $typeNode): array => $this->resolvePHPStanDocParserType(
                     $typeNode,
                     $typeScope,
-                    $templateTypes
+                    $templateTypes,
                 ),
-                $type->genericTypes
-            )
+                $type->genericTypes,
+            ),
         );
     }
 
@@ -197,10 +220,10 @@ class TypeResolver implements TypeResolverInterface
                 fn (CallableTypeParameterNode $parameterNode): array => $this->resolvePHPStanDocParserType(
                     $parameterNode->type,
                     $typeScope,
-                    $templateTypes
+                    $templateTypes,
                 ),
-                $type->parameters
-            )
+                $type->parameters,
+            ),
         );
     }
 
@@ -211,15 +234,14 @@ class TypeResolver implements TypeResolverInterface
      */
     private function resolveArray(ArrayShapeNode $type, TypeScope $typeScope, array $templateTypes): array
     {
-        return array_merge([],
-            ...array_map(
-                fn (ArrayShapeItemNode $itemNode): array => $this->resolvePHPStanDocParserType(
-                    $itemNode->valueType,
-                    $typeScope,
-                    $templateTypes
-                ),
-                $type->items
-            ));
+        return array_merge([], ...array_map(
+            fn (ArrayShapeItemNode $itemNode): array => $this->resolvePHPStanDocParserType(
+                $itemNode->valueType,
+                $typeScope,
+                $templateTypes,
+            ),
+            $type->items,
+        ));
     }
 
     /**
@@ -232,14 +254,13 @@ class TypeResolver implements TypeResolverInterface
         TypeScope $typeScope,
         array $templateTypes,
     ): array {
-        return array_merge([],
-            ...array_map(
-                fn (TypeNode $typeNode): array => $this->resolvePHPStanDocParserType(
-                    $typeNode,
-                    $typeScope,
-                    $templateTypes
-                ),
-                $type->types
-            ));
+        return array_merge([], ...array_map(
+            fn (TypeNode $typeNode): array => $this->resolvePHPStanDocParserType(
+                $typeNode,
+                $typeScope,
+                $templateTypes,
+            ),
+            $type->types,
+        ));
     }
 }

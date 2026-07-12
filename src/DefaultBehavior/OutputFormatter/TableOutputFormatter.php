@@ -85,7 +85,7 @@ final class TableOutputFormatter implements OutputFormatterInterface
             '<info>%s</info> must not depend on <info>%s</info> (%s)',
             $dependency->getDepender()->toString(),
             $dependency->getDependent()->toString(),
-            $rule->getDependentLayer()
+            $rule->getDependentLayer(),
         );
 
         if (count($dependency->serialize()) > 1) {
@@ -128,8 +128,8 @@ final class TableOutputFormatter implements OutputFormatterInterface
             " -> \n",
             array_map(
                 static fn (array $dependency): string => sprintf('%s::%d', $dependency['name'], $dependency['line']),
-                $dep->serialize()
-            )
+                $dep->serialize(),
+            ),
         );
     }
 
@@ -150,11 +150,15 @@ final class TableOutputFormatter implements OutputFormatterInterface
             'Report',
             new TableSeparator(),
             ['Violations' => sprintf('<fg=%s>%d</>', $violationCount > 0 ? 'red' : 'default', $violationCount)],
-            ['Skipped violations' => sprintf('<fg=%s>%d</>', $skippedViolationCount > 0 ? 'yellow' : 'default', $skippedViolationCount)],
+            ['Skipped violations' => sprintf(
+                '<fg=%s>%d</>',
+                $skippedViolationCount > 0 ? 'yellow' : 'default',
+                $skippedViolationCount,
+            )],
             ['Uncovered' => sprintf('<fg=%s>%d</>', $uncoveredCount > 0 ? $uncoveredFg : 'default', $uncoveredCount)],
             ['Allowed' => $allowedCount],
             ['Warnings' => sprintf('<fg=%s>%d</>', $warningsCount > 0 ? 'yellow' : 'default', $warningsCount)],
-            ['Errors' => sprintf('<fg=%s>%d</>', $errorsCount > 0 ? 'red' : 'default', $errorsCount)]
+            ['Errors' => sprintf('<fg=%s>%d</>', $errorsCount > 0 ? 'red' : 'default', $errorsCount)],
         );
     }
 
@@ -168,7 +172,7 @@ final class TableOutputFormatter implements OutputFormatterInterface
         $message = sprintf(
             '<info>%s</info> has uncovered dependency on <info>%s</info>',
             $dependency->getDepender()->toString(),
-            $dependency->getDependent()->toString()
+            $dependency->getDependent()->toString(),
         );
 
         if (count($dependency->serialize()) > 1) {
@@ -190,8 +194,8 @@ final class TableOutputFormatter implements OutputFormatterInterface
             ['<fg=red>Errors</>'],
             array_map(
                 static fn (Error $error) => [(string) $error],
-                $result->errors
-            )
+                $result->errors,
+            ),
         );
     }
 
@@ -201,8 +205,8 @@ final class TableOutputFormatter implements OutputFormatterInterface
             ['<fg=yellow>Warnings</>'],
             array_map(
                 static fn (Warning $warning) => [(string) $warning],
-                $result->warnings
-            )
+                $result->warnings,
+            ),
         );
     }
 }

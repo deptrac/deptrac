@@ -33,7 +33,7 @@ final class SuperglobalCollectorTest extends TestCase
     {
         $actual = $this->collector->satisfy(
             $configuration,
-            new VariableReference(SuperGlobalToken::from($name))
+            new VariableReference(SuperGlobalToken::from($name)),
         );
 
         self::assertSame($expected, $actual);
@@ -45,7 +45,7 @@ final class SuperglobalCollectorTest extends TestCase
 
         $this->collector->satisfy(
             ['Foo' => 'a'],
-            new VariableReference(SuperGlobalToken::from('_POST'))
+            new VariableReference(SuperGlobalToken::from('_POST')),
         );
     }
 

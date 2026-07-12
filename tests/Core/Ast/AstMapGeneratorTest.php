@@ -39,7 +39,8 @@ final class AstMapGeneratorTest extends TestCase
         $filePath = __DIR__.'/Fixtures/BasicDependency/BasicDependencyClass.php';
         $parser = $parserBuilder($filePath);
         $astRunner = new AstLoader(
-            $parser, new EventDispatcher()
+            $parser,
+            new EventDispatcher(),
         );
 
         $astMap = $astRunner->createAstMap([$filePath]);
@@ -50,8 +51,8 @@ final class AstMapGeneratorTest extends TestCase
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicDependency\BasicDependencyClassInterfaceA::9 (Implements)',
             ],
             self::getInheritsAsString(
-                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyClassB::class))
-            )
+                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyClassB::class)),
+            ),
         );
 
         self::assertEqualsCanonicalizing(
@@ -60,8 +61,8 @@ final class AstMapGeneratorTest extends TestCase
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicDependency\BasicDependencyClassInterfaceB::13 (Implements)',
             ],
             self::getInheritsAsString(
-                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyClassC::class))
-            )
+                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyClassC::class)),
+            ),
         );
     }
 
@@ -71,7 +72,8 @@ final class AstMapGeneratorTest extends TestCase
         $filePath = __DIR__.'/Fixtures/BasicDependency/BasicDependencyTraits.php';
         $parser = $parserBuilder($filePath);
         $astRunner = new AstLoader(
-            $parser, new EventDispatcher()
+            $parser,
+            new EventDispatcher(),
         );
 
         $astMap = $astRunner->createAstMap([$filePath]);
@@ -79,22 +81,22 @@ final class AstMapGeneratorTest extends TestCase
         self::assertEqualsCanonicalizing(
             [],
             self::getInheritsAsString(
-                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitA::class))
-            )
+                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitA::class)),
+            ),
         );
 
         self::assertEqualsCanonicalizing(
             [],
             self::getInheritsAsString(
-                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitB::class))
-            )
+                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitB::class)),
+            ),
         );
 
         self::assertEqualsCanonicalizing(
             ['Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicDependency\BasicDependencyTraitB::7 (Uses)'],
             self::getInheritsAsString(
-                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitC::class))
-            )
+                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitC::class)),
+            ),
         );
 
         self::assertEqualsCanonicalizing(
@@ -103,15 +105,15 @@ final class AstMapGeneratorTest extends TestCase
                 'Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicDependency\BasicDependencyTraitB::11 (Uses)',
             ],
             self::getInheritsAsString(
-                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitD::class))
-            )
+                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitD::class)),
+            ),
         );
 
         self::assertEqualsCanonicalizing(
             ['Tests\Deptrac\Deptrac\Core\Ast\Fixtures\BasicDependency\BasicDependencyTraitA::15 (Uses)'],
             self::getInheritsAsString(
-                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitClass::class))
-            )
+                $astMap->getClassReferenceForToken(ClassLikeToken::fromFQCN(BasicDependencyTraitClass::class)),
+            ),
         );
     }
 
@@ -121,7 +123,8 @@ final class AstMapGeneratorTest extends TestCase
         $filePath = __DIR__.'/Fixtures/Issue319.php';
         $parser = $parserBuilder($filePath);
         $astRunner = new AstLoader(
-            $parser, new EventDispatcher()
+            $parser,
+            new EventDispatcher(),
         );
 
         $astMap = $astRunner->createAstMap([$filePath]);
@@ -134,8 +137,8 @@ final class AstMapGeneratorTest extends TestCase
             ],
             array_map(
                 static fn (DependencyToken $dependency) => $dependency->token->toString(),
-                $astMap->getFileReferences()[$filePath]->dependencies
-            )
+                $astMap->getFileReferences()[$filePath]->dependencies,
+            ),
         );
     }
 
@@ -175,7 +178,9 @@ final class AstMapGeneratorTest extends TestCase
         ];
 
         return new NikicPhpParser(
-            (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
+            (new ParserFactory())->createForNewestSupportedVersion(),
+            $cache,
+            $extractors,
         );
     }
 }

@@ -27,6 +27,7 @@ final class ClassDependencyEmitter implements DependencyEmitterInterface
                 if (DependencyType::SUPERGLOBAL_VARIABLE === $dependency->context->dependencyType) {
                     continue;
                 }
+
                 if (DependencyType::UNRESOLVED_FUNCTION_CALL === $dependency->context->dependencyType) {
                     continue;
                 }
@@ -36,7 +37,7 @@ final class ClassDependencyEmitter implements DependencyEmitterInterface
                         $classLikeName,
                         $dependency->token,
                         $dependency->context,
-                    )
+                    ),
                 );
             }
 
@@ -46,7 +47,7 @@ final class ClassDependencyEmitter implements DependencyEmitterInterface
                         $classLikeName,
                         $inherit->classLikeName,
                         new DependencyContext($inherit->fileOccurrence, DependencyType::INHERIT),
-                    )
+                    ),
                 );
             }
         }

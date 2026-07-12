@@ -23,13 +23,19 @@ final class FormatterProviderTest extends TestCase
         ]));
 
         self::assertTrue($formatterProvider->has(ConsoleOutputFormatter::getName()));
-        self::assertInstanceOf(ConsoleOutputFormatter::class, $formatterProvider->get(ConsoleOutputFormatter::getName()));
+        self::assertInstanceOf(
+            ConsoleOutputFormatter::class,
+            $formatterProvider->get(ConsoleOutputFormatter::getName()),
+        );
         self::assertTrue($formatterProvider->has(TableOutputFormatter::getName()));
         self::assertInstanceOf(TableOutputFormatter::class, $formatterProvider->get(TableOutputFormatter::getName()));
-        self::assertSame([
-            ConsoleOutputFormatter::getName(),
-            TableOutputFormatter::getName(),
-        ], $formatterProvider->getKnownFormatters());
+        self::assertSame(
+            [
+                ConsoleOutputFormatter::getName(),
+                TableOutputFormatter::getName(),
+            ],
+            $formatterProvider->getKnownFormatters(),
+        );
     }
 
     public function testContainerHasInvalidService(): void
@@ -37,7 +43,9 @@ final class FormatterProviderTest extends TestCase
         $this->expectException(InvalidServiceInLocatorException::class);
         $this->expectExceptionMessage('Trying to get unsupported service "formatter1" from locator (expected "Deptrac\\Deptrac\\Contract\\OutputFormatter\\OutputFormatterInterface", but is "stdClass").');
 
-        (new FormatterProvider(new ServiceLocator(['formatter1' => static fn () => new stdClass()])))->get('formatter1');
+        (new FormatterProvider(new ServiceLocator([
+            'formatter1' => static fn () => new stdClass(),
+        ])))->get('formatter1');
     }
 
     public function testContainerIsEmpty(): void

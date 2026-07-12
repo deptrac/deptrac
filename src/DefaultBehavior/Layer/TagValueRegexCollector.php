@@ -46,6 +46,7 @@ final class TagValueRegexCollector implements CollectorInterface
         if (!isset($config['tag'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('TagValueRegexCollector: Missing "tag" configuration.');
         }
+
         if (!is_string($config['tag'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('TagValueRegexCollector: Configuration "tag" is not a string.');
         }
@@ -79,7 +80,8 @@ final class TagValueRegexCollector implements CollectorInterface
         }
 
         if (false === @preg_match($pattern, '')) {
-            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('TagValueRegexCollector: Invalid regex pattern '.$pattern);
+            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('TagValueRegexCollector: Invalid regex pattern '
+            .$pattern);
         }
 
         return $pattern;

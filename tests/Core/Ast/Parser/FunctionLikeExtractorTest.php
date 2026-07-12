@@ -36,14 +36,14 @@ final class FunctionLikeExtractorTest extends TestCase
             [
                 'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\MethodAttribute::9 (attribute)',
             ],
-            $this->getDependenciesAsString($classA)
+            $this->getDependenciesAsString($classA),
         );
 
         self::assertEqualsCanonicalizing(
             [
                 'Tests\Deptrac\Deptrac\Core\Ast\Parser\Fixtures\MethodSignaturesA::15 (returntype)',
             ],
-            $this->getDependenciesAsString($classB)
+            $this->getDependenciesAsString($classB),
         );
 
         self::assertEqualsCanonicalizing(
@@ -53,7 +53,7 @@ final class FunctionLikeExtractorTest extends TestCase
                 // NOTE: We are not yet tracking the call from MethodSignatureC::test()
                 // to MethodSignatureA::foo().
             ],
-            $this->getDependenciesAsString($classC)
+            $this->getDependenciesAsString($classC),
         );
     }
 
@@ -68,7 +68,7 @@ final class FunctionLikeExtractorTest extends TestCase
 
         return array_map(
             static fn (DependencyToken $dependency) => "{$dependency->token->toString()}::{$dependency->context->fileOccurrence->line} ({$dependency->context->dependencyType->value})",
-            $classReference->dependencies
+            $classReference->dependencies,
         );
     }
 
@@ -93,7 +93,9 @@ final class FunctionLikeExtractorTest extends TestCase
         ];
 
         return new NikicPhpParser(
-            (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
+            (new ParserFactory())->createForNewestSupportedVersion(),
+            $cache,
+            $extractors,
         );
     }
 

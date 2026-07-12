@@ -59,14 +59,14 @@ final class PHPInternalCollectorTest extends TestCase
                 {
                     return new FileToken('foo');
                 }
-            }
+            },
         );
 
         self::assertFalse($actual);
 
         $actual = (new PhpInternalCollector())->satisfy(
             ['value' => '/^Foo\\\\Bar$/i'],
-            new VariableReference(SuperGlobalToken::GET)
+            new VariableReference(SuperGlobalToken::GET),
         );
 
         self::assertFalse($actual);

@@ -42,7 +42,10 @@ final class ComposerCollector implements CollectorInterface
         try {
             $namespaces = $parser->autoloadableNamespacesForRequirements($config['packages'], true);
         } catch (RuntimeException $e) {
-            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(sprintf('ComposerCollector: Non-existent package defined. %s', $e->getMessage()));
+            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(sprintf(
+                'ComposerCollector: Non-existent package defined. %s',
+                $e->getMessage(),
+            ));
         }
 
         $token = $reference->getToken()->toString();

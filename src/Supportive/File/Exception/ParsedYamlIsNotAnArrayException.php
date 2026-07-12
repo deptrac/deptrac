@@ -16,7 +16,7 @@ final class ParsedYamlIsNotAnArrayException extends RuntimeException implements 
     {
         return new self(sprintf(
             'File "%s" can be parsed as YAML, but the result is not an array.',
-            $filename
+            $filename,
         ));
     }
 }

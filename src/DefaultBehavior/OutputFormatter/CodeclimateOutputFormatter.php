@@ -60,11 +60,13 @@ final class CodeclimateOutputFormatter implements OutputFormatterInterface
                 $this->addSkipped($violations, $rule, $formatterConfig);
             }
         }
+
         if ($outputFormatterInput->reportUncovered) {
             foreach ($result->allOf(Uncovered::class) as $rule) {
                 $this->addUncovered($violations, $rule, $formatterConfig);
             }
         }
+
         foreach ($result->allOf(Violation::class) as $rule) {
             $this->addFailure($violations, $rule, $formatterConfig);
         }
@@ -94,7 +96,7 @@ final class CodeclimateOutputFormatter implements OutputFormatterInterface
         $violationsArray[] = $this->buildRuleArray(
             $violation,
             $this->getFailureMessage($violation),
-            $config->getSeverity('failure') ?? 'major'
+            $config->getSeverity('failure') ?? 'major',
         );
     }
 
@@ -107,19 +109,22 @@ final class CodeclimateOutputFormatter implements OutputFormatterInterface
             $dependency->getDepender()->toString(),
             $dependency->getDependent()->toString(),
             $violation->getDependerLayer(),
-            $violation->getDependentLayer()
+            $violation->getDependentLayer(),
         );
     }
 
     /**
      * @param array<array{type: string, check_name: string, fingerprint: string, description: string, categories: array<string>, severity: string, location: array{path: string, lines: array{begin: int}}}> $violationsArray
      */
-    private function addSkipped(array &$violationsArray, SkippedViolation $violation, ConfigurationCodeclimate $config): void
-    {
+    private function addSkipped(
+        array &$violationsArray,
+        SkippedViolation $violation,
+        ConfigurationCodeclimate $config,
+    ): void {
         $violationsArray[] = $this->buildRuleArray(
             $violation,
             $this->getWarningMessage($violation),
-            $config->getSeverity('skipped') ?? 'minor'
+            $config->getSeverity('skipped') ?? 'minor',
         );
     }
 
@@ -132,7 +137,7 @@ final class CodeclimateOutputFormatter implements OutputFormatterInterface
             $dependency->getDepender()->toString(),
             $dependency->getDependent()->toString(),
             $violation->getDependerLayer(),
-            $violation->getDependentLayer()
+            $violation->getDependentLayer(),
         );
     }
 
@@ -144,7 +149,7 @@ final class CodeclimateOutputFormatter implements OutputFormatterInterface
         $violationsArray[] = $this->buildRuleArray(
             $violation,
             $this->getUncoveredMessage($violation),
-            $config->getSeverity('uncovered') ?? 'info'
+            $config->getSeverity('uncovered') ?? 'info',
         );
     }
 
@@ -156,7 +161,7 @@ final class CodeclimateOutputFormatter implements OutputFormatterInterface
             '%s has uncovered dependency on %s (%s)',
             $dependency->getDepender()->toString(),
             $dependency->getDependent()->toString(),
-            $violation->layer
+            $violation->layer,
         );
     }
 

@@ -67,11 +67,9 @@ class RulesetUsageAnalyser
         $layerNames = [];
         foreach (array_map(
             static fn (array $layerDef): string => $layerDef['name'],
-            $this->layers
+            $this->layers,
         ) as $sourceLayerName) {
-            foreach (
-                $this->layerProvider->getAllowedLayers($sourceLayerName) as $destinationLayerName
-            ) {
+            foreach ($this->layerProvider->getAllowedLayers($sourceLayerName) as $destinationLayerName) {
                 $layerNames[$sourceLayerName][$destinationLayerName] = 0;
             }
         }
@@ -104,7 +102,8 @@ class RulesetUsageAnalyser
                     $this->tokenResolver->resolve($dependency->getDependent(), $astMap),
                 );
                 foreach ($dependentLayerNames as $dependentLayerName => $__) {
-                    if (array_key_exists($dependerLayerName, $rulesets)
+                    if (
+                        array_key_exists($dependerLayerName, $rulesets)
                         && array_key_exists($dependentLayerName, $rulesets[$dependerLayerName])
                     ) {
                         ++$rulesets[$dependerLayerName][$dependentLayerName];

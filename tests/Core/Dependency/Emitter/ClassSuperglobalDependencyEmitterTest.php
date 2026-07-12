@@ -20,7 +20,7 @@ final class ClassSuperglobalDependencyEmitterTest extends TestCase
     {
         $deps = $this->getEmittedDependencies(
             new ClassSuperglobalDependencyEmitter(),
-            __DIR__.'/Fixtures/Foo.php'
+            __DIR__.'/Fixtures/Foo.php',
         );
 
         self::assertCount(2, $deps);

@@ -36,8 +36,8 @@ class UnassignedTokenAnalyser
         $this->tokenTypes = array_filter(
             array_map(
                 static fn (string $emitterType): ?TokenType => TokenType::tryFromEmitterType(EmitterType::from($emitterType)),
-                $config['types']
-            )
+                $config['types'],
+            ),
         );
     }
 

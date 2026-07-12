@@ -39,36 +39,46 @@ class DeptracExtension extends Extension implements PrependExtensionInterface
         if (!$container->hasParameter('projectDirectory')) {
             $container->setParameter('projectDirectory', getcwd());
         }
+
         if (!$container->hasParameter('paths')) {
             $container->setParameter('paths', []);
         }
+
         if (!$container->hasParameter('exclude_files')) {
             $container->setParameter('exclude_files', []);
         }
+
         if (!$container->hasParameter('layers')) {
             $container->setParameter('layers', []);
         }
+
         if (!$container->hasParameter('ruleset')) {
             $container->setParameter('ruleset', []);
         }
+
         if (!$container->hasParameter('skip_violations')) {
             $container->setParameter('skip_violations', []);
         }
+
         if (!$container->hasParameter('formatters')) {
             $container->setParameter('formatters', []);
         }
+
         if (!$container->hasParameter('analyser')) {
             $container->setParameter('analyser', [
                 'internal_tag' => null,
                 'types' => [EmitterType::CLASS_TOKEN->value, EmitterType::FUNCTION_TOKEN->value],
             ]);
         }
+
         if (!$container->hasParameter('ignore_uncovered_internal_classes')) {
             $container->setParameter('ignore_uncovered_internal_classes', true);
         }
+
         if (!$container->hasParameter('cache_file')) {
             $container->setParameter('cache_file', '.deptrac.cache');
         }
+
         if (!$container->hasParameter('feature_flags')) {
             $container->setParameter('feature_flags', ['phpstan_parser' => false]);
         }

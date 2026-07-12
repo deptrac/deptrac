@@ -74,7 +74,7 @@ final class MermaidJsConfig implements FormatterConfigInterface
         if ([] !== $this->groups) {
             $output['groups'] = array_map(
                 static fn (array $configs) => array_map(static fn (Layer $layer) => $layer->name, $configs),
-                $this->groups
+                $this->groups,
             );
         }
 

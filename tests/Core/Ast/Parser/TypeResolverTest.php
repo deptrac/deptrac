@@ -61,9 +61,15 @@ final class TypeResolverTest extends TestCase
 
     public static function docBlockProvider(): iterable
     {
-        yield ['doc' => 'array<DataProviderTestSuite|TestCase>', 'types' => ['\\Test\\DataProviderTestSuite', '\\Test\\TestCase']];
+        yield [
+            'doc' => 'array<DataProviderTestSuite|TestCase>',
+            'types' => ['\\Test\\DataProviderTestSuite', '\\Test\\TestCase'],
+        ];
         yield ['doc' => 'array<string, array<int, array<int, int|string>>>', 'types' => []];
-        yield ['doc' => 'callable(A&...$a=, B&...=, C): Foo', 'types' => ['\\Test\\Foo', '\\Test\\A', '\\Test\\B', '\\Test\\C']];
+        yield [
+            'doc' => 'callable(A&...$a=, B&...=, C): Foo',
+            'types' => ['\\Test\\Foo', '\\Test\\A', '\\Test\\B', '\\Test\\C'],
+        ];
         yield ['doc' => 'Foo::FOO_CONSTANT', 'types' => ['\\Test\\Foo']];
         yield ['doc' => 'array{a: Foo}', 'types' => ['\\Test\\Foo']];
         yield ['doc' => 'array-key', 'types' => []];

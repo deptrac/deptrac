@@ -19,7 +19,7 @@ final class CacheableFileSubscriberTest extends TestCase
                 PreCreateAstMapEvent::class => 'onPreCreateAstMapEvent',
                 PostCreateAstMapEvent::class => 'onPostCreateAstMapEvent',
             ],
-            CacheableFileSubscriber::getSubscribedEvents()
+            CacheableFileSubscriber::getSubscribedEvents(),
         );
     }
 

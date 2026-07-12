@@ -27,7 +27,7 @@ final class DebugUnusedRunner
 
             $outputTable = $this->prepareOutputTable(
                 $rulesetUsages,
-                $limit
+                $limit,
             );
 
             $output->getStyle()->table(['Unused'], $outputTable);

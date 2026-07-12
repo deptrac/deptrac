@@ -14,7 +14,9 @@ use Deptrac\Deptrac\Core\Analyser\LayerDependenciesAnalyser;
  */
 final class DebugDependenciesRunner
 {
-    public function __construct(private readonly LayerDependenciesAnalyser $analyser) {}
+    public function __construct(
+        private readonly LayerDependenciesAnalyser $analyser,
+    ) {}
 
     /**
      * @throws CommandRunException
@@ -26,7 +28,7 @@ final class DebugDependenciesRunner
             foreach ($dependencies as $targetLayer => $violations) {
                 $output->getStyle()->table(
                     [$targetLayer],
-                    array_map($this->formatRow(...), $violations)
+                    array_map($this->formatRow(...), $violations),
                 );
             }
         } catch (AnalyserException $e) {
@@ -43,11 +45,9 @@ final class DebugDependenciesRunner
 
         $message = sprintf(
             '<info>%s</info> depends on <info>%s</info> (%s)',
-            $dependency->getDepender()
-                ->toString(),
-            $dependency->getDependent()
-                ->toString(),
-            $rule->layer
+            $dependency->getDepender()->toString(),
+            $dependency->getDependent()->toString(),
+            $rule->layer,
         );
 
         $fileOccurrence = $dependency->getContext()->fileOccurrence;

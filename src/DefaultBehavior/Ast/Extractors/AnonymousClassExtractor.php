@@ -31,16 +31,28 @@ final class AnonymousClassExtractor implements NikicReferenceExtractorInterface,
         }
 
         if ($node->extends instanceof Name) {
-            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($node->extends->toCodeString()), $node->extends->getLine(), DependencyType::ANONYMOUS_CLASS_EXTENDS);
+            $referenceBuilder->dependency(
+                ClassLikeToken::fromFQCN($node->extends->toCodeString()),
+                $node->extends->getLine(),
+                DependencyType::ANONYMOUS_CLASS_EXTENDS,
+            );
         }
 
         foreach ($node->implements as $implement) {
-            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($implement->toCodeString()), $implement->getLine(), DependencyType::ANONYMOUS_CLASS_IMPLEMENTS);
+            $referenceBuilder->dependency(
+                ClassLikeToken::fromFQCN($implement->toCodeString()),
+                $implement->getLine(),
+                DependencyType::ANONYMOUS_CLASS_IMPLEMENTS,
+            );
         }
 
         foreach ($node->getTraitUses() as $traitUse) {
             foreach ($traitUse->traits as $trait) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($trait->toCodeString()), $trait->getLine(), DependencyType::ANONYMOUS_CLASS_TRAIT);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($trait->toCodeString()),
+                    $trait->getLine(),
+                    DependencyType::ANONYMOUS_CLASS_TRAIT,
+                );
             }
         }
     }
@@ -50,8 +62,11 @@ final class AnonymousClassExtractor implements NikicReferenceExtractorInterface,
         $this->processNodeShared($node, $referenceBuilder);
     }
 
-    public function processNodeWithPhpStanScope(Node $node, ReferenceBuilderInterface $referenceBuilder, MutatingScope $scope): void
-    {
+    public function processNodeWithPhpStanScope(
+        Node $node,
+        ReferenceBuilderInterface $referenceBuilder,
+        MutatingScope $scope,
+    ): void {
         $this->processNodeShared($node, $referenceBuilder);
     }
 

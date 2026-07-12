@@ -43,7 +43,10 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
     /** @var array<string, bool> */
     private array $parsedFiles = [];
 
-    public function __construct(private readonly string $cacheFile, private readonly string $cacheVersion) {}
+    public function __construct(
+        private readonly string $cacheFile,
+        private readonly string $cacheVersion,
+    ) {}
 
     public function get(string $filepath): ?FileReference
     {
@@ -124,7 +127,7 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
                             FileOccurrence::class,
                             DependencyContext::class,
                         ],
-                    ]
+                    ],
                 );
                 assert($reference instanceof FileReference);
 
@@ -133,7 +136,7 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
                     'reference' => $reference,
                 ];
             },
-            $cache['payload']
+            $cache['payload'],
         );
     }
 
@@ -146,7 +149,7 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
         $cache = array_filter(
             $this->cache,
             fn (string $key): bool => isset($this->parsedFiles[$key]),
-            ARRAY_FILTER_USE_KEY
+            ARRAY_FILTER_USE_KEY,
         );
 
         $payload = array_map(
@@ -155,7 +158,7 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
 
                 return $data;
             },
-            $cache
+            $cache,
         );
 
         file_put_contents(
@@ -164,8 +167,8 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
                 [
                     'version' => $this->cacheVersion,
                     'payload' => $payload,
-                ]
-            )
+                ],
+            ),
         );
     }
 

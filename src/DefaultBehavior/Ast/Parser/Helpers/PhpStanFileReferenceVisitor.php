@@ -64,7 +64,7 @@ class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
     public function leaveNode(Node $node)
     {
         foreach ($this->dependencyResolvers as $resolver) {
-            if ($node instanceof ($resolver->getNodeType())) {
+            if ($node instanceof $resolver->getNodeType()) {
                 $resolver->processNodeWithPhpStanScope($node, $this->currentReference, $this->scope);
             }
         }
@@ -88,6 +88,7 @@ class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
                 ;
                 $this->scope = $this->scopeFactory->create($context);
             }
+
             $tags = $this->getTags($node);
 
             $this->currentReference = match (true) {

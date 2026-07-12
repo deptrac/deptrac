@@ -31,7 +31,11 @@ final class InterfaceExtractor implements NikicReferenceExtractorInterface, PHPS
     private function processNodeShared(Node $node, ReferenceBuilderInterface $referenceBuilder): void
     {
         foreach ($node->extends as $extend) {
-            $referenceBuilder->astInherits(ClassLikeToken::fromFQCN($extend->toCodeString()), $extend->getLine(), AstInheritType::IMPLEMENTS);
+            $referenceBuilder->astInherits(
+                ClassLikeToken::fromFQCN($extend->toCodeString()),
+                $extend->getLine(),
+                AstInheritType::IMPLEMENTS,
+            );
         }
     }
 

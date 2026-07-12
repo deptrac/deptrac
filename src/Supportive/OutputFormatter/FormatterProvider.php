@@ -26,7 +26,11 @@ final class FormatterProvider implements ContainerInterface
         $service = $this->formatterLocator->get($id);
 
         if (!$service instanceof OutputFormatterInterface) {
-            throw InvalidServiceInLocatorException::invalidType($id, OutputFormatterInterface::class, get_debug_type($service));
+            throw InvalidServiceInLocatorException::invalidType(
+                $id,
+                OutputFormatterInterface::class,
+                get_debug_type($service),
+            );
         }
 
         return $service;

@@ -56,34 +56,36 @@ final class CodeclimateOutputFormatterTest extends TestCase
                         ClassLikeToken::fromFQCN('ClassB'),
                         new Dependency(
                             ClassLikeToken::fromFQCN('OriginalA'),
-                            ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER)
+                            ClassLikeToken::fromFQCN('OriginalB'),
+                            new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER),
                         ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('ClassA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath(
                             [
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritB'),
                                     new FileOccurrence('ClassInheritA.php', 4),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritC'),
                                     new FileOccurrence('ClassInheritB.php', 5),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritD'),
                                     new FileOccurrence('ClassInheritC.php', 6),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
-                            ]
-                        )
+                            ],
+                        ),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
                 new Violation(
                     new InheritDependency(
@@ -91,34 +93,36 @@ final class CodeclimateOutputFormatterTest extends TestCase
                         ClassLikeToken::fromFQCN('ClassD'),
                         new Dependency(
                             ClassLikeToken::fromFQCN('OriginalA'),
-                            ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('ClassC.php', 12), DependencyType::PARAMETER)
+                            ClassLikeToken::fromFQCN('OriginalB'),
+                            new DependencyContext(new FileOccurrence('ClassC.php', 12), DependencyType::PARAMETER),
                         ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('ClassA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath(
                             [
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritB'),
                                     new FileOccurrence('ClassInheritA.php', 4),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritC'),
                                     new FileOccurrence('ClassInheritB.php', 5),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritD'),
                                     new FileOccurrence('ClassInheritC.php', 6),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
-                            ]
-                        )
+                            ],
+                        ),
                     ),
                     'LayerA',
                     'LayerC',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
                 new Violation(
                     new InheritDependency(
@@ -126,34 +130,36 @@ final class CodeclimateOutputFormatterTest extends TestCase
                         ClassLikeToken::fromFQCN('ClassE'),
                         new Dependency(
                             ClassLikeToken::fromFQCN('OriginalA'),
-                            ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('ClassC.php', 15), DependencyType::PARAMETER)
+                            ClassLikeToken::fromFQCN('OriginalB'),
+                            new DependencyContext(new FileOccurrence('ClassC.php', 15), DependencyType::PARAMETER),
                         ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('ClassA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath(
                             [
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritB'),
                                     new FileOccurrence('ClassInheritA.php', 4),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritC'),
                                     new FileOccurrence('ClassInheritB.php', 5),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritD'),
                                     new FileOccurrence('ClassInheritC.php', 6),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
-                            ]
-                        )
+                            ],
+                        ),
                     ),
                     'LayerA',
                     'LayerE',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'expected-codeclimate-report_1.json',
@@ -164,11 +170,12 @@ final class CodeclimateOutputFormatterTest extends TestCase
                 new Violation(
                     new Dependency(
                         ClassLikeToken::fromFQCN('OriginalA'),
-                        ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER)
+                        ClassLikeToken::fromFQCN('OriginalB'),
+                        new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             'expected-codeclimate-report_2.json',
@@ -187,33 +194,35 @@ final class CodeclimateOutputFormatterTest extends TestCase
                         ClassLikeToken::fromFQCN('ClassB'),
                         new Dependency(
                             ClassLikeToken::fromFQCN('OriginalA'),
-                            ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER)
+                            ClassLikeToken::fromFQCN('OriginalB'),
+                            new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER),
                         ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('ClassA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath(
                             [
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritB'),
                                     new FileOccurrence('ClassInheritA.php', 4),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritC'),
                                     new FileOccurrence('ClassInheritB.php', 5),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritD'),
                                     new FileOccurrence('ClassInheritC.php', 6),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
-                            ]
-                        )
+                            ],
+                        ),
                     ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
                 new SkippedViolation(
                     new InheritDependency(
@@ -221,33 +230,35 @@ final class CodeclimateOutputFormatterTest extends TestCase
                         ClassLikeToken::fromFQCN('ClassD'),
                         new Dependency(
                             ClassLikeToken::fromFQCN('OriginalA'),
-                            ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('ClassC.php', 12), DependencyType::PARAMETER)
+                            ClassLikeToken::fromFQCN('OriginalB'),
+                            new DependencyContext(new FileOccurrence('ClassC.php', 12), DependencyType::PARAMETER),
                         ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('ClassA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))->replacePath(
                             [
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritB'),
                                     new FileOccurrence('ClassInheritA.php', 4),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritC'),
                                     new FileOccurrence('ClassInheritB.php', 5),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritD'),
                                     new FileOccurrence('ClassInheritC.php', 6),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
-                            ]
-                        )
+                            ],
+                        ),
                     ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
             ],
             'expected-codeclimate-report_4.json',
@@ -261,31 +272,36 @@ final class CodeclimateOutputFormatterTest extends TestCase
                     ClassLikeToken::fromFQCN('ClassB'),
                     new Dependency(
                         ClassLikeToken::fromFQCN('OriginalA'),
-                        ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER)
+                        ClassLikeToken::fromFQCN('OriginalB'),
+                        new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER),
                     ),
                     (new AstInherit(
-                        ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                        AstInheritType::EXTENDS
+                        ClassLikeToken::fromFQCN('ClassInheritA'),
+                        new FileOccurrence('ClassA.php', 3),
+                        AstInheritType::EXTENDS,
                     ))->replacePath(
                         [
                             new AstInherit(
-                                ClassLikeToken::fromFQCN('ClassInheritB'), new FileOccurrence('ClassInheritA.php', 4),
-                                AstInheritType::EXTENDS
+                                ClassLikeToken::fromFQCN('ClassInheritB'),
+                                new FileOccurrence('ClassInheritA.php', 4),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                ClassLikeToken::fromFQCN('ClassInheritC'), new FileOccurrence('ClassInheritB.php', 5),
-                                AstInheritType::EXTENDS
+                                ClassLikeToken::fromFQCN('ClassInheritC'),
+                                new FileOccurrence('ClassInheritB.php', 5),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                ClassLikeToken::fromFQCN('ClassInheritD'), new FileOccurrence('ClassInheritC.php', 6),
-                                AstInheritType::EXTENDS
+                                ClassLikeToken::fromFQCN('ClassInheritD'),
+                                new FileOccurrence('ClassInheritC.php', 6),
+                                AstInheritType::EXTENDS,
                             ),
-                        ]
-                    )
+                        ],
+                    ),
                 ),
                 'LayerA',
                 'LayerB',
-                new DummyViolationCreatingRule()
+                new DummyViolationCreatingRule(),
             ),
             new SkippedViolation(
                 new InheritDependency(
@@ -293,30 +309,35 @@ final class CodeclimateOutputFormatterTest extends TestCase
                     ClassLikeToken::fromFQCN('ClassB'),
                     new Dependency(
                         ClassLikeToken::fromFQCN('OriginalA'),
-                        ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('ClassA.php', 15), DependencyType::PARAMETER)
+                        ClassLikeToken::fromFQCN('OriginalB'),
+                        new DependencyContext(new FileOccurrence('ClassA.php', 15), DependencyType::PARAMETER),
                     ),
                     (new AstInherit(
-                        ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                        AstInheritType::EXTENDS
+                        ClassLikeToken::fromFQCN('ClassInheritA'),
+                        new FileOccurrence('ClassA.php', 3),
+                        AstInheritType::EXTENDS,
                     ))->replacePath(
                         [
                             new AstInherit(
-                                ClassLikeToken::fromFQCN('ClassInheritB'), new FileOccurrence('ClassInheritA.php', 4),
-                                AstInheritType::EXTENDS
+                                ClassLikeToken::fromFQCN('ClassInheritB'),
+                                new FileOccurrence('ClassInheritA.php', 4),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                ClassLikeToken::fromFQCN('ClassInheritC'), new FileOccurrence('ClassInheritB.php', 5),
-                                AstInheritType::EXTENDS
+                                ClassLikeToken::fromFQCN('ClassInheritC'),
+                                new FileOccurrence('ClassInheritB.php', 5),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                ClassLikeToken::fromFQCN('ClassInheritD'), new FileOccurrence('ClassInheritC.php', 6),
-                                AstInheritType::EXTENDS
+                                ClassLikeToken::fromFQCN('ClassInheritD'),
+                                new FileOccurrence('ClassInheritC.php', 6),
+                                AstInheritType::EXTENDS,
                             ),
-                        ]
-                    )
+                        ],
+                    ),
                 ),
                 'LayerA',
-                'LayerB'
+                'LayerB',
             ),
             new SkippedViolation(
                 new InheritDependency(
@@ -324,37 +345,43 @@ final class CodeclimateOutputFormatterTest extends TestCase
                     ClassLikeToken::fromFQCN('ClassD'),
                     new Dependency(
                         ClassLikeToken::fromFQCN('OriginalA'),
-                        ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('ClassC.php', 12), DependencyType::PARAMETER)
+                        ClassLikeToken::fromFQCN('OriginalB'),
+                        new DependencyContext(new FileOccurrence('ClassC.php', 12), DependencyType::PARAMETER),
                     ),
                     (new AstInherit(
-                        ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('ClassA.php', 3),
-                        AstInheritType::EXTENDS
+                        ClassLikeToken::fromFQCN('ClassInheritA'),
+                        new FileOccurrence('ClassA.php', 3),
+                        AstInheritType::EXTENDS,
                     ))->replacePath(
                         [
                             new AstInherit(
-                                ClassLikeToken::fromFQCN('ClassInheritB'), new FileOccurrence('ClassInheritA.php', 4),
-                                AstInheritType::EXTENDS
+                                ClassLikeToken::fromFQCN('ClassInheritB'),
+                                new FileOccurrence('ClassInheritA.php', 4),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                ClassLikeToken::fromFQCN('ClassInheritC'), new FileOccurrence('ClassInheritB.php', 5),
-                                AstInheritType::EXTENDS
+                                ClassLikeToken::fromFQCN('ClassInheritC'),
+                                new FileOccurrence('ClassInheritB.php', 5),
+                                AstInheritType::EXTENDS,
                             ),
                             new AstInherit(
-                                ClassLikeToken::fromFQCN('ClassInheritD'), new FileOccurrence('ClassInheritC.php', 6),
-                                AstInheritType::EXTENDS
+                                ClassLikeToken::fromFQCN('ClassInheritD'),
+                                new FileOccurrence('ClassInheritC.php', 6),
+                                AstInheritType::EXTENDS,
                             ),
-                        ]
-                    )
+                        ],
+                    ),
                 ),
                 'LayerA',
-                'LayerB'
+                'LayerB',
             ),
             new Uncovered(
                 new Dependency(
                     ClassLikeToken::fromFQCN('OriginalA'),
-                    ClassLikeToken::fromFQCN('OriginalB'), new DependencyContext(new FileOccurrence('OriginalA.php', 12), DependencyType::PARAMETER)
+                    ClassLikeToken::fromFQCN('OriginalB'),
+                    new DependencyContext(new FileOccurrence('OriginalA.php', 12), DependencyType::PARAMETER),
                 ),
-                'LayerA'
+                'LayerA',
             ),
         ];
 
@@ -406,12 +433,12 @@ final class CodeclimateOutputFormatterTest extends TestCase
                 $reportSkipped,
                 $reportUncovered,
                 false,
-            )
+            ),
         );
 
         self::assertJsonFileEqualsJsonFile(
             __DIR__.'/data/'.self::$actual_codeclimate_report_file,
-            __DIR__.'/data/'.$expectedOutputFile
+            __DIR__.'/data/'.$expectedOutputFile,
         );
     }
 
@@ -441,13 +468,13 @@ final class CodeclimateOutputFormatterTest extends TestCase
                 null,
                 $reportSkipped,
                 $reportUncovered,
-                false
-            )
+                false,
+            ),
         );
 
         self::assertJsonStringEqualsJsonFile(
             __DIR__.'/data/'.$expectedOutputFile,
-            $bufferedOutput->fetch()
+            $bufferedOutput->fetch(),
         );
     }
 
@@ -460,11 +487,12 @@ final class CodeclimateOutputFormatterTest extends TestCase
         $violation = new Violation(
             new Dependency(
                 ClassLikeToken::fromFQCN('OriginalA'),
-                ClassLikeToken::fromFQCN('OriginalB'.$malformedCharacters), new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER)
+                ClassLikeToken::fromFQCN('OriginalB'.$malformedCharacters),
+                new DependencyContext(new FileOccurrence('ClassA.php', 12), DependencyType::PARAMETER),
             ),
             'LayerA',
             'LayerB',
-            new DummyViolationCreatingRule()
+            new DummyViolationCreatingRule(),
         );
 
         $analysisResult = new AnalysisResult();
@@ -472,7 +500,7 @@ final class CodeclimateOutputFormatterTest extends TestCase
 
         self::expectException(Exception::class);
         self::expectExceptionMessage('Unable to render codeclimate output. '
-                                     .'Malformed UTF-8 characters, possibly incorrectly encoded');
+        .'Malformed UTF-8 characters, possibly incorrectly encoded');
         $formatter->finish(
             OutputResult::fromAnalysisResult($analysisResult),
             $this->createSymfonyOutput($bufferedOutput),
@@ -481,7 +509,7 @@ final class CodeclimateOutputFormatterTest extends TestCase
                 false,
                 false,
                 false,
-            )
+            ),
         );
     }
 
@@ -489,7 +517,7 @@ final class CodeclimateOutputFormatterTest extends TestCase
     {
         return new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
     }
 }

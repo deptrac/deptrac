@@ -38,6 +38,7 @@ class DependencyResolver
             } catch (ContainerExceptionInterface) {
                 throw InvalidEmitterConfigurationException::couldNotLocate($type);
             }
+
             if (!$emitter instanceof DependencyEmitterInterface) {
                 throw InvalidEmitterConfigurationException::isNotEmitter($type, $emitter);
             }
@@ -62,8 +63,11 @@ class DependencyResolver
                 foreach ($dependencyList->getDependenciesByClass($inherit->classLikeName) as $dep) {
                     $dependencyList->addInheritDependency(
                         new InheritDependency(
-                            $classLikeName, $dep->getDependent(), $dep, $inherit
-                        )
+                            $classLikeName,
+                            $dep->getDependent(),
+                            $dep,
+                            $inherit,
+                        ),
                     );
                 }
             }

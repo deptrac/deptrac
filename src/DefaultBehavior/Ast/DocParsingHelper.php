@@ -55,8 +55,11 @@ class DocParsingHelper
         return [$lexer, $docParser];
     }
 
-    public static function resolvePHPDocWithPHPStanScope(Node $node, PhpStanContainerDecorator $phpStanContainer, MutatingScope $scope): ?ResolvedPhpDocBlock
-    {
+    public static function resolvePHPDocWithPHPStanScope(
+        Node $node,
+        PhpStanContainerDecorator $phpStanContainer,
+        MutatingScope $scope,
+    ): ?ResolvedPhpDocBlock {
         $docComment = $node->getDocComment();
         if (!$docComment instanceof Doc) {
             return null;
@@ -79,7 +82,11 @@ class DocParsingHelper
      *
      * @return ?array{PhpDocNode, list<string>}
      */
-    public static function resolvePHPDocWithNativeScope(Node $node, Lexer $lexer, PhpDocParser $docParser, array $tokenTemplateLikes,
+    public static function resolvePHPDocWithNativeScope(
+        Node $node,
+        Lexer $lexer,
+        PhpDocParser $docParser,
+        array $tokenTemplateLikes,
     ): ?array {
         $docComment = $node->getDocComment();
         if (!$docComment instanceof Doc) {
@@ -100,11 +107,18 @@ class DocParsingHelper
      */
     private static function getTagsIntroducingIgnoredNames(PhpDocNode $docNode): array
     {
-        $templateNames =
-            array_map(static fn (TemplateTagValueNode $tag): string => $tag->name,
-                $docNode->getTemplateTagValues() + $docNode->getTemplateTagValues('@template-covariant'));
-        $aliasNames = array_map(static fn (TypeAliasTagValueNode $tag): string => $tag->alias, $docNode->getTypeAliasTagValues());
-        $importNames = array_map(static fn (TypeAliasImportTagValueNode $tag): string => $tag->importedAs ?? $tag->importedAlias, $docNode->getTypeAliasImportTagValues());
+        $templateNames = array_map(
+            static fn (TemplateTagValueNode $tag): string => $tag->name,
+            $docNode->getTemplateTagValues() + $docNode->getTemplateTagValues('@template-covariant'),
+        );
+        $aliasNames = array_map(
+            static fn (TypeAliasTagValueNode $tag): string => $tag->alias,
+            $docNode->getTypeAliasTagValues(),
+        );
+        $importNames = array_map(
+            static fn (TypeAliasImportTagValueNode $tag): string => $tag->importedAs ?? $tag->importedAlias,
+            $docNode->getTypeAliasImportTagValues(),
+        );
 
         return array_values($templateNames + $aliasNames + $importNames);
     }

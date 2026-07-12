@@ -26,7 +26,9 @@ final class ServiceContainerBuilder
 
     private const DEPTRAC_INTERNAL_CONFIG_PATH = __DIR__.'/../../../config';
 
-    public function __construct(private readonly string $workingDirectory) {}
+    public function __construct(
+        private readonly string $workingDirectory,
+    ) {}
 
     public function withConfig(?string $configFile): self
     {
@@ -97,6 +99,7 @@ final class ServiceContainerBuilder
             if ($clearCache) {
                 $this->clearCache($cache);
             }
+
             $this->withCache($cache);
         }
 
@@ -140,16 +143,11 @@ final class ServiceContainerBuilder
         if (!file_exists($cacheFile->getPathname())) {
             $dirname = $cacheFile->getPath() ?: '.';
 
-            if (!is_dir($dirname)
-                && mkdir($dirname.'/', 0777, true)
-                && !is_dir($dirname)
-            ) {
+            if (!is_dir($dirname) && mkdir($dirname.'/', 0777, true) && !is_dir($dirname)) {
                 throw CacheFileException::notWritable($cacheFile);
             }
 
-            if (!touch($cacheFile->getPathname())
-                && !is_writable($cacheFile->getPathname())
-            ) {
+            if (!touch($cacheFile->getPathname()) && !is_writable($cacheFile->getPathname())) {
                 throw CacheFileException::notWritable($cacheFile);
             }
         }
@@ -170,7 +168,10 @@ final class ServiceContainerBuilder
         $configPathInfo = $configFile->getPathInfo();
 
         if (null === $configPathInfo) {
-            throw CannotLoadConfiguration::fromConfig($configFile->getFilename(), 'Unable to load config: Invalid or missing path.');
+            throw CannotLoadConfiguration::fromConfig(
+                $configFile->getFilename(),
+                'Unable to load config: Invalid or missing path.',
+            );
         }
 
         $container->setParameter('projectDirectory', $configPathInfo->getPathname());

@@ -39,7 +39,7 @@ final class ConsoleSubscriberTest extends TestCase
                 PreFlattenEvent::class => 'onPreDependencyFlatten',
                 PostFlattenEvent::class => 'onPostDependencyFlatten',
             ],
-            ConsoleSubscriber::getSubscribedEvents()
+            ConsoleSubscriber::getSubscribedEvents(),
         );
     }
 
@@ -90,7 +90,7 @@ final class ConsoleSubscriberTest extends TestCase
 
         self::assertMatchesRegularExpression(
             '/AstMap created in \d+\.\d+ sec\.'.PHP_EOL.'/',
-            $symfonyOutput->fetch()
+            $symfonyOutput->fetch(),
         );
     }
 
@@ -112,7 +112,7 @@ final class ConsoleSubscriberTest extends TestCase
 
         $subscriber = new ConsoleSubscriber($output, new Stopwatch());
         $subscriber->onAstFileSyntaxErrorEvent(
-            new AstFileSyntaxErrorEvent('foo.php', 'Invalid')
+            new AstFileSyntaxErrorEvent('foo.php', 'Invalid'),
         );
 
         self::assertSame("\nSyntax Error on File foo.php\nInvalid\n".PHP_EOL, $symfonyOutput->fetch());
@@ -165,7 +165,7 @@ final class ConsoleSubscriberTest extends TestCase
 
         self::assertMatchesRegularExpression(
             '/Dependencies emitted in \d+\.\d+ sec\.'.PHP_EOL.'/',
-            $symfonyOutput->fetch()
+            $symfonyOutput->fetch(),
         );
     }
 
@@ -216,7 +216,7 @@ final class ConsoleSubscriberTest extends TestCase
 
         self::assertMatchesRegularExpression(
             '/Dependencies flattened in \d+\.\d+ sec\.'.PHP_EOL.'/',
-            $symfonyOutput->fetch()
+            $symfonyOutput->fetch(),
         );
     }
 }

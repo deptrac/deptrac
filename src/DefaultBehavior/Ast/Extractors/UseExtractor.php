@@ -32,7 +32,11 @@ final class UseExtractor implements NikicReferenceExtractorInterface, PHPStanRef
     {
         if (Use_::TYPE_NORMAL === $node->type) {
             foreach ($node->uses as $use) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($use->name->toString()), $use->name->getLine(), DependencyType::USE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($use->name->toString()),
+                    $use->name->getLine(),
+                    DependencyType::USE,
+                );
             }
         }
     }

@@ -41,7 +41,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
 
         self::assertSame(
             AnnotationDependencyChild::class,
-            $annotationDependency[0]->token->toString()
+            $annotationDependency[0]->token->toString(),
         );
         self::assertSame($filePath, $annotationDependency[0]->context->fileOccurrence->filepath);
         self::assertSame(12, $annotationDependency[0]->context->fileOccurrence->line);
@@ -49,7 +49,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
 
         self::assertSame(
             AnnotationDependencyChild::class,
-            $annotationDependency[1]->token->toString()
+            $annotationDependency[1]->token->toString(),
         );
         self::assertSame($filePath, $annotationDependency[1]->context->fileOccurrence->filepath);
         self::assertSame(24, $annotationDependency[1]->context->fileOccurrence->line);
@@ -57,7 +57,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
 
         self::assertSame(
             AnnotationDependencyChild::class,
-            $annotationDependency[2]->token->toString()
+            $annotationDependency[2]->token->toString(),
         );
         self::assertSame($filePath, $annotationDependency[2]->context->fileOccurrence->filepath);
         self::assertSame(27, $annotationDependency[2]->context->fileOccurrence->line);
@@ -65,7 +65,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
 
         self::assertSame(
             RuntimeException::class,
-            $annotationDependency[3]->token->toString()
+            $annotationDependency[3]->token->toString(),
         );
         self::assertSame($filePath, $annotationDependency[3]->context->fileOccurrence->filepath);
         self::assertSame(30, $annotationDependency[3]->context->fileOccurrence->line);
@@ -73,7 +73,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
 
         self::assertSame(
             SplFileInfo::class,
-            $annotationDependency[4]->token->toString()
+            $annotationDependency[4]->token->toString(),
         );
         self::assertSame($filePath, $annotationDependency[4]->context->fileOccurrence->filepath);
         self::assertSame(21, $annotationDependency[4]->context->fileOccurrence->line);
@@ -81,7 +81,7 @@ final class AnnotationReferenceExtractorTest extends TestCase
 
         self::assertSame(
             AnnotationDependencyChild::class,
-            $annotationDependency[5]->token->toString()
+            $annotationDependency[5]->token->toString(),
         );
         self::assertSame($filePath, $annotationDependency[5]->context->fileOccurrence->filepath);
         self::assertSame(21, $annotationDependency[5]->context->fileOccurrence->line);
@@ -104,7 +104,9 @@ final class AnnotationReferenceExtractorTest extends TestCase
             new NewExtractor($typeResolver),
         ];
         $nikicPhpParser = new NikicPhpParser(
-            (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
+            (new ParserFactory())->createForNewestSupportedVersion(),
+            $cache,
+            $extractors,
         );
         $phpstanParser = new PhpStanParser($phpStanContainer, $cache, $extractors);
 

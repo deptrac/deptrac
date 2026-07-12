@@ -77,17 +77,29 @@ final class MermaidJSOutputFormatterTest extends TestCase
         ];
 
         $mermaidJSOutputFormatter = new MermaidJSOutputFormatter(new FormatterConfiguration($mermaidJsConfig));
-        $mermaidJSOutputFormatter->finish(OutputResult::fromAnalysisResult($analysisResult), $output, $outputFormatterInput);
+        $mermaidJSOutputFormatter->finish(
+            OutputResult::fromAnalysisResult($analysisResult),
+            $output,
+            $outputFormatterInput,
+        );
         $this->assertSame(file_get_contents(__DIR__.'/data/mermaidjs-expected.txt'), $bufferedOutput->fetch());
 
         $mermaidJsConfig['mermaidjs']['default_node_options']['shape'] = 'circle';
         $mermaidJSOutputFormatter = new MermaidJSOutputFormatter(new FormatterConfiguration($mermaidJsConfig));
-        $mermaidJSOutputFormatter->finish(OutputResult::fromAnalysisResult($analysisResult), $output, $outputFormatterInput);
+        $mermaidJSOutputFormatter->finish(
+            OutputResult::fromAnalysisResult($analysisResult),
+            $output,
+            $outputFormatterInput,
+        );
         $this->assertSame(file_get_contents(__DIR__.'/data/mermaidjs-shape-circle.txt'), $bufferedOutput->fetch());
 
         $mermaidJsConfig['mermaidjs']['default_node_options']['shape'] = 'stadium';
         $mermaidJSOutputFormatter = new MermaidJSOutputFormatter(new FormatterConfiguration($mermaidJsConfig));
-        $mermaidJSOutputFormatter->finish(OutputResult::fromAnalysisResult($analysisResult), $output, $outputFormatterInput);
+        $mermaidJSOutputFormatter->finish(
+            OutputResult::fromAnalysisResult($analysisResult),
+            $output,
+            $outputFormatterInput,
+        );
         $this->assertSame(file_get_contents(__DIR__.'/data/mermaidjs-shape-stadium.txt'), $bufferedOutput->fetch());
     }
 
@@ -95,7 +107,7 @@ final class MermaidJSOutputFormatterTest extends TestCase
     {
         return new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
     }
 }

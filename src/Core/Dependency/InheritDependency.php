@@ -26,8 +26,14 @@ class InheritDependency implements DependencyInterface
             array_unshift($buffer, ['name' => $p->classLikeName->toString(), 'line' => $p->fileOccurrence->line]);
         }
 
-        $buffer[] = ['name' => $this->inheritPath->classLikeName->toString(), 'line' => $this->inheritPath->fileOccurrence->line];
-        $buffer[] = ['name' => $this->originalDependency->getDependent()->toString(), 'line' => $this->originalDependency->getContext()->fileOccurrence->line];
+        $buffer[] = [
+            'name' => $this->inheritPath->classLikeName->toString(),
+            'line' => $this->inheritPath->fileOccurrence->line,
+        ];
+        $buffer[] = [
+            'name' => $this->originalDependency->getDependent()->toString(),
+            'line' => $this->originalDependency->getContext()->fileOccurrence->line,
+        ];
 
         return $buffer;
     }

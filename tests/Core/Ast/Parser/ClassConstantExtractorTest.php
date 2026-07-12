@@ -34,7 +34,7 @@ final class ClassConstantExtractorTest extends TestCase
         $dependencies = $astClassReferences[1]->dependencies;
         self::assertSame(
             ClassA::class,
-            $dependencies[0]->token->toString()
+            $dependencies[0]->token->toString(),
         );
         self::assertSame($filePath, $dependencies[0]->context->fileOccurrence->filepath);
         self::assertSame(15, $dependencies[0]->context->fileOccurrence->line);
@@ -60,7 +60,9 @@ final class ClassConstantExtractorTest extends TestCase
         ];
 
         return new NikicPhpParser(
-            (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
+            (new ParserFactory())->createForNewestSupportedVersion(),
+            $cache,
+            $extractors,
         );
     }
 

@@ -10,7 +10,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class CacheableFileSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly AstFileReferenceDeferredCacheInterface $deferredCache) {}
+    public function __construct(
+        private readonly AstFileReferenceDeferredCacheInterface $deferredCache,
+    ) {}
 
     /**
      * @return array<string, string|array{0: string, 1: int}|list<array{0: string, 1?: int}>>

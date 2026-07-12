@@ -20,12 +20,18 @@ use PHPStan\Analyser\MutatingScope;
  */
 final class TraitUseExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
-    public function __construct(private readonly TypeResolverInterface $typeResolver) {}
+    public function __construct(
+        private readonly TypeResolverInterface $typeResolver,
+    ) {}
 
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
     {
         foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, ...$node->traits) as $classLikeName) {
-            $referenceBuilder->astInherits(ClassLikeToken::fromFQCN($classLikeName), $node->getLine(), AstInheritType::USES);
+            $referenceBuilder->astInherits(
+                ClassLikeToken::fromFQCN($classLikeName),
+                $node->getLine(),
+                AstInheritType::USES,
+            );
         }
     }
 
@@ -40,7 +46,11 @@ final class TraitUseExtractor implements NikicReferenceExtractorInterface, PHPSt
         MutatingScope $scope,
     ): void {
         foreach ($node->traits as $trait) {
-            $referenceBuilder->astInherits(ClassLikeToken::fromFQCN($scope->resolveName($trait)), $node->getLine(), AstInheritType::USES);
+            $referenceBuilder->astInherits(
+                ClassLikeToken::fromFQCN($scope->resolveName($trait)),
+                $node->getLine(),
+                AstInheritType::USES,
+            );
         }
     }
 }

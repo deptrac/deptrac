@@ -26,8 +26,10 @@ final class InheritDependencyTest extends TestCase
             $classLikeNameA,
             $classLikeNameB,
             $dep = new Dependency($classLikeNameA, $classLikeNameB, new DependencyContext(
-                $fileOccurrence, DependencyType::PARAMETER)),
-            $astInherit = new AstInherit($classLikeNameB, $fileOccurrence, AstInheritType::EXTENDS)
+                $fileOccurrence,
+                DependencyType::PARAMETER,
+            )),
+            $astInherit = new AstInherit($classLikeNameB, $fileOccurrence, AstInheritType::EXTENDS),
         );
 
         self::assertSame($classLikeNameA, $dependency->getDepender());

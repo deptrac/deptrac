@@ -59,18 +59,23 @@ final class EventHelper
         return array_filter($this->unmatchedSkippedViolation);
     }
 
-    public function addSkippableViolation(ProcessEvent $event, AnalysisResult $result, string $dependentLayer, ViolationCreatingInterface $violationCreatingRule): void
-    {
+    public function addSkippableViolation(
+        ProcessEvent $event,
+        AnalysisResult $result,
+        string $dependentLayer,
+        ViolationCreatingInterface $violationCreatingRule,
+    ): void {
         if ($this->shouldViolationBeSkipped(
             $event->dependency->getDepender()
                 ->toString(),
             $event->dependency->getDependent()
-                ->toString()
-        )
-        ) {
+                ->toString(),
+        )) {
             $result->addRule(new SkippedViolation($event->dependency, $event->dependerLayer, $dependentLayer));
         } else {
-            $result->addRule(new Violation($event->dependency, $event->dependerLayer, $dependentLayer, $violationCreatingRule));
+            $result->addRule(
+                new Violation($event->dependency, $event->dependerLayer, $dependentLayer, $violationCreatingRule),
+            );
         }
     }
 }

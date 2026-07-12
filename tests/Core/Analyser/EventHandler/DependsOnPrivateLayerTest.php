@@ -32,7 +32,9 @@ final class DependsOnPrivateLayerTest extends TestCase
     }
 
     private function makeEvent(
-        string $dependerLayer, string $dependentLayer, bool $isPublic,
+        string $dependerLayer,
+        string $dependentLayer,
+        bool $isPublic,
     ): ProcessEvent {
         $dependerToken = ClassLikeToken::fromFQCN('DependerClass');
         $dependentToken = ClassLikeToken::fromFQCN('DependentClass');
@@ -41,13 +43,13 @@ final class DependsOnPrivateLayerTest extends TestCase
             new Dependency(
                 $dependerToken,
                 $dependentToken,
-                new DependencyContext(new FileOccurrence('test', 1), DependencyType::STATIC_METHOD)
+                new DependencyContext(new FileOccurrence('test', 1), DependencyType::STATIC_METHOD),
             ),
             new ClassLikeReference($dependerToken, ClassLikeType::TYPE_CLASS, [], [], []),
             $dependerLayer,
             new ClassLikeReference($dependentToken, ClassLikeType::TYPE_CLASS, [], [], []),
             [$dependentLayer => $isPublic],
-            new AnalysisResult()
+            new AnalysisResult(),
         );
     }
 
@@ -62,12 +64,12 @@ final class DependsOnPrivateLayerTest extends TestCase
         $this->assertCount(
             0,
             $event->getResult()->rules(),
-            'No violations should be added when dependent layer is public'
+            'No violations should be added when dependent layer is public',
         );
 
         $this->assertFalse(
             $event->isPropagationStopped(),
-            'Propagation should continue if dependent layer is public'
+            'Propagation should continue if dependent layer is public',
         );
     }
 
@@ -82,12 +84,12 @@ final class DependsOnPrivateLayerTest extends TestCase
         $this->assertCount(
             0,
             $event->getResult()->rules(),
-            'No violations should be added when private layer depends on itself'
+            'No violations should be added when private layer depends on itself',
         );
 
         $this->assertFalse(
             $event->isPropagationStopped(),
-            'Propagation should continue if private layer depends on itself'
+            'Propagation should continue if private layer depends on itself',
         );
     }
 
@@ -102,12 +104,12 @@ final class DependsOnPrivateLayerTest extends TestCase
         $this->assertCount(
             0,
             $event->getResult()->rules(),
-            'No violations should be added when public layer depends on itself'
+            'No violations should be added when public layer depends on itself',
         );
 
         $this->assertFalse(
             $event->isPropagationStopped(),
-            'Propagation should continue if public layer depends on itself'
+            'Propagation should continue if public layer depends on itself',
         );
     }
 
@@ -123,7 +125,7 @@ final class DependsOnPrivateLayerTest extends TestCase
         $this->assertCount(
             1,
             $violations,
-            'Violation should be added when depending on private layer'
+            'Violation should be added when depending on private layer',
         );
 
         $rule = array_values($violations)[0];
@@ -142,7 +144,7 @@ final class DependsOnPrivateLayerTest extends TestCase
 
         $this->assertTrue(
             $event->isPropagationStopped(),
-            'Propagation should stop if depending on private layer'
+            'Propagation should stop if depending on private layer',
         );
     }
 }

@@ -20,7 +20,7 @@ final class UsesDependencyEmitterTest extends TestCase
     {
         $deps = $this->getEmittedDependencies(
             new UsesDependencyEmitter(),
-            __DIR__.'/Fixtures/Foo.php'
+            __DIR__.'/Fixtures/Foo.php',
         );
 
         self::assertCount(1, $deps);
@@ -36,13 +36,16 @@ final class UsesDependencyEmitterTest extends TestCase
                 __DIR__.'/Fixtures/IgnoreNamespace/Deps/UsedWithNamespace.php',
                 __DIR__.'/Fixtures/IgnoreNamespace/Deps/Functions.php',
                 __DIR__.'/Fixtures/IgnoreNamespace/Uses/Foo.php',
-            ]
+            ],
         );
 
         self::assertCount(2, $deps);
         self::assertNotContains('IgnoreNamespace\Uses\Foo:5 on IgnoreNamespace\Deps', $deps);
         self::assertContains('IgnoreNamespace\Uses\Foo:6 on IgnoreNamespace\Deps\UsedWithFQDN', $deps);
-        self::assertContains('IgnoreNamespace\Uses\Foo:7 on IgnoreNamespace\Deps\Functions\functionUsedWithFQDN', $deps);
+        self::assertContains(
+            'IgnoreNamespace\Uses\Foo:7 on IgnoreNamespace\Deps\Functions\functionUsedWithFQDN',
+            $deps,
+        );
     }
 
     public function testIncludesFQDNWhichIsAlsoANamespacePrefix(): void
@@ -53,7 +56,7 @@ final class UsesDependencyEmitterTest extends TestCase
                 __DIR__.'/Fixtures/FQDNNamespacePrefix/FQDN.php',
                 __DIR__.'/Fixtures/FQDNNamespacePrefix/FQDN/SomeClass.php',
                 __DIR__.'/Fixtures/FQDNNamespacePrefix/Uses/Foo.php',
-            ]
+            ],
         );
 
         self::assertCount(1, $deps);
@@ -67,7 +70,7 @@ final class UsesDependencyEmitterTest extends TestCase
             [
                 __DIR__.'/Fixtures/FQDNIsSubstring/FQDN/SomeClass.php',
                 __DIR__.'/Fixtures/FQDNIsSubstring/Foo.php',
-            ]
+            ],
         );
 
         self::assertCount(2, $deps);

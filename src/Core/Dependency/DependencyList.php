@@ -58,6 +58,7 @@ class DependencyList implements DependencyListInterface
                 $buffer[] = $dependency;
             }
         }
+
         foreach ($this->inheritDependencies as $deps) {
             foreach ($deps as $dependency) {
                 $buffer[] = $dependency;

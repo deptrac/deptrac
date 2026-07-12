@@ -76,7 +76,7 @@ final class ParserTest extends TestCase
                 '@internal' => [''],
                 '@note' => ['Note one', 'Note two'],
             ],
-            $classesByName['TaggedThing']->tags
+            $classesByName['TaggedThing']->tags,
         );
         $this->assertSame([], $classesByName['UntaggedThing']->tags);
     }
@@ -93,7 +93,7 @@ final class ParserTest extends TestCase
 
         $this->assertSame(
             ['@param' => ['string $foo', 'string $bar']],
-            $functionsByName['taggedFunction()']->tags
+            $functionsByName['taggedFunction()']->tags,
         );
         $this->assertSame([], $functionsByName['untaggedFunction()']->tags);
     }
@@ -133,7 +133,9 @@ final class ParserTest extends TestCase
         ];
 
         return new NikicPhpParser(
-            (new ParserFactory())->createForNewestSupportedVersion(), $cache, $extractors
+            (new ParserFactory())->createForNewestSupportedVersion(),
+            $cache,
+            $extractors,
         );
     }
 

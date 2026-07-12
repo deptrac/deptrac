@@ -10,7 +10,9 @@ use Deptrac\Deptrac\Contract\Analyser\ViolationCreatingInterface;
 
 final class DependsOnPrivateLayer implements ViolationCreatingInterface
 {
-    public function __construct(private readonly EventHelper $eventHelper) {}
+    public function __construct(
+        private readonly EventHelper $eventHelper,
+    ) {}
 
     public static function getSubscribedEvents(): array
     {

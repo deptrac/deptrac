@@ -51,34 +51,39 @@ class TableOutputFormatterTest extends TestCase
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
                         ClassLikeToken::fromFQCN('ClassB'),
-                        new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                        new Dependency(
+                            $originalA,
+                            $originalB,
+                            new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                        ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('originalA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('originalA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))
                             ->replacePath(
                                 [
                                     new AstInherit(
                                         ClassLikeToken::fromFQCN('ClassInheritB'),
                                         new FileOccurrence('originalA.php', 4),
-                                        AstInheritType::EXTENDS
+                                        AstInheritType::EXTENDS,
                                     ),
                                     new AstInherit(
                                         ClassLikeToken::fromFQCN('ClassInheritC'),
                                         new FileOccurrence('originalA.php', 5),
-                                        AstInheritType::EXTENDS
+                                        AstInheritType::EXTENDS,
                                     ),
                                     new AstInherit(
                                         ClassLikeToken::fromFQCN('ClassInheritD'),
                                         new FileOccurrence('originalA.php', 6),
-                                        AstInheritType::EXTENDS
+                                        AstInheritType::EXTENDS,
                                     ),
-                                ]
-                            )
+                                ],
+                            ),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             [],
@@ -114,10 +119,14 @@ class TableOutputFormatterTest extends TestCase
         yield [
             [
                 new Violation(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             [],
@@ -167,9 +176,13 @@ class TableOutputFormatterTest extends TestCase
         yield 'skipped violations' => [
             [
                 new SkippedViolation(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
             ],
             [],
@@ -199,9 +212,13 @@ class TableOutputFormatterTest extends TestCase
         yield 'skipped violations without reporting' => [
             [
                 new SkippedViolation(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
             ],
             [],
@@ -226,8 +243,12 @@ class TableOutputFormatterTest extends TestCase
         yield 'uncovered' => [
             'rules' => [
                 new Uncovered(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
-                    'LayerA'
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
+                    'LayerA',
                 ),
             ],
             'errors' => [],
@@ -257,8 +278,12 @@ class TableOutputFormatterTest extends TestCase
         yield 'uncovered without reporting' => [
             'rules' => [
                 new Uncovered(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
-                    'LayerA'
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
+                    'LayerA',
                 ),
             ],
             'errors' => [],
@@ -307,7 +332,10 @@ class TableOutputFormatterTest extends TestCase
         yield 'an warning occurred' => [
             'rules' => [],
             'errors' => [],
-            'warnings' => [Warning::tokenIsInMoreThanOneLayer(ClassLikeToken::fromFQCN(Bar::class)->toString(), ['Layer 1', 'Layer 2'])],
+            'warnings' => [Warning::tokenIsInMoreThanOneLayer(
+                ClassLikeToken::fromFQCN(Bar::class)->toString(),
+                ['Layer 1', 'Layer 2'],
+            )],
             ' ------------------------------------------------------------------------------------------------------------------------- 
   Warnings                                                                                                                 
  ------------------------------------------------------------------------------------------------------------------------- 
@@ -331,21 +359,29 @@ class TableOutputFormatterTest extends TestCase
     }
 
     #[DataProvider('basicDataProvider')]
-    public function testBasic(array $rules, array $errors, array $warnings, string $expectedOutput, bool $reportUncovered = true, bool $reportSkipped = true): void
-    {
+    public function testBasic(
+        array $rules,
+        array $errors,
+        array $warnings,
+        string $expectedOutput,
+        bool $reportUncovered = true,
+        bool $reportSkipped = true,
+    ): void {
         $bufferedOutput = new BufferedOutput();
         $output = new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
 
         $analysisResult = new AnalysisResult();
         foreach ($rules as $rule) {
             $analysisResult->addRule($rule);
         }
+
         foreach ($errors as $error) {
             $analysisResult->addError($error);
         }
+
         foreach ($warnings as $warning) {
             $analysisResult->addWarning($warning);
         }
@@ -358,8 +394,8 @@ class TableOutputFormatterTest extends TestCase
                 null,
                 $reportSkipped,
                 $reportUncovered,
-                false
-            )
+                false,
+            ),
         );
 
         static::assertSame(str_replace("\n", PHP_EOL, $expectedOutput), $bufferedOutput->fetch());

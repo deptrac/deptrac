@@ -32,6 +32,7 @@ final class SuperglobalCollector implements CollectorInterface
         if (!isset($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('SuperglobalCollector: Missing configuration.');
         }
+
         if (!is_array($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('SuperglobalCollector: Configuration is not an array.');
         }

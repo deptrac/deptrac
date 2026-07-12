@@ -23,18 +23,25 @@ class PhpStanContainerDecorator
     public function __construct(string $projectDirectory, string $cwd, array $paths)
     {
         $factory = new ContainerFactory($cwd);
-        $paths = array_map(static function (string $path) use ($projectDirectory): string {
-            if (Path::isRelative($path)) {
-                /** @throws void */
-                return Path::makeAbsolute($path, $projectDirectory);
-            }
+        $paths = array_map(
+            static function (string $path) use ($projectDirectory): string {
+                if (Path::isRelative($path)) {
+                    /** @throws void */
+                    return Path::makeAbsolute($path, $projectDirectory);
+                }
 
-            return $path;
-        }, $paths);
-        $this->container = $factory->create(sys_get_temp_dir(), [
-            __DIR__.'/config/config.neon',
-            __DIR__.'/config/parser.neon',
-        ], $paths);
+                return $path;
+            },
+            $paths,
+        );
+        $this->container = $factory->create(
+            sys_get_temp_dir(),
+            [
+                __DIR__.'/config/config.neon',
+                __DIR__.'/config/parser.neon',
+            ],
+            $paths,
+        );
     }
 
     /**

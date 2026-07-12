@@ -55,6 +55,7 @@ class LayerResolver implements LayerResolverInterface
                     if (array_key_exists($layer, $this->resolved[$tokenName]) && $this->resolved[$tokenName][$layer]) {
                         continue;
                     }
+
                     if (array_key_exists('private', $attributes) && true === $attributes['private']) {
                         $this->resolved[$tokenName][$layer] = false;
                     } else {
@@ -123,6 +124,7 @@ class LayerResolver implements LayerResolverInterface
             foreach ($layer['collectors'] ?? [] as $config) {
                 $this->layers[$layerName][] = $this->collectorResolver->resolve($config);
             }
+
             if ([] === $this->layers[$layerName]) {
                 throw InvalidLayerDefinitionException::collectorRequired($layerName);
             }

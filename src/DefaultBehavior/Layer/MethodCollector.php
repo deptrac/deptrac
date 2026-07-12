@@ -11,7 +11,9 @@ use Deptrac\Deptrac\DefaultBehavior\Layer\Helpers\RegexCollector;
 
 final class MethodCollector extends RegexCollector
 {
-    public function __construct(private readonly ParserInterface $astParser) {}
+    public function __construct(
+        private readonly ParserInterface $astParser,
+    ) {}
 
     public function satisfy(array $config, TokenReferenceInterface $reference): bool
     {

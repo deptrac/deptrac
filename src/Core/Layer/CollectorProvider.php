@@ -26,7 +26,11 @@ final class CollectorProvider implements ContainerInterface
 
         if (!$collector instanceof CollectorInterface) {
             $exception = InvalidCollectorDefinitionException::unsupportedClass($id, $collector);
-            throw new \Symfony\Component\DependencyInjection\Exception\RuntimeException($exception->getMessage(), 0, $exception);
+            throw new \Symfony\Component\DependencyInjection\Exception\RuntimeException(
+                $exception->getMessage(),
+                0,
+                $exception,
+            );
         }
 
         return $collector;

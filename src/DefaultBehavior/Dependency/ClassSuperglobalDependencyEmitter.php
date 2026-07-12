@@ -24,12 +24,13 @@ final class ClassSuperglobalDependencyEmitter implements DependencyEmitterInterf
                 if (DependencyType::SUPERGLOBAL_VARIABLE !== $dependency->context->dependencyType) {
                     continue;
                 }
+
                 $dependencyList->addDependency(
                     new Dependency(
                         $classReference->getToken(),
                         $dependency->token,
                         $dependency->context,
-                    )
+                    ),
                 );
             }
         }

@@ -60,7 +60,7 @@ abstract class AbstractParser implements ParserInterface
 
             self::$classAstMap[$className] = array_map(
                 static fn (Node\Stmt\ClassMethod $method): string => (string) $method->name,
-                $classLikeNode->getMethods()
+                $classLikeNode->getMethods(),
             );
         }
 

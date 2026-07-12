@@ -25,12 +25,19 @@ final class InvalidCollectorDefinitionException extends RuntimeException impleme
     /**
      * @param string[] $supportedTypes
      */
-    public static function unsupportedType(string $collectorType, array $supportedTypes, ?ContainerExceptionInterface $previous): self
-    {
+    public static function unsupportedType(
+        string $collectorType,
+        array $supportedTypes,
+        ?ContainerExceptionInterface $previous,
+    ): self {
         return new self(
-            sprintf('Could not find a collector for type "%s". Supported types: "%s".', $collectorType, implode('", "', $supportedTypes)),
+            sprintf(
+                'Could not find a collector for type "%s". Supported types: "%s".',
+                $collectorType,
+                implode('", "', $supportedTypes),
+            ),
             0,
-            $previous
+            $previous,
         );
     }
 
@@ -40,7 +47,7 @@ final class InvalidCollectorDefinitionException extends RuntimeException impleme
             'Type "%s" is not valid collector (expected "%s", but is "%s").',
             $id,
             CollectorInterface::class,
-            get_debug_type($collector)
+            get_debug_type($collector),
         );
 
         return new self($message);

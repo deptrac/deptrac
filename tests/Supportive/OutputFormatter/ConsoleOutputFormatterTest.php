@@ -49,32 +49,37 @@ final class ConsoleOutputFormatterTest extends TestCase
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
                         ClassLikeToken::fromFQCN('ClassB'),
-                        new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                        new Dependency(
+                            $originalA,
+                            $originalB,
+                            new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                        ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('originalA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('originalA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))
                             ->replacePath([
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritB'),
                                     new FileOccurrence('originalA.php', 4),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritC'),
                                     new FileOccurrence('originalA.php', 5),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritD'),
                                     new FileOccurrence('originalA.php', 6),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
-                            ])
+                            ]),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             [],
@@ -101,10 +106,14 @@ final class ConsoleOutputFormatterTest extends TestCase
         yield [
             [
                 new Violation(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             [],
@@ -142,9 +151,13 @@ final class ConsoleOutputFormatterTest extends TestCase
         yield [
             [
                 new SkippedViolation(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
             ],
             [],
@@ -165,37 +178,46 @@ final class ConsoleOutputFormatterTest extends TestCase
         yield [
             [
                 new Uncovered(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
-                    'LayerA'
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
+                    'LayerA',
                 ),
                 new Uncovered(
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
                         ClassLikeToken::fromFQCN('ClassB'),
-                        new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                        new Dependency(
+                            $originalA,
+                            $originalB,
+                            new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                        ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('originalA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('originalA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))
                             ->replacePath([
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritB'),
                                     new FileOccurrence('originalA.php', 4),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritC'),
                                     new FileOccurrence('originalA.php', 5),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritD'),
                                     new FileOccurrence('originalA.php', 6),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
-                            ])
+                            ]),
                     ),
-                    'LayerA'
+                    'LayerA',
                 ),
             ],
             [],
@@ -227,7 +249,10 @@ final class ConsoleOutputFormatterTest extends TestCase
         yield 'an warning occurred' => [
             [],
             [],
-            'warnings' => [Warning::tokenIsInMoreThanOneLayer(ClassLikeToken::fromFQCN(Bar::class)->toString(), ['Layer 1', 'Layer 2'])],
+            'warnings' => [Warning::tokenIsInMoreThanOneLayer(
+                ClassLikeToken::fromFQCN(Bar::class)->toString(),
+                ['Layer 1', 'Layer 2'],
+            )],
             '[WARNING]Foo\Barisinmorethanonelayer["Layer1","Layer2"].Itisrecommendedthatonetokenshouldonlybeinonelayer.Report:Violations:0Skippedviolations:0Uncovered:0Allowed:0Warnings:1Errors:0',
         ];
     }
@@ -238,16 +263,18 @@ final class ConsoleOutputFormatterTest extends TestCase
         $bufferedOutput = new BufferedOutput();
         $output = new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
 
         $analysisResult = new AnalysisResult();
         foreach ($rules as $rule) {
             $analysisResult->addRule($rule);
         }
+
         foreach ($errors as $error) {
             $analysisResult->addError($error);
         }
+
         foreach ($warnings as $warning) {
             $analysisResult->addWarning($warning);
         }
@@ -261,13 +288,13 @@ final class ConsoleOutputFormatterTest extends TestCase
                 true,
                 true,
                 false,
-            )
+            ),
         );
 
         $o = $bufferedOutput->fetch();
         self::assertSame(
             $this->normalize($expectedOutput),
-            $this->normalize($o)
+            $this->normalize($o),
         );
     }
 
@@ -278,15 +305,19 @@ final class ConsoleOutputFormatterTest extends TestCase
 
         $analysisResult = new AnalysisResult();
         $analysisResult->addRule(new SkippedViolation(
-            new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+            new Dependency(
+                $originalA,
+                $originalB,
+                new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+            ),
             'LayerA',
-            'LayerB'
+            'LayerB',
         ));
 
         $bufferedOutput = new BufferedOutput();
         $output = new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
 
         $formatter = new ConsoleOutputFormatter();
@@ -298,7 +329,7 @@ final class ConsoleOutputFormatterTest extends TestCase
                 false,
                 true,
                 false,
-            )
+            ),
         );
 
         $o = $bufferedOutput->fetch();
@@ -316,7 +347,7 @@ final class ConsoleOutputFormatterTest extends TestCase
 
         self::assertSame(
             $this->normalize($expectedOutput),
-            $this->normalize($o)
+            $this->normalize($o),
         );
     }
 

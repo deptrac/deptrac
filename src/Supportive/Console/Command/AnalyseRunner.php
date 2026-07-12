@@ -21,7 +21,10 @@ use function sprintf;
  */
 final class AnalyseRunner
 {
-    public function __construct(private readonly DependencyLayersAnalyser $analyser, private readonly FormatterProvider $formatterProvider) {}
+    public function __construct(
+        private readonly DependencyLayersAnalyser $analyser,
+        private readonly FormatterProvider $formatterProvider,
+    ) {}
 
     /**
      * @throws CommandRunException
@@ -63,9 +66,11 @@ final class AnalyseRunner
         if ($options->failOnUncovered && $result->hasUncovered()) {
             throw CommandRunException::finishedWithUncovered();
         }
+
         if ($result->hasViolations()) {
             throw CommandRunException::finishedWithViolations();
         }
+
         if ($result->hasErrors()) {
             throw CommandRunException::failedWithErrors();
         }
@@ -88,12 +93,15 @@ final class AnalyseRunner
     private function printFormatterError(OutputInterface $output, string $formatterName, Throwable $error): void
     {
         $output->writeLineFormatted('');
-        $output->getStyle()->error([
-            '',
-            sprintf('Output formatter %s threw an Exception:', $formatterName),
-            sprintf('Message: %s', $error->getMessage()),
-            '',
-        ]);
+        $output
+            ->getStyle()
+            ->error([
+                '',
+                sprintf('Output formatter %s threw an Exception:', $formatterName),
+                sprintf('Message: %s', $error->getMessage()),
+                '',
+            ])
+        ;
         $output->writeLineFormatted('');
     }
 
@@ -114,12 +122,18 @@ final class AnalyseRunner
     private function printFormatterNotFoundException(OutputInterface $output, string $formatterName): void
     {
         $output->writeLineFormatted('');
-        $output->getStyle()->error([
-            '',
-            sprintf('Output formatter %s not found.', $formatterName),
-            sprintf('Available formatters: ["%s"]', implode('", "', $this->formatterProvider->getKnownFormatters())),
-            '',
-        ]);
+        $output
+            ->getStyle()
+            ->error([
+                '',
+                sprintf('Output formatter %s not found.', $formatterName),
+                sprintf('Available formatters: ["%s"]', implode(
+                    '", "',
+                    $this->formatterProvider->getKnownFormatters(),
+                )),
+                '',
+            ])
+        ;
         $output->writeLineFormatted('');
     }
 }

@@ -136,7 +136,10 @@ final class DeptracConfig
         }
 
         if ([] !== $this->formatters) {
-            $config['formatters'] = array_map(static fn (FormatterConfigInterface $formatterConfig) => $formatterConfig->toArray(), $this->formatters);
+            $config['formatters'] = array_map(
+                static fn (FormatterConfigInterface $formatterConfig) => $formatterConfig->toArray(),
+                $this->formatters,
+            );
         }
 
         if ([] !== $this->excludeFiles) {
@@ -148,7 +151,10 @@ final class DeptracConfig
         }
 
         if ([] !== $this->rulesets) {
-            $config['ruleset'] = array_map(static fn (Ruleset $rulesetConfig) => $rulesetConfig->toArray(), $this->rulesets);
+            $config['ruleset'] = array_map(
+                static fn (Ruleset $rulesetConfig) => $rulesetConfig->toArray(),
+                $this->rulesets,
+            );
         }
 
         if ([] !== $this->skipViolations) {

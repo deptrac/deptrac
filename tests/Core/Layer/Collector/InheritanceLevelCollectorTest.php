@@ -37,18 +37,21 @@ final class InheritanceLevelCollectorTest extends TestCase
     public function testSatisfy(int $pathLevel, int $levelConfig, bool $expected): void
     {
         $classInherit = $this->createMock(AstInherit::class);
-        $classInherit->method('getPath')
+        $classInherit
+            ->method('getPath')
             ->willReturn(array_fill(0, $pathLevel, 1))
         ;
 
         $astMap = $this->createMock(AstMap::class);
-        $astMap->method('getClassInherits')
+        $astMap
+            ->method('getClassInherits')
             ->with(ClassLikeToken::fromFQCN(AstInherit::class))
             ->willReturn([$classInherit])
         ;
 
         $astMapExtractor = $this->createMock(AstMapExtractor::class);
-        $astMapExtractor->method('extract')
+        $astMapExtractor
+            ->method('extract')
             ->willReturn($astMap)
         ;
 
@@ -79,7 +82,7 @@ final class InheritanceLevelCollectorTest extends TestCase
 
         $actual = (new InheritanceLevelCollector($extractor))->satisfy(
             ['value' => '/^Foo\\\\Bar$/i'],
-            new VariableReference(SuperGlobalToken::GET)
+            new VariableReference(SuperGlobalToken::GET),
         );
 
         self::assertFalse($actual);

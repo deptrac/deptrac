@@ -22,17 +22,25 @@ abstract class RegexCollector implements CollectorInterface
     protected function getValidatedPattern(array $config): string
     {
         if (!isset($config['value'])) {
-            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(static::getClassName().': Missing configuration.');
+            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(
+                static::getClassName().': Missing configuration.',
+            );
         }
+
         if (!is_string($config['value'])) {
-            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(static::getClassName().': Configuration is not a string.');
+            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(
+                static::getClassName().': Configuration is not a string.',
+            );
         }
 
         $pattern = $this->getPattern($config['value']);
         if (false !== @preg_match($pattern, '')) {
             return $pattern;
         }
-        throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(static::getClassName().': Invalid regex pattern '.$pattern);
+
+        throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(
+            static::getClassName().': Invalid regex pattern '.$pattern,
+        );
     }
 
     protected static function getClassName(): string

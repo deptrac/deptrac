@@ -40,27 +40,46 @@ final class PropertyExtractor implements NikicReferenceExtractorInterface, PHPSt
         foreach ($node->attrGroups as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {
                 foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, $attribute->name) as $classLikeName) {
-                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $attribute->getLine(), DependencyType::ATTRIBUTE);
+                    $referenceBuilder->dependency(
+                        ClassLikeToken::fromFQCN($classLikeName),
+                        $attribute->getLine(),
+                        DependencyType::ATTRIBUTE,
+                    );
                 }
             }
         }
+
         if (null !== $node->type) {
             foreach ($this->typeResolver->resolvePropertyType($node->type) as $type) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->type->getStartLine(), DependencyType::VARIABLE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($type),
+                    $node->type->getStartLine(),
+                    DependencyType::VARIABLE,
+                );
             }
         }
 
-        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplateLikes());
+        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope(
+            $node,
+            $this->lexer,
+            $this->docParser,
+            $referenceBuilder->getTokenTemplateLikes(),
+        );
         if (null === $resolved) {
             return;
         }
+
         [$docNode, $templateTypes] = $resolved;
 
         foreach ($docNode->getVarTagValues() as $tag) {
             $types = $this->typeResolver->resolvePHPStanDocParserType($tag->type, $typeScope, $templateTypes);
 
             foreach ($types as $type) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->getStartLine(), DependencyType::VARIABLE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($type),
+                    $node->getStartLine(),
+                    DependencyType::VARIABLE,
+                );
             }
         }
     }
@@ -77,12 +96,20 @@ final class PropertyExtractor implements NikicReferenceExtractorInterface, PHPSt
     ): void {
         foreach ($node->attrGroups as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($scope->resolveName($attribute->name)), $attribute->getLine(), DependencyType::ATTRIBUTE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($scope->resolveName($attribute->name)),
+                    $attribute->getLine(),
+                    DependencyType::ATTRIBUTE,
+                );
             }
         }
 
         if ($node->type instanceof Node\Name) {
-            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($scope->resolveName($node->type)), $node->type->getStartLine(), DependencyType::VARIABLE);
+            $referenceBuilder->dependency(
+                ClassLikeToken::fromFQCN($scope->resolveName($node->type)),
+                $node->type->getStartLine(),
+                DependencyType::VARIABLE,
+            );
         }
 
         $resolvedPhpDoc = DocParsingHelper::resolvePHPDocWithPHPStanScope($node, $this->phpStanContainer, $scope);
@@ -92,7 +119,11 @@ final class PropertyExtractor implements NikicReferenceExtractorInterface, PHPSt
 
         foreach ($resolvedPhpDoc->getVarTags() as $tag) {
             foreach ($tag->getType()->getReferencedClasses() as $referencedClass) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $node->getStartLine(), DependencyType::VARIABLE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($referencedClass),
+                    $node->getStartLine(),
+                    DependencyType::VARIABLE,
+                );
             }
         }
     }

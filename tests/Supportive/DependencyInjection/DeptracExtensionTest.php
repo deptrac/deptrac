@@ -44,7 +44,7 @@ final class DeptracExtensionTest extends TestCase
         'types' => [
             // Unfortunately, we can't use the enum type here, see
             // https://wiki.php.net/rfc/fetch_property_in_const_expressions
-            'class',    // ClassLikeType::CLASS
+            'class', // ClassLikeType::CLASS
             'function', // ClassLikeType::FUNCTION
         ],
     ];
@@ -232,7 +232,7 @@ final class DeptracExtensionTest extends TestCase
                     'attributes' => [],
                 ],
             ],
-            $this->container->getParameter('layers')
+            $this->container->getParameter('layers'),
         );
     }
 
@@ -248,7 +248,7 @@ final class DeptracExtensionTest extends TestCase
 
         self::assertSame(
             [],
-            $this->container->getParameter('ruleset')
+            $this->container->getParameter('ruleset'),
         );
     }
 
@@ -264,7 +264,7 @@ final class DeptracExtensionTest extends TestCase
 
         self::assertSame(
             [],
-            $this->container->getParameter('ruleset')
+            $this->container->getParameter('ruleset'),
         );
     }
 
@@ -288,7 +288,7 @@ final class DeptracExtensionTest extends TestCase
                 'Bar' => [],
                 'Baz' => [],
             ],
-            $this->container->getParameter('ruleset')
+            $this->container->getParameter('ruleset'),
         );
     }
 
@@ -312,7 +312,7 @@ final class DeptracExtensionTest extends TestCase
                     'examples\Layer1\SomeClass',
                 ],
             ],
-            $this->container->getParameter('skip_violations')
+            $this->container->getParameter('skip_violations'),
         );
     }
 
@@ -328,7 +328,7 @@ final class DeptracExtensionTest extends TestCase
 
         self::assertSame(
             self::ANALYSER_DEFAULTS,
-            $this->container->getParameter('analyser')
+            $this->container->getParameter('analyser'),
         );
     }
 
@@ -344,7 +344,7 @@ final class DeptracExtensionTest extends TestCase
 
         self::assertSame(
             self::ANALYSER_DEFAULTS,
-            $this->container->getParameter('analyser')
+            $this->container->getParameter('analyser'),
         );
     }
 
@@ -352,9 +352,10 @@ final class DeptracExtensionTest extends TestCase
     {
         $configs = [
             'deptrac' => [
-                'analyser' => [
-                    'types' => ['invalid'],
-                ] + self::ANALYSER_DEFAULTS,
+                'analyser' =>
+                    [
+                        'types' => ['invalid'],
+                    ] + self::ANALYSER_DEFAULTS,
             ],
         ];
 
@@ -368,9 +369,10 @@ final class DeptracExtensionTest extends TestCase
     {
         $configs = [
             'deptrac' => [
-                'analyser' => [
-                    'types' => null,
-                ] + self::ANALYSER_DEFAULTS,
+                'analyser' =>
+                    [
+                        'types' => null,
+                    ] + self::ANALYSER_DEFAULTS,
             ],
         ];
 
@@ -378,7 +380,7 @@ final class DeptracExtensionTest extends TestCase
 
         self::assertSame(
             ['types' => []] + self::ANALYSER_DEFAULTS,
-            $this->container->getParameter('analyser')
+            $this->container->getParameter('analyser'),
         );
     }
 
@@ -386,9 +388,10 @@ final class DeptracExtensionTest extends TestCase
     {
         $configs = [
             'deptrac' => [
-                'analyser' => [
-                    'types' => [],
-                ] + self::ANALYSER_DEFAULTS,
+                'analyser' =>
+                    [
+                        'types' => [],
+                    ] + self::ANALYSER_DEFAULTS,
             ],
         ];
 
@@ -396,7 +399,7 @@ final class DeptracExtensionTest extends TestCase
 
         self::assertSame(
             ['types' => []] + self::ANALYSER_DEFAULTS,
-            $this->container->getParameter('analyser')
+            $this->container->getParameter('analyser'),
         );
     }
 
@@ -404,18 +407,18 @@ final class DeptracExtensionTest extends TestCase
     {
         $configs = [
             'deptrac' => [
-                'analyser' => [
-                    'types' => [EmitterType::CLASS_TOKEN->value, EmitterType::CLASS_TOKEN->value],
-                ] + self::ANALYSER_DEFAULTS,
+                'analyser' =>
+                    [
+                        'types' => [EmitterType::CLASS_TOKEN->value, EmitterType::CLASS_TOKEN->value],
+                    ] + self::ANALYSER_DEFAULTS,
             ],
         ];
 
         $this->extension->load($configs, $this->container);
 
         self::assertSame(
-            ['types' => [EmitterType::CLASS_TOKEN->value, EmitterType::CLASS_TOKEN->value]]
-                + self::ANALYSER_DEFAULTS,
-            $this->container->getParameter('analyser')
+            ['types' => [EmitterType::CLASS_TOKEN->value, EmitterType::CLASS_TOKEN->value]] + self::ANALYSER_DEFAULTS,
+            $this->container->getParameter('analyser'),
         );
     }
 

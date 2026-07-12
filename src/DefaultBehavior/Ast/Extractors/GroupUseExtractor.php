@@ -34,7 +34,11 @@ final class GroupUseExtractor implements NikicReferenceExtractorInterface, PHPSt
         foreach ($node->uses as $use) {
             if (Use_::TYPE_NORMAL === $use->type) {
                 $classLikeName = $node->prefix->toString().'\\'.$use->name->toString();
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $use->name->getLine(), DependencyType::USE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($classLikeName),
+                    $use->name->getLine(),
+                    DependencyType::USE,
+                );
             }
         }
     }

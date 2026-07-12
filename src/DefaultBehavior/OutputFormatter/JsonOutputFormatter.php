@@ -44,11 +44,13 @@ final class JsonOutputFormatter implements OutputFormatterInterface
                 $this->addSkipped($violations, $rule);
             }
         }
+
         if ($outputFormatterInput->reportUncovered) {
             foreach ($result->allOf(Uncovered::class) as $rule) {
                 $this->addUncovered($violations, $rule);
             }
         }
+
         foreach ($result->allOf(Violation::class) as $rule) {
             $this->addFailure($violations, $rule);
         }
@@ -107,7 +109,7 @@ final class JsonOutputFormatter implements OutputFormatterInterface
             $dependency->getDepender()->toString(),
             $dependency->getDependent()->toString(),
             $violation->getDependerLayer(),
-            $violation->getDependentLayer()
+            $violation->getDependentLayer(),
         );
     }
 
@@ -134,7 +136,7 @@ final class JsonOutputFormatter implements OutputFormatterInterface
             $dependency->getDepender()->toString(),
             $dependency->getDependent()->toString(),
             $violation->getDependerLayer(),
-            $violation->getDependentLayer()
+            $violation->getDependentLayer(),
         );
     }
 
@@ -160,7 +162,7 @@ final class JsonOutputFormatter implements OutputFormatterInterface
             '%s has uncovered dependency on %s (%s)',
             $dependency->getDepender()->toString(),
             $dependency->getDependent()->toString(),
-            $violation->layer
+            $violation->layer,
         );
     }
 

@@ -19,8 +19,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class DebugUnusedCommand extends Command
 {
-    public function __construct(private readonly DebugUnusedRunner $runner)
-    {
+    public function __construct(
+        private readonly DebugUnusedRunner $runner,
+    ) {
         parent::__construct();
     }
 
@@ -33,7 +34,7 @@ class DebugUnusedCommand extends Command
             'l',
             InputOption::VALUE_OPTIONAL,
             'How many times can it be used to be considered unused',
-            0
+            0,
         );
     }
 

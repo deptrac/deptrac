@@ -20,7 +20,7 @@ final class FunctionDependencyEmitterTest extends TestCase
     {
         $deps = $this->getEmittedDependencies(
             new FunctionDependencyEmitter(),
-            __DIR__.'/Fixtures/Bar.php'
+            __DIR__.'/Fixtures/Bar.php',
         );
 
         self::assertCount(29, $deps);

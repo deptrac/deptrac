@@ -19,7 +19,9 @@ final class UsesCollector implements CollectorInterface
 {
     private AstMapInterface $astMap;
 
-    public function __construct(private readonly AstMapExtractorInterface $astMapExtractor) {}
+    public function __construct(
+        private readonly AstMapExtractorInterface $astMapExtractor,
+    ) {}
 
     public function satisfy(array $config, TokenReferenceInterface $reference): bool
     {
@@ -34,6 +36,7 @@ final class UsesCollector implements CollectorInterface
         } catch (AstException $exception) {
             throw CouldNotParseFileException::because('Could not build Ast map', $exception);
         }
+
         foreach ($this->astMap->getClassInherits($reference->getToken()) as $inherit) {
             if (AstInheritType::USES === $inherit->type && $inherit->classLikeName->equals($traitName)) {
                 return true;
@@ -53,6 +56,7 @@ final class UsesCollector implements CollectorInterface
         if (!isset($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('UsesCollector: Missing configuration.');
         }
+
         if (!is_string($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('UsesCollector: Configuration is not a string.');
         }

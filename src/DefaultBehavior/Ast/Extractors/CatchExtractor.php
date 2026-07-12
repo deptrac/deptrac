@@ -21,12 +21,18 @@ use PHPStan\Analyser\MutatingScope;
  */
 final class CatchExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
-    public function __construct(private readonly TypeResolverInterface $typeResolver) {}
+    public function __construct(
+        private readonly TypeResolverInterface $typeResolver,
+    ) {}
 
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
     {
         foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, ...$node->types) as $classLikeName) {
-            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $node->getLine(), DependencyType::CATCH);
+            $referenceBuilder->dependency(
+                ClassLikeToken::fromFQCN($classLikeName),
+                $node->getLine(),
+                DependencyType::CATCH,
+            );
         }
     }
 
@@ -41,7 +47,11 @@ final class CatchExtractor implements NikicReferenceExtractorInterface, PHPStanR
         MutatingScope $scope,
     ): void {
         foreach ($node->types as $classLikeName) {
-            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($scope->resolveName($classLikeName)), $node->getLine(), DependencyType::CATCH);
+            $referenceBuilder->dependency(
+                ClassLikeToken::fromFQCN($scope->resolveName($classLikeName)),
+                $node->getLine(),
+                DependencyType::CATCH,
+            );
         }
     }
 }

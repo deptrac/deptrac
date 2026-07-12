@@ -480,8 +480,7 @@ return static function (ContainerConfigurator $container): void {
     $services->set(YamlBaselineMapper::class)
         ->args([
             '$skippedViolations' => param('skip_violations'),
-        ])
-    ;
+        ]);
     $services->alias(BaselineMapperInterface::class, YamlBaselineMapper::class);
     $services->set(EventHelper::class);
     $services
@@ -490,20 +489,17 @@ return static function (ContainerConfigurator $container): void {
     $services->set(TokenInLayerAnalyser::class)
         ->args([
             '$config' => param('analyser'),
-        ])
-    ;
+        ]);
     $services->set(LayerForTokenAnalyser::class);
     $services->set(UnassignedTokenAnalyser::class)
         ->args([
             '$config' => param('analyser'),
-        ])
-    ;
+        ]);
     $services->set(LayerDependenciesAnalyser::class);
     $services->set(RulesetUsageAnalyser::class)
         ->args([
             '$layers' => param('layers'),
-        ])
-    ;
+        ]);
 
     /*
      * OutputFormatter

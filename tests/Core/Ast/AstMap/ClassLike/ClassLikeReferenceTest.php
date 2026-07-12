@@ -22,7 +22,7 @@ final class ClassLikeReferenceTest extends TestCase
             ClassLikeType::TYPE_CLASS,
             [],
             [],
-            $tags
+            $tags,
         );
     }
 }

@@ -25,6 +25,10 @@ final class CircularReferenceException extends RuntimeException implements Excep
      */
     public static function circularLayerDependency(string $layer, array $others): self
     {
-        return new self(sprintf('Circular ruleset dependency for layer %s depending on: %s', $layer, implode('->', $others)));
+        return new self(sprintf(
+            'Circular ruleset dependency for layer %s depending on: %s',
+            $layer,
+            implode('->', $others),
+        ));
     }
 }

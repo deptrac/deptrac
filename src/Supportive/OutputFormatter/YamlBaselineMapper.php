@@ -25,7 +25,7 @@ final class YamlBaselineMapper implements BaselineMapperInterface
                 ],
             ],
             4,
-            2
+            2,
         );
     }
 

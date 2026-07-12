@@ -12,7 +12,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ProgressSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly OutputInterface $output) {}
+    public function __construct(
+        private readonly OutputInterface $output,
+    ) {}
 
     /**
      * @return array<string, string|array{0: string, 1: int}|list<array{0: string, 1?: int}>>

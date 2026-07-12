@@ -68,8 +68,12 @@ final class XMLOutputFormatter implements OutputFormatterInterface
         return (string) $xmlDoc->saveXML();
     }
 
-    private function addRule(string $type, DOMElement $rootEntry, DOMDocument $xmlDoc, Violation|SkippedViolation $rule): void
-    {
+    private function addRule(
+        string $type,
+        DOMElement $rootEntry,
+        DOMDocument $xmlDoc,
+        Violation|SkippedViolation $rule,
+    ): void {
         /** @throws void */
         $entry = $xmlDoc->createElement('entry');
         /** @throws void */

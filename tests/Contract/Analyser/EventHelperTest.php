@@ -27,7 +27,9 @@ final class EventHelperTest extends TestCase
         ];
 
         $baselineMapper = new class($configuration) implements BaselineMapperInterface {
-            public function __construct(private readonly array $violations) {}
+            public function __construct(
+                private readonly array $violations,
+            ) {}
 
             public function fromPHPListToString(array $groupedViolations): string
             {
@@ -45,39 +47,39 @@ final class EventHelperTest extends TestCase
         self::assertTrue(
             $helper->shouldViolationBeSkipped(
                 ClassLikeToken::fromFQCN('ClassWithOneDep')->toString(),
-                ClassLikeToken::fromFQCN('DependencyClass')->toString()
-            )
+                ClassLikeToken::fromFQCN('DependencyClass')->toString(),
+            ),
         );
         // also skips multiple occurrences
         self::assertTrue(
             $helper->shouldViolationBeSkipped(
                 ClassLikeToken::fromFQCN('ClassWithOneDep')->toString(),
-                ClassLikeToken::fromFQCN('DependencyClass')->toString()
-            )
+                ClassLikeToken::fromFQCN('DependencyClass')->toString(),
+            ),
         );
         self::assertFalse(
             $helper->shouldViolationBeSkipped(
                 ClassLikeToken::fromFQCN('ClassWithEmptyDeps')->toString(),
-                ClassLikeToken::fromFQCN('DependencyClass')->toString()
-            )
+                ClassLikeToken::fromFQCN('DependencyClass')->toString(),
+            ),
         );
         self::assertTrue(
             $helper->shouldViolationBeSkipped(
                 ClassLikeToken::fromFQCN('ClassWithMultipleDeps')->toString(),
-                ClassLikeToken::fromFQCN('DependencyClass1')->toString()
-            )
+                ClassLikeToken::fromFQCN('DependencyClass1')->toString(),
+            ),
         );
         self::assertTrue(
             $helper->shouldViolationBeSkipped(
                 ClassLikeToken::fromFQCN('ClassWithMultipleDeps')->toString(),
-                ClassLikeToken::fromFQCN('DependencyClass2')->toString()
-            )
+                ClassLikeToken::fromFQCN('DependencyClass2')->toString(),
+            ),
         );
         self::assertFalse(
             $helper->shouldViolationBeSkipped(
                 ClassLikeToken::fromFQCN('DependencyClass')->toString(),
-                ClassLikeToken::fromFQCN('ClassWithOneDep')->toString()
-            )
+                ClassLikeToken::fromFQCN('ClassWithOneDep')->toString(),
+            ),
         );
     }
 
@@ -96,7 +98,9 @@ final class EventHelperTest extends TestCase
         ];
 
         $baselineMapper = new class($configuration) implements BaselineMapperInterface {
-            public function __construct(private readonly array $violations) {}
+            public function __construct(
+                private readonly array $violations,
+            ) {}
 
             public function fromPHPListToString(array $groupedViolations): string
             {
@@ -114,15 +118,15 @@ final class EventHelperTest extends TestCase
         self::assertTrue(
             $helper->shouldViolationBeSkipped(
                 ClassLikeToken::fromFQCN('ClassWithOneDep')->toString(),
-                ClassLikeToken::fromFQCN('DependencyClass')->toString()
-            )
+                ClassLikeToken::fromFQCN('DependencyClass')->toString(),
+            ),
         );
         // also skips multiple occurrences
         self::assertTrue(
             $helper->shouldViolationBeSkipped(
                 ClassLikeToken::fromFQCN('ClassWithOneDep')->toString(),
-                ClassLikeToken::fromFQCN('DependencyClass')->toString()
-            )
+                ClassLikeToken::fromFQCN('DependencyClass')->toString(),
+            ),
         );
         self::assertSame(
             [
@@ -132,7 +136,7 @@ final class EventHelperTest extends TestCase
                     'DependencyClass2',
                 ],
             ],
-            $helper->unmatchedSkippedViolations()
+            $helper->unmatchedSkippedViolations(),
         );
     }
 }

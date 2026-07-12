@@ -36,7 +36,7 @@ final class ClassLikeReference extends TaggedTokenReference
             $this->inherits,
             $this->dependencies,
             $this->tags,
-            $astFileReference
+            $astFileReference,
         );
     }
 

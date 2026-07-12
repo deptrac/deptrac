@@ -47,32 +47,37 @@ class BaselineOutputFormatterTest extends TestCase
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
                         ClassLikeToken::fromFQCN('ClassB'),
-                        new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                        new Dependency(
+                            $originalA,
+                            $originalB,
+                            new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                        ),
                         (new AstInherit(
-                            ClassLikeToken::fromFQCN('ClassInheritA'), new FileOccurrence('originalA.php', 3),
-                            AstInheritType::EXTENDS
+                            ClassLikeToken::fromFQCN('ClassInheritA'),
+                            new FileOccurrence('originalA.php', 3),
+                            AstInheritType::EXTENDS,
                         ))
                             ->replacePath([
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritB'),
                                     new FileOccurrence('originalA.php', 4),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritC'),
                                     new FileOccurrence('originalA.php', 5),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
                                 new AstInherit(
                                     ClassLikeToken::fromFQCN('ClassInheritD'),
                                     new FileOccurrence('originalA.php', 6),
-                                    AstInheritType::EXTENDS
+                                    AstInheritType::EXTENDS,
                                 ),
-                            ])
+                            ]),
                     ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             file_get_contents(__DIR__.'/data/expected-baseline-report_1.yml'),
@@ -81,10 +86,14 @@ class BaselineOutputFormatterTest extends TestCase
         yield [
             [
                 new Violation(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
                     'LayerB',
-                    new DummyViolationCreatingRule()
+                    new DummyViolationCreatingRule(),
                 ),
             ],
             file_get_contents(__DIR__.'/data/expected-baseline-report_2.yml'),
@@ -98,9 +107,13 @@ class BaselineOutputFormatterTest extends TestCase
         yield [
             [
                 new SkippedViolation(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
                     'LayerA',
-                    'LayerB'
+                    'LayerB',
                 ),
             ],
             file_get_contents(__DIR__.'/data/expected-baseline-report_3.yml'),
@@ -109,8 +122,12 @@ class BaselineOutputFormatterTest extends TestCase
         yield [
             [
                 new Uncovered(
-                    new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
-                    'LayerA'
+                    new Dependency(
+                        $originalA,
+                        $originalB,
+                        new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER),
+                    ),
+                    'LayerA',
                 ),
             ],
             file_get_contents(__DIR__.'/data/expected-baseline-report_4.yml'),
@@ -134,12 +151,12 @@ class BaselineOutputFormatterTest extends TestCase
             $formatter->finish(
                 OutputResult::fromAnalysisResult($analysisResult),
                 $this->createSymfonyOutput($output),
-                new OutputFormatterInput($generatedBaselineFile, false, false, false)
+                new OutputFormatterInput($generatedBaselineFile, false, false, false),
             );
 
             static::assertSame(
                 $expectedOutput,
-                file_get_contents($generatedBaselineFile)
+                file_get_contents($generatedBaselineFile),
             );
         } finally {
             unlink($generatedBaselineFile);
@@ -150,7 +167,7 @@ class BaselineOutputFormatterTest extends TestCase
     {
         return new SymfonyOutput(
             $bufferedOutput,
-            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput))
+            new Style(new SymfonyStyle($this->createMock(InputInterface::class), $bufferedOutput)),
         );
     }
 }

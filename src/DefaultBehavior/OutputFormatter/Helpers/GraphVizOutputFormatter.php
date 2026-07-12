@@ -49,6 +49,7 @@ abstract class GraphVizOutputFormatter implements OutputFormatterInterface
         if ($outputConfig->pointToGroups) {
             $graph->setAttribute('compound', 'true');
         }
+
         $nodes = $this->createNodes($outputConfig, $layersDependOnLayers);
         $this->addNodesToGraph($graph, $nodes, $outputConfig);
         $this->connectEdges($graph, $nodes, $outputConfig, $layersDependOnLayers, $layerViolations);
@@ -124,6 +125,7 @@ abstract class GraphVizOutputFormatter implements OutputFormatterInterface
             if (in_array($layer, $outputConfig->hiddenLayers, true)) {
                 continue;
             }
+
             if (!isset($nodes[$layer])) {
                 $nodes[$layer] = new Node($layer);
             }
@@ -132,6 +134,7 @@ abstract class GraphVizOutputFormatter implements OutputFormatterInterface
                 if (in_array($layerDependOn, $outputConfig->hiddenLayers, true)) {
                     continue;
                 }
+
                 if (!isset($nodes[$layerDependOn])) {
                     $nodes[$layerDependOn] = new Node($layerDependOn);
                 }
@@ -157,14 +160,17 @@ abstract class GraphVizOutputFormatter implements OutputFormatterInterface
             if (in_array($layer, $outputConfig->hiddenLayers, true)) {
                 continue;
             }
+
             foreach ($layersDependOn as $layerDependOn => $layerDependOnCount) {
                 if (in_array($layerDependOn, $outputConfig->hiddenLayers, true)) {
                     continue;
                 }
+
                 $edge = new Edge($nodes[$layer], $nodes[$layerDependOn]);
                 if ($outputConfig->pointToGroups && $graph->hasGraph($this->getSubgraphName($layerDependOn))) {
                     $edge->setAttribute('lhead', $this->getSubgraphName($layerDependOn));
                 }
+
                 $graph->link($edge);
                 if (isset($layerViolations[$layer][$layerDependOn])) {
                     $edge->setAttribute('label', (string) $layerViolations[$layer][$layerDependOn]);
@@ -211,6 +217,7 @@ abstract class GraphVizOutputFormatter implements OutputFormatterInterface
         if (false === $filename) {
             throw OutputException::withMessage('Unable to create temp file for output.');
         }
+
         $filename .= '.png';
         $graph->export('png', $filename);
 
@@ -225,5 +232,9 @@ abstract class GraphVizOutputFormatter implements OutputFormatterInterface
     /**
      * @throws OutputException
      */
-    abstract protected function output(Graph $graph, OutputInterface $output, OutputFormatterInput $outputFormatterInput): void;
+    abstract protected function output(
+        Graph $graph,
+        OutputInterface $output,
+        OutputFormatterInput $outputFormatterInput,
+    ): void;
 }

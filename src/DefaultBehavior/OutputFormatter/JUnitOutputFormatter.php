@@ -111,8 +111,12 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
         return (string) $xmlDoc->saveXML();
     }
 
-    private function addTestCases(OutputResult $result, DOMDocument $xmlDoc, DOMElement $testSuite, OutputFormatterInput $outputFormatterInput): void
-    {
+    private function addTestCases(
+        OutputResult $result,
+        DOMDocument $xmlDoc,
+        DOMElement $testSuite,
+        OutputFormatterInput $outputFormatterInput,
+    ): void {
         /** @var array<string, array<RuleInterface>> $layers */
         $layers = [];
         foreach ($result->allRules() as $rule) {
@@ -142,6 +146,7 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
                 } elseif ($rule instanceof Uncovered && $outputFormatterInput->reportUncovered) {
                     $this->addWarning($rule, $xmlDoc, $testCase, $outputFormatterInput);
                 }
+
                 $testSuite->appendChild($testCase);
             }
         }
@@ -157,7 +162,7 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
             $dependency->getContext()->fileOccurrence->line,
             $dependency->getDependent()->toString(),
             $violation->getDependerLayer(),
-            $violation->getDependentLayer()
+            $violation->getDependentLayer(),
         );
 
         /** @throws void */
@@ -180,7 +185,7 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
             $dependency->getContext()->fileOccurrence->line,
             $dependency->getDependent()->toString(),
             $violation->getDependerLayer(),
-            $violation->getDependentLayer()
+            $violation->getDependentLayer(),
         );
 
         /** @throws void */
@@ -188,8 +193,12 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
         $testCase->appendChild($skipped);
     }
 
-    private function addWarning(Uncovered $rule, DOMDocument $xmlDoc, DOMElement $testCase, OutputFormatterInput $outputFormatterInput): void
-    {
+    private function addWarning(
+        Uncovered $rule,
+        DOMDocument $xmlDoc,
+        DOMElement $testCase,
+        OutputFormatterInput $outputFormatterInput,
+    ): void {
         $dependency = $rule->getDependency();
 
         $message = sprintf(
@@ -197,7 +206,7 @@ final class JUnitOutputFormatter implements OutputFormatterInterface
             $dependency->getDepender()->toString(),
             $dependency->getContext()->fileOccurrence->line,
             $dependency->getDependent()->toString(),
-            $rule->layer
+            $rule->layer,
         );
 
         /** @throws void */

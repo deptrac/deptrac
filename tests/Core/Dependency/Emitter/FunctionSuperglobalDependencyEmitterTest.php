@@ -13,14 +13,17 @@ final class FunctionSuperglobalDependencyEmitterTest extends TestCase
 
     public function testGetName(): void
     {
-        self::assertSame('FunctionSuperglobalDependencyEmitter', (new FunctionSuperglobalDependencyEmitter())->getName());
+        self::assertSame(
+            'FunctionSuperglobalDependencyEmitter',
+            (new FunctionSuperglobalDependencyEmitter())->getName(),
+        );
     }
 
     public function testApplyDependencies(): void
     {
         $deps = $this->getEmittedDependencies(
             new FunctionSuperglobalDependencyEmitter(),
-            __DIR__.'/Fixtures/Bar.php'
+            __DIR__.'/Fixtures/Bar.php',
         );
 
         self::assertCount(4, $deps);

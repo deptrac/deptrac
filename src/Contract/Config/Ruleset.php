@@ -10,8 +10,10 @@ final class Ruleset
     private array $accessableLayers = [];
 
     /** @param  array<Layer> $layerConfigs */
-    public function __construct(public Layer $layerConfig, array $layerConfigs)
-    {
+    public function __construct(
+        public Layer $layerConfig,
+        array $layerConfigs,
+    ) {
         $this->accesses(...$layerConfigs);
     }
 

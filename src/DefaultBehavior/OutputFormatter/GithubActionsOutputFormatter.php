@@ -24,8 +24,11 @@ final class GithubActionsOutputFormatter implements OutputFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function finish(OutputResult $result, OutputInterface $output, OutputFormatterInput $outputFormatterInput): void
-    {
+    public function finish(
+        OutputResult $result,
+        OutputInterface $output,
+        OutputFormatterInput $outputFormatterInput,
+    ): void {
         foreach ($result->allOf(Violation::class) as $rule) {
             $this->printViolation($rule, $output);
         }
@@ -70,8 +73,8 @@ final class GithubActionsOutputFormatter implements OutputFormatterInterface
                     $dependency->getContext()->fileOccurrence->line,
                     $dependency->getDepender()->toString(),
                     $dependency->getDependent()->toString(),
-                    $u->layer
-                )
+                    $u->layer,
+                ),
             );
         }
     }
@@ -82,8 +85,8 @@ final class GithubActionsOutputFormatter implements OutputFormatterInterface
             ' ->%0A',
             array_map(
                 static fn (array $dependency): string => sprintf('%s::%d', $dependency['name'], $dependency['line']),
-                $dep->serialize()
-            )
+                $dep->serialize(),
+            ),
         );
     }
 
@@ -108,12 +111,10 @@ final class GithubActionsOutputFormatter implements OutputFormatterInterface
         $message = sprintf(
             '%s%s must not depend on %s (%s on %s)',
             $rule instanceof SkippedViolation ? '[SKIPPED] ' : '',
-            $dependency->getDepender()
-                ->toString(),
-            $dependency->getDependent()
-                ->toString(),
+            $dependency->getDepender()->toString(),
+            $dependency->getDependent()->toString(),
             $rule->getDependerLayer(),
-            $rule->getDependentLayer()
+            $rule->getDependentLayer(),
         );
 
         if (count($dependency->serialize()) > 1) {
@@ -126,8 +127,8 @@ final class GithubActionsOutputFormatter implements OutputFormatterInterface
                 $this->determineLogLevel($rule),
                 $dependency->getContext()->fileOccurrence->filepath,
                 $dependency->getContext()->fileOccurrence->line,
-                $message
-            )
+                $message,
+            ),
         );
     }
 }

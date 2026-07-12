@@ -64,7 +64,9 @@ final class LayerCollectorTest extends TestCase
         $this->resolver
             ->method('isReferenceInLayer')
             ->with('FooLayer', $reference)
-            ->willReturnCallback(fn (string $layerName, ClassLikeReference $reference) => $this->collector->satisfy(['value' => 'FooLayer'], $reference))
+            ->willReturnCallback(fn (string $layerName, ClassLikeReference $reference) => $this->collector->satisfy([
+                'value' => 'FooLayer',
+            ], $reference))
         ;
 
         $this->expectException(InvalidLayerDefinitionException::class);

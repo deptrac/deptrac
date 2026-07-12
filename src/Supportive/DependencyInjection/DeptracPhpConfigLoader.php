@@ -64,8 +64,7 @@ final class DeptracPhpConfigLoader extends PhpFileLoader
 
         $firstParamType = $parameters[0]->getType();
 
-        return $firstParamType instanceof ReflectionNamedType
-            && DeptracConfig::class === $firstParamType->getName();
+        return $firstParamType instanceof ReflectionNamedType && DeptracConfig::class === $firstParamType->getName();
     }
 
     /**
@@ -85,7 +84,7 @@ final class DeptracPhpConfigLoader extends PhpFileLoader
             $instanceof,
             $path,
             $resource,
-            $this->env
+            $this->env,
         );
 
         $loader($config, $containerConfigurator);
@@ -94,7 +93,7 @@ final class DeptracPhpConfigLoader extends PhpFileLoader
         $configArray = $config->toArray();
         $this->container->loadFromExtension(
             $config->getExtensionAlias(),
-            $configArray
+            $configArray,
         );
     }
 }

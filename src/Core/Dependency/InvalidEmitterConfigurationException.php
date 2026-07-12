@@ -21,7 +21,7 @@ class InvalidEmitterConfigurationException extends RuntimeException implements E
             'Type "%s" is not valid emitter (expected "%s", but is "%s").',
             $type,
             DependencyEmitterInterface::class,
-            get_debug_type($emitter)
+            get_debug_type($emitter),
         );
 
         return new self($message);

@@ -18,7 +18,8 @@ final class AttributeCollector implements CollectorInterface
 {
     public function satisfy(array $config, TokenReferenceInterface $reference): bool
     {
-        if (!$reference instanceof FileReference
+        if (
+            !$reference instanceof FileReference
             && !$reference instanceof ClassLikeReference
             && !$reference instanceof FunctionReference
         ) {
@@ -52,6 +53,7 @@ final class AttributeCollector implements CollectorInterface
         if (!isset($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('AttributeCollector: Missing configuration.');
         }
+
         if (!is_string($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('AttributeCollector: Configuration is not a string.');
         }

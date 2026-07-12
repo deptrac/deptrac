@@ -21,13 +21,16 @@ final class LayerCollector implements CollectorInterface
      */
     private array $resolved = [];
 
-    public function __construct(private readonly LayerResolverInterface $resolver) {}
+    public function __construct(
+        private readonly LayerResolverInterface $resolver,
+    ) {}
 
     public function satisfy(array $config, TokenReferenceInterface $reference): bool
     {
         if (!isset($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('LayerCollector: Missing configuration.');
         }
+
         if (!is_string($config['value'])) {
             throw InvalidCollectorDefinitionException::invalidCollectorConfiguration('LayerCollector: Configuration is not a string.');
         }
@@ -35,8 +38,12 @@ final class LayerCollector implements CollectorInterface
         $layer = $config['value'];
 
         if (!$this->resolver->has($layer)) {
-            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(sprintf('LayerCollector: Unknown layer "%s" specified in collector.', $layer));
+            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(sprintf(
+                'LayerCollector: Unknown layer "%s" specified in collector.',
+                $layer,
+            ));
         }
+
         $token = $reference->getToken()->toString();
 
         if (array_key_exists($token, $this->resolved) && array_key_exists($layer, $this->resolved[$token])) {

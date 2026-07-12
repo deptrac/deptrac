@@ -19,8 +19,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class DebugLayerCommand extends Command
 {
-    public function __construct(private readonly DebugLayerRunner $runner)
-    {
+    public function __construct(
+        private readonly DebugLayerRunner $runner,
+    ) {
         parent::__construct();
     }
 

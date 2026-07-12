@@ -19,8 +19,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class DebugDependenciesCommand extends Command
 {
-    public function __construct(private readonly DebugDependenciesRunner $runner)
-    {
+    public function __construct(
+        private readonly DebugDependenciesRunner $runner,
+    ) {
         parent::__construct();
     }
 
@@ -34,7 +35,7 @@ class DebugDependenciesCommand extends Command
         $this->addArgument(
             'targetLayer',
             InputArgument::OPTIONAL,
-            'Target layer to filter dependencies to only one layer'
+            'Target layer to filter dependencies to only one layer',
         );
     }
 

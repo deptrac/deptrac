@@ -70,7 +70,7 @@ final class AttributeCollectorTest extends TestCase
     {
         $actual = $this->collector->satisfy(
             ['Foo' => 'a'],
-            new VariableReference(SuperGlobalToken::GET)
+            new VariableReference(SuperGlobalToken::GET),
         );
 
         self::assertFalse($actual);

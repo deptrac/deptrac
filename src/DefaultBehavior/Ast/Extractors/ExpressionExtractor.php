@@ -43,17 +43,27 @@ final class ExpressionExtractor implements NikicReferenceExtractorInterface, PHP
             return;
         }
 
-        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope($node, $this->lexer, $this->docParser, $referenceBuilder->getTokenTemplateLikes());
+        $resolved = DocParsingHelper::resolvePHPDocWithNativeScope(
+            $node,
+            $this->lexer,
+            $this->docParser,
+            $referenceBuilder->getTokenTemplateLikes(),
+        );
         if (null === $resolved) {
             return;
         }
+
         [$docNode, $templateTypes] = $resolved;
 
         foreach ($docNode->getVarTagValues() as $tag) {
             $types = $this->typeResolver->resolvePHPStanDocParserType($tag->type, $typeScope, $templateTypes);
 
             foreach ($types as $type) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($type), $node->getStartLine(), DependencyType::VARIABLE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($type),
+                    $node->getStartLine(),
+                    DependencyType::VARIABLE,
+                );
             }
         }
     }
@@ -79,7 +89,11 @@ final class ExpressionExtractor implements NikicReferenceExtractorInterface, PHP
 
         foreach ($resolvedPhpDoc->getVarTags() as $tag) {
             foreach ($tag->getType()->getReferencedClasses() as $referencedClass) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($referencedClass), $node->getStartLine(), DependencyType::VARIABLE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($referencedClass),
+                    $node->getStartLine(),
+                    DependencyType::VARIABLE,
+                );
             }
         }
     }

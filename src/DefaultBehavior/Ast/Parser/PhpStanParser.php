@@ -31,7 +31,7 @@ class PhpStanParser extends AbstractParser
 
     public function parseFile(string $file): FileReference
     {
-        if (null !== $fileReference = $this->cache->get($file)) {
+        if (null !== ($fileReference = $this->cache->get($file))) {
             return $fileReference;
         }
 
@@ -43,7 +43,13 @@ class PhpStanParser extends AbstractParser
         }
 
         $fileReferenceBuilder = FileReferenceBuilder::create($file);
-        $visitor = new PhpStanFileReferenceVisitor($fileReferenceBuilder, $scopeFactory, $reflectionProvider, $file, ...$this->extractors);
+        $visitor = new PhpStanFileReferenceVisitor(
+            $fileReferenceBuilder,
+            $scopeFactory,
+            $reflectionProvider,
+            $file,
+            ...$this->extractors,
+        );
         $nodes = $this->loadNodesFromFile($file);
         $this->traverser->addVisitor($visitor);
         $this->traverser->traverse($nodes);

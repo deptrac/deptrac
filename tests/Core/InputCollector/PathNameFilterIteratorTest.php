@@ -24,7 +24,7 @@ final class PathNameFilterIteratorTest extends TestCase
             // replace the DIRECTORY_SEPARATOR with / to match with the expected result
 
             static fn (SplFileInfo $fileInfo) => str_replace(DIRECTORY_SEPARATOR, '/', $fileInfo->getPathname()),
-            iterator_to_array($iterator, false)
+            iterator_to_array($iterator, false),
         );
 
         sort($values);
@@ -38,9 +38,7 @@ final class PathNameFilterIteratorTest extends TestCase
         $inner = new ArrayIterator();
 
         // PATH:   A/B/C/abc.dat
-        $inner[] = new SplFileInfo(
-            'A'.DIRECTORY_SEPARATOR.'B'.DIRECTORY_SEPARATOR.'C'.DIRECTORY_SEPARATOR.'abc.dat'
-        );
+        $inner[] = new SplFileInfo('A'.DIRECTORY_SEPARATOR.'B'.DIRECTORY_SEPARATOR.'C'.DIRECTORY_SEPARATOR.'abc.dat');
 
         // PATH:   A/B/ab.dat
         $inner[] = new SplFileInfo('A'.DIRECTORY_SEPARATOR.'B'.DIRECTORY_SEPARATOR.'ab.dat');
@@ -49,14 +47,24 @@ final class PathNameFilterIteratorTest extends TestCase
         $inner[] = new SplFileInfo('A'.DIRECTORY_SEPARATOR.'a.dat');
 
         // PATH:   copy/A/B/C/abc.dat.copy
-        $inner[] = new SplFileInfo(
-            'copy'.DIRECTORY_SEPARATOR.'A'.DIRECTORY_SEPARATOR.'B'.DIRECTORY_SEPARATOR.'C'.DIRECTORY_SEPARATOR.'abc.dat.copy'
-        );
+        $inner[] = new SplFileInfo('copy'
+        .DIRECTORY_SEPARATOR
+        .'A'
+        .DIRECTORY_SEPARATOR
+        .'B'
+        .DIRECTORY_SEPARATOR
+        .'C'
+        .DIRECTORY_SEPARATOR
+        .'abc.dat.copy');
 
         // PATH:   copy/A/B/ab.dat.copy
-        $inner[] = new SplFileInfo(
-            'copy'.DIRECTORY_SEPARATOR.'A'.DIRECTORY_SEPARATOR.'B'.DIRECTORY_SEPARATOR.'ab.dat.copy'
-        );
+        $inner[] = new SplFileInfo('copy'
+        .DIRECTORY_SEPARATOR
+        .'A'
+        .DIRECTORY_SEPARATOR
+        .'B'
+        .DIRECTORY_SEPARATOR
+        .'ab.dat.copy');
 
         // PATH:   copy/A/a.dat.copy
         $inner[] = new SplFileInfo('copy'.DIRECTORY_SEPARATOR.'A'.DIRECTORY_SEPARATOR.'a.dat.copy');
@@ -67,7 +75,19 @@ final class PathNameFilterIteratorTest extends TestCase
             [$inner, ['/^A\/B\/C/'], [], ['A/B/C/abc.dat']],
             [$inner, ['/A\/B\/C/'], [], ['A/B/C/abc.dat', 'copy/A/B/C/abc.dat.copy']],
 
-            [$inner, ['A'], [], ['A/B/C/abc.dat', 'A/B/ab.dat', 'A/a.dat', 'copy/A/B/C/abc.dat.copy', 'copy/A/B/ab.dat.copy', 'copy/A/a.dat.copy']],
+            [
+                $inner,
+                ['A'],
+                [],
+                [
+                    'A/B/C/abc.dat',
+                    'A/B/ab.dat',
+                    'A/a.dat',
+                    'copy/A/B/C/abc.dat.copy',
+                    'copy/A/B/ab.dat.copy',
+                    'copy/A/a.dat.copy',
+                ],
+            ],
             [$inner, ['A/B'], [], ['A/B/C/abc.dat', 'A/B/ab.dat', 'copy/A/B/C/abc.dat.copy', 'copy/A/B/ab.dat.copy']],
             [$inner, ['A/B/C'], [], ['A/B/C/abc.dat', 'copy/A/B/C/abc.dat.copy']],
 

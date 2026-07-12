@@ -34,7 +34,7 @@ final class ClassNameRegexCollectorTest extends TestCase
     {
         $actual = $this->collector->satisfy(
             $configuration,
-            new ClassLikeReference(ClassLikeToken::fromFQCN($className))
+            new ClassLikeReference(ClassLikeToken::fromFQCN($className)),
         );
 
         self::assertSame($expected, $actual);
@@ -46,7 +46,7 @@ final class ClassNameRegexCollectorTest extends TestCase
 
         $this->collector->satisfy(
             ['Foo' => 'a'],
-            new ClassLikeReference(ClassLikeToken::fromFQCN('Foo'))
+            new ClassLikeReference(ClassLikeToken::fromFQCN('Foo')),
         );
     }
 
@@ -64,7 +64,7 @@ final class ClassNameRegexCollectorTest extends TestCase
     {
         $actual = $this->collector->satisfy(
             ['value' => '/^Foo\\\\Bar$/i'],
-            new VariableReference(SuperGlobalToken::GET)
+            new VariableReference(SuperGlobalToken::GET),
         );
 
         self::assertFalse($actual);

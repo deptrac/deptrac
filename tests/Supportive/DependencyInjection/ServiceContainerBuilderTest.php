@@ -22,32 +22,32 @@ final class ServiceContainerBuilderTest extends TestCase
         self::assertTrue($container->getParameter('ignore_uncovered_internal_classes'));
         self::assertSame(
             ['internal_tag' => null, 'types' => ['class', 'function']],
-            $container->getParameter('analyser')
+            $container->getParameter('analyser'),
         );
         self::assertSame(
             [],
-            $container->getParameter('paths')
+            $container->getParameter('paths'),
         );
         self::assertSame(
             [],
-            $container->getParameter('exclude_files')
+            $container->getParameter('exclude_files'),
         );
         self::assertSame(
             [],
-            $container->getParameter('layers')
+            $container->getParameter('layers'),
         );
         self::assertSame(
             [],
-            $container->getParameter('ruleset')
+            $container->getParameter('ruleset'),
         );
         self::assertSame(
             [],
-            $container->getParameter('skip_violations')
+            $container->getParameter('skip_violations'),
         );
         self::assertSame(__DIR__.'/.deptrac.cache', $container->getParameter('cache_file'));
         self::assertSame(
             ['phpstan_parser' => false],
-            $container->getParameter('feature_flags')
+            $container->getParameter('feature_flags'),
         );
     }
 }

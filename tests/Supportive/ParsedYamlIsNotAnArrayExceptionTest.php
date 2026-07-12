@@ -27,7 +27,7 @@ final class ParsedYamlIsNotAnArrayExceptionTest extends TestCase
 
         $message = sprintf(
             'File "%s" can be parsed as YAML, but the result is not an array.',
-            $filename
+            $filename,
         );
 
         self::assertSame($message, $exception->getMessage());

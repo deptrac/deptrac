@@ -29,9 +29,7 @@ final class DeptracConfigTest extends TestCase
         $expected = [];
         yield 'empty' => [$config, $expected];
 
-        $config = (new DeptracConfig())->analyser(AnalyserConfig::create()->types(
-            EmitterType::FUNCTION_CALL
-        ));
+        $config = (new DeptracConfig())->analyser(AnalyserConfig::create()->types(EmitterType::FUNCTION_CALL));
         $expected = [
             'analyser' => [
                 'types' => [EmitterType::FUNCTION_CALL->value => EmitterType::FUNCTION_CALL->value],
@@ -40,7 +38,7 @@ final class DeptracConfigTest extends TestCase
         yield 'analyser types' => [$config, $expected];
 
         $config = (new DeptracConfig())->analyser(
-            AnalyserConfig::create()->internalTag('@layer-internal')
+            AnalyserConfig::create()->internalTag('@layer-internal'),
         );
         $expected = [
             'analyser' => [

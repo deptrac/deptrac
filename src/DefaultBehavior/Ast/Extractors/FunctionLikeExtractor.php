@@ -29,28 +29,50 @@ final class FunctionLikeExtractor implements NikicReferenceExtractorInterface, P
         foreach ($node->getAttrGroups() as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {
                 foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, $attribute->name) as $classLikeName) {
-                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $attribute->getLine(), DependencyType::ATTRIBUTE);
+                    $referenceBuilder->dependency(
+                        ClassLikeToken::fromFQCN($classLikeName),
+                        $attribute->getLine(),
+                        DependencyType::ATTRIBUTE,
+                    );
                 }
             }
         }
+
         foreach ($node->getParams() as $param) {
             if (null !== $param->type) {
                 foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, $param->type) as $classLikeName) {
-                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $param->type->getLine(), DependencyType::PARAMETER);
+                    $referenceBuilder->dependency(
+                        ClassLikeToken::fromFQCN($classLikeName),
+                        $param->type->getLine(),
+                        DependencyType::PARAMETER,
+                    );
                 }
             }
+
             foreach ($param->attrGroups as $attrGroup) {
                 foreach ($attrGroup->attrs as $attribute) {
-                    foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, $attribute->name) as $classLikeName) {
-                        $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $attribute->getLine(), DependencyType::ATTRIBUTE);
+                    foreach ($this->typeResolver->resolvePHPParserTypes(
+                        $typeScope,
+                        $attribute->name,
+                    ) as $classLikeName) {
+                        $referenceBuilder->dependency(
+                            ClassLikeToken::fromFQCN($classLikeName),
+                            $attribute->getLine(),
+                            DependencyType::ATTRIBUTE,
+                        );
                     }
                 }
             }
         }
+
         $returnType = $node->getReturnType();
         if (null !== $returnType) {
             foreach ($this->typeResolver->resolvePHPParserTypes($typeScope, $returnType) as $classLikeName) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($classLikeName), $returnType->getLine(), DependencyType::RETURN_TYPE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($classLikeName),
+                    $returnType->getLine(),
+                    DependencyType::RETURN_TYPE,
+                );
             }
         }
     }
@@ -67,18 +89,32 @@ final class FunctionLikeExtractor implements NikicReferenceExtractorInterface, P
     ): void {
         foreach ($node->getAttrGroups() as $attrGroup) {
             foreach ($attrGroup->attrs as $attribute) {
-                $referenceBuilder->dependency(ClassLikeToken::fromFQCN($scope->resolveName($attribute->name)), $attribute->getLine(), DependencyType::ATTRIBUTE);
+                $referenceBuilder->dependency(
+                    ClassLikeToken::fromFQCN($scope->resolveName($attribute->name)),
+                    $attribute->getLine(),
+                    DependencyType::ATTRIBUTE,
+                );
             }
         }
+
         foreach ($node->getParams() as $param) {
             if (null !== $param->type) {
                 foreach ($this->typeResolver->resolveType($param->type, $scope) as $item) {
-                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($item), $param->type->getLine(), DependencyType::PARAMETER);
+                    $referenceBuilder->dependency(
+                        ClassLikeToken::fromFQCN($item),
+                        $param->type->getLine(),
+                        DependencyType::PARAMETER,
+                    );
                 }
             }
+
             foreach ($param->attrGroups as $attrGroup) {
                 foreach ($attrGroup->attrs as $attribute) {
-                    $referenceBuilder->dependency(ClassLikeToken::fromFQCN($scope->resolveName($attribute->name)), $attribute->getLine(), DependencyType::ATTRIBUTE);
+                    $referenceBuilder->dependency(
+                        ClassLikeToken::fromFQCN($scope->resolveName($attribute->name)),
+                        $attribute->getLine(),
+                        DependencyType::ATTRIBUTE,
+                    );
                 }
             }
         }
@@ -86,7 +122,11 @@ final class FunctionLikeExtractor implements NikicReferenceExtractorInterface, P
         $returnType = $node->getReturnType();
         foreach ($this->typeResolver->resolveType($returnType, $scope) as $item) {
             assert(null !== $returnType);
-            $referenceBuilder->dependency(ClassLikeToken::fromFQCN($item), $returnType->getLine(), DependencyType::RETURN_TYPE);
+            $referenceBuilder->dependency(
+                ClassLikeToken::fromFQCN($item),
+                $returnType->getLine(),
+                DependencyType::RETURN_TYPE,
+            );
         }
     }
 }

@@ -13,7 +13,7 @@ final class CouldNotReadFileException extends RuntimeException implements Except
     {
         return new self(sprintf(
             'File "%s" cannot be read.',
-            $filename
+            $filename,
         ));
     }
 }

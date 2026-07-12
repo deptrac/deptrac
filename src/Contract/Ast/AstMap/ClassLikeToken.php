@@ -9,7 +9,9 @@ namespace Deptrac\Deptrac\Contract\Ast\AstMap;
  */
 final class ClassLikeToken implements TokenInterface
 {
-    private function __construct(private readonly string $className) {}
+    private function __construct(
+        private readonly string $className,
+    ) {}
 
     public static function fromFQCN(string $className): self
     {

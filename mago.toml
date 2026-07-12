@@ -9,7 +9,32 @@ excludes = [
 ]
 
 [formatter]
-preset = "psr-12"
+null-type-hint = "question"
+
+space-before-arrow-function-parameter-list-parenthesis = true
+space-around-concatenation-binary-operator = false
+space-after-logical-not-unary-prefix-operator = false
+
+always-break-named-arguments-list = false
+inline-single-breaking-value-argument = true
+preserve-breaking-member-access-chain = true
+preserve-breaking-argument-list = true
+preserve-breaking-array-like = true
+preserve-breaking-parameter-list = true
+preserve-breaking-attribute-list = true
+preserve-breaking-conditional-expression = true
+preserve-breaking-condition-expression = true
+preserve-breaking-binary-expression = true
+
+inline-empty-classlike-braces = true
+inline-empty-function-braces = true
+inline-empty-method-braces = true
+
+empty-line-after-control-structure = true
+empty-line-before-return = true
+
+method-chain-semicolon-on-next-line = true
+
 excludes = [
     "**/Fixtures/**",
 ]

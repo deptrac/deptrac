@@ -34,9 +34,10 @@ final class GraphVizOutputHtmlFormatter extends GraphVizOutputFormatter
             if (false === $imageData) {
                 throw OutputException::withMessage('Unable to create temp file for output.');
             }
+
             file_put_contents(
                 $dumpHtmlPath,
-                '<img src="data:image/png;base64,'.base64_encode($imageData).'" />'
+                '<img src="data:image/png;base64,'.base64_encode($imageData).'" />',
             );
             $output->writeLineFormatted('<info>HTML dumped to '.realpath($dumpHtmlPath).'</info>');
         } catch (Exception $exception) {

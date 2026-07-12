@@ -17,7 +17,7 @@ final class StopwatchException extends RuntimeException implements ExceptionInte
             sprintf(
                 'Period "%s" is already started',
                 $period,
-            )
+            ),
         );
     }
 
@@ -27,7 +27,7 @@ final class StopwatchException extends RuntimeException implements ExceptionInte
             sprintf(
                 'Period "%s" is not started',
                 $period,
-            )
+            ),
         );
     }
 }

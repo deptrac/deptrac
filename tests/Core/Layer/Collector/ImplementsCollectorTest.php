@@ -67,17 +67,18 @@ final class ImplementsCollectorTest extends TestCase
         $fooBarFileReference = $fooBarFileReferenceBuilder->build();
 
         $astMap = new AstMap(
-            [$fooFileReference, $barFileReference, $bazFileReference, $fooBarFileReference, $fizTraitFileReference]
+            [$fooFileReference, $barFileReference, $bazFileReference, $fooBarFileReference, $fizTraitFileReference],
         );
         $astMapExtractor = $this->createMock(AstMapExtractor::class);
-        $astMapExtractor->method('extract')
+        $astMapExtractor
+            ->method('extract')
             ->willReturn($astMap)
         ;
 
         $collector = new ImplementsCollector($astMapExtractor);
         $actual = $collector->satisfy(
             $configuration,
-            $fooBarFileReference->classLikeReferences[0]
+            $fooBarFileReference->classLikeReferences[0],
         );
 
         self::assertSame($expected, $actual);
@@ -101,7 +102,7 @@ final class ImplementsCollectorTest extends TestCase
 
         $actual = (new ImplementsCollector($extractor))->satisfy(
             ['value' => '/^Foo\\\\Bar$/i'],
-            new VariableReference(SuperGlobalToken::GET)
+            new VariableReference(SuperGlobalToken::GET),
         );
 
         self::assertFalse($actual);

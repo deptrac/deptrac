@@ -53,7 +53,7 @@ final class FunctionNameCollectorTest extends TestCase
     {
         $actual = $this->collector->satisfy(
             ['value' => 'a'],
-            new VariableReference(SuperGlobalToken::GET)
+            new VariableReference(SuperGlobalToken::GET),
         );
 
         self::assertFalse($actual);

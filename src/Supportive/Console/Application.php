@@ -41,33 +41,33 @@ final class Application extends BaseApplication
                 '--help',
                 '-h',
                 InputOption::VALUE_NONE,
-                'Display help for the given command. When no command is given display help for the <info>analyse</info> command'
+                'Display help for the given command. When no command is given display help for the <info>analyse</info> command',
             ),
             new InputOption(
                 '--no-cache',
                 null,
                 InputOption::VALUE_NONE,
-                'Disable caching mechanisms (wins over --cache-file)'
+                'Disable caching mechanisms (wins over --cache-file)',
             ),
             new InputOption(
                 '--clear-cache',
                 null,
                 InputOption::VALUE_NONE,
-                'Clears cache file before run'
+                'Clears cache file before run',
             ),
             new InputOption(
                 '--cache-file',
                 null,
                 InputOption::VALUE_REQUIRED,
                 'Location where cache file will be stored',
-                null
+                null,
             ),
             new InputOption(
                 '--config-file',
                 '-c',
                 InputOption::VALUE_REQUIRED,
                 'Location of Depfile containing the configuration',
-                getcwd().DIRECTORY_SEPARATOR.'deptrac.yaml'
+                getcwd().DIRECTORY_SEPARATOR.'deptrac.yaml',
             ),
         ]);
 
@@ -111,6 +111,7 @@ final class Application extends BaseApplication
             if (!$commandLoader instanceof CommandLoaderInterface) {
                 throw new RuntimeException('CommandLoader not initialized. Commands can not be registered.');
             }
+
             $this->setCommandLoader($commandLoader);
             $this->setDefaultCommand('analyse');
         } catch (CannotLoadConfiguration $e) {
