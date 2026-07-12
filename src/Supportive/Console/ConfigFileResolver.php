@@ -6,6 +6,8 @@ namespace Deptrac\Deptrac\Supportive\Console;
 
 use Symfony\Component\Console\Input\InputInterface;
 
+use function file_exists;
+
 use const DIRECTORY_SEPARATOR;
 
 final class ConfigFileResolver
@@ -25,8 +27,20 @@ final class ConfigFileResolver
         /** @var string|numeric|false $configFile */
         $configFile = $input->getParameterOption(['--config-file', '-c'], false);
 
-        return false !== $configFile
-            ? (string) $configFile
-            : $currentWorkingDirectory.DIRECTORY_SEPARATOR.'deptrac.yaml';
+        if (false !== $configFile) {
+            return (string) $configFile;
+        }
+
+        $phpPath = $currentWorkingDirectory.DIRECTORY_SEPARATOR.'deptrac.php';
+        if (file_exists($phpPath)) {
+            return $phpPath;
+        }
+
+        $yamlPath = $currentWorkingDirectory.DIRECTORY_SEPARATOR.'deptrac.yaml';
+        if (file_exists($yamlPath)) {
+            return $yamlPath;
+        }
+
+        return $yamlPath;
     }
 }

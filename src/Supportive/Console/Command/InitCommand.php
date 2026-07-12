@@ -40,7 +40,7 @@ class InitCommand extends Command
             /** @var string $targetFile */
             $targetFile = $input->getOption('config-file');
             $this->dumper->dump($targetFile);
-            $output->writeln('Depfile <info>dumped.</info>');
+            $output->writeln('Deptrac config <info>dumped.</info>');
 
             return self::SUCCESS;
         } catch (FileNotWritableException|FileAlreadyExistsException|IOException|FileNotExistsException $fileException) {

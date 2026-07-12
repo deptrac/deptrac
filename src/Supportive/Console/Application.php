@@ -20,8 +20,6 @@ use Throwable;
 use function getcwd;
 use function in_array;
 
-use const DIRECTORY_SEPARATOR;
-
 final class Application extends BaseApplication
 {
     public function __construct()
@@ -66,8 +64,8 @@ final class Application extends BaseApplication
                 '--config-file',
                 '-c',
                 InputOption::VALUE_REQUIRED,
-                'Location of Depfile containing the configuration',
-                getcwd().DIRECTORY_SEPARATOR.'deptrac.yaml'
+                'Location of Deptrac config. Auto-detects deptrac.php or deptrac.yaml in the current directory',
+                null
             ),
         ]);
 
