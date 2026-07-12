@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\Supportive\Console;
 
+use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use Symfony\Component\Console\Input\InputInterface;
 
 use function is_file;
@@ -26,7 +27,7 @@ final class ConfigFileResolver
      * whenever another option precedes it on the command line. This mirrors how
      * `--cache-file` and `--no-cache` are read.
      */
-    public function resolve(InputInterface $input, string $currentWorkingDirectory): string|false
+    public function resolve(InputInterface $input, string $currentWorkingDirectory): string
     {
         /** @var string|numeric|false $configFile */
         $configFile = $input->getParameterOption(['--config-file', '-c'], false);
@@ -42,6 +43,6 @@ final class ConfigFileResolver
             }
         }
 
-        return false;
+        CannotLoadConfiguration::cannotFind();
     }
 }
