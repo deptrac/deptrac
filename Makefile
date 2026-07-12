@@ -11,7 +11,6 @@ COMPOSER = composer
 COMPOSER_DEPENDENCY_ANALYSER = ./tools/dependency-analyser/bin/composer-dependency-analyser
 PHP_CS_FIXER = ./tools/php-cs-fixer/bin/php-cs-fixer
 PHPSTAN = ./tools/phpstan/bin/phpstan
-PSALM = ./tools/psalm/bin/psalm
 PHPUNIT = ./tools/phpunit/bin/phpunit -c .
 INFECTION = ./tools/infection/bin/roave-infection-static-analysis-plugin
 RECTOR = ./tools/rector/bin/rector
@@ -47,9 +46,6 @@ cs: install ## Fixes any found code style violation
 phpstan: install ## Performs static code analysis using phpstan
 	$(PHPSTAN) analyse
 
-psalm: install ## Performs static code analysis using psalm
-	$(PSALM)
-
 rector-check: install ## Checks for automated code refactoring using rector
 	$(RECTOR) process --dry-run
 
@@ -66,4 +62,4 @@ tests: install ## Runs tests followed by a very basic e2e-test
 	$(PHPUNIT)
 	./deptrac analyse --config-file=docs/examples/Fixture.depfile.yaml --no-cache
 
-qa: php-cs-check composer-dependency-analyser phpstan psalm deptrac tests infection ## runs all qa tools
+qa: php-cs-check composer-dependency-analyser phpstan deptrac tests infection ## runs all qa tools
