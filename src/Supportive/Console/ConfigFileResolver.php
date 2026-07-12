@@ -25,6 +25,8 @@ final class ConfigFileResolver
      * option. Reading the bound option would therefore miss `--config-file`
      * whenever another option precedes it on the command line. This mirrors how
      * `--cache-file` and `--no-cache` are read.
+     *
+     * @throws CannotLoadConfiguration When no config file is found
      */
     public function resolve(InputInterface $input, string $currentWorkingDirectory): string
     {
