@@ -13,11 +13,13 @@ use Symfony\Component\Console\Input\ArgvInput;
 final class ConfigFileResolverTest extends TestCase
 {
     private string $tempDir;
+    private ConfigFileResolver $resolver;
 
     protected function setUp(): void
     {
         $this->tempDir = sys_get_temp_dir().DIRECTORY_SEPARATOR.'deptrac_test_'.uniqid();
         mkdir($this->tempDir);
+        $this->resolver = new ConfigFileResolver($this->tempDir);
     }
 
     protected function tearDown(): void
@@ -31,7 +33,7 @@ final class ConfigFileResolverTest extends TestCase
     {
         self::assertSame(
             $expected,
-            (new ConfigFileResolver())->resolve(new ArgvInput($argv))
+            $this->resolver->resolve(new ArgvInput($argv))
         );
     }
 
@@ -59,7 +61,7 @@ final class ConfigFileResolverTest extends TestCase
 
         self::assertSame(
             $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.yaml',
-            (new ConfigFileResolver($this->tempDir))->resolve(new ArgvInput(['deptrac', 'analyse']))
+            $this->resolver->resolve(new ArgvInput(['deptrac', 'analyse']))
         );
     }
 
@@ -69,7 +71,7 @@ final class ConfigFileResolverTest extends TestCase
 
         self::assertSame(
             $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php',
-            (new ConfigFileResolver($this->tempDir))->resolve(new ArgvInput(['deptrac', 'analyse']))
+            $this->resolver->resolve(new ArgvInput(['deptrac', 'analyse']))
         );
     }
 
@@ -80,7 +82,7 @@ final class ConfigFileResolverTest extends TestCase
 
         self::assertSame(
             $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php',
-            (new ConfigFileResolver($this->tempDir))->resolve(new ArgvInput(['deptrac', 'analyse']))
+            $this->resolver->resolve(new ArgvInput(['deptrac', 'analyse']))
         );
     }
 
@@ -88,6 +90,6 @@ final class ConfigFileResolverTest extends TestCase
     {
         $this->expectException(CannotLoadConfiguration::class);
 
-        (new ConfigFileResolver($this->tempDir))->resolve(new ArgvInput(['deptrac', 'analyse']));
+        $this->resolver->resolve(new ArgvInput(['deptrac', 'analyse']));
     }
 }
