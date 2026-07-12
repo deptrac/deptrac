@@ -7,6 +7,7 @@ namespace Deptrac\Deptrac\Supportive\Console;
 use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use Symfony\Component\Console\Input\InputInterface;
 
+use function getcwd;
 use function is_file;
 
 final class ConfigFileResolver
@@ -16,19 +17,15 @@ final class ConfigFileResolver
         'deptrac.yaml',
     ];
 
+    public function __construct(
+        private string $currentDir = '',
+    ) {
+    }
+
     /**
-     * Resolve the configuration file from the raw input tokens.
-     *
-     * This reads directly from the tokens rather than from a bound option
-     * because the input binding in {@see Application::doRun()} is only partial
-     * (command options are not known yet) and aborts on the first unknown
-     * option. Reading the bound option would therefore miss `--config-file`
-     * whenever another option precedes it on the command line. This mirrors how
-     * `--cache-file` and `--no-cache` are read.
-     *
      * @throws CannotLoadConfiguration When no config file is found
      */
-    public function resolve(InputInterface $input, string $currentWorkingDirectory): string
+    public function resolve(InputInterface $input): string
     {
         /** @var string|numeric|false $configFile */
         $configFile = $input->getParameterOption(['--config-file', '-c'], false);
@@ -37,8 +34,12 @@ final class ConfigFileResolver
             return (string) $configFile;
         }
 
+        if ($this->currentDir === '') {
+            $this->currentDir = getcwd();
+        }
+
         foreach (self::CANDIDATES as $candidate) {
-            $path = $currentWorkingDirectory.DIRECTORY_SEPARATOR.$candidate;
+            $path = $this->currentDir.DIRECTORY_SEPARATOR.$candidate;
             if (is_file($path)) {
                 return $path;
             }

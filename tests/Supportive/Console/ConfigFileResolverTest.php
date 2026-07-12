@@ -31,7 +31,7 @@ final class ConfigFileResolverTest extends TestCase
     {
         self::assertSame(
             $expected,
-            (new ConfigFileResolver())->resolve(new ArgvInput($argv), '/cwd')
+            (new ConfigFileResolver())->resolve(new ArgvInput($argv))
         );
     }
 
@@ -59,7 +59,7 @@ final class ConfigFileResolverTest extends TestCase
 
         self::assertSame(
             $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.yaml',
-            (new ConfigFileResolver())->resolve(new ArgvInput(['deptrac', 'analyse']), $this->tempDir)
+            (new ConfigFileResolver($this->tempDir))->resolve(new ArgvInput(['deptrac', 'analyse']))
         );
     }
 
@@ -69,7 +69,7 @@ final class ConfigFileResolverTest extends TestCase
 
         self::assertSame(
             $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php',
-            (new ConfigFileResolver())->resolve(new ArgvInput(['deptrac', 'analyse']), $this->tempDir)
+            (new ConfigFileResolver($this->tempDir))->resolve(new ArgvInput(['deptrac', 'analyse']))
         );
     }
 
@@ -80,7 +80,7 @@ final class ConfigFileResolverTest extends TestCase
 
         self::assertSame(
             $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php',
-            (new ConfigFileResolver())->resolve(new ArgvInput(['deptrac', 'analyse']), $this->tempDir)
+            (new ConfigFileResolver($this->tempDir))->resolve(new ArgvInput(['deptrac', 'analyse']))
         );
     }
 
@@ -88,6 +88,6 @@ final class ConfigFileResolverTest extends TestCase
     {
         $this->expectException(CannotLoadConfiguration::class);
 
-        (new ConfigFileResolver())->resolve(new ArgvInput(['deptrac', 'analyse']), $this->tempDir);
+        (new ConfigFileResolver($this->tempDir))->resolve(new ArgvInput(['deptrac', 'analyse']));
     }
 }

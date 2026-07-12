@@ -91,7 +91,7 @@ final class Application extends BaseApplication
             return parent::doRun($input, $output);
         }
 
-        $config = (new ConfigFileResolver())->resolve($input, $currentWorkingDirectory);
+        $config = (new ConfigFileResolver())->resolve($input);
 
         /** @var ?string $cache */
         $cache = $input->getParameterOption('--cache-file', null);
