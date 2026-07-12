@@ -100,7 +100,7 @@ class ConsoleSubscriber implements EventSubscriberInterface
         if ($this->output->isVerbose()) {
             $this->printMessageWithTime(
                 'deps',
-                '<info>Dependencies emitted in %01.f sec.</info>',
+                '<info>Dependencies emitted in %01.2f sec.</info>',
                 '<info>Dependencies emitted.</info>'
             );
         }
@@ -120,7 +120,7 @@ class ConsoleSubscriber implements EventSubscriberInterface
         if ($this->output->isVerbose()) {
             $this->printMessageWithTime(
                 'flatten',
-                '<info>Dependencies flattened in %01.f sec.</info>',
+                '<info>Dependencies flattened in %01.2f sec.</info>',
                 '<info>Dependencies flattened.</info>'
             );
         }
