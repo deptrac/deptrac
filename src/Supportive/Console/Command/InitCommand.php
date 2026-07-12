@@ -14,6 +14,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use function getcwd;
 use function sprintf;
 
 #[AsCommand(
@@ -27,18 +28,11 @@ class InitCommand extends Command
         parent::__construct();
     }
 
-    protected function configure(): void
-    {
-        parent::configure();
-
-        $this->setName('init');
-    }
-
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             /** @var string $targetFile */
-            $targetFile = $input->getOption('config-file');
+            $targetFile = $input->getParameterOption(['--config-file', '-c'], getcwd().DIRECTORY_SEPARATOR.'deptrac.yml');
             $this->dumper->dump($targetFile);
             $output->writeln('Deptrac config <info>dumped.</info>');
 
