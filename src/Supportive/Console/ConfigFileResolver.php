@@ -8,7 +8,6 @@ use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfigura
 use Symfony\Component\Console\Input\InputInterface;
 
 use function is_file;
-use function realpath;
 
 final class ConfigFileResolver
 {
@@ -39,10 +38,10 @@ final class ConfigFileResolver
         foreach (self::CANDIDATES as $candidate) {
             $path = $currentWorkingDirectory.DIRECTORY_SEPARATOR.$candidate;
             if (is_file($path)) {
-                return realpath($path);
+                return $path;
             }
         }
 
-        CannotLoadConfiguration::cannotFind();
+        throw CannotLoadConfiguration::cannotFind();
     }
 }
