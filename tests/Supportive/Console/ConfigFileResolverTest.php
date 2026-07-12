@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Deptrac\Deptrac\Supportive\Console;
 
 use Deptrac\Deptrac\Supportive\Console\ConfigFileResolver;
+use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArgvInput;
 
@@ -77,5 +78,12 @@ final class ConfigFileResolverTest extends TestCase
             $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php',
             (new ConfigFileResolver())->resolve(new ArgvInput(['deptrac', 'analyse']), $this->tempDir)
         );
+    }
+
+    public function testResolveThrowsWhenNoConfigFound(): void
+    {
+        $this->expectException(CannotLoadConfiguration::class);
+
+        (new ConfigFileResolver())->resolve(new ArgvInput(['deptrac', 'analyse']), $this->tempDir);
     }
 }

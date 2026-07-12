@@ -6,12 +6,16 @@ namespace Deptrac\Deptrac\Supportive\Console;
 
 use Symfony\Component\Console\Input\InputInterface;
 
-use function file_exists;
-
-use const DIRECTORY_SEPARATOR;
+use function is_file;
+use function realpath;
 
 final class ConfigFileResolver
 {
+    private const CANDIDATES = [
+        'deptrac.php',
+        'deptrac.yaml',
+    ];
+
     /**
      * Resolve the configuration file from the raw input tokens.
      *
@@ -22,7 +26,7 @@ final class ConfigFileResolver
      * whenever another option precedes it on the command line. This mirrors how
      * `--cache-file` and `--no-cache` are read.
      */
-    public function resolve(InputInterface $input, string $currentWorkingDirectory): string
+    public function resolve(InputInterface $input, string $currentWorkingDirectory): string|false
     {
         /** @var string|numeric|false $configFile */
         $configFile = $input->getParameterOption(['--config-file', '-c'], false);
@@ -31,16 +35,13 @@ final class ConfigFileResolver
             return (string) $configFile;
         }
 
-        $phpPath = $currentWorkingDirectory.DIRECTORY_SEPARATOR.'deptrac.php';
-        if (file_exists($phpPath)) {
-            return $phpPath;
+        foreach (self::CANDIDATES as $candidate) {
+            $path = $currentWorkingDirectory.DIRECTORY_SEPARATOR.$candidate;
+            if (is_file($path)) {
+                return realpath($path);
+            }
         }
 
-        $yamlPath = $currentWorkingDirectory.DIRECTORY_SEPARATOR.'deptrac.yaml';
-        if (file_exists($yamlPath)) {
-            return $yamlPath;
-        }
-
-        return $yamlPath;
+        return false;
     }
 }
