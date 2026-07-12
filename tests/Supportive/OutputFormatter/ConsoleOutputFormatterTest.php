@@ -43,8 +43,8 @@ final class ConsoleOutputFormatterTest extends TestCase
         $originalA = ClassLikeToken::fromFQCN('OriginalA');
         $originalB = ClassLikeToken::fromFQCN('OriginalB');
 
-        yield [
-            [
+        yield 'Violations inherit' => [
+            'rules' => [
                 new Violation(
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
@@ -77,9 +77,9 @@ final class ConsoleOutputFormatterTest extends TestCase
                     new DummyViolationCreatingRule()
                 ),
             ],
-            [],
+            'errors' => [],
             'warnings' => [],
-            '
+            'expectedOutput' => '
                 ClassA must not depend on ClassB (LayerA on LayerB)
                 originalA.php:12
                 ClassInheritD:6 ->
@@ -97,9 +97,8 @@ final class ConsoleOutputFormatterTest extends TestCase
                 Errors:0
             ',
         ];
-
-        yield [
-            [
+        yield 'Simple Violation' => [
+            'rules' => [
                 new Violation(
                     new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
                     'LayerA',
@@ -107,9 +106,9 @@ final class ConsoleOutputFormatterTest extends TestCase
                     new DummyViolationCreatingRule()
                 ),
             ],
-            [],
+            'errors' => [],
             'warnings' => [],
-            '
+            'expectedOutput' => '
                 OriginalA must not depend on OriginalB (LayerA on LayerB)
                 originalA.php:12
 
@@ -123,11 +122,12 @@ final class ConsoleOutputFormatterTest extends TestCase
             ',
         ];
 
-        yield [
-            [],
-            [],
+        yield 'No Rules' => [
+            'rules' => [],
+            'errors' => [],
             'warnings' => [],
-            '
+            'expectedOutput' => '
+
 
                 Report:
                 Violations: 0
@@ -139,17 +139,17 @@ final class ConsoleOutputFormatterTest extends TestCase
             ',
         ];
 
-        yield [
-            [
+        yield 'Skipped Violation' => [
+            'rules' => [
                 new SkippedViolation(
                     new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
                     'LayerA',
                     'LayerB'
                 ),
             ],
-            [],
+            'errors' => [],
             'warnings' => [],
-            '[SKIPPED] OriginalA must not depend on OriginalB (LayerA on LayerB)
+            'expectedOutput' => '[SKIPPED] OriginalA must not depend on OriginalB (LayerA on LayerB)
             originalA.php:12
 
             Report:
@@ -162,8 +162,8 @@ final class ConsoleOutputFormatterTest extends TestCase
             ',
         ];
 
-        yield [
-            [
+        yield 'Uncovered' => [
+            'rules' => [
                 new Uncovered(
                     new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
                     'LayerA'
@@ -198,9 +198,9 @@ final class ConsoleOutputFormatterTest extends TestCase
                     'LayerA'
                 ),
             ],
-            [],
+            'errors' => [],
             'warnings' => [],
-            '
+            'expectedOutput' => '
                 Uncovered dependencies:
                 OriginalA has uncovered dependency on OriginalB (LayerA)
                 originalA.php:12
@@ -218,17 +218,17 @@ final class ConsoleOutputFormatterTest extends TestCase
         ];
 
         yield 'an error occurred' => [
-            [],
-            [new Error('an error occurred')],
+            'rules' => [],
+            'errors' => [new Error('an error occurred')],
             'warnings' => [],
-            '[ERROR]anerroroccurredReport:Violations:0Skippedviolations:0Uncovered:0Allowed:0Warnings:0Errors:1',
+            'expectedOutput' => '[ERROR]anerroroccurredReport:Violations:0Skippedviolations:0Uncovered:0Allowed:0Warnings:0Errors:1',
         ];
 
         yield 'an warning occurred' => [
-            [],
-            [],
+            'rules' => [],
+            'errors' => [],
             'warnings' => [Warning::tokenIsInMoreThanOneLayer(ClassLikeToken::fromFQCN(Bar::class)->toString(), ['Layer 1', 'Layer 2'])],
-            '[WARNING]Foo\Barisinmorethanonelayer["Layer1","Layer2"].Itisrecommendedthatonetokenshouldonlybeinonelayer.Report:Violations:0Skippedviolations:0Uncovered:0Allowed:0Warnings:1Errors:0',
+            'expectedOutput' => '[WARNING]Foo\Barisinmorethanonelayer["Layer1","Layer2"].Itisrecommendedthatonetokenshouldonlybeinonelayer.Report:Violations:0Skippedviolations:0Uncovered:0Allowed:0Warnings:1Errors:0',
         ];
     }
 
