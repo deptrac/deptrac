@@ -7,7 +7,6 @@ namespace Deptrac\Deptrac\Supportive\Console;
 use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use Symfony\Component\Console\Input\InputInterface;
 
-use function getcwd;
 use function is_file;
 
 final class ConfigFileResolver
@@ -19,8 +18,7 @@ final class ConfigFileResolver
 
     public function __construct(
         private string $currentDir = '',
-    ) {
-    }
+    ) {}
 
     /**
      * @throws CannotLoadConfiguration When no config file is found
@@ -32,10 +30,6 @@ final class ConfigFileResolver
 
         if (false !== $configFile) {
             return (string) $configFile;
-        }
-
-        if ($this->currentDir === '') {
-            $this->currentDir = getcwd();
         }
 
         foreach (self::CANDIDATES as $candidate) {
