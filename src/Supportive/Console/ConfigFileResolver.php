@@ -4,12 +4,22 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\Supportive\Console;
 
+use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use Symfony\Component\Console\Input\InputInterface;
 
-use const DIRECTORY_SEPARATOR;
+use function is_file;
 
 final class ConfigFileResolver
 {
+    private const CANDIDATES = [
+        'deptrac.php',
+        'deptrac.yaml',
+    ];
+
+    public function __construct(
+        private string $currentDir,
+    ) {}
+
     /**
      * Resolve the configuration file from the raw input tokens.
      *
@@ -19,14 +29,25 @@ final class ConfigFileResolver
      * option. Reading the bound option would therefore miss `--config-file`
      * whenever another option precedes it on the command line. This mirrors how
      * `--cache-file` and `--no-cache` are read.
+     *
+     * @throws CannotLoadConfiguration When no config file is found
      */
-    public function resolve(InputInterface $input, string $currentWorkingDirectory): string
+    public function resolve(InputInterface $input): string
     {
         /** @var string|numeric|false $configFile */
         $configFile = $input->getParameterOption(['--config-file', '-c'], false);
 
-        return false !== $configFile
-            ? (string) $configFile
-            : $currentWorkingDirectory.DIRECTORY_SEPARATOR.'deptrac.yaml';
+        if (false !== $configFile) {
+            return (string) $configFile;
+        }
+
+        foreach (self::CANDIDATES as $candidate) {
+            $path = $this->currentDir.DIRECTORY_SEPARATOR.$candidate;
+            if (is_file($path)) {
+                return $path;
+            }
+        }
+
+        throw CannotLoadConfiguration::cannotFind();
     }
 }

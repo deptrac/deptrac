@@ -23,4 +23,14 @@ class CannotLoadConfiguration extends RuntimeException implements ExceptionInter
     {
         return new self(sprintf('Could not load %s. Reason: %s', $filename, $message));
     }
+
+    public static function cannotFind(): self
+    {
+        return new self(
+            'No Deptrac config found. Expected one of "deptrac.php" or "deptrac.yaml" in the current directory.'
+            .PHP_EOL
+            .PHP_EOL
+            .'Run "deptrac init" to create one.'
+        );
+    }
 }

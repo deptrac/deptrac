@@ -5,50 +5,91 @@ declare(strict_types=1);
 namespace Tests\Deptrac\Deptrac\Supportive\Console;
 
 use Deptrac\Deptrac\Supportive\Console\ConfigFileResolver;
+use Deptrac\Deptrac\Supportive\DependencyInjection\Exception\CannotLoadConfiguration;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArgvInput;
 
 final class ConfigFileResolverTest extends TestCase
 {
-    #[DataProvider('provideConfigFile')]
-    public function testResolve(array $argv, string $currentWorkingDirectory, string $expected): void
+    private string $tempDir;
+    private ConfigFileResolver $resolver;
+
+    protected function setUp(): void
+    {
+        $this->tempDir = sys_get_temp_dir().DIRECTORY_SEPARATOR.'deptrac_test_'.uniqid();
+        mkdir($this->tempDir);
+        $this->resolver = new ConfigFileResolver($this->tempDir);
+    }
+
+    protected function tearDown(): void
+    {
+        array_map('unlink', glob("$this->tempDir/*"));
+        rmdir($this->tempDir);
+    }
+
+    #[DataProvider('provideConfigFileArgv')]
+    public function testResolveWithConfigFileArg(array $argv, string $expected): void
     {
         self::assertSame(
             $expected,
-            (new ConfigFileResolver())->resolve(new ArgvInput($argv), $currentWorkingDirectory)
+            (new ConfigFileResolver(''))->resolve(new ArgvInput($argv))
         );
     }
 
-    /**
-     * @return iterable<string, array{list<string>, string, string}>
-     */
-    public static function provideConfigFile(): iterable
+    public static function provideConfigFileArgv(): iterable
     {
-        yield 'config-file before a command option' => [
+        yield 'custom config before a command option' => [
             ['deptrac', 'analyse', '--config-file=custom.yaml', '--report-uncovered'],
-            '/cwd',
             'custom.yaml',
         ];
 
-        // Regression for #1425: the config file was ignored when an unknown
-        // command option preceded it.
-        yield 'config-file after a command option' => [
+        yield 'custom config after a command option' => [
             ['deptrac', 'analyse', '--report-uncovered', '--config-file=custom.yaml'],
-            '/cwd',
             'custom.yaml',
         ];
 
-        yield 'short option after a command option' => [
+        yield 'short custom config option' => [
             ['deptrac', 'analyse', '--report-uncovered', '-c', 'custom.yaml'],
-            '/cwd',
             'custom.yaml',
         ];
+    }
 
-        yield 'falls back to deptrac.yaml in the working directory' => [
-            ['deptrac', 'analyse'],
-            '/cwd',
-            '/cwd'.DIRECTORY_SEPARATOR.'deptrac.yaml',
-        ];
+    public function testResolveFallsBackToDeptracYaml(): void
+    {
+        touch($this->tempDir.DIRECTORY_SEPARATOR.'deptrac.yaml');
+
+        self::assertSame(
+            $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.yaml',
+            $this->resolver->resolve(new ArgvInput(['deptrac', 'analyse']))
+        );
+    }
+
+    public function testResolvePrefersDeptracPhp(): void
+    {
+        touch($this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php');
+
+        self::assertSame(
+            $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php',
+            $this->resolver->resolve(new ArgvInput(['deptrac', 'analyse']))
+        );
+    }
+
+    public function testResolvePrefersDeptracPhpWhenBothExist(): void
+    {
+        touch($this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php');
+        touch($this->tempDir.DIRECTORY_SEPARATOR.'deptrac.yaml');
+
+        self::assertSame(
+            $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php',
+            $this->resolver->resolve(new ArgvInput(['deptrac', 'analyse']))
+        );
+    }
+
+    public function testResolveThrowsWhenNoConfigFound(): void
+    {
+        $this->expectException(CannotLoadConfiguration::class);
+
+        $this->resolver->resolve(new ArgvInput(['deptrac', 'analyse']));
     }
 }
