@@ -53,24 +53,35 @@ final class ConfigFileResolverTest extends TestCase
         ];
     }
 
-    #[DataProvider('provideAutoDetectConfig')]
-    public function testResolveAutoDetect(string $touchFiles, string $expected): void
+    public function testResolveFallsBackToDeptracYaml(): void
     {
-        foreach (explode(',', $touchFiles) as $file) {
-            touch($this->tempDir.DIRECTORY_SEPARATOR.trim($file));
-        }
+        touch($this->tempDir.DIRECTORY_SEPARATOR.'deptrac.yaml');
 
         self::assertSame(
-            $this->tempDir.DIRECTORY_SEPARATOR.$expected,
+            $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.yaml',
             (new ConfigFileResolver())->resolve(new ArgvInput(['deptrac', 'analyse']), $this->tempDir)
         );
     }
 
-    public static function provideAutoDetectConfig(): iterable
+    public function testResolvePrefersDeptracPhp(): void
     {
-        yield 'deptrac.yaml only' => ['deptrac.yaml', 'deptrac.yaml'];
-        yield 'deptrac.php only' => ['deptrac.php', 'deptrac.php'];
-        yield 'both — prefer deptrac.php' => ['deptrac.php,deptrac.yaml', 'deptrac.php'];
+        touch($this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php');
+
+        self::assertSame(
+            $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php',
+            (new ConfigFileResolver())->resolve(new ArgvInput(['deptrac', 'analyse']), $this->tempDir)
+        );
+    }
+
+    public function testResolvePrefersDeptracPhpWhenBothExist(): void
+    {
+        touch($this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php');
+        touch($this->tempDir.DIRECTORY_SEPARATOR.'deptrac.yaml');
+
+        self::assertSame(
+            $this->tempDir.DIRECTORY_SEPARATOR.'deptrac.php',
+            (new ConfigFileResolver())->resolve(new ArgvInput(['deptrac', 'analyse']), $this->tempDir)
+        );
     }
 
     public function testResolveThrowsWhenNoConfigFound(): void
