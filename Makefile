@@ -35,7 +35,7 @@ deptrac: install ## Analyses own architecture using the default config confile
 	./deptrac analyse -c deptrac.php --no-progress --ansi
 
 infection: install ## Runs mutation tests
-	$(INFECTION) --threads=$(shell nproc || sysctl -n hw.ncpu || 1) --test-framework-options='--testsuite=Tests' --only-covered --min-msi=85 --psalm-config=psalm.xml
+	$(INFECTION) --threads=$(shell nproc || sysctl -n hw.ncpu || 1) --only-covered --min-msi=85 --psalm-config=psalm.xml
 
 php-cs-check: install ## Checks for code style violation
 	$(PHP_CS_FIXER) fix --diff --using-cache=no --verbose --dry-run

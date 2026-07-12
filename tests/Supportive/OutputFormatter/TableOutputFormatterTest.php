@@ -45,8 +45,8 @@ class TableOutputFormatterTest extends TestCase
         $originalA = ClassLikeToken::fromFQCN('OriginalA');
         $originalB = ClassLikeToken::fromFQCN('OriginalB');
 
-        yield [
-            [
+        yield 'Violations inherit' => [
+            'rules' => [
                 new Violation(
                     new InheritDependency(
                         ClassLikeToken::fromFQCN('ClassA'),
@@ -81,9 +81,9 @@ class TableOutputFormatterTest extends TestCase
                     new DummyViolationCreatingRule()
                 ),
             ],
-            [],
+            'errors' => [],
             'warnings' => [],
-            ' ----------- ---------------------------------- 
+            'expectedOutput' => ' ----------- ---------------------------------- 
   Reason      LayerA                            
  ----------- ---------------------------------- 
   DummyRule   ClassA must not depend on ClassB  
@@ -111,8 +111,8 @@ class TableOutputFormatterTest extends TestCase
 ',
         ];
 
-        yield [
-            [
+        yield 'Simple Violation' => [
+            'rules' => [
                 new Violation(
                     new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
                     'LayerA',
@@ -120,9 +120,9 @@ class TableOutputFormatterTest extends TestCase
                     new DummyViolationCreatingRule()
                 ),
             ],
-            [],
+            'errors' => [],
             'warnings' => [],
-            ' ----------- ---------------------------------------- 
+            'expectedOutput' => ' ----------- ---------------------------------------- 
   Reason      LayerA                                  
  ----------- ---------------------------------------- 
   DummyRule   OriginalA must not depend on OriginalB  
@@ -145,11 +145,11 @@ class TableOutputFormatterTest extends TestCase
 ',
         ];
 
-        yield [
-            [],
-            [],
+        yield 'No Rules' => [
+            'rules' => [],
+            'errors' => [],
             'warnings' => [],
-            '
+            'expectedOutput' => '
  -------------------- ----- 
   Report                    
  -------------------- ----- 
@@ -165,16 +165,16 @@ class TableOutputFormatterTest extends TestCase
         ];
 
         yield 'skipped violations' => [
-            [
+            'rules' => [
                 new SkippedViolation(
                     new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
                     'LayerA',
                     'LayerB'
                 ),
             ],
-            [],
+            'errors' => [],
             'warnings' => [],
-            ' --------- ------------------------------------------------- 
+            'expectedOutput' => ' --------- ------------------------------------------------- 
   Reason    LayerA                                           
  --------- ------------------------------------------------- 
   Skipped   OriginalA must not depend on OriginalB (LayerB)  
@@ -197,16 +197,16 @@ class TableOutputFormatterTest extends TestCase
         ];
 
         yield 'skipped violations without reporting' => [
-            [
+            'rules' => [
                 new SkippedViolation(
                     new Dependency($originalA, $originalB, new DependencyContext(new FileOccurrence('originalA.php', 12), DependencyType::PARAMETER)),
                     'LayerA',
                     'LayerB'
                 ),
             ],
-            [],
+            'errors' => [],
             'warnings' => [],
-            '
+            'expectedOutput' => '
  -------------------- ----- 
   Report                    
  -------------------- ----- 
@@ -280,10 +280,10 @@ class TableOutputFormatterTest extends TestCase
         ];
 
         yield 'an error occurred' => [
-            [],
-            [new Error('an error occurred')],
+            'rules' => [],
+            'errors' => [new Error('an error occurred')],
             'warnings' => [],
-            ' ------------------- 
+            'expectedOutput' => ' ------------------- 
   Errors             
  ------------------- 
   an error occurred  
@@ -308,7 +308,7 @@ class TableOutputFormatterTest extends TestCase
             'rules' => [],
             'errors' => [],
             'warnings' => [Warning::tokenIsInMoreThanOneLayer(ClassLikeToken::fromFQCN(Bar::class)->toString(), ['Layer 1', 'Layer 2'])],
-            ' ------------------------------------------------------------------------------------------------------------------------- 
+            'expectedOutput' => ' ------------------------------------------------------------------------------------------------------------------------- 
   Warnings                                                                                                                 
  ------------------------------------------------------------------------------------------------------------------------- 
   Foo\Bar is in more than one layer ["Layer 1", "Layer 2"]. It is recommended that one token should only be in one layer.  
