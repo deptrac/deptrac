@@ -79,6 +79,19 @@ Notice that we assign all the layer configs to a variable. This is important to 
         );
 ```
 
+A layer collector can also reference a previously defined layer variable, while
+string layer names remain available when declaration order makes a variable
+reference impractical:
+
+```php
+    $config
+        ->layers(
+            Layer::withName('AllDependencies')->collectors(
+                LayerConfig::create($dependency),
+            ),
+        );
+```
+
 You can also define configuration for the formatters if you need to, again re-using the previously defined layers to ensure you don't have a typo in your definition:
 
 ```php
