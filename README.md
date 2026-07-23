@@ -26,10 +26,10 @@ You can install Deptrac via Composer. We recommend using the
 composer require --dev deptrac/deptrac
 ```
 
-Once you have downloaded/installed deptrac, you will need to create a
+Once you have installed deptrac, you will need to create a
 [configuration file](docs/index.md#configuration), where you define your layers and
 communication ruleset. This configuration file is written in YAML or php and, by default,
-is stored with the name `deptrac.yaml` in your project's root directory.
+is stored with the name `deptrac.php` in your project's root directory.
 
 Deptrac can generate a template for you, using the `init` command.
 
@@ -44,10 +44,10 @@ running the `analyse` command:
 vendor/bin/deptrac
 
 # which is equivalent to
-vendor/bin/deptrac analyse --config-file=deptrac.yaml
+vendor/bin/deptrac analyse --config-file=deptrac.php
 ```
 
-In order to run Deptrac you need at least PHP 8.1.
+In order to run Deptrac you need at least PHP 8.2.
 
 You can analyse projects that require an older PHP version as long as
 [nikic/php-parser](https://github.com/nikic/PHP-Parser) can parse it.
