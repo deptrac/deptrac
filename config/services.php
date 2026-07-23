@@ -171,7 +171,7 @@ return static function (ContainerConfigurator $container): void {
     $services
         ->set(Dumper::class)
         ->args([
-            '$templateFile' => __DIR__.'/deptrac_template.yaml',
+            '$templateFile' => __DIR__.'/deptrac_template.php',
         ])
     ;
 

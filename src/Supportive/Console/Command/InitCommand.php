@@ -32,7 +32,7 @@ class InitCommand extends Command
     {
         try {
             /** @var string $targetFile */
-            $targetFile = $input->getParameterOption(['--config-file', '-c'], getcwd().DIRECTORY_SEPARATOR.'deptrac.yml');
+            $targetFile = $input->getParameterOption(['--config-file', '-c'], getcwd().DIRECTORY_SEPARATOR.'deptrac.php');
             $this->dumper->dump($targetFile);
             $output->writeln('Deptrac config <info>dumped.</info>');
 

@@ -96,8 +96,8 @@ variable Path (e.g. ``C:\Program Files (x86)\Graphviz2.38\bin``).
 ## Getting Started
 
 In order to get started with Deptrac you will need a configuration file.
-This configuration file is written in YAML and, by default, is stored with the
-name `deptrac.yaml` in your project's root directory.
+This configuration file is written in PHP and, by default, is stored with the
+name `deptrac.php` in your project's root directory.
 
 Deptrac can generate a template for you, using the `init` command.
 
@@ -118,38 +118,35 @@ You can find out more about the [Core Concepts](concepts.md) in the docs.
 
 Let's have a look at the generated file:
 
-```yaml
-# deptrac.yaml
-deptrac:
-  paths:
-    - ./src
-  exclude_files:
-    - '#.*test.*#'
-  layers:
-    -
-      name: Controller
-      collectors:
-        -
-          type: classLike
-          value: .*Controller.*
-    -
-      name: Repository
-      collectors:
-        -
-          type: classLike
-          value: .*Repository.*
-    -
-      name: Service
-      collectors:
-        -
-          type: classLike
-          value: .*Service.*
-  ruleset:
-    Controller:
-      - Service
-    Service:
-      - Repository
-    Repository: ~
+```php
+<?php
+
+use Deptrac\Deptrac\Contract\Config\Collector\ClassLikeConfig;
+use Deptrac\Deptrac\Contract\Config\DeptracConfig;
+use Deptrac\Deptrac\Contract\Config\Layer;
+use Deptrac\Deptrac\Contract\Config\Ruleset;
+
+return static function (DeptracConfig $config): void {
+    $config
+        ->paths('./src')
+        ->excludeFiles('#.*test.*#')
+        ->layers(
+            $controller = Layer::withName('Controller')->collectors(
+                ClassLikeConfig::create('.*Controller.*'),
+            ),
+            $repository = Layer::withName('Repository')->collectors(
+                ClassLikeConfig::create('.*Repository.*'),
+            ),
+            $service = Layer::withName('Service')->collectors(
+                ClassLikeConfig::create('.*Service.*'),
+            ),
+        )
+        ->rulesets(
+            Ruleset::forLayer($controller)->accesses($service),
+            Ruleset::forLayer($service)->accesses($repository),
+            Ruleset::forLayer($repository),
+        );
+};
 ```
 
 By default, Deptrac will search your project's `src/` directory for classes and
@@ -181,7 +178,7 @@ config file should be used.
 $ php deptrac.phar
 
 # which is equivalent to
-$ php deptrac.phar analyse --config-file=deptrac.yaml
+$ php deptrac.phar analyse --config-file=deptrac.php
 ```
 
 If you run `php deptrac.phar -v` you'll get a more verbose output.
