@@ -118,7 +118,7 @@ take a look at the default reference extractors that Deptrac ships with in the
 `\Deptrac\Deptrac\DefaultBehavior\Ast\Extractors` namespace. You can find some
 advanced behaviour there as well, like how to deal with template types.
 
-Lastly, don't forget to register it in the `deptrac.config.php` file:
+Lastly, don't forget to register it in the `deptrac.php` file:
 
 ```php
 return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {
@@ -150,7 +150,7 @@ expect that it is something that most of the users would need to do. If you do,
 take a look at the default implementation that ships with Deptrac in the `\Deptrac\Deptrac\DefaultBehavior\Ast\Parser` namespace. It can serve as a
 template for your implementation.
 
-Lastly, don't forget to register it in the `deptrac.config.php` file:
+Lastly, don't forget to register it in the `deptrac.php` file:
 
 ```php
 return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {
@@ -182,7 +182,7 @@ The usage is relatively simple. Iterate over all the references in the
 cause a dependency, add it to `Dependency\DependencyListInterface`. For
 inspiration, you can take a look at the default Deptrac emitters in the
 `\Deptrac\DefaultBehavior\Dependency` namespace. Once you have your emitter,
-don't forget to register it in your `deptrac.config.php` file:
+don't forget to register it in your `deptrac.php` file:
 
 ```php
 return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {
@@ -202,13 +202,13 @@ collectors for you to use. But if you need something more custom, you have the
 option of adding your own by implementing the `Layer\CollectorInterface`. It has only one function to implement `satisfy(array $config, Ast\AstMap\TokenReferenceInterface $reference): bool`.
 
 The `$config` parameters passes whatever configuration you have given in the
-`deptrac.config.php` file to you and the `$reference` is the token for whom you
+`deptrac.php` file to you and the `$reference` is the token for whom you
 should decide whether it should be a part of the layer or not. Also don't forget
 that you can throw one of the specified exceptions defined in the interface if
 you are for some reason not able to make the decision.
 
 Once you have your collector ready, don't forget to register it in your
-`deptrac.config.php` file:
+`deptrac.php` file:
 
 ```php
 return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {
@@ -312,7 +312,7 @@ It contains the default implementations that ship with Deptrac and you can use
 them as template for your own and to know when the default ones are called to
 correctly schedule your own implementation between them.
 
-And do not forget to register your subscriber in the `deptrac.config.php` file:
+And do not forget to register your subscriber in the `deptrac.php` file:
 
 ```php
 return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {
@@ -339,7 +339,7 @@ you are given the result of the rule application ready for outputting in
 the optional formatter parameters in `OutputFormatterInput $outputFormatterInput`.
 
 Once your implementation is complete, don't forget to register it in the
-`deptrac.config.php` file:
+`deptrac.php` file:
 
 ```php
 return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {
@@ -383,7 +383,7 @@ interface BaselineMapperInterface
 
 All you need to do is to be able to transform the existing list of violation to
 and from a PHP array to a string that can be stored to a file. Once done, don't
-forget to register you custom mapper in the `deptrac.config.php` file:
+forget to register you custom mapper in the `deptrac.php` file:
 
 ```php
 return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {

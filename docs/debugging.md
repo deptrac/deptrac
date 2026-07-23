@@ -10,7 +10,7 @@ With the `debug:layer`-command you can list all tokens which are matched in
 a specific layer. This command only shows tokens that would be emitted by your analyser configuration.
 
 ```console
-$ vendor/bin/deptrac debug:layer --config-file=deptrac.config.php Time
+$ vendor/bin/deptrac debug:layer --config-file=deptrac.php Time
 
  ---------------------------------------------------- ------------
   Time                                                 Token Type
@@ -60,7 +60,7 @@ pipelines.
 With the `debug:dependencies`-command you can see all dependencies of your layer. You can optionally specify a target layer to get only dependencies from one layer to the other:
 
 ```console
-$ vendor/bin/deptrac debug:dependencies debug:dependencies Ast InputCollector
+$ vendor/bin/deptrac debug:dependencies Ast InputCollector
 
   Deptrac\Deptrac\Core\Ast\AstMapExtractor depends on Deptrac\Deptrac\Core\InputCollector\InputCollectorInterface (InputCollector)
   .../deptrac/src/Core/Ast/AstMapExtractor.php:15
