@@ -15,7 +15,7 @@ add a layer? Do you have a large existing project that has similar structure acr
 
 ---
 
-For a long time, Deptrac was only supporting a `yaml` configuration. Thanks to the effort by [grennadi](https://github.com/gennadigennadigennadi) you can now use Symfony config builders to create a dynamic deptrac configuration using PHP. Let's take a look at how to do it.
+For a long time, Deptrac was only supporting a `yaml` configuration. Thanks to the effort by [gennadi](https://github.com/gennadigennadigennadi) you can now use Symfony config builders to create a dynamic deptrac configuration using PHP. Let's take a look at how to do it.
 
 Start by creating a `deptrac.config.php` file in the root of the project:
 
