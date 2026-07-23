@@ -3,7 +3,7 @@
 The configuration file describes your [layers, ruleset](concepts.md) and adjusts
 output formatting.
 
-We suggest you also check out [Deptrac's configuration](https://github.com/deptrac/deptrac/blob/main/deptrac.yaml)
+We suggest you also check out [Deptrac's configuration](https://github.com/deptrac/deptrac/blob/main/deptrac.php)
 for checking its own architecture as it uses most available options.
 
 ## Deptrac

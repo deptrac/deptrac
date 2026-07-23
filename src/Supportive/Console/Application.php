@@ -91,19 +91,19 @@ final class Application extends BaseApplication
             return parent::doRun($input, $output);
         }
 
-        $config = (new ConfigFileResolver($currentWorkingDirectory))->resolve($input);
-
         /** @var ?string $cache */
         $cache = $input->getParameterOption('--cache-file', null);
 
         $factory = new ServiceContainerBuilder($currentWorkingDirectory);
-        if (!in_array($input->getArgument('command'), ['init', 'list', 'help', 'completion'], true)) {
-            $factory = $factory->withConfig($config);
-        }
 
         $noCache = $input->hasParameterOption('--no-cache', true);
 
         try {
+            if (!in_array($input->getArgument('command'), ['init', 'list', 'help', 'completion'], true)) {
+                $config = (new ConfigFileResolver($currentWorkingDirectory))->resolve($input);
+                $factory = $factory->withConfig($config);
+            }
+
             $container = $factory->build($noCache ? false : $cache, $input->hasParameterOption('--clear-cache', true));
             $commandLoader = $container->get('console.command_loader');
             if (!$commandLoader instanceof CommandLoaderInterface) {
