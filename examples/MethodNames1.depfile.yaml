@@ -1,0 +1,13 @@
+deptrac:
+  paths: ["./MethodNames1/"]
+  exclude_files: []
+  layers:
+    - name: SomeA
+      collectors:
+        - type: method
+          value: SomeA
+    - name: SomeB
+      collectors:
+        - type: method
+          value: SomeB
+  ruleset: []
