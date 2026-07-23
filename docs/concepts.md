@@ -85,7 +85,7 @@ configuration:
 installed on your system)
 
 ```console
-$ php deptrac.phar analyse --config-file=examples/ModelController1.depfile.yaml
+$ vendor/bin/deptrac analyse --config-file=examples/ModelController1.depfile.yaml
 ```
 
 After Deptrac has finished, an image should be opened:
@@ -258,7 +258,7 @@ class SomeController
 After running Deptrac for this example
 
 ```console
-$ php deptrac.phar analyse --config-file=examples/ModelController2.depfile.yaml
+$ vendor/bin/deptrac analyse --config-file=examples/ModelController2.depfile.yaml
 ```
 
 we will get this output:
@@ -310,7 +310,7 @@ values (`Core\CoreClass`) are dependency tokens.
 Matched violations will be marked as skipped:
 
 ```console
-$ php deptrac.phar analyse --config-file=examples/SkipViolations.yaml --report-skipped
+$ vendor/bin/deptrac analyse --config-file=examples/SkipViolations.yaml --report-skipped
 1/1 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
 
 [SKIPPED] Library\LibClass must not depend on Core\CoreClass (Library on Core)

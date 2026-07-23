@@ -23,55 +23,24 @@ You can analyse projects that require an older PHP version as long as
 
 ## Installation
 
-You can install Deptrac via Composer. We recommend using the [deptrac](https://github.com/deptrac/deptrac) package for this.
-Alternatively, you can also use [PHIVE](#phive) or download the
-[PHAR](#phar) attached to each release on GitHub.
-This will ensure that Deptrac and its dependencies are
-bundled together and will not interfere with any of your project's dependencies.
+You can install Deptrac via Composer using the
+[deptrac](https://github.com/deptrac/deptrac) package.
 
 ### Composer
 
 ```console
 $ composer require --dev deptrac/deptrac
-vendor/bin/deptrac analyse
 ```
 
-### PHAR
-
-Download the latest [deptrac.phar](https://github.com/deptrac/deptrac/releases).
-
-You can run the phar file using php:
+This installs the `deptrac` binary into your project's `vendor/bin` directory.
+You can then run it with:
 
 ```console
-$ php deptrac.phar analyse
+$ vendor/bin/deptrac analyse
 ```
 
-All examples in this documentation, assume you have the deptrac.phar downloaded
-in your project's root directory as described above.
-
-Feel free to add Deptrac to your PATH (i.e. `/usr/local/bin/deptrac`) to make it
-globally available.
-
-```console
-$ curl -LS https://github.com/deptrac/deptrac/releases/download/2.0.1/deptrac.phar -o deptrac.phar
-
-# optional
-$ sudo chmod +x deptrac.phar
-$ sudo mv deptrac.phar /usr/local/bin/deptrac
-```
-
-### PHIVE
-
-You can install Deptrac with [Phive](https://phar.io/#Install)
-
-`phive install -g deptrac/deptrac`
-
-and accept the key with fingerprint
-`57CB 556F 242F C8D4 FD48 3C2C 4743 6587 D82C 4A39`.
-
-To upgrade Deptrac use the following command:
-
-`phive update -g deptrac/deptrac`
+All examples in this documentation assume you run Deptrac via
+`vendor/bin/deptrac` as described above.
 
 ### Optional Dependency: Graphviz
 
@@ -102,7 +71,7 @@ name `deptrac.php` in your project's root directory.
 Deptrac can generate a template for you, using the `init` command.
 
 ```console
-$ php deptrac.phar init
+$ vendor/bin/deptrac init
 ```
 
 The main purpose of this file is:
@@ -171,17 +140,17 @@ You can learn more about the file in the [Configuration reference](configuration
 
 Once you have set up the config file you can run Deptrac to analyse your code
 and check for violations. If you use the default configuration file, you can
-type `php deptrac.phar`, otherwise you will need to specify which command and
+type `vendor/bin/deptrac`, otherwise you will need to specify which command and
 config file should be used.
 
 ```console
-$ php deptrac.phar
+$ vendor/bin/deptrac
 
 # which is equivalent to
-$ php deptrac.phar analyse --config-file=deptrac.php
+$ vendor/bin/deptrac analyse --config-file=deptrac.php
 ```
 
-If you run `php deptrac.phar -v` you'll get a more verbose output.
+If you run `vendor/bin/deptrac -v` you'll get a more verbose output.
 
 The analyse command runs with a caching mechanism for parsed files by default.
 This can be disabled with the `--no-cache` option.
@@ -273,6 +242,5 @@ Please don't be inconsiderate or mean, or anything in between.
 * [Debugging](debugging.md) - Overview of the debug commands
 * [Code Of Conduct](CODE_OF_CONDUCT.md) - Our community standards
 * [Contribute](CONTRIBUTING.md) - Advice for contributing code changes,
-  e.g. how to run tests or how to build a phar file with your changes that you
-  can use to analyse your projects
+  e.g. how to run tests or how to use your local changes to analyse your projects
 * [Security Guide](SECURITY.md) - How to report security vulnerabilities

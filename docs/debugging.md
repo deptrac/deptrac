@@ -10,7 +10,7 @@ With the `debug:layer`-command you can list all tokens which are matched in
 a specific layer. This command only shows tokens that would be emitted by your analyser configuration.
 
 ```console
-$ php deptrac.phar debug:layer --config-file=deptrac.config.php Time
+$ vendor/bin/deptrac debug:layer --config-file=deptrac.config.php Time
 
  ---------------------------------------------------- ------------
   Time                                                 Token Type
@@ -31,7 +31,7 @@ $ php deptrac.phar debug:layer --config-file=deptrac.config.php Time
 The `debug:token` (previously `debug:class-like`)-command will let you know which layers a specified token belongs to. Since you can specify the token type, this commands ignores your analyser configuration for emitted token types.
 
 ```console
-$ php deptrac.phar debug:token --config-file=examples/DirectoryLayer.depfile.yaml 'examples\Layer1\AnotherClassLikeAController' class-like
+$ vendor/bin/deptrac debug:token --config-file=examples/DirectoryLayer.depfile.yaml 'examples\Layer1\AnotherClassLikeAController' class-like
 
 Controller
 Layer1
@@ -44,7 +44,7 @@ not assigned to any layer. This is useful to test that your collector
 configuration for layers is correct.  This command only shows tokens that would be emitted by your analyser configuration.
 
 ```console
-$ php deptrac.phar debug:unassigned --config-file=examples/DirectoryLayer.depfile.yaml
+$ vendor/bin/deptrac debug:unassigned --config-file=examples/DirectoryLayer.depfile.yaml
 
 examples\Layer1\AnotherClassLikeAController
 examples\Layer1\SomeClass
@@ -60,7 +60,7 @@ pipelines.
 With the `debug:dependencies`-command you can see all dependencies of your layer. You can optionally specify a target layer to get only dependencies from one layer to the other:
 
 ```console
-$ php deptrac.phar debug:dependencies debug:dependencies Ast InputCollector
+$ vendor/bin/deptrac debug:dependencies debug:dependencies Ast InputCollector
 
   Deptrac\Deptrac\Core\Ast\AstMapExtractor depends on Deptrac\Deptrac\Core\InputCollector\InputCollectorInterface (InputCollector)
   .../deptrac/src/Core/Ast/AstMapExtractor.php:15
@@ -78,7 +78,7 @@ You can optionally specify a limit (`--limit=<int>`) of how many times can be th
 if you want to find dependencies that are barely used and may be a prime candidate to get rid of.
 
 ```console
-$ php deptrac.phar debug:unused --limit=10
+$ vendor/bin/deptrac debug:unused --limit=10
 
   Analyser layer is dependent Layer layer 5 times
   Ast layer is dependent File layer 9 times
@@ -100,7 +100,7 @@ This command list the layers corresponding to the passed files. Optionally it
 can also list all the layers that depend on those layers.
 
 ```console
-$ php deptrac.phar changed-files --with-dependencies src/Supportive/File/FileReader.php
+$ vendor/bin/deptrac changed-files --with-dependencies src/Supportive/File/FileReader.php
 
   File
   Console;Ast;InputCollector;Analyser;Dependency;Layer
