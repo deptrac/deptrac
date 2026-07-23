@@ -48,7 +48,7 @@ Any merge request must pass our build pipeline which consists of the following:
 * Unit Tests for all supported PHP-versions
 * Check for coding guidelines
 * Static code analysis with phpstan and psalm
-* End 2 End-tests, ensuring `deptrac.phar` can be built
+* A basic End 2 End-test, ensuring `deptrac` runs against a fixture config
 
 You can use the provided Makefile to execute these steps locally. The `make`
 command is supported by most major operating systems, but you might need to
@@ -100,16 +100,18 @@ We also run a tool called infection for mutation testing:
 make infection
 ```
 
-### Build Deptrac
+### Running your local Deptrac
 
-You can build the `deptrac.phar` both to ensure it works, as well as for using
-it to analyse your existing projects to see if your changes work as expected.
+You can run Deptrac directly from the repository to verify your changes work as
+expected. The `deptrac` binary in the project root uses your local source code:
 
 ```console
-$ make build
+$ ./deptrac analyse
 ```
 
-This will create an executable file `deptrac.phar` in the current directory.
+To try your changes against another project, install your local checkout via a
+Composer [path repository](https://getcomposer.org/doc/05-repositories.md#path)
+and run it with `vendor/bin/deptrac`.
 
 ## Deptrac Engine (Internals)
 

@@ -74,6 +74,5 @@ See the [contribution guide](docs/CONTRIBUTING.md).
 * [Debugging](docs/debugging.md) - Overview of the debug commands
 * [Code Of Conduct](docs/CODE_OF_CONDUCT.md) - Our community standards
 * [Contribute](docs/CONTRIBUTING.md) - Advice for contributing code changes,
-  e.g. how to run tests or how to build a phar file with your changes that you
-  can use to analyse your projects
+  e.g. how to run tests or how to use your local changes to analyse your projects
 * [Security Guide](docs/SECURITY.md) - How to report security vulnerabilities
