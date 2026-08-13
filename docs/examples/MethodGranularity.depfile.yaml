@@ -1,0 +1,22 @@
+deptrac:
+  paths: ["./MethodGranularity/"]
+  analyser:
+    types:
+      - class
+      - method
+  layers:
+    - name: Infrastructure
+      collectors:
+        - type: attribute
+          value: AsController
+    - name: Application
+      collectors:
+        - type: attribute
+          value: AsEventListener
+          scope: method
+        - type: classNameRegex
+          value: /BookCommand$/
+  ruleset:
+    Infrastructure:
+      - Application
+    Application: ~

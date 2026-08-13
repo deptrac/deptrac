@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Deptrac\Deptrac\DefaultBehavior\Layer;
 
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FileReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FunctionReference;
@@ -21,6 +22,7 @@ final class AttributeCollector implements CollectorInterface
         if (!$reference instanceof FileReference
             && !$reference instanceof ClassLikeReference
             && !$reference instanceof FunctionReference
+            && !$reference instanceof ClassMethodReference
         ) {
             return false;
         }

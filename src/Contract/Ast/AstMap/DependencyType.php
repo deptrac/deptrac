@@ -33,4 +33,7 @@ enum DependencyType: string
     // Function call that could not be resolved at parse-time and can only be
     // resolved at run-time. Usually means an internal PHP function call.
     case UNRESOLVED_FUNCTION_CALL = 'unresolved_function_call';
+    // Intra-class dispatch ($this->method(), self::method(), static::method());
+    // the dependent token is a ClassMethodToken of the enclosing class.
+    case METHOD_CALL = 'method_call';
 }

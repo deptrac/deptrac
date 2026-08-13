@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\Core\Layer;
 
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\TokenReferenceInterface;
+use Deptrac\Deptrac\Contract\Config\CollectorScope;
 use Deptrac\Deptrac\Contract\Layer\Collectable;
 use Deptrac\Deptrac\Contract\Layer\CollectorResolverInterface;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
 use Deptrac\Deptrac\Contract\Layer\LayerResolverInterface;
 
@@ -49,6 +52,10 @@ class LayerResolver implements LayerResolverInterface
 
         foreach ($this->layers as $layer => $collectables) {
             foreach ($collectables as $collectable) {
+                if (!$this->scopeAccepts($collectable, $reference)) {
+                    continue;
+                }
+
                 $attributes = $collectable->attributes;
 
                 if ($collectable->collector->satisfy($attributes, $reference)) {
@@ -85,12 +92,28 @@ class LayerResolver implements LayerResolverInterface
         $collectables = $this->layers[$layer];
 
         foreach ($collectables as $collectable) {
+            if (!$this->scopeAccepts($collectable, $reference)) {
+                continue;
+            }
+
             if ($collectable->collector->satisfy($collectable->attributes, $reference)) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    /**
+     * Method references are only matched by collectors declared with
+     * "scope: method"; every other reference is only matched by collectors
+     * without it (or with the default "scope: class").
+     */
+    private function scopeAccepts(Collectable $collectable, TokenReferenceInterface $reference): bool
+    {
+        $scope = $collectable->attributes['scope'] ?? CollectorScope::TYPE_CLASS->value;
+
+        return (CollectorScope::TYPE_METHOD->value === $scope) === $reference instanceof ClassMethodReference;
     }
 
     public function has(string $layer): bool
@@ -104,6 +127,7 @@ class LayerResolver implements LayerResolverInterface
 
     /**
      * @throws InvalidLayerDefinitionException
+     * @throws InvalidCollectorDefinitionException
      */
     private function initializeLayers(): void
     {
@@ -121,7 +145,9 @@ class LayerResolver implements LayerResolverInterface
 
             $this->layers[$layerName] = [];
             foreach ($layer['collectors'] ?? [] as $config) {
-                $this->layers[$layerName][] = $this->collectorResolver->resolve($config);
+                $collectable = $this->collectorResolver->resolve($config);
+                $this->assertValidScope($collectable);
+                $this->layers[$layerName][] = $collectable;
             }
             if ([] === $this->layers[$layerName]) {
                 throw InvalidLayerDefinitionException::collectorRequired($layerName);
@@ -133,5 +159,21 @@ class LayerResolver implements LayerResolverInterface
         }
 
         $this->initialized = true;
+    }
+
+    /**
+     * @throws InvalidCollectorDefinitionException
+     */
+    private function assertValidScope(Collectable $collectable): void
+    {
+        if (!array_key_exists('scope', $collectable->attributes)) {
+            return;
+        }
+
+        $scope = $collectable->attributes['scope'];
+
+        if (!is_string($scope) || null === CollectorScope::tryFrom($scope)) {
+            throw InvalidCollectorDefinitionException::invalidCollectorConfiguration(sprintf('Unknown collector scope "%s". Available scopes: %s.', is_string($scope) ? $scope : get_debug_type($scope), implode(', ', CollectorScope::values())));
+        }
     }
 }

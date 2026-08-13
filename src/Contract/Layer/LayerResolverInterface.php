@@ -27,6 +27,7 @@ interface LayerResolverInterface
 
     /**
      * @throws InvalidLayerDefinitionException
+     * @throws InvalidCollectorDefinitionException
      */
     public function has(string $layer): bool;
 }

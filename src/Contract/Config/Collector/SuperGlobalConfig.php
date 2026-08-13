@@ -30,6 +30,6 @@ final class SuperGlobalConfig extends CollectorConfig
             'private' => $this->private,
             'type' => $this->collectorType->value,
             'value' => $this->config,
-        ];
+        ] + $this->scopeToArray();
     }
 }

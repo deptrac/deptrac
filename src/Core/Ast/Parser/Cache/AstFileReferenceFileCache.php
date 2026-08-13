@@ -8,6 +8,9 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\AstInherit;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeType;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodReference;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodToken;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodVisibility;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyContext;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
@@ -43,7 +46,21 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
     /** @var array<string, bool> */
     private array $parsedFiles = [];
 
-    public function __construct(private readonly string $cacheFile, private readonly string $cacheVersion) {}
+    /**
+     * Bump whenever the serialized structure of FileReference (or anything it
+     * contains) changes, so caches written by the same deptrac version before
+     * the change are discarded.
+     */
+    private const SCHEMA_VERSION = '4';
+
+    private readonly string $cacheVersion;
+
+    public function __construct(private readonly string $cacheFile, string $cacheVersion, bool $methodGranularity = true)
+    {
+        // method granularity changes what is extracted per file, so toggling
+        // it must invalidate entries written with the other setting
+        $this->cacheVersion = $cacheVersion.'/'.self::SCHEMA_VERSION.($methodGranularity ? '/m1' : '/m0');
+    }
 
     public function get(string $filepath): ?FileReference
     {
@@ -111,6 +128,7 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
                         'allowed_classes' => [
                             FileReference::class,
                             ClassLikeReference::class,
+                            ClassMethodReference::class,
                             FunctionReference::class,
                             VariableReference::class,
                             AstInherit::class,
@@ -119,6 +137,8 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
                             FileToken::class,
                             ClassLikeToken::class,
                             ClassLikeType::class,
+                            ClassMethodToken::class,
+                            ClassMethodVisibility::class,
                             FunctionToken::class,
                             SuperGlobalToken::class,
                             FileOccurrence::class,

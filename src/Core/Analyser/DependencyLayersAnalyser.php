@@ -9,6 +9,7 @@ use Deptrac\Deptrac\Contract\Analyser\AnalysisResult;
 use Deptrac\Deptrac\Contract\Analyser\PostProcessEvent;
 use Deptrac\Deptrac\Contract\Analyser\ProcessEvent;
 use Deptrac\Deptrac\Contract\Ast\AstException;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodToken;
 use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
@@ -59,6 +60,12 @@ class DependencyLayersAnalyser
                 $dependent = $dependency->getDependent();
                 $dependentRef = $this->tokenResolver->resolve($dependent, $astMap);
                 $dependentLayers = $this->layerResolver->getLayersForReference($dependentRef);
+
+                // a method without layers of its own belongs to its class's layers
+                if ([] === $dependentLayers && $dependent instanceof ClassMethodToken) {
+                    $dependentRef = $this->tokenResolver->resolve($dependent->getClassToken(), $astMap);
+                    $dependentLayers = $this->layerResolver->getLayersForReference($dependentRef);
+                }
 
                 foreach ($dependerLayers as $dependerLayer) {
                     $event = new ProcessEvent(

@@ -15,6 +15,7 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\ClassExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\FunctionCallExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\FunctionLikeExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\InstanceofExtractor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\MethodCallExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\NewExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\PropertyExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\StaticCallExtractor;
@@ -50,6 +51,7 @@ trait EmitterTrait
                 new ClassExtractor(),
                 new UseExtractor(),
                 new InstanceofExtractor($typeResolver),
+                new MethodCallExtractor(),
                 new StaticCallExtractor($typeResolver),
                 new StaticPropertyFetchExtractor($typeResolver),
                 new NewExtractor($typeResolver),

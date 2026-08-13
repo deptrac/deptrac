@@ -105,7 +105,7 @@ abstract class ConfigurableCollectorConfig extends CollectorConfig
     }
 
     /**
-     * @return array{private: bool, type: string, value: string}
+     * @return array{private: bool, type: string, value: string, scope?: string}
      */
     public function toArray(): array
     {
@@ -113,7 +113,7 @@ abstract class ConfigurableCollectorConfig extends CollectorConfig
             'value' => $this->config,
             'type' => $this->collectorType->value,
             'private' => $this->private,
-        ];
+        ] + $this->scopeToArray();
     }
 
     private static function regex(string $regex): string

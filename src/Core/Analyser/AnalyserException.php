@@ -50,4 +50,9 @@ final class AnalyserException extends RuntimeException implements ExceptionInter
     {
         return new self('Circular layer dependency.', 0, $e);
     }
+
+    public static function methodGranularityDisabled(): self
+    {
+        return new self("Method-level analysis is not enabled. Add 'method' to analyser.types or declare a collector with 'scope: method'.");
+    }
 }

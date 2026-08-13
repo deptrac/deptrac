@@ -52,6 +52,6 @@ final class ComposerConfig extends CollectorConfig
             'packages' => $this->packages,
             'private' => $this->private,
             'type' => $this->collectorType->value,
-        ];
+        ] + $this->scopeToArray();
     }
 }

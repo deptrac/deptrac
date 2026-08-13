@@ -66,6 +66,19 @@ class DependencyResolver
                         )
                     );
                 }
+
+                // dependencies attributed to the inherited class's layered
+                // methods; the inheriting class is accountable for them, too
+                $inheritedClassReference = $astMap->getClassReferenceForToken($inherit->classLikeName);
+                foreach ($inheritedClassReference->methods ?? [] as $methodReference) {
+                    foreach ($dependencyList->getDependenciesByClass($methodReference->getToken()) as $dep) {
+                        $dependencyList->addInheritDependency(
+                            new InheritDependency(
+                                $classLikeName, $dep->getDependent(), $dep, $inherit
+                            )
+                        );
+                    }
+                }
             }
         }
     }

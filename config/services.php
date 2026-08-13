@@ -50,6 +50,7 @@ use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\FunctionLikeExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\GroupUseExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\InstanceofExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\InterfaceExtractor;
+use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\MethodCallExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\NewExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\PropertyExtractor;
 use Deptrac\Deptrac\DefaultBehavior\Ast\Extractors\StaticCallExtractor;
@@ -67,6 +68,7 @@ use Deptrac\Deptrac\DefaultBehavior\Dependency\FileDependencyEmitter;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\FunctionCallDependencyEmitter;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\FunctionDependencyEmitter;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\FunctionSuperglobalDependencyEmitter;
+use Deptrac\Deptrac\DefaultBehavior\Dependency\MethodDependencyEmitter;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\UsesDependencyEmitter;
 use Deptrac\Deptrac\DefaultBehavior\Layer\AttributeCollector;
 use Deptrac\Deptrac\DefaultBehavior\Layer\BoolCollector;
@@ -191,12 +193,14 @@ return static function (ContainerConfigurator $container): void {
         ->set(NikicPhpParser::class)
         ->args([
             '$extractors' => tagged_iterator('reference_extractors'),
+            '$methodGranularity' => param('method_granularity'),
         ])
     ;
     $services
         ->set(PhpStanParser::class)
         ->args([
             '$extractors' => tagged_iterator('reference_extractors'),
+            '$methodGranularity' => param('method_granularity'),
         ])
     ;
     $services
@@ -257,6 +261,11 @@ return static function (ContainerConfigurator $container): void {
         ->tag('reference_extractors')
     ;
     $services
+        ->set(MethodCallExtractor::class)
+        ->args(['$methodGranularity' => param('method_granularity')])
+        ->tag('reference_extractors')
+    ;
+    $services
         ->set(NewExtractor::class)
         ->tag('reference_extractors')
     ;
@@ -298,6 +307,7 @@ return static function (ContainerConfigurator $container): void {
     $services->set(TokenResolver::class);
     $services
         ->set(ClassDependencyEmitter::class)
+        ->args(['$config' => param('analyser')])
         ->tag('dependency_emitter', ['key' => EmitterType::CLASS_TOKEN->value])
     ;
     $services
@@ -319,6 +329,11 @@ return static function (ContainerConfigurator $container): void {
     $services
         ->set(FunctionSuperglobalDependencyEmitter::class)
         ->tag('dependency_emitter', ['key' => EmitterType::FUNCTION_SUPERGLOBAL_TOKEN->value])
+    ;
+    $services
+        ->set(MethodDependencyEmitter::class)
+        ->args(['$layerResolver' => service(LayerResolverInterface::class)])
+        ->tag('dependency_emitter', ['key' => EmitterType::METHOD_TOKEN->value])
     ;
     $services
         ->set(UsesDependencyEmitter::class)
@@ -492,7 +507,11 @@ return static function (ContainerConfigurator $container): void {
             '$config' => param('analyser'),
         ])
     ;
-    $services->set(LayerForTokenAnalyser::class);
+    $services->set(LayerForTokenAnalyser::class)
+        ->args([
+            '$methodGranularity' => param('method_granularity'),
+        ])
+    ;
     $services->set(UnassignedTokenAnalyser::class)
         ->args([
             '$config' => param('analyser'),

@@ -80,6 +80,16 @@ class TokenInLayerAnalyser
                 }
             }
 
+            if (in_array(TokenType::METHOD, $this->tokenTypes, true)) {
+                foreach ($astMap->getClassLikeReferences() as $classReference) {
+                    foreach ($classReference->methods as $methodReference) {
+                        if (array_key_exists($layer, $this->layerResolver->getLayersForReference($methodReference))) {
+                            $matchingTokens[] = [$methodReference->getToken()->toString(), TokenType::METHOD->value];
+                        }
+                    }
+                }
+            }
+
             uasort($matchingTokens, static fn (array $a, array $b): int => $a[0] <=> $b[0]);
 
             return array_values($matchingTokens);

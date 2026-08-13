@@ -30,7 +30,7 @@ class DebugTokenCommand extends Command
         parent::configure();
 
         $this->addArgument('token', InputArgument::REQUIRED, 'Full qualified token name to debug');
-        $this->addArgument('type', InputArgument::OPTIONAL, 'Token type (class-like, function, file)', 'class-like');
+        $this->addArgument('type', InputArgument::OPTIONAL, 'Token type (class-like, function, file, method)', 'class-like');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

@@ -8,6 +8,7 @@ use Deptrac\Deptrac\Contract\Analyser\AnalysisResult;
 use Deptrac\Deptrac\Contract\Ast\AstMap\AstInherit;
 use Deptrac\Deptrac\Contract\Ast\AstMap\AstInheritType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyContext;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FileOccurrence;
@@ -111,6 +112,35 @@ final class ConsoleOutputFormatterTest extends TestCase
             'expectedOutput' => '
                 OriginalA must not depend on OriginalB (LayerA on LayerB)
                 originalA.php:12
+
+                Report:
+                Violations: 1
+                Skipped violations: 0
+                Uncovered: 0
+                Allowed: 0
+                Warnings:0
+                Errors:0
+            ',
+        ];
+
+        yield 'Method token violation' => [
+            'rules' => [
+                new Violation(
+                    new Dependency(
+                        ClassMethodToken::fromFQCNAndMethodName('App\RegisterBookFeature', 'handleRegister'),
+                        ClassMethodToken::fromFQCNAndMethodName('App\RegisterBookFeature', 'registerBook'),
+                        new DependencyContext(new FileOccurrence('RegisterBookFeature.php', 24), DependencyType::METHOD_CALL)
+                    ),
+                    'Application',
+                    'Infrastructure',
+                    new DummyViolationCreatingRule()
+                ),
+            ],
+            'errors' => [],
+            'warnings' => [],
+            'expectedOutput' => '
+                App\RegisterBookFeature::handleRegister() must not depend on App\RegisterBookFeature::registerBook() (Application on Infrastructure)
+                RegisterBookFeature.php:24
 
                 Report:
                 Violations: 1

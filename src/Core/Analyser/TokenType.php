@@ -11,6 +11,7 @@ enum TokenType: string
     case CLASS_LIKE = 'class-like';
     case FUNCTION = 'function';
     case FILE = 'file';
+    case METHOD = 'method';
 
     public static function tryFromEmitterType(EmitterType $emitterType): ?self
     {

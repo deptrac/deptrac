@@ -1,3 +1,45 @@
+# Method-level layers (new in 4.x)
+
+Deptrac can now assign individual class methods to layers via `scope: method`
+collectors and the opt-in `method` analyser type. See
+[Method-level layers](collectors.md#method-level-layers-collector-scope).
+
+Notes for existing setups:
+
+- Analysis results are unchanged unless you add `method` to `analyser.types`
+  or use `scope: method` collectors.
+- The AST cache format changed; existing caches are invalidated automatically
+  once, so the first run after upgrading does a full re-parse. Method
+  references are only extracted when the config opts into method-level
+  analysis (`method` in `analyser.types`, or any collector with
+  `scope: method`), so projects that don't opt in keep the previous parse
+  cost and cache size. Toggling the opt-in invalidates the cache once in
+  either direction.
+- New enum cases were added: `EmitterType::METHOD_TOKEN`,
+  `DependencyType::METHOD_CALL`, `ClassMethodVisibility`. Exhaustive `match`
+  statements over these enums in custom extensions may need a new arm.
+  `DependencyType::METHOD_CALL` dependencies (whose dependent token is a
+  `ClassMethodToken`) appear in parsed class references only in projects that
+  opted into method-level analysis.
+- `ClassLikeReference` gained an optional `$methods` constructor parameter
+  (appended last) and a `methods` property listing the new
+  `ClassMethodReference` objects. Custom `AstFileReferenceCacheInterface`
+  implementations must account for the new serialized shape: add
+  `ClassMethodReference`, `ClassMethodToken` and `ClassMethodVisibility` to
+  any `allowed_classes` allowlist used when unserializing, and invalidate
+  previously written cache entries themselves — the automatic invalidation
+  only covers the built-in file cache.
+- Violations attributed to a method use the token format `Class::method()`.
+  When you newly assign a method to a layer, baseline entries referring to
+  dependencies inside that method need to be regenerated.
+- Configs using method-level layers require this deptrac version or newer.
+  On older versions, `method` in `analyser.types` fails loudly, but a
+  `scope: method` collector key alone is **silently ignored** — the collector
+  falls back to matching the whole class, producing different results with no
+  warning. When sharing one config across machines with mixed deptrac
+  versions, always pair `scope: method` collectors with the `method` analyser
+  type so outdated versions fail instead of silently diverging.
+
 # Upgrade from 1.0.2 to 2.0.0
 
 ### Dropped functionality

@@ -8,7 +8,13 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\AstInherit;
 use Deptrac\Deptrac\Contract\Ast\AstMap\AstInheritType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodReference;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodToken;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodVisibility;
+use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyContext;
+use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FileOccurrence;
+use Deptrac\Deptrac\Contract\Ast\AstMap\FileReference;
 use Deptrac\Deptrac\Contract\Config\EmitterType;
 use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
 use Deptrac\Deptrac\Contract\Dependency\PostEmitEvent;
@@ -25,6 +31,7 @@ use Deptrac\Deptrac\DefaultBehavior\Dependency\ClassSuperglobalDependencyEmitter
 use Deptrac\Deptrac\DefaultBehavior\Dependency\FileDependencyEmitter;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\FunctionDependencyEmitter;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\FunctionSuperglobalDependencyEmitter;
+use Deptrac\Deptrac\DefaultBehavior\Dependency\Helpers\Dependency;
 use Deptrac\Deptrac\DefaultBehavior\Dependency\UsesDependencyEmitter;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -189,5 +196,48 @@ final class DependencyResolverTest extends TestCase
         $dep->method('getDependent')->willReturn(ClassLikeToken::fromFQCN($className.'_b'));
 
         return $dep;
+    }
+
+    public function testFlattensMethodAttributedDependenciesOfInheritedClasses(): void
+    {
+        $parentToken = ClassLikeToken::fromFQCN('App\ParentFeature');
+        $methodToken = ClassMethodToken::fromFQCNAndMethodName('App\ParentFeature', 'handle');
+
+        $parentMethod = new ClassMethodReference(
+            $methodToken,
+            ClassMethodVisibility::TYPE_PUBLIC,
+            false,
+            new FileOccurrence('parent.php', 5)
+        );
+        $parentReference = new ClassLikeReference($parentToken, null, [], [], [], null, [$parentMethod]);
+
+        $childToken = ClassLikeToken::fromFQCN('App\ChildFeature');
+        $inherit = new AstInherit($parentToken, new FileOccurrence('child.php', 3), AstInheritType::EXTENDS);
+        $childReference = new ClassLikeReference($childToken, null, [$inherit]);
+
+        $astMap = new AstMap([
+            new FileReference('parent.php', [$parentReference], [], []),
+            new FileReference('child.php', [$childReference], [], []),
+        ]);
+
+        $dependencyList = new DependencyList();
+        $methodDependency = new Dependency(
+            $methodToken,
+            ClassLikeToken::fromFQCN('App\SomeService'),
+            new DependencyContext(new FileOccurrence('parent.php', 7), DependencyType::NEW)
+        );
+        $dependencyList->addDependency($methodDependency);
+
+        DependencyResolver::flattenDependencies($astMap, $dependencyList);
+
+        $inheritDependencies = array_values(array_filter(
+            $dependencyList->getDependenciesAndInheritDependencies(),
+            static fn (DependencyInterface $dependency): bool => $dependency instanceof InheritDependency
+        ));
+
+        self::assertCount(1, $inheritDependencies);
+        self::assertSame('App\ChildFeature', $inheritDependencies[0]->getDepender()->toString());
+        self::assertSame('App\SomeService', $inheritDependencies[0]->getDependent()->toString());
+        self::assertSame($methodDependency, $inheritDependencies[0]->originalDependency);
     }
 }

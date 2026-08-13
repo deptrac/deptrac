@@ -292,6 +292,11 @@ deptrac:
 Every class having a method that matches the regular expression `.*foo`,
 e.g. `getFoo()` or `setFoo()` becomes a part of the *Foo services* layer.
 
+When used with `scope: method` (see
+[Method-level layers](#method-level-layers-collector-scope)), the collector
+matches the name of the individual method instead, and only that method — not
+its whole class — is assigned to the layer.
+
 ## `superglobal` Collector
 
 The `superglobal` collector allows collecting superglobal PHP variables matching
@@ -384,3 +389,94 @@ This means that tokens collected by this specific collector can be referenced on
 This can be useful at least in 2 cases:
  - **External library that should be used only by one particular layer** - In this case, you might via vendor include a library that should be used only by this particular layer and nobody else.
  - **Layer that has a public API and private implementation** - You might want to provide only a few classes to be available to use by other layers (public API) that call the internal implementation of the layer that on the other hand should not be available to anybody else other than the public API of the layer.
+
+## Method-level layers (collector scope)
+
+By default a collector assigns whole tokens (classes, functions, files) to a
+layer. With `scope: method` a collector instead matches individual **class
+methods**, so a single method can live in a different layer than its class.
+Everything declared inside such a method — parameter and return types,
+attributes, and the method body — then belongs to the method's layer instead of
+the class's layer. Methods that are not matched by any `scope: method` collector
+keep belonging to their class's layers, exactly as before.
+
+This enables architectures where one class mixes code from several layers, e.g.
+a vertical-slice "feature" class combining a route handler (infrastructure) with
+an event or command handler (application):
+
+```yaml
+deptrac:
+  paths:
+    - ./src
+  analyser:
+    types:
+      - class
+      - method
+  layers:
+    - name: Infrastructure
+      collectors:
+        - type: attribute
+          value: Symfony\Component\HttpKernel\Attribute\AsController
+    - name: Application
+      collectors:
+        - type: attribute
+          value: Symfony\Component\EventDispatcher\Attribute\AsEventListener
+          scope: method
+  ruleset:
+    Infrastructure:
+      - Application
+    Application: ~
+```
+
+```php
+#[AsController]
+class RegisterBookFeature          // class → Infrastructure
+{
+    public function registerBook(): void
+    {
+        $this->handleRegister();   // allowed: Infrastructure may depend on Application
+    }
+
+    #[AsEventListener]
+    public function handleRegister(): void   // method → Application
+    {
+        $this->registerBook();     // violation: Application must not depend on Infrastructure
+    }
+}
+```
+
+Notes:
+
+- Method-level analysis is **opt-in**: add `method` to `analyser.types`
+  (`AnalyserConfig::types(EmitterType::METHOD_TOKEN, ...)` in PHP config), or no
+  method-token dependencies are emitted. Calls like `$this->method()`,
+  `self::method()` and `static::method()` are tracked as dependencies on the
+  called method.
+- Method references are only extracted (and cached) when the config opts in —
+  either via the `method` analyser type or via any `scope: method` collector.
+  Projects without the opt-in keep the smaller AST and cache. Toggling the
+  opt-in invalidates the AST cache once, causing a full re-parse on the next
+  run.
+- A method matched by a `scope: method` collector **leaves** its class's layers;
+  a call to a method without a layer of its own is checked against its class's
+  layers.
+- `scope: method` works with any collector that understands method references:
+  `attribute` (method and parameter attributes), `method` (the method name),
+  `tagValueRegex` (method docblock tags), `directory` and `glob` (the file the
+  method is declared in), and `bool` (its `must`/`must_not` children are
+  evaluated against the method). In the PHP config DSL, call `->forMethods()` on
+  the collector config.
+- Inheritance: when a class extends (or uses, via traits) a class whose layered
+  methods have dependencies, those dependencies also count against the
+  inheriting **class** (as inherit dependencies), mirroring how class-level
+  dependencies are flattened.
+- With the PHPStan parser (`feature_flags: phpstan_parser: true`), cross-class
+  instance calls are also resolved to the target class's method when the
+  receiver's type is statically known from class context — typed properties
+  (`$this->service->method()`), new expressions (`(new Foo())->method()`) and
+  return-type chains (`Foo::create()->method()`).
+- Limitations: `parent::method()` calls, dynamic calls (`$this->$name()`) and
+  calls on `$this` inside methods of anonymous classes are not tracked at method
+  level; receivers typed only by local variables or parameters are not resolved;
+  cross-class static calls and, with the Nikic parser, all cross-class instance
+  calls are tracked at class level as before.

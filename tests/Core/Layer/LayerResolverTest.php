@@ -6,9 +6,14 @@ namespace Tests\Deptrac\Deptrac\Core\Layer;
 
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodReference;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodToken;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodVisibility;
+use Deptrac\Deptrac\Contract\Ast\AstMap\FileOccurrence;
 use Deptrac\Deptrac\Contract\Layer\Collectable;
 use Deptrac\Deptrac\Contract\Layer\CollectorInterface;
 use Deptrac\Deptrac\Contract\Layer\CollectorResolverInterface;
+use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\Contract\Layer\InvalidLayerDefinitionException;
 use Deptrac\Deptrac\Core\Layer\LayerResolver;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -180,6 +185,74 @@ final class LayerResolverTest extends TestCase
             [],
             $resolver->getLayersForReference($reference)
         );
+    }
+
+    public function testCollectorScopeSeparatesMethodAndClassReferences(): void
+    {
+        $resolver = new LayerResolver(
+            $this->buildCollectorResolverWithFakeCollector(),
+            [
+                [
+                    'name' => 'classes',
+                    'collectors' => [
+                        [
+                            'type' => 'custom',
+                            'satisfy' => true,
+                        ],
+                    ],
+                ],
+                [
+                    'name' => 'methods',
+                    'collectors' => [
+                        [
+                            'type' => 'custom',
+                            'satisfy' => true,
+                            'scope' => 'method',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
+        $classReference = new ClassLikeReference(ClassLikeToken::fromFQCN('foo'));
+        $methodReference = new ClassMethodReference(
+            ClassMethodToken::fromFQCNAndMethodName('foo', 'bar'),
+            ClassMethodVisibility::TYPE_PUBLIC,
+            false,
+            new FileOccurrence('foo.php', 1)
+        );
+
+        self::assertSame(['classes' => true], $resolver->getLayersForReference($classReference));
+        self::assertSame(['methods' => true], $resolver->getLayersForReference($methodReference));
+
+        self::assertTrue($resolver->isReferenceInLayer('methods', $methodReference));
+        self::assertFalse($resolver->isReferenceInLayer('classes', $methodReference));
+        self::assertTrue($resolver->isReferenceInLayer('classes', $classReference));
+        self::assertFalse($resolver->isReferenceInLayer('methods', $classReference));
+    }
+
+    public function testUnknownCollectorScopeIsRejected(): void
+    {
+        $resolver = new LayerResolver(
+            $this->buildCollectorResolverWithFakeCollector(),
+            [
+                [
+                    'name' => 'test',
+                    'collectors' => [
+                        [
+                            'type' => 'custom',
+                            'satisfy' => true,
+                            'scope' => 'nonsense',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
+        $this->expectException(InvalidCollectorDefinitionException::class);
+        $this->expectExceptionMessage('Unknown collector scope "nonsense". Available scopes: class, method.');
+
+        $resolver->has('test');
     }
 
     private function buildCollectorResolverWithFakeCollector(): CollectorResolverInterface

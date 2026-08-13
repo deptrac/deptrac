@@ -25,6 +25,7 @@ class PhpStanParser extends AbstractParser
         private readonly PhpStanContainerDecorator $phpStanContainer,
         private readonly AstFileReferenceCacheInterface $cache,
         private readonly iterable $extractors,
+        private readonly bool $methodGranularity = true,
     ) {
         $this->traverser = new NodeTraverser();
     }
@@ -43,7 +44,7 @@ class PhpStanParser extends AbstractParser
         }
 
         $fileReferenceBuilder = FileReferenceBuilder::create($file);
-        $visitor = new PhpStanFileReferenceVisitor($fileReferenceBuilder, $scopeFactory, $reflectionProvider, $file, ...$this->extractors);
+        $visitor = new PhpStanFileReferenceVisitor($fileReferenceBuilder, $scopeFactory, $reflectionProvider, $file, $this->methodGranularity, ...$this->extractors);
         $nodes = $this->loadNodesFromFile($file);
         $this->traverser->addVisitor($visitor);
         $this->traverser->traverse($nodes);

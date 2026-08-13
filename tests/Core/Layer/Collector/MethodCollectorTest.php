@@ -6,6 +6,10 @@ namespace Tests\Deptrac\Deptrac\Core\Layer\Collector;
 
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodReference;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodToken;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodVisibility;
+use Deptrac\Deptrac\Contract\Ast\AstMap\FileOccurrence;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FunctionReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FunctionToken;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
@@ -127,5 +131,30 @@ final class MethodCollectorTest extends TestCase
             ['value' => '/'],
             $astClassReference,
         );
+    }
+
+    public static function provideSatisfyMethodReference(): iterable
+    {
+        yield 'matches own method name' => [['value' => 'handle'], 'handleRegister', true];
+        yield 'does not match other method name' => [['value' => 'build'], 'handleRegister', false];
+    }
+
+    #[DataProvider('provideSatisfyMethodReference')]
+    public function testSatisfyMethodReference(array $configuration, string $methodName, bool $expected): void
+    {
+        $methodReference = new ClassMethodReference(
+            ClassMethodToken::fromFQCNAndMethodName('foo', $methodName),
+            ClassMethodVisibility::TYPE_PUBLIC,
+            false,
+            new FileOccurrence('foo.php', 1)
+        );
+
+        // the parser must not be consulted for method references
+        $this->astParser
+            ->expects(self::never())
+            ->method('getMethodNamesForClassLikeReference')
+        ;
+
+        self::assertSame($expected, $this->collector->satisfy($configuration, $methodReference));
     }
 }

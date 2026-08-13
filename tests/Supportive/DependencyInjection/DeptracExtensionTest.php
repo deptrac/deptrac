@@ -419,6 +419,93 @@ final class DeptracExtensionTest extends TestCase
         );
     }
 
+    public function testMethodGranularityIsDisabledByDefault(): void
+    {
+        $this->extension->load([], $this->container);
+
+        self::assertFalse($this->container->getParameter('method_granularity'));
+    }
+
+    public function testMethodGranularityIsEnabledByTheMethodAnalyserType(): void
+    {
+        $configs = [
+            'deptrac' => [
+                'analyser' => [
+                    'types' => [EmitterType::CLASS_TOKEN->value, EmitterType::METHOD_TOKEN->value],
+                ] + self::ANALYSER_DEFAULTS,
+            ],
+        ];
+
+        $this->extension->load($configs, $this->container);
+
+        self::assertTrue($this->container->getParameter('method_granularity'));
+    }
+
+    public function testMethodGranularityIsEnabledByAMethodScopedCollector(): void
+    {
+        $configs = [
+            'deptrac' => [
+                'layers' => [
+                    [
+                        'name' => 'Application',
+                        'collectors' => [
+                            ['type' => 'attribute', 'value' => 'AsCommandHandler', 'scope' => 'method'],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $this->extension->load($configs, $this->container);
+
+        self::assertTrue($this->container->getParameter('method_granularity'));
+    }
+
+    public function testMethodGranularityIsEnabledByANestedMethodScopedCollector(): void
+    {
+        $configs = [
+            'deptrac' => [
+                'layers' => [
+                    [
+                        'name' => 'Application',
+                        'collectors' => [
+                            [
+                                'type' => 'bool',
+                                'must' => [
+                                    ['type' => 'directory', 'value' => 'src/.*', 'scope' => 'method'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $this->extension->load($configs, $this->container);
+
+        self::assertTrue($this->container->getParameter('method_granularity'));
+    }
+
+    public function testMethodGranularityStaysDisabledForClassScopedCollectors(): void
+    {
+        $configs = [
+            'deptrac' => [
+                'layers' => [
+                    [
+                        'name' => 'Application',
+                        'collectors' => [
+                            ['type' => 'attribute', 'value' => 'AsCommandHandler'],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $this->extension->load($configs, $this->container);
+
+        self::assertFalse($this->container->getParameter('method_granularity'));
+    }
+
     public function testIgnoreUncoveredInternalClasses(): void
     {
         $configs = [

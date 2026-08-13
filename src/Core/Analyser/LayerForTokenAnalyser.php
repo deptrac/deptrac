@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Deptrac\Deptrac\Core\Analyser;
 
 use Deptrac\Deptrac\Contract\Ast\AstException;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\TokenReferenceInterface;
 use Deptrac\Deptrac\Contract\Ast\CouldNotParseFileException;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
@@ -26,6 +27,7 @@ class LayerForTokenAnalyser
         private readonly AstMapExtractor $astMapExtractor,
         private readonly TokenResolver $tokenResolver,
         private readonly LayerResolverInterface $layerResolver,
+        private readonly bool $methodGranularity = true,
     ) {}
 
     /**
@@ -50,6 +52,9 @@ class LayerForTokenAnalyser
                     $astMap
                 ),
                 TokenType::FILE => $this->findLayersForReferences($astMap->getFileReferences(), $tokenName, $astMap),
+                TokenType::METHOD => $this->methodGranularity
+                    ? $this->findLayersForReferences($this->methodReferences($astMap), $tokenName, $astMap)
+                    : throw AnalyserException::methodGranularityDisabled(),
             };
         } catch (UnrecognizedTokenException $e) {
             throw AnalyserException::unrecognizedToken($e);
@@ -62,6 +67,21 @@ class LayerForTokenAnalyser
         } catch (CouldNotParseFileException $e) {
             throw AnalyserException::couldNotParseFile($e);
         }
+    }
+
+    /**
+     * @return list<ClassMethodReference>
+     */
+    private function methodReferences(AstMap $astMap): array
+    {
+        $methodReferences = [];
+        foreach ($astMap->getClassLikeReferences() as $classReference) {
+            foreach ($classReference->methods as $methodReference) {
+                $methodReferences[] = $methodReference;
+            }
+        }
+
+        return $methodReferences;
     }
 
     /**

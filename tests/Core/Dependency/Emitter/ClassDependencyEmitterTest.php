@@ -42,4 +42,42 @@ final class ClassDependencyEmitterTest extends TestCase
         self::assertContains('Foo\Bar:36 on Foo\string2', $deps);
         self::assertContains('Foo\Bar:42 on Foo\SomeClass', $deps);
     }
+
+    public function testDoesNotEmitIntraClassMethodCalls(): void
+    {
+        $deps = $this->getEmittedDependencies(
+            new ClassDependencyEmitter(),
+            __DIR__.'/Fixtures/MethodCalls.php'
+        );
+
+        self::assertSame(['Foo\MethodCallClass:11 on Foo\SomeClass'], $deps);
+    }
+
+    public function testSkipsMethodDependenciesAtMethodGranularity(): void
+    {
+        $deps = $this->getEmittedDependencies(
+            new ClassDependencyEmitter(['types' => ['class', 'method']]),
+            __DIR__.'/Fixtures/MethodGranularity.php'
+        );
+
+        // every dependency of the fixture lives inside a method, so the method emitter owns them all
+        self::assertSame([], $deps);
+    }
+
+    public function testEmitsMethodDependenciesAtClassGranularity(): void
+    {
+        $deps = $this->getEmittedDependencies(
+            new ClassDependencyEmitter(['types' => ['class']]),
+            __DIR__.'/Fixtures/MethodGranularity.php'
+        );
+
+        self::assertEqualsCanonicalizing(
+            [
+                'Foo\MethodEmitterClass:7 on Foo\SomeParam',
+                'Foo\MethodEmitterClass:10 on Foo\SomeClass',
+                'Foo\MethodEmitterClass:15 on Foo\OtherClass',
+            ],
+            $deps
+        );
+    }
 }

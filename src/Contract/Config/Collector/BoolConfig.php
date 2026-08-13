@@ -60,6 +60,6 @@ final class BoolConfig extends CollectorConfig
             'must' => array_map(static fn (CollectorConfig $v) => $v->toArray(), $this->must),
             'private' => $this->private,
             'type' => $this->collectorType->value,
-        ];
+        ] + $this->scopeToArray();
     }
 }

@@ -7,6 +7,7 @@ namespace Tests\Deptrac\Deptrac\Core\Layer\Collector;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeType;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodVisibility;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
 use Deptrac\Deptrac\Contract\Ast\AstMap\SuperGlobalToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
@@ -74,5 +75,32 @@ final class AttributeCollectorTest extends TestCase
         );
 
         self::assertFalse($actual);
+    }
+
+    #[DataProvider('dataProviderSatisfy')]
+    public function testSatisfyMethodReference(array $config, bool $expected): void
+    {
+        $classReferenceBuilder = FileReferenceBuilder::create('Foo.php')->newClass('App\Foo', [], []);
+        $classReferenceBuilder
+            ->newMethod('bar', ClassMethodVisibility::TYPE_PUBLIC, false, 2, [])
+            ->dependency(ClassLikeToken::fromFQCN('App\MyException'), 3, DependencyType::THROW)
+            ->dependency(ClassLikeToken::fromFQCN('App\MyAttribute'), 2, DependencyType::ATTRIBUTE)
+            ->dependency(ClassLikeToken::fromFQCN('MyAttribute'), 2, DependencyType::ATTRIBUTE)
+        ;
+        $methodReference = $classReferenceBuilder->build()->methods[0];
+
+        $actual = $this->collector->satisfy($config, $methodReference);
+
+        self::assertSame($expected, $actual);
+    }
+
+    public function testMethodReferenceDoesNotSatisfyOnClassLevelAttribute(): void
+    {
+        $classReferenceBuilder = FileReferenceBuilder::create('Foo.php')->newClass('App\Foo', [], []);
+        $classReferenceBuilder->dependency(ClassLikeToken::fromFQCN('App\MyAttribute'), 1, DependencyType::ATTRIBUTE);
+        $classReferenceBuilder->newMethod('bar', ClassMethodVisibility::TYPE_PUBLIC, false, 3, []);
+        $methodReference = $classReferenceBuilder->build()->methods[0];
+
+        self::assertFalse($this->collector->satisfy(['value' => 'MyAttribute'], $methodReference));
     }
 }

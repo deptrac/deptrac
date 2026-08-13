@@ -12,6 +12,7 @@ enum EmitterType: string
     case FUNCTION_TOKEN = 'function';
     case FUNCTION_CALL = 'function_call';
     case FUNCTION_SUPERGLOBAL_TOKEN = 'function_superglobal';
+    case METHOD_TOKEN = 'method';
     case USE_TOKEN = 'use';
 
     /**

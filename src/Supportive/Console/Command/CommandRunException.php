@@ -32,6 +32,6 @@ final class CommandRunException extends RuntimeException implements ExceptionInt
 
     public static function analyserException(AnalyserException $e): self
     {
-        return new self('Analysis failed.', 0, $e);
+        return new self('Analysis failed: '.$e->getMessage(), 0, $e);
     }
 }

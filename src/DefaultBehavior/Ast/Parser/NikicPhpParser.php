@@ -27,6 +27,7 @@ class NikicPhpParser extends AbstractParser
         private readonly Parser $parser,
         private readonly AstFileReferenceCacheInterface $cache,
         private readonly iterable $extractors,
+        private readonly bool $methodGranularity = true,
     ) {
         $this->traverser = new NodeTraverser();
         $this->traverser->addVisitor(new NameResolver());
@@ -39,7 +40,7 @@ class NikicPhpParser extends AbstractParser
         }
 
         $fileReferenceBuilder = FileReferenceBuilder::create($file);
-        $visitor = new NikicFileReferenceVisitor($fileReferenceBuilder, ...$this->extractors);
+        $visitor = new NikicFileReferenceVisitor($fileReferenceBuilder, $this->methodGranularity, ...$this->extractors);
         $nodes = $this->loadNodesFromFile($file);
         $this->traverser->addVisitor($visitor);
         $this->traverser->traverse($nodes);

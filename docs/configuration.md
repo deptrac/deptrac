@@ -55,6 +55,8 @@ A list with at least one of the following supported dependency types:
 <li><strong>function_superglobal</strong> &mdash; analyses function definitions for superglobal usage.
 </li>
 <li><strong>function_call</strong> &mdash; analyses calls to custom(user-defined) functions
+</li>
+<li><strong>method</strong> &mdash; analyses dependencies declared inside class methods, attributing them to methods that are assigned to a layer of their own via a <code>scope: method</code> collector (see <a href="collectors.md#method-level-layers-collector-scope">Method-level layers</a>).
 
 </td>
 <td>
