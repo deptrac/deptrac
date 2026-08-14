@@ -22,6 +22,9 @@ return static function (ContainerConfigurator $container): void {
     $services
         ->set(AstFileReferenceFileCache::class)
         ->args(['%cache_file%', DeptracVersion::get()])
+        // replaced with the version salts collected from services tagged
+        // 'ast_cache.version_salt', see AstCacheVersionSaltsPass
+        ->arg('$cacheVersionSalt', '')
     ;
 
     $services->alias(AstFileReferenceDeferredCacheInterface::class, AstFileReferenceFileCache::class);
