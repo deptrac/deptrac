@@ -15,6 +15,7 @@ final class ClassLikeReference extends TaggedTokenReference
      * @param AstInherit[] $inherits
      * @param DependencyToken[] $dependencies
      * @param array<string,list<string>> $tags
+     * @param ClassMethodSpan[] $methodSpans
      */
     public function __construct(
         private readonly ClassLikeToken $classLikeName,
@@ -23,6 +24,7 @@ final class ClassLikeReference extends TaggedTokenReference
         public readonly array $dependencies = [],
         public readonly array $tags = [],
         private readonly ?FileReference $fileReference = null,
+        public readonly array $methodSpans = [],
     ) {
         parent::__construct($tags);
         $this->type = $classLikeType ?? ClassLikeType::TYPE_CLASSLIKE;
@@ -36,7 +38,8 @@ final class ClassLikeReference extends TaggedTokenReference
             $this->inherits,
             $this->dependencies,
             $this->tags,
-            $astFileReference
+            $astFileReference,
+            $this->methodSpans
         );
     }
 
