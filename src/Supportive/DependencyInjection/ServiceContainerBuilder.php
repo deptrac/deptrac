@@ -113,6 +113,7 @@ final class ServiceContainerBuilder
     {
         $container->addCompilerPass(new AddConsoleCommandPass());
         $container->addCompilerPass(new RegisterListenersPass());
+        $container->addCompilerPass(new AstCacheVersionSaltsPass());
     }
 
     /**
