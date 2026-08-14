@@ -8,6 +8,8 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\AstInherit;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeType;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodSpan;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodVisibility;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyContext;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
@@ -37,13 +39,25 @@ use function unserialize;
 
 class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterface
 {
+    /**
+     * Internal cache layout version, independent of the deptrac release
+     * version. Bump whenever the serialized shape of the cached references
+     * changes within a release cycle.
+     */
+    private const SCHEMA_VERSION = '2';
+
     /** @var array<string, array{hash: string, reference: FileReference}> */
     private array $cache = [];
     private bool $loaded = false;
     /** @var array<string, bool> */
     private array $parsedFiles = [];
 
-    public function __construct(private readonly string $cacheFile, private readonly string $cacheVersion) {}
+    private readonly string $cacheVersion;
+
+    public function __construct(private readonly string $cacheFile, string $cacheVersion)
+    {
+        $this->cacheVersion = $cacheVersion.'@'.self::SCHEMA_VERSION;
+    }
 
     public function get(string $filepath): ?FileReference
     {
@@ -119,6 +133,8 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
                             FileToken::class,
                             ClassLikeToken::class,
                             ClassLikeType::class,
+                            ClassMethodSpan::class,
+                            ClassMethodVisibility::class,
                             FunctionToken::class,
                             SuperGlobalToken::class,
                             FileOccurrence::class,

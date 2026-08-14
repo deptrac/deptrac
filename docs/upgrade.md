@@ -9,6 +9,15 @@
   `Core\Dependency\DelegatingTokenResolver`, which is what
   `TokenResolverInterface` is aliased to. The default resolver's `resolve()`
   now accepts any `AstMapInterface` (previously the concrete `Core\Ast\AstMap`).
+- Class-like references now carry `ClassMethodSpan` metadata (method name,
+  declaration lines, visibility, static flag) in
+  `ClassLikeReference::$methodSpans`; its constructor gained an optional
+  `$methodSpans` parameter as its last argument.
+
+### Possible BC impact
+
+- The AST cache layout version changed; existing caches are invalidated once
+  and rebuilt on the next run.
 
 # Upgrade from 1.0.2 to 2.0.0
 
