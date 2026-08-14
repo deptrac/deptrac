@@ -10,6 +10,11 @@
   `TokenResolverInterface` is aliased to. The default resolver's `resolve()`
   now accepts any `AstMapInterface` (previously the concrete `Core\Ast\AstMap`).
 
+### Possible BC impact
+
+- New enum case `DependencyType::METHOD_CALL`. Code `match`ing exhaustively
+  over `DependencyType` without a default arm needs a new arm.
+
 # Upgrade from 1.0.2 to 2.0.0
 
 ### Dropped functionality
