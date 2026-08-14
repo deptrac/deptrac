@@ -195,6 +195,23 @@ return static function (DeptracConfig $config, ContainerConfigurator $containerC
 }
 ```
 
+The emitter only runs when its key is enabled in the analyser configuration,
+alongside or instead of the default emitter types:
+
+```php
+$config->analyser(AnalyserConfig::create()->types(EmitterType::CLASS_TOKEN, 'emitter_name_for_config'));
+```
+
+or in YAML:
+
+```yaml
+deptrac:
+  analyser:
+    types:
+      - class
+      - emitter_name_for_config
+```
+
 ## Token resolvers
 
 Every dependency connects two tokens (usually class names). Before layers can

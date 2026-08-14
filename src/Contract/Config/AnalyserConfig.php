@@ -6,14 +6,14 @@ namespace Deptrac\Deptrac\Contract\Config;
 
 final class AnalyserConfig
 {
-    /** @var array<string, EmitterType> */
+    /** @var array<string, string> */
     private array $types = [];
 
     private ?string $internalTag = null;
 
     private function __construct() {}
 
-    /** @param ?array<array-key,EmitterType> $types */
+    /** @param ?array<array-key,EmitterType|string> $types */
     public static function create(?array $types = null, ?string $internalTag = null): self
     {
         $analyser = new self();
@@ -26,11 +26,16 @@ final class AnalyserConfig
         return $analyser;
     }
 
-    public function types(EmitterType ...$types): self
+    /**
+     * @param EmitterType|string ...$types a default emitter type or the key
+     *                                     of a custom dependency emitter
+     */
+    public function types(EmitterType|string ...$types): self
     {
         $this->types = [];
         foreach ($types as $type) {
-            $this->types[$type->value] = $type;
+            $value = $type instanceof EmitterType ? $type->value : $type;
+            $this->types[$value] = $value;
         }
 
         return $this;
@@ -47,7 +52,7 @@ final class AnalyserConfig
     public function toArray(): array
     {
         return [
-            'types' => array_map(static fn (EmitterType $emitterType) => $emitterType->value, $this->types),
+            'types' => $this->types,
             'internal_tag' => $this->internalTag,
         ];
     }
