@@ -1,3 +1,9 @@
 services:
   Deptrac\Deptrac\Contract\Ast\ParserInterface:
     class: Tests\Deptrac\Deptrac\Supportive\DependencyInjection\CustomPhpParser
+  Tests\Deptrac\Deptrac\Supportive\DependencyInjection\CustomTokenResolver:
+    tags: ['token_resolver']
+  # public handle so the test can assert on the resolver actually wired in
+  test.token_resolver:
+    alias: Deptrac\Deptrac\Contract\Dependency\TokenResolverInterface
+    public: true

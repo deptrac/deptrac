@@ -1,3 +1,15 @@
+# Upgrade to 4.0
+
+### New extension points (no action required for most users)
+
+- `Contract\Dependency\TokenResolverInterface` was introduced; extensions can
+  register additional resolvers for their own token types with the
+  `token_resolver` tag. `Core\Dependency\TokenResolver` still handles the
+  built-in token types, but is now reached through
+  `Core\Dependency\DelegatingTokenResolver`, which is what
+  `TokenResolverInterface` is aliased to. The default resolver's `resolve()`
+  now accepts any `AstMapInterface` (previously the concrete `Core\Ast\AstMap`).
+
 # Upgrade from 1.0.2 to 2.0.0
 
 ### Dropped functionality

@@ -52,6 +52,7 @@ To recap, the main extension points are:
 - `Ast\ReferenceExtractorInterface` to extract references from the AST
 - `Ast\ParserInterface` to replace the whole PHP parser
 - `Dependency\DependencyEmitterInterface` to transform references to dependencies
+- `Dependency\TokenResolverInterface` to resolve tokens to their references, e.g. to support custom token types
 - `Layer\CollectorInterface` to better define tokens that belong to a layer
 - Event subscribers to `Analyser\ProcessEvent` to decide whether a dependency is allowed or not
 - `OutputFormatter\OutputFormatterInterface` to customize how the results are displayed
@@ -193,6 +194,66 @@ return static function (DeptracConfig $config, ContainerConfigurator $containerC
     ;
 }
 ```
+
+## Token resolvers
+
+Every dependency connects two tokens (usually class names). Before layers can
+be assigned, each token has to be resolved to the reference that describes it
+in the AST map. This is done by the `Dependency\TokenResolverInterface`.
+
+Every token is offered to the registered resolvers in turn, and the first one
+that `supports()` it resolves it. The resolver shipped with Deptrac handles the
+built-in token types (class-like, function, file and superglobal tokens) and
+falls back to a bare reference when the AST map does not contain the token
+(e.g. classes defined outside of the analysed paths).
+
+If your extension introduces its own token type (for example emitted by a
+custom dependency emitter), add a resolver for it:
+
+```php
+final class CustomTokenResolver implements TokenResolverInterface
+{
+    public function supports(TokenInterface $token): bool
+    {
+        return $token instanceof CustomToken;
+    }
+
+    public function resolve(TokenInterface $token, AstMapInterface $astMap): TokenReferenceInterface
+    {
+        assert($token instanceof CustomToken);
+
+        return new CustomTokenReference($token /* , ... */);
+    }
+}
+```
+
+And register it in the `deptrac.php` file:
+
+```php
+return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator->services();
+    $services
+        ->set(CustomTokenResolver::class)
+        ->tag('token_resolver')
+    ;
+}
+```
+
+`resolve()` is only called for tokens your resolver reports as supported, so
+there is nothing to delegate: any token you do not claim is passed on to the
+next resolver. Several extensions can therefore each contribute their own token
+types without knowing about each other. The default resolver is registered with
+priority `-256` and runs last; pass an explicit `['priority' => N]` to the tag
+if you need to run before or after another extension, or to take over one of the
+built-in token types.
+
+A token that no resolver supports aborts the analysis with an
+`UnrecognizedTokenException`.
+
+Aliasing `TokenResolverInterface` to your own service is still possible, but it
+*replaces* the whole chain, including the default resolver and the resolvers of
+any other extension. Only do that if you really mean to take over token
+resolution completely.
 
 ## Layer collectors
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\Core\Dependency;
 
+use Deptrac\Deptrac\Contract\Ast\AstMap\AstMapInterface;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\FileReference;
@@ -14,20 +15,29 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\SuperGlobalToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\TokenInterface;
 use Deptrac\Deptrac\Contract\Ast\AstMap\TokenReferenceInterface;
 use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
-use Deptrac\Deptrac\Core\Ast\AstMap;
+use Deptrac\Deptrac\Contract\Dependency\TokenResolverInterface;
+use Deptrac\Deptrac\Contract\Dependency\UnrecognizedTokenException;
 
-class TokenResolver
+class TokenResolver implements TokenResolverInterface
 {
+    public function supports(TokenInterface $token): bool
+    {
+        return $token instanceof ClassLikeToken
+            || $token instanceof FunctionToken
+            || $token instanceof SuperGlobalToken
+            || $token instanceof FileToken;
+    }
+
     /**
      * @throws UnrecognizedTokenException
      */
-    public function resolve(TokenInterface $token, AstMap $astMap): TokenReferenceInterface
+    public function resolve(TokenInterface $token, AstMapInterface $astMap): TokenReferenceInterface
     {
         return match (true) {
-            $token instanceof ClassLikeToken => $astMap->getClassReferenceForToken($token) ?? new ClassLikeReference($token),
+            $token instanceof ClassLikeToken => $astMap->getClassLikeReferences()[$token->toString()] ?? new ClassLikeReference($token),
             $token instanceof FunctionToken => $astMap->getFunctionReferenceForToken($token) ?? new FunctionReference($token),
             $token instanceof SuperGlobalToken => new VariableReference($token),
-            $token instanceof FileToken => $astMap->getFileReferenceForToken($token) ?? new FileReference($token->path, [], [], []),
+            $token instanceof FileToken => $astMap->getFileReferences()[$token->toString()] ?? new FileReference($token->path, [], [], []),
             default => throw UnrecognizedTokenException::cannotCreateReference($token),
         };
     }

@@ -9,6 +9,7 @@ use Deptrac\Deptrac\Contract\Ast\ParserInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeResolverInterface;
 use Deptrac\Deptrac\Contract\Config\CollectorType;
 use Deptrac\Deptrac\Contract\Config\EmitterType;
+use Deptrac\Deptrac\Contract\Dependency\TokenResolverInterface;
 use Deptrac\Deptrac\Contract\Layer\CollectorResolverInterface;
 use Deptrac\Deptrac\Contract\Layer\LayerProviderInterface;
 use Deptrac\Deptrac\Contract\Layer\LayerResolverInterface;
@@ -23,6 +24,7 @@ use Deptrac\Deptrac\Core\Ast\AstLoader;
 use Deptrac\Deptrac\Core\Ast\AstMapExtractor;
 use Deptrac\Deptrac\Core\Ast\Parser\Cache\AstFileReferenceInMemoryCache;
 use Deptrac\Deptrac\Core\Ast\Parser\TypeResolver;
+use Deptrac\Deptrac\Core\Dependency\DelegatingTokenResolver;
 use Deptrac\Deptrac\Core\Dependency\DependencyResolver;
 use Deptrac\Deptrac\Core\Dependency\TokenResolver;
 use Deptrac\Deptrac\Core\InputCollector\FileInputCollector;
@@ -295,7 +297,19 @@ return static function (ContainerConfigurator $container): void {
             '$emitterLocator' => tagged_locator('dependency_emitter', 'key'),
         ])
     ;
-    $services->set(TokenResolver::class);
+    // Extensions add resolvers for their own token types by tagging them
+    // with 'token_resolver'; the default resolver runs last.
+    $services
+        ->set(TokenResolver::class)
+        ->tag('token_resolver', ['priority' => -256])
+    ;
+    $services
+        ->set(DelegatingTokenResolver::class)
+        ->args([
+            '$resolvers' => tagged_iterator('token_resolver'),
+        ])
+    ;
+    $services->alias(TokenResolverInterface::class, DelegatingTokenResolver::class);
     $services
         ->set(ClassDependencyEmitter::class)
         ->tag('dependency_emitter', ['key' => EmitterType::CLASS_TOKEN->value])
