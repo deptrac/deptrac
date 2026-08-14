@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Tests\Deptrac\Deptrac\Supportive\DependencyInjection;
 
 use Deptrac\Deptrac\Contract\Ast\ParserInterface;
+use Deptrac\Deptrac\Core\Ast\AstMap;
+use Deptrac\Deptrac\Core\Dependency\DelegatingTokenResolver;
 use Deptrac\Deptrac\Supportive\DependencyInjection\ServiceContainerBuilder;
 use PHPUnit\Framework\TestCase;
 
@@ -18,6 +20,13 @@ final class ServiceContainerBuilderTest extends TestCase
 
         // test service override is possible
         self::assertSame(CustomPhpParser::class, $container->getDefinition(ParserInterface::class)->getClass());
+        // test contributing an additional token resolver is possible
+        $tokenResolver = $container->get('test.token_resolver');
+        self::assertInstanceOf(DelegatingTokenResolver::class, $tokenResolver);
+        self::assertSame(
+            'CustomToken',
+            $tokenResolver->resolve(new CustomToken(), new AstMap([]))->getToken()->toString()
+        );
 
         self::assertTrue($container->getParameter('ignore_uncovered_internal_classes'));
         self::assertSame(

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Deptrac\Deptrac\Core\Dependency;
+namespace Deptrac\Deptrac\Contract\Dependency;
 
 use Deptrac\Deptrac\Contract\Ast\AstMap\TokenInterface;
 use Deptrac\Deptrac\Contract\ExceptionInterface;
