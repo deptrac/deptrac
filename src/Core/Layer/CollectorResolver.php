@@ -12,9 +12,9 @@ use Psr\Container\ContainerExceptionInterface;
 use function array_key_exists;
 use function is_string;
 
-final class CollectorResolver implements CollectorResolverInterface
+final readonly class CollectorResolver implements CollectorResolverInterface
 {
-    public function __construct(private readonly CollectorProvider $collectorProvider) {}
+    public function __construct(private CollectorProvider $collectorProvider) {}
 
     /**
      * @param array<string, string|array<string, string>> $config

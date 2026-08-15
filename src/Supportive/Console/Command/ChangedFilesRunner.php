@@ -16,11 +16,11 @@ use Deptrac\Deptrac\Core\Analyser\TokenType;
 /**
  * @internal Should only be used by ChangedFilesCommand
  */
-final class ChangedFilesRunner
+final readonly class ChangedFilesRunner
 {
     public function __construct(
-        private readonly LayerForTokenAnalyser $layerForTokenAnalyser,
-        private readonly DependencyLayersAnalyser $dependencyLayersAnalyser,
+        private LayerForTokenAnalyser $layerForTokenAnalyser,
+        private DependencyLayersAnalyser $dependencyLayersAnalyser,
     ) {}
 
     /**

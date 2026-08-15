@@ -11,13 +11,13 @@ use Symfony\Component\DependencyInjection\ServiceLocator;
 
 use function array_keys;
 
-final class CollectorProvider implements ContainerInterface
+final readonly class CollectorProvider implements ContainerInterface
 {
     /**
      * @param ServiceLocator<mixed> $collectorLocator
      */
     public function __construct(
-        private readonly ServiceLocator $collectorLocator,
+        private ServiceLocator $collectorLocator,
     ) {}
 
     public function get(string $id): CollectorInterface

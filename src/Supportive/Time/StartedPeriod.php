@@ -7,10 +7,10 @@ namespace Deptrac\Deptrac\Supportive\Time;
 /**
  * @psalm-immutable
  */
-final class StartedPeriod
+final readonly class StartedPeriod
 {
     private function __construct(
-        public readonly float|int $startedAt,
+        public float|int $startedAt,
     ) {}
 
     public static function start(): self

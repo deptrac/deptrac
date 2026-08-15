@@ -8,12 +8,12 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyContext;
 use Deptrac\Deptrac\Contract\Ast\AstMap\TokenInterface;
 use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
 
-final class Dependency implements DependencyInterface
+final readonly class Dependency implements DependencyInterface
 {
     public function __construct(
-        private readonly TokenInterface $depender,
-        private readonly TokenInterface $dependent,
-        private readonly DependencyContext $context,
+        private TokenInterface $depender,
+        private TokenInterface $dependent,
+        private DependencyContext $context,
     ) {}
 
     public function serialize(): array

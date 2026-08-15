@@ -19,9 +19,9 @@ use function sprintf;
 /**
  * @internal Should only be used by AnalyseCommand
  */
-final class AnalyseRunner
+final readonly class AnalyseRunner
 {
-    public function __construct(private readonly DependencyLayersAnalyser $analyser, private readonly FormatterProvider $formatterProvider) {}
+    public function __construct(private DependencyLayersAnalyser $analyser, private FormatterProvider $formatterProvider) {}
 
     /**
      * @throws CommandRunException

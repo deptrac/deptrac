@@ -13,12 +13,12 @@ use function array_map;
 /**
  * @internal Should only be used by DebugLayerCommand
  */
-final class DebugLayerRunner
+final readonly class DebugLayerRunner
 {
     /**
      * @param array<array{name: string, collectors: array<array<string, string|array<string, string>>>}> $layers
      */
-    public function __construct(private readonly TokenInLayerAnalyser $analyser, private readonly array $layers) {}
+    public function __construct(private TokenInLayerAnalyser $analyser, private array $layers) {}
 
     /**
      * @throws CommandRunException

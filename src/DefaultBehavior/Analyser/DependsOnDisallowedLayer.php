@@ -12,9 +12,9 @@ use Deptrac\Deptrac\Contract\Result\Error;
 
 use function in_array;
 
-final class DependsOnDisallowedLayer implements ViolationCreatingInterface
+final readonly class DependsOnDisallowedLayer implements ViolationCreatingInterface
 {
-    public function __construct(private readonly EventHelper $eventHelper) {}
+    public function __construct(private EventHelper $eventHelper) {}
 
     public static function getSubscribedEvents(): array
     {

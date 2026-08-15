@@ -20,9 +20,9 @@ use PHPStan\Analyser\MutatingScope;
  * @implements NikicReferenceExtractorInterface<New_>
  * @implements PHPStanReferenceExtractorInterface<New_>
  */
-final class NewExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
+final readonly class NewExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
-    public function __construct(private readonly TypeResolverInterface $typeResolver) {}
+    public function __construct(private TypeResolverInterface $typeResolver) {}
 
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
     {

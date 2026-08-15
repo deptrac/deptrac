@@ -22,12 +22,12 @@ use function sprintf;
 
 use const JSON_PRETTY_PRINT;
 
-final class CodeclimateOutputFormatter implements OutputFormatterInterface
+final readonly class CodeclimateOutputFormatter implements OutputFormatterInterface
 {
     /**
      * @var array{severity?: array{failure?: string, skipped?: string, uncovered?: string}}
      */
-    private readonly array $config;
+    private array $config;
 
     public function __construct(FormatterConfiguration $config)
     {

@@ -7,10 +7,10 @@ namespace Deptrac\Deptrac\Contract\Ast\AstMap;
 /**
  * @psalm-immutable
  */
-final class DependencyToken
+final readonly class DependencyToken
 {
     public function __construct(
-        public readonly TokenInterface $token,
-        public readonly DependencyContext $context,
+        public TokenInterface $token,
+        public DependencyContext $context,
     ) {}
 }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\Contract\Ast\AstMap;
 
-final class FunctionToken implements TokenInterface
+final readonly class FunctionToken implements TokenInterface
 {
-    private function __construct(public readonly string $functionName) {}
+    private function __construct(public string $functionName) {}
 
     public static function fromFQCN(string $functionName): self
     {

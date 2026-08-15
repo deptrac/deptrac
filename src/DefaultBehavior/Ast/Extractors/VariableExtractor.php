@@ -23,18 +23,18 @@ use PHPStan\PhpDocParser\Parser\PhpDocParser;
  * @implements NikicReferenceExtractorInterface<Node\Expr\Variable>
  * @implements PHPStanReferenceExtractorInterface<Node\Expr\Variable>
  */
-final class VariableExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
+final readonly class VariableExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
     /**
      * @var list<string>
      */
-    private readonly array $allowedNames;
-    private readonly Lexer $lexer;
-    private readonly PhpDocParser $docParser;
+    private array $allowedNames;
+    private Lexer $lexer;
+    private PhpDocParser $docParser;
 
     public function __construct(
-        private readonly PhpStanContainerDecorator $phpStanContainer,
-        private readonly TypeResolverInterface $typeResolver,
+        private PhpStanContainerDecorator $phpStanContainer,
+        private TypeResolverInterface $typeResolver,
     ) {
         [$this->lexer, $this->docParser] = DocParsingHelper::create();
         $this->allowedNames = SuperGlobalToken::allowedNames();

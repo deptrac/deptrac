@@ -11,12 +11,12 @@ use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
  *
  * Represents a dependency that is allowed to exist given the defined rules
  */
-final class Allowed implements CoveredRuleInterface
+final readonly class Allowed implements CoveredRuleInterface
 {
     public function __construct(
-        private readonly DependencyInterface $dependency,
-        private readonly string $dependerLayer,
-        private readonly string $dependentLayer,
+        private DependencyInterface $dependency,
+        private string $dependerLayer,
+        private string $dependentLayer,
     ) {}
 
     public function getDependency(): DependencyInterface

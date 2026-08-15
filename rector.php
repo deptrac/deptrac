@@ -2,7 +2,6 @@
 
 use Rector\Config\RectorConfig;
 use Rector\Php81\Rector\ClassMethod\NewInInitializerRector;
-use Rector\ValueObject\PhpVersion;
 
 return RectorConfig::configure()
     ->withPaths([__DIR__])
@@ -16,7 +15,7 @@ return RectorConfig::configure()
 
          NewInInitializerRector::class,
     ])
-    ->withPhpSets(php81: true)
+    ->withPhpSets(php82: true)
     ->withPreparedSets(
         // typeDeclarations: true,
         // privatization: true,

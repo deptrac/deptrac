@@ -7,13 +7,13 @@ namespace Deptrac\Deptrac\Supportive\OutputFormatter;
 use Deptrac\Deptrac\Contract\OutputFormatter\BaselineMapperInterface;
 use Symfony\Component\Yaml\Yaml;
 
-final class YamlBaselineMapper implements BaselineMapperInterface
+final readonly class YamlBaselineMapper implements BaselineMapperInterface
 {
     /**
      * @param array<string, list<string>> $skippedViolations
      */
     public function __construct(
-        private readonly array $skippedViolations,
+        private array $skippedViolations,
     ) {}
 
     public function fromPHPListToString(array $groupedViolations): string
