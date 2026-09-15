@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers;
 
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodSpan;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodVisibility;
 use Deptrac\Deptrac\Contract\Ast\NikicReferenceExtractorInterface;
 use Deptrac\Deptrac\Contract\Ast\TypeScope;
 use Deptrac\Deptrac\DefaultBehavior\Ast\DocParsingHelper;
@@ -11,6 +13,7 @@ use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassLike;
+use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\GroupUse;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Namespace_;
@@ -33,6 +36,8 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
     private readonly PhpDocParser $docParser;
 
     private ReferenceBuilder $currentReference;
+
+    private int $anonymousClassDepth = 0;
 
     /**
      * @param NikicReferenceExtractorInterface<Node> ...$dependencyResolvers
@@ -82,6 +87,7 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
         match (true) {
             $node instanceof Namespace_ => $this->currentTypeScope = new TypeScope($node->name ? $node->name->toCodeString() : ''),
             $node instanceof ClassLike, $node instanceof Node\Stmt\Function_ => $this->enterReferenceChangingNode($node),
+            $node instanceof ClassMethod => $this->enterClassMethod($node),
             $node instanceof Node\FunctionLike => $this->enterFunctionLike($node),
             $node instanceof Use_ && Use_::TYPE_NORMAL === $node->type => $this->enterUse($node),
             $node instanceof GroupUse => $this->enterGroupUse($node),
@@ -105,6 +111,10 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
             }
         }
 
+        if ($node instanceof ClassLike && null === $this->getReferenceName($node)) {
+            --$this->anonymousClassDepth;
+        }
+
         $this->currentReference = match (true) {
             $node instanceof Node\Stmt\Function_ => $this->fileReferenceBuilder,
             $node instanceof ClassLike && null !== $this->getReferenceName($node) => $this->fileReferenceBuilder,
@@ -117,6 +127,9 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
     private function enterReferenceChangingNode(Node\Stmt\Function_|ClassLike $node): void
     {
         $name = $this->getReferenceName($node);
+        if (null === $name && $node instanceof ClassLike) {
+            ++$this->anonymousClassDepth;
+        }
         if (null !== $name) {
             $tags = $this->getTags($node);
             $templateTypes = $this->templateLikesFromDocs($node);
@@ -142,6 +155,25 @@ class NikicFileReferenceVisitor extends NodeVisitorAbstract
         }
 
         return null;
+    }
+
+    private function enterClassMethod(ClassMethod $node): void
+    {
+        if (0 === $this->anonymousClassDepth && $this->currentReference instanceof ClassLikeReferenceBuilder) {
+            $this->currentReference->methodSpan(new ClassMethodSpan(
+                $node->name->toString(),
+                $node->getStartLine(),
+                $node->getEndLine(),
+                match (true) {
+                    $node->isPrivate() => ClassMethodVisibility::PRIVATE,
+                    $node->isProtected() => ClassMethodVisibility::PROTECTED,
+                    default => ClassMethodVisibility::PUBLIC,
+                },
+                $node->isStatic(),
+            ));
+        }
+
+        $this->enterFunctionLike($node);
     }
 
     private function enterFunctionLike(Node\FunctionLike $node): void

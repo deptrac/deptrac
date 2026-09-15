@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers;
 
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodSpan;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodVisibility;
 use Deptrac\Deptrac\Contract\Ast\PHPStanReferenceExtractorInterface;
 use Deptrac\Deptrac\DefaultBehavior\Ast\DocParsingHelper;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassLike;
+use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Trait_;
 use PhpParser\NodeVisitorAbstract;
@@ -27,6 +30,8 @@ class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
     private readonly array $dependencyResolvers;
 
     private ReferenceBuilder $currentReference;
+
+    private int $anonymousClassDepth = 0;
 
     private MutatingScope $scope;
 
@@ -55,6 +60,7 @@ class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
         match (true) {
             $node instanceof Node\Stmt\Function_ => $this->enterFunction($node),
             $node instanceof ClassLike => $this->enterClassLike($node),
+            $node instanceof ClassMethod => $this->enterClassMethod($node),
             default => null,
         };
 
@@ -69,6 +75,10 @@ class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
             }
         }
 
+        if ($node instanceof ClassLike && null === $this->getReferenceName($node)) {
+            --$this->anonymousClassDepth;
+        }
+
         $this->currentReference = match (true) {
             $node instanceof Node\Stmt\Function_ => $this->fileReferenceBuilder,
             $node instanceof ClassLike && null !== $this->getReferenceName($node) => $this->fileReferenceBuilder,
@@ -78,9 +88,31 @@ class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
         return null;
     }
 
+    private function enterClassMethod(ClassMethod $node): void
+    {
+        if (0 !== $this->anonymousClassDepth || !$this->currentReference instanceof ClassLikeReferenceBuilder) {
+            return;
+        }
+
+        $this->currentReference->methodSpan(new ClassMethodSpan(
+            $node->name->toString(),
+            $node->getStartLine(),
+            $node->getEndLine(),
+            match (true) {
+                $node->isPrivate() => ClassMethodVisibility::PRIVATE,
+                $node->isProtected() => ClassMethodVisibility::PROTECTED,
+                default => ClassMethodVisibility::PUBLIC,
+            },
+            $node->isStatic(),
+        ));
+    }
+
     private function enterClassLike(ClassLike $node): void
     {
         $name = $this->getReferenceName($node);
+        if (null === $name) {
+            ++$this->anonymousClassDepth;
+        }
         if (null !== $name) {
             if (!$node instanceof Trait_) {
                 $context = ScopeContext::create($this->file)
