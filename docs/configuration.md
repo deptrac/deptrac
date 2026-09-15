@@ -55,6 +55,11 @@ A list with at least one of the following supported dependency types:
 <li><strong>function_superglobal</strong> &mdash; analyses function definitions for superglobal usage.
 </li>
 <li><strong>function_call</strong> &mdash; analyses calls to custom(user-defined) functions
+</li>
+</ul>
+Additionally, the key of any custom dependency emitter registered in your
+configuration (see <a href="extending_deptrac.md">Extending Deptrac</a>) can be
+listed here to enable it.
 
 </td>
 <td>
