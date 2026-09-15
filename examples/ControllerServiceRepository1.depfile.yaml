@@ -1,0 +1,22 @@
+deptrac:
+  paths: ["./ControllerServiceRepository1/"]
+  exclude_files: []
+  layers:
+    - name: Controller
+      collectors:
+        - type: classLike
+          value: .*MyNamespace\\.*Controller.*
+    - name: Repository
+      collectors:
+        - type: classLike
+          value: .*MyNamespace\\.*Repository.*
+    - name: Service
+      collectors:
+        - type: classLike
+          value: .*MyNamespace\\.*Service.*
+  ruleset:
+    Controller:
+      - Service
+    Service:
+      - Repository
+    Repository:

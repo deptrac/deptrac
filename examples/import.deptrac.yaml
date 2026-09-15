@@ -1,0 +1,19 @@
+imports:
+  - 'import_layer1.deptrac.yaml'
+  - 'import_layer2.deptrac.yaml'
+  - 'import_baseline.deptrac.yaml'
+
+deptrac:
+  layers:
+    - name: Controller
+      collectors:
+        - type: classLike
+          value: .*Controller.*
+
+  ruleset:
+    Controller:
+      - Layer1
+    Layer1:
+      - Layer2
+
+  skip_violations: ~

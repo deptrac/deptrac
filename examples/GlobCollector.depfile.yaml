@@ -1,0 +1,15 @@
+deptrac:
+  paths: ["./Layer1/", "./Layer2/"]
+  exclude_files: []
+  layers:
+    - name: Controller
+      collectors:
+        - type: classLike
+          value: .*Controller.*
+    - name: Class
+      collectors:
+        - type: glob
+          value: Layer*/*Class*.php
+  ruleset:
+    Controller:
+      - Class
