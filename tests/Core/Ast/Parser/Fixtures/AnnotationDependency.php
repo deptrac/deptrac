@@ -80,6 +80,18 @@ trait TestTrait
      */
     private array $times = [];
 
+    /**
+     * @param \DateTimeImmutable $time
+     *
+     * @return \DateTimeImmutable[]
+     */
+    private function addTime(\DateTimeImmutable $time): array
+    {
+        $this->times[] = $time;
+
+        return $this->times;
+    }
+
     private function getTime(): int
     {
         /** @var \DateTimeImmutable[] $array */
