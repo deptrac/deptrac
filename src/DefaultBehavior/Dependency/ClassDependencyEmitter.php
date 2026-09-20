@@ -30,6 +30,12 @@ final class ClassDependencyEmitter implements DependencyEmitterInterface
                 if (DependencyType::UNRESOLVED_FUNCTION_CALL === $dependency->context->dependencyType) {
                     continue;
                 }
+                // intra-class dispatch is finer-grained information than
+                // class-level analysis uses - a class calling its own methods
+                // is not a dependency between two classes
+                if (DependencyType::METHOD_CALL === $dependency->context->dependencyType) {
+                    continue;
+                }
 
                 $dependencyList->addDependency(
                     new Dependency(

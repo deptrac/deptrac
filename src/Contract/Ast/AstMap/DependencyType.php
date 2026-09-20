@@ -19,6 +19,7 @@ enum DependencyType: string
     case NEW = 'new';
     case STATIC_PROPERTY = 'static_property';
     case STATIC_METHOD = 'static_method';
+    case METHOD_CALL = 'method_call';
     case INSTANCEOF = 'instanceof';
     case CATCH = 'catch';
     // Class-like property or @var tag annotation
