@@ -9,6 +9,9 @@
   `Core\Dependency\DelegatingTokenResolver`, which is what
   `TokenResolverInterface` is aliased to. The default resolver's `resolve()`
   now accepts any `AstMapInterface` (previously the concrete `Core\Ast\AstMap`).
+- `analyser.types` (and `AnalyserConfig::types()`) now accepts the key of any
+  registered custom dependency emitter in addition to the built-in emitter
+  types. Unknown keys fail at analysis time instead of config-validation time.
 
 # Upgrade from 1.0.2 to 2.0.0
 

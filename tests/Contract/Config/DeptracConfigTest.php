@@ -39,6 +39,20 @@ final class DeptracConfigTest extends TestCase
         ];
         yield 'analyser types' => [$config, $expected];
 
+        $config = (new DeptracConfig())->analyser(AnalyserConfig::create()->types(
+            EmitterType::CLASS_TOKEN,
+            'my_custom_emitter'
+        ));
+        $expected = [
+            'analyser' => [
+                'types' => [
+                    EmitterType::CLASS_TOKEN->value => EmitterType::CLASS_TOKEN->value,
+                    'my_custom_emitter' => 'my_custom_emitter',
+                ],
+            ],
+        ];
+        yield 'custom analyser types' => [$config, $expected];
+
         $config = (new DeptracConfig())->analyser(
             AnalyserConfig::create()->internalTag('@layer-internal')
         );

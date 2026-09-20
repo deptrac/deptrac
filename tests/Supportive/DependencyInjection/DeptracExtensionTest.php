@@ -348,18 +348,36 @@ final class DeptracExtensionTest extends TestCase
         );
     }
 
+    public function testCustomAnalyserTypes(): void
+    {
+        $configs = [
+            'deptrac' => [
+                'analyser' => [
+                    'types' => [EmitterType::CLASS_TOKEN->value, 'my_custom_emitter'],
+                ] + self::ANALYSER_DEFAULTS,
+            ],
+        ];
+
+        $this->extension->load($configs, $this->container);
+
+        self::assertSame(
+            ['types' => [EmitterType::CLASS_TOKEN->value, 'my_custom_emitter']] + self::ANALYSER_DEFAULTS,
+            $this->container->getParameter('analyser')
+        );
+    }
+
     public function testInvalidAnalyserTypes(): void
     {
         $configs = [
             'deptrac' => [
                 'analyser' => [
-                    'types' => ['invalid'],
+                    'types' => [''],
                 ] + self::ANALYSER_DEFAULTS,
             ],
         ];
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid type "invalid"');
+        $this->expectExceptionMessage('Invalid type ""');
 
         $this->extension->load($configs, $this->container);
     }
