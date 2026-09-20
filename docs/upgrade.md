@@ -13,6 +13,19 @@
   registered custom dependency emitter in addition to the built-in emitter
   types. Unknown keys fail at analysis time instead of config-validation time.
 
+- Extensions can record custom tokens as the new data-only
+  `Deptrac\Deptrac\Contract\Ast\AstMap\CustomToken`, which the AST cache
+  restores without unserializing extension-defined classes, and can
+  contribute a cache version salt by tagging one of their services with
+  `ast_cache.version_salt` to invalidate caches written without them. Cache
+  entries that cannot be restored are now discarded (and re-parsed) instead
+  of crashing.
+
+### Possible BC impact
+
+- The AST cache layout version changed; existing caches are invalidated once
+  and rebuilt on the next run.
+
 # Upgrade from 1.0.2 to 2.0.0
 
 ### Dropped functionality
