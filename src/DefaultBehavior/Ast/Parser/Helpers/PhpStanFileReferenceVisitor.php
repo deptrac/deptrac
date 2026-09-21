@@ -82,7 +82,12 @@ class PhpStanFileReferenceVisitor extends NodeVisitorAbstract
     {
         $name = $this->getReferenceName($node);
         if (null !== $name) {
-            if (!$node instanceof Trait_) {
+            if ($node instanceof Trait_) {
+                // Traits have no class reflection — reset the scope so that
+                // extractors do not see a stale class from a previous
+                // class-like in the same file.
+                $this->scope = $this->scopeFactory->create(ScopeContext::create($this->file));
+            } else {
                 $context = ScopeContext::create($this->file)
                     ->enterClass($this->reflectionProvider->getClass($name))
                 ;
