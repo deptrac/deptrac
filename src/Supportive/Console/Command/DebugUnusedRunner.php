@@ -11,10 +11,10 @@ use Deptrac\Deptrac\Core\Analyser\RulesetUsageAnalyser;
 /**
  * @internal Should only be used by DebugUnusedCommand
  */
-final class DebugUnusedRunner
+final readonly class DebugUnusedRunner
 {
     public function __construct(
-        private readonly RulesetUsageAnalyser $analyser,
+        private RulesetUsageAnalyser $analyser,
     ) {}
 
     /**

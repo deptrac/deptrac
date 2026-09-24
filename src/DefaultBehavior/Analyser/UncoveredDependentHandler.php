@@ -10,9 +10,9 @@ use Deptrac\Deptrac\Contract\Result\Uncovered;
 use JetBrains\PHPStormStub\PhpStormStubsMap;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-final class UncoveredDependentHandler implements EventSubscriberInterface
+final readonly class UncoveredDependentHandler implements EventSubscriberInterface
 {
-    public function __construct(private readonly bool $ignoreUncoveredInternalClasses) {}
+    public function __construct(private bool $ignoreUncoveredInternalClasses) {}
 
     public function invoke(ProcessEvent $event): void
     {

@@ -23,14 +23,14 @@ use PHPStan\PhpDocParser\Parser\PhpDocParser;
  * @implements NikicReferenceExtractorInterface<Property>
  * @implements PHPStanReferenceExtractorInterface<Property>
  */
-final class PropertyExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
+final readonly class PropertyExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
-    private readonly Lexer $lexer;
-    private readonly PhpDocParser $docParser;
+    private Lexer $lexer;
+    private PhpDocParser $docParser;
 
     public function __construct(
-        private readonly PhpStanContainerDecorator $phpStanContainer,
-        private readonly TypeResolverInterface $typeResolver,
+        private PhpStanContainerDecorator $phpStanContainer,
+        private TypeResolverInterface $typeResolver,
     ) {
         [$this->lexer, $this->docParser] = DocParsingHelper::create();
     }

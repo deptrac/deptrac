@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers;
 
-final class FormatterConfiguration
+final readonly class FormatterConfiguration
 {
     /**
      * @param array<string, array<mixed>> $config
      */
-    public function __construct(private readonly array $config) {}
+    public function __construct(private array $config) {}
 
     /**
      * @return array<mixed>

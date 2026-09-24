@@ -7,9 +7,9 @@ namespace Deptrac\Deptrac\Contract\Ast\AstMap;
 /**
  * @psalm-immutable
  */
-final class ClassLikeToken implements TokenInterface
+final readonly class ClassLikeToken implements TokenInterface
 {
-    private function __construct(private readonly string $className) {}
+    private function __construct(private string $className) {}
 
     public static function fromFQCN(string $className): self
     {

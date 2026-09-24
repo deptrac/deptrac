@@ -9,10 +9,10 @@ namespace Deptrac\Deptrac\Contract\Ast\AstMap;
  *
  * Where in the file has the dependency occurred.
  */
-final class FileOccurrence
+final readonly class FileOccurrence
 {
     public function __construct(
-        public readonly string $filepath,
-        public readonly int $line,
+        public string $filepath,
+        public int $line,
     ) {}
 }

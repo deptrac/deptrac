@@ -12,13 +12,13 @@ use Deptrac\Deptrac\Contract\Dependency\DependencyInterface;
  *
  * Represents a dependency that is NOT allowed to exist given the defined rules
  */
-final class Violation implements CoveredRuleInterface
+final readonly class Violation implements CoveredRuleInterface
 {
     public function __construct(
-        private readonly DependencyInterface $dependency,
-        private readonly string $dependerLayer,
-        private readonly string $dependentLayer,
-        private readonly ViolationCreatingInterface $violationCreatingRule,
+        private DependencyInterface $dependency,
+        private string $dependerLayer,
+        private string $dependentLayer,
+        private ViolationCreatingInterface $violationCreatingRule,
     ) {}
 
     public function getDependency(): DependencyInterface

@@ -7,13 +7,13 @@ namespace Deptrac\Deptrac\Contract\Ast\AstMap;
 /**
  * @psalm-immutable
  */
-final class FileReference implements TokenReferenceInterface
+final readonly class FileReference implements TokenReferenceInterface
 {
     /** @var ClassLikeReference[] */
-    public readonly array $classLikeReferences;
+    public array $classLikeReferences;
 
     /** @var FunctionReference[] */
-    public readonly array $functionReferences;
+    public array $functionReferences;
 
     /**
      * @param ClassLikeReference[] $classLikeReferences
@@ -21,10 +21,10 @@ final class FileReference implements TokenReferenceInterface
      * @param DependencyToken[] $dependencies
      */
     public function __construct(
-        public readonly string $filepath,
+        public string $filepath,
         array $classLikeReferences,
         array $functionReferences,
-        public readonly array $dependencies,
+        public array $dependencies,
     ) {
         /** @psalm-suppress ImpureFunctionCall */
         $this->classLikeReferences = array_map(

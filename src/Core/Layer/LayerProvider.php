@@ -10,12 +10,12 @@ use Deptrac\Deptrac\Contract\Layer\LayerProviderInterface;
 /**
  * Provides information about layer configuration.
  */
-final class LayerProvider implements LayerProviderInterface
+final readonly class LayerProvider implements LayerProviderInterface
 {
     /**
      * @param array<string, list<string>> $allowedLayers source layer -> target layers
      */
-    public function __construct(private readonly array $allowedLayers) {}
+    public function __construct(private array $allowedLayers) {}
 
     /**
      * @return list<string>

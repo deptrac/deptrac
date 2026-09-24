@@ -12,13 +12,13 @@ use Symfony\Component\DependencyInjection\ServiceLocator;
 use function array_keys;
 use function get_debug_type;
 
-final class FormatterProvider implements ContainerInterface
+final readonly class FormatterProvider implements ContainerInterface
 {
     /**
      * @param ServiceLocator<mixed> $formatterLocator
      */
     public function __construct(
-        private readonly ServiceLocator $formatterLocator,
+        private ServiceLocator $formatterLocator,
     ) {}
 
     public function get(string $id): OutputFormatterInterface

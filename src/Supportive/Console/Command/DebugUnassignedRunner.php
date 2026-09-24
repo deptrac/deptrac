@@ -11,9 +11,9 @@ use Deptrac\Deptrac\Core\Analyser\UnassignedTokenAnalyser;
 /**
  * @internal Should only be used by DebugUnassignedCommand
  */
-final class DebugUnassignedRunner
+final readonly class DebugUnassignedRunner
 {
-    public function __construct(private readonly UnassignedTokenAnalyser $analyser) {}
+    public function __construct(private UnassignedTokenAnalyser $analyser) {}
 
     /**
      * @return bool are there any unassigned tokens?

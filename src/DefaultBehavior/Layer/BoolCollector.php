@@ -9,9 +9,9 @@ use Deptrac\Deptrac\Contract\Layer\CollectorInterface;
 use Deptrac\Deptrac\Contract\Layer\CollectorResolverInterface;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 
-final class BoolCollector implements CollectorInterface
+final readonly class BoolCollector implements CollectorInterface
 {
-    public function __construct(private readonly CollectorResolverInterface $collectorResolver) {}
+    public function __construct(private CollectorResolverInterface $collectorResolver) {}
 
     public function satisfy(array $config, TokenReferenceInterface $reference): bool
     {

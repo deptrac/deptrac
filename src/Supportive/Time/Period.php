@@ -9,11 +9,11 @@ use function hrtime;
 /**
  * @psalm-immutable
  */
-final class Period
+final readonly class Period
 {
     private function __construct(
-        public readonly float|int $startedAt,
-        public readonly float|int $endedAt,
+        public float|int $startedAt,
+        public float|int $endedAt,
     ) {}
 
     /**

@@ -25,14 +25,14 @@ use PHPStan\PhpDocParser\Parser\PhpDocParser;
  * @implements NikicReferenceExtractorInterface<Node\Stmt\Expression>
  * @implements PHPStanReferenceExtractorInterface<Node\Stmt\Expression>
  */
-final class ExpressionExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
+final readonly class ExpressionExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
-    private readonly Lexer $lexer;
-    private readonly PhpDocParser $docParser;
+    private Lexer $lexer;
+    private PhpDocParser $docParser;
 
     public function __construct(
-        private readonly PhpStanContainerDecorator $phpStanContainer,
-        private readonly TypeResolverInterface $typeResolver,
+        private PhpStanContainerDecorator $phpStanContainer,
+        private TypeResolverInterface $typeResolver,
     ) {
         [$this->lexer, $this->docParser] = DocParsingHelper::create();
     }

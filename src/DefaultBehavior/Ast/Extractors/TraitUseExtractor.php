@@ -18,9 +18,9 @@ use PHPStan\Analyser\MutatingScope;
  * @implements NikicReferenceExtractorInterface<Node\Stmt\TraitUse>
  * @implements PHPStanReferenceExtractorInterface<Node\Stmt\TraitUse>
  */
-final class TraitUseExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
+final readonly class TraitUseExtractor implements NikicReferenceExtractorInterface, PHPStanReferenceExtractorInterface
 {
-    public function __construct(private readonly TypeResolverInterface $typeResolver) {}
+    public function __construct(private TypeResolverInterface $typeResolver) {}
 
     public function processNode(Node $node, ReferenceBuilderInterface $referenceBuilder, TypeScope $typeScope): void
     {
