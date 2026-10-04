@@ -129,6 +129,57 @@ return static function (DeptracConfig $config, ContainerConfigurator $containerC
 }
 ```
 
+### Custom extractors and the AST cache
+
+The references found in a file are cached (see `cache_file`) and restored via
+`unserialize()` with a fixed allowlist of deptrac's own classes — for security
+reasons extension-defined classes are never unserialized. Keep two things in
+mind when your extractor is registered:
+
+- If your extractor records custom tokens, record them as
+  `Deptrac\Deptrac\Contract\Ast\AstMap\CustomToken`. It carries a
+  vendor-namespaced type tag and a payload of plain data (scalars, `null` and
+  arrays thereof), so the cache can restore it safely; rebuild richer value
+  objects from the payload at analysis time, e.g. in your
+  `TokenResolverInterface` or `DependencyEmitterInterface` implementation.
+  Tokens of any other class are not restored: the affected cache entries are
+  discarded and those files re-parsed on every run.
+
+  ```php
+  $referenceBuilder->dependency(
+      new CustomToken(
+          'acme/my-extension.route',
+          ['path' => $path, 'method' => $method],
+          sprintf('route:%s %s', $method, $path),
+      ),
+      $node->getLine(),
+      DependencyType::USE,
+  );
+  ```
+
+- References are cached per file and only refreshed when the file changes.
+  Entries written *before* your extractor was registered do not contain its
+  references. Contribute a version salt unique to your extension (e.g. its
+  name and version) by tagging one of your registered services — typically
+  the extractor that records the cached references — with
+  `ast_cache.version_salt`, so that enabling/disabling or upgrading your
+  extension invalidates previously written caches:
+
+  ```php
+  return static function (DeptracConfig $config, ContainerConfigurator $containerConfigurator): void {
+      $services = $containerConfigurator->services();
+      $services->set(CustomExtractor::class)
+          ->tag('reference_extractors')
+          ->tag('ast_cache.version_salt', ['salt' => 'my-extension@1.0.0'])
+      ;
+  }
+  ```
+
+  Every extension contributes its own salt this way: the tagged salts are
+  deduplicated, sorted and composed into a single cache version component,
+  so the result is deterministic, independent of registration order, and no
+  extension (or user) can overwrite another extension's salt.
+
 ## AST Parser
 
 It may be the case that the current AST parser implementation using Nikic PHP

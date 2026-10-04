@@ -8,6 +8,7 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\AstInherit;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeType;
+use Deptrac\Deptrac\Contract\Ast\AstMap\CustomToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyContext;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\DependencyType;
@@ -21,10 +22,10 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
 use Deptrac\Deptrac\Supportive\File\Exception\CouldNotReadFileException;
 use Deptrac\Deptrac\Supportive\File\Exception\FileNotExistsException;
 use Deptrac\Deptrac\Supportive\File\FileReader;
+use Throwable;
 
 use function array_filter;
 use function array_map;
-use function assert;
 use function dirname;
 use function file_exists;
 use function is_readable;
@@ -37,13 +38,34 @@ use function unserialize;
 
 class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterface
 {
+    /**
+     * Internal cache layout version, independent of the deptrac release
+     * version. Bump whenever the serialized shape of the cached references
+     * changes within a release cycle.
+     */
+    private const SCHEMA_VERSION = '2';
+
     /** @var array<string, array{hash: string, reference: FileReference}> */
     private array $cache = [];
     private bool $loaded = false;
     /** @var array<string, bool> */
     private array $parsedFiles = [];
 
-    public function __construct(private readonly string $cacheFile, private readonly string $cacheVersion) {}
+    private readonly string $cacheVersion;
+
+    /**
+     * @param string $cacheVersionSalt salts of the extensions that change what
+     *                                 gets cached, composed from the services tagged
+     *                                 'ast_cache.version_salt' so extension (de)activation
+     *                                 invalidates existing caches
+     */
+    public function __construct(
+        private readonly string $cacheFile,
+        string $cacheVersion,
+        string $cacheVersionSalt = '',
+    ) {
+        $this->cacheVersion = $cacheVersion.'@'.self::SCHEMA_VERSION.('' !== $cacheVersionSalt ? '@'.$cacheVersionSalt : '');
+    }
 
     public function get(string $filepath): ?FileReference
     {
@@ -102,31 +124,46 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
             return;
         }
 
-        $this->cache = array_map(
+        $entries = array_map(
             /** @param array{hash: string, reference: string} $data */
-            static function (array $data): array {
-                $reference = unserialize(
-                    $data['reference'],
-                    [
-                        'allowed_classes' => [
-                            FileReference::class,
-                            ClassLikeReference::class,
-                            FunctionReference::class,
-                            VariableReference::class,
-                            AstInherit::class,
-                            DependencyToken::class,
-                            DependencyType::class,
-                            FileToken::class,
-                            ClassLikeToken::class,
-                            ClassLikeType::class,
-                            FunctionToken::class,
-                            SuperGlobalToken::class,
-                            FileOccurrence::class,
-                            DependencyContext::class,
-                        ],
-                    ]
-                );
-                assert($reference instanceof FileReference);
+            static function (array $data): ?array {
+                try {
+                    $reference = unserialize(
+                        $data['reference'],
+                        [
+                            'allowed_classes' => [
+                                FileReference::class,
+                                ClassLikeReference::class,
+                                FunctionReference::class,
+                                VariableReference::class,
+                                AstInherit::class,
+                                DependencyToken::class,
+                                DependencyType::class,
+                                FileToken::class,
+                                ClassLikeToken::class,
+                                ClassLikeType::class,
+                                CustomToken::class,
+                                FunctionToken::class,
+                                SuperGlobalToken::class,
+                                FileOccurrence::class,
+                                DependencyContext::class,
+                            ],
+                        ]
+                    );
+                    // @phpstan-ignore catch.neverThrown (unserialize() throws a TypeError when it assigns __PHP_Incomplete_Class to a typed property, CustomToken::__wakeup() throws on invalid payloads)
+                } catch (Throwable) {
+                    // the entry cannot be restored: it contains classes
+                    // outside of the allowlist (unserialize() throws a
+                    // TypeError when it assigns __PHP_Incomplete_Class to a
+                    // typed property) or otherwise invalid state (e.g. a
+                    // CustomToken payload rejected by __wakeup()): treat it
+                    // as a cache miss
+                    return null;
+                }
+
+                if (!$reference instanceof FileReference) {
+                    return null;
+                }
 
                 return [
                     'hash' => $data['hash'],
@@ -135,6 +172,8 @@ class AstFileReferenceFileCache implements AstFileReferenceDeferredCacheInterfac
             },
             $cache['payload']
         );
+
+        $this->cache = array_filter($entries);
     }
 
     public function write(): void
