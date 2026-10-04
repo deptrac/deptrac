@@ -12,6 +12,15 @@
 - `analyser.types` (and `AnalyserConfig::types()`) now accepts the key of any
   registered custom dependency emitter in addition to the built-in emitter
   types. Unknown keys fail at analysis time instead of config-validation time.
+- Class-like references now carry `ClassMethodSpan` metadata (method name,
+  declaration lines, visibility, static flag) in
+  `ClassLikeReference::$methodSpans`; its constructor gained an optional
+  `$methodSpans` parameter as its last argument.
+
+### Possible BC impact
+
+- The AST cache layout version changed; existing caches are invalidated once
+  and rebuilt on the next run.
 
 # Upgrade from 1.0.2 to 2.0.0
 

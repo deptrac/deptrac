@@ -7,9 +7,13 @@ namespace Deptrac\Deptrac\DefaultBehavior\Ast\Parser\Helpers;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeReference;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeToken;
 use Deptrac\Deptrac\Contract\Ast\AstMap\ClassLikeType;
+use Deptrac\Deptrac\Contract\Ast\AstMap\ClassMethodSpan;
 
 final class ClassLikeReferenceBuilder extends ReferenceBuilder
 {
+    /** @var ClassMethodSpan[] */
+    private array $methodSpans = [];
+
     /**
      * @param list<string> $tokenTemplates
      * @param array<string,list<string>> $tags
@@ -60,6 +64,13 @@ final class ClassLikeReferenceBuilder extends ReferenceBuilder
         return new self($classTemplates, $filepath, ClassLikeToken::fromFQCN($classLikeName), ClassLikeType::TYPE_INTERFACE, $tags);
     }
 
+    public function methodSpan(ClassMethodSpan $methodSpan): self
+    {
+        $this->methodSpans[] = $methodSpan;
+
+        return $this;
+    }
+
     /** @internal */
     public function build(): ClassLikeReference
     {
@@ -68,7 +79,9 @@ final class ClassLikeReferenceBuilder extends ReferenceBuilder
             $this->classLikeType,
             $this->inherits,
             $this->dependencies,
-            $this->tags
+            $this->tags,
+            null,
+            $this->methodSpans
         );
     }
 }
