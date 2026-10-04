@@ -13,6 +13,11 @@
   registered custom dependency emitter in addition to the built-in emitter
   types. Unknown keys fail at analysis time instead of config-validation time.
 
+### Possible BC impact
+
+- New enum case `DependencyType::METHOD_CALL`. Code `match`ing exhaustively
+  over `DependencyType` without a default arm needs a new arm.
+
 # Upgrade from 1.0.2 to 2.0.0
 
 ### Dropped functionality
