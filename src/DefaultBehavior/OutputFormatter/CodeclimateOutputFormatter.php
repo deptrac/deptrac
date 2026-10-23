@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Deptrac\Deptrac\DefaultBehavior\OutputFormatter;
 
+use Deptrac\Deptrac\Contract\Ast\AstMap\FileOccurrence;
 use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInput;
 use Deptrac\Deptrac\Contract\OutputFormatter\OutputFormatterInterface;
 use Deptrac\Deptrac\Contract\OutputFormatter\OutputInterface;
@@ -15,7 +16,10 @@ use Deptrac\Deptrac\Contract\Result\Violation;
 use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers\ConfigurationCodeclimate;
 use Deptrac\Deptrac\DefaultBehavior\OutputFormatter\Helpers\FormatterConfiguration;
 use Exception;
+use Symfony\Component\Filesystem\Exception\InvalidArgumentException;
+use Symfony\Component\Filesystem\Path;
 
+use function getcwd;
 use function json_encode;
 use function json_last_error;
 use function sprintf;
@@ -185,12 +189,7 @@ final class CodeclimateOutputFormatter implements OutputFormatterInterface
             'description' => $message,
             'categories' => ['Style', 'Complexity'],
             'severity' => $severity,
-            'location' => [
-                'path' => $rule->getDependency()->getContext()->fileOccurrence->filepath,
-                'lines' => [
-                    'begin' => $rule->getDependency()->getContext()->fileOccurrence->line,
-                ],
-            ],
+            'location' => self::getLocation($rule->getDependency()->getContext()->fileOccurrence),
         ];
     }
 
@@ -203,5 +202,33 @@ final class CodeclimateOutputFormatter implements OutputFormatterInterface
             $rule->getDependency()->getContext()->fileOccurrence->filepath,
             $rule->getDependency()->getContext()->fileOccurrence->line,
         ]));
+    }
+
+    /**
+     * @return array{path: string, lines: array{begin: int}}
+     */
+    private static function getLocation(FileOccurrence $fileOccurrence): array
+    {
+        return [
+            'path' => self::tryGetRelativePath($fileOccurrence),
+            'lines' => [
+                'begin' => $fileOccurrence->line,
+            ],
+        ];
+    }
+
+    private static function tryGetRelativePath(FileOccurrence $fileOccurrence): string
+    {
+        $workingDirectory = getcwd();
+
+        if (is_string($workingDirectory)) {
+            try {
+                return Path::makeRelative($fileOccurrence->filepath, $workingDirectory);
+            } catch (InvalidArgumentException) {
+                // Ignore exceptions from Path::makeRelative()
+            }
+        }
+
+        return $fileOccurrence->filepath;
     }
 }
