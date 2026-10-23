@@ -28,10 +28,45 @@ class DeptracExtension extends Extension implements PrependExtensionInterface
         $container->setParameter('ruleset', $configs['ruleset']);
         $container->setParameter('skip_violations', $configs['skip_violations']);
         $container->setParameter('formatters', $configs['formatters'] ?? []);
-        $container->setParameter('analyser', $configs['analyser']);
+
+        /** @var array{internal_tag?: ?string, types: list<string>, ignored_types: list<string>} $analyserConfig */
+        $analyserConfig = $configs['analyser'];
+        if (!empty($analyserConfig['ignored_types'])) {
+            $analyserConfig = $this->applyIgnoredTypes($analyserConfig);
+        }
+
+        unset($analyserConfig['ignored_types']);
+        $container->setParameter('analyser', $analyserConfig);
+
         $container->setParameter('ignore_uncovered_internal_classes', $configs['ignore_uncovered_internal_classes']);
         $container->setParameter('cache_file', $configs['cache_file']);
         $container->setParameter('feature_flags', $configs['feature_flags']);
+    }
+
+    /**
+     * @param array{internal_tag?: ?string, types: list<string>, ignored_types: list<string>} $analyserConfig
+     *
+     * @return array{internal_tag?: ?string, types: list<string>}
+     */
+    private function applyIgnoredTypes(array $analyserConfig): array
+    {
+        $types = $analyserConfig['types'];
+        $ignoredTypes = $analyserConfig['ignored_types'];
+
+        $filteredTypes = array_filter(
+            $types,
+            static fn (string $type): bool => !in_array($type, $ignoredTypes, true)
+        );
+
+        $result = [
+            'types' => array_values($filteredTypes),
+        ];
+
+        if (isset($analyserConfig['internal_tag'])) {
+            $result['internal_tag'] = $analyserConfig['internal_tag'];
+        }
+
+        return $result;
     }
 
     public function prepend(ContainerBuilder $container): void
@@ -60,7 +95,7 @@ class DeptracExtension extends Extension implements PrependExtensionInterface
         if (!$container->hasParameter('analyser')) {
             $container->setParameter('analyser', [
                 'internal_tag' => null,
-                'types' => [EmitterType::CLASS_TOKEN->value, EmitterType::FUNCTION_TOKEN->value],
+                'types' => EmitterType::values(),
             ]);
         }
         if (!$container->hasParameter('ignore_uncovered_internal_classes')) {

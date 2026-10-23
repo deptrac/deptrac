@@ -26,16 +26,17 @@ return static function (DeptracConfig $config, ContainerConfigurator $containerC
         ->featureFlags(FeatureFlagsConfig::create(phpstanParser: true))
         ->baseline('deptrac.baseline.yaml')
         ->analyser(
-            AnalyserConfig::create()
-                ->internalTag('@internal')
-                ->types(
+            AnalyserConfig::create(
+                types: [
                     EmitterType::CLASS_TOKEN,
                     EmitterType::CLASS_SUPERGLOBAL_TOKEN,
                     EmitterType::FILE_TOKEN,
                     EmitterType::FUNCTION_TOKEN,
                     EmitterType::FUNCTION_SUPERGLOBAL_TOKEN,
-                    EmitterType::FUNCTION_CALL
-                )
+                    EmitterType::FUNCTION_CALL,
+                ],
+                internalTag: '@internal'
+            )
         )
         ->layers(
             $defaultBehavior = Layer::withName('DefaultBehavior')->collectors(

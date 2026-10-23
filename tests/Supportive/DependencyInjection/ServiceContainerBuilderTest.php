@@ -30,7 +30,7 @@ final class ServiceContainerBuilderTest extends TestCase
 
         self::assertTrue($container->getParameter('ignore_uncovered_internal_classes'));
         self::assertSame(
-            ['internal_tag' => null, 'types' => ['class', 'function']],
+            ['internal_tag' => null, 'types' => ['class', 'class_superglobal', 'file', 'function', 'function_call', 'function_superglobal', 'use']],
             $container->getParameter('analyser')
         );
         self::assertSame(

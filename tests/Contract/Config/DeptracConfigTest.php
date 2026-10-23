@@ -29,7 +29,7 @@ final class DeptracConfigTest extends TestCase
         $expected = [];
         yield 'empty' => [$config, $expected];
 
-        $config = (new DeptracConfig())->analyser(AnalyserConfig::create()->types(
+        $config = (new DeptracConfig())->analyser(AnalyserConfig::create()->withTypes(
             EmitterType::FUNCTION_CALL
         ));
         $expected = [
@@ -39,7 +39,7 @@ final class DeptracConfigTest extends TestCase
         ];
         yield 'analyser types' => [$config, $expected];
 
-        $config = (new DeptracConfig())->analyser(AnalyserConfig::create()->types(
+        $config = (new DeptracConfig())->analyser(AnalyserConfig::create()->withTypes(
             EmitterType::CLASS_TOKEN,
             'my_custom_emitter'
         ));
@@ -54,7 +54,7 @@ final class DeptracConfigTest extends TestCase
         yield 'custom analyser types' => [$config, $expected];
 
         $config = (new DeptracConfig())->analyser(
-            AnalyserConfig::create()->internalTag('@layer-internal')
+            AnalyserConfig::create()->withInternalTag('@layer-internal')
         );
         $expected = [
             'analyser' => [
@@ -62,6 +62,19 @@ final class DeptracConfigTest extends TestCase
             ],
         ];
         yield 'internal_tag' => [$config, $expected];
+
+        $config = (new DeptracConfig())->analyser(
+            AnalyserConfig::create()->withIgnoredTypes(EmitterType::CLASS_SUPERGLOBAL_TOKEN, EmitterType::FUNCTION_CALL)
+        );
+        $expected = [
+            'analyser' => [
+                'ignored_types' => [
+                    EmitterType::CLASS_SUPERGLOBAL_TOKEN->value => EmitterType::CLASS_SUPERGLOBAL_TOKEN->value,
+                    EmitterType::FUNCTION_CALL->value => EmitterType::FUNCTION_CALL->value,
+                ],
+            ],
+        ];
+        yield 'ignored_types' => [$config, $expected];
     }
 
     #[DataProvider('provideConfig')]

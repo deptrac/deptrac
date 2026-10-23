@@ -42,10 +42,13 @@ final class DeptracExtensionTest extends TestCase
     private const ANALYSER_DEFAULTS = [
         'internal_tag' => null,
         'types' => [
-            // Unfortunately, we can't use the enum type here, see
-            // https://wiki.php.net/rfc/fetch_property_in_const_expressions
-            'class',    // ClassLikeType::CLASS
-            'function', // ClassLikeType::FUNCTION
+            'class',
+            'class_superglobal',
+            'file',
+            'function',
+            'function_call',
+            'function_superglobal',
+            'use',
         ],
     ];
 
@@ -579,5 +582,29 @@ final class DeptracExtensionTest extends TestCase
         $this->expectExceptionMessage('The value "super duper important" is not allowed for path "deptrac.formatters.codeclimate.severity.failure".');
 
         $this->extension->load($configs, $this->container);
+    }
+
+    public function testAnalyserWithIgnoredTypes(): void
+    {
+        $configs = [
+            'deptrac' => [
+                'analyser' => [
+                    'ignored_types' => [
+                        EmitterType::CLASS_SUPERGLOBAL_TOKEN->value,
+                        EmitterType::FUNCTION_CALL->value,
+                    ],
+                ],
+            ],
+        ];
+
+        $this->extension->load($configs, $this->container);
+
+        $actualAnalyser = $this->container->getParameter('analyser');
+
+        self::assertArrayHasKey('types', $actualAnalyser);
+        self::assertNotContains(EmitterType::CLASS_SUPERGLOBAL_TOKEN->value, $actualAnalyser['types']);
+        self::assertNotContains(EmitterType::FUNCTION_CALL->value, $actualAnalyser['types']);
+        self::assertContains(EmitterType::CLASS_TOKEN->value, $actualAnalyser['types']);
+        self::assertContains(EmitterType::FUNCTION_TOKEN->value, $actualAnalyser['types']);
     }
 }
