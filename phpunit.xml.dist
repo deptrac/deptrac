@@ -31,6 +31,9 @@
       <testsuite name="OutputFormatter">
           <directory>./tests/Supportive/OutputFormatter</directory>
       </testsuite>
+      <testsuite name="Internal">
+          <directory>./tests/Internal</directory>
+      </testsuite>
   </testsuites>
   <source>
     <include>

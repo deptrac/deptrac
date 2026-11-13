@@ -45,7 +45,7 @@ trait EmitterTrait
                 new AnonymousClassExtractor(),
                 new FunctionLikeExtractor($typeResolver),
                 new PropertyExtractor($phpStanContainerDecorator, $typeResolver),
-                new FunctionCallExtractor($typeResolver),
+                new FunctionCallExtractor(),
                 new VariableExtractor($phpStanContainerDecorator, $typeResolver),
                 new ClassExtractor(),
                 new UseExtractor(),

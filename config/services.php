@@ -84,6 +84,7 @@ use Deptrac\Deptrac\DefaultBehavior\Layer\ImplementsCollector;
 use Deptrac\Deptrac\DefaultBehavior\Layer\InheritanceLevelCollector;
 use Deptrac\Deptrac\DefaultBehavior\Layer\InheritsCollector;
 use Deptrac\Deptrac\DefaultBehavior\Layer\InterfaceCollector;
+use Deptrac\Deptrac\DefaultBehavior\Layer\InternalIOCollector;
 use Deptrac\Deptrac\DefaultBehavior\Layer\LayerCollector;
 use Deptrac\Deptrac\DefaultBehavior\Layer\MethodCollector;
 use Deptrac\Deptrac\DefaultBehavior\Layer\PhpInternalCollector;
@@ -415,6 +416,10 @@ return static function (ContainerConfigurator $container): void {
     $services
         ->set(InheritsCollector::class)
         ->tag('collector', ['type' => CollectorType::TYPE_INHERITS->value])
+    ;
+    $services
+        ->set(InternalIOCollector::class)
+        ->tag('collector', ['type' => CollectorType::TYPE_INTERNAL_IO->value])
     ;
     $services
         ->set(LayerCollector::class)

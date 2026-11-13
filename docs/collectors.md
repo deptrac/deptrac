@@ -250,6 +250,100 @@ deptrac:
           value: 'App\SomeInterface'
 ```
 
+## `internalIO` Collector
+
+The `internalIO` collector collects the PHP-internal functions and classes that
+perform I/O. Use it to enforce rules such as "the domain layer must not perform
+I/O" without maintaining a list of function names yourself.
+
+```yaml
+deptrac:
+  analyser:
+    types:
+      - class
+      - function
+      - function_call
+  layers:
+    - name: NativeIO
+      collectors:
+        - type: internalIO
+    - name: Domain
+      collectors:
+        - type: directory
+          value: src/Domain/.*
+  ruleset:
+    Domain: ~
+```
+
+With this configuration, every call from the *Domain* layer to a function such
+as `fopen()` or `curl_exec()`, and every use of a class such as `SplFileObject`,
+is reported as a violation. Calls to functions are only analysed if the
+`function_call` [dependency type](configuration.md) is enabled.
+
+There is no authoritative list of PHP functions that perform I/O. The collector
+therefore relies on a heuristic: a function performs I/O if a `resource` is
+part of its signature, either as a parameter or as the return value. This
+covers more than `fopen()` and `fwrite()`, because nearly all filesystem
+functions accept an optional stream context: `file_get_contents()`, `mkdir()`
+and `unlink()` are collected as well.
+
+Extensions keep replacing their resources with classes: `curl_init()` returns a
+`CurlHandle` since PHP 8.0, `ftp_connect()` returns an `FTP\Connection` since
+PHP 8.1. These classes are treated like `resource`, so the functions that use
+them are collected no matter which PHP version your code targets.
+
+Deptrac tracks dependencies on classes, not calls to their methods. A class is
+therefore collected as a whole: if it replaced a resource (`CurlHandle`), if one
+of its methods has a `resource` in its signature (`SplFileObject`, `ZipArchive`,
+`PDO`), or if it inherits from such a class (`SplTempFileObject`).
+
+The functions and classes are derived from the signatures in
+[jetbrains/phpstorm-stubs](https://github.com/JetBrains/phpstorm-stubs), for
+all PHP versions and extensions the stubs know about. The resulting list ships
+with Deptrac.
+
+### Excluding functions and classes
+
+A `resource` in a signature does not always mean I/O: `get_resource_type()`
+only inspects its argument, and the image functions of the GD extension work in
+memory most of the time. The optional `exclude` parameter takes a simplified
+regular expression. Functions and classes whose name matches it are not
+collected. This parameter has predefined delimiters and modifier:
+`/YOUR_EXPRESSION/i`
+
+```yaml
+deptrac:
+  layers:
+    - name: NativeIO
+      collectors:
+        - type: internalIO
+          exclude: ^(get_resource_(type|id)|image.*|GdImage)$
+```
+
+### Limitations
+
+The heuristic does not replace the [`functionName` Collector](#functionname-collector),
+it saves you from listing the bulk of the functions by hand:
+
+- Functions that perform I/O without a `resource` in their signature are not
+  collected, for example `file_exists()`, `is_readable()`, `getcwd()` or
+  `exec()`. Add a `functionName` collector to the same layer for those:
+
+  ```yaml
+  deptrac:
+    layers:
+      - name: NativeIO
+        collectors:
+          - type: internalIO
+          - type: functionName
+            value: ^(file_exists|is_readable|getcwd|exec)$
+  ```
+
+- `echo`, `print`, `include`, `require` and the backtick operator are language
+  constructs, not functions. Deptrac does not see them.
+- Functions that are called dynamically, as in `call_user_func('fopen')` or
+  `$function()`, cannot be analysed statically.
+
 ## `layer` Collector
 
 This collector collects all the tokens collected by another layer. It is not
