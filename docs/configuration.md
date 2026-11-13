@@ -54,7 +54,8 @@ A list with at least one of the following supported dependency types:
 </li>
 <li><strong>function_superglobal</strong> &mdash; analyses function definitions for superglobal usage.
 </li>
-<li><strong>function_call</strong> &mdash; analyses calls to custom(user-defined) functions
+<li><strong>function_call</strong> &mdash; analyses calls to functions: custom (user-defined) functions
+that are part of the analysed code and functions that are built into PHP or one of its extensions.
 </li>
 </ul>
 Additionally, the key of any custom dependency emitter registered in your

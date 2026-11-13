@@ -20,6 +20,7 @@ enum CollectorType: string
     case TYPE_IMPLEMENTS = 'implements';
     case TYPE_INHERITANCE = 'inheritanceLevel';
     case TYPE_INHERITS = 'inherits';
+    case TYPE_INTERNAL_IO = 'internalIO';
     case TYPE_INTERFACE = 'interface';
     case TYPE_LAYER = 'layer';
     case TYPE_METHOD = 'method';

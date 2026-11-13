@@ -13,6 +13,24 @@
   registered custom dependency emitter in addition to the built-in emitter
   types. Unknown keys fail at analysis time instead of config-validation time.
 
+### Calls to PHP-internal functions
+
+- The `function_call` dependency type now also emits a dependency for calls to
+  functions that are built into PHP or one of its extensions, such as
+  `strlen()` or `fopen()`. Previously, only calls to functions declared in the
+  analysed code were emitted, which made it impossible to restrict the use of
+  internal functions. Calls to internal functions that are not part of any
+  layer are ignored, so nothing changes for you unless one of your collectors
+  matches them: a `functionName` collector with a broad pattern, a
+  `php_internal` collector, or a `bool` collector that only has `must_not`
+  conditions. In that case you may see new dependencies and violations.
+- An unqualified call inside a namespace, such as `helper()`, is now also
+  recognised if it refers to a function declared in the global namespace.
+  PHP falls back to the global function if the namespace does not declare a
+  function of that name, and so does Deptrac now.
+- The new [`internalIO` collector](collectors.md#internalio-collector) collects
+  the PHP-internal functions and classes that perform I/O.
+
 # Upgrade from 1.0.2 to 2.0.0
 
 ### Dropped functionality

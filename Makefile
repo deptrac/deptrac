@@ -28,6 +28,9 @@ install: vendor ## Installs dependencies
 vendor: composer.json composer.lock
 	$(COMPOSER) install --no-interaction --no-progress --ansi
 
+internal-io-map: install ## Regenerates the map of PHP-internal I/O functions and classes from jetbrains/phpstorm-stubs
+	php internal/generate-internal-io-map.php
+
 composer-dependency-analyser: install ## Performs static code analysis using composer-dependency-analyser
 	$(COMPOSER_DEPENDENCY_ANALYSER)
 
