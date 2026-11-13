@@ -14,7 +14,6 @@ use Deptrac\Deptrac\Contract\Ast\AstMap\TokenReferenceInterface;
 use Deptrac\Deptrac\Contract\Ast\AstMap\VariableReference;
 use Deptrac\Deptrac\Contract\Layer\InvalidCollectorDefinitionException;
 use Deptrac\Deptrac\DefaultBehavior\Layer\InternalIOCollector;
-use FTP\Connection;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -67,7 +66,7 @@ final class InternalIOCollectorTest extends TestCase
     public static function provideClassLikes(): iterable
     {
         yield 'handle class that replaced a resource' => ['CurlHandle', true];
-        yield 'namespaced handle class' => [Connection::class, true];
+        yield 'namespaced handle class' => ['FTP\Connection', true];
         yield 'method accepts a stream context' => ['SplFileObject', true];
         yield 'method returns a resource' => ['ZipArchive', true];
         yield 'inherits from a class that performs I/O' => ['SplTempFileObject', true];
@@ -119,7 +118,7 @@ final class InternalIOCollectorTest extends TestCase
         yield 'pattern is case-insensitive' => ['^IMAGE', $function('imagepng'), false];
         yield 'excluded class' => ['^Gd', $classLike('GdImage'), false];
         yield 'class that is not excluded' => ['^Gd', $classLike('CurlHandle'), true];
-        yield 'namespaced class' => ['^FTP\\\\', $classLike(Connection::class), false];
+        yield 'namespaced class' => ['^FTP\\\\', $classLike('FTP\Connection'), false];
         yield 'exclude does not add anything' => ['^fopen$', $function('strlen'), false];
         yield 'empty pattern excludes nothing' => ['', $function('fopen'), true];
     }

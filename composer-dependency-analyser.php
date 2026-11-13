@@ -7,5 +7,6 @@ $config = new Configuration();
 
 return $config
     ->addPathToScan(__DIR__ . '/deptrac', isDev: false)
+    ->addPathToExclude(__DIR__ . '/tests/Internal/Fixtures/stubs') // stand-ins for jetbrains/phpstorm-stubs, declare and use PHP-internal symbols
     ->ignoreErrorsOnExtension('ext-dom', [ErrorType::SHADOW_DEPENDENCY]) // in composer "suggests"
     ->ignoreErrorsOnPath(__DIR__ . '/tests', [ErrorType::UNKNOWN_CLASS, ErrorType::UNKNOWN_FUNCTION]); // keep ability to test invalid symbols
